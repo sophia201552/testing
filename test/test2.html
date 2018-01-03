@@ -31,7 +31,7 @@ var aqiData = [
   /*
   在注释下方编写代码
   遍历读取aqiData中各个城市的数据
-  将空气质量指数大于60的城市显示到aqi-list的列表中*/
+  将空气质量指数大于60的城市显示到aqi-list的列表中
   
     var inner='';
     var arr=new Array();
@@ -47,17 +47,17 @@ var aqiData = [
 			j++;
 		}
 	}
-	/*冒泡排序
-    for(var i=0;i<arr.length-1;i++){
-	    for (var j=0;j<arr.length-1-i;j++){
-			if (arr[j][1]>arr[j+1][1]){
-				var a;
-				a=arr[j+1];
-				arr[j+1]=arr[j];
-				arr[j]=a
-			}
-		}
-    }*/
+	//冒泡排序
+    //for(var i=0;i<arr.length-1;i++){
+	    //for (var j=0;j<arr.length-1-i;j++){
+			//if (arr[j][1]>arr[j+1][1]){
+				//var a;
+				//a=arr[j+1];
+				//arr[j+1]=arr[j];
+				//arr[j]=a
+			//}
+		//}
+    //}
 	arr.sort(function(a,b){
 		return b[1]-a[1];
 	})
@@ -68,7 +68,23 @@ var aqiData = [
 	for(var i=0;i<arr.length;i++){	
 		inner+="<li>第"+(i+1)+"名:"+arr[i][0]+","+arr[i][1]+"</li>";
 	}
-	document.getElementById("aqi-list").innerHTML=inner;
+	document.getElementById("aqi-list").innerHTML=inner;*/
+	
+	//第二种方法 简单,很厉害:
+	var cont=document.querySelector("#aqi-list");
+	var list=aqiData.filter(function(item,index,array){
+		return (item[1]>=60);
+	});
+	list.sort(function(a,b){
+		return b[1]-a[1];
+	});
+	list.forEach(
+		function(item,index,array){
+			var newnode=document.createElement("li");
+			newnode.innerHTML="第"+(index+1)+"名:"+array[index][0] +","+array[index][1];
+			cont.appendChild(newnode);
+		}
+	);
   
 
 })();
