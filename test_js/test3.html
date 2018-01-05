@@ -93,8 +93,15 @@ function init() {
 
   // 在这下面给sort-btn绑定一个点击事件，点击时触发btnHandle函数
   var button=document.getElementById("sort-btn");
-  button.onclick=btnHandle;
-
+  button.onclick=function add(){
+	btnHandle();
+	//防止再次点击时又叠加出现排序问题,先清除,在定时重新开启button的使用
+	button.onclick=null;
+	var timer=setTimeout(function(){
+		button.onclick=add;
+	},1000)
+  };
+  
 }
 
 init();
