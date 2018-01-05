@@ -1,0 +1,67 @@
+<!--任务目的-->
+<!--学习与实践JavaScript的基本语法、语言特性-->
+<!--初步了解JavaScript的事件是什么-->
+<!--初步了解JavaScript中的DOM是什么-->
+<!--任务描述-->
+<!--如图，模拟一个队列，队列的每个元素是一个数字，初始队列为空-->
+<!--有一个input输入框，以及4个操作按钮-->
+
+<!--点击"左侧入"，将input中输入的数字从左侧插入队列中；-->
+<!--点击"右侧入"，将input中输入的数字从右侧插入队列中；-->
+<!--点击"左侧出"，读取并删除队列左侧第一个元素，并弹窗显示元素中数值；-->
+<!--点击"右侧出"，读取并删除队列又侧第一个元素，并弹窗显示元素中数值；-->
+<!--点击队列中任何一个元素，则该元素会被从队列中删除-->
+<html>
+<head>
+    <style  type="text/css">
+
+    </style>
+</head>
+<body>
+<div>
+    <input id="queue_input" type="text">
+    <button id="left_in">左侧入</button>
+    <button id="right_in">右侧入</button>
+    <button id="left_out">左侧出</button>
+    <button id="right_out">右侧出</button>
+</div>
+<table>
+    <tr id="queue">
+    </tr>
+</table>
+<script>
+    function left_in(){
+        queue_input=document.querySelector("#queue_input");
+        queue_show=document.querySelectorAll("#queue td");
+        id=Math.random().toString(36).substr(2);
+        //newnode="<td id="+id.toString()+" backgroud='red' color='white'  width='20px' height='20px'>"+queue_input+"</td>"
+        queue_show.splice(0, 0, newnode);
+    }
+    function right_in(){
+        queue_input=document.querySelector("#queue_input");
+        queue_show=document.querySelectorAll("#queue td");
+        id=Math.random().toString(36).substr(2);
+        newnode="<td id="+id+" backgroud='red' color='white'  width='20px' height='20px'>"+queue_input+"</td>";
+        queue_show.splice(queue_show.length-1, 0, newnode);
+    }
+    function left_out(){
+        queue_show=document.querySelectorAll("#queue td");
+        alter("删除第一个值:"+queue_show[0].innerText);
+        queue_show.splice(0, 1);
+    }
+    function right_out(){
+        queue_show=document.querySelectorAll("#queue td");
+        alter("删除第一个值:"+queue_show[queue_show.length].innerText);
+        queue_show.splice(0, 1);
+    }
+    function init(){
+        document.querySelector("#left_in").onclick=left_in;
+        document.querySelector("#right_in").onclick=right_in;
+        document.querySelector("#left_out").onclick=left_out;
+        document.querySelector("#right_out").onclick=left_out;
+        };
+    init();
+</script>
+</body>
+
+</html>
