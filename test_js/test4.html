@@ -14,7 +14,12 @@
 <html>
 <head>
     <style  type="text/css">
-
+        td{
+            color:white;
+            background-color:red;
+            width:20px;
+            height:20px;
+        }
     </style>
 </head>
 <body>
@@ -30,35 +35,69 @@
     </tr>
 </table>
 <script>
-    function left_in(){
+    <!--第一种：button.onclick = Function("alert('hello');");-->
+
+    <!--第二种：button.onclick = function(){alert("hello"); };-->
+
+    <!--第三种：button.onclick = myAlert;-->
+
+              <!--function myAlert(){-->
+                     <!--alert("hello");-->
+              <!--}-->
+   <!--button.onclick = Function ("alert('31');");-->
+   <!--button.onclick = Function ("alert('32');");-->
+   <!--button.onclick = Function ("alert('33');"); //如果这样写,那么将会只有最后一个方法被执行-->
+   <!---->
+   <!--button.attachEvent("onclick", function(){alert('41');});-->
+   <!--button.attachEvent("onclick", function(){alert('42');});-->
+   <!--button.attachEvent("onclick", function(){alert('43');}); //如果这样写,三个方法都会被执行-->
+   <!---->
+    <!--// 当然，你也可以这样写-->
+    <!--button.onclick = Function("alert('51');");-->
+    <!--button.attachEvent("onclick", function(){alert('52');});-->
+    <!---->
+    <!--//对应移除事件-->
+    <!--detachEvent('onclick' ,func);//ie下使用删除事件func-->
+    <!--removeEventListener('click' ,func);//Mozilla下，删除事件func -->
+
+    //js 在父级元素下增加子元素,首位增加 insertBefore, appendChild
+    function click_in(number){
         queue_input=document.querySelector("#queue_input");
-        queue_show=document.querySelectorAll("#queue td");
-        id=Math.random().toString(36).substr(2);
-        //newnode="<td id="+id.toString()+" backgroud='red' color='white'  width='20px' height='20px'>"+queue_input+"</td>"
-        queue_show.splice(0, 0, newnode);
+        queue_show=document.querySelector("#queue");
+        newnode=document.createElement("td")
+        <!--newnode.style.color="#FFFFFF";-->
+        <!--newnode.style.width="20px";-->
+        <!--newnode.style.height="20px";-->
+        <!--newnode.style.backgroundColor="red";-->
+        value=queue_input.value
+        newnode.innerHTML=value;
+        if (value==""){
+            alert("请输入内容");
+            queue_input.value="";
+            queue_input.facus();
+        }
+        else if(isNaN(value)){
+            alert("请输入数字");
+            queue_input.value="";
+            queue_input.facus();
+        }
+        else{
+            if (number==2){
+                queue_show.appendChild(newnode);
+            }
+            else{
+                queue_show.insertBefore(newnode,queue_show.firstChild);
+            }
+        }
     }
-    function right_in(){
-        queue_input=document.querySelector("#queue_input");
-        queue_show=document.querySelectorAll("#queue td");
-        id=Math.random().toString(36).substr(2);
-        newnode="<td id="+id+" backgroud='red' color='white'  width='20px' height='20px'>"+queue_input+"</td>";
-        queue_show.splice(queue_show.length-1, 0, newnode);
-    }
-    function left_out(){
-        queue_show=document.querySelectorAll("#queue td");
-        alter("删除第一个值:"+queue_show[0].innerText);
-        queue_show.splice(0, 1);
-    }
-    function right_out(){
-        queue_show=document.querySelectorAll("#queue td");
-        alter("删除第一个值:"+queue_show[queue_show.length].innerText);
-        queue_show.splice(0, 1);
+    function click_out(number){
+
     }
     function init(){
-        document.querySelector("#left_in").onclick=left_in;
-        document.querySelector("#right_in").onclick=right_in;
-        document.querySelector("#left_out").onclick=left_out;
-        document.querySelector("#right_out").onclick=left_out;
+        document.querySelector("#left_in").onclick=function(){click_in(1)};
+        document.querySelector("#right_in").onclick=function(){click_in(2)};
+        document.querySelector("#left_out").onclick=function(){click_out(1)};
+        document.querySelector("#right_out").onclick=function(){click_out(2)};
         };
     init();
 </script>
