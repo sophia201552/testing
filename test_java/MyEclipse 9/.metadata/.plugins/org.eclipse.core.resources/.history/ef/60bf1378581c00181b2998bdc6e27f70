@@ -1,0 +1,19 @@
+package test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class LoginPage extends Page {
+
+	public LoginPage( WebDriver driver,String base_url) {
+		super(driver,base_url);
+		// TODO Auto-generated constructor stub
+	}
+	public WebDriver login(WebDriver driver,String username,String password){
+		WebDriver driver1=open(driver);
+		findElement(driver1, By.id("txtName")).sendKeys(username);
+		findElement(driver1,By.id("txtPwd")).sendKeys(password);
+		findElement(driver1,By.id("btnLogin")).click();
+		return driver;
+	}
+}

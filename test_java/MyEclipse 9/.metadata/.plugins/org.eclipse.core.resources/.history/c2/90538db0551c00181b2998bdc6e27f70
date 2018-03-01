@@ -1,0 +1,20 @@
+package test;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class NewTest {
+	WebDriver driver;
+	
+	LoginPage login=new LoginPage("http://beop.rnbtech.com.hk");	
+	@Test
+	public void test_login(){
+		login.login(driver,"sophia.zhao@rnbtech.com.hk","zhao_123456");
+		WebElement ele=driver.findElement(By.id("navHomeLogo"));
+		assert ele != null:"login fail";
+	}
+}

@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="5" skipfailedinvocationCounts="false" verbose="1" name="Failed suite [testUnittest]" junit="false" parallel="false" annotations="JDK" data-provider-thread-count="10">
+  <test name="test.NewTest(failed)" junit="false" parallel="false" annotations="JDK">
+    <classes>
+      <class name="test.NewTest">
+        <methods>
+          <include name="test_login"/>
+          <include name="afterClass"/>
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>

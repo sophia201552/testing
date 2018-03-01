@@ -1,0 +1,16 @@
+<testng-results>
+  <reporter-output>
+  </reporter-output>
+  <suite name="testUnittest" duration-ms="9714" started-at="2018-02-28T17:13:17Z" finished-at="2018-02-28T17:13:26Z">
+    <groups>
+    </groups>
+    <test name="test.NewTest" duration-ms="9714" started-at="2018-02-28T17:13:17Z" finished-at="2018-02-28T17:13:26Z">
+      <class name="test.NewTest">
+        <test-method status="PASS" signature="test_login()" name="test_login" duration-ms="8513" started-at="2018-02-28T17:13:17Z" finished-at="2018-02-28T17:13:25Z">
+        </test-method>
+        <test-method status="PASS" signature="afterClass()" name="afterClass" is-config="true" duration-ms="1195" started-at="2018-02-28T17:13:25Z" finished-at="2018-02-28T17:13:26Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>

@@ -1,0 +1,13 @@
+#Mon Jan 22 10:21:38 CST 2018
+tomcat7Server.JspLibrary.shouldOverwrite=false
+tomcat7Server.JspLibrary.isDeployed=true
+tomcat7Server.JspLibrary.deployIsOverProject=false
+tomcat7Server.JspLibrary.altContextRoot=
+tomcat7Server.JspLibrary.deploymentPath=D\:\\tomcat7.0\\webapps\\JspLibrary
+tomcat7Server.JspLibrary.shouldBackup=false
+tomcat7Server.JspLibrary.contextRoot=/JspLibrary
+tomcat7Server.JspLibrary.IEARProjectName=
+tomcat7Server.JspLibrary.type=WebDeployment
+tomcat7Server.JspLibrary.isUptoDate=true
+eclipse.preferences.version=1
+tomcat7Server.JspLibrary.isExploded=true

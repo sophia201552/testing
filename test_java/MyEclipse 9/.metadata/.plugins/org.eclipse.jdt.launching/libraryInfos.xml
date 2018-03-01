@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="C:\Program Files\Java\jdk1.6.0_10" version="1.6.0_10-rc2">
+<bootpath>
+<entry path="C:\Program Files\Java\jdk1.6.0_10\jre\lib\resources.jar"/>
+<entry path="C:\Program Files\Java\jdk1.6.0_10\jre\lib\rt.jar"/>
+<entry path="C:\Program Files\Java\jdk1.6.0_10\jre\lib\sunrsasign.jar"/>
+<entry path="C:\Program Files\Java\jdk1.6.0_10\jre\lib\jsse.jar"/>
+<entry path="C:\Program Files\Java\jdk1.6.0_10\jre\lib\jce.jar"/>
+<entry path="C:\Program Files\Java\jdk1.6.0_10\jre\lib\charsets.jar"/>
+<entry path="C:\Program Files\Java\jdk1.6.0_10\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files\Java\jdk1.6.0_10\jre\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files\Java\jdk1.6.0_10\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre" version="1.6.0_13">
+<bootpath>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\resources.jar"/>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\rt.jar"/>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\sunrsasign.jar"/>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\jsse.jar"/>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\jce.jar"/>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\charsets.jar"/>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013" version="1.6.0_13">
+<bootpath>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\resources.jar"/>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\rt.jar"/>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\sunrsasign.jar"/>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\jsse.jar"/>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\jce.jar"/>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\charsets.jar"/>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="D:\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_1.6.0.013\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="C:\Program Files\Java\jdk1.8.0_144" version="1.8.0_144">
+<bootpath>
+<entry path="C:\Program Files\Java\jdk1.8.0_144\jre\lib\resources.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_144\jre\lib\rt.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_144\jre\lib\sunrsasign.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_144\jre\lib\jsse.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_144\jre\lib\jce.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_144\jre\lib\charsets.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_144\jre\lib\jfr.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_144\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files\Java\jdk1.8.0_144\jre\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files\Java\jdk1.8.0_144\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

@@ -1,0 +1,29 @@
+package test;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.Test;
+
+public class NewTest {
+	LoginPage loginPage=new LoginPage();	
+	@Test
+	public void test_login(){
+		WebDriver driver=loginPage.login("sophia.zhao@rnbtech.com.hk","zhao_123456");
+		WebElement ele=driver.findElement(By.id("navHomeLogo"));
+		assert ele != null:"login fail";
+	}
+	@Test
+	public void test_login_with_null(){
+		WebDriver driver=loginPage.login("sophia.zhao@rnbtech.com.hk","zhao_123456");
+		boolean flag=driver.findElement(By.id("navHomeLogo")).isDisplayed();
+		assert flag==false :"using null name and passwoed expected fail";
+	}
+	@AfterSuite
+	  public void afterClass() {
+	      System.out.println("After Class success....");
+	      loginPage.teardown();
+	  }
+}

@@ -1,0 +1,96 @@
+package com.logic;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI;
+import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.constants.TestImportance;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
+import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
+
+public class TestSophia {
+
+	/**
+	 * @param args
+	 */
+	//获取TestkLinkAPI对象
+	public static TestLinkAPI getAPI(){
+		String url="http://192.168.1.240/testlink/lib/api/xmlrpc.php";
+//		String filepath="config\\"+"config.properties";
+//		String devKey=getPtoperties(filepath).get("key");
+		String devKey="key";
+		TestLinkAPI api =null;
+		URL testlinkURL =null;
+		try{
+			testlinkURL =new URL(url);
+		}catch(MalformedURLException mue){
+			mue.printStackTrace(System.err);
+			System.exit(-1);
+		}
+		try{
+			api=new TestLinkAPI(testlinkURL,devKey);
+		}catch(TestLinkAPIException te){
+			te.printStackTrace(System.err);
+			System.exit(-1);
+		}
+		return api;
+	}
+	
+	public static void CreateTestProject(){
+		TestProject project=null;
+		TestLinkAPI api=getAPI();
+		try{
+			project = api.createTestProject(
+                    "Minecraft", //testProjectName
+                    "MC", //testProjectPrefix
+                    "Testing Minecraft game", //notes
+                    true, //enableRequirements
+                    true, //enableTestPriority
+                    true, //enableAutomation
+                    false, //enableInventory
+                    true, //isActive
+                    true); //isPublic
+		}catch(TestLinkAPIException e){
+			e.printStackTrace(System.err);
+			System.exit(-1);
+		}
+		System.out.println("Test project created!");
+		System.out.println("Test Project ID:["+project.getId()+"].");
+	}
+	public static void createTestCase(){
+		List<TestCaseStep> steps=new ArrayList<TestCaseStep>();
+		TestCaseStep step=new TestCaseStep();
+		step.setNumber(1);
+		step.setExpectedResults("User name appeared intop menu");
+		step.setExecutionType(ExecutionType.MANUAL);
+		step.setActions("go to login scteen and enter user credentials");
+		steps.add(step);
+		TestLinkAPI api=getAPI();
+		TestCase tc = api.createTestCase(
+	            "TcName", // testCaseName
+	            new Integer(2), // testSuiteId
+	            new Integer(1), // testProjectId
+	            "sophia", // authorLogin
+	            "No summary", // summary
+	            steps, // steps
+	            null, // preconditions
+	            null, TestImportance.HIGH, // importance
+	            ExecutionType.MANUAL, // execution
+	            new Integer(10), // order
+	            null, // internalId
+	            null, // checkDuplicatedName 
+	            null); // actionOnDuplicatedName
+		System.out.println("test case with steps created");
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		TestSophia.CreateTestProject();
+		TestSophia.createTestCase();
+	}
+
+}

@@ -1,0 +1,35 @@
+package test;
+
+import org.openqa.selenium.WebDriver;
+
+public class Page {
+	//构造函数初始化
+	private WebDriver driver;
+	private String base_url="http://www.baidu.com";
+	
+	public WebDriver getDriver() {
+		return driver;
+	}
+
+	public void setDriver(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	public String getBase_url() {
+		return base_url;
+	}
+
+	public void setBase_url(String base_url) {
+		this.base_url = base_url;
+	}
+
+	public Page(WebDriver driver,String base_url){
+		this.driver=driver;
+		this.base_url=base_url;
+	}
+	
+	public void open(WebDriver driver,String url){
+		dirver.ger(url);
+		
+	}
+}

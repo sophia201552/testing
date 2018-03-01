@@ -1,0 +1,15 @@
+package test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class LoginPage extends Page {
+
+	public LoginPage(WebDriver driver, String base_url) {
+		super(driver, base_url);
+		// TODO Auto-generated constructor stub
+	}
+	public void username(WebDriver driver,String username){
+		findElement(driver, By.id(id))
+	}
+}

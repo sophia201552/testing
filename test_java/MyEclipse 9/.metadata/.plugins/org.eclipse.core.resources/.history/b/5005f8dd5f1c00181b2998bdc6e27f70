@@ -1,0 +1,16 @@
+package test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Brower {
+	public WebDriver driver;
+	public WebDriver chrome(){
+		System.setProperty("webdriver.chrome.driver","D:/selenium-2.44.0/chromedriver.exe");  
+		driver=new ChromeDriver();
+		return driver;
+	}
+	public void teardown(){
+		driver.quit();
+	}
+}

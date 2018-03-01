@@ -1,0 +1,27 @@
+package test;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.Test;
+
+public class NewTest {
+//	Brower brower=new Brower();
+//	static WebDriver driver1;
+//	WebDriver driver=chrome();
+	LoginPage loginPage=new LoginPage();	
+	@Test
+	public void test_login(){
+		WebDriver driver1=loginPage.login(driver,"sophia.zhao@rnbtech.com.hk","zhao_123456");
+		WebElement ele=driver1.findElement(By.id("navHomeLogo"));
+		assert ele != null:"login fail";
+	}
+	@AfterSuite
+	  public void afterClass() {
+	      System.out.println("After Class success....");
+	      brower.teardown();
+	  }
+}

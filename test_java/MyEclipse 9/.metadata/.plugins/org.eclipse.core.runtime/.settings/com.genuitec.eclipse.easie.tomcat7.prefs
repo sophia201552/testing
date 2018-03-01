@@ -1,0 +1,9 @@
+#Fri Jan 19 16:12:17 CST 2018
+SERVER_ENABLEMENT=true
+LIBRARY_PATH="C\:\\Program Files\\Java\\jdk1.8.0_144\\bin;D\:\\tomcat7.0\\bin"
+eclipse.preferences.version=1
+JDK_HOME=C\:\\Program Files\\Java\\jdk1.8.0_144
+TOMCAT_BASE=D\:\\tomcat7.0
+ENDORSED_DIRS="D\:\\tomcat7.0/common/endorsed"
+TOMCAT_HOME=D\:\\tomcat7.0
+TOMCAT_TEMP=D\:\\tomcat7.0\\temp

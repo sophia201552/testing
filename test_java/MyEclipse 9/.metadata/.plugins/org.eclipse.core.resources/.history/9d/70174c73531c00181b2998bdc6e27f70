@@ -1,0 +1,18 @@
+package test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class NewTest {
+	
+	WebDriver driver=new ChromeDriver();
+	LoginPage login=new LoginPage(driver, "http://beop.rnbtech.com.hk");
+	public void test_login(){
+		System.setProperty("webdriver.chrome.driver","D:/selenium-2.44.0/chromedriver.exe");  
+		
+
+		login.login(driver,"sophia.zhao@rnbtech.com.hk","zhao_123456");
+	}
+	
+//	driver.findElment(By.)
+}

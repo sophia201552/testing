@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.net.URL"/>
+<fullyQualifiedTypeName name="java.net.MalformedURLException"/>
+<fullyQualifiedTypeName name="br.eti.kinoshita.testlinkjavaapi.model.TestProject"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep"/>
+<fullyQualifiedTypeName name="br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType"/>
+<fullyQualifiedTypeName name="br.eti.kinoshita.testlinkjavaapi.model.TestCase"/>
+<fullyQualifiedTypeName name="br.eti.kinoshita.testlinkjavaapi.constants.TestImportance"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.WebDriver"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.chrome.ChromeDriver"/>
+</qualifiedTypeNameHistroy>

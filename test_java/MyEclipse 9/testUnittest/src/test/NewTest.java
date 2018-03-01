@@ -1,0 +1,38 @@
+package test;
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+
+public class NewTest {
+	LoginPage loginPage=new LoginPage();	
+	@Test
+	public void test_login() throws InterruptedException{
+		WebDriver driver=loginPage.login("sophia.zhao@rnbtech.com.hk","zhao_123456");
+//		WebDriverWait wait = new WebDriverWait(driver, 30);
+//        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("projectsCard")));
+//		Thread.sleep(20);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        boolean flag=driver.findElement(By.id("map-canvas")).isDisplayed();
+		assert flag==true:"login fail";
+	}
+	@Test
+	public void test_login_with_null() throws InterruptedException{
+		WebDriver driver=loginPage.login("null","null");
+//		WebDriverWait wait = new WebDriverWait(driver, 20);
+//        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("projectsCard")));
+//		Thread.sleep(10);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		boolean flag=driver.findElement(By.className("infoBox-footer")).isDisplayed();
+		assert flag==true :"using null name and passwoed expected fail";
+	}
+	@AfterMethod
+	  public void afterClass() {
+	      System.out.println("After Class success....");
+	      loginPage.teardown();
+	  }
+}

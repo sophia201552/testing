@@ -1,0 +1,11 @@
+package test;
+
+import org.openqa.selenium.WebDriver;
+
+public class Page {
+	//构造函数初始化
+	private WebDriver selenium_driver;
+	
+	public Page(String selenium_driver,)
+	
+}
