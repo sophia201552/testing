@@ -1,0 +1,235 @@
+<style>
+    @media (max-width: 1366px) {
+        #debugRightContainer {
+            font-size: 12px;
+        }
+
+        #debugRightContainer {
+            overflow-y: auto;
+        }
+    }
+</style>
+<!--确认窗口开始-->
+<article id="filterDefineWin" class="modal fade">
+    <div class="modal-dialog mt150">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    <span i18n="dataManage.ENTER_SEARCH_CODE"></span>
+                    <span>：</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <textarea id="filterContent" class="form-control"
+                          i18n="placeholder=dataManage.ENTER_SEARCH_CODE_BELOW"></textarea>
+
+                <p class="mt10">
+                    <span>
+                        <span i18n="dataManage.SEARCH_BY_POINT_NAME"></span>
+                        <span>：</span>
+                    </span>
+                    <span>pointname like '%Fre'</span>
+                </p>
+
+                <p>
+                    <span>
+                       <span i18n="dataManage.SEARCH_BY_POINT_VALUE"></span>
+                       <span>：</span>
+                    </span>
+                    <span>pointvalue <50 and pointvalue> 30</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" i18n="common.CANCEL"></button>
+                <button type="button" class="btn btn-primary" id="filterDefineConfirm" i18n="common.CONFIRM"></button>
+            </div>
+        </div>
+    </div>
+</article>
+<!--确认窗口结束-->
+
+<div class="pr terminalDebugBox" id="terminalDebugContainer">
+    <div id="debugLeftContainer">
+        <div class="input-group clearfix" id="searchProjectBox"
+             style="padding:10px;max-width:240px;border-bottom:1px solid #ddd">
+            <input class="form-control" type="text" i18n="placeholder=admin.panel.SEARCH_TIP_1"/>
+            <span class="input-group-addon">
+                <button type="button" id="searchProjectBtn" class="glyphicon glyphicon-search"></button>
+            </span>
+            <em class="glyphicon glyphicon-remove searchBox-clear" style="display: none;"></em>
+        </div>
+        <div class="gray-scrollbar treeWrapper" style="padding-bottom: 50px;">
+            <ul id="list_dtu_Tree" class="ztree"></ul>
+        </div>
+    </div>
+    <div id="debugRightContainer" class="pa">
+        <div class="debugRightBox">
+            <div class="divPointsList">
+                <div class="panel-heading clearfix" id="realTimeBtnBox" style="padding-left:20px;">
+                    <div class="btn-group fr mr10 mt5 right-tools" role="group">
+                        <button type="button" id="deleteExpiredData" class="btn btn-default btn-sm"
+                                i18n="title=dataManage.DELETE_EXPIRED_DATA">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                        <button type="button" id="joinCurve" style="display: none" class="btn btn-default btn-sm"
+                                i18n="title=dataManage.JOIN_CURVE">
+                            <span class="glyphicon iconfont icon-nav-106"></span>
+                        </button>
+                        <button type="button" id="pointRefresh" class="btn btn-default btn-sm"
+                                i18n="title=dataManage.REFRESH">
+                            <span class="glyphicon glyphicon-refresh"></span>
+                        </button>
+                    </div>
+                    <div class="pr fl mr5 f14 mt5">
+                        <select id="filterType" class="form-control fl w150 mr10">
+                            <option value="0" i18n="dataManage.SEARCH_BY_POINT_NAME"></option>
+                            <option value="1" i18n="dataManage.SEARCH_BY_POINT_VALUE"></option>
+                            <option value="2" i18n="dataManage.SEARCH_BY_POINT_RANGE"></option>
+                            <option value="3" i18n="dataManage.SEARCH_BY_UPDATED_TIME"></option>
+                            <option value="5" i18n="dataManage.SEARCH_BY_CUSTOM"></option>
+                        </select>
+
+                        <div id="filterBox" class="fl"></div>
+                    </div>
+                </div>
+                <div style="padding: 0 38px 0 15px" id="dtuInfoContainer">
+                    <table class="table table-bordered table-striped report-table">
+                        <thead>
+                        <tr>
+                            <th width="10%">online</th>
+                            <th width="15%">dtuname</th>
+                            <th width="15%">dbname</th>
+                            <th width="10%">dtuRemark</th>
+                            <th width="10%">ReceivePointCount</th>
+                            <th width="10%">LastOnlineTime</th>
+                            <th width="10%">LastReceivedTime</th>
+                            <th width="10%">timeZone</th>
+                            <th width="10%">bSendData</th>
+                        </tr>
+                        </thead>
+                        <tbody id="dtuInfo">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-body" id="debugTableWrapper" style="padding:0 15px">
+
+                </div>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--@formatter:off-->
+<script type="text/html" id="tpl_dtu_info">
+    <tr>
+        <td><!=online!></td>
+        <td><!=dtuname!></td>
+        <td><!=dbname!></td>
+        <td id="dtuRemark"><!=dtuRemark!></td>
+        <td><!=ReceivePointCount!></td>
+        <td><!=LastOnlineTime!></td>
+        <td><!=LastReceivedTime!></td>
+        <td><!=timeZone!></td>
+        <td><!=bSendData?'是':'否'!></td>
+    </tr>
+</script>
+<script type="text/html" id="tpl_real_time_popover">
+    <div class="popover m5 p10 realTimePopover" role="tooltip">
+        <div class="input-group">
+            <input class="form-control" type="text" value="" id="expiredDataStartTime" data-format="yyyy-mm-dd hh:ii"
+                   placeholder="起始时间">
+            <br/>
+            <input class="form-control" style="margin-top:5px" type="text" value="" id="expiredDataEndTime" data-format="yyyy-mm-dd hh:ii"
+                   placeholder="结束时间">
+        </div>
+        <button type="button" class="btn btn-success mt5" style="width:100%" id="expiredDataConfirm" i18n="common.CONFIRM"></button>
+    </div>
+</script>
+<script type="text/html" id="tpl_data_manage_filter">
+    <!if (type == '0'){!>
+        <input type="text" class="form-control fl mr10" id="debugSearchPoint" i18n="placeholder=dataManage.ENTER_POINT_NAME"/>
+        <button type="button" class="btn btn-success mr10" id="filterConfirm" i18n="common.CONFIRM"></button>
+        <span class="ml10 mr10 mt5 fl" i18n="common.SORT"></span>
+        <select id="filterSort" class="form-control fl w150 mr10">
+            <option value="0" i18n="dataManage.SORT_BY_A_Z"></option>
+            <option value="1" i18n="dataManage.SORT_BY_Z_A"></option>
+            <option value="2" i18n="dataManage.SORT_VALUE_ASCENDING"></option>
+            <option value="3" i18n="dataManage.SORT_VALUE_DESCENDING"></option>
+            <option value="4" i18n="dataManage.SORT_TIME_NOW_PAST"></option>
+            <option value="5" i18n="dataManage.SORT_TIME_PAST_NOW"></option>
+        </select>
+    <!}else if (type == '1'){!>
+        <input type="text" class="form-control fl mr10" id="debugSearchPoint" i18n="placeholder=dataManage.ENTER_POINT_VALUE"/>
+        <button type="button" class="btn btn-success mr10" id="filterConfirm" i18n="common.CONFIRM"></button>
+        <span class="ml10 mr10 mt5 fl" i18n="common.SORT"></span>
+        <select id="filterSort" class="form-control fl w150 mr10">
+            <option value="0" i18n="dataManage.SORT_BY_A_Z"></option>
+            <option value="1" i18n="dataManage.SORT_BY_Z_A"></option>
+            <option value="2" i18n="dataManage.SORT_VALUE_ASCENDING"></option>
+            <option value="3" i18n="dataManage.SORT_VALUE_DESCENDING"></option>
+            <option value="4" i18n="dataManage.SORT_TIME_NOW_PAST"></option>
+            <option value="5" i18n="dataManage.SORT_TIME_PAST_NOW"></option>
+        </select>
+    <!}else if (type == '2'){!>
+        <input id="filterMin" type="number" class="form-control w100 mr5 fl" i18n="placeholder=common.MIN"/>
+        <span class="mr5 mt5 fl" i18n="common.TO"></span>
+        <input id="filterMax" type="number" class="form-control w100 mr10 fl" i18n="placeholder=common.MAX"/>
+        <button type="button" class="btn btn-success mr10" id="filterConfirm" i18n="common.CONFIRM"></button>
+        <span class="ml10 mr10 mt5 fl" i18n="common.SORT"></span>
+        <select id="filterSort" class="form-control fl w150 mr10">
+            <option value="0" i18n="dataManage.SORT_BY_A_Z"></option>
+            <option value="1" i18n="dataManage.SORT_BY_Z_A"></option>
+            <option value="2" i18n="dataManage.SORT_VALUE_ASCENDING"></option>
+            <option value="3" i18n="dataManage.SORT_VALUE_DESCENDING"></option>
+            <option value="4" i18n="dataManage.SORT_TIME_NOW_PAST"></option>
+            <option value="5" i18n="dataManage.SORT_TIME_PAST_NOW"></option>
+        </select>
+    <!}else if (type == '3'){!>
+        <input class="form-control mr5 fl w170" size="16" type="text" value="" id="pointDateStart"
+               style="border-radius:5px 0 0 5px;" i18n="placeholder=dataManage.SELECT_START_TIME"
+               data-format="yyyy-mm-dd hh:ii" datetimepicker/>
+        <span class="mr5 mt5 fl" i18n="common.TO"></span>
+        <input class="form-control mr10 fl w170" size="16" type="text" value="" id="pointDateEnd"
+               style="border-radius:0 5px 5px 0;" i18n="placeholder=dataManage.SELECT_CLOSING_TIME"
+               data-format="yyyy-mm-dd hh:ii" datetimepicker/>
+        <button type="button" class="btn btn-success mr10" id="filterConfirm" i18n="common.CONFIRM"></button>
+        <span class="ml10 mr10 mt5 fl" i18n="common.SORT"></span>
+        <select id="filterSort" class="form-control fl w150 mr10">
+            <option value="0" i18n="dataManage.SORT_BY_A_Z"></option>
+            <option value="1" i18n="dataManage.SORT_BY_Z_A"></option>
+            <option value="2" i18n="dataManage.SORT_VALUE_ASCENDING"></option>
+            <option value="3" i18n="dataManage.SORT_VALUE_DESCENDING"></option>
+            <option value="4" i18n="dataManage.SORT_TIME_NOW_PAST"></option>
+            <option value="5" i18n="dataManage.SORT_TIME_PAST_NOW"></option>
+        </select>
+    <!}else if (type == '4'){!>
+        <input type="text" class="form-control fl mr10" id="debugSearchPoint" i18n="placeholder=dataManage.ENTER_DEFINITION"/>
+        <button type="button" class="btn btn-success mr10" id="filterConfirm" i18n="common.CONFIRM"></button>
+        <span class="ml10 mr10 mt5 fl" i18n="common.SORT"></span>
+        <select id="filterSort" class="form-control fl w150 mr10">
+            <option value="0" i18n="dataManage.SORT_BY_A_Z"></option>
+            <option value="1" i18n="dataManage.SORT_BY_Z_A"></option>
+            <option value="2" i18n="dataManage.SORT_VALUE_ASCENDING"></option>
+            <option value="3" i18n="dataManage.SORT_VALUE_DESCENDING"></option>
+            <option value="4" i18n="dataManage.SORT_TIME_NOW_PAST"></option>
+            <option value="5" i18n="dataManage.SORT_TIME_PAST_NOW"></option>
+        </select>
+    <!}else if (type == '5'){!>
+        <span id="defineFilterEdit" class="glyphicon glyphicon-edit cp mr10 mt8 fl"></span>
+        <span class="ml10 mr10 mt5 fl" i18n="common.SORT"></span>
+        <select id="filterSort" class="form-control fl w150 mr10">
+            <option value="0" i18n="dataManage.SORT_BY_A_Z"></option>
+            <option value="1" i18n="dataManage.SORT_BY_Z_A"></option>
+            <option value="2" i18n="dataManage.SORT_VALUE_ASCENDING"></option>
+            <option value="3" i18n="dataManage.SORT_VALUE_DESCENDING"></option>
+            <option value="4" i18n="dataManage.SORT_TIME_NOW_PAST"></option>
+            <option value="5" i18n="dataManage.SORT_TIME_PAST_NOW"></option>
+        </select>
+    <!}!>
+</script>
+<!--@formatter:on-->

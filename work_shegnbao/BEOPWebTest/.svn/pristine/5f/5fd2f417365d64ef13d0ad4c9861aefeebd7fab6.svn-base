@@ -1,0 +1,80 @@
+<style>
+    .tagKeywordTitle {
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        border-bottom: 1px solid #eae8ea;
+        display: inline-block;
+        width: 100%;
+    }
+
+    #tagKeywordBox {
+        height: 100%;
+    }
+
+    #tagKeywords {
+        padding: 10px;
+        height: 100%;
+    }
+
+    #tagKeywords ul {
+        list-style: none;
+        padding: 5px;
+        height: calc(100% - 70px);
+    }
+
+    #tagKeywords ul li {
+        float: left;
+        width: 108px;
+        height: 25px;
+        display: block;
+        margin: 6px 13px;
+        text-align: center;
+        padding-top: 3px;
+        border-radius: 12px;
+        border: 1px solid #48a8ff;
+        cursor: pointer;
+    }
+
+    #tagKeywords ul li.active {
+        background: #48a8ff;
+        color: #ffffff;
+    }
+
+    #tagKeywords ul .isTag.active {
+        background: #ff9600;
+    }
+
+    #tagKeywords ul .isTag {
+        border: 1px solid #ff9600;
+    }
+
+    .keywordsCount {
+        display: inline-block;
+        padding: 0 5px;
+        color: #48a8ff;
+    }
+</style>
+<div id="tagKeywordBox">
+    <span class="tagKeywordTitle">关键词</span>
+
+    <div id="tagKeywords">
+        <span>系统为您搜索到<span id="keywordsCount" class="keywordsCount">0</span>个关键字用于分类</span>
+        <ul class="clearfix gray-scrollbar" id="tagKeywordsUl">
+
+        </ul>
+    </div>
+</div>
+<!--@formatter:off-->
+<script type="text/html" id="tpl_tag_keywords_li">
+    <!for (var m = 0; m < list.length; m++) {!>
+        <!var item = list[m];!>
+        <!if(item.type == 1){!>
+            <li data-key="<!=item.key!>">
+        <!}else{!>
+            <li class="isTag" data-key="<!=item.key!>">
+        <!}!>
+        <!=item.key!>(<!=item.count!>)</li>
+    <!}!>
+</script>
+<!--@formatter:on-->

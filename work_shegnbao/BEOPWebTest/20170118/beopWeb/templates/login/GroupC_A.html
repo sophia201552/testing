@@ -1,0 +1,307 @@
+{% extends "./layout/index_layout.html" %}
+{% block style %}
+    <style>
+        .login-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            font-family: 'Microsoft YaHei', 'Helvetica';
+        }
+
+        .login-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .login-container {
+            z-index: 88;
+        }
+
+        .login-content {
+            height: 100%;
+        }
+
+        .login-form-box {
+            position: relative;
+            height: 100%;
+        }
+
+        .login-form {
+            position: relative;
+            background: url(http://images.rnbtech.com.hk/custom/project_img/448_login_bg.png) no-repeat 0 0;
+            width: 100%;
+            top: 21%;
+            height: 480px;
+            background-size: cover;
+        }
+
+        .form-icon-box {
+            height: 39px;
+            line-height: 39px;
+            width: 39px;
+            border-radius: 2px 0 0 2px;
+            float: left;
+            text-align: center;
+            z-index: 33;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+
+        .form-icon {
+            color: #858585;
+        }
+
+        #divLogin .form-input {
+            border-radius: 0;
+            text-indent: 33px;
+        }
+
+        #divLogin .form-group {
+            height: 40px;
+            margin-bottom: 14px;
+        }
+
+        #divLogin .form-control, #btnLogin, #passwordResetBtn {
+            border: none;
+            border-bottom: 1px solid #b3b3b3;
+            border-radius: 2px;
+            height: 46px;
+            ling-height: 46px;
+            -webkit-box-shadow: none;
+            background: #eeeeee;
+        }
+
+        #btnLogin, #passwordResetBtn {
+            background: #013b84;
+            border: none;
+            margin-bottom: 5px;
+        }
+
+        #btnLogin {
+            font-size: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 25px -3px #85a9c8;
+            outline: none;
+        }
+
+        .btn-success:hover {
+            border: none;
+        }
+
+        .btn-success {
+            border: none;
+        }
+
+        #passwordResetBtn:hover, #passwordResetBtn:focus {
+            box-shadow: 0 0 2px #fff;
+        }
+
+        #cbRememberPwd {
+            position: relative;
+            top: 2px;
+        }
+
+        #cbRememberPwd:active {
+            background: blue;
+            color: #ffffff;
+        }
+
+        .login-wrapper .dropdown-menu > li > a {
+            color: #666666;
+            padding: 3px 6px;
+            text-align: left;
+        }
+
+        .font1 {
+            color: #a4ccc1;
+            font-size: 12px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        #resetPasswordModal .modal-dialog {
+            width: 340px;
+        }
+
+        #inputEmail {
+            margin: 3px 0 20px 0;
+            border-radius: 2px;
+            border: 1px solid #c9c9c9;
+        }
+
+        #btnForgetPwd {
+            margin-top: 6px;
+            color: #c1c1c1;
+        }
+
+        #btnForgetPwd:hover {
+            text-decoration: underline;
+            color: #a4ccc1;
+        }
+
+        #resetPasswordModal {
+            font-size: 12px;
+        }
+
+        #resetPasswordModal .modal-content {
+            border-radius: 4px;
+        }
+
+        #resetPasswordModal .close {
+            position: relative;
+            top: -13px;
+            left: 10px;
+        }
+
+        #myModalLabel {
+            color: #323232;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #chinaAerospaceProject {
+            background: #ffffff;
+        }
+
+        .chinaAerospaceLogin {
+            position: relative;
+            border-radius: 4px;
+            background: #eeeeee;
+            width: 386px;
+            top: -27px;
+            left: 50%;
+            margin-left: -193px;
+            height: 534px;
+            box-shadow: 0 6px 10px -3px #d0d0d0;
+        }
+
+        .chinaAerospaceLogo {
+            padding: 20px 0 20px;
+        }
+
+        .logo {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        .login-frame {
+            padding: 1% 5%;
+        }
+
+        .logo_rnbtech {
+            width: 148px;
+            margin: 0 auto;
+        }
+
+        .oh {
+            margin: 20px 0 32px;
+            padding: 0 5px;
+        }
+
+        .glyphicon {
+            top: 5px;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        @media (max-width: 1366px) {
+            .chinaAerospaceLogin {
+                width: 360px;
+                margin-left: -180px;
+            }
+        }
+    </style>
+{% endblock %}
+
+
+{% block indexMain %}
+
+    <div id="chinaAerospaceProject" class="login-wrapper">
+        <div class="login-container">
+            <div class="login-content">
+                <div class="login-form-box" id="divLogin">
+                    <div class="login-form">
+                        <div class="chinaAerospaceLogin">
+                            <div class="chinaAerospaceLogo">
+                                <div class="logo">
+                                    <img style="width: 100%;" src="http://images.rnbtech.com.hk/custom/project_img/448_login_logo.png">
+                                </div>
+                            </div>
+                            <div class="login-frame">
+                                <from autocomplete="off">
+                                    <div class="form-group pr">
+                                        <div class="form-icon-box pa">
+                                            <span class="glyphicon glyphicon-user form-icon"></span>
+                                        </div>
+                                        <input type="text" id="txtName" class="form-control form-input pa"
+                                               i18n="placeholder=admin.login.PANE_PLACEHOLDER_ACCOUNT"
+                                               autofocus="">
+                                    </div>
+                                    <div class="form-group pr" style="margin-bottom: 12px">
+                                        <div class="form-icon-box pa">
+                                            <span class="glyphicon glyphicon-lock form-icon"></span>
+                                        </div>
+                                        <input type="password" id="txtPwd" class="form-control form-input pa"
+                                               i18n="placeholder=admin.login.PANE_PLACEHOLDER_PWD">
+                                    </div>
+                                    <div class="oh">
+                                    <span style="padding-top: 2px;">
+                                        <input type="checkbox" id="cbRememberPwd" class="pr cp"
+                                               i18n="title=admin.login.PANE_CHECKBOX_REMEMBER" title="Remember">
+                                        <label for="cbRememberPwd" class="font1" style="color: #c1c1c1;"
+                                               i18n="admin.login.PANE_CHECKBOX_REMEMBER"></label>
+                                    </span>
+                                    <span id="btnForgetPwd" class="font1 fr" data-toggle="modal"
+                                          data-target="#resetPasswordModal"
+                                          i18n="admin.login.PANE_FORGET"></span>
+                                        </span>
+                                    </div>
+                                    <button type="button" class="btn btn-success btn-block" id="btnLogin"
+                                            i18n="admin.login.PANE_BTN_LOGIN">
+                                    </button>
+                                    <div class="form-group">
+                                        <div class="logo_rnbtech">
+                                            <img style="width: 100%;" src="http://images.rnbtech.com.hk/custom/project_img/416_login_brtech.png">
+                                        </div>
+                                    </div>
+                                </from>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog" style="top:200px;">
+            <div class="modal-content">
+                <div class="modal-body clearfix">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel" i18n="admin.resetPassword.RETRIEVE_PASSWORD"></h4>
+
+                    <div i18n="admin.resetPassword.ENTER_EMAIL_ACCOUNT" style="color: #909090"></div>
+                    <div style="margin-top: 10px;">
+                        <input type="text" class="form-control" id="inputEmail" style="color: #646464"
+                               i18n="placeholder=admin.resetPassword.MAIL">
+                    </div>
+                    <div class="message"></div>
+                    <button type="button" class="btn btn-success btn-block" id="passwordResetBtn"
+                            i18n="admin.resetPassword.OK;data-complete-text=admin.resetPassword.MAIL_COMPLETE;data-loading-text=admin.resetPassword.MAIL_SENDING"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

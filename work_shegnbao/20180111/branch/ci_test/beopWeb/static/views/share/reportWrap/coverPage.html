@@ -1,0 +1,46 @@
+<div class="pdfCover">
+    <div class="info">
+        <h1>{title}</h1>
+        <div>
+            <div class="projectName">{projName}</div>
+            <div class="projectDate">{date}</div>
+        </div>
+    </div>
+    <img class="projectImg" src="{projectImg}" onerror="this.onerror=null;this.src='https://beopweb.oss-cn-hangzhou.aliyuncs.com/custom/project_img/pdf_cover.png'" width="100%"/>
+</div>
+<style type="text/css">
+    .pdfCover{
+        width: 100%;
+        height:100%;
+        position: relative;
+        font-family: 'Arial';
+    }
+    .pdfCover .info{
+        width: 100%;
+        height: 20%;
+        color: #6e6e5f;/*#13477d*/
+        position: absolute;
+        top:20%;
+        left: 0;
+        z-index: 5;
+        font-size:30px;
+    }
+    .pdfCover .info h1{
+        font-size: 40px;
+        font-weight: bold;
+    }
+    .pdfCover .info .projectName{
+        margin-top:26px;
+    }
+    .pdfCover .info .projectDate{
+        margin-top:18px;
+    }
+    .pdfCover .projectImg{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+
+
+

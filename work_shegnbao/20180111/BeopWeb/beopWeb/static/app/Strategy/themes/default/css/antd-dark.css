@@ -1,0 +1,139 @@
+/* ant design 黑色皮肤样式 hack */
+
+/*=============================================
+=            Select            =
+=============================================*/
+.ant-select-dropdown-menu-item-active, .ant-select-dropdown-menu-item:hover {
+    background-color: #65686b;
+}
+.ant-select-dropdown-menu-item-selected, .ant-select-dropdown-menu-item-selected:hover {
+    background-color: #444;
+}
+.ant-select-selection--multiple .ant-select-selection__choice {
+    background-color: #65686b;
+}
+.ant-select-selection--multiple .ant-select-selection__choice__remove:hover {
+    color: #959595;
+}
+.ant-table-tbody>tr.ant-table-row-hover>td, .ant-table-tbody>tr:hover>td, .ant-table-thead>tr.ant-table-row-hover>td, .ant-table-thead>tr:hover>td {
+    background: none;
+}
+/*=====  End of Select  ======*/
+
+
+/*=============================================
+=            Tree            =
+=============================================*/
+.ant-tree li a.ant-tree-node-selected {
+    background-color: transparent;
+    color: #f6a405;
+}
+.ant-tree li a:hover {
+    background-color: #65686b;
+    color: #f6a405;
+}
+/*=====  End of Tree  ======*/
+
+
+/*=============================================
+=            Button            =
+=============================================*/
+.ant-btn.active, .ant-btn:active, .ant-btn:focus, .ant-btn:hover {
+    background-color: #454a4d;
+    color: #cadee5;
+    border-color: #777;
+}
+.ant-btn-primary {
+    color: #cadee5;
+}
+.ant-btn-primary:focus, .ant-btn-primary:hover {
+    color: #fff;
+    background-color: #799bd4;
+    border-color: #799bd4;
+}
+/*=====  End of Button  ======*/
+
+
+/*=============================================
+=            Menu            =
+=============================================*/
+.ant-menu-submenu-title, .ant-menu:not(.ant-menu-horizontal) .ant-menu-item {
+    background-color: transparent!important /* antd bug fixed (v2.7.4) */
+}
+/*=====  End of Menu  ======*/
+
+
+/*=============================================
+=            Input            =
+=============================================*/
+.ant-input-group-addon {
+    background-color: #34393c;
+}
+/*=====  End of Input  ======*/
+
+
+/*=============================================
+=            InputNumber            =
+=============================================*/
+.ant-input-number-input {
+    background-color: #34393c;
+}
+/*=====  End of InputNumber  ======*/
+
+
+/*=============================================
+=            Slider            =
+=============================================*/
+.ant-slider, .ant-slider:hover {
+    background-color: transparent;
+    border-color: transparent;
+}
+.ant-slider-handle {
+    background-color: #eee;
+    border-color: #eee;
+}
+.ant-slider-step {
+    background-color: #676b6e;
+}
+.ant-slider-track {
+    background-color: #80b2f2;
+    z-index: 2; /* antd bug fixed (v2.7.4) */
+}
+/*=====  End of Slider  ======*/
+
+/*=============================================
+=            Notification            =
+=============================================*/
+.ant-notification-notice-message {
+    color: #cadee5;
+}
+/*=====  End of Slider  ======*/
+
+
+/*=============================================
+=            Table            =
+=============================================*/
+.ant-table-tbody>tr.ant-table-row-hover, .ant-table-tbody>tr:hover, .ant-table-thead>tr.ant-table-row-hover, .ant-table-thead>tr:hover {
+    background: #65686b;
+}
+/*=====  End of Table  ======*/
+
+/*=============================================
+=            Dropdown            =
+=============================================*/
+.ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover {
+    background: #65686b; /* #42423f */
+}
+.ant-dropdown-menu-item-selected, .ant-dropdown-menu-item-selected>a, .ant-dropdown-menu-submenu-title-selected, .ant-dropdown-menu-submenu-title-selected>a {
+    color: #cadee5;
+    background: #444;
+}
+/*=====  End of Dropdown  ======*/
+
+/*=============================================
+=            Modal            =
+=============================================*/
+.ant-modal-mask {
+    background-color: rgba(55,55,55,.8);
+}
+/*=====  End of Modal  ======*/

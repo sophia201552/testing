@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+           font-family: '微软雅黑','Arial'; 
+        }
+        /*封面样式*/
+        .wordCover{
+            width: 100%;
+            height:100%;
+            position: relative;
+        }
+        .wordCover .info{
+            width: 100%;
+            height: 20%;
+            color: #13477d;
+            position: absolute;
+            top:20%;
+            left: 0;
+            z-index: 5;
+        }
+        .wordCover .info h1{
+            font-size: 33px;
+            font-weight: bold;
+        }
+        .wordCover .info span{
+            font-size: 22px;
+        }
+        .wordCover .info span:nth-child(1){
+            padding-right: 20px;
+        }
+        .wordCover .projectImg{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        /*封面样式end*/
+        /*表格样式*/
+        table {
+            width: 80%;
+            margin: 0 auto;
+            color: #333;
+            text-align: center;
+            border-spacing: 0;
+            border-collapse: collapse;
+            background-color: transparent;
+        }
+        table thead {
+            background: #ffbf00;
+            color: #fff;
+        }
+        table th, table tr, table td {
+            text-align: center;
+            border: 1px solid #fad67d;
+        }
+        /*表格样式end*/
+    </style>
+</head>
+<body>
+    {coverPage}
+    <br clear=all style="page-break-before:always" mce_style="page-break-before:always">
+    {entitiesHtml}
+</body>
+</html>

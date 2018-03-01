@@ -1,0 +1,11 @@
+export default {
+  MODULE_NAME: 'File Import',
+  CONFIGURATION: 'Configuration',
+  TIME: 'Time',
+  DATA: 'Data',
+  FILE_INFO: 'File Info',
+  FILE_NAME: 'File Name',
+  FILE_SIZE: 'File Size',
+  SELECT_FILE: 'Select File',
+  EXCEL_FILE_NOT_EXREAXT: 'Excel file does not extract data'
+};

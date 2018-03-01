@@ -1,0 +1,231 @@
+﻿<style>
+    .wr1 {
+        width: 10%;
+    }
+
+    .wr2 {
+        width: 10%;
+    }
+
+    .wr3 {
+        width: 60%;
+    }
+
+    .dropdown-menu{
+        text-indent: 10px;
+    }
+
+    #workflow-title {
+        height: 35px;
+        color: #000;
+    }
+
+    .taskNoWrapper em {
+        font-style: normal;
+    }
+
+    .operator .glyphicon {
+        cursor: pointer;
+    }
+
+    #workflow-mine .dropdown-toggle {
+        cursor: pointer;
+        display: block;
+    }
+
+    .dropdown-menu li {
+        cursor: pointer;
+    }
+
+    .glyphiconWrapper {
+        width: 85px;
+        display: inline-block;
+    }
+
+    .glyphicon-pause {
+        color: #b7d5b3;
+    }
+
+    .glyphicon-pause + .status {
+        color: #b7d5b3;
+    }
+
+    .task-item[status-id='2'] .status {
+        color: #b7d5b3;
+    }
+
+</style>
+<div class="col-xs-12 vertical-roll">
+    <div class="col-xs-offset-1 col-xs-10 workflow-container" id="workflow-mine">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 top-section">
+                <div class="col-xs-6">
+                    <div class="media">
+                        <span class="media-left" href="#">
+                            <img src="" class="avatar-icon"/>
+                        </span>
+
+                        <div class="media-body">
+                            <span class="media-heading mine-avatar-name"></span>
+                            <div class="mine-avatar-desc"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 pull-right list-complete">
+                    <a class="linkage" href="#/mine" id="ckeck_completed">
+                        <span class="glyphicon glyphicon-check"></span>
+                        <span style="padding-left: 10px;">
+                            <span i18n="workflow.mine.CHECK_COMPLETED"></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row mine-buttons">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="member-nav clearfix">
+                    <ul>
+                        <li class="active">
+                            <a class="btn-tasks"><span i18n="workflow.mine.TASK"></span></a>
+                        </li>
+                        <li>
+                            <a class="btn-starreds">
+                                <span i18n="workflow.mine.STARRED"></span>
+                                <span class="star icon-star"
+                                      style="color: yellowgreen;position: absolute;top: 14px;right: 0;"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn-cates"><span i18n="workflow.mine.CATEGORY"></span></a>
+                        </li>
+                        <li>
+                            <a class="btn-mine"><span i18n="workflow.mine.ASSIGN_ORDER"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row tasks screen-row">
+            <div class="col-xs-12">
+                <div class="row task-row new-task-row">
+                    <div class="col-xs-10 col-xs-offset-1 task-items" data-priority="5">
+                        <span i18n="workflow.mine.TASK_TYPE_NEW_TASK" class="task-type"></span>
+                        <div class="empty-message" i18n="workflow.mine.TASK_EMPTY_MESSAGE_NEW_TASK"></div>
+                        <div class="clearfix" id="workflow-title">
+                            <div class="col-xs-8">
+                                <div class="col-xs-3" i18n="workflow.urgencyLevel.URGENCY_LEVEL"></div>
+                                <div class="col-xs-9">
+                                    <div class="col-sm-7 col-md-6" style="padding-left:0;" i18n="workflow.mine.WORK_ORDER_TITLE"></div>
+                                    <div class="col-sm-5 col-md-6" i18n="workflow.mine.STATUS"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2" i18n="workflow.mine.DEADLINE"></div>
+                            <div class="col-xs-2" i18n="workflow.mine.WORK_ORDER_NAME"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row task-row urgent-task-row droppable-row dn" data-priority="6">
+                    <div class="col-xs-10 col-xs-offset-1 task-items">
+                        <span i18n="workflow.mine.TASK_TYPE_URGENT_TASK" class="task-type"></span>
+                        <div class="empty-message" i18n="workflow.mine.TASK_EMPTY_MESSAGE_URGENT_TASK"></div>
+                    </div>
+                </div>
+                <div class="row task-row pend-task-row droppable-row dn" data-priority="4">
+                    <div class="col-xs-10 col-xs-offset-1 task-items">
+                        <span i18n="workflow.mine.TASK_TYPE_PEND_TASK" class="task-type"></span>
+                        <div class="empty-message" i18n="workflow.mine.TASK_EMPTY_MESSAGE_PEND_TASK"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row starreds screen-row">
+            <div class="col-xs-12 starreds-container">
+            </div>
+        </div>
+
+        <div class="row categories screen-row">
+            <div class="col-xs-12 categories-container">
+            </div>
+        </div>
+
+        <div class="row mine screen-row">
+            <div class="col-xs-12">
+                <div class="row task-row new-task-row">
+                    <div class="col-xs-10 col-xs-offset-1 task-items" data-priority="5">
+                        <div class="clearfix" id="workflow-title">
+                            <div class="wr3 fl">
+                                <div class="col-xs-3">
+                                    <div class="dropdown">
+                                      <span class="dropdown-toggle" type="button" id="dropdownUrgency" data-toggle="dropdown" aria-expanded="true">
+                                          <span class="dropdownName" i18n="workflow.urgencyLevel.URGENCY_LEVEL"></span>
+                                          <span class="caret"></span>
+                                      </span>
+                                      <ul id="selectUrgency" class="dropdown-menu" role="menu" aria-labelledby="dropdownUrgency">
+                                          <li role="presentation" urgencyClass="" class="selectAll" i18n="workflow.mine.ALL_ORDER"></li>
+                                          <li role="presentation" urgencyClass="ic0" i18n="workflow.urgencyLevel.0"></li>
+                                          <li role="presentation" urgencyClass="ic1" i18n="workflow.urgencyLevel.1"></li>
+                                          <li role="presentation" urgencyClass="ic2" i18n="workflow.urgencyLevel.2"></li>
+                                      </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div class="col-sm-7 col-md-6 task-title" style="padding-left:0;" i18n="workflow.mine.WORK_ORDER_TITLE"></div>
+                                    <div class="col-sm-5 col-md-6">
+                                        <div class="dropdown">
+                                          <span class="dropdown-toggle" type="button" id="dropdownStatus" data-toggle="dropdown" aria-expanded="true">
+                                              <span class="dropdownName" i18n="workflow.mine.STATUS"></span>
+                                              <span class="caret"></span>
+                                          </span>
+                                          <ul id="selectStatus" class="dropdown-menu" role="menu" aria-labelledby="dropdownStatus">
+                                              <li role="presentation" class="selectAll" i18n="workflow.mine.ALL_ORDER"></li>
+                                              <li role="presentation" i18n="workflow.common.NEW"></li>
+                                              <li role="presentation" i18n="workflow.common.DEALING"></li>
+                                              <li role="presentation" i18n="workflow.common.PAUSED"></li>
+                                              <li role="presentation" i18n="workflow.common.FINISHED"></li>
+                                          </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wr1 fl" i18n="workflow.mine.EXECUTOR"></div>
+                            <div class="wr1 fl">
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle" type="button" id="dropdownCreateDate" data-toggle="dropdown" aria-expanded="true">
+                                        <span class="dropdownName" i18n="workflow.mine.CREATE_DATE"></span>
+                                        <span class="caret"></span>
+                                    </span>
+                                    <ul id="selectCreateDate" class="dropdown-menu" role="menu" aria-labelledby="dropdownCreateDate">
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="wr1 fl">
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle" type="button" id="dropdownDueDate" data-toggle="dropdown" aria-expanded="true">
+                                        <span class="dropdownName" i18n="workflow.mine.DEADLINE"></span>
+                                        <span class="caret"></span>
+                                    </span>
+                                    <ul id="selectDueDate" class="dropdown-menu" role="menu" aria-labelledby="dropdownDueDate"></ul>
+                                </div>
+                            </div>
+                            <div class="wr2 fl">
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle" type="button" id="dropdownWorkflowName" data-toggle="dropdown" aria-expanded="true">
+                                        <span class="dropdownName" i18n="workflow.mine.WORK_ORDER_NAME"></span>
+                                        <span class="caret"></span>
+                                    </span>
+                                    <ul id="selectWorkflowName" class="dropdown-menu" role="menu" aria-labelledby="dropdownWorkflowName"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row completed screen-row">
+            <div class="col-xs-12 completed-container">
+            </div>
+        </div>
+    </div>
+</div>

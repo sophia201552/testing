@@ -1,0 +1,482 @@
+﻿<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title i18n="admin.resetPassword.RESET_PASSWORD"></title>
+    <link href="/static/scripts/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/fonts/beopIconFont/iconfont.css" rel="stylesheet"/>
+    <style type="text/css">
+        html, body, #register {
+            background-color: #fafafa;
+            overflow: hidden;
+            min-height: 700px;
+        }
+
+        .alert-section {
+            margin-top: 20px;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", "arial", "sans-serif";
+        }
+
+        #clouds {
+            position: absolute;
+        }
+
+        #top-msg {
+            position: relative;
+            color: white;
+            padding-top: 10%;
+        }
+
+        #register-form {
+            margin-top: 1%;
+        }
+
+        .register-section h2 {
+            border-bottom: 3px solid;
+            padding-bottom: 10px;
+        }
+
+        #register .has-success .form-control {
+            border-color: #47cac3;
+        }
+
+        #register .has-success .form-control-feedback {
+            color: #47cac3;
+        }
+
+        #register .has-success .form-control:focus {
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #47cac3;
+        }
+
+        #register .has-success .input-group-addon {
+            border-color: #47cac3;
+            color: #555;
+            background: #eee;
+        }
+
+        #register .has-error .form-control {
+            border-color: #c47272;
+        }
+
+        #register .has-error .form-control-feedback {
+            color: #c47272;
+        }
+
+        #register .has-error .form-control:focus {
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #c47272;
+        }
+
+        #register .has-error .input-group-addon {
+            border-color: #c47272;
+            color: #555;
+            background: #eee;
+        }
+
+        #register .alert-success {
+            color: #fff;
+            background-color: #47cac3;
+            border-color: #47cac3;
+        }
+
+        #register .alert-danger {
+            color: #fff;
+            background-color: #c47272;
+            border-color: #c47272;
+        }
+
+        #register .close {
+            opacity: 1;
+        }
+
+        #register-form .row {
+            position: relative;
+        }
+
+        .row label {
+            font-size: 18px;
+        }
+
+        .row {
+            margin-top: 10px;
+        }
+
+        #top-msg {
+            color: grey;
+        }
+
+        .resetPdWelcome {
+            font-size: 14px;
+        }
+
+        .oh {
+            overflow: hidden;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .form-group-lg .form-control {
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .p0 {
+            padding: 0;
+        }
+
+        #submitBtn {
+            height: 40px;
+            font-size: 14px;
+        }
+
+        #messageInfo {
+            color: #913944;
+        }
+
+        /*输入框验证样式*/
+        #password_prompt {
+            width: 60%;
+            padding: 10px 10px 0 15px;
+            box-sizing: border-box;
+            border: 1px solid #ffffff;
+            margin: 100px 25% 0 15%;
+            position: absolute;
+            background-color: #ffffff;
+            border-radius: 8px;
+            opacity: 0;
+            display: none;
+        }
+
+        #password_prompt ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .password_prompt_have {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .password_prompt_have .password_prompt_list > li {
+            position: relative;
+            line-height: 1.5;
+            list-style: none;
+            font-size: 14px;
+            list-style-position: inside;
+            color: #b7b3b7;
+        }
+
+        .password_prompt_have .password_prompt_list > li .rule_description {
+            padding-left: 25px;
+            width: auto;
+            display: block;
+        }
+
+        .prompt_icon {
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            display: inline-block;
+            background-size: contain;
+        }
+
+        .point_icon {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 12px;
+            border-color: transparent;
+            border-top-width: 0;
+            border-bottom: 12px solid #ffffff;
+            position: absolute;
+            display: inline-block;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /*规则列表的图标样式*/
+        .text-success {
+            color: #fdcb43;
+        }
+
+        .text-fail {
+            color: #e1573a;
+        }
+
+        #submitBtn {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<input type="hidden" value="{{ user.email }}" id="name"/>
+
+<div id="clouds"></div>
+<div class="container" id="register">
+    <div class="row" id="top-msg">
+        <div class="col-sm-offset-3 col-sm-5 col-xs-offset-1 col-xs-10 register-section form-horizontal p0">
+            <h2 class="oh">
+                <span class="resetPdWelcome fr">
+                    <span i18n="admin.resetPassword.RESET_PWD_WELCOME"></span>
+                </span>
+            </h2>
+        </div>
+    </div>
+    <div class="row" id="register-form">
+        <form autocomplete="off">
+
+            <div class="col-sm-offset-3 col-sm-5 col-xs-offset-1 col-xs-10 register-section form-horizontal">
+                <div class="row">
+                    <div class="form-group-lg input-group col-sm-12">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                        <input type="text" class="form-control" id="inputEmail" placeholder="{{ user.email }}"
+                               readonly><!--修改成了只读状态-->
+                    </div>
+                </div>
+
+                <!--密码框-->
+                <div class="row">
+                    <div class="form-group-lg input-group col-sm-12">
+
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input style="display:none" type="password" name="password"/>
+                        <input type="password" class="form-control" id="inputPassword1" maxlength="20"
+                               i18n="placeholder=admin.resetPassword.NEW_PASSWORD" autocomplete="off" name="password">
+
+                        <!--输入验证提示框  -->
+                        <div id="password_prompt">
+                            <div class="password_prompt_have">
+                                <p class="password_prompt_title">
+                                    <span i18n="admin.resetPassword.PASSWORD_PROMPT_TITLE"></span>
+                                </p>
+                                <ul class="password_prompt_list">
+                                    <li class="pwd-rule-at-least-8-chars">
+                                        <span class="prompt_icon icon iconfont text-fail icon-cuo"></span>
+                                        <span class="rule_description"
+                                              i18n="admin.resetPassword.PWD_RULE_AT_LEAST_8_CHARS"></span>
+                                    </li>
+                                    <li class="pwd-rule-at-least-one-letter-and-non">
+                                        <span class="prompt_icon icon iconfont text-fail icon-cuo"></span>
+                                        <span class="rule_description"
+                                              i18n="admin.resetPassword.PWD_RULE_AT_LEAST_ONE_LETTER_AND_NON"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="point_icon"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--再次输入密码-->
+                <div class="row">
+                    <div class="form-group-lg input-group col-sm-12">
+
+                        <!--小图标2-->
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" class="form-control" id="inputPassword2" maxlength="20"
+                               i18n="placeholder=admin.resetPassword.PASSWORD_CONFIRM" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 25px;">
+                    <button type="button" class="btn btn-primary btn-lg pull-right col-sm-12" id="submitBtn"
+                            i18n="data-loading-text=admin.resetPassword.PASSWORD_RESETTING;data-complete-text=admin.resetPassword.RESET_PASSWORD_SUCCESSFUL;admin.resetPassword.RESET_PASSWORD">
+                    </button>
+                </div>
+                <div class="alert-section">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/static/scripts/lib/jquery-2.1.4.min.js"></script>
+<script src="/static/scripts/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/scripts/core/common.js"></script>
+<script src="/static/scripts/core/webAPI.js"></script>
+<script src="/static/scripts/i18n/i18n.js"></script>
+<script>
+    var addValidStatus, removeValidStatus, pageCheck, isValidPwd, $messageInfo = $('#messageInfo'), I18n = undefined,
+            configMap, ruleValidNum = 0, isPwdSame = false;
+
+    var lang = localStorage["language"] || window.navigator.userLanguage || window.navigator.language;
+    try {
+        if (!lang) {
+            lang = 'en';
+        } else if (lang == 'zh-CN') {
+            lang = 'zh';
+        } else if (lang == 'en-US') {
+            lang = 'en';
+        }
+
+    } catch (e) {
+
+    }
+    // 引入I18n
+    window.addEventListener('load', function () {
+        InitI18nResource && InitI18nResource().always(function (rs) {
+            I18n = new Internationalization(lang, rs);
+            I18n.fillArea($('body'));
+            configMap = {
+                validStatus: {
+                    type: {
+                        success: 'success',
+                        warning: 'warning',
+                        error: 'error'
+                    },
+                    icon: {
+                        success: 'glyphicon-ok',
+                        warning: 'glyphicon-warning-sign',
+                        error: 'glyphicon-remove'
+                    },
+                    class: {
+                        success: 'has-success',
+                        warning: 'has-warning',
+                        error: 'has-error'
+                    },
+                    msg: {
+                        pwdNotMatch: I18n.resource.admin.resetPassword.PASSWORD_DONOT_MATCH,
+                        invalidPwd: I18n.resource.admin.resetPassword.PASSWORD_INFO,
+                        resetSuccess: I18n.resource.admin.resetPassword.RESET_SUCCESSFUL_GOTO,
+                        resetFailed: I18n.resource.admin.resetPassword.PASSWORD_RESET_FAILED
+                    }
+                }
+            }
+        });
+    }, false);
+
+    addValidStatus = function ($parent, validStatus, alertMsg) {
+        if (!$parent) {
+            return false;
+        }
+        removeValidStatus($parent);
+        var $feedback = $('<span class="glyphicon form-control-feedback" aria-hidden="true"></span>').addClass(configMap.validStatus.icon[validStatus]);
+        $parent.addClass('has-feedback has-validated').addClass(configMap.validStatus.class[validStatus])
+                .find('.form-control-feedback').remove();
+
+        $parent.find('input').after($feedback);
+    };
+    removeValidStatus = function ($parent) {
+        if (!$parent) {
+            return false;
+        }
+        $parent.removeClass(function (index, css) {
+            return (css.match(/(^|\s)has-\S+/g) || []).join(' ');
+        }).find('.form-control-feedback').remove();
+
+    }, resetControlStatus = function () {
+        removeValidStatus($(this).closest('.form-group-lg'));
+    }, isValidPwd = function (pwd) {
+        return pwd.length > 5 && pwd.length < 16;
+    };
+
+    $('#submitBtn').click(function () {
+        if (ruleValidNum !== 2 || !isPwdSame) {
+            return false;
+        }
+
+        var $this = $(this);
+        $this.button('loading');
+
+        WebAPI.post("/reset_password", {
+            password: $('#inputPassword1').val(),
+            token: "{{ token }}"
+        }).done(function (result) {
+            if (result.status) {
+                new Alert('.alert-section', 'success', configMap.validStatus.msg.resetSuccess).show();
+                setTimeout(function () {
+                    parent.location.href = "/"
+                }, 5000);
+                $this.remove();
+            } else {
+                var errCode = result.error;
+                if (!isNaN(errCode)) {
+                    $messageInfo.text(I18n.resource.code[errCode]);
+                } else {
+                    $messageInfo.text(I18n.resource.code[0]);
+                }
+                $this.button('reset');
+            }
+        }).fail(function () {
+            new Alert('.alert-section', 'danger', configMap.validStatus.msg.resetFailed).show();
+            $this.button('reset');
+        })
+    });
+
+    $(document).ready(function () {
+
+        //获取input;
+        var $password1 = $("#inputPassword1"),
+                $password2 = $('#inputPassword2'),
+                $pwdPromptList = $(".password_prompt_list"),
+                $pwdPrompt = $("#password_prompt");
+
+        var rule_failed_icon = 'text-fail icon-cuo', rule_success_icon = 'text-success icon-xuanze';
+
+        //改变作为判断输入内容是否符合规则的icon小图标的样式;
+        var changeRuleStatus = function (ruleClass, isValid) {
+            if (isValid) {
+                $pwdPromptList.find("." + ruleClass).find('.prompt_icon').removeClass(rule_failed_icon).addClass(rule_success_icon);
+                return 1;
+            } else {
+                $pwdPromptList.find("." + ruleClass).find('.prompt_icon').removeClass(rule_success_icon).addClass(rule_failed_icon);
+                return 0;
+            }
+        };
+
+        var checkPwdSame = function () {
+            if ($password2.val().trim() && $password1.val().trim() === $password2.val().trim()) {
+                addValidStatus($password2.closest('.input-group'), configMap.validStatus.type.success);
+                isPwdSame = true;
+            } else {
+                addValidStatus($password2.closest('.input-group'), configMap.validStatus.type.error);
+                isPwdSame = false;
+            }
+        };
+
+        $password2.on('input', checkPwdSame);
+
+        //对获取焦点,失去焦点,value值进行以一定规则的判断;
+        $password1.on('focus', function () {
+            $pwdPrompt.css('display', 'block').animate({'marginTop': '50px', 'opacity': 1, 'zIndex': 2000}, 200);
+        }).on("blur", function () {
+            $pwdPrompt.css('display', 'none').animate({'marginTop': '100px', 'opacity': 0, 'zIndex': 0}, 200);
+        }).on('input', function (event) {
+            event.stopPropagation();
+            var $this = $(this);
+            //var userName = $("#inputEmail").val().trim();
+            var password = $this.val().trim();
+            ruleValidNum = 0;
+
+            // 8位及8位以上字符
+            ruleValidNum += changeRuleStatus('pwd-rule-at-least-8-chars', /^\S{8,}$/.test(password));
+
+            //包含大写和小写字符;
+            //ruleValidNum += changeRuleStatus('pwd-rule-upper-lower-cases', /[a-z]+/.test(password) && /[A-Z]+/.test(password));
+
+            //至少一个字母和一个数字;
+            ruleValidNum += changeRuleStatus('pwd-rule-at-least-one-letter-and-non', /[a-zA-Z]+/.test(password) && /\d+/.test(password));
+
+            //最多连续两个字符;
+            //ruleValidNum += changeRuleStatus('pwd-rule-up-2-consecutive-chars', !/(\S)(?=\1{2,})/.test(password) && /\S+/.test(password));
+
+            //密码和用户名是不一致的;
+            //ruleValidNum += changeRuleStatus('pwd-rule-pwd-username-not-consistent', password !== userName);
+
+            //密码全部符合规则
+            if (ruleValidNum === 2) {
+                addValidStatus($this.closest('.input-group'), configMap.validStatus.type.success);
+            } else {
+                addValidStatus($this.closest('.input-group'), configMap.validStatus.type.error);
+            }
+            checkPwdSame();
+        });
+    })
+</script>
+</body>
+</html>

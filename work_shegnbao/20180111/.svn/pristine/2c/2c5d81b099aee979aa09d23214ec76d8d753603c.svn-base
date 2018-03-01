@@ -1,0 +1,329 @@
+<script src="/static/scripts/lib/select2/js/select2.min.js"></script>
+<script src="/static/scripts/lib/select2/js/i18n/zh-CN.js"></script>
+<script src="/static/scripts/lib/select2/js/i18n/en.js"></script>
+<link href="/static/scripts/lib/select2/css/select2.min.css" type="text/css" rel="stylesheet"/>
+
+<style>
+    @media (max-width: 1366px) {
+        #debugRightContainer {
+            font-size: 12px;
+        }
+
+        #debugRightContainer {
+            overflow-y: auto;
+        }
+    }
+</style>
+<!--确认窗口开始-->
+<article id="filterDefineWin" class="modal fade">
+    <div class="modal-dialog mt150">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    <span i18n="dataManage.ENTER_SEARCH_CODE"></span>
+                    <span>：</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <textarea id="filterContent" class="form-control"
+                          i18n="placeholder=dataManage.ENTER_SEARCH_CODE_BELOW"></textarea>
+
+                <p class="mt10">
+                    <span>
+                        <span i18n="dataManage.SEARCH_BY_POINT_NAME"></span>
+                        <span>：</span>
+                    </span>
+                    <span>pointname like '%Fre'</span>
+                </p>
+
+                <p>
+                    <span>
+                       <span i18n="dataManage.SEARCH_BY_POINT_VALUE"></span>
+                       <span>：</span>
+                    </span>
+                    <span>pointvalue <50 and pointvalue> 30</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" i18n="common.CANCEL"></button>
+                <button type="button" class="btn btn-primary" id="filterDefineConfirm" i18n="common.CONFIRM"></button>
+            </div>
+        </div>
+    </div>
+</article>
+<!--确认窗口结束-->
+
+
+<!--设置信息窗口开始-->
+<article id="setInfoValWin" class="modal fade" thisValue = ''>
+    <div class="modal-dialog mt150">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    <span i18n="dataManage.ENTER_EDIT_VALUE"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="setInfoValBox" class="p10"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" i18n="common.CANCEL" id="setInfoValCancel"></button>
+                <button type="button" class="btn btn-primary" i18n="common.CONFIRM" id="setInfoValConfirm"></button>
+            </div>
+        </div>
+    </div>
+</article>
+<!--设置信息窗口结束-->
+
+
+<div class="pr terminalDebugBox" id="terminalDebugContainer">
+    <div id="debugLeftContainer" style="position: relative;">
+        <div id="searchProjectBox">
+            <select id="selectType" value="all">
+                <option value="all" i18n="dataManage.ALL" selected></option>
+                <option value="online" i18n="dataManage.ONLINE"></option>
+                <option value="offline" i18n="dataManage.OFFLINE"></option>
+                <option disabled="disabled">
+                    <span class="dtu_select_line" style="color: #ccc;"> - - - - - - - - - - - - - - - - - -</span>
+                </option>
+            </select>
+        </div>
+        <div class="dtuTypeBox">
+            <div class="dtuType hideIcon">
+                <div class="dtuSee fl active" id="seeState" i18n="dataManage.VIEW"></div>
+                <div class="dtuEdit fl" id="editState" i18n="dataManage.EDIT"></div>
+                <div class="glyphicon glyphicon-plus-sign btuIcon dn" id="addNewNodes"></div>
+            </div>
+        </div>
+        <div class="gray-scrollbar treeWrapper" style="padding-bottom: 50px;">
+            <ul id="list_dtu_ul" class="clearfix list_dtu_ul"></ul>
+            <ul id="ztree_dtu_ul" class="ztree dn"></ul>
+        </div>
+    </div>
+    <div id="debugRightContainer" class="pa">
+        <div class="debugRightBox">
+            <div class="divPointsList">
+                <div class="panel-heading clearfix" id="realTimeBtnBox" style="padding-left:20px;">
+                    <div class="btn-group fr mr10 mt5 right-tools" role="group">
+                        <button type="button" id="deleteExpiredData" class="btn btn-default btn-sm"
+                                i18n="title=dataManage.DELETE_EXPIRED_DATA">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                        <button type="button" id="joinCurve" class="btn btn-default btn-sm"
+                                i18n="title=dataManage.JOIN_CURVE"
+                                permission="DataReadUser;DataManagementEngineer;DataManagementAdmin"
+                                permission-style="inline-block" style="font-size: 12px;padding: 2px 6px;display:inline-block !important;">
+                            <span class="iconfont icon-nav-106"></span>
+                        </button>
+                        <button type="button" id="pointRefresh" class="btn btn-default btn-sm"
+                                i18n="title=dataManage.REFRESH">
+                            <span class="glyphicon glyphicon-refresh"></span>
+                        </button>
+                    </div>
+                    <div class="pr fl mr5 f14 mt5">
+                        <select id="filterType" class="form-control fl w150 mr10" style="width: 238px;">
+                            <option value="0" i18n="dataManage.SEARCH_BY_POINT_NAME"></option>
+                            <option value="1" i18n="dataManage.SEARCH_BY_POINT_VALUE"></option>
+                            <option value="2" i18n="dataManage.SEARCH_BY_POINT_RANGE"></option>
+                            <option value="3" i18n="dataManage.SEARCH_BY_UPDATED_TIME"></option>
+                            <option value="5" i18n="dataManage.SEARCH_BY_CUSTOM"></option>
+                        </select>
+
+                        <div id="filterBox" class="fl"></div>
+                    </div>
+                </div>
+                <div style="padding: 0 38px 0 15px" id="dtuInfoContainer" class="dn">
+                    <table class="table table-bordered table-striped report-table">
+                        <thead>
+                        <tr>
+                            <th width="10%">Online</th>
+                            <th width="15%">DtuName</th>
+                            <th width="15%">DbName</th>
+                            <th width="10%">DtuRemark</th>
+                            <th width="10%">ReceivePointCount</th>
+                            <th width="10%">LastOnlineTime</th>
+                            <th width="10%">LastReceivedTime</th>
+                            <th width="10%">TimeZone</th>
+                            <th width="10%">BSendData</th>
+                        </tr>
+                        </thead>
+                        <tbody id="dtuInfo">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-body" id="debugTableWrapper" style="padding:0 15px">
+
+                </div>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--@formatter:off-->
+<script type="text/html" id="tpl_dtu_info">
+    <!var i18nText = bSendData ? I18n.resource.dataManage.SEND_DATA_YES : I18n.resource.dataManage.SEND_DATA_NO;!>
+    <tr>
+        <td><!=online!></td>
+        <td><!=dtuname!></td>
+        <td class="dtu-info-set-text" type="dbname"><!=dbname!></td>
+        <td class="dtu-info-set-text" id="dtuRemark" type="dtuRemark"><!=dtuRemark!></td>
+        <td><!=ReceivePointCount!></td>
+        <td><!=LastOnlineTime!></td>
+        <td><!=LastReceivedTime!></td>
+        <td class="dtu-info-set-win" type="timeZone" id="dtuTimeZone"><!=timeZone!></td>
+        <td class="dtu-info-set-win" type="bSendData" id="dtuBSendData" thisVal ="<!=bSendData!>"><!=i18nText!></td>
+    </tr>
+</script>
+<script type="text/html" id="tpl_real_time_popover">
+    <div class="popover m5 p10 realTimePopover" role="tooltip">
+        <div class="input-group">
+            <input class="form-control" type="text" value="" id="expiredDataStartTime" data-format="yyyy-mm-dd hh:ii"
+                   i18n="placeholder=workflow.calendar.TIME_START">
+            <br/>
+            <input class="form-control" style="margin-top:5px" type="text" value="" id="expiredDataEndTime" data-format="yyyy-mm-dd hh:ii"
+                   i18n="placeholder=workflow.calendar.TIME_END">
+        </div>
+        <button type="button" class="btn btn-success mt5" style="width:100%" id="expiredDataConfirm" i18n="common.CONFIRM"></button>
+    </div>
+</script>
+<script type="text/html" id="tpl_data_manage_filter">
+    <!if (type == '0'){!>
+        <input type="text" class="form-control fl mr10" id="debugSearchPoint" i18n="placeholder=dataManage.ENTER_POINT_NAME"/>
+        <button type="button" class="btn btn-success mr10" id="filterConfirm" i18n="common.CONFIRM"></button>
+        <span class="ml10 mr10 mt5 fl" i18n="common.SORT"></span>
+        <select id="filterSort" class="form-control fl mr10" style="width: 174px;">
+            <option value="0" i18n="dataManage.SORT_BY_A_Z"></option>
+            <option value="1" i18n="dataManage.SORT_BY_Z_A"></option>
+            <option value="2" i18n="dataManage.SORT_VALUE_ASCENDING"></option>
+            <option value="3" i18n="dataManage.SORT_VALUE_DESCENDING"></option>
+            <option value="4" i18n="dataManage.SORT_TIME_NOW_PAST"></option>
+            <option value="5" i18n="dataManage.SORT_TIME_PAST_NOW"></option>
+        </select>
+    <!}else if (type == '1'){!>
+        <input type="text" class="form-control fl mr10" id="debugSearchPoint" i18n="placeholder=dataManage.ENTER_POINT_VALUE"/>
+        <button type="button" class="btn btn-success mr10" id="filterConfirm" i18n="common.CONFIRM"></button>
+        <span class="ml10 mr10 mt5 fl" i18n="common.SORT"></span>
+        <select id="filterSort" class="form-control fl mr10" style="width: 174px;">
+            <option value="0" i18n="dataManage.SORT_BY_A_Z"></option>
+            <option value="1" i18n="dataManage.SORT_BY_Z_A"></option>
+            <option value="2" i18n="dataManage.SORT_VALUE_ASCENDING"></option>
+            <option value="3" i18n="dataManage.SORT_VALUE_DESCENDING"></option>
+            <option value="4" i18n="dataManage.SORT_TIME_NOW_PAST"></option>
+            <option value="5" i18n="dataManage.SORT_TIME_PAST_NOW"></option>
+        </select>
+    <!}else if (type == '2'){!>
+        <input id="filterMin" type="number" class="form-control w100 mr5 fl" i18n="placeholder=common.MIN"/>
+        <span class="mr5 mt5 fl" i18n="common.TO"></span>
+        <input id="filterMax" type="number" class="form-control w100 mr10 fl" i18n="placeholder=common.MAX"/>
+        <button type="button" class="btn btn-success mr10" id="filterConfirm" i18n="common.CONFIRM"></button>
+        <span class="ml10 mr10 mt5 fl" i18n="common.SORT"></span>
+        <select id="filterSort" class="form-control fl mr10" style="width: 174px;">
+            <option value="0" i18n="dataManage.SORT_BY_A_Z"></option>
+            <option value="1" i18n="dataManage.SORT_BY_Z_A"></option>
+            <option value="2" i18n="dataManage.SORT_VALUE_ASCENDING"></option>
+            <option value="3" i18n="dataManage.SORT_VALUE_DESCENDING"></option>
+            <option value="4" i18n="dataManage.SORT_TIME_NOW_PAST"></option>
+            <option value="5" i18n="dataManage.SORT_TIME_PAST_NOW"></option>
+        </select>
+    <!}else if (type == '3'){!>
+        <input class="form-control mr5 fl w170" size="16" type="text" value="" id="pointDateStart"
+               style="border-radius:5px 0 0 5px;" i18n="placeholder=dataManage.SELECT_START_TIME"
+               data-format="yyyy-mm-dd hh:ii" datetimepicker/>
+        <span class="mr5 mt5 fl" i18n="common.TO"></span>
+        <input class="form-control mr10 fl w170" size="16" type="text" value="" id="pointDateEnd"
+               style="border-radius:0 5px 5px 0;" i18n="placeholder=dataManage.SELECT_CLOSING_TIME"
+               data-format="yyyy-mm-dd hh:ii" datetimepicker/>
+        <button type="button" class="btn btn-success mr10" id="filterConfirm" i18n="common.CONFIRM"></button>
+        <span class="ml10 mr10 mt5 fl" i18n="common.SORT"></span>
+        <select id="filterSort" class="form-control fl mr10" style="width: 174px;">
+            <option value="0" i18n="dataManage.SORT_BY_A_Z"></option>
+            <option value="1" i18n="dataManage.SORT_BY_Z_A"></option>
+            <option value="2" i18n="dataManage.SORT_VALUE_ASCENDING"></option>
+            <option value="3" i18n="dataManage.SORT_VALUE_DESCENDING"></option>
+            <option value="4" i18n="dataManage.SORT_TIME_NOW_PAST"></option>
+            <option value="5" i18n="dataManage.SORT_TIME_PAST_NOW"></option>
+        </select>
+    <!}else if (type == '4'){!>
+        <input type="text" class="form-control fl mr10" id="debugSearchPoint" i18n="placeholder=dataManage.ENTER_DEFINITION"/>
+        <button type="button" class="btn btn-success mr10" id="filterConfirm" i18n="common.CONFIRM"></button>
+        <span class="ml10 mr10 mt5 fl" i18n="common.SORT"></span>
+        <select id="filterSort" class="form-control fl mr10" style="width: 174px;">
+            <option value="0" i18n="dataManage.SORT_BY_A_Z"></option>
+            <option value="1" i18n="dataManage.SORT_BY_Z_A"></option>
+            <option value="2" i18n="dataManage.SORT_VALUE_ASCENDING"></option>
+            <option value="3" i18n="dataManage.SORT_VALUE_DESCENDING"></option>
+            <option value="4" i18n="dataManage.SORT_TIME_NOW_PAST"></option>
+            <option value="5" i18n="dataManage.SORT_TIME_PAST_NOW"></option>
+        </select>
+    <!}else if (type == '5'){!>
+        <span id="defineFilterEdit" class="glyphicon glyphicon-edit cp mr10 mt8 fl"></span>
+        <span class="ml10 mr10 mt5 fl" i18n="common.SORT"></span>
+        <select id="filterSort" class="form-control fl mr10" style="width: 174px;">
+            <option value="0" i18n="dataManage.SORT_BY_A_Z"></option>
+            <option value="1" i18n="dataManage.SORT_BY_Z_A"></option>
+            <option value="2" i18n="dataManage.SORT_VALUE_ASCENDING"></option>
+            <option value="3" i18n="dataManage.SORT_VALUE_DESCENDING"></option>
+            <option value="4" i18n="dataManage.SORT_TIME_NOW_PAST"></option>
+            <option value="5" i18n="dataManage.SORT_TIME_PAST_NOW"></option>
+        </select>
+    <!}!>
+</script>
+<script type="text/html" id="tpl_dtu_li">
+    <!for(var key in dtu_list){!>
+        <li class="clearfix dtuLi" data-dtuname="<!=key!>" draggable="true">
+            <div class="clearfix dtuContent">
+                <div class="dtuLeft dbBox">
+                    <div class="dbName ellipsis" title="<!=key!>"><!=key!></div>
+                    <div class="dtuRemarkTitle">(<!=dtu_list[key][0].dtuRemark!>)</div>
+                </div>
+                <div class="dtuRight clearfix" style="padding-top: 6px;">
+                    <span class="glyphicon glyphicon-chevron-down dn cp" style="color: #ccc; top: 10px;"></span>
+                    <span class="glyphicon glyphicon-chevron-up dn cp" style="color: #ccc;top: 10px;"></span>
+                </div>
+            </div>
+
+            <div class="dn dtuSubsets">
+                <ul class="dtu_subsets_ul">
+                    <!for(var i = 0;i< dtu_list[key].length; i++){!>
+                        <!var result = dtu_list[key];!>
+                        <!if(result[i].online === 'Online'){!>
+                            <li class="clearfix online dtu_subsets_li"
+                                data-dtuname="<!=result[i].dtuname!>" data-online="<!=result[i].online!>" data-id="<!=result[i].id!>">
+                        <!}else{!>
+                            <li class="clearfix offline dtu_subsets_li"
+                                data-dtuname="<!=result[i].dtuname!>" data-online="<!=result[i].online!>" data-id="<!=result[i].id!>">
+                        <!}!>
+                            <div class="clearfix">
+                                <div class="dtuLeft dtuBox">
+                                    <div class="dtuName ellipsis" title="<!=result[i].dtuname!>"><!=result[i].dtuname!></div>
+                                    <!if(result[i].dtuRemark){!>
+                                        <div class="dtuRemark ellipsis" title="(<!=result[i].dtuRemark!>)">(<!=result[i].dtuRemark!>)</div>
+                                    <!}!>
+                                </div>
+                                <!if(result[i].dtuRemark){!>
+                                    <div class="dtuRight clearfix">
+                                <!}else{!>
+                                    <div class="dtuRight clearfix noRemark">
+                                <!}!>
+                                <!if(result[i].online == 'Online'){!>
+                                    <button type="button" class="btn btn-default isOnline"><!=I18n.resource.dataManage.ONLINE!></button>
+                                <!}else{!>
+                                    <button type="button" class="btn btn-default isOnline"><!=I18n.resource.dataManage.OFFLINE!></button>
+                                <!}!>
+                                    </div>
+                            </div>
+                        </li>
+                    <!}!>
+                </ul>
+            </div>
+        </li>
+    <!}!>
+</script>
+<!--@formatter:on-->

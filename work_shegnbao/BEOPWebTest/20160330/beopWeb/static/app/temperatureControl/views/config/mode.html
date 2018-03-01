@@ -1,0 +1,32 @@
+<style>
+    .list-unstyled .item{
+        border-top: 1px solid #eee;
+        padding: 10px 20px;
+    }
+    .list-unstyled .item .glyphicon{
+        display: none;
+    }
+    .list-unstyled .item.selected .glyphicon{
+        display: inline-block;
+        color: #ff0000;
+    }
+</style>
+<div id="wrapMode">
+    <!-- 日程列表 -->
+    <div id="listModePane">
+        <ul class="list-unstyled" id="ulMode">
+                <li class="item itemMode" data-mode="ladiesFirst">
+                    <span>女士优先</span>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </li>
+                <li class="item itemMode" data-mode="energySave">
+                    <span>节能模式</span>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </li>
+                <li class="item itemMode" data-mode="comfortable">
+                    <span>舒适模式</span>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </li>
+            </ul>
+    </div>
+</div>

@@ -1,0 +1,445 @@
+<style type="text/css">
+    .bodyContain {
+        margin: 0px 0px 0px 20px;
+    }
+    .btnCloseWidth {
+        width: 70px;
+    }
+    .btnLogicWidth {
+        width: 40px;
+    }
+    .inputTime {
+        text-align: left;
+    }
+    #filterCondition{
+        min-width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-top: 5px;
+    }
+
+    .showGrid {
+        padding: 30px;
+        margin: 0 2% 0 2%;
+        height: 70%;
+        overflow-y: auto;
+    }
+    .showGrid .row{
+        margin-left: -40px;
+        padding-left: 25px;
+    }
+    .showGrid .row:hover {
+        background-color: cornsilk;
+    }
+    .showGrid .row:first-child:hover {
+        background-color: transparent;
+    }
+    .showGrid .col-xs-12 {
+        border-top:1px solid #eee;
+        position: relative;
+    }
+    .showGrid .varTableTitle{
+        border-top:1px solid transparent;
+    }
+    .formulaVarName{
+        font-size: 16px;
+        margin: 10px 0 10px 0;
+        cursor: pointer;
+    }
+    .formulaVarName input{
+        width: 50%;
+        display: none;
+        position: absolute;
+        top: -3px;
+    }
+    .varRow>.col-xs-4,.varTableTitle>.col-xs-4{
+        padding-left: 0;
+    }
+    .varTableTitle h4{
+        display:inline-block;
+    }
+    .varTableTitle span{
+        color: #777;
+        position: relative;
+        left: 20px;
+        top: 3px;
+        font-size:20px;
+        cursor: pointer;
+    }
+    .varTableTitle span:hover {
+        color: #428bca;
+    }
+    .showGrid .col-xs-6{
+        border-left:1px solid #eee;
+        min-height: 40px;
+    }
+    .divVarValue {
+        padding-top: 10px;
+        background-color: #60aedb;
+        border-radius: 5px;
+        border-color: transparent;
+    }
+
+    #iconCancel {
+        margin: 6px 6px 0 0;
+    }
+
+    .showGridEx {
+        height: 100%;
+        overflow-y: auto;
+    }
+    #filterConditionEd3 {
+        min-width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .btnFilterCfg {
+        width:100px;
+        float:right;
+    }
+    .btnFilterCfgDisable {
+        background-color: transparent !important;
+        border: transparent !important;
+        color: #666;
+    }
+    .btnFilterCfgDisable:hover {
+        color: #666;
+    }
+    .gridSelectRow {
+        color: #5cb85c;
+        background-color: #465b85;
+    }
+</style>
+
+<div class="panel panel-default" id="dataFilterContain" style="height: 100%; width: 99%; z-index: 2;">
+    <ul class="nav nav-tabs" style="height: 41px;background-color: #f5f5f5;">
+        <!--
+        <li role="presentation" class="active" id="tabFilterNormal" style="cursor: pointer">
+            <a i18n="analysis.dataFilter.FILTER_TITLE">Filter Normal</a>
+        </li>
+        <li role="presentation" id="tabFilterCustom" style="cursor: pointer">
+            <a i18n="analysis.dataFilter.FILTER_TITLE_CUSTOM">Filter Custom</a>
+        </li>
+        -->
+        <li role="presentation" id="tabFilterEd3" style="cursor: pointer">
+            <a i18n="analysis.dataFilter.FILTER_TITLE" style="font-size:medium;color:#eee">Filter Normal</a>
+        </li>
+        <button type="button" class="close" id="iconCancel" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </ul>
+
+    <div class="panel panel-default" style="border-style: none;" id="pageDataFilter">
+        <div class="panel-body bodyContain" style="overflow-y: auto;height: calc(100% - 100px);">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" i18n="analysis.dataFilter.FILTER_TARGET">Target</label>
+                    <div class="col-sm-10" id="checkPtList">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                Option one
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                Option two
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="filterCondition" class="col-sm-2 control-label" i18n="analysis.dataFilter.FILTER_CONDITION">Condition</label>
+                    <div class="col-sm-10">
+                    <!--
+                        <input type="text" class="form-control" id="filterCondition" placeholder="">
+                    -->
+                        <span id="filterCondition" class="mathquill-editable"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" class="btn btn-default btnLogicWidth" id="btnLogicAnd">&</button>
+                        <button type="button" class="btn btn-default btnLogicWidth" id="btnLogicOr">|</button>
+                        <button type="button" class="btn btn-default btnLogicWidth" id="btnLogicNot">!</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <span i18n="analysis.dataFilter.EXAMPLE"></span>
+                        <span> : { (a > 1) & [b = (-1) | (c != 0)] }</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div id="varConfig" class="showGrid">
+                            <div class="row">
+                                <div class="col-xs-12 varTableTitle">
+                                    <div class="col-xs-4"><h4 i18n="analysis.dataFilter.VARIABLE_NAME">Variable Name</h4></div>
+                                    <div class="col-xs-6"><h4 i18n="analysis.dataFilter.VARIABLE_POINT">Variable Point</h4></div>
+                                </div>
+                            </div>
+                            <div id="varConfigData">
+                                <div class="row">
+                                    <div class="col-xs-12 varRow">
+                                        <div class="col-xs-4 formulaVarName"><input type="text" name="inputVarValue" class="varNameChange">a</div>
+                                        <div class="col-xs-6 divVarValue">Point 1</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 varRow">
+                                        <div class="col-xs-4 formulaVarName"><input type="text" name="inputVarValue" class="varNameChange">b</div>
+                                        <div class="col-xs-6 divVarValue">Point 2</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" i18n="analysis.dataFilter.FILTER_TYPE">Filter Type</label>
+                    <div class="col-sm-10">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="radioFilterType" id="radioFilterType1" value="optionFilterType1">
+                                <span>Count Select</span>
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="radioFilterType" id="radioFilterType2" value="optionFilterType2">
+                                <span>Time Select</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="timeStart" class="col-sm-2 control-label" i18n="analysis.dataFilter.TIME_START">Time Start</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control inputTime" size="16" id="timeStart" style="cursor:pointer" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group" id="divValLen">
+                    <label for="inputValLen" class="col-sm-2 control-label" i18n="analysis.dataFilter.VALIDATE_LEN">Validate Length</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputValLen" placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group" id="divCycleLen">
+                    <label for="inputCycleLen" class="col-sm-2 control-label" i18n="analysis.dataFilter.CYCLE_LEN">Cycle Length</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputCycleLen" placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group" id="divTmEnd">
+                    <label for="timeEnd" class="col-sm-2 control-label" i18n="analysis.dataFilter.TIME_END">Time End</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control inputTime" size="16" id="timeEnd" style="cursor:pointer" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group" id="divTmCycle">
+                    <label for="timeCycle" class="col-sm-2 control-label" i18n="analysis.dataFilter.TIME_CYCLE">Time Cycle</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control inputTime" size="16" id="timeCycle" style="cursor:pointer" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group" style="display: block;">
+                    <label class="col-sm-2 control-label" i18n="analysis.dataFilter.SHOW_TYPE">Show Type</label>
+                    <div class="col-sm-10">
+                        <label class="radio-inline">
+                            <input type="radio" name="radioShowType" id="radioShowNone" value="optionShowType1" i18n="analysis.dataFilter.SHOW_NONE">
+                            <span>Show None</span>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="radioShowType" id="radioShowColor" value="optionShowType2" i18n="analysis.dataFilter.SHOW_DOT">
+                            <span>Show by Dot</span>
+                        </label>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="panel-footer config-footer" style="height: 54px;">
+            <div style="float: right;">
+                <button type="button" class="btn btn-primary btnCloseWidth" id="btnFilter" i18n="analysis.dataFilter.BTN_OK">Filter</button>
+                <button type="button" class="btn btn-default btnCloseWidth" data-dismiss="modal" id="btnCancel" i18n="analysis.dataFilter.BTN_CANCEL">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default" style="border-style: none;" id="pageDataFilterCustom">
+        <div class="panel-body bodyContain" style="overflow-y: auto;height: calc(100% - 100px);">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" i18n="analysis.dataFilter.FILTER_TARGET">Target</label>
+                    <div class="col-sm-10" id="checkPtListCust">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                Option one
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                Option two
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div id="varConfigCust" class="showGrid">
+                            <div class="row">
+                                <div class="col-xs-12 varTableTitle">
+                                    <div class="col-xs-4"><h4 i18n="analysis.dataFilter.VARIABLE_NAME">Variable Name</h4></div>
+                                    <div class="col-xs-6"><h4 i18n="analysis.dataFilter.VARIABLE_POINT">Variable Point</h4></div>
+                                </div>
+                            </div>
+                            <div id="varConfigDataCust">
+                                <div class="row">
+                                    <div class="col-xs-12 varRow">
+                                        <div class="col-xs-4 formulaVarName"><input type="text" name="inputVarValue" class="varNameChange">a</div>
+                                        <div class="col-xs-6 divVarValue">Point 1</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 varRow">
+                                        <div class="col-xs-4 formulaVarName"><input type="text" name="inputVarValue" class="varNameChange">b</div>
+                                        <div class="col-xs-6 divVarValue">Point 2</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" i18n="analysis.dataFilter.DATA_DETAIL">Detail</label>
+                    <div class="col-sm-10">
+                        <button type="button" class="btn btn-primary" id="btnDataShow" i18n="analysis.dataFilter.DATA_HIDE" style="width: 70px">Hide</button>
+                        <div class="form-control" contenteditable="false" id="divShowData" style="height: 100%;max-height: 235px;overflow-y: auto;" readonly></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" i18n="analysis.dataFilter.CUSTOM_RULE">Custom Rule</label>
+                    <div class="col-sm-10">
+                        <label i18n="analysis.dataFilter.TIP3"></label>
+                        <label i18n="analysis.dataFilter.TIP4"></label>
+                        <div class="form-control" contenteditable="true" id="divEdit" style="height: 100%;min-height: 115px;"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="panel-footer config-footer" style="height: 54px;">
+            <div style="float: right;">
+                <button type="button" class="btn btn-primary btnCloseWidth" id="btnFilterCustom" i18n="analysis.dataFilter.BTN_OK">Filter</button>
+                <button type="button" class="btn btn-default btnCloseWidth" data-dismiss="modal" id="btnCancelCustom" i18n="analysis.dataFilter.BTN_CANCEL">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default" id="pageDataFilterEd3" style="border-style:none;height:100%">
+        <div class="panel-body bodyContain" style="height:calc(100% - 100px);overflow-y:auto">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" i18n="analysis.dataFilter.FILTER_TARGET">Target</label>
+                    <div class="col-sm-10 showGridEx">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th i18n="analysis.dataFilter.VARIABLE_POINT">Variable Point</th>
+                                    <th i18n="analysis.dataFilter.VARIABLE_NAME">Variable Name</th>
+                                    <th style="width:100px"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="varConfigDataEd3" style="cursor:pointer">
+                                <tr>
+                                    <td>Point 1</td>
+                                    <td>a</td>
+                                    <td><span class="glyphicon glyphicon-ok" aria-hidden="true" style="display:none"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Point 2</td>
+                                    <td>b</td>
+                                    <td><span class="glyphicon glyphicon-ok" aria-hidden="true" style="display:none"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2">
+                        <button type="button" class="btn btn-success btnFilterCfg" id="btnDataShowEd3" i18n="analysis.dataFilter.DATA_HIDE">Hide</button>
+                    </label>
+                    <div class="col-sm-10">
+                        <div class="form-control" contenteditable="false" id="divShowDataEd3" style="height: 100%;max-height: 235px;overflow-y: auto;" readonly></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <button type="button" class="btn btn-success btnFilterCfg" id="btnFilterCondition" i18n="analysis.dataFilter.FILTER_CONDITION">Condition</button>
+                        <button type="button" class="btn btn-success btnFilterCfg" id="btnCustomRule" i18n="analysis.dataFilter.CUSTOM_RULE" style="margin-top:20px">Custom Rule</button>
+                    </label>
+                    <div class="col-sm-10">
+                        <div id="divFilterCondition" style="margin-top:8px;display:block">
+                            <div>
+                                <span id="filterConditionEd3" class="mathquill-editable"></span>
+                            </div>
+                            <div style="margin-top:30px">
+                                <button type="button" class="btn btn-primary btnLogicWidth" id="btnLogicAndEd3">&</button>
+                                <button type="button" class="btn btn-primary btnLogicWidth" id="btnLogicOrEd3">|</button>
+                                <button type="button" class="btn btn-primary btnLogicWidth" id="btnLogicNotEd3">!</button>
+                            </div>
+                            <div  style="margin-top:20px;color:#eac124">
+                                <span i18n="analysis.dataFilter.EXAMPLE"></span>
+                                <span> : { (a > 1) & [b = (-1) | (c != 0)] }</span>
+                            </div>
+
+                            <div style="margin-top:18px">
+                                <label class="col-sm-2 control-label" style="text-align:left;padding-left:0" i18n="analysis.dataFilter.SHOW_TYPE">Show Type</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="radioShowTypeEd3" id="radioShowNoneEd3" value="optionShowType1" i18n="analysis.dataFilter.SHOW_NONE">
+                                    <span>Show None</span>
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="radioShowTypeEd3" id="radioShowColorEd3" value="optionShowType2" i18n="analysis.dataFilter.SHOW_DOT">
+                                    <span>Show by Dot</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="divCustomRule" style="margin-top:8px;display:none">
+                            <label i18n="analysis.dataFilter.TIP3"></label>
+                            <label i18n="analysis.dataFilter.TIP4" style="color:#eac124"></label>
+                            <div class="form-control" contenteditable="true" id="divEditEd3" style="height: 100%;min-height: 115px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="panel-footer config-footer" style="height: 54px;background-color:transparent">
+            <div style="float: right;">
+                <button type="button" class="btn btn-success btnCloseWidth" id="btnFilterEd3" i18n="analysis.dataFilter.BTN_OK">Filter</button>
+                <button type="button" class="btn btn-default btnCloseWidth" data-dismiss="modal" id="btnCancelEd3" i18n="analysis.dataFilter.BTN_CANCEL">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</div>

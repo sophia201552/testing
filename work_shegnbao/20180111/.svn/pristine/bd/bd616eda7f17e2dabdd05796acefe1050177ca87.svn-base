@@ -1,0 +1,15 @@
+export default {
+  MODULE_NAME: 'Analysis Correlation',
+  SORT: 'Sort',
+  RELEVANT_PARAMETER: 'Association parameters',
+  WEIGHT: 'Weight',
+  R: 'R²',
+  DATA_SOURCE: 'Data sources',
+  FITTING_OBJECT: 'Fitting objects',
+  MODEL_DESCRIPTION: 'Model description',
+  DATA_RANGE: 'Data range',
+  SELECTED_DATA: 'Selected data',
+  TIME: 'Time',
+  METHOD: 'Method',
+  PARAMETER: 'Parameter',
+};

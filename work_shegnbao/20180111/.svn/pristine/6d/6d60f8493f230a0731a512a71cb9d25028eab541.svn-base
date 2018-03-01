@@ -1,0 +1,364 @@
+<style>
+    *::-webkit-scrollbar-track{
+        box-shadow: inset 0 0 6px #3C4450;
+        background-color: #353C47;
+    }
+    *::-webkit-scrollbar-thumb {
+        background-color: #3C4450;
+    }
+    *::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background-color: #353C47;
+    }
+    #sideNavComponent{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200px;
+        height: 100%;
+        background: #23283E;
+        color: white;
+        transition:all 0.3s;
+        z-index:3;
+    }
+    #moduleCtn{
+        position: absolute;
+        left: 200px;
+        width: calc(100% - 200px);
+        height: 100%;
+        transition:all 0.3s;
+    }
+    #sideNavComponent.navOff{
+        /*left:-200px;*/
+        width:50px;
+    }
+    #moduleCtn.navOff{
+        left:50px;
+        width:100%;
+    }
+    #sideNavComponent .wrapBrand{
+        height:70px;
+        position:relative;
+    }
+    #sideNavComponent.menuMode .btnNavExpand{
+        display:block;
+    }
+    #sideNavComponent .btnNavExpand{
+        font-size: 28px;
+        cursor: pointer;
+        color: #6397ED;
+        top: 18px;
+        position: absolute;
+        right: 15px;
+        transition: all 0.3s;
+        display: none;
+    }
+    #sideNavComponent.navOff .imgBrand{
+        display:none;
+    }
+    #sideNavComponent.navOff .btnNavExpand::before{
+        content: "\e88f";
+    }
+    #sideNavComponent.navOff .btnNavExpand{
+        /*right: -34px;
+        top: 05px;
+        background: rgba(0,0,0,0.5);
+        padding: 5px;
+        color: white;*/
+    
+        right: 0;
+        top: 0;
+        font-size: 54px;
+        text-align: center;
+        height: 100%
+    }
+    #sideNavComponent .imgBrand{
+        display: inline-block;
+        height: 70px;
+        padding: 10px;
+        cursor:pointer;
+    }
+    #sideNavComponent .wrapNavModule{
+        /*border-top: 2px solid #4C63A7;*/
+        padding: 10px 15px;
+        overflow:hidden;
+        padding-bottom:0;
+    }
+    #sideNavComponent .navModule{
+        margin: 0 -15px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    #sideNavComponent #navProject{
+        height: calc(100% - 70px);
+    }
+    #sideNavComponent #navMenu {
+        height: calc(100% - 20px);
+    }
+    #sideNavComponent .navLabel label {
+        margin-bottom: 0;
+        font-weight: normal;
+        margin-left: 3px;
+        color:#eee;
+    }
+    #sideNavComponent .navLabel .icon {
+        /*font-size: 13px;
+        top: -1px;
+        position: relative;
+        display:none;*/
+
+        font-size: 32px;
+        top: -10px;
+        left: -7px;
+        position: absolute;
+        display:none;
+    }
+    #sideNavComponent.navOff .navLabel .icon{
+        display:block;
+    }
+    #sideNavComponent.navOff .navLabel label{
+        display:none;
+    }
+    #sideNavComponent .navLabel .navModuleExpandIcon{
+        transition:all 0.3s;
+        top:3px;
+        float:right;
+        display:none;
+    }
+    #sideNavComponent .navLabel {
+        margin-bottom: 10px;
+        font-size: 15px;
+        height:21px;
+        position:relative;
+    }
+    #sideNavComponent .navItem {
+        color: #7984b4;
+        font-size: 12px;
+        padding: 7px 30px;
+        border-left: 3px solid transparent;
+        cursor:pointer;
+        position:relative;
+    }
+    #sideNavComponent .navItem:hover{
+        background:#333955;
+        color:#a9c6ff
+    }
+    #sideNavComponent .navItem.selected,
+    #sideNavComponent .navItem.active {
+        border-left: 3px solid #9DB8EF;
+        background:#333955;
+        color:#a9c6ff
+    }
+    #sideNavComponent .navItem.selected::before,
+    #sideNavComponent .navItem.active::before{
+        content: '';
+        background: #FCE757;
+        height: 5px;
+        width: 5px;
+        border-radius: 20px;
+        box-shadow: 0 0 3px 1px #FCE757;
+        display: inline-block;
+        position: absolute;
+        left: 15px;
+        top: 13px;
+    }
+    #sideNavComponent .projectSearch {
+        position: relative;
+        margin-bottom:10px;
+    }
+    #sideNavComponent .projectSearch .iptProjectSearch{
+        background: transparent;
+        border: 1px solid #353d61;
+        border-radius: 5px;
+        width: 100%;
+        outline:none;
+        padding: 3px 10px;
+        transition:all 0.3s;
+    }
+    #sideNavComponent .projectSearch .iptProjectSearch:focus{
+        border: 1px solid #4d63a7;
+    }
+    #sideNavComponent .projectSearch .glyphicon-search{
+        position: absolute;
+        right: 5px;
+        top: 7px;
+        color: #353d61;
+    }
+
+    #sideNavComponent .wrapUserProfile{
+        display: block;
+        height: 64px;
+        padding: 15px;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        color: #969696;
+        border-top: 2px solid #2a2f49;
+        transition:padding 0.3s;
+    }
+    #sideNavComponent .wrapUserProfile .portrait{
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 0 3px 2px #4f6fc7;
+    }
+    #sideNavComponent .wrapUserProfile .portrait img{
+        width: 100%;
+        height: 100%;
+    }
+    #sideNavComponent .wrapUserProfile .project,
+    #sideNavComponent .wrapUserProfile .name{
+        position: relative;
+        margin-left: 30px;
+        top: -12px;
+    }
+
+    #sideNavComponent .wrapUserProfile .project:before,
+    #sideNavComponent .wrapUserProfile .name:before{
+        content: '';
+        background: #5DC759;
+        height: 5px;
+        width: 5px;
+        border-radius: 20px;
+        box-shadow: 0 0 3px 1px #5DC759;
+        display: inline-block;
+        position: absolute;
+        top: 7px;
+        left: -12px;
+    }
+    #sideNavComponent .wrapUserProfile .project{
+        display:none;
+    }
+    #sideNavComponent.menuMode .wrapUserProfile .name{
+        display:none;
+    }
+    #sideNavComponent.menuMode .wrapUserProfile .project{
+        display:inline;
+    }
+    #sideNavComponent [data-block="menu"]{
+        height:calc(100% - 130px);
+        display:none;
+        border-top: 1px solid #4d63a7;
+    }
+    #sideNavComponent [data-block="project"]{
+        border-top: 1px solid #4d63a7;
+    }
+    #sideNavComponent [data-block="config"]{
+        border-top: 1px solid #4d63a7;
+    }
+    #sideNavComponent.menuMode [data-block="menu"]{
+        display:block;
+    }
+    #sideNavComponent.menuMode [data-block="project"]{
+        display:none;
+    }
+    #sideNavComponent.menuMode [data-block="config"]{
+        display:none;
+    }
+    #sideNavComponent [data-block="project"]{
+        height:calc(100% - 237px)
+    }
+    #sideNavComponent .navItem .icon{
+        display:none;
+        font-size:16px;
+    }
+    #sideNavComponent.navOff .navItem .icon{
+        display:inline;
+    }
+    #sideNavComponent.navOff .navItem{
+        padding: 7px 15px 7px 13px
+    }
+    #sideNavComponent.navOff .navItem .text{
+        display:none;
+    }
+    #sideNavComponent.navOff .wrapUserProfile .project,
+    #sideNavComponent.navOff .wrapUserProfile .name{
+        display:none;
+    }
+    #sideNavComponent.navOff .wrapUserProfile{
+        padding: 15px 9px;
+    }
+    #sideNavComponent.navOff .navItem::before{
+        display: none;
+    }
+    #sideNavComponent .tooltip{
+        display:none !important;
+    }
+    #sideNavComponent.navOff .tooltip{
+        display:block !important;
+        white-space: nowrap;
+    }
+
+    #sideNavComponent .wrapNavModule[data-block="menu"] .navLabel .icon{
+        display: block;
+        font-size: 20px;
+        top: -3px;
+        cursor: pointer;
+        transition:all 0.3s;
+    }
+    #sideNavComponent.navOff .wrapNavModule[data-block="menu"] .navLabel .icon{
+        font-size: 32px;
+        top: -10px;
+        left: -7px;
+        position: absolute;
+        display: block;
+    }
+    #sideNavComponent.navOff .wrapNavModule[data-block="menu"] .navLabel .icon:before{
+            content: "\e894";
+    }
+</style>
+<div id="sideNavComponent">
+    <div class="wrapBrand">
+        <img class="imgBrand" src="/static/images/logo_beop_white.png">
+        <span class="btnNavExpand iconfont icon-keyboard"></span>
+    </div>
+    <div class="wrapMainIndex">
+        <div class="wrapNavModule" data-block="config">
+            <div class="navLabel" data-toggle="tooltip" data-placement="right" title="START">
+                <span class="icon iconfont icon-start"></span>
+                <label>START</label>
+                <span class="navModuleExpandIcon glyphicon glyphicon-menu-down"></span>
+            </div>
+            <div class="navModule" id="navProjectConfig">
+<!--                <div class="navItem">
+                    <span class="icon"></span><span class="text">new Project</span>
+                </div>
+                <div class="navItem">
+                    <span class="icon"></span><span class="text">Overview</span>
+                </div>-->
+            </div>
+        </div>
+        <div class="wrapNavModule" data-block="project">
+            <div class="navLabel" data-toggle="tooltip" data-placement="right" title="PROJECT">
+                <span class="icon iconfont icon-project"></span>
+                <label>PROJECT</label>
+                <span class="navModuleExpandIcon glyphicon glyphicon-menu-down"></span>
+            </div>
+            <div class="projectSearch">
+                <input type="text" class="iptProjectSearch"/><span class="glyphicon glyphicon-search"></span>
+            </div>
+            <div class="navModule" id="navProject"></div>
+        </div>
+        <div class="wrapNavModule" data-block="menu">
+            <div class="navLabel"data-toggle="tooltip" data-placement="right" title="BACK">
+                <span class="icon iconfont icon-fanhui"></span>
+                <label style="cursor:pointer;margin-left:18px;" >BACK</label>
+                <span class="navModuleExpandIcon glyphicon glyphicon-menu-down"></span>
+            </div>
+            <div class="navModule" id="navMenu"></div>
+        </div>
+        <div class="wrapNavModule" data-block="function" style="display:none;">
+            <div class="navLabel" data-toggle="tooltip" data-placement="right" title="FUNCTION">
+                <span class="icon iconfont icon-function"></span>
+                <label>FUNCTION</label>
+                <span class="navModuleExpandIcon glyphicon glyphicon-menu-down"></span>
+            </div>
+            <div class="navModule" id="navFunction"></div>
+        </div>
+    </div>
+    <div class="wrapUserProfile" data-toggle="tooltip" data-placement="right"></div>
+</div>
+<div id="moduleCtn"></div>

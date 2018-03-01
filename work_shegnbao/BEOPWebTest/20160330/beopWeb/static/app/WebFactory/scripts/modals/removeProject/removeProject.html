@@ -1,0 +1,88 @@
+<div class="modal fade" id="removeProModal">
+    <style>
+        #removeProModal .modal-header {
+            color: #333;
+        }
+
+        #removeProModal .btn-default {
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        #removeProModal .btn-primary {
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #333;
+        }
+
+        #removeProModal .btn-default:hover {
+            color: #fff;
+            background-color: #286090;
+            border-color: #204d74;
+        }
+
+        #removeProModal .modal-body {
+            color: #333;
+        }
+
+        #removeProModal .removeProFst {
+            padding-bottom: 15px;
+            font-size: 16px;
+        }
+
+        #removeProModal .removeProSnd {
+            display: none;
+            font-size: 14px;
+        }
+
+        #removeProModal .removePass {
+            margin: 10px 0;
+        }
+
+        #removeProModal .removePass span{
+            display: inline-block;
+            width: 110px;
+            text-align: right;
+            padding-right: 5px;
+        }
+
+        #removeProModal .removePass input{
+            display: inline-block;
+            width: calc(100% - 200px);
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #e5e5e5;
+            border-radius: 5px;
+            padding: 0 5px;
+        }
+
+        .wrongPromt {
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+    </style>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" i18n="admin.welcom.deleteProj.DELETE_PROJECT"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="removeProFst" i18n="admin.welcom.deleteProj.CONFIRM_INFO">
+                    
+                </div>
+                <div class="removeProSnd">
+                    <div i18n="admin.welcom.deleteProj.CONFIRM_INFO_TIP"></div>
+                    <div class="removePass"><span i18n="admin.welcom.deleteProj.PASSWORD"></span><input type="password" i18n="placeholder=admin.welcom.deleteProj.PASSWORD_PLACEHOLDER" id="removePass" /></div>
+                    <div class="wrongPromt"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default directRemove" i18n="admin.welcom.deleteProj.SURE"></button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" i18n="admin.welcom.deleteProj.CANCEL"></button>
+                </div>
+            </div>
+        </div>
+    </div>

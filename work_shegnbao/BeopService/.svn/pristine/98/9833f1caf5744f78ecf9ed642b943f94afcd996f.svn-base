@@ -1,0 +1,13 @@
+FROM python:3.4.7-jessie
+
+WORKDIR /project
+
+COPY ./requirements /requirements
+
+RUN pip install -r /requirements/requirements.txt --index http://pypi.doubanio.com/simple --trusted-host pypi.doubanio.com && \
+    pip install -e /requirements/additional/mysql-connector-python-2.0.4 && \
+    pip install -r /requirements/additional/requirements-additional.txt --index http://pypi.doubanio.com/simple --trusted-host pypi.doubanio.com
+
+VOLUME /project
+
+EXPOSE 80

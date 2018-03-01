@@ -1,0 +1,20 @@
+export default {
+  DATA_PROCESSING: 'Data Processing',
+  NEW_FILE: 'New File',
+  NEW_FOLDER: 'New Folder',
+  A_BATCH_OF_NEW: 'Batch Add',
+  MORE: 'More',
+  IMPORT: 'Import',
+  DELETE: 'Delete',
+  SHARE: 'Share',
+  EDIT: 'Edit',
+  COLLECT: 'Collect',
+  OK: 'Ok',
+  CLOSE: 'Close',
+  ENTER_FILE_NAME: 'Please enter a file name',
+  ENTER_FILE_DESC: 'Please enter a file description',
+  ENTER_FOLDER_NAME: 'Please enter a folder name',
+  DESC: 'Description',
+  NAME: 'Name',
+  APPLY_TEMPLATE: 'Apply Template'
+};

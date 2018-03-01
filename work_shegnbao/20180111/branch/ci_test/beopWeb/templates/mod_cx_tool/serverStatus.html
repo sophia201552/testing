@@ -1,0 +1,152 @@
+{% block content %}
+    <!--备注窗口开始-->
+    <div id="remarksBox" class="dn pa">
+        <div id="remarksIconBox" class="oh">
+            <span id="remarkEdit" class="glyphicon glyphicon-edit mr5 cp" aria-hidden="true" title="edit"></span>
+            <span id="remarkSave" class="glyphicon glyphicon-save cp dn" aria-hidden="true" title="save"></span>
+            <span id="remarkClose" class="glyphicon glyphicon-remove cp fr" aria-hidden="true" title="close"></span>
+        </div>
+        <div id="remarkTextBox">
+            <pre id="remarkHtml"></pre>
+            <textarea id="remarkText" class="form-control dn" i18n="placeholder=debugTools.servers.ADD_REMARK_PLEASE"></textarea>
+        </div>
+    </div>
+    <!--备注窗口结束-->
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-4">
+            <h2 i18n="debugTools.servers.PROJECT_LIST"></h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="/point_tool" i18n="debugTools.servers.HOME_PAGE"></a>
+                </li>
+                <li class="active">
+                    <strong i18n="debugTools.servers.PROJECT_LIST"></strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!--确认是否删除点浮动窗口开始-->
+    <article id="itemRecordsWin" class="modal fade confirmWin">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><span i18n="debugTools.servers.ADD_RECORD"></span>：</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="recordBox">
+                        <ul class="list-group" id="serversRecordUl"></ul>
+                    </div>
+                    <div class="oh">
+                        <textarea id="writeRecord" class="form-control" i18n="placeholder=debugTools.servers.ADD_RECORD_PLEASE"></textarea>
+                        <div class="oh mt10">
+                            <button id="addRecords" type="button" class="btn btn-primary fr" i18n="debugTools.servers.ADD_RECORD"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!--确认是否删除点浮动窗口结束-->
+    <div class="container-fluid">
+        <div class="row"></div>
+        <div class="col-lg-12">
+            <div class="wrapper wrapper-content animated fadeInUp">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5 i18n="debugTools.servers.ALL_PROJECTS_ACCOUNT"></h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="project-list" id="serverContainer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tr" id="serverPaginationWrapper">
+        <ul id="serverPagination" class="pagination fr"></ul>
+    </div>
+    <!--@formatter:off-->
+    <script type="text/html" id="tpl_server_status">
+        <div class="table-responsive">
+            <table class="table table-striped" id="servers_table">
+                <thead>
+                <tr>
+                    <th i18n="debugTools.servers.PROJECT"></th>
+                    <th i18n="debugTools.servers.STATUS"></th>
+                    <th i18n="debugTools.servers.LAST_ONLINE_TIME"></th>
+                    <th i18n="debugTools.servers.LAST_RECEIVE_TIME"></th>
+                    <th i18n="debugTools.servers.REMARKS"></th>
+                    <th i18n="debugTools.servers.RECORDS"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <!for(var m=0; m < statues.length; m++){!>
+                    <!var status = statues[m];!>
+                    <tr project-id="<!=status.projectId!>" dtu-id="<!=status.id!>" dtu="<!=status.dtuname!>">
+                        <td class="enterProject">
+                            <!if(localStorage.language === 'en'){!>
+                                <!=status.name_en!>
+                            <!}else{!>
+                                <!=status.name_cn!>
+                            <!}!>
+                        </td>
+                        <!if(status.online === 'Offline'){!>
+                            <td class="enterProject"><label class="label label-danger"><!=status.online!></label></td>
+                        <!}else{!>
+                            <td class="enterProject"><label class="label label-primary"><!=status.online!></label></td>
+                        <!}!>
+                        <td class="enterProject"><!=status.LastOnlineTime!></td>
+                        <td class="enterProject"><!=status.LastReceivedTime!></td>
+                        <td>
+                            <a class="glyphicon glyphicon-edit tooltipTxt mr5 fl" title="edit"></a>
+                            <div class="fl longInfo">
+                                <pre class="remark_text" title="<!=status.remark!>" data-text="<!=status.remark!>"><!=status.remark!></pre>
+                            </div>
+                        </td>
+                        <td>
+                            <a class="glyphicon glyphicon-edit itemRecords mr5 fl" title="edit"></a>
+                            <div class="fl longInfo">
+                                <pre class="record_text ellipsis" title="<!=status.userfullname!> <!=status.info!> <!=status.time!>">
+                                    <span><!=status.userfullname!> </span><span><!=status.info!> </span><span><!=status.time!></span>
+                                </pre>
+                            </div>
+                        </td>
+                    </tr>
+                <!}!>
+                </tbody>
+            </table>
+        </div>
+    </script>
+    <script type="text/html" id="tpl_server_records">
+        <!for(var m=0; m < record_list.length; m++){!>
+            <!var record = record_list[m];!>
+            <li class="list-group-item" id="record-<!=record.id!>">
+               <span class="recordTitle">
+                    <span><!=record.userfullname!></span>
+                    <span>：</span>
+                </span>
+                <span class="recordInfo">
+                    <span><!=record.info!></span>
+                    <time><!=record.time!></time>
+                </span>
+            </li>
+        <!}!>
+    </script>
+    <script type="text/html" id="tpl_server_record">
+        <li class="list-group-item addItem">
+           <span class="recordTitle">
+                <span><!=recordInfo.user!></span>
+                <span>：</span>
+            </span>
+            <span class="recordInfo">
+                <span><!=recordInfo.info!></span>
+                <time><!=recordInfo.update_time!></time>
+            </span>
+        </li>
+    </script>
+    <!--@formatter:on--!>
+
+{% endblock %}

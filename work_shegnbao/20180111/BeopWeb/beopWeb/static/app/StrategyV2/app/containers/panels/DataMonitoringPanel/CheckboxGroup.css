@@ -1,0 +1,109 @@
+.clear:after {
+  content: '';
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  clear: both;
+  display: block;
+}
+
+/* .checkboxGroupWrap {
+  padding: 18px 18px 0;
+} */
+.navWrap {
+  float: left
+}
+.navWrap > div {
+  float: left;
+  height: 22px;
+  line-height: 22px;
+}
+.navWrap > .titleWrap > span {
+  margin: 0 14px 0 8px;
+  font-size: 16px;
+  color: #555;
+  letter-spacing: 0;
+  text-align: left;
+  font-weight: 700
+}
+.navWrap > .iconWrap > i {
+  font-size: 10px;
+  color: #d8d8d8;
+  vertical-align: middle;
+}
+.navWrap > .iconWrap > i:global(.ms-Icon--FlickLeft) {
+  vertical-align: top;
+  position: relative;
+  left: 8px;
+}
+
+.groupWrap {
+  width: calc(100% - 102px);
+  padding: 18px 0 0 0;
+  margin-top: 12px;
+  border-top: 1px solid #d8d8d8;
+  float: left;
+}
+.groupWrap > ul:global(.hide) {
+  display: none;
+}
+.toolTip {
+  background: red
+}
+
+/* checkbox 样式 */
+.checkboxWrap {
+  float: left;
+  margin: 0 30px 12px 0;
+}
+.checkboxWrap :global(.is-checked) i {
+  background: #4c83ff;
+  border-color: #e8e8e8;
+}
+.checkboxWrap  button:hover > label > div {
+  border-color: #e8e8e8 !important;
+  background: #f2f2f2;
+}
+.checkboxWrap  button > label > div {
+  width: 14px;
+  height: 14px;
+  opacity: 0.8;
+  border-radius: 2px;
+  border: solid 1px #c1c1c1;
+  background-color: #f2f2f2;
+}
+.checkboxWrap  button > span {
+  color: #555 !important;
+  font-size: 12px !important;
+}
+.checkboxWrap .arrowWrap {
+  position: absolute;
+  right: 0;
+  top: 2px;
+}
+.toolTipWrap :global(.ms-Callout-main) {
+  overflow-y: hidden !important;
+}
+.toolTipWrap :global(.ms-Tooltip-subText) {
+  width: 80px;
+  word-wrap:break-word;
+  line-height: 16px;
+}
+.toolTipWrap:global(.hide) {
+  display: none
+}
+
+.checkboxWrap {
+  position: relative;
+}
+.checkboxWrap > div {
+  position: absolute;
+  top: 2px;
+}
+.labelInput label > div > div,
+.checkboxWrap > div > div{
+  margin-top: 1px;
+}
+.checkboxWrap > button {
+  float: left;
+}

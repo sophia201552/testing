@@ -1,0 +1,10 @@
+export default {
+  SAMPLING_PERIOD: 'Sampling Period:',
+  START_TIME: 'Start Time:',
+  END_TIME: 'End Time:',
+  ONE_MINUTE: 'One Minute',
+  FIVE_MINUTES: 'Five Minute',
+  ONE_HOUR: 'One Hour',
+  ONE_DAY: 'One Day',
+  ONE_MONTH: 'One Month'
+};

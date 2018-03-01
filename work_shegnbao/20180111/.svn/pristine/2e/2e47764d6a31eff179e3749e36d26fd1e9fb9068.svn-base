@@ -1,0 +1,6 @@
+export default {
+  PROGRAM: 'Project',
+  PRIVATE: 'Private',
+  UNSAVED_CONTENT_CONFIRM_EXIT: 'You have some unsaved changes. Are you sure you want to leave before you save them?',
+  TOOLTIP: 'Tooltip'
+};

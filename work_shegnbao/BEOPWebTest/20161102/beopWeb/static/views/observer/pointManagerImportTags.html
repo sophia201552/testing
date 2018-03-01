@@ -1,0 +1,688 @@
+<style>
+    .tb-wrap {
+        height: 76vh;
+        overflow-y: auto;
+    }
+
+    .tb-wrap .ztree li a {
+        color: #333;
+    }
+
+    .tagsLeftContainer {
+        height: 100%;
+        border: 1px solid #ddd;
+        padding: 0;
+    }
+
+    #projectDataTree li.active > a {
+        background-color: #00a2d4;
+    }
+
+    #projectDataTree li a:hover {
+        background-color: #00a2d4;
+    }
+
+    .tagsRightContainer {
+        height: 84vh;
+        border-top: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        padding: 0;
+    }
+
+    .tags-header {
+        border-top: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+    }
+
+    .tags-header ul {
+        list-style: none;
+    }
+
+    .tags-header ul.sub {
+        display: none;
+    }
+
+    .tags-header ul.sub.active {
+        display: block;
+    }
+
+    .tags-left-header {
+        height: 45px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .tags-right-header {
+        height: 45px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #tags-path {
+        height: inherit;
+        float: left;
+        -webkit-user-select: none;
+    }
+
+    #tags-path a, #tags-path a:hover {
+        text-decoration: none;
+    }
+
+    .tags-right-content {
+        background: #FFF;
+        height: calc(100% - 88px);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .tag-content {
+        height: 100%;
+    }
+
+    .tags-right-content .tag-list {
+        list-style: none;
+    }
+
+    #tagsExplorer .tag-list-item {
+        padding: 10px 0;
+        line-height: 1.4;
+        text-align: center;
+        border: 1px solid #fff;
+        margin-top: 5px;
+        font-size: 35px;
+        cursor: pointer;
+    }
+
+    #projectDataTree .tree-folder {
+        color: #ffe9a2;
+    }
+
+    #tagsExplorer .tag-list-icon {
+        font-size: 35px;
+    }
+
+    #tagsExplorer .tag-folder .tag-list-icon {
+        color: #ffe9a2;
+    }
+
+    #drag_box .tag-list-icon {
+        font-size: 12px;
+    }
+
+    .tag-list-item-name {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        min-height: 48px;
+        text-align: center;
+        word-wrap: break-word;
+        font-size: 12px;
+        -webkit-user-select: none;
+    }
+
+    .tag-list-item {
+        margin-left: 10px;
+        float: left;
+        width: 8.3%;
+    }
+
+    .tag-list-item.selected {
+        border: 1px solid #99D1FF;
+    }
+
+    #tagsExplorer #paneIotData li {
+        border-bottom: none;
+    }
+
+    #paneIotData li span.button.ico_open:before, #paneIotData li span.button.ico_close:before, .tag-list-icon.folder {
+        color: #ffe9a2;
+    }
+
+    #paneIotData li > a {
+        color: #333333 !important;
+        padding-left: 5px;
+    }
+
+    .tag-list-item:hover {
+        background-color: #cce8ff;
+        border: 1px solid #99D1FF;
+        opacity: 0.6;
+    }
+
+    .tag-list-item.active {
+        background-color: #cce8ff;
+        border: 1px solid #99D1FF;
+    }
+
+    #tagsExplorer .tag-list-item.dropTarget {
+        border: 1px solid #cce8ff;
+    }
+
+    .breadcrumb a {
+        color: black !important;
+    }
+
+    .breadcrumb {
+        padding-top: 12px;
+    }
+
+    #tag_search {
+        -webkit-user-select: none;
+    }
+
+    #active_box {
+        background: #95c1ed;
+        z-index: 999;
+        opacity: 0.5;
+    }
+
+    #drag_box {
+        z-index: 1000;
+    }
+
+    #drag_box span {
+        display: inline-block;
+        float: left;
+    }
+
+    #drag_box .tag-list-item-name {
+        color: black;
+        min-height: 5px;
+    }
+
+    #drag_box .tag-list-item-path {
+        display: none;
+    }
+
+    #drag_box .tag-list-item-type {
+        display: none;
+    }
+
+    #mark_box {
+        position: absolute;
+        width: 120px;
+        clear: both;
+    }
+
+    .btnGroup button {
+        margin-left: 10px;
+    }
+
+    .btn-default .sub .glyphicon {
+        margin-right: 5px;
+    }
+
+    #paneIotAdd {
+        display: none;
+    }
+
+    #tagsExplorer {
+        height: 100%;
+        color: #333333;
+        background: #F0F0F0;
+        user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
+    #container-left {
+        width: 80%;
+        height: inherit;
+        float: left;
+    }
+
+    #container-right {
+        width: 20%;
+        height: inherit;
+        float: left;
+    }
+
+    #auto-identify-table span {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        word-break: break-all;
+    }
+
+    #auto-identify-table td {
+        border-top: 1px solid #636363;
+    }
+
+    #auto-identify-table .data-name {
+        display: block;
+        font-weight: bold;
+        color: #333;
+    }
+
+    #auto-identify-table .data-note {
+        display: block;
+        color: #abb8bf;
+    }
+
+    #tagsExplorer .label {
+        color: #333333;
+    }
+
+    .contextMenu {
+        position: absolute;
+        display: none;
+        -webkit-user-select: none;
+    }
+
+    #tagsExplorer .breadcrumb > .active {
+        color: #777 !important;
+    }
+
+    .multiple-item .menu-rename {
+        display: none;
+    }
+
+    .multiple-item .menu-auto-identify {
+        display: none;
+    }
+
+    .hide_mark_as .menu-mark-as {
+        display: none;
+    }
+
+    .hide_mark_as .divider {
+        display: none;
+    }
+
+    .not_group_file .menu-copy-file {
+        display: none;
+    }
+
+    .not_group_file .menu-delete {
+        display: none;
+    }
+
+    .not_group_file .menu-rename {
+        display: none;
+    }
+
+    .hide-auto-identify .menu-auto-identify {
+        display: none;
+    }
+
+    .tags-left-header span {
+        display: inline-block;
+        float: left;
+        padding: 14px 10px;
+        cursor: pointer;
+    }
+
+    #tagsExplorer #paneIotData li .iconfont {
+        background-image: none;
+        top: 7px;
+        margin-right: 3px;
+    }
+
+    .tags-left-header .disable {
+        color: #ccc;
+    }
+
+    #contextMenu-item li a {
+        padding: 3px 5px 3px 20px;
+    }
+
+    #contextMenu-item li {
+        width: 100%;
+        position: relative;
+    }
+
+    .glyphicon-chevron-right {
+        font-size: 12px;
+        display: inline-block;
+        float: right;
+        margin-right: 10px;
+        padding-top: 3px;
+    }
+
+    .glyphicon-th {
+        margin-top: 3px;
+        cursor: pointer;
+        padding: 6px 10px;
+    }
+
+    .glyphicon-th-list {
+        margin-top: 3px;
+        cursor: pointer;
+        padding: 6px 10px;
+    }
+
+    #tag-search-box .btn-default:hover {
+        background-color: #fff;
+        border-color: #ccc;
+    }
+
+    #tag-search-box .btn-default:focus {
+        background-color: #fff;
+        border-color: #ccc;
+    }
+
+    #tag-search-box .btn-primary:hover {
+        background-color: #337ab7;
+        border-color: #2e6da4;
+    }
+
+    #tag-search-box .btn-primary:focus {
+        background-color: #337ab7;
+        border-color: #2e6da4;
+    }
+
+    #tagsExplorer .orderList .tag-list-item .tag-list-icon {
+        display: block;
+        float: left;
+        font-size: 15px;
+    }
+
+    #tagsExplorer .orderList .tag-list-item .tag-list-item-name {
+        display: block;
+        float: left;
+        font-size: 13px;
+        margin-left: 5px;
+        min-height: 0;
+    }
+
+    #tagsExplorer .tag-list-header {
+        display: none;
+    }
+
+    #tagsExplorer .orderList .tag-list-header {
+        display: block;
+        clear: both;
+        width: 100%;
+        padding: 3px 5px;
+        margin: 20px 0 0 0;
+        font-size: 11px;
+        float: left;
+    }
+
+    #tagsExplorer .orderList .tag-list-header span:not(:nth-child(1)) {
+        display: inline-block;
+        width: calc(33% - 6px);
+        text-align: left;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        float: left;
+    }
+
+    #tagsExplorer .orderList .tag-list-item {
+        display: block;
+        clear: both;
+        width: 100%;
+        padding: 3px 5px;
+        margin-left: 0;
+        font-size: 15px;
+    }
+
+    #tagsExplorer .tag-list-item > span:nth-child(3) {
+        display: none;
+    }
+
+    #tagsExplorer .tag-list-item > span:nth-child(4) {
+        display: none;
+    }
+
+    #tagsExplorer .orderList .tag-list-item > span:not(:nth-child(1)) {
+        display: inline-block;
+        width: calc(33% - 6px);
+        text-align: left;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        float: left;
+        height: 16px;
+        font-size: 13px;
+        line-height: 13px;
+    }
+
+    .detailed_information {
+        display: none;
+        position: fixed;
+        top: 169px;
+        left: 72%;
+    }
+
+    #tagsExplorer .orderList .main_contents {
+        width: 60%;
+    }
+
+    #tagsExplorer .orderList .detailed_information {
+        display: block;
+    }
+
+    .attrContent:hover {
+        background-color: #448aca;
+    }
+
+    .detailed_content {
+        padding: 10px;
+    }
+
+    .detailed_information_pathPic {
+        display: inline-block;
+        margin: 5px 0 15px;
+        padding: 30px;
+        border: 1px solid #ddd;
+    }
+
+
+</style>
+
+<div id="tagsExplorer" class="ml10">
+    <div class="clearfix tags-header">
+        <div class="btnGroup">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="tag-btn-file" data-toggle="dropdown">
+                    File
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a id="importTags"><span class="glyphicon glyphicon-import"
+                                                 aria-hidden="true"></span>Import</a>
+                        <input type="file" accept=".csv,.xls,.xlsx" id="iptPjData" multiple="multiple"
+                               style="display:none;">
+                    </li>
+                    <li><a href="#"><span class="glyphicon glyphicon-export" aria-hidden="true"></span>Export</a></li>
+                    <li><a id="syncPointToTree"><span class="glyphicon glyphicon-transfer"></span><span
+                            i18n="dataManage.SYNCHRONIZE"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="tag-content clearfix">
+        <div class="col-md-2 tagsLeftContainer">
+            <div class="tags-left-header">
+                <span class="glyphicon glyphicon-arrow-left last-path disable" title="后退"></span>
+                <span class="glyphicon glyphicon-arrow-right next-path disable" title="前进"></span>
+                <span class="glyphicon glyphicon-arrow-up" title="上一级"></span>
+                <span class="glyphicon" id="tagTreeShowAll" i18n="dataManage.ALL"></span>
+            </div>
+            <div class="tags-left-content">
+                <div class="tb-wrap">
+                    <ul id="projectDataTree" class="ztree"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 tagsRightContainer">
+            <div class="tags-right-header clearfix">
+                <div id="tags-path" class="col-md-6">
+                    <ol class="breadcrumb">
+                    </ol>
+                </div>
+                <div id="tag-search-box" class="col-md-6">
+                    <div class="pull-right">
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-primary glyphicon glyphicon-th"></button>
+                            <button class="btn btn-default glyphicon glyphicon-th-list"></button>
+                        </div>
+                    </div>
+                    <div class="col-md-8 pull-right" style="margin-top: 5px;">
+                        <div class="input-group pull-right">
+                            <input type="text" id="tag_search" class="form-control mr10 fl">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tags-right-content">
+                <div class="main_contents">
+                    <div style="padding-left: 40px">
+                        <li class="tag-list-header">
+                            <span style="display:block;float:left;height:18px;width:15px"></span>
+                            <span style="margin-left:5px">文件名称</span>
+                            <span>文件路径</span>
+                            <span>文件类型</span>
+                        </li>
+                    </div>
+                    <ul class="clearfix tag-list"></ul>
+                </div>
+                <div class="detailed_information"></div>
+            </div>
+            <div class="fileNumber"></div>
+        </div>
+    </div>
+</div>
+
+<div id="contextMenu-item" class="dropdown clearfix contextMenu">
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"
+        style="display:block;position:static;margin-bottom:5px;">
+        <li><a tabindex="-1" class="menu-delete">删除</a></li>
+        <li><a tabindex="-1" class="menu-rename">重命名</a></li>
+        <li><a tabindex="-1" class="menu-auto-identify">识别</a></li>
+        <li><a tabindex="-1" class="menu-copy-file">复制</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" class="menu-mark-as">标记为<span class="glyphicon glyphicon-chevron-right markAs"></span></a>
+        </li>
+    </ul>
+</div>
+
+<div id="contextMenu-panel" class="dropdown clearfix contextMenu">
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"
+        style="display:block;position:static;margin-bottom:5px;">
+        <li><a tabindex="-1" class="menu-new-tag">新建</a></li>
+        <li><a tenindex="-1" class="menu-paste" style="display:none">粘贴</a></li>
+    </ul>
+</div>
+<!--@formatter:off-->
+<script type="text/html" id="tpl_tags_path">
+    <li class="tag-path"><a href="#">根目录</a></li>
+    <!if(paths && paths.length){!>
+        <!for(var i = 0,iLen = paths.length;i < iLen-1;i++){ !>
+            <!var path = paths[i];!>
+            <li data-tid="<!=paths[i].tId!>" class="tag-path"><a href="#"><!=paths[i].name!></a></li>
+        <!}!>
+        <li class="active"><!=paths[iLen-1].name!></li>
+    <!}!>
+</script>
+<script type="text/html" id="tpl_tags_fileNumber">
+     <!var num = 0;!>
+     <!for(var i = 0,iLen = node.length;i < iLen;i++){ !>
+        <!if(node[i].type === 'group'){!>
+           <!num++;!>
+        <!}!>
+     <!}!>
+     <span>文件夹个数 : <span><!=num!></span> 个 </span>
+     <span style="margin-left: 10px;">文件个数 : <span><!=iLen-num!></span> 个 </span>
+</script>
+<script type="text/html" id="tpl_tags_detailed_information">
+    <div class="detailed_content">
+        <!if(paths && paths.length){!>
+            <!var iLen = paths.length;!>
+            <p  class="detailed_information_name">名称 : <span><!=paths[iLen-1].name!></span></p>
+            <!if(!paths[iLen-1].path == ""){!>
+                <p class="detailed_information_path">路径 : <span><!=paths[iLen-1].path!></span></p>
+            <!}!>
+            <span class="detailed_information_pathPic">
+            <!if(paths[iLen-1].type === 'group'){!>
+                <!if(paths[iLen-1].tag && paths[iLen-1].tag.icon){!>
+                    <span class="icon-<!=paths[iLen-1].tag.icon!> iconfont tag-list-icon"></span>
+                <!}else{!>
+                    <span class="glyphicon glyphicon-folder-close tag-list-icon folder"></span>
+                <!}!>
+            <!}else{!>
+                <span class="glyphicon glyphicon-file tag-list-icon" style="color:#333333"></span>
+            <!}!>
+            </span>
+        <!}!>
+        <p>创建日期 : <span></span></p>
+        <p>修改日期 : <span></span></p>
+        <p>文件大小 : <span></span></p>
+        <p>可用性 : <span></span></p>
+    </div>
+</script>
+<script type="text/html" id="tpl_tag_explorer_item">
+    <!if(item.type === 'group'){!>
+        <li class="tag-list-item tag-folder" data-type="group" data-name="<!=item.name!>" data-id="<!=item._id!>" data-ismarked="<!=!!item.tag && !!item.tag.icon!>" data-tagid="<!=item.tagId!>" draggable="false">
+            <!try{!>
+                <!if(item.tag && item.tag.icon){!>
+                    <span class="icon-<!=item.tag.icon!> iconfont tag-list-icon"></span>
+                <!}else{!>
+                    <span class="glyphicon glyphicon-folder-close tag-list-icon folder"></span>
+                <!}!>
+            <!}catch(e){!>
+                <span class="glyphicon glyphicon-folder-close tag-list-icon folder"></span>
+            <!}!>
+            <!if(item.keywordName){!>
+                <span class="tag-list-item-name"><!=item.keywordName!></span>
+            <!}else{!>
+                <span class="tag-list-item-name"><!=item.name!></span>
+            <!}!>
+            <span class="tag-list-item-path"><!=item.path!></span>
+            <!if(item.type){!>
+                <span class="tag-list-item-type"><!=item.type!></span>
+            <!}!>
+        </li>
+    <!}else{!>
+        <li class="tag-list-item" draggable="false" data-id="<!=item._id!>" data-type="point">
+            <!if(!item.color){item.color='#333333';}!>
+            <!try{!>
+                <!if(item.tag && item.tag.icon){!>
+                    <span class="iconfont icon-<!=item.tag.icon!> tag-list-icon" style="color:<!=item.color!>"></span>
+                <!}else{!>
+                    <span class="glyphicon glyphicon-file tag-list-icon" style="color:<!=item.color!>"></span>
+                <!}!>
+            <!}catch(e){!>
+                <span class="glyphicon glyphicon-file tag-list-icon" style="color:<!=item.color!>"></span>
+            <!}!>
+            <!if(item.keywordName){!>
+                <span class="tag-list-item-name"><!=item.keywordName!></span>
+            <!}else{!>
+                <span class="tag-list-item-name"><!=item.name!></span>
+            <!}!>
+            <span><!=item.path!></span>
+            <!if(item.type){!>
+                <span><!=item.type!></span>
+            <!}!>
+        </li>
+    <!}!>
+</script>
+
+<script type="text/html" id="tpl_auto_identify_list">
+    <div style="padding:20px 10px 10px 20px">
+        <div>
+            <button style="padding: 3px 8px" class="btn btn-default" id="beginToIdentify">开始识别</button>
+            <button style="padding: 3px 8px" class="btn btn-default" title="返回" id="backToTags">返回</button>
+        </div>
+        <table style="width:100%;height: calc(100% - 50px);margin-top: 10px" id="auto-identify-table">
+            <tbody>
+            <!for(var i = 0,iLen = matchPoints.length;i < iLen;i++){!>
+                <tr draggable="true" class="identifyItem" data-id="<!=matchPoints[i]._id!>">
+                    <td>
+                        <span class="data-name"><!=matchPoints[i].name!></span>
+                    </td>
+                </tr>
+            <!}!>
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<!--@formatter:on-->

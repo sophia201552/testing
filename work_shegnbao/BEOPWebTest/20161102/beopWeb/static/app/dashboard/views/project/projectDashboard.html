@@ -1,0 +1,368 @@
+<style>
+    #btnProjectMap {
+        max-width: 65%;
+    }
+    #projName {
+        max-width: initial;
+    }
+    #dashboardName{
+        justify-content: flex-end;
+        -webkit-justify-content: flex-end;
+        margin-left: -10px;
+    }
+    #iconMap {
+        width: 16px;
+        background-position: 0;
+        background-image: url('static/app/dashboard/img/icon_default.png');
+    }
+    #ctn-dashboard {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
+    /*spring container*/
+    .springContainer {
+        position: relative;
+        float: left;
+        overflow: hidden;
+    }
+
+    .springContainer>.panel {
+        top:0!important;
+        left:0!important;
+        position: relative;
+        margin-bottom: 0;
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: white;
+    }
+
+    .springHead {
+        width: 100%;
+        height: 38px;
+        background-color: white !important;
+        color: #5fccff !important;
+        border: none;
+    }
+    .springHead .panel-title {
+        font-weight: normal !important;
+    }
+
+    .springContent {
+        width: 100%;
+        height: calc(100% - 38px);
+        height: -webkit-calc(100% - 38px);
+        padding: 0;
+        overflow: auto;
+    }
+
+    .springConfigMask {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(139, 174, 203, 0.80);
+        cursor: move;
+        z-index: 150;
+    }
+
+    .springConfigMask:hover {
+        opacity: 1;
+        transition: opacity 0.4s;
+    }
+
+    .springConfigBtn {
+        position: absolute !important;
+        font-size: 32px;
+        cursor: pointer;
+        top: 10px !important;
+
+        right: 50px !important;
+    }
+    .springConfigInstallBtn,.springBlindConfigInstallBtn {
+        position: absolute !important;
+        font-size: 32px;
+        cursor: pointer;
+        top: 10px !important;
+        right: 90px !important;
+    }
+    .springBlindConfigInstallBtn{
+        right: 60px !important;
+    }
+
+    .springConfigBtn.glyphicon-plus-sign {
+        position: absolute !important;
+        font-size: 80px;
+        cursor: pointer;
+        top: 100px !important;
+
+        right: calc(50% - 40px) !important;
+        right: -webkit-calc(50% - 40px) !important;
+    }
+
+    .springConfigBtn:hover {
+        color: #333;
+    }
+
+    .springConfigRemoveBtn {
+        position: absolute !important;
+        font-size: 32px;
+        cursor: pointer;
+        color: darkred;
+        top: 10px !important;
+        right: 10px !important;
+    }
+
+    .springConfigAddBtn {
+        position: absolute !important;
+        font-size: 30px;
+        cursor: pointer;
+        top: 10px !important;
+        right: 50px !important;
+    }
+
+    .springConfigTips {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -114px;
+        margin-top: -20px;
+        padding: 10px;
+        border: 1px dashed #ccc;
+        border-radius: 4px;
+    }
+
+    .springConfigTips:hover {
+        border-color: #66afe9;
+        cursor: pointer;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    }
+
+    .gray-scrollbar::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #F5F5F5;
+    }
+
+    .gray-scrollbar::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background-color: #F5F5F5;
+    }
+
+    .gray-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .springLinkBtnCtn > .springLinkBtn:first-of-type {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+    .springLinkBtn {
+        cursor: pointer;
+        font-size: 16px;
+        padding: 2px 7px;
+        background-color: rgba(83, 155, 218,0.7);
+        color: #fff;
+        z-index: 1;
+        float: left;
+        margin-left: 5px;
+        display: none;
+    }
+    /* Monitor模块 start*/
+    .springContent .divMonitor {
+    float: left;
+    display: inline-block;
+    width: 100%;
+    height: 140px;
+    position: relative;
+    color: #444;
+    border-bottom: 1px solid #666;
+    /*background:-webkit-gradient(radial, 184 -25, 161, 220 -257, 465, from(#fabd3e), to(#f4ae32));*/
+}
+.springContent .divMonitor.semiCol {
+    width: 50%;
+    height: 33%;
+    box-shadow: 0 0 1px 0  #ccc inset;
+    background-color: #f7f7f7;
+    padding: 0 15px;
+    border: none;
+}
+.sliderDiv .springContent{
+    overflow-y: hidden;
+}
+.springContent .divMonitor.semiCol:nth-child(even) {
+}
+.springContent .divMonitor .divIcon {
+    width: 28%;
+    height: 100%;
+    top: 0;
+    vertical-align: top;
+    font-size: 50px;
+    display: inline-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+.springContent .divMonitor.semiCol .divIcon {
+    width: auto;
+    height: 100%;
+    font-size: 2rem;
+}
+.springContent .divMonitor.semiCol .divIcon .glyphicon{
+    padding: 0.5rem;
+    border-radius: 10rem;
+}
+.springContent .divMonitor.semiCol .divIcon .glyphicon:before {
+    position: relative;
+    left: 1px;
+    top: -1px;
+}
+.springContent .divMonitor .divMonitorInfo {
+    height: 100%;
+    width: 70%;
+    vertical-align: text-bottom;
+    font-size: 22px;
+    padding: 0 5px;
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    align-content: center;
+    -webkit-align-content: center;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+    align-items: center;
+    -webkit-align-items: center;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
+.springContent .divMonitor.semiCol .divMonitorInfo {
+    left: 5%;
+    position: relative;
+}
+.springContent .divMonitor .divMonitorInfo>div {
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.springContent .divMonitor label {
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+.springContent .divMonitor .spName {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.springContent .divMonitor .spValue {
+    font-weight: bold;
+    font-size: 36px;
+}
+.springContent .divMonitor .spUnit {
+    margin-left: 20px;
+}
+.springContent .divMonitor .spType {
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.springContent .divMonitor.semiCol .spName {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.7;
+    font-size: 1.2rem;
+}
+.springContent .divMonitor.semiCol  .spValue {
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+.springContent .divMonitor.semiCol  .spUnit {
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin-left: 0;
+}
+.springContent .divMonitor.semiCol  .spType {
+    margin-left: 10px;
+    font-size: 16px;
+}
+/* Monitor模块 End*/
+/* appButton模块 start*/
+.springContent .divAppButton {
+    height: 50%;
+    padding-top:0.5rem /*1rem*/;
+    margin:0 auto;
+    cursor:pointer;
+    text-align: center;
+}
+.springContent .divAppButtonOne,.springContent .divAppButtonTwo,.springContent .divAppButtonThree {
+    height:100%;
+}
+.springContent .divAppButtonFour,.springContent .divAppButtonFive,.springContent .divAppButtonSix {
+    height:50%;
+}
+.springContent .divAppButtonOne {
+    margin-left:25%;
+}
+.springContent .divAppButtonOne .divIcon,.springContent .divAppButtonTwo .divIcon {
+    width:10rem;
+    height:10rem;
+    border-radius:10rem;
+    margin: 0 auto;
+    margin-top: calc(50% - 5rem);
+    font-size:6rem;
+    line-height: 10rem;
+}
+.springContent .divAppButtonThree .divIcon,.springContent .divAppButtonFour .divIcon,.springContent .divAppButtonFive .divIcon,.springContent .divAppButtonSix .divIcon {
+    width:5rem;
+    height:5rem;
+    border-radius:5rem;
+    margin: 0 auto;
+    margin-top: 65%;
+    font-size:3rem;
+    line-height:5rem;
+}
+.springContent .divAppButtonThree .divIconLittle,.springContent .divAppButtonFour .divIconLittle,.springContent .divAppButtonFive .divIconLittle,.springContent .divAppButtonSix .divIconLittle {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 5rem;
+    margin: 0 auto;
+    margin-top: 65%;
+    font-size: 2.5rem;
+    line-height: 4rem;
+}
+.springContent .divAppButtonFive:nth-child(4) {
+    margin-left:16%;
+}
+.springContent .divAppButtonFour .divIcon,.springContent .divAppButtonFive .divIcon,.springContent .divAppButtonSix .divIcon {
+    margin-top: 2%;
+}
+.springContent .divAppButtonFour:nth-child(3) .divIcon,.springContent .divAppButtonFour:nth-child(4) .divIcon,
+.springContent .divAppButtonFive:nth-child(4) .divIcon,.springContent .divAppButtonFive:nth-child(5) .divIcon,
+.springContent .divAppButtonSix:nth-child(4) .divIcon,.springContent .divAppButtonSix:nth-child(5) .divIcon,.springContent .divAppButtonSix:nth-child(6) .divIcon {
+    margin-top: 5%;
+}
+.springContent .divAppButtonOne .divMonitorInfo,.springContent .divAppButtonTwo .divMonitorInfo {
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+.springContent .divAppButtonThree .divMonitorInfo,.springContent .divAppButtonFour .divMonitorInfo,.springContent .divAppButtonFive .divMonitorInfo,.springContent .divAppButtonSix .divMonitorInfo {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+.springContent .divAppButtonThree .divMonitorInfoLit,.springContent .divAppButtonFour .divMonitorInfoLit,.springContent .divAppButtonFive .divMonitorInfoLit,.springContent .divAppButtonSix .divMonitorInfoLit{
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+/* appButton模块 End*/
+
+</style>
+<div id="ctn-dashboard"></div>

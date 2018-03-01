@@ -1,0 +1,1557 @@
+﻿<style type="text/css">
+    @keyframes AnimationWarning {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0.3;
+        }
+    }
+
+    @-webkit-keyframes AnimationWarning {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0.1;
+        }
+    }
+
+    .div-pane-icon {
+        height: 100%;
+        width: 100%;
+        z-index: 99;
+        overflow-y: auto;
+        /*padding: 15px;*/
+    }
+
+    .div-pane-icon::-webkit-scrollbar-track {
+        border-radius: 2px;
+        background-color: #ccc;
+    }
+
+    .div-pane-icon::-webkit-scrollbar {
+        height: 3px;
+        width: 5px;
+        background-color: #fff;
+    }
+
+    .div-pane-icon::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        background-color: #888;
+    }
+
+    .div-nav-row {
+        /*width: 150px;*/
+        /*border-bottom: 1px inset #ccc;*/
+        cursor: pointer;
+        padding: 3px 10px;
+        /*text-align: center;*/
+    }
+
+    /*.div-nav-row:hover {
+        border-bottom: 1px inset #aaa;
+    }*/
+    .div-nav-row-hide {
+        line-height: 40px;
+        border-bottom: 0px;
+    }
+
+    .div-row-icon-badge {
+        min-width: 40px;
+        margin-right: 8px;
+        font-weight: 500;
+    }
+
+    .div-row-icon {
+        margin: 2px 0 5px 0;
+        padding: 0 1px 0 1px;
+        top: 3px;
+    }
+
+    #obContainer {
+        width: 100%;
+        height: 100%;
+    }
+
+    .element {
+        float: left;
+        height: 100%;
+    }
+
+    .animation-warning {
+        animation: AnimationWarning 0.5s linear 1s infinite alternate;
+        -webkit-animation: AnimationWarning 0.5s linear 1s infinite alternate;
+    }
+
+    .div-pane-log {
+        border-bottom: 1px inset #ccc;
+        margin-top: 4px;
+        padding-bottom: 2px;
+    }
+
+    .span-hover-pointer {
+        cursor: pointer;
+    }
+
+    /*@media screen and (min-height: 769px) {
+        #divPaneNotice .panel-body {
+            max-height: 870px;
+        }
+    }*/
+    /*.diagnosisLogCt{
+        width: 16.7%;
+    }*/
+
+    @media screen and (max-height: 768px) {
+        #divPaneNotice .panel-body {
+            max-height: 660px;
+        }
+
+        /*.diagnosisLogCt{
+            width: 19%;
+            font-size: 13px;
+        }
+        .panel-body{
+            padding: 3px;
+        }*/
+    }
+
+    #divPaneNotice .panel-body:last-child {
+        border-bottom-width: 0;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    #divPaneNotice.top {
+        box-shadow: 0 0 2px 1px #67aace;
+    }
+
+    .span-floor-number {
+        display: none;
+        font-size: 30px;
+        padding: 20px 30px 10px 30px;
+    }
+
+    #divPaneNotice .div-pane-log > div > span {
+        margin-right: 2px;
+        opacity: 0.8;
+    }
+
+    #divPaneNotice p {
+        margin: 4px 0 0 2px;
+    }
+
+    #divPaneNotice p .variable {
+        font-weight: bolder;
+        text-decoration: underline;
+        color: #d9534f;
+    }
+
+    #divPaneNotice .span-btn {
+        float: right;
+        margin-right: 6px !important;
+        margin-top: 4px;
+        color: #666;
+    }
+
+    .grow:hover {
+        /*background-color: #ccc;   去除圆圈背景颜色*/
+    }
+
+    .indexContent > div {
+        padding: 5px;
+    }
+
+    .svgIcon {
+        width: 20px;
+        height: 20px;
+        position: relative;
+    }
+
+    .svgIcon .badge {
+        background-color: #428bca !important;
+        position: absolute;
+        right: -12px;
+        top: -12px;
+    }
+
+    .nav-list li:first-child {
+        cursor: pointer;
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+        position: fixed;
+        top: 100px;
+        right: 19px;
+        width: calc(25% - 34px);
+        /*background:rgba(0,0,0,0.2);*/
+    }
+
+    .nav-list li:first-child input {
+        margin-left: calc(30% - 19px);
+    }
+
+    .nav-list .rows {
+        margin-top: 53px;
+    }
+
+    .panel-heading-btn {
+        margin-right: 15px;
+        padding-right: 1px;
+    }
+
+    #floorCt .glyphicon, #divPaneNotice .glyphicon {
+        border-radius: 15px;
+    }
+
+    .glyphicon-pushpin {
+        margin-right: 5px;
+        padding: 3px;
+        margin-top: -2px;
+    }
+
+    .glyphicon-pushpin.notTop {
+        transform: scale(0.9);
+    }
+
+    .glyphicon-pushpin.top {
+        transform: rotateZ(-45deg) scale(0.88);
+    }
+
+    /*#btnFloorsSP:hover {
+      transform:rotateZ(-45deg) scale(1);  
+    }*/
+    .floorTop {
+        z-index: 6;
+        position: absolute;
+        margin-top: 8px;
+        padding: 0;
+        margin-left: 6px;
+        max-height: 100%;
+    }
+
+    .floorTop .panel {
+        border-radius: 5px;
+        color: #eee;
+    }
+
+    .floorTop .panelViewHide {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    /*.floorTop .div-row-icon-badge {
+        background-color: rgba(19, 19, 19, 0.7);
+    }*/
+
+    #floorCt .panel-body {
+        padding: 0;
+    }
+
+    /*#btnFloorsSP.btn{
+        padding: 0;
+        line-height: 1;
+        opacity:1;
+    }*/
+    #btnChangeModal {
+        margin-right: -15px;
+        display: none;
+    }
+
+    #showSurveyChart {
+        margin-right: 10px;
+        display: none;
+    }
+
+    .col-sm-1 {
+        transition: width 0.3s;
+    }
+
+    .col-sm-2 {
+        transition: width 0.3s;
+    }
+
+    .col-sm-3 {
+        transition: width 0.3s;
+    }
+
+    .bigGap {
+        margin-right: 28px;
+    }
+
+    /* ERROR TIP STYLE */
+    #errTip {
+        position: absolute;
+        max-height: 281px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        opacity: 0;
+        background-color: #fff;
+        padding: 5px;
+        transition: opacity .15s linear;
+        box-shadow: 0 0 5px #333;
+    }
+
+    #errTip > .div-pane-log {
+        margin-top: 8px;
+        padding-bottom: 0;
+    }
+
+    #errTip > .div-pane-log:first-child {
+        margin-top: 5px;
+    }
+
+    #errTip > .div-pane-log:last-child {
+        border-bottom: none;
+    }
+
+    #errTip > .div-pane-log span {
+        margin: 0 5px;
+    }
+
+    #errTip > .div-pane-log > p {
+        padding: 8px;
+        margin-bottom: 0;
+    }
+
+    #errTip > .div-pane-log > .pFaultName {
+        padding: 2px 8px 0 8px !important;
+        margin-bottom: -6px;
+    }
+
+    /*tabel模板*/
+    #panelIconNew tr {
+        height: 2.2%;
+        vertical-align: middle;
+    }
+
+    #panelIconNew td {
+        text-align: center;
+    }
+
+    /*#panelIconNew tr:hover td:not(:first) {
+        box-shadow:
+            0 -5px 5px rgba(255,255,255,0.5),
+            1px 0 5px rgba(255,255,255,0),
+            0 5px 5px rgba(255,255,255,0.5),
+            -1px 0 5px rgba(255,255,255,0);
+        color:#000;
+    }*/
+    /*左侧概览背景色*/
+    .defaultWhite {
+        background-color: #fff;
+    }
+
+    .tdShadow {
+        box-shadow: 0 -5px 5px rgba(255, 255, 255, 0.5), 1px 0 5px rgba(255, 255, 255, 0), 0 5px 5px rgba(255, 255, 255, 0.5), -1px 0 5px rgba(255, 255, 255, 0);
+        color: #000;
+    }
+
+    .defaultBlack {
+        height: 100%;
+        margin-bottom: 0px;
+        background-color: rgba(0, 0, 0, 0.45098);
+    }
+
+    #panelIconNew {
+        width: 100%;
+        height: 100%;
+        display: none;
+        background: #fff;
+        overflow: auto;
+    }
+
+    #panelIconNew table {
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+        border: 1px solid #fff;
+        border-collapse: collapse;
+        position: absolute;
+        z-index: 5;
+    }
+
+    .tabelHead {
+        border-bottom: 1px solid #fff;
+    }
+
+    .tabelHead td {
+        width: 5%;
+        border-bottom: 2px solid #fff;
+        color: #636363;
+        background: #d0d0d0;
+        border-right: 1px solid #fff;
+    }
+
+    .tabelHead td:first-child {
+        width: 7%;
+        border-bottom: 2px solid #fff;
+        background: #fff;
+    }
+
+    #panelIconNew td[class*=_01], #panelIconNew td[class*=_17] {
+        border-left: 2px solid #fff !important;
+    }
+
+    #panelIconNew td[class*=_05], #panelIconNew td[class*=_10], #panelIconNew td[class*=_14] {
+        border-left: 2px solid #fff !important;
+        border-right: 2px solid #fff !important;
+    }
+
+    #panelIconNew table .tdData {
+        width: 5%;
+        border: 1px solid #d0d0d0;
+        /*color: #839198;*/
+        color: #fff;
+    }
+
+    .tdFirst {
+        width: 7%;
+        border-right: 2px solid #fff;
+        border-bottom: 1px solid #fff;
+        color: #636363;
+        background: #d0d0d0;
+        cursor: pointer;
+    }
+
+    .tdFirstHover {
+        background: #ff7800;
+        color: #fff;
+    }
+
+    #errTipNew {
+        border: 1px solid #e1e1e1;
+        border-radius: 5px;
+        width: 200px;
+        color: #333;
+        position: absolute;
+    }
+
+    .errTipHeader {
+        height: 40px;
+        line-height: 40px;
+        font-size: 20px;
+        background: #F5F5F5;
+        border-bottom: 1px solid #e1e1e1;
+        padding-left: 20px;
+    }
+
+    .vavBox, .fptuBox, .rxcBox {
+        font-size: 16px;
+        padding: 20px 0;
+        background: #fff;
+    }
+
+    .fptuBox, .rxcBox {
+        display: none;
+    }
+
+    .vavBox div, .fptuBox div, .rxcBox div {
+        padding-left: 20px;
+        height: 24px;
+        line-height: 24px;
+    }
+
+    #reuseDemand {
+        display: none;
+    }
+
+    #diagnosisLogCt {
+        z-index: 3;
+    }
+
+    #hideOrShow {
+        margin-top: -2px;
+        margin-right: -5px;
+        color: #eee;
+    }
+
+    #floorCt .showCont {
+        display: none;
+        color: #eee;
+        text-align: center;
+    }
+
+    #floorCt .showCont .showBtn {
+        font-size: 40px;
+        display: block;
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+
+    #spinnerLoadingNotice {
+        margin-top: -10px;
+        width: 50px;
+        height: 40px;
+        text-align: center;
+        font-size: 10px;
+    }
+
+    #spinnerLoadingNotice > div {
+        background-color: rgb(217, 104, 49);
+        height: 100%;
+        width: 6px;
+        display: inline-block;
+        animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    }
+
+    #spinnerLoadingNotice .rect2 {
+        animation-delay: -1.1s;
+    }
+
+    #spinnerLoadingNotice .rect3 {
+        animation-delay: -1.0s;
+    }
+
+    #spinnerLoadingNotice .rect4 {
+        animation-delay: -0.9s;
+    }
+
+    #spinnerLoadingNotice .rect5 {
+        animation-delay: -0.8s;
+    }
+
+    @keyframes sk-stretchdelay {
+        0%, 40%, 100% {
+            transform: scaleY(0.4);
+        }
+
+        20% {
+            transform: scaleY(1.0);
+        }
+    }
+
+    #divPaneNoticeItem {
+        width: 100%;
+        height: calc(100% - 40px);
+        overflow-y: auto;
+        padding: 10px;
+        border-top: 1px solid rgba(50, 50, 50, 0.6);
+    }
+
+    .ckbPane {
+        height: 34px;
+        border-radius: 4px;
+        box-shadow: 0 0 3px rgba(150, 150, 150, 1);
+        float: left;
+        margin: 3px 10px 0 10px;
+        padding: 5px 40px 0 20px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .ckbPane > label {
+        margin-top: 2px;
+        cursor: pointer;
+    }
+
+    .checkbox {
+        top: -4px;
+        right: 12px;
+        width: 20px;
+        height: 20px;
+        background: #ddd;
+        border-radius: 100%;
+        position: absolute;
+        -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .checkbox label {
+        width: 14px;
+        height: 14px;
+        border-radius: 10px;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        transition: all .5s ease;
+        cursor: pointer;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        z-index: 1;
+        background: #777;
+        -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.5);
+        box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.5);
+
+        min-height: 0;
+        min-width: 0;
+        padding: 0;
+    }
+
+    .checkbox input[type=checkbox] {
+        display: none;
+    }
+
+    .checkbox input[type=checkbox]:checked + label[for=abNomalP] {
+        background: rgb(240, 173, 78);
+    }
+
+    .checkbox input[type=checkbox]:checked + label[for=faultP] {
+        background: rgb(217, 83, 79);
+    }
+
+    .subBuildingBtn {
+        background: #a7a8a9;
+        cursor: pointer;
+        margin: 4px 5px 3px;
+        padding: 2px 10px;
+        border-radius: 10px;
+        min-width: 40px;
+        font-weight: 500;
+        color: #fff;
+        font-size: 12px;
+    }
+
+    .subBuildingBtn.selected {
+        background-color: rgb(45, 139, 202);
+    }
+
+    .subBuildingList {
+        display: none;
+    }
+
+    .subBuildingItem {
+        font-size: 12px;
+        padding: 3px 6px;
+        border-radius: 4px;
+    }
+
+    .subBuildingItem.selected {
+        color: #48A2F1;
+        font-weight: 600;
+    }
+
+    .faultCount {
+        background-color: rgb(234, 193, 36);
+        font-weight: 500;
+        padding: 3px 5px;
+    }
+
+    .subBuilding .faultCount {
+        transform: scale(0.9);
+        background: rgba(234, 193, 36, .6);
+        margin-top: -2px;
+        font-weight: 400;
+    }
+
+    #wf-add-person .modal-dialog {
+        margin-top: 60px;
+        width: 800px;
+    }
+
+    #wf-add-person table td, #wf-add-person table th {
+        padding: 5px;
+        color: #333;
+    }
+
+    .wf-table-head-fault {
+        text-align: right;
+    }
+
+    #wf-add-person .wf-detail-table tr td, #wf-add-person .wf-detail-table tr th {
+        border: none !important;
+    }
+
+    #wf-add-person input, #wf-add-person select {
+        width: 200px;
+    }
+
+    #wf-add-person {
+    }
+
+    #wf-add-person {
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+    }
+
+    #wf-add-person .modal-dialog {
+        margin: 60px auto;
+    }
+
+    .wf-search-box-select li {
+        width: auto;
+        margin-right: 25px;
+        cursor: pointer;
+        padding: 5px 0;
+        vertical-align: middle;
+    }
+
+    .wf-search-box-select .active {
+        color: #3071a9;
+        border-bottom: 1px solid #3071a9;
+    }
+
+    .wf-search-result-container {
+        min-height: 430px;
+        padding: 10px;
+        padding-bottom: 0;
+    }
+
+    .wf-search-all {
+
+    }
+
+    .wf-search-all ul {
+        border: none;
+    }
+
+    .wf-search-all ul .active {
+        color: #1543fa;
+    }
+
+    .wf-search-all li {
+        display: inline-block;
+        padding: 0 5px;
+        text-transform: capitalize;
+        font-size: 12px;
+        cursor: pointer;
+        transition: .2s all linear 0s;
+    }
+
+    .wf-search-result-title ul li:hover {
+        color: #fff;
+        background: #000;
+        border-radius: 5px;
+    }
+
+    .wf-search-result {
+        position: relative;
+        padding: 10px 38px;
+        height: 355px;
+        border: 1px solid #cccccc;
+        -webkit-user-select: none;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .wf-search-result > div {
+        margin: 5px 0;
+    }
+
+    .wf-search-result .wf-member-selected {
+        background: #F1EDED;
+    }
+
+    .wf-search-result .wf-member {
+        border-radius: 5px;
+        transition: .3s background 0s linear;
+        border: 1px solid #ccd;
+        position: relative;
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        padding: 0;
+        margin: 10px 15px;
+        float: left;
+    }
+
+    .wf-search-result .wf-member:hover {
+        background: #F1EDED;
+    }
+
+    .wf-search-result-title {
+        margin: 5px 0;
+    }
+
+    .wf-search-result-title .nav-tabs li.active {
+        background: #000000;
+        color: #fff;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    .wf-member .wf-team-avatar-name {
+        width: 100%;
+        display: block;
+        background: rgba(0, 0, 0, 0.3);
+        color: #fff;
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .wf-member-avatar {
+        text-align: center;
+        /*padding: 5px ;*/
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .wf-member-avatar .avatar-icon {
+        width: 100%;
+        height: 100%;
+        transition: .3s opacity 0s linear;
+        border-radius: 5px;
+    }
+
+    .wf-member .wf-member-content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        text-align: center;
+        border-radius: 5px;
+        bottom: 0;
+    }
+
+    .wf-member-selected .wf-member-check {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        z-index: 11;
+        text-align: right;
+        font-size: 12px;
+        border-color: #A1CF64;
+        color: #fff;
+        display: none;
+    }
+
+    #calendar-time {
+        width: 241px;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .wf-member-selected .wf-member-check {
+        display: block;
+    }
+
+    .wf-member-selected .wf-member-check:after {
+        position: absolute;
+        content: "";
+        right: 0;
+        top: 0;
+        z-index: -1;
+        width: 0;
+        height: 0;
+        border-top: 0 solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 25px solid transparent;
+        border-left: 0 solid transparent;
+        border-right-color: inherit;
+        -webkit-transition: border-color .2s ease;
+        -moz-transition: border-color .2s ease;
+        transition: border-color .2s ease;
+    }
+
+    .wf-check-result-container {
+        padding: 5px 10px;
+        min-height: 60px;
+    }
+
+    .wf-check-result-container > span {
+        display: inline-block;
+        height: 35px;
+        width: auto;
+        line-height: 35px;
+        text-align: center;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+    .wf-check-result {
+        list-style: none;
+        padding: 5px 0 0 80px;
+    }
+
+    #labelName {
+        width: 200px !important;
+    }
+
+    .wf-check-result li {
+        width: 76px;
+        height: 25px;
+        max-width: 80px;
+        background: #A1CF64;
+        padding: 5px;
+        border-radius: 13%;
+        font-size: 12px;
+        float: left;
+        text-align: center;
+        text-transform: none;
+        margin: 5px;
+        -webkit-user-select: none;
+        cursor: default;
+        transition: .3s opacity 0s linear;
+
+    }
+
+    .wf-check-result li:hover {
+        opacity: .8;
+    }
+
+    .wf-check-result li span {
+        display: inline-block;
+        width: 50px;
+    }
+
+    .wf-check-result li .glyphicon {
+        vertical-align: top;
+        line-height: 16px;
+        cursor: pointer;
+        color: #fff;
+        transform: scale(.87);
+    }
+
+    .wf-search-by-name ul .active {
+        color: #fff;
+        background: #000;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    .wf-search-by-name ul li:hover {
+        color: #fff;
+        background: #000;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        transform: scale(1.1, 1.1);
+    }
+
+    .wf-search-by-name ul {
+        border: none;
+    }
+
+    .wf-search-by-name ul li {
+        display: inline-block;
+        margin: 0 5px;
+        text-transform: capitalize;
+        font-size: 12px;
+        cursor: pointer;
+        padding: 0 5px;
+        transition: .1s all 0s linear;
+    }
+
+    .wf-detail-userInfo {
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin: 3px;
+        border-radius: 5px;
+        overflow: hidden;
+
+    }
+
+    .wf-person-pic {
+        width: 50px;
+        height: 50px;
+        /*border-radius: 50px;*/
+    }
+
+    .wf-detail-userName {
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        font-size: 13px;
+        left: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        color: #fff;
+    }
+
+    .wf-add-user {
+        font-size: 18px;
+        cursor: pointer;
+        color: #aaa;
+    }
+
+    .wf-add-user:hover {
+        color: #666;
+    }
+
+    .wf-manager-people .people {
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin: 0 5px 5px 5px;
+        position: relative;
+    }
+
+    .wf-manager-people .wf-people-add {
+        border-radius: 50%;
+        font-size: 25px;
+        padding: 5px;
+        margin-left: 5px;
+        position: relative;
+        left: 0;
+        color: #aaa;
+    }
+
+    .wf-manager-people .wf-people-add {
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    .wf-manager-people .wf-people-add:hover {
+        color: #666;
+    }
+
+    .wf-manager-people .people img {
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    .wf-manager-people .people-name {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        color: #fff;
+        font-size: 13px;
+    }
+
+    #wf-add-person textarea {
+        resize: none;
+        width: 605px;
+    }
+
+</style>
+
+<!-- new fault work order window begin-->
+<article id="fault_order_win" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" i18n="workflow.main.NEW_FAULT_ORDER"></h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button id="btn_goto_WorkFlow" type="button" class="btn btn-success" data-dismiss="modal"
+                        i18n="common.CONFIRM"></button>
+            </div>
+        </div>
+    </div>
+</article>
+<!-- new fault work order window edc-->
+
+<div class="floorTop" id="floorCt">
+    <!--col-sm-1-->
+    <div class="showCont">
+        <span class="glyphicon glyphicon-plus-sign showBtn"></span>
+        <!--<span i18n="diagnosis.OVERVIEW" class="showText"></span>-->
+    </div>
+    <div class="panel panel-default" style="height: 100%;margin-bottom: 0;width:155px;">
+        <div class="panel-heading" style="height: 35px;cursor:pointer;">
+            <span i18n="diagnosis.OVERVIEW"></span>
+            <!--<span id="btnFloorsSP" class="glyphicon glyphicon-pushpin btn disabled panel-heading-btn grow top" title="Sticky Post"></span>-->
+            <!--<span id="hideOrShow" class="glyphicon glyphicon-minus panel-heading-btn grow top" i18n="title=diagnosis.diagnosticLog.HIDE_SHOW"></span>-->
+            <span id="btnChangeModal" class="glyphicon glyphicon-zoom-in panel-heading-btn grow top"
+                  title="Change Modal"></span>
+            <!--<span id="showSurveyChart" class="glyphicon glyphicon-eye-open panel-heading-btn grow top" title="Show Overview Chart"></span>-->
+        </div>
+        <div class="panel-body gray-scrollbar panelBodyColor" id=""
+             style="overflow: auto;max-height: calc(100% - 100px);width: 100%;top:99px;left:7px;position: fixed;width: 153px;">
+            <div class="div-pane-icon" id="paneIcon"></div>
+        </div>
+    </div>
+</div>
+
+<div class="indexContent">
+    <div class="col-sm-12" id="divCanvas" style="height: 100%; transition: width .5s;">
+        <div id="obContainer">
+            <div id="divMain" style="width: 100%; height: 100%;">
+                <div class="div-canvas-ctn" id="divObserverCanvas"
+                     style="padding: 0; margin: 0 auto; height: 100%; width: 100%;">
+                    <canvas class="canvas-ctn" style="width: 100%; height: 100%;">浏览器不支持</canvas>
+                </div>
+                <div id="divObserverTools" style="height: 0"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="position: fixed; right: 0; top: 65px; bottom: 0; padding: 5px; width: 400px; height: 30px; z-index: 4;">
+    <span id="btnStickyPost" class="glyphicon glyphicon-pushpin panel-heading-btn grow top"
+          i18n="title=diagnosis.diagnosticLog.STICKY_POST" style="display: none;"></span>
+    <span id="btnNoticeConfig" class="glyphicon glyphicon-cog panel-heading-btn grow"
+          i18n="title=diagnosis.config.TITLE"></span>
+    <span id="btnNoticeHistory" class="glyphicon glyphicon-list-alt panel-heading-btn grow"
+          i18n="title=diagnosis.diagnosticLog.HISTORY"></span>
+    <span id="btnWarningLog" class="panel-heading-btn grow svgIcon" style="display: none;"
+          i18n="title=diagnosis.diagnosticLog.HIDE_SHOW_URGENT">
+        <!--title="View urgent log"-->
+        <svg enable-background="new 0 0 23 23" viewBox="0 0 23 23" x="0px" y="0px">
+            <g>
+                <g>
+                    <path fill="#F0AD4E"
+                          d="M 11.5 0 C 5.148 0 0 5.149 0 11.5 C 0 17.852 5.148 23 11.5 23 S 23 17.852 23 11.5 C 23 5.149 17.852 0 11.5 0 Z M 13 18 h -3 v -3 h 3 V 18 Z M 13 13 h -3 L 9 5 h 5 L 13 13 Z"/>
+                </g>
+            </g>
+        </svg>
+        <span class="badge"></span>
+    </span>
+
+    <div id="spinnerLoadingNotice" class="panel-heading-btn spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</div>
+
+<div class="col-sm-3" id="diagnosisLogCt"
+     style="position: fixed; right: 0; top: 54px; bottom: 0; padding: 5px; height: calc(100% - 56px); display: none;">
+    <div class="panel panel-default top" id="divPaneNotice" style="height: 100%;">
+        <div class="panel-heading" style="height: 41px;">
+            <span id="logTitle" i18n="diagnosis.DIAGNOSIS_LOG"></span>
+        </div>
+        <div class="panel-body" style="height:calc(100% - 41px);overflow-y:hidden; padding: 0;">
+            <div style="width: 100%; height: 40px;">
+                <div class="ckbPane">
+                    <label i18n="diagnosis.config.LEVEL_SET.CRITICAL" for="abNomalP"></label>
+                    <div class="checkbox">
+                        <input type="checkbox" id="abNomalP" checked/>
+                        <label for="abNomalP"></label>
+                    </div>
+                </div>
+                <div class="ckbPane">
+                    <label i18n="diagnosis.config.LEVEL_SET.URGENT" for="faultP"></label>
+                    <div class="checkbox">
+                        <input type="checkbox" id="faultP" checked/>
+                        <label for="faultP"></label>
+                    </div>
+                </div>
+            </div>
+            <div id="divPaneNoticeItem" class="gray-scrollbar">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detailScreenModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" id="detailScreenContent">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">Dialog</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <canvas id="canvasDetail" class="col-md-12" style="width: 100%; margin: 0; padding: 0;"
+                        i18n="core.BROWSER_NOT_SUPPORT">浏览器不支持
+                </canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="dlgChangeRule" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" style="padding-top: 100px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel" i18n="diagnosis.config.TITLE">Change rule</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" i18n="diagnosis.config.CHANGE_LEVEL"
+                               style="min-width: 100px;"></label>
+                        <div class="col-sm-6">
+                            <select class="form-control col-sm-6" id="selectAlarmLevel">
+                                <option i18n="diagnosis.config.LEVEL_SET.CRITICAL" setval="1"></option>
+                                <option i18n="diagnosis.config.LEVEL_SET.URGENT" setval="2"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" i18n="diagnosis.config.CHANGE_ALARM_TIME"
+                               style="min-width: 100px;"></label>
+                        <div class="col-sm-6">
+                            <select class="form-control col-sm-6" id="selectAlarmTime">
+                                <option i18n="diagnosis.config.defaultPeriod.REAL_TIME" setval="0"></option>
+                                <option i18n="diagnosis.config.defaultPeriod.DELAY_1H" setval="1"></option>
+                                <option i18n="diagnosis.config.defaultPeriod.DELAY_12H" setval="2"></option>
+                                <option i18n="diagnosis.config.defaultPeriod.DELAY_24H" setval="3"></option>
+                                <option i18n="diagnosis.config.defaultPeriod.DELAY_7D" setval="4"></option>
+                                <option i18n="diagnosis.config.defaultPeriod.DELAY_1M" setval="5"></option>
+                                <option i18n="diagnosis.config.defaultPeriod.DELAY_FOREVER" setval="6"></option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnChangeAlarm" i18n="diagnosis.config.CONFIRM">Save
+                    changes
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" i18n="diagnosis.config.CANCEL">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="tpl_wf_member">
+    <!for(var m=0; m < members.length; m++){!>
+    <!var member = members[m];!>
+    <!if(addUserMap[''+member.id]){!>
+    <div class="wf-member wf-member-selected"
+         data-user-id="<!=member.id!>"
+         title="<!=member.userfullname +'\n'+ (member.useremail && member.useremail!='undefined' ? member.useremail : '')!>">
+        <div class="wf-member-avatar">
+            <img class="avatar-icon" src="<!=member.userpic!>">
+        </div>
+        <div class="wf-member-content">
+            <p class=" wf-team-avatar-name ellipsis"><!=member.userfullname!></p>
+        </div>
+        <div class="wf-member-check">
+            <span class="glyphicon glyphicon-ok"></span>
+        </div>
+    </div>
+    <!}else{!>
+    <div class="wf-member" data-user-id="<!=member.id!>"
+         title="<!=member.userfullname +'\n'+ (member.useremail && member.useremail!='undefined' ? member.useremail : '')!>">
+        <div class="wf-member-avatar">
+            <img class="avatar-icon" src="<!=member.userpic!>">
+        </div>
+        <div class="wf-member-content">
+            <p class=" wf-team-avatar-name ellipsis"><!=member.userfullname!></p>
+        </div>
+        <div class="wf-member-check">
+            <span class="glyphicon glyphicon-ok"></span>
+        </div>
+    </div>
+    <!}!>
+    <!}!>
+</script>
+<!--选择人员模板开始-->
+<!--选择人员-task-edit 选择人员后显示出来的人物模板-->
+<script type="text/html" id="tpl_wf_added_member_personal">
+    <!for(var m=0; m < members.length; m++){!>
+    <!var member = members[m];!>
+    <dl class="pr wf-detail-userInfo">
+        <dt class="wf-detail-userPic"><img src="<!=member.userpic!>" class="wf-person-pic"></dt>
+        <dd class="pa wf-detail-userName ellipsis"
+            title="<!=member.userfullname +'\n' +(member.useremail && member.useremail!='undefined'  ? member.useremail : '')!>">
+            <!=member.userfullname!>
+        </dd>
+        <input type="hidden" name="<!=userListName!>[]" class="<!=userListName!>-person" value="<!=member.id!>">
+    </dl>
+    <!}!>
+</script>
+<!--选择人员状态栏模板-->
+<script type="text/html" id="tpl_wf_dialog_added_member">
+    <!for(var m=0; m < members.length; m++){!>
+    <!var member = members[m];!>
+    <li>
+        <span class="ellipsis"
+              title="<!=member.userfullname +'\n' + (member.useremail && member.useremail!='undefined' ? member.useremail : '')!>"><!=member.userfullname!></span>
+        <i class="glyphicon glyphicon-remove"
+           i18n="workflow.main.DELETE" data-user-id="<!=member.id!>"></i>
+    </li>
+    <!}!>
+</script>
+<!--选择人员模板结束-->
+<!--菜单标签列表文字开始-->
+<script type="text/html" id="tpl_wf_tags_list_text">
+    <!for(var m=0; m < labels.length; m++){!>
+    <!var label = labels[m];!>
+    <li class="wf-label-li" id="trans-<!=label.id!>" userid="<!=label.userId!>" labelId="<!=label.id!>"
+        labeltype="<!=label.type!>" data-topic="wf-task-list" data-param="tag;<!=label.id!>">
+        <span class="glyphicon glyphicon-tag"></span>
+        <span><!=label.name!></span>
+    </li>
+    <!}!>
+</script>
+<!--菜单标签列表文字结束-->
+<!--菜单标签列表文本框开始-->
+<script type="text/html" id="tpl_wf_tags_list_input">
+    <!for(var m=0; m < labels.length; m++){!>
+    <!var label = labels[m];!>
+    <li class="wf-label-li" id="trans-<!=label.id!>" userid="<!=label.userId!>" labelid="<!=label.id!>"
+        labeltype="<!=label.type!>">
+        <input type="text" class="wf-label-name form-control w200" name="labelItemName" maxlength="12"
+               labelid="<!=label.id!>" labeltype="<!=label.type!>" value="<!=label.name!>"
+               i18n="title=workflow.task.ENTER_TAG_NAME_INFO;placeholder=workflow.task.ENTER_TAG_NAME_INFO"/>
+        <span class="glyphicon glyphicon-remove wf-label-delete"></span>
+    </li>
+    <!}!>
+</script>
+<!--菜单标签列表文本框结束-->
+<!--菜单标签列表增加空文本框开始-->
+<script type="text/html" id="tpl_wf_tags_list_input_empty">
+    <li class="wf-label-li" labeltype="new">
+        <input type="text" class="wf-label-name form-control w200" name="labelItemName"
+               i18n="title=workflow.task.EDIT_TAG_NAME_INFO;placeholder=workflow.task.EDIT_TAG_NAME_INFO"
+               maxlength="12" value=""/>
+        <span class="glyphicon glyphicon-remove wf-label-delete"></span>
+    </li>
+</script>
+<!--菜单标签列表增加空文本框结束-->
+
+<!--搜索添加人物结构开始-->
+<script type="text/html" id="tpl_add_person">
+    <div class="form-group" style="margin-bottom: 0">
+        <input type="text" class="form-control" id="input-search-name"
+               i18n="placeholder=workflow.memberSelected.INPUT_INFO" style="width: 100%;">
+    </div>
+    <div class="wf-search-box">
+        <div class="wf-search-content">
+            <section class="wf-search-result-container wf-search-all">
+                <div class="wf-search-result-title">
+                    <ul class="nav nav-tabs">
+                        <li i18n="workflow.memberSelected.ALL"></li>
+                        <li>a</li>
+                        <li>b</li>
+                        <li>c</li>
+                        <li>d</li>
+                        <li>e</li>
+                        <li>f</li>
+                        <li>g</li>
+                        <li>h</li>
+                        <li>i</li>
+                        <li>j</li>
+                        <li>k</li>
+                        <li>l</li>
+                        <li>m</li>
+                        <li>n</li>
+                        <li>o</li>
+                        <li>p</li>
+                        <li>q</li>
+                        <li>r</li>
+                        <li>s</li>
+                        <li>t</li>
+                        <li>u</li>
+                        <li>v</li>
+                        <li>w</li>
+                        <li>x</li>
+                        <li>y</li>
+                        <li>z</li>
+                    </ul>
+                </div>
+                <div class="wf-search-result scrollbar"></div>
+                <div class="wf-check-result-container clearfix">
+                                        <span class="fl"><span
+                                                i18n="workflow.memberSelected.MEMBER_SELECTED"></span>:</span>
+                    <ul class="clearfix wf-check-result">
+                    </ul>
+                    <button type="button" id="wf-member-comfirm-btn" class="btn btn-success fr"
+                            i18n="common.CONFIRM"></button>
+                    <button type="button" id="wf-member-cancel-btn" class="btn btn-default fr mr5"
+                            i18n="common.CANCEL"></button>
+                </div>
+            </section>
+        </div>
+    </div>
+</script>
+<!--搜索添加人物结束-->
+<!--新建故障添加工单开始-->
+<script type="text/html" id="tpl_fault_new_order">
+    <form id="wf-detail-form" action="javascript:void(0);" method="post" class="task-new">
+        <table class="mb20 wf-table wf-detail-table">
+            <tbody>
+            <tr>
+                <td width="15%" class="wf-table-head-fault">
+                    <span i18n=workflow.mine.WORK_ORDER_NAME></span>
+                </td>
+                <td width="35%">
+                    <input type="text" class="form-control w200" maxlength="25"
+                           i18n="placeholder=workflow.task.INPUT_TASK_TITLE_INFO"
+                           required
+                           name="title"/>
+                </td>
+                <td width="15%" class="wf-table-head-fault">
+                    <span i18n="workflow.notice.DEADLINE"></span>
+                </td>
+                <td width="35%">
+                    <input type="text" name="dueDate" class="form-control w200 cp" readonly
+                           i18n="placeholder=workflow.task.SELECTED_DUE_DATE_INFO"
+                           id="dueTime" required/>
+                </td>
+            </tr>
+            <tr>
+                <td class="wf-table-head-fault">
+                    <span i18n="workflow.task.TASK_GROUP"></span>
+                </td>
+                <td>
+                    <select class="form-control w200" id="wf-group-type"
+                            i18n="placeholder=workflow.task.SELECT_TASK_GROUP" name="groupId">
+                    </select>
+                </td>
+                <td class="wf-table-head-fault">
+                    <span i18n="workflow.urgencyLevel.URGENCY_LEVEL"></span>
+                </td>
+                <td>
+                    <select id="wf-detail-critical" class="form-control" name="critical">
+                        <option value="0" i18n="workflow.urgencyLevel.0"></option>
+                        <option value="1" i18n="workflow.urgencyLevel.1"></option>
+                        <option value="2" i18n="workflow.urgencyLevel.2"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="wf-table-head-fault">
+                    <span i18n="workflow.main.FAULT_INFO"></span>
+                </td>
+                <td colspan="3">
+                                <textarea class="form-control fl text-detail" id="wfDetail" name="detail"
+                                          i18n="placeholder=workflow.task.CHECK_TASK_INFO"
+                                          maxlength="500" required></textarea>
+                </td>
+            </tr>
+            <tr class="dn">
+                <td class="wf-table-head-fault">
+                    <span i18n="workflow.task.TAGS"></span>
+                </td>
+                <td colspan="3">
+                    <div id="wf-detail-labelWrapper" class="mr10 fl"></div>
+                    <select class="form-control fl mr10" id="labelName">
+                        <option disabled="" selected="" value="0" i18n="workflow.task.SELECT_TAG_NAME_INFO"></option>
+                    </select>
+                    <span id="wf-labelName-error" class="dn" i18n="workflow.task.ADD_TAGS_INFO"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="wf-table-head-fault">
+                    <span i18n="workflow.mine.EXECUTOR"></span>
+                </td>
+                <td>
+                    <div class="wf-detail-userInfoWrapper" data-type="executor"></div>
+                    <span class="glyphicon glyphicon-edit wf-add-user" data-type="executor"></span>
+                </td>
+                <td class="wf-table-head-fault">
+                    <span i18n="workflow.task.VERIFIERS"></span>
+                </td>
+                <td>
+                    <div class="wf-detail-userInfoWrapper" data-type="verifiers"></div>
+                    <span class="glyphicon glyphicon-edit wf-add-user" data-type="verifiers"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="wf-table-head-fault">
+                    <span i18n="workflow.task.WATCHERS"></span>
+                </td>
+                <td colspan="3">
+                    <div class="wf-detail-userInfoWrapper" data-type="watchers"></div>
+                    <span class="glyphicon glyphicon-edit wf-add-user" data-type="watchers"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <div id="wf-detail-curve-box">
+                        <div class="wf-detail-curve" id="wf-fault-curve"
+                             style="height:300px;width:800px;margin:0 auto;"></div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" id="wf-fault-order-btn" class="btn btn-success fr"
+                i18n="common.CONFIRM"></button>
+        <button type="button" id="wf-fault-cancel-btn" class="btn btn-default fr mr5 closeWin"
+                i18n="common.CANCEL"></button>
+    </form>
+</script>
+<!--新建故障添加工单结束-->
+<!--新建故障添加 - 刷新任务组下拉菜单开始-->
+<script type="text/html" id="tpl_render_task_group">
+    <option value="0"></option>
+    <!for(var m=0; m < groupList.length; m++){!>
+    <option value="<!=groupList[m].id!>"><!=groupList[m].name!></option>
+    <!}!>
+</script>
+<!--新建故障添加 - 刷新任务组下拉菜单结束-->
+
+<!--新建故障添加 - 任务组表单开始-->
+<script type="text/html" id="tpl_fault_group_add">
+    <form class="form-horizontal" style="padding: 10px" id="wf-add-group-form" action="javascript:void(0);"
+          method="post">
+        <div class="tc" style="height: 30px;"><span i18n="workflow.task.NO_GROUP_PROMPT" style="color:#d9534f;"></span>
+        </div>
+        <div class="form-group">
+            <label for="wf-group-name" class="col-sm-2 control-label"><span
+                    i18n="workflow.task.TASK_GROUP"></span>:</label>
+
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="wf-group-name"
+                       i18n="workflow.task.TASK_GROUP_NAME;placeholder=workflow.task.TASK_GROUP_NAME" name="name"
+                       required
+                       maxlength="50" style="width: 100%;">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="wf-group-des" class="col-sm-2 control-label"><span
+                    i18n="workflow.main.ALARM_CONTENT"></span>:</label>
+
+            <div class="col-sm-10">
+                <textarea class="form-control text-detail" id="wf-group-des"
+                          i18n="placeholder=workflow.task.DESCRIPTION_OF_TASK_GROUP;" name="description"
+                          required
+                          maxlength="120"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"><span i18n="workflow.task.CREATED_PERSON"></span>:</label>
+
+            <div class="col-sm-10 pull-right wf-manager-people" id="wf-workflow-creator">
+                <div class="people">
+                    <img src="<!='http://images.rnbtech.com.hk'+AppConfig.userProfile.picture!>"
+                         title="<!=AppConfig.userProfile.fullname!>"/>
+
+                    <div class="people-name ellipsis"><!=AppConfig.userProfile.fullname!></div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"><span i18n="workflow.task.MEMBERS"></span>:</label>
+
+            <div class="col-sm-10 pull-right wf-manager-people">
+                <div class="wf-added-user-list" id="wf-workflow-memberList"></div>
+                <span class="glyphicon glyphicon-edit wf-people-add" data-toggle="modal"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10 pull-right wf-manager-people" style="text-align: right">
+                <a class="btn btn-default wf-close-edit-work-group dn" i18n="common.CANCEL"></a>
+                <button type="button" class="btn btn-default wf-btn-add-group closeWin mr5"
+                        i18n="common.CANCEL;"></button>
+                <button type="submit" class="btn btn-success wf-btn-add-group"
+                        i18n="common.SAVE;"></button>
+
+            </div>
+        </div>
+    </form>
+</script>
+<!--新建故障添加 - 任务组表单结束-->
+
+<!--新建故障添加 - 任务组表单添加人物开始-->
+<script type="text/html" id="tpl_wf_added_member">
+    <!for(var m=0; m < members.length; m++){!>
+    <!var member = members[m];!>
+    <div class="people" title="<!=member.userfullname!>" data-user-id="<!=member.id!>">
+        <img src="<!=member.userpic!>">
+
+        <div class="people-name ellipsis"><!=member.userfullname!></div>
+        <input type="hidden" name="addedUsers[]" value="<!=member.id!>">
+    </div>
+    <!}!>
+</script>
+<!--新建故障添加 - 任务组表单添加人物结束-->

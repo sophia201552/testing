@@ -1,0 +1,213 @@
+﻿<style type="text/css">
+    @keyframes AnimationWarning {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0.3;
+        }
+    }
+
+    @-webkit-keyframes AnimationWarning {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0.1;
+        }
+    }
+
+
+    .div-pane-icon {
+        padding: 15px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        /*-webkit-columns: 150px 2;
+        columns: 150px 2;
+        width: auto;*/
+        width: 14%;
+        z-index: 99;
+        overflow-y: auto;
+    }
+
+    .div-pane-icon::-webkit-scrollbar-track {
+        border-radius: 2px;
+        background-color: #ccc;
+    }
+
+    .div-pane-icon::-webkit-scrollbar {
+        height: 3px;
+        width: 5px;
+        background-color: #fff;
+    }
+
+    .div-pane-icon::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        background-color: #888;
+    }
+
+
+    .div-nav-row {
+        /*width: 150px;*/
+        border-bottom: 1px inset #ccc;
+        cursor: pointer;
+    }
+
+        .div-nav-row:hover {
+            border-bottom: 1px inset #aaa;
+        }
+
+    .div-row-icon-badge {
+        width: 40px;
+        opacity: 0.7;
+        margin-right: 8px;
+    }
+
+    .div-row-icon {
+        margin: 2px 0 5px 0;
+        padding: 0 1px 0 1px;
+        top: 3px;
+    }
+
+    .box {
+        margin-left: 20%;
+        width: 80%;
+        height: 100%;
+        perspective: 2000;
+        -webkit-perspective: 2000;
+        /*transform-style: preserve-3d;*/
+        perspective-origin: 0 90%;
+    }
+
+    .floor {
+        position: absolute;
+        width: 60%;
+        height: 40%;
+        -moz-background-size: 100% 100%;
+        background-size: 100% 100%;
+        opacity: 0.3;
+        transition: transform 0.5s;
+        background-color: rgba(200,200,200, 0.2);
+    }
+
+        .floor.hover {
+            width: 80%;
+            opacity: 1;
+            z-index: 100;
+            height: 60%;
+            transform: rotateX(0deg) rotateZ(0deg) translateX(200px) !important;
+            top: 20% !important;
+            left: -20%;
+            background-color: window !important;
+        }
+
+            .floor.hover .span-floor-number {
+                display: block;
+            }
+
+            .floor.hover .floor-equipment-pane {
+                display: block;
+            }
+
+    .floor-equipment-pane {
+        width: 100%;
+        padding: 16px;
+        display: none;
+    }
+
+    .floor-equipment {
+        float: left;
+        margin: 2px;
+        width: 19%;
+        background-color: rgb(0, 153, 153);
+        cursor: pointer;
+        opacity: 0.9;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 3px 10px 3px 10px;
+        text-overflow: ellipsis;
+    }
+
+    .element {
+        float: left;
+        height: 100%;
+    }
+
+    .animation-warning {
+        animation: AnimationWarning 0.5s linear 1s infinite alternate;
+        -webkit-animation: AnimationWarning 0.5s linear 1s infinite alternate;
+    }
+
+    .div-pane-log {
+        border-bottom: 1px inset #ccc;
+        margin-top: 4px;
+        padding-bottom: 2px;
+    }
+
+    .span-hover-pointer {
+        cursor: pointer;
+    }
+
+    #divPaneNotice .panel-body:last-child {
+        border-bottom-width: 0;
+    }
+
+    .span-floor-number {
+        display: none;
+        font-size: 30px;
+        padding: 20px 30px 10px 30px;
+    }
+
+    #divPaneNotice .div-pane-log > span {
+        margin-right: 2px;
+        opacity: 0.8;
+    }
+
+    #divPaneNotice p {
+        margin: 4px 0 0 2px;
+    }
+
+        #divPaneNotice p .variable {
+            font-weight: bolder;
+            text-decoration: underline;
+            color: #d9534f;
+        }
+
+    .grow:hover {
+        background-color: #ccc;
+    }
+</style>
+
+<div class="indexContent" style="overflow-y: hidden;">
+    <div class="div-pane-icon" id="paneIcon"></div>
+    <div class="col-sm-10" id="divCanvas" style="height: 100%;"></div>
+    <div class="col-sm-4" style="position: fixed; right: 0; top: 54px; bottom: 0; padding: 15px;">
+        <div class="panel panel-default" id="divPaneNotice" style="height: 100%;">
+            <div class="panel-heading">
+                <span i18n="diagnosis.DIAGNOSIS_LOG"></span>
+                <span id="btnNoticeConfig" class="glyphicon glyphicon-cog panel-heading-btn grow" title="Configuration"></span>
+                <span id="btnNoticeHistory" class="glyphicon glyphicon-list-alt panel-heading-btn grow" title="History"></span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detailScreenModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" id="detailScreenContent">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Dialog</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <canvas id="canvasDetail" class="col-md-12" style="width: 100%; margin: 0; padding: 0;" i18n="core.BROWSER_NOT_SUPPORT">浏览器不支持</canvas>
+            </div>
+        </div>
+    </div>
+</div>

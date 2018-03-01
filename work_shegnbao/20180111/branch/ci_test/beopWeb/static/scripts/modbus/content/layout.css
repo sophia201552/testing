@@ -1,0 +1,62 @@
+#modbusContainer {
+    height: 100%;
+    color: black;
+}
+
+#modbusContainer .left {
+    height: 100%;
+    padding: 0 0 0 15px;
+    background: #25272b;
+}
+
+#modbusContainer .content {
+    height: 100%;
+    padding: 0;
+}
+
+#copyFromOtherBox {
+    height: 70vh;
+    overflow: auto;
+}
+
+#modbusContainer .debug-ul li {
+    background: #ddd;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+#copy_content {
+    height: 69vh;
+    overflow: auto;
+}
+
+@media (max-width: 1400px) {
+    #modbusContainer .left {
+        width: 19%;
+    }
+
+    #modbusContainer .content {
+        width: 81%;
+    }
+
+    .device-data-content {
+        height: 250px;
+    }
+
+    #historyTableList .widget-sdt-container .table-body {
+        height: 43vh !important;
+    }
+
+    #mbPointsTableBox .widget-sdt-container .table-body {
+        height: 67vh !important;
+    }
+
+    .device-data-content {
+        height: 416px;
+    }
+
+    #debugger .debug-container {
+
+    }
+}

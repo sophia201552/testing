@@ -1,0 +1,35 @@
+<style>
+.btnLegend ul li{
+	float:none;
+	margin: 0 auto;
+}
+.water.active{
+	width:10px;
+	height:10px;
+	margin-top:3px;
+	background:transparent;
+	border-radius:50%;
+}
+.crosswiseChart{
+    height:100%;
+}
+</style>
+<div class="crosswisePlane">
+	<div class="timeQueryPlane">
+		<button class="btn" id="choiceTime" datetimepicker=""><span class="glyphicon glyphicon-time" ></span><span>Time</span></button>
+		<input class="timeStyle" id="iptTime" size="16" type="text" data-format="yyyy-mm-dd" value="2016-11-7" >
+	</div>
+	<div class="topBtnWrap">
+		<button class="btn btn-info" id="btnDownload"><a href="https://beopweb.oss-cn-hangzhou.aliyuncs.com/custom/beop_sales/Saving_Report_2017-01.pdf" target="_blank">下载报表</a></button> 
+	</div>
+	<div class="echartPlane">
+		<div class="btnLegend">
+			<ul>
+				<li><span class="water active" type="savingPotential"></span><span> 节能潜力</span></li>
+			</ul>
+		</div>
+		<div id="crosswiseChart" class="gray-scrollbar">
+			<div class="crosswiseChart"></div>
+		</div>
+	</div>
+</div>

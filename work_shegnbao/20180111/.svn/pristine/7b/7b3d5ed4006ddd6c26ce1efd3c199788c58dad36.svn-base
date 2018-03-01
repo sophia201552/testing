@@ -1,0 +1,9 @@
+export default {
+  OK: 'Ok',
+  CANCEL: 'Cancel',
+  MODIFY_STRATE: 'Modify Strategy',
+  MODIFY_STRATE_NAME: 'Name',
+  MODIFY_STRATE_DESC: 'Descption',
+  ENTER_FILE_NAME: 'Plaease Enter File Name',
+  ENTER_FILE_DESC: 'Please Enter File Desction'
+};

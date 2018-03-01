@@ -1,0 +1,675 @@
+<style>
+    #ctnUserSel {
+        display: none;
+        position: fixed;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 2000;
+        background-color: white;
+    }
+    
+    #indexMain {
+        padding: 0 1rem;
+    }
+    
+    #containerMain {
+        width: 100%;
+        margin: 0 auto 0 auto;
+        padding: .6rem;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        height: calc(100% - 10rem);
+        overflow: auto;
+        background-color: rgb(248, 248, 250);
+    }
+    
+    #containerMain .ctnInfo {
+        border-radius: 4px;
+        padding: .5rem;
+    }
+    
+    #containerOperate {
+        width: 100%;
+        padding: 1.6rem 1rem 3rem;
+        background: #f6f9f9;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-top: 1px solid #eaeded;
+        position: relative;
+    }
+    
+    .divTitle {
+        margin: 0.5rem auto;
+        width: 100%;
+        font-size: 16px;
+        text-align: center;
+    }
+    
+    .divContent {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 0.5rem;
+        font-size: inherit;
+        background-color: inherit;
+        color: inherit;
+        padding: 0;
+        border: 0;
+        font-family: inherit;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+    
+    .ctnInfo .spCritical {
+        padding: 2px 10px 1px;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+    
+    .spCritical.critical-0 {
+        background: #309de2;
+    }
+    
+    .spCritical.critical-1 {
+        background: #ec971f;
+    }
+    
+    .spCritical.critical-2 {
+        background: #ef3d4a;
+    }
+    
+    .woTitle {
+        color: #888;
+        font-size: 12px;
+        margin-top: 5px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    /*.spStatus{
+        padding: 3px 10px 1px;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+        display: inline-block;
+        font-size: 12px;
+    }
+    .spStatus.status-0{
+       background-color: #5bc0de;
+    }
+    .spStatus.status-1{
+        background-color: #f0ad4e;
+    }
+    .spStatus.status-1{
+        background-color: #5cb85c;
+    }*/
+    
+    .divDetail {
+        margin-top: 0.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+    }
+    
+    .divDueTime,
+    .divCreateTime,
+    .divExecutor,
+    .divCreator,
+    .divStatus,
+    .divWatcher,
+    .divTaskGrp,
+    .divTaskTag,
+    .divFile {
+        display: flex;
+    }
+    /*.divDetail .divCreateTime,.divDetail .divCreator{
+        text-align: right;
+    }*/
+    /*.divDueTime .labelDetail,.divCreateTime .labelDetail{
+        color:#969696;
+        font-weight: normal;
+    }*/
+    /*.divDueTime .spDetail,.divCreateTime .spDetail, .divStatus .spStatus, .divTaskTag .spDetail, .divTaskGrp .spDetail{
+        color:#969696;
+    }*/
+    /*.divStatus .spStatus{
+        padding: 0;
+        padding-left: 3px;
+        font-size: 14px;
+        background-color: transparent;
+    }
+    .divWatcher .labelDetail .spDetail:not(:first-child){
+        padding-left: 5px;
+    }
+    .divExecutor .spDetail,.divWatcher .spDetail{
+        color:#3A97DD;
+    }*/
+    
+    .spDetail {
+        padding-left: 0;
+        color: #323232;
+        margin-right: 10px;
+        display: table-cell;
+    }
+    
+    .spDetail:last-child {
+        margin-right: 0;
+    }
+    
+    .labelDetail {
+        margin-right: 0.5rem;
+        margin-bottom: 0;
+        min-width: 5.5rem;
+        font-weight: normal;
+        color: #aaa;
+        display: table-cell;
+    }
+    
+    #iptCommentTrans {
+        display: inline-block;
+        width: 90%;
+        height: 2.5rem;
+    }
+    
+    #btnCommentTrans {
+        display: inline-block;
+        position: relative;
+        top: 5px;
+        width: 5%;
+        height: 2rem;
+        padding-left: 0.25rem;
+        color: #bbb;
+        font-size: 26px;
+        text-align: center;
+        line-height: 2rem;
+    }
+    
+    #btnWkOperateGrp {
+        display: block;
+        height: 4rem;
+        color: #ffffff;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 3rem;
+        transform: translateY(70%);
+        width: 100%;
+        position: absolute;
+        bottom: 1rem;
+        left: 0;
+    }
+    
+    .btnOperate {
+        position: relative;
+        display: inline-block;
+        width: 4rem;
+        height: 4rem;
+        line-height: 4rem;
+        color: #ffffff;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 1.8rem;
+        background: #F5CC58;
+        margin-left: 2rem;
+        vertical-align: middle;
+    }
+    
+    .btnOperate:first-child {
+        margin-left: 0;
+    }
+    
+    .divDetailContent {
+        display: inline;
+        margin-bottom: 5px;
+        margin-left: -3px;
+    }
+    
+    .divUserInfo {
+        display: block;
+        margin-bottom: 8px;
+        position: relative;
+    }
+    
+    .ctnComment {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .divComment.divUserInfo {
+        flex-wrap: wrap;
+        margin-top: 16px;
+        margin-bottom: 0;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#fafafa));
+        background: -ms-linear-gradient(top, #fff, #fafafa);
+        /* IE 10 */
+        background: -moz-linear-gradient(top, #fff, #fafafa);
+        /*火狐*/
+        background: -o-linear-gradient(top, #fff, #fafafa);
+        /*Opera 11.10+*/
+    }
+    
+    .divUserInfo .userPic {
+        width: 3.2rem;
+        height: 3.2rem;
+        margin-right: 0.8rem;
+        display: inline-block;
+        position: absolute;
+    }
+    
+    .divUserInfo .userPic img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+    
+    .divUserInfo .userName {
+        color: #3A97DD;
+        margin-bottom: 5px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-left: 4rem;
+    }
+    
+    .divUserInfo .time {
+        color: #888;
+        font-size: 12px;
+        margin-left: 4rem;
+    }
+    
+    .divUserInfo .status {
+        color: rgb(243, 173, 3);
+    }
+    
+    .divComment .spComment {
+        margin-top: 4px;
+        margin-left: 4rem;
+        padding-bottom: .5rem;
+        display: block;
+        word-wrap: break-word;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .divComment:last-of-type .spComment {
+        border-bottom: none;
+    }
+    
+    .divComment .spComment p {
+        margin-bottom: 6px;
+    }
+    
+    .containerCustomField {
+        color: #969696;
+        margin-bottom: 0;
+    }
+    
+    .divFieldItem {
+        margin-bottom: 2px;
+        display: flex;
+    }
+    
+    #ctnComment {
+        padding: 0.5rem;
+        background: white;
+        margin: -.6rem;
+    }
+    
+    .divComment {
+        position: relative;
+        margin-bottom: .5rem;
+    }
+    
+    .divComment:last-of-type {
+        margin-bottom: 0;
+    }
+    
+    .divComment .spPhoto {
+        height: 3.2rem;
+        width: 3.2rem;
+        display: inline-block;
+        border-radius: 3.2rem;
+        overflow: hidden;
+        margin-left: 2px;
+        margin-right: 8px;
+        position: relative;
+        top: 0.4rem;
+    }
+    
+    .divComment .spPhoto img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .divComment .spUserInfo {
+        display: inline-block;
+        position: absolute;
+    }
+    
+    .divComment .spName {
+        color: #3A97DD;
+        display: block;
+    }
+    
+    .divComment .spTime {
+        color: #aaa;
+        display: block;
+    }
+    
+    .divFile .spFile {
+        display: block;
+    }
+    
+    .wrapBigPic {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 15px 30px 90px 30px;
+    }
+    
+    .wrapBigPic .name {
+        position: absolute;
+        color: white;
+        bottom: 20px;
+        left: 0;
+        padding: 0 2.5%;
+        width: 100%;
+        word-break: break-all;
+        text-align: center;
+        font-size: 16px;
+    }
+    
+    .wrapBigPic .time {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color: #ccc;
+        font-size: 10px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .bigPic {
+        max-height: 100%;
+        max-width: 100%;
+    }
+    
+    #executorInfo {
+        min-height: 3.2rem;
+    }
+    
+    .divProcess {
+        margin-top: 10px;
+    }
+    
+    .divNodeBox {
+        display: inline-block;
+        width: 4rem;
+        position: relative;
+        text-align: center;
+        vertical-align: top;
+        margin-right: 3rem;
+        font-size: 12px;
+    }
+    
+    .divNodeBox::after {
+        content: '';
+        width: 2.6rem;
+        height: 1px;
+        background: #aaa;
+        display: inline-block;
+        position: absolute;
+        left: 4.2rem;
+        top: 2rem;
+    }
+    
+    .divNodeBox:last-of-type::after {
+        display: none;
+    }
+    
+    .nodeUserInfo {
+        display: inline-block;
+        width: 4rem;
+        height: 4rem;
+        position: relative;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .imgNodeUser {
+        height: 100%;
+        width: 100%;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+    }
+    
+    .nodeUser {
+        display: block;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        bottom: 0;
+    }
+    
+    .nodeBehavior {
+        color: #aaa;
+        display: inline-block;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    .active .nodeBehavior {
+        color: #3A97DD;
+    }
+    
+    .active .imgNodeUser {
+        -webkit-filter: grayscale(0);
+        filter: grayscale(0);
+    }
+    
+    .divCompleteNodeBox .nodeUser {
+        height: 100%;
+        padding-top: 14px;
+    }
+    
+    .divCompleteNodeBox.active .nodeUser {
+        background-color: rgba(48, 157, 226, 0.8);
+    }
+    /*icon font class for attachments of workflow*/
+    
+    .icon-file-doc,
+    .icon-file-pdf,
+    .icon-file-excel,
+    .icon-file-exe,
+    .icon-file-zip,
+    .icon-file-ppt,
+    .icon-file-text,
+    .icon-file-rar {
+        background-size: contain;
+    }
+    
+    .icon-file-doc {
+        background: url("https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/workflow/word.png") center center no-repeat;
+    }
+    
+    .icon-file-pdf {
+        background: url("https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/workflow/PDF.png") center center no-repeat;
+    }
+    
+    .icon-file-excel {
+        background: url("https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/workflow/EXCEL.png") center center no-repeat;
+    }
+    
+    .icon-file-exe {
+        background: url("https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/workflow/FILE.png") center center no-repeat;
+    }
+    
+    .icon-file-zip {
+        background: url("https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/workflow/ZIP.png") center center no-repeat;
+    }
+    
+    .icon-file-ppt {
+        background: url("https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/workflow/PPT.png") center center no-repeat;
+    }
+    
+    .icon-file-file {
+        background: url("https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/workflow/FILE.png") center center no-repeat;
+    }
+    
+    .icon-file-text {
+        background: url("https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/workflow/TEXT.png") center center no-repeat;
+    }
+    
+    .icon-file-rar {
+        background: url("https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/workflow/RAR.png") center center no-repeat;
+    }
+    
+    .detailItem {
+        margin-bottom: 5px;
+    }
+    
+    .divFile .spFile {
+        display: block;
+        width: 240px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        position: relative;
+        height: 30px;
+        margin-bottom: 10px;
+    }
+    
+    .spFile .name {
+        display: block;
+        margin-left: 32px;
+        position: relative;
+        line-height: 15px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    .spFile .icon {
+        display: inline-block;
+        height: 28px;
+        width: 28px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    
+    .spFile .time {
+        display: block;
+        margin-left: 32px;
+        color: #aaa;
+        font-size: 1.2rem;
+        position: relative;
+        border-bottom: 1px solid #ccc;
+        line-height: 14px;
+    }
+    
+    .spRole {
+        padding: 2px 10px 1px;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 12px;
+        background: #309de2;
+    }
+    
+    .spRole.behavior-1.status-0,
+    .spRole.behavior-1.status-1 {
+        background: #ec971f;
+    }
+    
+    .spRole.status-2 {
+        background: #449d44;
+    }
+    
+    .spRole.status-3 {
+        background: #ef3d4a;
+    }
+</style>
+<div id="containerMain" class="noScrollBar">
+    <div class="divTitle"></div>
+    <div class="ctnInfo">
+        <div class="divUserInfo" id="executorInfo">
+            <span class="userPic"><img src=""/></span>
+            <div class="userName"></div>
+            <div class="time createTime"></div>
+            <!--<div class="woTitle"></div>-->
+            <span style="position: absolute;right: 0;top: 0;">
+                <span class="spRole hide"></span>
+            <span class="spCritical hide"></span>
+            </span>
+        </div>
+        <pre class="divContent"></pre>
+        <!--<span class="spCritical"></span>-->
+        <!--<span class="spStatus"></span>-->
+        <div class="divDetail">
+            <div class="divDueTime detailItem">
+                <label class="labelDetail" i18n="appDashboard.workflow.DEADLINE"></label><span class="spDetail"></span>
+            </div>
+            <!--<div class="divCreateTime">
+                <label class="labelDetail">创建时间：</label><span class="spDetail"></span>
+            </div>-->
+            <div class="divCreator detailItem">
+                <label class="labelDetail" i18n="appDashboard.workflow.CREATOR"></label><span class="spDetail"></span>
+            </div>
+            <!--<div class="divStatus">
+                <label class="labelDetail">当前操作：</label><span class="spDetail"></span>
+            </div>-->
+            <!--<div class="divCreator">
+                <label class="labelDetail">创建人：</label><span class="spDetail"></span>
+            </div>-->
+            <div class="divWatcher detailItem">
+                <label class="labelDetail" i18n="appDashboard.workflow.WATCHER"></label>
+                <span class="spDetail"></span>
+            </div>
+            <div class="divTaskGrp detailItem">
+                <label class="labelDetail" i18n="appDashboard.workflow.TASK_GROUP"></label><span class="spDetail"></span>
+            </div>
+            <div class="divTaskTag detailItem">
+                <label class="labelDetail" i18n="appDashboard.workflow.TAG"></label>
+                <span class="spDetail"></span>
+            </div>
+            <!--            <div class="divStatus">
+                <label class="labelDetail" i18n="appDashboard.workflow.STATUS"></label><span class="spStatus"></span>
+            </div>-->
+            <div class="containerCustomField">
+            </div>
+            <div class="divFile detailItem">
+                <label class="labelDetail" i18n="appDashboard.workflow.FILE"></label>
+                <span class="spDetail"></span>
+            </div>
+            <div class="divProcess detailItem">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="containerOperate">
+    <div id="divCommentTrans">
+        <input type="text" id="iptCommentTrans" class="form-control" i18n="placeholder=appDashboard.workflow.MAKE_REMARKS">
+        <span id="btnCommentTrans" class="iconfont iconfont icon-yuanjiantou zepto-ev"></span>
+    </div>
+    <span id="btnWkOperateGrp"></span>
+</div>
+<div id="ctnUserSel">
+
+</div>

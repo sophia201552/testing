@@ -1,0 +1,112 @@
+.modal-header {
+    width: 100%;
+    height: 42px;
+    background-color: rgb(47, 58, 84);
+}
+.modal-title {
+    margin: 0;
+    padding: 8px 0 0 12px;
+    float: left;
+    font: 500 18px PingFangSC;
+    color: #fff;
+}
+.modal-body .params-nav {
+    background: #2f3a54f0;
+}
+/* 关闭按钮 */
+.close {
+    background-color: rgb(47, 58, 84);
+    padding-top: 11px;
+    padding-right: 16px;
+}
+
+.close .cancel-icon {
+    float: right;
+    width: 18px;
+    height: 18px;
+    background-color: #b3b3b3;
+    border-radius: 50%;
+    line-height: 18px;
+    text-align: center;
+}
+
+.close .cancel-icon i {
+    color: #f2f5f6;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.return {
+    padding-right: 10px;
+    float: right;
+}
+
+.return .return-icon {
+    float: right;
+    width: 18px;
+    height: 18px;
+    background-color: #b3b3b3;
+    border-radius: 50%;
+    line-height: 18px;
+    text-align: center;
+}
+
+.return .return-icon i {
+    color: #f2f5f6;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* 删除模态框 */
+
+.delete-item-modal {
+    width: 280px;
+    /* height: 148px; */
+    padding: 25px;
+}
+.delete-item-modal .delete-text {
+    line-height: 32px;
+    margin-bottom: 32px;
+}
+/* 添加模态框 */
+
+.add-item-modal {
+    width: 400px;
+    height: 300px;
+    padding: 25px 30px 25px 20px;
+    border-radius: 4px;
+    color: #999;
+    background-color: #fff;
+}
+
+.form-item {
+   padding-bottom: 15px;
+   width: 100%;
+   text-align: right;
+   display: flex;
+}
+.form-item> label {
+    flex:1;
+    height: 32px;
+    line-height: 32px;
+    overflow: hidden;
+}
+.form-item> .form-input {
+    flex: 2;
+}
+.form-item> .form-input> input {
+    width: 210px;
+    height: 32px;
+    outline: none;
+    border: 1px solid #ccc;
+    padding-left: 8px; 
+}
+.button {
+    width: 86px;
+    height: 26px;
+    margin: 8px 14px 0 0;
+    border-radius: 4px;
+    font-size: 12px;
+    float: right;
+    border: none;
+}

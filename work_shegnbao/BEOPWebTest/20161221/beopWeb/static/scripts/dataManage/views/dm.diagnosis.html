@@ -1,0 +1,346 @@
+<link href='/static/scripts/lib/codemirror/lib/codemirror.css' rel='stylesheet'>
+<link href='/static/scripts/lib/codemirror/addon/hint/show-hint.css' rel='stylesheet'>
+<link href='/static/scripts/lib/codemirror/addon/display/fullscreen.css' rel='stylesheet'>
+<script src='/static/scripts/lib/codemirror/lib/codemirror.js'></script>
+<script src='/static/scripts/lib/codemirror/addon/hint/show-hint.js'></script>
+<script src='/static/scripts/lib/codemirror/addon/display/fullscreen.js'></script>
+<script src='/static/scripts/lib/codemirror/mode/python/python.js'></script>
+<script src='/static/app/CxTool/scripts/template.js'></script>
+<style>
+    /*online_test start*/
+    #diagnosis_tree_online_test {
+        margin-top: 30px;
+    }
+
+    #diagnosisBox .panel-default {
+        border-color: #dcdcdc !important;
+    }
+
+    #diagnosisBox .panel-default > .panel-heading {
+        color: #7b7a7b !important;
+        background-color: #ffffff !important;
+    }
+
+    #diagnosisBox .panel-default > .panel-heading:hover {
+        color: #ffffff !important;
+        background-color: #1e78e6 !important;
+    }
+
+    #diagnosisBox .panel-default > .panel-heading.active {
+        color: #ffffff !important;
+        background-color: #1e78e6 !important;
+    }
+
+    #diagnosis_tree_online_test .modal-title {
+        display: inline-block;
+    }
+
+    .text_left {
+        margin-right: 10px;
+        float: left;
+    }
+
+    .text_diagnosis {
+        margin-bottom: 5px;
+    }
+
+    .time{
+        display: inline-block;
+    }
+
+    .mbp {
+        margin-bottom: 5px;
+    }
+
+    .online_test_status{
+        float: right;
+        right: 20px;
+    }
+
+    .panel-title{
+        display: inline-block;
+    }
+
+    #diagnosis_tree_online_test button.btn-primary {
+        background-color: #2084fd;
+        border: 1px solid #1e79e7;
+        color: #ffffff;
+    }
+
+    #diagnosis_tree_online_test .modal-body{
+        max-height: 640px;
+        overflow-y: auto;
+    }
+
+    #diagnosis_tree_online_test .modal-dialog {
+        width: 800px;
+    }
+    
+    @media (max-width: 1366px) {
+        #diagnosis_tree_online_test .modal-body{
+            max-height: 504px;
+        }
+    }
+    /*online_test end*/
+</style>
+<div id="diagnosisBox" class="oh">
+    <article id="templateImportWinBox" class="dn"></article>
+    <article id="saveAsTemplateWinBox" class="dn"></article>
+    <!--设置-->
+    <article id="cloudPointSetUp" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><span i18n="debugTools.btnNav.CALCULATION_TRIGGER_MODE"></span></h4>
+                </div>
+                <div class="modal-body row">
+                    <div class="clearfix">
+                        <div class="col-md-5">
+                            <label class="oh">
+                                <input id="rawDataMode" type="checkbox">
+                                <span i18n="debugTools.btnNav.ORIGINAL_DATA_UPDATE"></span>
+                            </label>
+                        </div>
+                        <div class="col-md-5">
+                            <label class="oh">
+                                <input id="fixedTimeMode" type="checkbox">
+                                <span i18n="debugTools.btnNav.TIMED_FORCE_CALCULATION"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div id="cloudPointSetUpMain"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" i18n="common.CANCEL"></button>
+                    <button type="button" id="btnPreservation" class="btn btn-primary" i18n="common.CONFIRM"></button>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!--设置end-->
+    <!--在线测试start-->
+    <article id="diagnosis_tree_online_test" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" i18n="diagnosis.ONLINE_TEST_LIST"></h4>
+                    <span class="completeNumber"></span>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                            i18n="admin.panelManagement.CONFIRM"></button>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!--在线测试end-->
+    <!--报警详情start-->
+    <article id="diagnosis_alarm" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content" style="top:40px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><span class="title"></span></h4>
+                </div>
+                <div class="modal-body row">
+                    <form id="diagnosisAlarmForm" class="form-horizontal" role="form">
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnAlarmDetailsConfirm" class="btn btn-primary" i18n="common.CONFIRM"></button>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!--报警详情end-->
+    <div id="diagnosisFileBox" class="fl">
+        <div class="clearfix diagnosisFileTitle">
+            <div class="fl">Fault</div>
+            <div class="fr">
+                <span id="diagnosisFaultTotal" class="errorPoint dn pst"></span>
+                <span id="diagnosisFileAdd" class="glyphicon glyphicon-plus-sign cp pst" i18n="title=common.ADD"></span>
+                <span id="addTreeFolder" class="glyphicon glyphicon-folder-open cp pst"></span>
+                <span id="diagnosis_SetUp" class="icon iconfont cp pst" i18n="title=debugTools.btnNav.SET_UP">&#xe7e3;</span>
+                <span id="generateCurve" class="fr cp pst" i18n="title=dataManage.JOIN_CURVE"><span class="icon iconfont">&#xe600;</span></span>
+            </div>
+        </div>
+        <article id="diagnosisFilesContent" class="mt5">
+            <ul id="diagnosisFilesUl" class="ul ztree"></ul>
+        </article>
+    </div>
+
+    <div id="diagnosisCodeBox" class="fr oh">
+        <div id="diagnosisCodeMainBox" class="diagnosisCodeLeft fl"></div>
+        <div id="dmSysTree" class="fl">
+            <div class="dmSysTreeHeader">
+                <span id="indentIcon" class="icon iconfont ml20 cp">&#xe71c;</span>
+                <span class="dmSysTreeSearch">
+                    <span class="icon iconfont search_icon">&#xe713;</span>
+                    <input type="text" id="treeSearch" class="dn" placeholder="搜索">
+                </span>
+            </div>
+            <div class="dmSysTreeContent">
+                <div id="diagnosisTreeWrapper" class="col-md-3 p10">
+                    <div id="diagnosisTreeBox" class="fl gray-scrollbar">
+                        <ul id="diagnosisTree" class="ul ztree"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--@formatter:off-->
+<script type="text/html" id="tpl_diagnosis_code_Info">
+    <div class="diagnosisCodeHeader">
+        <div id="diagnosisCodeTitle" class="diagnosisCodeTitle" i18n="common.EDIT"></div>
+    </div>
+    <div id="diagnosisCodeBoxInner">
+        <div class="oh">
+            <div class="diagnosisCodeInfo col-md-9">
+                <p class="oh">
+                    <span class="diagnosisParameterName fl">Module</span>
+                    <input type="text" class="form-control fl" id="diagnosisModuleName"/>
+                </p>
+                <p class="oh" style="margin-bottom: 20px;">
+                    <span class="diagnosisParameterName fl">Description</span>
+                    <input type="text" class="form-control fl" id="diagnosisFaultDescription"/>
+                </p>
+                <div class="diagnosisCodeMain">
+                    <div class="point_form_main" style="margin-left: 0">
+                        <div class="clearfix pointFunBox main_group mb10">
+                            <div class="col-sm-12">
+                                <div class="fl mt5" style="width: 100%; color: #909090;">
+                                    <span id="editorFullScreen" class="icon iconfont ml15 mr5 fl cp partingine">&#xe707;</span>
+                                    <span id="diagnosisTest" class="icon iconfont fl cp partingine" style="margin-left: 26px;" i18n="title=debugTools.sitePoint.ONLINE_TEST;">&#xe708;</span>
+                                    <span id="import_from_template" class="icon iconfont ml20 fl cp" i18n="title=debugTools.sitePoint.IMPORTING_FROM_THE_REPOSITORY;">&#xe700;</span>
+                                    <span id="save_as_template" class="icon iconfont fl cp ml30"  i18n="title=debugTools.sitePoint.SAVE_TO_CODE_LIBRARY;">&#xe701;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oh" style="border: 1px solid #eae9ea; border-top:none;">
+                        <div id="diagnosisCodeMirrorBox" class="fl diagnosisCodeMirrorBox">
+                            <textarea id="diagnosisCodeMirror" class="form-control dn"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="dn diagnosisTestResult clearfix">
+                    <div id="diagnosisTestProgress"></div>
+                </div>
+            </div>
+        </div>
+        <div class="diagnosisConfirm fr mr20">
+            <span  id="diagnosisConfirm" class="point_from_footer_content" i18n="common.CONFIRM"></span>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_search_log">
+     <div id="diagnosisLogBox">
+         <div class="panel-heading">
+             <input class="form-control mr5 fl w170" size="16" type="text" value="" id="logDateStart"
+                    i18n="placeholder=dataManage.SELECT_START_TIME" data-format="yyyy-mm-dd hh:ii" datetimepicker/>
+             <span class="mr5 mt5 fl" i18n="common.TO"></span>
+             <input class="form-control mr10 fl w170" size="16" type="text" value="" id="logDateEnd" i18n="placeholder=dataManage.SELECT_CLOSING_TIME"
+                    data-format="yyyy-mm-dd hh:ii" datetimepicker/>
+             <div class="btn-group fl mr10" role="group">
+                 <button type="button" class="btn btn-default" id="searchLogOfOneHour" i18n="debugTools.btnNav.ONE_HOUR"></button>
+                 <button type="button" class="btn btn-default" id="searchLogOfToday" i18n="debugTools.btnNav.TODAY"></button>
+                 <button type="button" class="btn btn-default" id="searchLogOfYesterday" i18n="debugTools.btnNav.YESTERDAY"></button>
+                 <button type="button" class="btn btn-default" id="searchLogOfAWeek" i18n="debugTools.btnNav.A_WEEK"></button>
+             </div>
+             <button type="button" class="btn btn-default dn" id="logSearchCancelBtn" i18n="common.CANCEL"></button>
+             <button type="button" class="btn btn-primary" id="logSearchBtn" i18n="common.SEARCH"></button>
+             <button type="button" class="btn btn-default btn-sm mt5 cp fr" id="logSearchDeleteAllBtn">
+                 <span class="glyphicon glyphicon-trash"></span>
+             </button>
+         </div>
+         <div class="fixedHead oh">
+             <div style="width:22%; text-indent: 5px; border-right: none;" class="fl" i18n="debugTools.btnNav.TIME"></div>
+             <div style="width:22%; text-indent: 5px;" class="fl" i18n="debugTools.btnNav.POINT_NAME"></div>
+             <div style="width:56%; text-indent: 5px;" class="fl" i18n="debugTools.btnNav.ERROR_LOG"></div>
+         </div>
+         <div class="logContainer">
+             <table class="table table-condensed">
+                 <tbody id="logReport"></tbody>
+             </table>
+         </div>
+          <div class="fl" style="padding:10px 0 0 10px">
+              <span id="totalLogsNum" class="keyword"></span>
+              <span i18n="debugTools.btnNav.LOG_COUNT"></span>
+          </div>
+         <div class="fl" style="padding:10px 0 0 30px">
+             <select id="logPageSizeSelector">
+                 <option value="25">25</option>
+                 <option value="50">50</option>
+                 <option value="100">100</option>
+                 <option value="200" selected>200</option>
+                 <option value="500">500</option>
+                 <option value="1000">1000</option>
+             </select>
+             <span i18n="dataManage.PAGE_SIZE"></span>
+         </div>
+         <div class="tr" id="paginationContainer">
+             <ul id="logPagination" class="pagination"></ul>
+         </div>
+     </div>
+</script>
+
+<script type="text/html" id="tpl_search_log_result">
+    <!for(var i=0;i < logList.length;i++){!>
+        <!var log = logList[i];!>
+        <tr>
+            <td style="width:22%"><!=log.logtime!></td>
+            <td style="width:22%"><!=log.pointName!></td>
+            <td style="width:56%"><!=log.data!></td>
+        </tr>
+    <!}!>
+</script>
+
+<script type="text/html" id="online_test_modal_body">
+    <div class="panel-group" id="accordion">
+        <!for( var i = 0; i < diagnosisList.length; i++){!>
+            <!var diagnosis = diagnosisList[i];!>
+            <div class="panel panel-default" id="<!=diagnosis.moduleName!>-wrapper">
+                <div class="panel-heading diagnosisModalABG"  data-toggle="collapse" data-parent="#accordion" href="#<!=diagnosis.moduleName!>_<!=i!>">
+                    <h4 class="panel-title">
+                        <!=diagnosis.moduleName!>
+                    </h4>
+                    <div class="online_test_status">Testing</div>
+                </div>
+                <div class="panel-collapse collapse" id="<!=diagnosis.moduleName!>_<!=i!>">
+                    <div class="panel-body">
+                        <div class="testContentInfoBox">
+                            <!if(diagnosis.curTime){!>
+                                <div class="timeBox mbp">
+                                    <div class="text_left"><!=I18n.resource.debugTools.sitePoint.TESTED_AT!> : </div>
+                                    <div class="time"><!=timeFormat(diagnosis.curTime, timeFormatChange('yyyy-mm-dd hh:ii'))!></div>
+                                </div>
+                            <!}!>
+                            <!if(diagnosis.logic){!>
+                                <div class="diagnosisContent mbp">
+                                    <div class="text_diagnosis">诊断定义 : </div>
+                                    <pre class="text_content"><!=diagnosis.logic!></pre>
+                                </div>
+                            <!}!>
+                                <div class="testInfo mbp">
+                                    <div class="text_left"><!=I18n.resource.debugTools.sitePoint.TEST_PROCESS!> : </div>
+                                    <div class="text_content testResult"></div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!}!>
+    </div>
+</script>
+<!--@formatter:on-->

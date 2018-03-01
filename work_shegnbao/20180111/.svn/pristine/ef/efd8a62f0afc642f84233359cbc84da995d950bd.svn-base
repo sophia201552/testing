@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    {% if icon %}
+        <link rel="shortcut icon" type="image/ico" href="/static/images/{{ icon }}.ico">
+    {% else %}
+        <link rel="shortcut icon" type="image/ico" href="/static/images/favicon.ico">
+    {% endif %}
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>BeOP</title>
+    {% endif %}
+
+
+    {% assets "css_index" %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+
+    <script>
+        var loginCode = '{{ code }}';
+        if ('{{ lang }}' === 'en' || '{{ lang }}' === 'zh') {
+            // window.localStorage.setItem('isUserSelectedLanguage', '{{ lang }}');
+            window.localStorage.setItem('language', '{{ lang }}');
+        }
+        if(location.host=='industrytech.smartbeop.com'|| location.host == 'industrytech.rnbadopt.com'){
+                var rurl = "";
+                var links = document.getElementsByTagName("link");
+                var link = {};
+                for(var i=0;i<links.length;i++){
+                    link = links[i];
+                    if(link.rel === "shortcut icon"){
+                        link.href='/static/images/AdOPT.ico';
+                        break;
+                    }
+                }
+                document.querySelector('title').text='AdOPT'
+            }
+        var _hmt = _hmt || [];
+    </script>
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #indexMain {
+            padding: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .indexContent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-btn-a {
+            padding: 0 10px 0 10px !important;
+            line-height: 38px;
+        }
+
+        #divPages {
+            position: relative;
+            float: left;
+            width: calc(100% - 550px);
+            height: 53px;
+        }
+
+        #divPages > span {
+            position: absolute;
+            font-size: 14px;
+            color: #3893c6;
+            top: 18px;
+            display: none;
+            cursor: pointer;
+        }
+
+        #divPages > span:first-child {
+            left: 0;
+        }
+
+        #divPages > span:last-child {
+            right: 0;
+        }
+
+        #scrollPages {
+            width: 797px;
+            position: absolute;
+            left: 20px;
+            overflow: hidden;
+        }
+
+        #ulPages {
+            position: relative;
+            left: 0;
+        }
+
+        #ulPages .active .nav-icon-svg-g {
+            fill: #eee;
+        }
+
+        #ulPages .dropdown-menu.popover {
+            max-width:initial;
+        }
+        .nav-icon-svg {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            border-radius: 4px;
+            position: relative;
+            top: -2px;
+        }
+
+        .nav-icon-svg-g {
+            fill: #3893c6;
+        }
+        #ulPages .icon{
+            font-size: 16px;
+            margin-right: 5px;
+            position: absolute;
+            left: 15px;
+            line-height: 38px;
+            top: 0;
+            height:100%;
+        }
+        #ulPages .icon.glyphicon.fromFont{
+            font-size: 14px;
+        }
+        #ulPages .icon.fromSvg{
+            width: 18px;
+        }
+        #ulPages .dropdown-menu .icon {
+            font-size: 14px;
+            line-height: 26px;
+        }
+        #ulPages .dropdown-menu>li>a{
+            padding-left: 35px;
+            position: relative;
+        }
+        .nav-btn-text {
+            margin-left: 3px;
+            padding-left: 25px;
+        }
+
+        #txtProjectTitle,
+        .txtProjectTitle {
+            margin-top: 20px;
+            float: left;
+            line-height: 18px;
+            font-weight: bold;
+            width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .vMiddle {
+            height: 19px;
+            line-height: 19px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        /* alarm bell part */
+
+        .alarm-bell > a {
+            position: relative;
+            z-index: 1;
+        }
+
+        #liProjectAlarm .badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #ed5565;
+            color: #fff;
+            border-radius: 4px;
+            z-index: 2;
+            padding: 2px 5px;
+        }
+
+        #paneWorkflow > .badge {
+            position: absolute;
+            top: 6px;
+            right: 16px;
+            background: #ed5565;
+            color: #fff;
+            border-radius: 4px;
+            z-index: 2;
+            padding: 2px 5px;
+        }
+
+        .alarm-bell > a > .badge,
+        #iconList .badge:empty {
+            display: none !important;
+        }
+
+        .alarm-bell > a > .glyphicon-bell {
+            font-size: 18px;
+        }
+
+        #ulAlarmPanel {
+            padding: 10px 0 3px;
+            display: none;
+            position: absolute;
+            width: 340px;
+            height: calc(100% - 84px);
+            top: 80px;
+            background-color: #fff;
+            overflow: auto;
+            z-index: 1;
+            left: 4px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #ulAlarmPanel > .divider {
+            margin: 5px 0;
+        }
+
+        #ulAlarmPanel > li:last-child {
+            text-align: left;
+        }
+
+        .divAlarmInfo {
+            white-space: normal;
+            margin-bottom: 3px;
+        }
+
+        .mb0 {
+            margin-bottom: 0;
+        }
+
+        @keyframes downTip {
+            25%,
+            80% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+            0%,
+            50%,
+            100% {
+                -webkit-transform: translateY(-10px);
+                transform: translateY(-10px);
+            }
+        }
+
+        .totalDown {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            /*font-size:50px;*/
+            color: rgba(255, 255, 255, .6);
+            margin-left: -15px;
+            width: 30px;
+            z-index: 2;
+            animation: downTip 2s linear infinite;
+            display: none;
+            cursor: pointer;
+        }
+
+        .dividingLine {
+            background: -webkit-gradient(linear, left top, left bottom, from(rgba(41, 56, 76, 0.2)), color-stop(0.25, rgba(124, 156, 212, 0.8)), color-stop(0.75, rgba(41, 56, 76, 0.6)), to(rgba(41, 56, 76, 0.2)));
+            height: 1px;
+        }
+
+        #iconList .badge {
+            background-color: #ed5565;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            height: 20px;
+            border-radius: 5px;
+        }
+
+        #iconList .dropdown-menu {
+            width: 440px;
+            position: absolute;
+            right: -60px;
+            padding: 15px;
+            padding-bottom: 5px;
+            top: 52px;
+            max-width: 440px;
+        }
+
+        #iconList .dropdown-menu li {
+            float: left;
+            display: block;
+            text-align: center;
+        }
+
+        #iconList .dropdown-menu li.iconWrap {
+            margin-bottom: 2px;
+            padding-top: 2px;
+            margin-right: 1%;
+            margin-left: 1%;
+            width: 23%;
+            cursor: pointer;
+            position: relative;
+            height: 88px;
+        }
+
+        #liProjectMenu ul {
+            display: -webkit-flex;
+            -webkit-flex-direction: row;
+            -webkit-flex-wrap: wrap;
+        }
+
+        #btnSelectLanguage .lngText {
+            float: none;
+            display: block;
+            padding-left: 0;
+            text-decoration: none;
+        }
+        .divLanguage {
+            padding: 3px 0;
+            border: 1px solid #3893c6;
+            border-radius: 4px;
+            opacity: 0.7;
+            z-index: 10;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .divLanguage span {
+            color: #eee;
+        }
+
+        .divLanguage:hover #sltLanguage {
+            display: block;
+        }
+
+        .spanlngText {
+            margin-bottom: 0 !important;
+            display: inline-block !important;
+            padding-left: 5px !important;
+            padding-right: 0 !important;
+        }
+
+        .triangle {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 2px;
+            vertical-align: middle;
+            border-top: 4px solid #3893c6;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+        }
+
+        #btnSelectLanguage a > span {
+            float: none;
+            padding-left: 5px;
+        }
+
+        #sltLanguage {
+            display: none;
+            position: absolute;
+            width: inherit;
+            top: 25px;
+            padding: 0px;
+            min-width: 0;
+            right: 0;
+            left: 0;
+            background: rgba(245, 245, 245, 0.68);
+            border-bottom-right-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        #sltLanguage .vMiddle {
+            text-align: left;
+        }
+
+        #sltLanguage li {
+            float: none !important;
+            border-radius: 3px;
+            height: 30px;
+        }
+
+        li.liHover:hover {
+            background: #16599C;
+        }
+
+        li.liHover:hover span {
+            color: #fff !important;
+        }
+
+        #iconList .dropdown-menu li.iconWrap:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        #iconList .dropdown-menu li.iconWrap > a {
+            float: none;
+            padding: 0;
+            display: inline-block;
+            white-space: normal;
+        }
+
+        #iconList .dropdown-menu li.iconWrap > a:hover {
+            text-decoration: none;
+        }
+
+        #iconList .dropdown-menu li.iconWrap .glyphicon {
+            font-size: 30px;
+            height: 30px;
+            padding-top: 4px;
+            color: #3893c6;
+        }
+
+        #iconList .dropdown-menu li span {
+            display: block;
+        }
+
+        #iconList .dropdown-menu li .dropdownNav {
+            margin-bottom: 5px;
+            opacity: 0.7;
+        }
+
+        #iconList .dropdown-menu li span:first-of-type {
+            margin-bottom: 10px;
+            color: #2a6496;
+            padding-right: 10px;
+            padding-left: 10px;
+            min-width: 62px;
+        }
+
+        #iconList .dropdown-menu #btnBenchmark {
+            display: none !important;
+        }
+
+        #btnAccountManage > a {
+            float: none;
+        }
+
+        #btnAccountManage > a:hover {
+            text-decoration: none;
+        }
+
+        #messageAll > a {
+            width: auto;
+            height: 100%;
+            display: inline-block;
+            text-align: center;
+            padding-top: 15px;
+            position: relative;
+            background-color: inherit;
+        }
+
+        #messageAll > a .badge {
+            display: none;
+            position: absolute;
+            top: 4px;
+            left: 27px;
+            z-index: 1;
+            background-color: red;
+            padding: 3px 6px;
+        }
+
+        #messageAll > a .glyphicon {
+            margin-top: 2px;
+            display: block;
+            font-size: 20px;
+        }
+
+        #messageAll > a:hover,
+        #messageAll > a:focus {
+            text-decoration: none;
+        }
+
+        #btnDropdownNavList #projectMenuBox {
+            float: left;
+            width: 280px;
+            opacity: 0.7;
+            margin-top: 13px;
+            margin-left: 20px;
+        }
+
+        #btnDropdownNavList .arrow {
+            left: 356px;
+            margin-left: -11px;
+        }
+
+        #loginStateBox .lineStateListBox {
+            top: 43px;
+            right: -30px;
+            width: 600px;
+            color: #eee;
+            background: rgba(40, 52, 70, 0.96);
+            max-width: 600px;
+            user-select: none;
+        }
+
+        .loginState {
+            font-size: 30px;
+            color: green;
+            position: relative;
+            top: 2px;
+        }
+
+        #lineStateListContent {
+            padding: 15px;
+            max-height: 418px;
+            overflow-y: auto;
+        }
+
+        #lineStateListContent table th {
+            border: 1px solid rgba(124, 156, 212, 0.8);
+            text-align: center;
+        }
+
+        #lineStateListContent table td {
+            border: 1px solid rgba(124, 156, 212, 0.8);
+            text-align: center;
+        }
+
+        #offDtuHistory {
+            position: relative;
+        }
+
+        #offDtuHistoryUl {
+            list-style: none;
+            width: 120px;
+            padding: 0;
+            height: 330px;
+            overflow-y: auto;
+        }
+
+        #offDtuHistoryUl label {
+            margin-bottom: 0;
+        }
+
+        #offDtuHistoryUl .allDtuBox {
+            border: 1px solid rgba(124, 156, 212, 0.8);
+            height: 26px;
+            line-height: 26px;
+            padding-left: 4px;
+            border-bottom: none;
+            border-right: none;
+        }
+
+        #offDtuHistoryUl .allDtuBox:hover {
+            background-color: #1e78e6;
+        }
+
+        #offDtuHistoryUl .dtuInput {
+            position: relative;
+            top: -6px;
+        }
+
+        #offDtuHistoryUl li {
+            border: 1px solid rgba(124, 156, 212, 0.8);
+            height: 26px;
+            line-height: 26px;
+            padding-left: 4px;
+            border-right: none;
+        }
+
+        #offDtuHistoryUl li:not(:last-child) {
+            border-bottom: none;
+        }
+
+        #offDtuHistoryUl li:hover {
+            background-color: #1e78e6;
+        }
+
+        #offDtuHistoryUl li .offDtu {
+            display: inline-block;
+            width: 90px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #offDtuHistoryUl li.active .offDtu {
+            border-right: none;
+            position: relative;
+            left: 1px;
+            background: deepskyblue;
+            color: #fff;
+        }
+
+        #backBtn {
+            position: absolute;
+            top: -22px;
+            right: -1px;
+            color: red;
+        }
+
+        #DtuHistoryDemo {
+            width: calc(100% - 120px);
+            border: 1px solid rgba(124, 156, 212, 0.8);
+            padding: 5px;
+            min-height: 330px;
+            max-height: 338px;
+        }
+
+        #offDtuTable, #offDtuHistory {
+            color: #E7F1FF;
+        }
+
+        #offDtuTable thead {
+            display: inline-block;
+            width: 100%;
+        }
+
+        #offDtuTable tbody {
+            display: inline-block;
+            width: 100%;
+            max-height: 316px;
+            overflow-y: auto;
+        }
+
+        #offDtuTable table tbody tr:hover {
+            background-color: #1e78e6;
+        }
+
+        .pd0 {
+            padding: 0;
+        }
+
+        .lineStateLabel {
+            width: 165px;
+        }
+        #ikenBtn{
+            height:53px;
+            width:42px;
+            position:fixed;
+            left:127px;
+            top:0;
+            display:none;
+            z-index:10000;
+            cursor:pointer;
+        }
+        #ikenBtn i{
+            line-height: 54px;
+            font-size: 17px;
+            opacity: 0.9;
+            text-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+        #ikenBtn i:hover{
+            color: rgb(234, 193, 36);
+            opacity: 0.9;
+        }
+        @media (max-width: 1366px) {
+            #iconList #btnDropdownNavList.dropdown-menu {
+                padding: 10px 10px 5px 10px;
+                width: 410px;
+                max-width: 410px;
+            }
+
+            #btnDropdownNavList span.glyphicon:before {
+                font-size: 21px;
+            }
+
+            #iconList .dropdown-menu {
+                right: -70px;
+            }
+
+            #iconList .dropdown-menu li.iconWrap {
+                height: auto;
+                padding-top: 0;
+                padding-bottom: 4px;
+            }
+
+            #iconList .dropdown-menu li .dropdownNav {
+                font-size: 12px;
+                line-height: 14px;
+            }
+
+            #btnDropdownNavList .arrow {
+                left: 314px;
+                margin-left: -10px;
+            }
+
+        }
+        @media (min-width: 768px) {
+            #right-nav {
+                margin-right:5px !important;
+            }
+        }
+
+    </style>
+
+    <style type="text/css" media="print">
+        #indexMain {
+            position: static !important;
+        }
+    </style>
+    {% block style %} {% endblock %}
+</head>
+
+<body style="font-family: 'Helvetica', Arial, 'Microsoft YaHei', '微软雅黑'; overflow-x:hidden;">
+<nav id="navHeader" class="navbar navbar-default" role="navigation"
+     style="margin-bottom: 0; z-index: 10; display: none;border:none;">
+    <div class="container-fluid" id="navPane" style="padding-left: 0px;">
+        <div class="navbar-header" id="navHomeLogo"
+             style="position: relative;z-index: 999;padding-right: 25px; height: 100%;">
+            <a style="display:inline-block; height: 100%;" title="Home" href="#page=PaneProjectSelector">
+                {% if logoID %}
+                    <img src="https://beopweb.oss-cn-hangzhou.aliyuncs.com/custom/project_img/{{ logoID }}_logo.png"
+                        style="{{ logo_style }}"
+                        onerror="this.src='https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/logo_in_white.png';this.removeAttribute('company')"
+                        company="true">
+                {% else %}
+                    <img src="/static/images/logo_in_white.png" style="height: 100%;">
+                {% endif %}
+            </a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right"
+            style="margin-right: 15px;height:51px;line-height:51px;display:none;position:relative;z-index:99;"
+            id="right-nav">
+            <li class="dropdown fl" id="iconList" style="padding-top: 0.5px;">
+                <a class="navbar-link dropdown-toggle navbar-link workflow-menu-button" data-toggle="dropdown">
+                    <span id="projectMenu" style="margin-left: 10px;margin-right: 10px;"></span>
+                </a>
+                <a href="#" class="dropdown-toggle navbar-link workflow-menu-button" data-toggle="dropdown">
+                    <img class="userPic small" src="" alt="user Picture"
+                         onerror="this.src='/static/images/avatar/default/7.png';">
+                    <span class="badge"
+                          style="visibility: hidden; background-color: red;width: 8px;height: 8px;border-radius: 4px;position: absolute;top: 3px;right: 3px;min-width: 5px;padding: 0px;"></span>
+                </a>
+                <ul class="dropdown-menu popover bottom gray-scrollbar" role="menu" id="btnDropdownNavList">
+                    <div class="arrow"></div>
+                    <li style="width: 100%; text-align: left;">
+                        <div id="btnAccountManage" style="display: inline-block;width: 64%;cursor:pointer;">
+                            <a href="#page=UserManagerController&manager=AccountManager">
+                                    <span style="display: inline-block;">
+                                <img class="userPic" onerror="this.src='/static/images/avatar/default/7.png';"/>
+                            </span>
+                                <span id="paneUser" style="text-align: left;display: inline-block;"></span>
+                            </a>
+                        </div>
+                            <span id="liProjectAlarm"
+                                  style="width: 70px;text-align: right;vertical-align: middle;display: none;position: relative;">
+                                <a href="javascript:;" class="dropdown-toggle navbar-link" data-toggle="dropdown"
+                                   aria-expanded="false">
+                                    <span class="badge">9</span>
+                                    <span class="glyphicon glyphicon-bell"></span>
+                                </a>
+                            </span>
+                        <ul id="ulAlarmPanel" class="gray-scrollbar"></ul>
+                        <b class="card-close" style="display: none;">×</b>
+                    </li>
+
+                    <li style="width: 100%;height: 2px; margin-bottom: 8px;">
+                        <div class="dividingLine"></div>
+                    </li>
+                    <li style="width: 100%;">
+                        <ul class="list-inline list-menu">
+                            <li class="iconWrap" id="btnDataAnalys" permission="DAnalysis;Danalysis;">
+                                <a href="#page=AnalysisScreen">
+                                    <span class="glyphicon glyphicon-stats"></span>
+                                    <span class="dropdownNav" i18n="observer.menu.TITLE_ANALYSIS"></span>
+                                </a>
+                            </li>
+                            <li class="iconWrap" id="btnShareLog" permission="MShare;Mshare;">
+                                <a href="#page=shareLogging">
+                                    <span class="glyphicon glyphicon-share"></span>
+                                    <span class="dropdownNav" i18n="analysis.shareLog.TITLE_SHARE_LOG"></span>
+                                </a>
+                            </li>
+                            <li id="paneWorkflow" class="iconWrap" permission="WorkOrder">
+                                <a href="#page=workflow&type=transaction&subType=workingTask" target="_blank">
+                                    <span class="glyphicon glyphicon-list-alt"></span>
+                                    <span class="dropdownNav" i18n="admin.ddlUser.MENU_MY_WORKFLOW"></span>
+                                    <span class="badge" style="top:0; right:21px;"></span>
+                                </a>
+                            </li>
+                            <li id="btnMemberManage" class="iconWrap" permission="TeamSet;SOPermissions;MOAccount;">
+                                <a href="#page=UserManagerController&manager=MemberManager">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    <span class="dropdownNav" i18n="admin.panelManagement.SYSTEM_MANAGEMENT"></span>
+                                </a>
+                            </li>
+
+                            <li id="btnFactory" class="iconWrap"
+                                permission="CPage;DPage;Epage;WFRManagement;RRublishProject;APProject;CreateProject;DeleteProject">
+                                <a href="/factory" target="_blank">
+                                    <span class="glyphicon glyphicon-modal-window"></span>
+                                    <span class="dropdownNav">Factory</span>
+                                </a>
+                            </li>
+                            <li id="btnFullScreen" class="iconWrap" permission="Benchmark">
+                                <a href="javascript:;">
+                                    <span class="glyphicon glyphicon-sound-stereo"></span>
+                                    <span class="dropdownNav" i18n="observer.menu.TITLE_FULL_SCREEN">Full Screen</span>
+                                    <!--i18n="observer.menu.TITLE_BENCHMARK_CONFIGURE"-->
+                                </a>
+                            </li>
+                            <li id="terminalDebugging" class="iconWrap" permission="DataConnect">
+                                <a href="#page=TerminalDebugging">
+                                    <span class="glyphicon glyphicon-adjust"></span>
+                                    <span class="dropdownNav" i18n="observer.menu.TITLE_TERMINAL_DEBUG"></span>
+                                </a>
+                            </li>
+                            <li id="btnPlatform" class="iconWrap">
+	                            <a href="/platform" target="_blank">
+	                                <span class="glyphicon iconfont icon-pingtai"></span>
+	                                <span class="dropdownNav"i18n="observer.menu.PLATFORM">Platform</span>
+	                            </a>
+                        	</li>
+                        </ul>
+                    </li>
+
+                    <br style="clear: both;">
+                    <li id="liProjectMenu" class="dn" style="width: 100%; display: none;">
+                        <ul class="list-inline">
+                            <li class="" style="width: 100%;height: 2px; margin-bottom: 8px;">
+                                <div class="dividingLine"></div>
+                            </li>
+                            <li class="iconWrap" id="btnPointManager" permission="RTDataView">
+                                <a href="javascript:;">
+                                    <span class="glyphicon glyphicon-hdd"></span>
+                                    <span class="dropdownNav" i18n="admin.ddlUser.MENU_POINT_MANAGER"></span>
+                                </a>
+                            </li>
+                            <li class="iconWrap" id="btnOperatingRecord">
+                                <a href="javascript:;">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                    <span class="dropdownNav" i18n="admin.ddlUser.MENU_OPERATING_RECORD"></span>
+                                </a>
+                            </li>
+                            <li class="iconWrap" id="btnTemperatureSetting" style="display: none;">
+                                <a href="javascript:;">
+                                    <span class="glyphicon glyphicon-text-width"></span>
+                                    <span class="dropdownNav" i18n="observer.menu.TITLE_TEMPERATURE_CONFIGURE"></span>
+                                </a>
+                            </li>
+                            <li class="iconWrap" id="btnMenuConfigure" permission="PRoot">
+                                <a href="#page=MenuConfigure">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    <span class="dropdownNav" i18n="observer.menu.TITLE_MENU_CONFIGURE"></span>
+                                </a>
+                            </li>
+                            <li class="iconWrap" id="btnBenchmark" permission="RTDataView">
+                                <a href="javascript:;">
+                                    <span class="glyphicon glyphicon-flag"></span>
+                                    <span class="dropdownNav"
+                                          i18n="observer.menu.TITLE_BENCHMARK_CONFIGURE">Benchmark</span>
+                                </a>
+                            </li>
+                            <li class="iconWrap" id="btnHistoryPane" onclick="DragPanel.show();">
+                                <a href="javascript:;">
+                                    <span class="glyphicon glyphicon-tasks"></span>
+                                    <span class="dropdownNav" i18n="observer.menu.TITLE_HISTORY_PANEL">历史面板</span>
+                                </a>
+                            </li>
+                            <li id="modbus" class="iconWrap" permission="DataConnect">
+                                <a href="javascript:;">
+                                    <span class="glyphicon glyphicon-link"></span>
+                                    <span class="dropdownNav" i18n="dataTerminal.DATA_TERMINAL"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li style="width: 100%;height: 2px; margin-bottom: 8px;">
+                        <div class="dividingLine"></div>
+                    </li>
+                    <li class="iconWrap" id="btnChangeProject">
+                        <a>
+                            <!-- <img src="/static/images/nav/nav_operateLog.png"/> -->
+                            <span class="glyphicon glyphicon-transfer"></span>
+                            <span class="dropdownNav" i18n="admin.ddlUser.MENU_CHANGE_PROJECT"></span>
+                        </a>
+                    </li>
+                    {% if lang == 'en' or lang == 'zh' %}
+                    <li style="float: left; margin-top: 2px;clear: both;position: relative;visibility: hidden;">
+                    {% else %}
+                    <li style="float: left; margin-top: 2px;clear: both;position: relative;">
+                    {% endif %}
+                        <div id="btnSelectLanguage" class="divLanguage">
+                            <a class="lngText">
+                                <span class="spanlngText" style="" i18n="admin.navIndex.LINK_LANGUAGE"></span>
+                                <span style="padding-left:0;display: inline-block;margin-right: 5px;"
+                                      class="triangle"></span>
+                            </a>
+                            <ul id="sltLanguage">
+                                <li class="liHover"><a value="zh"><span style="padding-left: 0;padding-top: 4px;"
+                                                                        class="vMiddle">中文</span></a></li>
+                                <li class="liHover"><a value="en"><span style="padding-left: 0;padding-top: 4px;"
+                                                                        class="vMiddle">English</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li style="float: right; margin-top: 2px;margin-left: 20px;">
+                        <span id="btnLogout"><a i18n="admin.ddlUser.MENU_LOGOUT"></a></span>
+                    </li>
+                    <li style="float: right; margin-top: 2px;">
+                        <label id="labelChangeSkin" for="btnChangeSkin" i18n="admin.ddlUser.MENU_OPTION"></label>
+                        <!--<select id="btnChangeSkin" style="display: none;border-radius: 4px;color: #2a3e50;">
+                            <option value="dark" i18n="admin.ddlUser.MENU_CHANGE_SKIN_DARK"></option>
+                            <option value="default" i18n="admin.ddlUser.MENU_CHANGE_SKIN_DEFAULT"></option>
+                        </select>-->
+                    </li>
+                </ul>
+            </li>
+            <div id="messageAll" class="fr">
+                <a href="javascript:;" class="dropdown-toggle navbar-link" data-toggle="dropdown" aria-expanded="false">
+                    <div class="badge"></div>
+                    <span class="glyphicon glyphicon-bell" style="font-size: 20px;"></span>
+                </a>
+            </div>
+        </ul>
+        <!--仅宜家项目显示此按钮-->
+        <div id="ikenBtn">
+            <i class="iconfont icon icon-fanhui1" role="tooltip" data-placement="bottom" data-toggle="tooltip" i18n="title=observer.menu.GO_BACK"></i>
+        </div>
+
+        <div id="divPages">
+            <span class="glyphicon glyphicon-chevron-left" id="btnPageScrollRight" aria-hidden="true"></span>
+
+            <div id="scrollPages">
+                <ul id="ulPages" class="nav nav-pills navbar-left" role="tablist"
+                    style="padding-top: 7.5px;display: none"></ul>
+            </div>
+            <span class="glyphicon glyphicon-chevron-right" id="btnPageScrollLeft" aria-hidden="true"></span>
+        </div>
+
+        <ul id="ulTools" class="nav nav-pills navbar-right" role="tablist" style="padding-top: 17px;"></ul>
+    </div>
+</nav>
+
+
+<div id="indexMain">
+    {% block indexMain %} {% endblock %}
+</div>
+
+<article class="modal fade modal-light gray-scrollbar" id="dialogModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+    <div class="modal-dialog modal-lg" id="dialogContent"></div>
+</article>
+
+<article class="modal fade modal-light gray-scrollbar" id="pointTagEquipment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="margin-top: 60px;">
+        <div class="modal-content">
+            <div class="modal-body" id="tagEquipmentContent"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Sure</button>
+            </div>
+        </div>
+    </div>
+</article>
+
+{% block Spinner %} {% endblock %} {% block script %} {% endblock %}
+{% assets "polyfill_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+{% assets "js_tool" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+{% assets "js_index" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+{% assets "js_screen" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+{% assets "web_factory_ob_page_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+{% assets "web_factory_ob_dashboard_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+{% assets "web_factory_ob_report_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+{% block scriptLoaded %} {% endblock %}
+
+<!--@formatter:off-->
+<script type="text/html" id="tpl_show_LineState">
+    <!if(!list.dtuOff){!>
+        <span class="icon iconfont icon-shandian cp dropdown-toggle loginState" data-toggle="dropdown"></span>
+    <!} else{!>
+        <span class="icon iconfont icon-duanshandian cp dropdown-toggle loginState" data-toggle="dropdown" style="top: 4px;"></span>
+        <span id="dtuNum" style="position: absolute; top: -16px; left: 22px;">
+            <!if(typeof list.dtuOff == 'string'){!>
+                <span class="dtuOff"></span><span>/</span><span class="dtuTotal"><!=list.dtuTotal!></span>
+            <!}else{!>
+                <span class="dtuOff"><!=list.dtuOff!></span><span>/</span><span class="dtuTotal"><!=list.dtuTotal!></span>
+            <!}!>
+        </span>
+    <!}!>
+    <div class="dropdown-menu popover bottom lineStateListBox" aria-labelledby="dLabel">
+        <div class="arrow" style="left: 553px;"></div>
+        <div id="lineStateListContent" class="gray-scrollbar"></div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_showContent_dtu">
+    <!if(!list.dtuOff){!>
+        <!if(!list.detail){!>
+             <div class="mb0 form-group clearfix">
+                <label class="col-md-4 lineStateLabel pd0"><!=I18n.resource.workflow.lineState.LAST_UPDATE_TIME!></label>
+                <div class="col-md-8 pd0"><!=list.lastUpdateTime!></div>
+            </div>
+        <!}else if(list.detail && !list.detail.length){!>
+            <div class="mb0 form-group clearfix">
+                <label class="col-md-4 lineStateLabel pd0"><!=I18n.resource.workflow.lineState.LAST_UPDATE_TIME!></label>
+                <div class="col-md-8 pd0"><!=list.lastUpdateTime!></div>
+            </div>
+        <!} else if(list.detail && list.detail.length == 1){!>
+            <div class="mb0 form-group clearfix">
+                <label class="col-md-4 lineStateLabel pd0"><!=I18n.resource.workflow.lineState.LAST_UPDATE_TIME!></label>
+                <div class="col-md-8 pd0"><!=list.lastUpdateTime!></div>
+            </div>
+        <!}!>
+    <!}else{!>
+        <!if(!list.detail){!>
+            <div class="mb0 form-group clearfix">
+                <label class="col-md-4 lineStateLabel pd0"><!=I18n.resource.workflow.lineState.OFF_LAST_TIME!></label>
+                <div class="col-md-8 pd0"><!=list.lastUpdateTime!></div>
+            </div>
+        <!}else if(list.detail && !list.detail.length){!>
+            <div class="mb0 form-group clearfix">
+                <label class="col-md-4 lineStateLabel pd0"><!=I18n.resource.workflow.lineState.OFF_LAST_TIME!></label>
+                <div class="col-md-8 pd0"><!=list.lastUpdateTime!></div>
+            </div>
+        <!}else if(list.detail.length == 1){!>
+            <div class="mb0 form-group clearfix">
+                <label class="col-md-4 pd0" style="width: 218px;"><!=I18n.resource.workflow.lineState.OFF_LAST_TIME!></label>
+                <div class="col-md-8 pd0"><!=list.lastUpdateTime!></div>
+            </div>
+        <!}!>
+    <!}!>
+    <!if(list.detail && list.detail.length > 1){!>
+        <div class="mb0 form-group clearfix">
+            <label class="col-md-4 lineStateLabel pd0"><!=I18n.resource.workflow.lineState.LAST_UPDATE_TIME!></label>
+            <div class="col-md-8 pd0"><!=list.lastUpdateTime!></div>
+        </div>
+        <div class="mb0 form-group clearfix">
+            <label class="col-md-4 lineStateLabel pd0"><!=I18n.resource.workflow.lineState.OFF_TOTAL!></label>
+            <div class="col-md-8 pd0"><!=list.detail.length!></div>
+        </div>
+    <!}!>
+    <!if(list.detail && list.detail.length){!>
+        <div>
+            <div id="offDtuTable">
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th width="46px"><!=I18n.resource.workflow.lineState.LINE_NUMBER!></th>
+                            <th width="130px"><!=I18n.resource.workflow.lineState.TERMINAL_NUMBER!></th>
+                            <th width="190px"><!=I18n.resource.workflow.lineState.DEFECT_TOTAL_TIME!></th>
+                            <th width="190px"><!=I18n.resource.workflow.lineState.DEFECT_START_TIME!></th>
+                        </tr>
+                    </thead>
+                    <tbody class="gray-scrollbar">
+                    <!for(var i = 0;i< list.detail.length;i++){!>
+                        <tr data-key='<!=list.detail[i].dtu!>'>
+                            <td width="46px"><!=i+1!></td>
+                            <td width="130px"><!=list.detail[i].dtu!></td>
+                            <td width="190px"><!=list.detail[i].offTotalTime!></td>
+                            <td width="190px"><!=list.detail[i].offStartTime!></td>
+                        </tr>
+                    <!}!>
+                    </tbody>
+                </table>
+            </div>
+            <div id="offDtuHistory" class="dn">
+                <ul id="offDtuHistoryUl" class="fl gray-scrollbar">
+                    <div class="allDtuBox" class="cp">
+                        <label>
+                            <input class="allDtu dtuInput" style="top: 2px;" type="checkbox">
+                            <span style="display: inline-block;width: 90px;">all</span>
+                        </label>
+                    </div>
+                    <!for(var i = 0;i< dtuHistory.length;i++){!>
+                        <li class="cp" data-key="<!=dtuHistory[i]!>" title="<!=dtuHistory[i]!>">
+                            <label>
+                                <input class="dtuInput" type="checkbox">
+                                <span class="offDtu"><!=dtuHistory[i]!></span>
+                            </label>
+                        </li>
+                    <!}!>
+                </ul>
+                <div id="DtuHistoryDemo" class="fl"></div>
+                <span id="backBtn" class="glyphicon glyphicon-remove"></span>
+            </div>
+        </div>
+    <!}!>
+</script>
+<script type="text/html" id="tpl_showContent_enter">
+    <div class="mb0 form-group clearfix">
+        <label class="col-md-3 pd0"><!=I18n.resource.workflow.lineState.LAST_UPDATE_TIME!></label>
+        <div class="col-md-9 pd0"><!=list.lastUpdateTime!></div>
+    </div>
+</script>
+<!--@formatter:on-->
+</body>
+</html>

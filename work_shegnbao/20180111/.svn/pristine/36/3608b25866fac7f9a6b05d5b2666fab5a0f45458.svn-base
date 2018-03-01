@@ -1,0 +1,192 @@
+*::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.fr {
+    float: right;
+}
+
+.spinnerMask {
+    position: absolute;
+    z-index: 1000;
+    opacity: 0.4;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #808080;
+}
+
+/* loading animation start */
+#loading {
+    background-color: #FFF;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 9999999;
+    margin-top: 0px;
+    top: 0px;
+    transition: opacity .3s linear;
+}
+#loading-center {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#loading-center-absolute {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 200px;
+    width: 200px;
+    margin-top: -100px;
+    margin-left: -100px;
+    transform: rotate(-135deg);
+}
+#loading .object {
+    border-radius: 50% 50% 50% 50%;
+    position: absolute;
+    border-top: 5px solid #57c9ff;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #57c9ff;
+    border-right: 5px solid transparent;
+    animation: animate 2s infinite;
+}
+#loading #object-one{
+    left: 75px;
+    top: 75px;
+    width: 50px;
+    height: 50px;
+}                       
+#loading #object-two{
+    left: 65px;
+    top: 65px;
+    width: 70px;
+    height: 70px;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}       
+#loading #object-three{
+    left: 55px;
+    top: 55px;
+    width: 90px;
+    height: 90px;
+    animation-delay: 0.4s;
+}
+#loading #object-four{
+    left: 45px;
+    top: 45px;
+    width: 110px;
+    height: 110px;
+    animation-delay: 0.6s;
+}   
+@keyframes animate {    
+    50% {
+        transform: rotate(360deg) scale(0.8); 
+    }     
+}
+/* loading animation end */
+/* work order modal start */
+#workOrderModal{
+    overflow: auto;
+}
+#workOrderModal .modal-header{
+    background-color: #FAFAFB;
+}
+#workOrderModal .close{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #2e2d2d;
+    color: #F7F7F8;
+}
+#workOrderModal .close span{
+    font-weight: normal;
+}
+#workOrderModal .form-group input,#workOrderModal .form-group select,#workOrderModal .form-group textarea,#workOrderModal .form-group .peopleList,#wkPropGroup .divProp select{
+    color: #959595;
+    background-color: #FAFAFB;
+}
+#wkPropGroup .wkProp{
+    padding-left: 0;
+}
+#wkPropGroup .divProp{
+    padding-left: 0;
+    padding-right: 0;
+} 
+#workOrderModal .form-group>div{
+    padding-left: 0;
+}
+#workOrderModal .wk-people-add i{
+    font-size: 2rem;
+    cursor: pointer;
+}
+#wkPropGroup{
+    margin-bottom: 10px;
+    max-height: 200px;
+    overflow: auto;
+}
+#wkPropTable tbody tr.trActive{
+    background-color: #d9edf7;
+}
+#workOrderModal .form-group-chart{
+    background-color: #FAFAFB;
+    border: 1px solid #F0F0F1;
+}
+#formChart{
+    height: 300px;
+    position: relative;
+}
+#workOrderModal .form-group{
+    margin-bottom: 10px;
+}
+#workOrderModal .wf-detail-userInfo {
+    width: 38px;
+    height: 38px;
+    float: left;
+    margin: 7px 0 7px 7px;  
+    border-radius: 5px;
+    overflow: hidden;
+
+}
+
+#workOrderModal .wf-person-pic {
+    width: 38px;
+    height: 38px;
+    /*border-radius: 50px;*/
+}
+
+#workOrderModal .wf-detail-userName {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 1rem;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+.pr{
+    position: relative;
+}
+.pa{
+    position: absolute;
+}
+.peopleList {
+    padding: 0;
+    height: 52px;
+}
+
+/* work order modal end */

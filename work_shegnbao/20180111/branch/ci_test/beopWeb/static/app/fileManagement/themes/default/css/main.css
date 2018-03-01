@@ -1,0 +1,22 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+#divNavContainer {
+    position: relative;
+    float: left;
+    height: 100%;
+    width: 250px;
+    background: #27282D;
+}
+
+#divScreenContainer {
+    position: relative;
+    float: left;
+    height: 100%;
+    width: calc(100% - 250px);
+    background: #efefef;
+    overflow-x: hidden;
+}

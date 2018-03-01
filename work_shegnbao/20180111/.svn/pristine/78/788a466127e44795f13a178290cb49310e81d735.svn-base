@@ -1,0 +1,4 @@
+export default {
+  MODULE_NAME:'Data Export',
+  EXPORT_EXCEL:'Export Excel'
+};

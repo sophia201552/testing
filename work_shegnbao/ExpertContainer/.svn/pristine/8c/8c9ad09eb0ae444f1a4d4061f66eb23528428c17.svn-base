@@ -1,0 +1,3011 @@
+# -*- encoding=utf-8 -*-
+from ExpertContainer.logic.LogicBase import *
+from ExpertContainer.api.ArchiveManager import ArchiveManager
+from ExpertContainer.api.globalMapping import *
+from ExpertContainer.api.cacheProfile import DataManager
+from ExpertContainer.api.errorLog import errorLog
+_logger = LogOperator()
+
+class LogicAct(LogicBase):
+
+    def actlogic(self):
+        rt = None
+        try:
+            rt = self.action()
+        except Exception as e:
+            errorLog.writeLog(194,'%s in %s:'%(get_current_func_name(), __name__[__name__.rfind('/')+1:])+e.__str__(),True)
+            rt = None
+
+        return rt
+
+    def Accum_Plant001_CO2EmissionReductions(self):
+        def main():
+            try:
+                return self.calc_accumulate(194,'Accum_Plant001_CO2EmissionReductions', 'Plant001_CO2_EmissionReductions', '2016-06-01 00:00:00', 'm5', 1/12.0)
+            except Exception as e:
+                errorLog.writeLog(194,'Accum_Plant001_CO2EmissionReductions:'+e.__str__(),True,'Accum_Plant001_CO2EmissionReductions')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Accum_Plant001_EnergySaving(self):
+        def main():
+            try:
+                return self.calc_accumulate(194,'Accum_Plant001_EnergySaving', 'Plant001_GroupPower_Saving', '2016-06-01 00:00:00', 'm5', 1/12.0)
+            except Exception as e:
+                errorLog.writeLog(194,'Accum_Plant001_EnergySaving:'+e.__str__(),True,'Accum_Plant001_EnergySaving')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CT001_CTCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'CTPower01')/12
+            except Exception as e:
+                errorLog.writeLog(194,'CT001_CTCost:'+e.__str__(),True,'CT001_CTCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CT001_CTPower(self):
+        def main():
+            try:
+                return self.get_data(194,'CTPower01')
+            except Exception as e:
+                errorLog.writeLog(194,'CT001_CTPower:'+e.__str__(),True,'CT001_CTPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CT002_CTCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'CTPower02')/12
+            except Exception as e:
+                errorLog.writeLog(194,'CT002_CTCost:'+e.__str__(),True,'CT002_CTCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CT002_CTPower(self):
+        def main():
+            try:
+                return self.get_data(194,'CTPower02')
+            except Exception as e:
+                errorLog.writeLog(194,'CT002_CTPower:'+e.__str__(),True,'CT002_CTPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CT003_CTCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'CTPower03')/12
+            except Exception as e:
+                errorLog.writeLog(194,'CT003_CTCost:'+e.__str__(),True,'CT003_CTCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CT003_CTPower(self):
+        def main():
+            try:
+                return self.get_data(194,'CTPower03')
+            except Exception as e:
+                errorLog.writeLog(194,'CT003_CTPower:'+e.__str__(),True,'CT003_CTPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CT004_CTCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'CTPower04')/12
+            except Exception as e:
+                errorLog.writeLog(194,'CT004_CTCost:'+e.__str__(),True,'CT004_CTCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CT004_CTPower(self):
+        def main():
+            try:
+                return self.get_data(194,'CTPower04')
+            except Exception as e:
+                errorLog.writeLog(194,'CT004_CTPower:'+e.__str__(),True,'CT004_CTPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CT005_CTCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'CTPower05')/12
+            except Exception as e:
+                errorLog.writeLog(194,'CT005_CTCost:'+e.__str__(),True,'CT005_CTCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CT005_CTPower(self):
+        def main():
+            try:
+                return self.get_data(194,'CTPower05')
+            except Exception as e:
+                errorLog.writeLog(194,'CT005_CTPower:'+e.__str__(),True,'CT005_CTPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CT006_CTCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'CTPower06')/12
+            except Exception as e:
+                errorLog.writeLog(194,'CT006_CTCost:'+e.__str__(),True,'CT006_CTCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CT006_CTPower(self):
+        def main():
+            try:
+                return self.get_data(194,'CTPower06')
+            except Exception as e:
+                errorLog.writeLog(194,'CT006_CTPower:'+e.__str__(),True,'CT006_CTPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroup001_GroupCost(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CT001_CTCost','CT002_CTCost','CT003_CTCost','CT004_CTCost','CT005_CTCost','CT006_CTCost'])
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroup001_GroupCost:'+e.__str__(),True,'CTGroup001_GroupCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroup001_GroupPower(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CTPower01','CTPower02','CTPower03','CTPower04','CTPower05','CTPower06'])
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroup001_GroupPower:'+e.__str__(),True,'CTGroup001_GroupPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroup001_RunNum(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CTOnOff01','CTOnOff02','CTOnOff03','CTOnOff04','CTOnOff05','CTOnOff06'])
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroup001_RunNum:'+e.__str__(),True,'CTGroup001_RunNum')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroupTotal001_GroupCost(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CT001_CTCost','CT002_CTCost','CT003_CTCost','CT004_CTCost','CT005_CTCost','CT006_CTCost'])
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroupTotal001_GroupCost:'+e.__str__(),True,'CTGroupTotal001_GroupCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroupTotal001_GroupCostCompare(self):
+        def main():
+            try:
+                return self.calc_compare_same_time_diff_day(194,'CTGroupTotal001_GroupCost','m5')
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroupTotal001_GroupCostCompare:'+e.__str__(),True,'CTGroupTotal001_GroupCostCompare')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroupTotal001_GroupCostD(self):
+        def main():
+            try:
+                return self.calc_sum_day(194,'CTGroupTotal001_GroupCost',1,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroupTotal001_GroupCostD:'+e.__str__(),True,'CTGroupTotal001_GroupCostD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroupTotal001_GroupCostH(self):
+        def main():
+            try:
+                return self.calc_sum_hour(194,'CTGroupTotal001_GroupCost',1/12.0,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroupTotal001_GroupCostH:'+e.__str__(),True,'CTGroupTotal001_GroupCostH')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroupTotal001_GroupEnergyD(self):
+        def main():
+            try:
+            #根据电表读数求用电量
+                if self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+                else:
+                    t1=self.time_get_day_begin()
+                    data1=self.get_data_at_time(194,'CTGroupPowerTotal',t1)
+                    data2=self.get_data(194,'CTGroupPowerTotal')
+                    vr=data2-data1
+                    return (vr>0)*vr
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroupTotal001_GroupEnergyD:'+e.__str__(),True,'CTGroupTotal001_GroupEnergyD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroupTotal001_GroupEnergyH(self):
+        def main():
+            try:
+                return self.calc_sum_hour(194,'CTGroupTotal001_GroupPower',1/12.0,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroupTotal001_GroupEnergyH:'+e.__str__(),True,'CTGroupTotal001_GroupEnergyH')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroupTotal001_GroupEnergyM(self):
+        def main():    
+            try:
+                if self.get_act_time().day==1 and self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+                else:
+                    t1=self.time_get_month_begin()
+                    t2=self.get_act_time().replace(second=0).strftime('%Y-%m-%d %H:%M:%S')        
+                    value_Now=self.get_data(194,'CTGroupPowerTotal')
+                    value_month_begin=self.get_data_at_time(194,'CTGroupPowerTotal',t1)
+                    if value_month_begin is None:#月初如果没数据，就认为是0
+                        value_month_begin = 0
+                        value=value_Now-value_month_begin   
+                    else:
+                        value=value_Now-value_month_begin  
+                    return value
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroupTotal001_GroupEnergyM:'+e.__str__(),True,'CTGroupTotal001_GroupEnergyM')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroupTotal001_GroupEnergyW(self):
+        def main():    
+            try:
+                if self.get_act_time().weekday==0 and self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+                else:
+                    t1=self.time_get_week_begin()
+                    t2=self.get_act_time().replace(second=0).strftime('%Y-%m-%d %H:%M:%S')        
+                    value_Now=self.get_data(194,'CTGroupPowerTotal')
+                    value_week_begin=self.get_data_at_time(194,'CTGroupPowerTotal',t1)
+                    if value_week_begin is None:#周初如果没数据，就认为是0
+                        value_week_begin = 0
+                        value=value_Now-value_week_begin   
+                    else:
+                        value=value_Now-value_week_begin  
+                    return value
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroupTotal001_GroupEnergyW:'+e.__str__(),True,'CTGroupTotal001_GroupEnergyW')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroupTotal001_GroupEnergyY(self):
+        def main():
+            try:
+                return self.calc_sum_this_year(194,'CTGroupTotal001_GroupEnergyD',1)
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroupTotal001_GroupEnergyY:'+e.__str__(),True,'CTGroupTotal001_GroupEnergyY')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroupTotal001_GroupPower(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CTPower01','CTPower02','CTPower03','CTPower04','CTPower05','CTPower06'])
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroupTotal001_GroupPower:'+e.__str__(),True,'CTGroupTotal001_GroupPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroupTotal001_GroupPowerCompare(self):
+        def main():
+            try:
+                return self.calc_compare_same_time_diff_day(194,'CTGroupTotal001_GroupPower','m5')
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroupTotal001_GroupPowerCompare:'+e.__str__(),True,'CTGroupTotal001_GroupPowerCompare')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CTGroupTotal001_RunNum(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CTOnOff01','CTOnOff02','CTOnOff03','CTOnOff04','CTOnOff05','CTOnOff06'])
+            except Exception as e:
+                errorLog.writeLog(194,'CTGroupTotal001_RunNum:'+e.__str__(),True,'CTGroupTotal001_RunNum')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP001_PumpCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'CWPPower01')/12
+            except Exception as e:
+                errorLog.writeLog(194,'CWP001_PumpCost:'+e.__str__(),True,'CWP001_PumpCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP001_PumpOnOffcount(self):
+        def main():
+            try:
+                return self.calc_count_in_day(194,'CWPOnOff01','m5',-1)
+            except Exception as e:
+                errorLog.writeLog(194,'CWP001_PumpOnOffcount:'+e.__str__(),True,'CWP001_PumpOnOffcount')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP001_PumpPower(self):
+        def main():
+            try:
+                return self.get_data(194,'CWPPower01')
+            except Exception as e:
+                errorLog.writeLog(194,'CWP001_PumpPower:'+e.__str__(),True,'CWP001_PumpPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP002_PumpCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'CWPPower02')/12
+            except Exception as e:
+                errorLog.writeLog(194,'CWP002_PumpCost:'+e.__str__(),True,'CWP002_PumpCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP002_PumpOnOffcount(self):
+        def main():
+            try:
+                return self.calc_count_in_day(194,'CWPOnOff02','m5',-1)
+            except Exception as e:
+                errorLog.writeLog(194,'CWP002_PumpOnOffcount:'+e.__str__(),True,'CWP002_PumpOnOffcount')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP002_PumpPower(self):
+        def main():
+            try:
+                return self.get_data(194,'CWPPower02')
+            except Exception as e:
+                errorLog.writeLog(194,'CWP002_PumpPower:'+e.__str__(),True,'CWP002_PumpPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP003_PumpCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'CWPPower03')/12
+            except Exception as e:
+                errorLog.writeLog(194,'CWP003_PumpCost:'+e.__str__(),True,'CWP003_PumpCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP003_PumpOnOffcount(self):
+        def main():
+            try:
+                return self.calc_count_in_day(194,'CWPOnOff03','m5',-1)
+            except Exception as e:
+                errorLog.writeLog(194,'CWP003_PumpOnOffcount:'+e.__str__(),True,'CWP003_PumpOnOffcount')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP003_PumpPower(self):
+        def main():
+            try:
+                return self.get_data(194,'CWPPower03')
+            except Exception as e:
+                errorLog.writeLog(194,'CWP003_PumpPower:'+e.__str__(),True,'CWP003_PumpPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP004_PumpCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'CWPPower04')/12
+            except Exception as e:
+                errorLog.writeLog(194,'CWP004_PumpCost:'+e.__str__(),True,'CWP004_PumpCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP004_PumpOnOffcount(self):
+        def main():
+            try:
+                return self.calc_count_in_day(194,'CWPOnOff04','m5',-1)
+            except Exception as e:
+                errorLog.writeLog(194,'CWP004_PumpOnOffcount:'+e.__str__(),True,'CWP004_PumpOnOffcount')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP004_PumpPower(self):
+        def main():
+            try:
+                return self.get_data(194,'CWPPower04')
+            except Exception as e:
+                errorLog.writeLog(194,'CWP004_PumpPower:'+e.__str__(),True,'CWP004_PumpPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP005_PumpCost(self):
+        def main():
+            try:
+                price = self.get_data(194,'Plant001_ElecPrice')
+                self.log_str(price)
+                power = self.get_data(194,'CWPPower05')
+                return price*power/12.0
+            except Exception as e:
+                errorLog.writeLog(194,'CWP005_PumpCost:'+e.__str__(),True,'CWP005_PumpCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP005_PumpOnOffcount(self):
+        def main():
+            try:
+                return self.calc_count_in_day(194,'CWPOnOff05','m5',-1)
+            except Exception as e:
+                errorLog.writeLog(194,'CWP005_PumpOnOffcount:'+e.__str__(),True,'CWP005_PumpOnOffcount')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP005_PumpPower(self):
+        def main():
+            try:
+                return self.get_data(194,'CWPPower05')
+            except Exception as e:
+                errorLog.writeLog(194,'CWP005_PumpPower:'+e.__str__(),True,'CWP005_PumpPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP006_PumpCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'CWPPower06')/12
+            except Exception as e:
+                errorLog.writeLog(194,'CWP006_PumpCost:'+e.__str__(),True,'CWP006_PumpCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP006_PumpOnOffcount(self):
+        def main():
+            try:
+                return self.calc_count_in_day(194,'CWPOnOff06','m5',-1)
+            except Exception as e:
+                errorLog.writeLog(194,'CWP006_PumpOnOffcount:'+e.__str__(),True,'CWP006_PumpOnOffcount')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWP006_PumpPower(self):
+        def main():
+            try:
+                return self.get_data(194,'CWPPower06')
+            except Exception as e:
+                errorLog.writeLog(194,'CWP006_PumpPower:'+e.__str__(),True,'CWP006_PumpPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroup001_GroupCost(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CWP001_PumpCost','CWP002_PumpCost','CWP003_PumpCost','CWP004_PumpCost','CWP005_PumpCost','CWP006_PumpCost'])
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroup001_GroupCost:'+e.__str__(),True,'CWPGroup001_GroupCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroup001_GroupPower(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CWPPower01','CWPPower02','CWPPower03','CWPPower04','CWPPower05','CWPPower06'])
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroup001_GroupPower:'+e.__str__(),True,'CWPGroup001_GroupPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroup001_RunNum(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CWPOnOff01','CWPOnOff02','CWPOnOff03','CWPOnOff04','CWPOnOff05','CWPOnOff06'])
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroup001_RunNum:'+e.__str__(),True,'CWPGroup001_RunNum')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_GroupCost(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CWP001_PumpCost','CWP002_PumpCost','CWP003_PumpCost','CWP004_PumpCost','CWP005_PumpCost','CWP006_PumpCost'])
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_GroupCost:'+e.__str__(),True,'CWPGroupTotal001_GroupCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_GroupCostCompare(self):
+        def main():
+            try:
+                return self.calc_compare_same_time_diff_day(194,'CWPGroupTotal001_GroupCost','m5')
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_GroupCostCompare:'+e.__str__(),True,'CWPGroupTotal001_GroupCostCompare')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_GroupCostD(self):
+        def main():
+            try:
+                return self.calc_sum_day(194,'CWPGroupTotal001_GroupCost',1,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_GroupCostD:'+e.__str__(),True,'CWPGroupTotal001_GroupCostD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_GroupCostH(self):
+        def main():
+            try:
+                return self.calc_sum_hour(194,'CWPGroupTotal001_GroupCost',1/12.0,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_GroupCostH:'+e.__str__(),True,'CWPGroupTotal001_GroupCostH')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_GroupEnergyD(self):
+        def main():
+            try:
+            #根据电表读数求用电量
+                if self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+                else:
+                    t1=self.time_get_day_begin()
+                    data1=self.get_data_at_time(194,'CWPGroupPowerTotal',t1)
+                    data2=self.get_data(194,'CWPGroupPowerTotal')
+                    vr=data2-data1
+                    return (vr>0)*vr
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_GroupEnergyD:'+e.__str__(),True,'CWPGroupTotal001_GroupEnergyD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_GroupEnergyH(self):
+        def main():
+            try:
+                return self.calc_sum_hour(194,'CWPGroupTotal001_GroupPower',1/12.0,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_GroupEnergyH:'+e.__str__(),True,'CWPGroupTotal001_GroupEnergyH')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_GroupEnergyM(self):
+        def main():    
+            try:
+                if self.get_act_time().day==1 and self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+                else:
+                    t1=self.time_get_month_begin()
+                    t2=self.get_act_time().replace(second=0).strftime('%Y-%m-%d %H:%M:%S')        
+                    value_Now=self.get_data(194,'CWPGroupPowerTotal')
+                    value_month_begin=self.get_data_at_time(194,'CWPGroupPowerTotal',t1)
+                    if value_month_begin is None:#月初如果没数据，就认为是0
+                        value_month_begin = 0
+                        value=value_Now-value_month_begin   
+                    else:
+                        value=value_Now-value_month_begin  
+                    return value
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_GroupEnergyM:'+e.__str__(),True,'CWPGroupTotal001_GroupEnergyM')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_GroupEnergyW(self):
+        def main():    
+            try:
+                if self.get_act_time().weekday==0 and self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+                else:
+                    t1=self.time_get_week_begin()
+                    t2=self.get_act_time().replace(second=0).strftime('%Y-%m-%d %H:%M:%S')        
+                    value_Now=self.get_data(194,'CWPGroupPowerTotal')
+                    value_week_begin=self.get_data_at_time(194,'CWPGroupPowerTotal',t1)
+                    if value_week_begin is None:#周初如果没数据，就认为是0
+                        value_week_begin = 0
+                        value=value_Now-value_week_begin   
+                    else:
+                        value=value_Now-value_week_begin  
+                    return value
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_GroupEnergyW:'+e.__str__(),True,'CWPGroupTotal001_GroupEnergyW')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_GroupEnergyY(self):
+        def main():
+            try:
+                return self.calc_sum_this_year(194,'CWPGroupTotal001_GroupEnergyD',1)
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_GroupEnergyY:'+e.__str__(),True,'CWPGroupTotal001_GroupEnergyY')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_GroupPower(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CWPPower01','CWPPower02','CWPPower03','CWPPower04','CWPPower05','CWPPower06'])
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_GroupPower:'+e.__str__(),True,'CWPGroupTotal001_GroupPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_GroupPowerCompare(self):
+        def main():
+            try:
+                return self.calc_compare_same_time_diff_day(194,'CWPGroupTotal001_GroupPower','m5')
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_GroupPowerCompare:'+e.__str__(),True,'CWPGroupTotal001_GroupPowerCompare')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_GroupPower_gzq(self):
+        def main():
+            try:
+                CWPGroupTotal001_RunNum=self.get_data(194,'CWPGroupTotal001_RunNum')
+                return CWPGroupTotal001_RunNum*30*(CWPGroupTotal001_RunNum>0)
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_GroupPower_gzq:'+e.__str__(),True,'CWPGroupTotal001_GroupPower_gzq')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def CWPGroupTotal001_RunNum(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CWPOnOff01','CWPOnOff02','CWPOnOff03','CWPOnOff04','CWPOnOff05','CWPOnOff06'])
+            except Exception as e:
+                errorLog.writeLog(194,'CWPGroupTotal001_RunNum:'+e.__str__(),True,'CWPGroupTotal001_RunNum')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch001_COP(self):
+        def main():
+            try:
+                Ch001_Eff = self.get_data(194,'Ch001_Eff')
+                ChOnOff01 = self.get_data(194,'ChOnOff01')
+                return 3.516/(Ch001_Eff+(Ch001_Eff<0.1))*(Ch001_Eff>=0.1)*(ChOnOff01>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch001_COP:'+e.__str__(),True,'Ch001_COP')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch001_ChCost(self):
+        def main():
+            try:
+                self.log_str(self.get_data(194,'Plant001_ElecPrice'))
+                self.log_str(self.get_data(194,'ChPower01'))
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'ChPower01')/12
+            except Exception as e:
+                errorLog.writeLog(194,'Ch001_ChCost:'+e.__str__(),True,'Ch001_ChCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch001_ChPower(self):
+        def main():
+            try:
+                return self.get_data(194,'ChPower01')
+            except Exception as e:
+                errorLog.writeLog(194,'Ch001_ChPower:'+e.__str__(),True,'Ch001_ChPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch001_Eff(self):
+        def main():
+            try:
+                ChPower01 = self.get_data(194,'ChPower01')
+                Ch001_Load = self.get_data(194,'Ch001_Load')
+                ChOnOff01 = self.get_data(194,'ChOnOff01')
+                return ChPower01/(Ch001_Load+(Ch001_Load<=10))*(Ch001_Load>10)*(ChOnOff01>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch001_Eff:'+e.__str__(),True,'Ch001_Eff')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch001_Load(self):
+        def main():
+            try:
+                Ratio_Ch01 = self.get_data(194,'Ratio_Ch01')
+                Plant001_Load = self.get_data(194,'Plant001_Load')
+                ChOnOff01 = self.get_data(194,'ChOnOff01')
+                return Ratio_Ch01*Plant001_Load*(ChOnOff01>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch001_Load:'+e.__str__(),True,'Ch001_Load')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch002_COP(self):
+        def main():
+            try:
+                Ch002_Eff = self.get_data(194,'Ch002_Eff')
+                ChOnOff02 = self.get_data(194,'ChOnOff02')
+                return 3.516/(Ch002_Eff+(Ch002_Eff<0.1))*(Ch002_Eff>=0.1)*(ChOnOff02>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch002_COP:'+e.__str__(),True,'Ch002_COP')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch002_ChCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'ChPower02')/12
+            except Exception as e:
+                errorLog.writeLog(194,'Ch002_ChCost:'+e.__str__(),True,'Ch002_ChCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch002_ChPower(self):
+        def main():
+            try:
+                return self.get_data(194,'ChPower02')
+            except Exception as e:
+                errorLog.writeLog(194,'Ch002_ChPower:'+e.__str__(),True,'Ch002_ChPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch002_Eff(self):
+        def main():
+            try:
+                ChPower02 = self.get_data(194,'ChPower02')
+                Ch002_Load = self.get_data(194,'Ch002_Load')
+                ChOnOff02 = self.get_data(194,'ChOnOff02')
+                return ChPower02/(Ch002_Load+(Ch002_Load<=10))*(Ch002_Load>10)*(ChOnOff02>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch002_Eff:'+e.__str__(),True,'Ch002_Eff')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch002_Load(self):
+        def main():
+            try:
+                Ratio_Ch02 = self.get_data(194,'Ratio_Ch02')
+                Plant001_Load = self.get_data(194,'Plant001_Load')
+                ChOnOff02 = self.get_data(194,'ChOnOff02')
+                return Ratio_Ch02*Plant001_Load*(ChOnOff02>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch002_Load:'+e.__str__(),True,'Ch002_Load')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch003_COP(self):
+        def main():
+            try:
+                Ch003_Eff = self.get_data(194,'Ch003_Eff')
+                ChOnOff03 = self.get_data(194,'ChOnOff03')
+                return 3.516/(Ch003_Eff+(Ch003_Eff<0.1))*(Ch003_Eff>=0.1)*(ChOnOff03>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch003_COP:'+e.__str__(),True,'Ch003_COP')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch003_ChCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'ChPower03')/12
+            except Exception as e:
+                errorLog.writeLog(194,'Ch003_ChCost:'+e.__str__(),True,'Ch003_ChCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch003_ChPower(self):
+        def main():
+            try:
+                return self.get_data(194,'ChPower03')
+            except Exception as e:
+                errorLog.writeLog(194,'Ch003_ChPower:'+e.__str__(),True,'Ch003_ChPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch003_Eff(self):
+        def main():
+            try:
+                ChPower03 = self.get_data(194,'ChPower03')
+                Ch003_Load = self.get_data(194,'Ch003_Load')
+                ChOnOff03 = self.get_data(194,'ChOnOff03')
+                return ChPower03/(Ch003_Load+(Ch003_Load<=10))*(Ch003_Load>10)*(ChOnOff03>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch003_Eff:'+e.__str__(),True,'Ch003_Eff')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch003_Load(self):
+        def main():
+            try:
+                Ratio_Ch03 = self.get_data(194,'Ratio_Ch03')
+                Plant001_Load = self.get_data(194,'Plant001_Load')
+                ChOnOff03 = self.get_data(194,'ChOnOff03')
+                return Ratio_Ch03*Plant001_Load*(ChOnOff03>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch003_Load:'+e.__str__(),True,'Ch003_Load')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch004_COP(self):
+        def main():
+            try:
+                Ch004_Eff = self.get_data(194,'Ch004_Eff')
+                ChOnOff04 = self.get_data(194,'ChOnOff04')
+                return 3.516/(Ch004_Eff+(Ch004_Eff<0.1))*(Ch004_Eff>=0.1)*(ChOnOff04>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch004_COP:'+e.__str__(),True,'Ch004_COP')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch004_ChCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'ChPower04')/12
+            except Exception as e:
+                errorLog.writeLog(194,'Ch004_ChCost:'+e.__str__(),True,'Ch004_ChCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch004_ChPower(self):
+        def main():
+            try:
+                return self.get_data(194,'ChPower04')
+            except Exception as e:
+                errorLog.writeLog(194,'Ch004_ChPower:'+e.__str__(),True,'Ch004_ChPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch004_Eff(self):
+        def main():
+            try:
+                ChPower04 = self.get_data(194,'ChPower04')
+                Ch004_Load = self.get_data(194,'Ch004_Load')
+                ChOnOff04 = self.get_data(194,'ChOnOff04')
+                return ChPower04/(Ch004_Load+(Ch004_Load<=10))*(Ch004_Load>10)*(ChOnOff04>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch004_Eff:'+e.__str__(),True,'Ch004_Eff')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch004_Load(self):
+        def main():
+            try:
+                Ratio_Ch04 = self.get_data(194,'Ratio_Ch04')
+                Plant001_Load = self.get_data(194,'Plant001_Load')
+                ChOnOff04 = self.get_data(194,'ChOnOff04')
+                return Ratio_Ch04*Plant001_Load*(ChOnOff04>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch004_Load:'+e.__str__(),True,'Ch004_Load')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch005_COP(self):
+        def main():
+            try:
+                Ch005_Eff = self.get_data(194,'Ch005_Eff')
+                ChOnOff05 = self.get_data(194,'ChOnOff05')
+                return 3.516/(Ch005_Eff+(Ch005_Eff<0.1))*(Ch005_Eff>=0.1)*(ChOnOff05>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch005_COP:'+e.__str__(),True,'Ch005_COP')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch005_ChCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'ChPower05')/12
+            except Exception as e:
+                errorLog.writeLog(194,'Ch005_ChCost:'+e.__str__(),True,'Ch005_ChCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch005_ChPower(self):
+        def main():
+            try:
+                return self.get_data(194,'ChPower05')
+            except Exception as e:
+                errorLog.writeLog(194,'Ch005_ChPower:'+e.__str__(),True,'Ch005_ChPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch005_Eff(self):
+        def main():
+            try:
+                ChPower05 = self.get_data(194,'ChPower05')
+                Ch005_Load = self.get_data(194,'Ch005_Load')
+                ChOnOff05 = self.get_data(194,'ChOnOff05')
+                return ChPower05/(Ch005_Load+(Ch005_Load<=10))*(Ch005_Load>10)*(ChOnOff05>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch005_Eff:'+e.__str__(),True,'Ch005_Eff')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch005_Load(self):
+        def main():
+            try:
+                Ratio_Ch05 = self.get_data(194,'Ratio_Ch05')
+                Plant001_Load = self.get_data(194,'Plant001_Load')
+                ChOnOff05 = self.get_data(194,'ChOnOff05')
+                return Ratio_Ch05*Plant001_Load*(ChOnOff05>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch005_Load:'+e.__str__(),True,'Ch005_Load')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch006_COP(self):
+        def main():
+            try:
+                Ch006_Eff = self.get_data(194,'Ch006_Eff')
+                ChOnOff06 = self.get_data(194,'ChOnOff06')
+                return 3.516/(Ch006_Eff+(Ch006_Eff<0.1))*(Ch006_Eff>=0.1)*(ChOnOff06>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch006_COP:'+e.__str__(),True,'Ch006_COP')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch006_ChCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'ChPower06')/12
+            except Exception as e:
+                errorLog.writeLog(194,'Ch006_ChCost:'+e.__str__(),True,'Ch006_ChCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch006_ChPower(self):
+        def main():
+            try:
+                return self.get_data(194,'ChPower06')
+            except Exception as e:
+                errorLog.writeLog(194,'Ch006_ChPower:'+e.__str__(),True,'Ch006_ChPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch006_Eff(self):
+        def main():
+            try:
+                ChPower06 = self.get_data(194,'ChPower06')
+                Ch006_Load = self.get_data(194,'Ch006_Load')
+                ChOnOff06 = self.get_data(194,'ChOnOff06')
+                return ChPower06/(Ch006_Load+(Ch006_Load<=10))*(Ch006_Load>10)*(ChOnOff06>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch006_Eff:'+e.__str__(),True,'Ch006_Eff')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ch006_Load(self):
+        def main():
+            try:
+                Ratio_Ch06 = self.get_data(194,'Ratio_Ch06')
+                Plant001_Load = self.get_data(194,'Plant001_Load')
+                ChOnOff06 = self.get_data(194,'ChOnOff06')
+                return Ratio_Ch06*Plant001_Load*(ChOnOff06>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Ch006_Load:'+e.__str__(),True,'Ch006_Load')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChAMPS01_rev(self):
+        def main():
+            try:
+                fAMP =  self.get_data(194,'ChAMPS01')
+                if fAMP>0:
+                    return fAMP
+                
+                nStatus = self.get_data(194,'ChOnOff01')
+                if nStatus==0:
+                    return 0.0
+                
+                return self.get_last_value(194, 'ChAMPS01_rev')
+            except Exception as e:
+                errorLog.writeLog(194,'ChAMPS01_rev:'+e.__str__(),True,'ChAMPS01_rev')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChAMPS02_rev(self):
+        def main():
+            try:
+                fAMP =  self.get_data(194,'ChAMPS02')
+                if fAMP>0:
+                    return fAMP
+                
+                nStatus = self.get_data(194,'ChOnOff02')
+                if nStatus==0:
+                    return 0.0
+                
+                return self.get_last_value(194, 'ChAMPS02_rev')
+            except Exception as e:
+                errorLog.writeLog(194,'ChAMPS02_rev:'+e.__str__(),True,'ChAMPS02_rev')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChAMPS03_rev(self):
+        def main():
+            try:
+                fAMP =  self.get_data(194,'ChAMPS03')
+                if fAMP>0:
+                    return fAMP
+                
+                nStatus = self.get_data(194,'ChOnOff03')
+                if nStatus==0:
+                    return 0.0
+                
+                return self.get_last_value(194, 'ChAMPS03_rev')
+            except Exception as e:
+                errorLog.writeLog(194,'ChAMPS03_rev:'+e.__str__(),True,'ChAMPS03_rev')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChAMPS04_rev(self):
+        def main():
+            try:
+                fAMP =  self.get_data(194,'ChAMPS04')
+                if fAMP>0:
+                    return fAMP
+                
+                nStatus = self.get_data(194,'ChOnOff04')
+                if nStatus==0:
+                    return 0.0
+                
+                return self.get_last_value(194, 'ChAMPS04_rev')
+            except Exception as e:
+                errorLog.writeLog(194,'ChAMPS04_rev:'+e.__str__(),True,'ChAMPS04_rev')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChAMPS05_rev(self):
+        def main():
+            try:
+                fAMP =  self.get_data(194,'ChAMPS05')
+                if fAMP>0:
+                    return fAMP
+                
+                nStatus = self.get_data(194,'ChOnOff05')
+                if nStatus==0:
+                    return 0.0
+                
+                return self.get_last_value(194, 'ChAMPS05_rev')
+            except Exception as e:
+                errorLog.writeLog(194,'ChAMPS05_rev:'+e.__str__(),True,'ChAMPS05_rev')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChAMPS06_rev(self):
+        def main():
+            try:
+                fAMP =  self.get_data(194,'ChAMPS06')
+                if fAMP>0:
+                    return fAMP
+                
+                nStatus = self.get_data(194,'ChOnOff06')
+                if nStatus==0:
+                    return 0.0
+                
+                return self.get_last_value(194, 'ChAMPS06_rev')
+            except Exception as e:
+                errorLog.writeLog(194,'ChAMPS06_rev:'+e.__str__(),True,'ChAMPS06_rev')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroup001_GroupCost(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['Ch001_ChCost','Ch002_ChCost','Ch003_ChCost','Ch004_ChCost','Ch005_ChCost','Ch006_ChCost'])
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroup001_GroupCost:'+e.__str__(),True,'ChGroup001_GroupCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroup001_GroupPower(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['ChPower01','ChPower02','ChPower03','ChPower04','ChPower05','ChPower06'])
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroup001_GroupPower:'+e.__str__(),True,'ChGroup001_GroupPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroup001_RunNum(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['ChOnOff01','ChOnOff02','ChOnOff03','ChOnOff04','ChOnOff05','ChOnOff06'])
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroup001_RunNum:'+e.__str__(),True,'ChGroup001_RunNum')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_AverageChAMPS(self):
+        def main():
+            try:
+                AverageChAMPS = self.calc_avg_if_run(194,['ChAMPS01','ChAMPS02','ChAMPS03','ChAMPS04','ChAMPS05','ChAMPS06'], '>10', ['ChAMPS01','ChAMPS02','ChAMPS03','ChAMPS04','ChAMPS05','ChAMPS06'])
+                if AverageChAMPS:
+                    pass
+                else:
+                    AverageChAMPS = 0
+                return AverageChAMPS
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_AverageChAMPS:'+e.__str__(),True,'ChGroupTotal001_AverageChAMPS')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_GroupCost(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['Ch001_ChCost','Ch002_ChCost','Ch003_ChCost','Ch004_ChCost','Ch005_ChCost','Ch006_ChCost'])
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_GroupCost:'+e.__str__(),True,'ChGroupTotal001_GroupCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_GroupCostCompare(self):
+        def main():
+            try:
+                return self.calc_compare_same_time_diff_day(194,'ChGroupTotal001_GroupCost','m5')
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_GroupCostCompare:'+e.__str__(),True,'ChGroupTotal001_GroupCostCompare')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_GroupCostD(self):
+        def main():
+            try:
+                return self.calc_sum_day(194,'ChGroupTotal001_GroupCost',1,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_GroupCostD:'+e.__str__(),True,'ChGroupTotal001_GroupCostD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_GroupCostH(self):
+        def main():
+            try:
+                return self.calc_sum_hour(194,'ChGroupTotal001_GroupCost',1/12.0,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_GroupCostH:'+e.__str__(),True,'ChGroupTotal001_GroupCostH')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_GroupEnergyD(self):
+        def main():
+            try:
+            #根据电表读数求用电量
+                if self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+                else:
+                    t1=self.time_get_day_begin()
+                    data1=self.get_data_at_time(194,'ChGroupPowerTotal',t1)
+                    data2=self.get_data(194,'ChGroupPowerTotal')
+                    vr=data2-data1
+                    return (vr>0)*vr
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_GroupEnergyD:'+e.__str__(),True,'ChGroupTotal001_GroupEnergyD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_GroupEnergyH(self):
+        def main():
+            try:
+                return self.calc_sum_hour(194,'ChGroupTotal001_GroupPower',1/12.0,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_GroupEnergyH:'+e.__str__(),True,'ChGroupTotal001_GroupEnergyH')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_GroupEnergyM(self):
+        def main():    
+            try:
+                if self.get_act_time().day==1 and self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+                else:
+                    t1=self.time_get_month_begin()
+                    t2=self.get_act_time().replace(second=0).strftime('%Y-%m-%d %H:%M:%S')        
+                    value_Now=self.get_data(194,'ChGroupPowerTotal')
+                    value_month_begin=self.get_data_at_time(194,'ChGroupPowerTotal',t1)
+                    if value_month_begin is None:#月初如果没数据，就认为是0
+                        value_month_begin = 0
+                        value=value_Now-value_month_begin   
+                    else:
+                        value=value_Now-value_month_begin  
+                    return value
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_GroupEnergyM:'+e.__str__(),True,'ChGroupTotal001_GroupEnergyM')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_GroupEnergyW(self):
+        def main():
+            try:
+                if self.get_act_time().weekday==0 and self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+                else:
+                    t1=self.time_get_week_begin()
+                    t2=self.get_act_time().replace(second=0).strftime('%Y-%m-%d %H:%M:%S')        
+                    value_Now=self.get_data(194,'ChGroupPowerTotal')
+                    value_week_begin=self.get_data_at_time(194,'ChGroupPowerTotal',t1)
+                    if value_week_begin is None:#周初如果没数据，就认为是0
+                        value_week_begin = 0
+                        value=value_Now-value_week_begin   
+                    else:
+                        value=value_Now-value_week_begin  
+                    return value
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_GroupEnergyW:'+e.__str__(),True,'ChGroupTotal001_GroupEnergyW')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_GroupEnergyY(self):
+        def main():
+            try:
+                return self.calc_sum_this_year(194,'ChGroupTotal001_GroupEnergyD',1)
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_GroupEnergyY:'+e.__str__(),True,'ChGroupTotal001_GroupEnergyY')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_GroupPower(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['ChPower01','ChPower02','ChPower03','ChPower04','ChPower05','ChPower06'])
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_GroupPower:'+e.__str__(),True,'ChGroupTotal001_GroupPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_GroupPowerCompare(self):
+        def main():
+            try:
+                return self.calc_compare_same_time_diff_day(194,'ChGroupTotal001_GroupPower','m5')
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_GroupPowerCompare:'+e.__str__(),True,'ChGroupTotal001_GroupPowerCompare')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def ChGroupTotal001_RunNum(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['ChOnOff01','ChOnOff02','ChOnOff03','ChOnOff04','ChOnOff05','ChOnOff06'])
+            except Exception as e:
+                errorLog.writeLog(194,'ChGroupTotal001_RunNum:'+e.__str__(),True,'ChGroupTotal001_RunNum')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP001_PumpCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'PriChWPPower01')/12
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP001_PumpCost:'+e.__str__(),True,'PCHWP001_PumpCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP001_PumpOnOffcount(self):
+        def main():
+            try:
+                return self.calc_count_in_day(194,'PriChWPOnOff01','m5',-1)
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP001_PumpOnOffcount:'+e.__str__(),True,'PCHWP001_PumpOnOffcount')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP001_PumpPower(self):
+        def main():
+            try:
+                return self.get_data(194,'PriChWPPower01')
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP001_PumpPower:'+e.__str__(),True,'PCHWP001_PumpPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP002_PumpCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'PriChWPPower02')/12
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP002_PumpCost:'+e.__str__(),True,'PCHWP002_PumpCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP002_PumpOnOffcount(self):
+        def main():
+            try:
+                return self.calc_count_in_day(194,'PriChWPOnOff02','m5',-1)
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP002_PumpOnOffcount:'+e.__str__(),True,'PCHWP002_PumpOnOffcount')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP002_PumpPower(self):
+        def main():
+            try:
+                return self.get_data(194,'PriChWPPower02')
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP002_PumpPower:'+e.__str__(),True,'PCHWP002_PumpPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP003_PumpCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'PriChWPPower03')/12
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP003_PumpCost:'+e.__str__(),True,'PCHWP003_PumpCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP003_PumpOnOffcount(self):
+        def main():
+            try:
+                return self.calc_count_in_day(194,'PriChWPOnOff03','m5',-1)
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP003_PumpOnOffcount:'+e.__str__(),True,'PCHWP003_PumpOnOffcount')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP003_PumpPower(self):
+        def main():
+            try:
+                return self.get_data(194,'PriChWPPower03')
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP003_PumpPower:'+e.__str__(),True,'PCHWP003_PumpPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP004_PumpCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'PriChWPPower04')/12
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP004_PumpCost:'+e.__str__(),True,'PCHWP004_PumpCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP004_PumpOnOffcount(self):
+        def main():
+            try:
+                return self.calc_count_in_day(194,'PriChWPOnOff05','m5',-1)
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP004_PumpOnOffcount:'+e.__str__(),True,'PCHWP004_PumpOnOffcount')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP004_PumpPower(self):
+        def main():
+            try:
+                return self.get_data(194,'PriChWPPower04')
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP004_PumpPower:'+e.__str__(),True,'PCHWP004_PumpPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP005_PumpCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'PriChWPPower05')/12
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP005_PumpCost:'+e.__str__(),True,'PCHWP005_PumpCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP005_PumpOnOffcount(self):
+        def main():
+            try:
+                return self.calc_count_in_day(194,'PriChWPOnOff05','m5',-1)
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP005_PumpOnOffcount:'+e.__str__(),True,'PCHWP005_PumpOnOffcount')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP005_PumpPower(self):
+        def main():
+            try:
+                return self.get_data(194,'PriChWPPower05')
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP005_PumpPower:'+e.__str__(),True,'PCHWP005_PumpPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP006_PumpCost(self):
+        def main():
+            try:
+                return self.get_data(194,'Plant001_ElecPrice')*self.get_data(194,'PriChWPPower06')/12
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP006_PumpCost:'+e.__str__(),True,'PCHWP006_PumpCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP006_PumpOnOffcount(self):
+        def main():
+            try:
+                return self.calc_count_in_day(194,'PriChWPOnOff06','m5',-1)
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP006_PumpOnOffcount:'+e.__str__(),True,'PCHWP006_PumpOnOffcount')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWP006_PumpPower(self):
+        def main():
+            try:
+                return self.get_data(194,'PriChWPPower06')
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWP006_PumpPower:'+e.__str__(),True,'PCHWP006_PumpPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroup001_GroupCost(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['PCHWP001_PumpCost','PCHWP002_PumpCost','PCHWP003_PumpCost','PCHWP004_PumpCost','PCHWP005_PumpCost','PCHWP006_PumpCost'])
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroup001_GroupCost:'+e.__str__(),True,'PCHWPGroup001_GroupCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroup001_GroupPower(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['PriChWPPower01','PriChWPPower02','PriChWPPower03','PriChWPPower04','PriChWPPower05','PriChWPPower06'])
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroup001_GroupPower:'+e.__str__(),True,'PCHWPGroup001_GroupPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroup001_RunNum(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['PriChWPOnOff01','PriChWPOnOff02','PriChWPOnOff03','PriChWPOnOff04','PriChWPOnOff05','PriChWPOnOff06'])
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroup001_RunNum:'+e.__str__(),True,'PCHWPGroup001_RunNum')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_GroupCost(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['CWP001_PumpCost','CWP002_PumpCost','CWP003_PumpCost','CWP004_PumpCost','CWP005_PumpCost','CWP006_PumpCost'])
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_GroupCost:'+e.__str__(),True,'PCHWPGroupTotal001_GroupCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_GroupCostCompare(self):
+        def main():
+            try:
+                return self.calc_compare_same_time_diff_day(194,'PCHWPGroupTotal001_GroupCost','m5')
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_GroupCostCompare:'+e.__str__(),True,'PCHWPGroupTotal001_GroupCostCompare')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_GroupCostD(self):
+        def main():
+            try:
+                return self.calc_sum_day(194,'PCHWPGroupTotal001_GroupCost',1,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_GroupCostD:'+e.__str__(),True,'PCHWPGroupTotal001_GroupCostD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_GroupCostH(self):
+        def main():
+            try:
+                return self.calc_sum_hour(194,'PCHWPGroupTotal001_GroupCost',1/12.0,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_GroupCostH:'+e.__str__(),True,'PCHWPGroupTotal001_GroupCostH')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_GroupEnergyD(self):
+        def main():
+            try:
+            #根据电表读数求用电量
+                if self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+                else:
+                    t1=self.time_get_day_begin()
+                    data1=self.get_data_at_time(194,'PriChWPGroupPowerTotal',t1)
+                    data2=self.get_data(194,'PriChWPGroupPowerTotal')
+                    vr=data2-data1
+                    return (vr>0)*vr
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_GroupEnergyD:'+e.__str__(),True,'PCHWPGroupTotal001_GroupEnergyD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_GroupEnergyH(self):
+        def main():
+            try:
+                return self.calc_sum_hour(194,'PCHWPGroupTotal001_GroupPower',1/12.0,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_GroupEnergyH:'+e.__str__(),True,'PCHWPGroupTotal001_GroupEnergyH')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_GroupEnergyM(self):
+        def main():    
+            try:
+                if self.get_act_time().day==1 and self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+                else:
+                    t1=self.time_get_month_begin()
+                    t2=self.get_act_time().replace(second=0).strftime('%Y-%m-%d %H:%M:%S')        
+                    value_Now=self.get_data(194,'PriChWPGroupPowerTotal')
+                    value_month_begin=self.get_data_at_time(194,'PriChWPGroupPowerTotal',t1)
+                    if value_month_begin is None:#月初如果没数据，就认为是0
+                        value_month_begin = 0
+                        value=value_Now-value_month_begin   
+                    else:
+                        value=value_Now-value_month_begin  
+                    return value
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_GroupEnergyM:'+e.__str__(),True,'PCHWPGroupTotal001_GroupEnergyM')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_GroupEnergyW(self):
+        def main():    
+            try:
+                if self.get_act_time().weekday==0 and self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+                else:
+                    t1=self.time_get_week_begin()
+                    t2=self.get_act_time().replace(second=0).strftime('%Y-%m-%d %H:%M:%S')        
+                    value_Now=self.get_data(194,'PriChWPGroupPowerTotal')
+                    value_week_begin=self.get_data_at_time(194,'PriChWPGroupPowerTotal',t1)
+                    if value_week_begin is None:#周初如果没数据，就认为是0
+                        value_week_begin = 0
+                        value=value_Now-value_week_begin   
+                    else:
+                        value=value_Now-value_week_begin  
+                    return value
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_GroupEnergyW:'+e.__str__(),True,'PCHWPGroupTotal001_GroupEnergyW')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_GroupEnergyY(self):
+        def main():
+            try:
+                return self.calc_sum_this_year(194,'PCHWPGroupTotal001_GroupEnergyD',1)
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_GroupEnergyY:'+e.__str__(),True,'PCHWPGroupTotal001_GroupEnergyY')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_GroupPower(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['PriChWPPower01','PriChWPPower02','PriChWPPower03','PriChWPPower04','PriChWPPower05','PriChWPPower06'])
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_GroupPower:'+e.__str__(),True,'PCHWPGroupTotal001_GroupPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_GroupPowerCompare(self):
+        def main():
+            try:
+                return self.get_data(194,'PCHWPGroupTotal001_GroupPower')
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_GroupPowerCompare:'+e.__str__(),True,'PCHWPGroupTotal001_GroupPowerCompare')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_GroupPower_gzq(self):
+        def main():
+            try:
+                PCHWPGroupTotal001_RunNum = self.get_data(194,'PCHWPGroupTotal001_RunNum')
+                return PCHWPGroupTotal001_RunNum*15*(PCHWPGroupTotal001_RunNum>0)
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_GroupPower_gzq:'+e.__str__(),True,'PCHWPGroupTotal001_GroupPower_gzq')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def PCHWPGroupTotal001_RunNum(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['PriChWPOnOff01','PriChWPOnOff02','PriChWPOnOff03','PriChWPOnOff04','PriChWPOnOff05','PriChWPOnOff06'])
+            except Exception as e:
+                errorLog.writeLog(194,'PCHWPGroupTotal001_RunNum:'+e.__str__(),True,'PCHWPGroupTotal001_RunNum')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_CO2EmissionReductionsD(self):
+        def main():	
+            try:
+            	if self.get_act_time().hour==0 and self.get_act_time().minute==0:
+            		return 0
+            	else:
+            		t1=self.time_get_day_begin()
+            		t2=self.get_act_time().replace(second=0).strftime('%Y-%m-%d %H:%M:%S')		
+            		value_Now=self.get_data(194,'Accum_Plant001_CO2EmissionReductions')
+            		value_day_begin=self.get_data_at_time(194,'Accum_Plant001_CO2EmissionReductions',t1)
+            		if value_day_begin is None:#日初如果没数据，就认为是0
+            			value_day_begin = 0
+            			value=value_Now-value_day_begin   
+            		else:
+            			value=value_Now-value_day_begin  
+            		return value
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_CO2EmissionReductionsD:'+e.__str__(),True,'Plant001_CO2EmissionReductionsD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_CO2EmissionReductionsM(self):
+        def main():	
+            try:
+            	if self.get_act_time().day==1 and self.get_act_time().hour==0 and self.get_act_time().minute==0:
+            		return 0
+            	else:
+            		t1=self.time_get_month_begin()
+            		t2=self.get_act_time().replace(second=0).strftime('%Y-%m-%d %H:%M:%S')		
+            		value_Now=self.get_data(194,'Accum_Plant001_CO2EmissionReductions')
+            		value_month_begin=self.get_data_at_time(194,'Accum_Plant001_CO2EmissionReductions',t1)
+            		if value_month_begin is None:#月初如果没数据，就认为是0
+            			value_month_begin = 0
+            			value=value_Now-value_month_begin   
+            		else:
+            			value=value_Now-value_month_begin  
+            		return value
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_CO2EmissionReductionsM:'+e.__str__(),True,'Plant001_CO2EmissionReductionsM')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_CO2EmissionReductionsY(self):
+        def main():	
+            try:
+            	if self.get_act_time().month==1 and self.get_act_time().day==1 and self.get_act_time().hour==0 and self.get_act_time().minute==0:
+            		return 0
+            	else:
+            		#获取年初时间，等王晨api中...
+            		#t1=self.time_get_year_begin()
+            		bb = self.get_act_time()
+            		aa = datetime(bb.year, 1,1,0,0,0)
+            		t1 = aa.strftime('%Y-%m-%d %H:%M:%S')
+            		t2 = self.get_act_time().replace(second=0).strftime('%Y-%m-%d %H:%M:%S')		
+            		value_Now = self.get_data(194,'Accum_Plant001_CO2EmissionReductions')
+            		value_year_begin = self.get_data_at_time(194,'Accum_Plant001_CO2EmissionReductions',t1)
+            		if value_year_begin is None:#年初如果没数据，就认为是0
+            			value_year_begin = 0
+            			value=value_Now-value_year_begin   
+            		else:
+            			value=value_Now-value_year_begin  
+            		return value
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_CO2EmissionReductionsY:'+e.__str__(),True,'Plant001_CO2EmissionReductionsY')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_CO2_EmissionReductions(self):
+        def main():
+            try:
+                Plant001_GroupPower_Saving = self.get_data(194,'Plant001_GroupPower_Saving')
+                return 0.823*Plant001_GroupPower_Saving
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_CO2_EmissionReductions:'+e.__str__(),True,'Plant001_CO2_EmissionReductions')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_COP(self):
+        def main():
+            try:
+                Plant001_Eff = self.get_data(194,'Plant001_Eff')
+                ChGroupTotal001_RunNum = self.get_data(194,'ChGroupTotal001_RunNum')
+                return 3.516/(Plant001_Eff+(Plant001_Eff<0.1))*(Plant001_Eff>=0.1)*(ChGroupTotal001_RunNum>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_COP:'+e.__str__(),True,'Plant001_COP')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_CoolingPriceD(self):
+        def main():
+            try:
+                Cost  = self.calc_sum_day(194,'Plant001_GroupCost',1,'m5')
+                Load  = self.calc_sum_day(194,'Plant001_Load',1/12,'m5')
+                if Load:
+                    return Cost/Load
+                else:
+                    return 0
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_CoolingPriceD:'+e.__str__(),True,'Plant001_CoolingPriceD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_Eff(self):
+        def main():
+            try:
+                Plant001_GroupPower = self.get_data(194,'Plant001_GroupPower')
+                Plant001_Load = self.get_data(194,'Plant001_Load')
+                ChGroupTotal001_RunNum = self.get_data(194,'ChGroupTotal001_RunNum')
+                return Plant001_GroupPower/(Plant001_Load+(Plant001_Load<=10))*(Plant001_Load>10)*(ChGroupTotal001_RunNum>0)
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_Eff:'+e.__str__(),True,'Plant001_Eff')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_EffCompare(self):
+        def main():
+            try:
+                return self.calc_compare_same_time_diff_day(194,'Plant001_Eff','m5')
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_EffCompare:'+e.__str__(),True,'Plant001_EffCompare')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_ElecPrice(self):
+        def main():
+            try:
+                return self.get_data(194,'Price1')*self.get_data(194,'Price1_mode')
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_ElecPrice:'+e.__str__(),True,'Plant001_ElecPrice')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_EnergySavingD(self):
+        def main():
+            try:
+                fBase = self.get_data_at_time(194, 'Accum_Plant001_EnergySaving',self.time_get_day_begin())
+                fNow  = self.get_data(194, 'Accum_Plant001_EnergySaving')
+                return max(fNow-fBase,0.0)
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_EnergySavingD:'+e.__str__(),True,'Plant001_EnergySavingD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_EnergySavingM(self):
+        def main():
+            try:
+                return self.calc_sum_this_month(194,'Plant001_GroupPower_Saving',1.0,'h1')
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_EnergySavingM:'+e.__str__(),True,'Plant001_EnergySavingM')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_EnergySavingY(self):
+        def main():
+            try:
+                return self.calc_sum_this_year(194,'Plant001_EnergySavingD',1)
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_EnergySavingY:'+e.__str__(),True,'Plant001_EnergySavingY')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupCost(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['PCHWPGroupTotal001_GroupCost','CWPGroupTotal001_GroupCost','ChGroupTotal001_GroupCost','CTGroupTotal001_GroupCost'])
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupCost:'+e.__str__(),True,'Plant001_GroupCost')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupCostD(self):
+        def main():
+            try:
+                return self.calc_sum_day(194,'Plant001_GroupCost',1,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupCostD:'+e.__str__(),True,'Plant001_GroupCostD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupCostDCompare(self):
+        def main():
+            try:
+                return self.calc_compare_same_time_diff_day(194,'Plant001_GroupCost','m5')
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupCostDCompare:'+e.__str__(),True,'Plant001_GroupCostDCompare')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupCostD_2(self):
+        def main():
+            try:
+                return self.calc_sum_day(194,'Plant001_GroupCostH_2',1/12.0,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupCostD_2:'+e.__str__(),True,'Plant001_GroupCostD_2')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupCostH(self):
+        def main():
+            try:
+                return self.calc_sum_hour(194,'Plant001_GroupCost',1,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupCostH:'+e.__str__(),True,'Plant001_GroupCostH')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupCostH_2(self):
+        def main():
+            try:
+                p1=self.get_data(194,'Plant001_ElecPrice')
+                p2=self.get_data(194,'Plant001_GroupEnergyH')
+                return p1*p2
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupCostH_2:'+e.__str__(),True,'Plant001_GroupCostH_2')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupEnergyD(self):
+        def main():
+            try:
+                if self.get_act_time().hour==0 and self.get_act_time().minute==0:
+                    return 0
+            
+                data1=self.get_data_at_time(194,'ChillerRoomGroupPowerTotal',self.time_get_day_begin())
+                data2=self.get_data(194,'ChillerRoomGroupPowerTotal')
+                vr=data2-data1
+                return (vr>0)*vr
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupEnergyD:'+e.__str__(),True,'Plant001_GroupEnergyD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupEnergyDCompare(self):
+        def main():
+            try:
+                return self.calc_compare_same_time_diff_day(194,'Plant001_GroupEnergyD','m5')
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupEnergyDCompare:'+e.__str__(),True,'Plant001_GroupEnergyDCompare')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupEnergyH(self):
+        def main():
+            try:
+                return self.calc_sum_hour(194,'Plant001_GroupPower',1/12.0,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupEnergyH:'+e.__str__(),True,'Plant001_GroupEnergyH')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupPower(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['PCHWPGroupTotal001_GroupPower','CWPGroupTotal001_GroupPower','ChGroupTotal001_GroupPower','CTGroupTotal001_GroupPower'])
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupPower:'+e.__str__(),True,'Plant001_GroupPower')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupPowerCompare(self):
+        def main():
+            try:
+                return self.calc_compare_same_time_diff_day(194,'Plant001_GroupPower','m5')
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupPowerCompare:'+e.__str__(),True,'Plant001_GroupPowerCompare')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupPower_Saving(self):
+        def main():
+            try:
+                Plant001_GroupPower_gzq = self.get_data(194,'Plant001_GroupPower_gzq')
+                Plant001_GroupPower = self.get_data(194,'Plant001_GroupPower')
+                return abs(Plant001_GroupPower_gzq-Plant001_GroupPower)
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupPower_Saving:'+e.__str__(),True,'Plant001_GroupPower_Saving')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_GroupPower_gzq(self):
+        def main():
+            try:
+                return self.calc_sum_in_points(194,['PCHWPGroupTotal001_GroupPower_gzq','CWPGroupTotal001_GroupPower_gzq','ChGroupTotal001_GroupPower','CTGroupTotal001_GroupPower','SCHWPGroupTotal001_GroupPower_gzq'])
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_GroupPower_gzq:'+e.__str__(),True,'Plant001_GroupPower_gzq')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_Load(self):
+        def main():
+            try:
+                PriChWTempSupply01 = self.get_data(194,'PriChWTempSupply01')
+                PriChWTempReturn01 = self.get_data(194,'PriChWTempReturn01')
+                PriChWFlow01 = self.get_data(194,'PriChWFlow01')
+                PCHWPGroupTotal001_RunNum = self.get_data(194,'PCHWPGroupTotal001_RunNum')
+                return (abs(PriChWTempSupply01-PriChWTempReturn01)*PriChWFlow01*(PCHWPGroupTotal001_RunNum>0))*4.2/3.6/3.516
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_Load:'+e.__str__(),True,'Plant001_Load')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_LoadD(self):
+        def main():
+            try:
+                return self.calc_sum_day(194,'Plant001_Load',1/12.0,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_LoadD:'+e.__str__(),True,'Plant001_LoadD')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Plant001_LoadH(self):
+        def main():
+            try:
+                return self.calc_sum_hour(194,'Plant001_Load',1/12.0,'m5')
+            except Exception as e:
+                errorLog.writeLog(194,'Plant001_LoadH:'+e.__str__(),True,'Plant001_LoadH')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Price1(self):
+        def main():
+            try:
+                i=int(self.get_act_time().hour)
+                return [0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.704, 0.704, 1.166, 1.166, 1.166, 0.704, 0.704, 1.166, 1.166, 0.704, 0.704, 0.704, 1.166, 1.166, 1.166, 0.704, 0.35, 0.35][i]
+            except Exception as e:
+                errorLog.writeLog(194,'Price1:'+e.__str__(),True,'Price1')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Price1_mode(self):
+        def main():
+            try:
+                standard_time_format = '%Y-%m-%d %H:%M:%S'
+                HistoryTime=self.get_act_time().strftime(standard_time_format)
+                return (HistoryTime[5:10]>='01-01')*(HistoryTime[5:10]<='12-31')*1
+            except Exception as e:
+                errorLog.writeLog(194,'Price1_mode:'+e.__str__(),True,'Price1_mode')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ratio_Ch01(self):
+        def main():
+            try:
+                ChPower01 = self.get_data(194,'ChPower01')
+                ChGroupTotal001_GroupPower = self.get_data(194,'ChGroupTotal001_GroupPower')
+                ChOnOff01 = self.get_data(194,'ChOnOff01')
+                return ChPower01/(ChGroupTotal001_GroupPower+(ChGroupTotal001_GroupPower<=6))*(ChGroupTotal001_GroupPower>6)*ChOnOff01
+            except Exception as e:
+                errorLog.writeLog(194,'Ratio_Ch01:'+e.__str__(),True,'Ratio_Ch01')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ratio_Ch02(self):
+        def main():
+            try:
+                ChPower02 = self.get_data(194,'ChPower02')
+                ChGroupTotal001_GroupPower = self.get_data(194,'ChGroupTotal001_GroupPower')
+                ChOnOff02 = self.get_data(194,'ChOnOff02')
+                return ChPower02/(ChGroupTotal001_GroupPower+(ChGroupTotal001_GroupPower<=6))*(ChGroupTotal001_GroupPower>6)*ChOnOff02
+            except Exception as e:
+                errorLog.writeLog(194,'Ratio_Ch02:'+e.__str__(),True,'Ratio_Ch02')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ratio_Ch03(self):
+        def main():
+            try:
+                ChPower03 = self.get_data(194,'ChPower03')
+                ChGroupTotal001_GroupPower = self.get_data(194,'ChGroupTotal001_GroupPower')
+                ChOnOff03 = self.get_data(194,'ChOnOff03')
+                return ChPower03/(ChGroupTotal001_GroupPower+(ChGroupTotal001_GroupPower<=6))*(ChGroupTotal001_GroupPower>6)*ChOnOff03
+            except Exception as e:
+                errorLog.writeLog(194,'Ratio_Ch03:'+e.__str__(),True,'Ratio_Ch03')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ratio_Ch04(self):
+        def main():
+            try:
+                ChPower04 = self.get_data(194,'ChPower04')
+                ChGroupTotal001_GroupPower = self.get_data(194,'ChGroupTotal001_GroupPower')
+                ChOnOff04 = self.get_data(194,'ChOnOff04')
+                return ChPower04/(ChGroupTotal001_GroupPower+(ChGroupTotal001_GroupPower<=6))*(ChGroupTotal001_GroupPower>6)*ChOnOff04
+            except Exception as e:
+                errorLog.writeLog(194,'Ratio_Ch04:'+e.__str__(),True,'Ratio_Ch04')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ratio_Ch05(self):
+        def main():
+            try:
+                ChPower05 = self.get_data(194,'ChPower05')
+                ChGroupTotal001_GroupPower = self.get_data(194,'ChGroupTotal001_GroupPower')
+                ChOnOff05 = self.get_data(194,'ChOnOff05')
+                return ChPower05/(ChGroupTotal001_GroupPower+(ChGroupTotal001_GroupPower<=6))*(ChGroupTotal001_GroupPower>6)*ChOnOff05
+            except Exception as e:
+                errorLog.writeLog(194,'Ratio_Ch05:'+e.__str__(),True,'Ratio_Ch05')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def Ratio_Ch06(self):
+        def main():
+            try:
+                ChPower06 = self.get_data(194,'ChPower06')
+                ChGroupTotal001_GroupPower = self.get_data(194,'ChGroupTotal001_GroupPower')
+                ChOnOff06 = self.get_data(194,'ChOnOff06')
+                return ChPower06/(ChGroupTotal001_GroupPower+(ChGroupTotal001_GroupPower<=6))*(ChGroupTotal001_GroupPower>6)*ChOnOff06
+            except Exception as e:
+                errorLog.writeLog(194,'Ratio_Ch06:'+e.__str__(),True,'Ratio_Ch06')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def SCHWPGroupTotal001_GroupPower_gzq(self):
+        def main():
+            try:
+                ChGroupTotal001_RunNum = self.get_data(194,'ChGroupTotal001_RunNum')
+                return (((ChGroupTotal001_RunNum/2.0)<=1)*22+((ChGroupTotal001_RunNum/2.0)>1)*44*((ChGroupTotal001_RunNum/2.0)<=2)+((ChGroupTotal001_RunNum/2.0)>2)*66)*(ChGroupTotal001_RunNum>0)
+            except Exception as e:
+                errorLog.writeLog(194,'SCHWPGroupTotal001_GroupPower_gzq:'+e.__str__(),True,'SCHWPGroupTotal001_GroupPower_gzq')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def test0194(self):
+        def main():
+            try:
+                p1= self.get_data(194,'Plant001_GroupCostH')
+                p2= self.get_data(194,'Plant001_GroupEnergyH')
+                
+                return p1/p2
+            except Exception as e:
+                errorLog.writeLog(194,'test0194:'+e.__str__(),True,'test0194')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def test0195(self):
+        def main():
+            try:
+                p1= self.get_data(194,'Plant001_GroupCostH_2')*1.0
+                p2= self.get_data(194,'Plant001_GroupEnergyH')*1.0
+                
+                return p1/p2
+            except Exception as e:
+                errorLog.writeLog(194,'test0195:'+e.__str__(),True,'test0195')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def test0811(self):
+        def main():
+            try:
+                a=self.get_data(194,'ChAMPS02')
+                b=self.get_data(194,'ChOnOff02')
+                if (a>0) and (b>0):
+                    return 1
+                if (a<1) and (b>0):
+                    return 2
+                return 0
+            except Exception as e:
+                errorLog.writeLog(194,'test0811:'+e.__str__(),True,'test0811')
+                self.log_str('%s'%(e.__str__(),))
+                return None, e.__str__()
+        return main()
+
+    def action(self):
+        name_list = []
+        value_list = []
+        try:
+            temp = self.CWP002_PumpOnOffcount()
+            name_list.append('CWP002_PumpOnOffcount')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP002_PumpOnOffcount', temp)
+            temp = self.CWP004_PumpOnOffcount()
+            name_list.append('CWP004_PumpOnOffcount')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP004_PumpOnOffcount', temp)
+            temp = self.Ch003_ChPower()
+            name_list.append('Ch003_ChPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch003_ChPower', temp)
+            temp = self.CTGroupTotal001_GroupEnergyM()
+            name_list.append('CTGroupTotal001_GroupEnergyM')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroupTotal001_GroupEnergyM', temp)
+            temp = self.CTGroupTotal001_GroupEnergyW()
+            name_list.append('CTGroupTotal001_GroupEnergyW')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroupTotal001_GroupEnergyW', temp)
+            temp = self.ChGroup001_RunNum()
+            name_list.append('ChGroup001_RunNum')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroup001_RunNum', temp)
+            temp = self.ChGroupTotal001_GroupPower()
+            name_list.append('ChGroupTotal001_GroupPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_GroupPower', temp)
+            temp = self.CTGroupTotal001_GroupEnergyD()
+            name_list.append('CTGroupTotal001_GroupEnergyD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroupTotal001_GroupEnergyD', temp)
+            temp = self.PCHWP003_PumpPower()
+            name_list.append('PCHWP003_PumpPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP003_PumpPower', temp)
+            temp = self.PCHWP004_PumpPower()
+            name_list.append('PCHWP004_PumpPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP004_PumpPower', temp)
+            temp = self.CWPGroupTotal001_GroupEnergyW()
+            name_list.append('CWPGroupTotal001_GroupEnergyW')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_GroupEnergyW', temp)
+            temp = self.CTGroup001_RunNum()
+            name_list.append('CTGroup001_RunNum')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroup001_RunNum', temp)
+            temp = self.CT006_CTPower()
+            name_list.append('CT006_CTPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CT006_CTPower', temp)
+            temp = self.CWP004_PumpPower()
+            name_list.append('CWP004_PumpPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP004_PumpPower', temp)
+            temp = self.PCHWP004_PumpOnOffcount()
+            name_list.append('PCHWP004_PumpOnOffcount')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP004_PumpOnOffcount', temp)
+            temp = self.CWPGroup001_RunNum()
+            name_list.append('CWPGroup001_RunNum')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroup001_RunNum', temp)
+            temp = self.ChGroupTotal001_RunNum()
+            name_list.append('ChGroupTotal001_RunNum')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_RunNum', temp)
+            temp = self.CWP005_PumpPower()
+            name_list.append('CWP005_PumpPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP005_PumpPower', temp)
+            temp = self.PCHWPGroup001_RunNum()
+            name_list.append('PCHWPGroup001_RunNum')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroup001_RunNum', temp)
+            temp = self.ChAMPS06_rev()
+            name_list.append('ChAMPS06_rev')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChAMPS06_rev', temp)
+            temp = self.ChAMPS02_rev()
+            name_list.append('ChAMPS02_rev')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChAMPS02_rev', temp)
+            temp = self.PCHWP003_PumpOnOffcount()
+            name_list.append('PCHWP003_PumpOnOffcount')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP003_PumpOnOffcount', temp)
+            temp = self.PCHWP001_PumpPower()
+            name_list.append('PCHWP001_PumpPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP001_PumpPower', temp)
+            temp = self.PCHWPGroupTotal001_GroupEnergyD()
+            name_list.append('PCHWPGroupTotal001_GroupEnergyD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_GroupEnergyD', temp)
+            temp = self.PCHWPGroup001_GroupPower()
+            name_list.append('PCHWPGroup001_GroupPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroup001_GroupPower', temp)
+            temp = self.Ch001_ChPower()
+            name_list.append('Ch001_ChPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch001_ChPower', temp)
+            temp = self.PCHWP005_PumpOnOffcount()
+            name_list.append('PCHWP005_PumpOnOffcount')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP005_PumpOnOffcount', temp)
+            temp = self.ChGroupTotal001_GroupEnergyW()
+            name_list.append('ChGroupTotal001_GroupEnergyW')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_GroupEnergyW', temp)
+            temp = self.CT002_CTPower()
+            name_list.append('CT002_CTPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CT002_CTPower', temp)
+            temp = self.CWP003_PumpOnOffcount()
+            name_list.append('CWP003_PumpOnOffcount')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP003_PumpOnOffcount', temp)
+            temp = self.ChAMPS03_rev()
+            name_list.append('ChAMPS03_rev')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChAMPS03_rev', temp)
+            temp = self.PCHWP001_PumpOnOffcount()
+            name_list.append('PCHWP001_PumpOnOffcount')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP001_PumpOnOffcount', temp)
+            temp = self.ChAMPS01_rev()
+            name_list.append('ChAMPS01_rev')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChAMPS01_rev', temp)
+            temp = self.CWPGroupTotal001_RunNum()
+            name_list.append('CWPGroupTotal001_RunNum')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_RunNum', temp)
+            temp = self.PCHWPGroupTotal001_RunNum()
+            name_list.append('PCHWPGroupTotal001_RunNum')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_RunNum', temp)
+            temp = self.PCHWPGroupTotal001_GroupEnergyW()
+            name_list.append('PCHWPGroupTotal001_GroupEnergyW')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_GroupEnergyW', temp)
+            temp = self.CT004_CTPower()
+            name_list.append('CT004_CTPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CT004_CTPower', temp)
+            temp = self.CWP001_PumpOnOffcount()
+            name_list.append('CWP001_PumpOnOffcount')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP001_PumpOnOffcount', temp)
+            temp = self.CWPGroupTotal001_GroupPower()
+            name_list.append('CWPGroupTotal001_GroupPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_GroupPower', temp)
+            temp = self.ChAMPS04_rev()
+            name_list.append('ChAMPS04_rev')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChAMPS04_rev', temp)
+            temp = self.CWP001_PumpPower()
+            name_list.append('CWP001_PumpPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP001_PumpPower', temp)
+            temp = self.CWP006_PumpOnOffcount()
+            name_list.append('CWP006_PumpOnOffcount')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP006_PumpOnOffcount', temp)
+            temp = self.CTGroupTotal001_RunNum()
+            name_list.append('CTGroupTotal001_RunNum')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroupTotal001_RunNum', temp)
+            temp = self.ChGroupTotal001_GroupEnergyD()
+            name_list.append('ChGroupTotal001_GroupEnergyD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_GroupEnergyD', temp)
+            temp = self.PCHWP006_PumpPower()
+            name_list.append('PCHWP006_PumpPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP006_PumpPower', temp)
+            temp = self.PCHWP002_PumpOnOffcount()
+            name_list.append('PCHWP002_PumpOnOffcount')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP002_PumpOnOffcount', temp)
+            temp = self.PCHWP005_PumpPower()
+            name_list.append('PCHWP005_PumpPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP005_PumpPower', temp)
+            temp = self.CWPGroupTotal001_GroupEnergyD()
+            name_list.append('CWPGroupTotal001_GroupEnergyD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_GroupEnergyD', temp)
+            temp = self.Ch004_ChPower()
+            name_list.append('Ch004_ChPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch004_ChPower', temp)
+            temp = self.Ch005_ChPower()
+            name_list.append('Ch005_ChPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch005_ChPower', temp)
+            temp = self.ChGroupTotal001_GroupEnergyM()
+            name_list.append('ChGroupTotal001_GroupEnergyM')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_GroupEnergyM', temp)
+            temp = self.PCHWPGroupTotal001_GroupEnergyM()
+            name_list.append('PCHWPGroupTotal001_GroupEnergyM')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_GroupEnergyM', temp)
+            temp = self.Price1_mode()
+            name_list.append('Price1_mode')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Price1_mode', temp)
+            temp = self.CT001_CTPower()
+            name_list.append('CT001_CTPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CT001_CTPower', temp)
+            temp = self.CT003_CTPower()
+            name_list.append('CT003_CTPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CT003_CTPower', temp)
+            temp = self.Ch002_ChPower()
+            name_list.append('Ch002_ChPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch002_ChPower', temp)
+            temp = self.CWP002_PumpPower()
+            name_list.append('CWP002_PumpPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP002_PumpPower', temp)
+            temp = self.Plant001_GroupEnergyD()
+            name_list.append('Plant001_GroupEnergyD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupEnergyD', temp)
+            temp = self.CWPGroup001_GroupPower()
+            name_list.append('CWPGroup001_GroupPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroup001_GroupPower', temp)
+            temp = self.CWP006_PumpPower()
+            name_list.append('CWP006_PumpPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP006_PumpPower', temp)
+            temp = self.test0811()
+            name_list.append('test0811')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'test0811', temp)
+            temp = self.PCHWPGroupTotal001_GroupPower()
+            name_list.append('PCHWPGroupTotal001_GroupPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_GroupPower', temp)
+            temp = self.Price1()
+            name_list.append('Price1')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Price1', temp)
+            temp = self.CWP003_PumpPower()
+            name_list.append('CWP003_PumpPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP003_PumpPower', temp)
+            temp = self.CTGroupTotal001_GroupPower()
+            name_list.append('CTGroupTotal001_GroupPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroupTotal001_GroupPower', temp)
+            temp = self.CTGroup001_GroupPower()
+            name_list.append('CTGroup001_GroupPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroup001_GroupPower', temp)
+            temp = self.CT005_CTPower()
+            name_list.append('CT005_CTPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CT005_CTPower', temp)
+            temp = self.Ch006_ChPower()
+            name_list.append('Ch006_ChPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch006_ChPower', temp)
+            temp = self.ChGroupTotal001_AverageChAMPS()
+            name_list.append('ChGroupTotal001_AverageChAMPS')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_AverageChAMPS', temp)
+            temp = self.ChGroup001_GroupPower()
+            name_list.append('ChGroup001_GroupPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroup001_GroupPower', temp)
+            temp = self.CWP005_PumpOnOffcount()
+            name_list.append('CWP005_PumpOnOffcount')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP005_PumpOnOffcount', temp)
+            temp = self.PCHWP002_PumpPower()
+            name_list.append('PCHWP002_PumpPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP002_PumpPower', temp)
+            temp = self.PCHWP006_PumpOnOffcount()
+            name_list.append('PCHWP006_PumpOnOffcount')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP006_PumpOnOffcount', temp)
+            temp = self.ChAMPS05_rev()
+            name_list.append('ChAMPS05_rev')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChAMPS05_rev', temp)
+            temp = self.CWPGroupTotal001_GroupEnergyM()
+            name_list.append('CWPGroupTotal001_GroupEnergyM')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_GroupEnergyM', temp)
+            temp = self.Plant001_ElecPrice()
+            name_list.append('Plant001_ElecPrice')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_ElecPrice', temp)
+            temp = self.PCHWPGroupTotal001_GroupPower_gzq()
+            name_list.append('PCHWPGroupTotal001_GroupPower_gzq')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_GroupPower_gzq', temp)
+            temp = self.Ratio_Ch04()
+            name_list.append('Ratio_Ch04')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ratio_Ch04', temp)
+            temp = self.PCHWPGroupTotal001_GroupEnergyH()
+            name_list.append('PCHWPGroupTotal001_GroupEnergyH')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_GroupEnergyH', temp)
+            temp = self.SCHWPGroupTotal001_GroupPower_gzq()
+            name_list.append('SCHWPGroupTotal001_GroupPower_gzq')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'SCHWPGroupTotal001_GroupPower_gzq', temp)
+            temp = self.ChGroupTotal001_GroupEnergyH()
+            name_list.append('ChGroupTotal001_GroupEnergyH')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_GroupEnergyH', temp)
+            temp = self.Plant001_Load()
+            name_list.append('Plant001_Load')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_Load', temp)
+            temp = self.Plant001_GroupEnergyDCompare()
+            name_list.append('Plant001_GroupEnergyDCompare')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupEnergyDCompare', temp)
+            temp = self.Ratio_Ch03()
+            name_list.append('Ratio_Ch03')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ratio_Ch03', temp)
+            temp = self.Plant001_GroupPower()
+            name_list.append('Plant001_GroupPower')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupPower', temp)
+            temp = self.CTGroupTotal001_GroupEnergyY()
+            name_list.append('CTGroupTotal001_GroupEnergyY')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroupTotal001_GroupEnergyY', temp)
+            temp = self.Ratio_Ch02()
+            name_list.append('Ratio_Ch02')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ratio_Ch02', temp)
+            temp = self.Ratio_Ch01()
+            name_list.append('Ratio_Ch01')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ratio_Ch01', temp)
+            temp = self.PCHWPGroupTotal001_GroupPowerCompare()
+            name_list.append('PCHWPGroupTotal001_GroupPowerCompare')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_GroupPowerCompare', temp)
+            temp = self.Ratio_Ch05()
+            name_list.append('Ratio_Ch05')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ratio_Ch05', temp)
+            temp = self.CTGroupTotal001_GroupPowerCompare()
+            name_list.append('CTGroupTotal001_GroupPowerCompare')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroupTotal001_GroupPowerCompare', temp)
+            temp = self.ChGroupTotal001_GroupEnergyY()
+            name_list.append('ChGroupTotal001_GroupEnergyY')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_GroupEnergyY', temp)
+            temp = self.ChGroupTotal001_GroupPowerCompare()
+            name_list.append('ChGroupTotal001_GroupPowerCompare')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_GroupPowerCompare', temp)
+            temp = self.CWPGroupTotal001_GroupPowerCompare()
+            name_list.append('CWPGroupTotal001_GroupPowerCompare')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_GroupPowerCompare', temp)
+            temp = self.CWPGroupTotal001_GroupEnergyY()
+            name_list.append('CWPGroupTotal001_GroupEnergyY')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_GroupEnergyY', temp)
+            temp = self.Ratio_Ch06()
+            name_list.append('Ratio_Ch06')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ratio_Ch06', temp)
+            temp = self.CTGroupTotal001_GroupEnergyH()
+            name_list.append('CTGroupTotal001_GroupEnergyH')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroupTotal001_GroupEnergyH', temp)
+            temp = self.CWPGroupTotal001_GroupEnergyH()
+            name_list.append('CWPGroupTotal001_GroupEnergyH')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_GroupEnergyH', temp)
+            temp = self.PCHWPGroupTotal001_GroupEnergyY()
+            name_list.append('PCHWPGroupTotal001_GroupEnergyY')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_GroupEnergyY', temp)
+            temp = self.CWPGroupTotal001_GroupPower_gzq()
+            name_list.append('CWPGroupTotal001_GroupPower_gzq')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_GroupPower_gzq', temp)
+            temp = self.PCHWP006_PumpCost()
+            name_list.append('PCHWP006_PumpCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP006_PumpCost', temp)
+            temp = self.PCHWP001_PumpCost()
+            name_list.append('PCHWP001_PumpCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP001_PumpCost', temp)
+            temp = self.CWP005_PumpCost()
+            name_list.append('CWP005_PumpCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP005_PumpCost', temp)
+            temp = self.CWP002_PumpCost()
+            name_list.append('CWP002_PumpCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP002_PumpCost', temp)
+            temp = self.PCHWP005_PumpCost()
+            name_list.append('PCHWP005_PumpCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP005_PumpCost', temp)
+            temp = self.CT002_CTCost()
+            name_list.append('CT002_CTCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CT002_CTCost', temp)
+            temp = self.Plant001_LoadD()
+            name_list.append('Plant001_LoadD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_LoadD', temp)
+            temp = self.CT004_CTCost()
+            name_list.append('CT004_CTCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CT004_CTCost', temp)
+            temp = self.CWP001_PumpCost()
+            name_list.append('CWP001_PumpCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP001_PumpCost', temp)
+            temp = self.CT006_CTCost()
+            name_list.append('CT006_CTCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CT006_CTCost', temp)
+            temp = self.Ch003_ChCost()
+            name_list.append('Ch003_ChCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch003_ChCost', temp)
+            temp = self.CT003_CTCost()
+            name_list.append('CT003_CTCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CT003_CTCost', temp)
+            temp = self.Ch005_ChCost()
+            name_list.append('Ch005_ChCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch005_ChCost', temp)
+            temp = self.Plant001_GroupEnergyH()
+            name_list.append('Plant001_GroupEnergyH')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupEnergyH', temp)
+            temp = self.Ch001_ChCost()
+            name_list.append('Ch001_ChCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch001_ChCost', temp)
+            temp = self.PCHWP004_PumpCost()
+            name_list.append('PCHWP004_PumpCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP004_PumpCost', temp)
+            temp = self.Ch006_ChCost()
+            name_list.append('Ch006_ChCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch006_ChCost', temp)
+            temp = self.Ch004_ChCost()
+            name_list.append('Ch004_ChCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch004_ChCost', temp)
+            temp = self.Ch002_ChCost()
+            name_list.append('Ch002_ChCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch002_ChCost', temp)
+            temp = self.CWP003_PumpCost()
+            name_list.append('CWP003_PumpCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP003_PumpCost', temp)
+            temp = self.CT001_CTCost()
+            name_list.append('CT001_CTCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CT001_CTCost', temp)
+            temp = self.Plant001_LoadH()
+            name_list.append('Plant001_LoadH')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_LoadH', temp)
+            temp = self.CWP004_PumpCost()
+            name_list.append('CWP004_PumpCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP004_PumpCost', temp)
+            temp = self.CT005_CTCost()
+            name_list.append('CT005_CTCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CT005_CTCost', temp)
+            temp = self.PCHWP002_PumpCost()
+            name_list.append('PCHWP002_PumpCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP002_PumpCost', temp)
+            temp = self.PCHWP003_PumpCost()
+            name_list.append('PCHWP003_PumpCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWP003_PumpCost', temp)
+            temp = self.CWP006_PumpCost()
+            name_list.append('CWP006_PumpCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWP006_PumpCost', temp)
+            temp = self.Plant001_GroupPowerCompare()
+            name_list.append('Plant001_GroupPowerCompare')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupPowerCompare', temp)
+            temp = self.Ch006_Load()
+            name_list.append('Ch006_Load')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch006_Load', temp)
+            temp = self.Plant001_Eff()
+            name_list.append('Plant001_Eff')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_Eff', temp)
+            temp = self.Ch003_Load()
+            name_list.append('Ch003_Load')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch003_Load', temp)
+            temp = self.Ch005_Load()
+            name_list.append('Ch005_Load')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch005_Load', temp)
+            temp = self.Ch001_Load()
+            name_list.append('Ch001_Load')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch001_Load', temp)
+            temp = self.Ch002_Load()
+            name_list.append('Ch002_Load')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch002_Load', temp)
+            temp = self.Ch004_Load()
+            name_list.append('Ch004_Load')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch004_Load', temp)
+            temp = self.Plant001_GroupPower_gzq()
+            name_list.append('Plant001_GroupPower_gzq')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupPower_gzq', temp)
+            temp = self.Plant001_GroupCostH_2()
+            name_list.append('Plant001_GroupCostH_2')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupCostH_2', temp)
+            temp = self.Ch004_Eff()
+            name_list.append('Ch004_Eff')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch004_Eff', temp)
+            temp = self.Ch002_Eff()
+            name_list.append('Ch002_Eff')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch002_Eff', temp)
+            temp = self.Ch003_Eff()
+            name_list.append('Ch003_Eff')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch003_Eff', temp)
+            temp = self.Ch005_Eff()
+            name_list.append('Ch005_Eff')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch005_Eff', temp)
+            temp = self.Ch006_Eff()
+            name_list.append('Ch006_Eff')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch006_Eff', temp)
+            temp = self.Ch001_Eff()
+            name_list.append('Ch001_Eff')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch001_Eff', temp)
+            temp = self.Plant001_COP()
+            name_list.append('Plant001_COP')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_COP', temp)
+            temp = self.Plant001_EffCompare()
+            name_list.append('Plant001_EffCompare')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_EffCompare', temp)
+            temp = self.Plant001_GroupPower_Saving()
+            name_list.append('Plant001_GroupPower_Saving')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupPower_Saving', temp)
+            temp = self.Plant001_GroupCostD_2()
+            name_list.append('Plant001_GroupCostD_2')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupCostD_2', temp)
+            temp = self.Ch006_COP()
+            name_list.append('Ch006_COP')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch006_COP', temp)
+            temp = self.Ch001_COP()
+            name_list.append('Ch001_COP')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch001_COP', temp)
+            temp = self.Ch004_COP()
+            name_list.append('Ch004_COP')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch004_COP', temp)
+            temp = self.Ch002_COP()
+            name_list.append('Ch002_COP')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch002_COP', temp)
+            temp = self.Ch005_COP()
+            name_list.append('Ch005_COP')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch005_COP', temp)
+            temp = self.Ch003_COP()
+            name_list.append('Ch003_COP')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Ch003_COP', temp)
+            temp = self.test0195()
+            name_list.append('test0195')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'test0195', temp)
+            temp = self.Accum_Plant001_EnergySaving()
+            name_list.append('Accum_Plant001_EnergySaving')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Accum_Plant001_EnergySaving', temp)
+            temp = self.Plant001_CO2_EmissionReductions()
+            name_list.append('Plant001_CO2_EmissionReductions')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_CO2_EmissionReductions', temp)
+            temp = self.Plant001_EnergySavingM()
+            name_list.append('Plant001_EnergySavingM')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_EnergySavingM', temp)
+            temp = self.CTGroup001_GroupCost()
+            name_list.append('CTGroup001_GroupCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroup001_GroupCost', temp)
+            temp = self.PCHWPGroupTotal001_GroupCost()
+            name_list.append('PCHWPGroupTotal001_GroupCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_GroupCost', temp)
+            temp = self.ChGroup001_GroupCost()
+            name_list.append('ChGroup001_GroupCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroup001_GroupCost', temp)
+            temp = self.CWPGroup001_GroupCost()
+            name_list.append('CWPGroup001_GroupCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroup001_GroupCost', temp)
+            temp = self.CWPGroupTotal001_GroupCost()
+            name_list.append('CWPGroupTotal001_GroupCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_GroupCost', temp)
+            temp = self.ChGroupTotal001_GroupCost()
+            name_list.append('ChGroupTotal001_GroupCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_GroupCost', temp)
+            temp = self.PCHWPGroup001_GroupCost()
+            name_list.append('PCHWPGroup001_GroupCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroup001_GroupCost', temp)
+            temp = self.CTGroupTotal001_GroupCost()
+            name_list.append('CTGroupTotal001_GroupCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroupTotal001_GroupCost', temp)
+            temp = self.Plant001_EnergySavingD()
+            name_list.append('Plant001_EnergySavingD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_EnergySavingD', temp)
+            temp = self.Accum_Plant001_CO2EmissionReductions()
+            name_list.append('Accum_Plant001_CO2EmissionReductions')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Accum_Plant001_CO2EmissionReductions', temp)
+            temp = self.CWPGroupTotal001_GroupCostD()
+            name_list.append('CWPGroupTotal001_GroupCostD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_GroupCostD', temp)
+            temp = self.ChGroupTotal001_GroupCostCompare()
+            name_list.append('ChGroupTotal001_GroupCostCompare')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_GroupCostCompare', temp)
+            temp = self.CTGroupTotal001_GroupCostCompare()
+            name_list.append('CTGroupTotal001_GroupCostCompare')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroupTotal001_GroupCostCompare', temp)
+            temp = self.ChGroupTotal001_GroupCostH()
+            name_list.append('ChGroupTotal001_GroupCostH')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_GroupCostH', temp)
+            temp = self.CTGroupTotal001_GroupCostH()
+            name_list.append('CTGroupTotal001_GroupCostH')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroupTotal001_GroupCostH', temp)
+            temp = self.PCHWPGroupTotal001_GroupCostD()
+            name_list.append('PCHWPGroupTotal001_GroupCostD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_GroupCostD', temp)
+            temp = self.CTGroupTotal001_GroupCostD()
+            name_list.append('CTGroupTotal001_GroupCostD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CTGroupTotal001_GroupCostD', temp)
+            temp = self.PCHWPGroupTotal001_GroupCostH()
+            name_list.append('PCHWPGroupTotal001_GroupCostH')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_GroupCostH', temp)
+            temp = self.CWPGroupTotal001_GroupCostCompare()
+            name_list.append('CWPGroupTotal001_GroupCostCompare')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_GroupCostCompare', temp)
+            temp = self.PCHWPGroupTotal001_GroupCostCompare()
+            name_list.append('PCHWPGroupTotal001_GroupCostCompare')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'PCHWPGroupTotal001_GroupCostCompare', temp)
+            temp = self.ChGroupTotal001_GroupCostD()
+            name_list.append('ChGroupTotal001_GroupCostD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'ChGroupTotal001_GroupCostD', temp)
+            temp = self.CWPGroupTotal001_GroupCostH()
+            name_list.append('CWPGroupTotal001_GroupCostH')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'CWPGroupTotal001_GroupCostH', temp)
+            temp = self.Plant001_CO2EmissionReductionsD()
+            name_list.append('Plant001_CO2EmissionReductionsD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_CO2EmissionReductionsD', temp)
+            temp = self.Plant001_EnergySavingY()
+            name_list.append('Plant001_EnergySavingY')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_EnergySavingY', temp)
+            temp = self.Plant001_CO2EmissionReductionsY()
+            name_list.append('Plant001_CO2EmissionReductionsY')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_CO2EmissionReductionsY', temp)
+            temp = self.Plant001_CO2EmissionReductionsM()
+            name_list.append('Plant001_CO2EmissionReductionsM')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_CO2EmissionReductionsM', temp)
+            temp = self.Plant001_GroupCost()
+            name_list.append('Plant001_GroupCost')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupCost', temp)
+            temp = self.Plant001_GroupCostD()
+            name_list.append('Plant001_GroupCostD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupCostD', temp)
+            temp = self.Plant001_GroupCostDCompare()
+            name_list.append('Plant001_GroupCostDCompare')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupCostDCompare', temp)
+            temp = self.Plant001_GroupCostH()
+            name_list.append('Plant001_GroupCostH')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_GroupCostH', temp)
+            temp = self.Plant001_CoolingPriceD()
+            name_list.append('Plant001_CoolingPriceD')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'Plant001_CoolingPriceD', temp)
+            temp = self.test0194()
+            name_list.append('test0194')
+            value_list.append(temp[0] if isinstance(temp,tuple) else temp)
+            self.cacheManager.write_cache( self.get_act_time().strftime(standard_time_format), 'test0194', temp)
+        except Exception as e:
+            errorLog.writeLog(194,'%s in %s:'%(get_current_func_name(), __name__[__name__.rfind('/')+1:])+e.__str__(),True)
+        return name_list, value_list
+

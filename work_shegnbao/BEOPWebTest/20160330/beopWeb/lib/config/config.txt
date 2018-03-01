@@ -1,0 +1,6 @@
+	diagnosis
+	{
+		DataSystemTypeList = AHU|Chiller
+		Chiller = OADryTemp|OAWetBulbTemp|AmperRatio|ChwSupplyTemp|ChwReturnTemp|CwReturnTemp|CwSupplyTemp|EvpTemp|CondTemp
+		AHU = MATemp|SATemp|RACO2|OATemp|RATemp|RATempSetting|SATempSetting|RACO2Setting|HWTemp|CWTemp|OperationMode|OADamperRatio|HCDamperRatio|CCDamperRatio|SAStaticPressure|SAStaticPressureSetting|FanVSDFrequency|CWRetrunTemp
+	}

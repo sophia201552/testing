@@ -1,0 +1,773 @@
+<style>
+    .subTitle {
+        color: #333;
+        padding-top: 7px !important;
+    }
+
+    #loginPwdWrapper {
+        padding-left: 150px;
+    }
+
+    #groupPushReport {
+        font-family: 'Helvetica', 'Microsoft YaHei', '微软雅黑';
+        font-size: 16px;
+    }
+
+    #groupPushReport .companyNameContainer {
+        margin-left: 20px;
+    }
+
+    #groupPushReport .companyNameContainer #managementSelected {
+        width: auto;
+    }
+
+    #groupPageContainer .reportPagePushBox {
+        position: relative;
+    }
+
+    #groupPageContainer .reportPagePushBox .page-group-delete {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        outline: none;
+        padding: 5px 10px;
+        color: #333333;
+        font-size: 16px;
+    }
+
+    #groupPageContainer .reportPagePushBox .page-report-remove-email {
+        position: absolute;
+        top: 9px;
+        right: 25px;
+    }
+
+    #groupPageContainer .reportPageNav {
+        padding: 0 15px 15px 15px;
+        font-weight: 600;
+    }
+
+    #groupPageContainer .pagePushContent {
+        padding: 15px;
+    }
+
+    #groupPageContainer input[type=email] {
+        padding-right: 30px;
+    }
+
+    #groupPushReport .report-page-email-add {
+        border: 1px dashed #666;
+        color: #666;
+        border-radius: 50%;
+        font-size: 20px;
+        padding: 5px;
+        position: relative;
+        left: 0;
+        cursor: pointer;
+    }
+
+    #addGrouping {
+        margin-left: 20px;
+    }
+
+    #add_management_push_page_group .modal-dialog {
+        top: 270px;
+    }
+
+    #add_management_push_page_group .tip-container {
+        text-align: center;
+    }
+
+    #add_management_push_page_group .tip {
+        display: inline-block;
+        font-size: 16px;
+        vertical-align: middle;
+    }
+
+    #add_management_push_page_group input.tip {
+        width: auto;
+    }
+
+    #groupPageContainer .page-push-config-container {
+        background-color: #eee;
+        border-radius: 7px;
+        margin-left: 15px;
+        padding: 15px;
+        position: relative;
+        padding-right: 100px;
+        min-height: 100px;
+    }
+
+    #groupPageContainer .configReportPage {
+        position: absolute;
+        top: 9px;
+        right: 15px;
+    }
+
+    #groupPageContainer .page-report-li {
+        width: 200px;
+        background-color: #dedede;
+        border-radius: 7px;
+        text-align: center;
+        padding: 3px 15px;
+        margin-right: 15px;
+        font-size: 14px;
+        margin-bottom: 8px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .project-config {
+        margin-bottom: 15px;
+    }
+
+    .project-config-report-list {
+        overflow: hidden;
+        margin-top: 8px;
+    }
+
+    #config_management_push_page_modal .modal-dialog {
+        top: 50px;
+    }
+
+    #pageConfigPushContainer {
+        max-height: 600px;
+        overflow-y: auto;
+        margin-left: 30px;
+        min-height: 300px;
+    }
+
+    #pageConfigPushContainer li {
+        list-style-type: none;
+        margin: 0;
+        padding: 10px 5px 0 5px;
+        position: relative;
+    }
+
+    #pageConfigPushContainer li::before {
+        border-left: 1px solid #000;
+        height: 100%;
+        top: 0;
+        width: 1px;
+    }
+
+    #pageConfigPushContainer li::after {
+        border-top: 1px solid #000;
+        width: 25px;
+        height: 20px;
+        top: 25px;
+    }
+
+    #pageConfigPushContainer > ul > li:first-child::before {
+        top: 25px;
+    }
+
+    #pageConfigPushContainer li:last-child::before {
+        height: 26px;
+    }
+
+    #pageConfigPushContainer > ul > li.deleteCSS:first-child::before {
+        height: 0;
+    }
+
+    #pageConfigPushContainer > ul > li.deleteCSS:first-child::after {
+        width: 0;
+    }
+
+    #pageConfigPushContainer li::before,
+    #pageConfigPushContainer li::after {
+        content: ' ';
+        position: absolute;
+        left: -20px;
+    }
+
+    #pageConfigPushContainer li span {
+        border-radius: 5px;
+        border: 1px solid #999;
+        display: inline-block;
+        padding: 5px 8px;
+        width: 250px;
+    }
+
+    #pageConfigPushContainer li label {
+        cursor: pointer;
+        width: 100%;
+        margin: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    #pageConfigPushContainer li input[type=checkbox] {
+        vertical-align: top;
+        margin-right: 5px;
+    }
+
+    .page-report-push-email-container {
+        overflow: hidden;
+    }
+
+    .page-report-push-email-container .col-md-3 {
+        width: 230px;
+        margin-bottom: 5px;
+    }
+
+    @media (max-width: 1366px) {
+        #add_management_push_page_group .modal-dialog {
+            top: 190px;
+        }
+
+        #pageConfigPushContainer {
+            max-height: 400px;
+        }
+    }
+</style>
+
+<div id="accountManage">
+    <div class="row" id="userInfo"></div>
+    <div class="row" id="accountManagePanel" class="justify-center">
+        <div class="panel blank-panel">
+            <div class="panel-heading">
+                <div class="panel-options">
+                    <ul id="tabsUl" class="nav nav-tabs">
+                        <li class="active"><a href="javascript:void(0)" data-toggle="tab" data-shown="basicSet"
+                                              i18n="admin.panelManagement.BASIC_SETTINGS"></a>
+                        </li>
+                        <li><a href="javascript:void(0)" data-toggle="tab" data-shown="loginPwd"
+                               i18n="admin.panelManagement.LOGIN_PASSWORD"></a></li>
+                        <li><a href="javascript:void(0)" data-toggle="tab" data-shown="operationRecords"
+                               i18n="admin.panelManagement.ACCOUNT_RECORD_OPERATION"></a></li>
+                        <li permission="ReportPushSet;ReortPushSet"><a href="javascript:void(0)" data-toggle="tab"
+                                                                       data-shown="reportEmailSetting"
+                                                                       i18n="admin.panelManagement.REPRORT_EMAIL_SETTING"></a>
+                        </li>
+                        <li><a href="javascript:void(0)" data-toggle="tab" data-shown="accountSecrity"
+                               i18n="accountSecurity.TITLE"></a>
+                        </li>
+                        <li permission="GroupReportPush">
+                            <a href="javascript:void(0)" data-toggle="tab" data-shown="groupPushReport">集团报表推送</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-body scrollbar" id="contentWrapper">
+                    <div class="row" id="basicSet"></div>
+                    <div class="row dn" id="loginPwd">
+                        <div class="oh">
+                            <div id="loginPwdWrapper" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="editOldPwd" class="col-sm-3 control-label">
+                                        <span i18n="admin.panelManagement.ORIGINAL_PASSWORD;title=admin.panelManagement.ORIGINAL_PASSWORD"></span>
+                                    </label>
+
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control w200 fl" id="editOldPwd"
+                                               placeholder=""
+                                               i18n="placeholder=admin.panelManagement.ORIGINAL_PASSWORD">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="editNewPwd" class="col-sm-3 control-label">
+                                        <span i18n="admin.panelManagement.NEW_PASSWORD;title=admin.panelManagement.NEW_PASSWORD"></span>
+                                    </label>
+
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control w200 fl" id="editNewPwd"
+                                               i18n="placeholder=admin.panelManagement.NEW_PASSWORD">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="editCheckNewPwd" class="col-sm-3 control-label">
+                                        <span i18n="admin.panelManagement.CONFIRM_NEW_PASSWORD;title=admin.panelManagement.CONFIRM_NEW_PASSWORD"></span>
+                                    </label>
+
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control w200 fl" id="editCheckNewPwd"
+                                               placeholder=""
+                                               i18n="placeholder=admin.panelManagement.CONFIRM_NEW_PASSWORD">
+                                    </div>
+                                </div>
+
+                                <div style="text-indent: 30px;color: #f0ad4e;width:70%;height: 50px;"
+                                     i18n="admin.panelManagement.EMAIL_PASSPORT_MESSAGE"></div>
+                                <div style="padding-left:190px">
+                                    <button type="button" class="btn btn-success" id="submitResetPwd"
+                                            i18n="admin.panelManagement.DETERMINE"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row dn" id="operationRecords">
+                        <div class="oh">
+                            <div class="fl ml10">
+                                <div class="input-group date form_datetime fl" data-date=""
+                                     data-link-field="dtp_inputStart">
+                                    <input class="form-control" size="16" type="text" value="" id="txtLogDateStart"
+                                           style="border-radius:5px 0 0 5px;"/>
+                                </div>
+                                <div class="dib obj1" i18n="admin.panelManagement.TO"></div>
+                                <div class="input-group date form_datetime fl" data-date=""
+                                     data-link-field="dtp_inputStart">
+                                    <input class="form-control" size="16" type="text" value="" id="txtLogDateEnd"
+                                           style="border-radius:0 5px 5px 0;">
+                                </div>
+                                <button type="button" id="searchRecord" class="btn btn-success ml30 fl"
+                                        data-dismiss="modal"
+                                        i18n="admin.panelManagement.DETERMINE"></button>
+                                <span id="infoDate" class="infoPrompt dn pr"
+                                      i18n="admin.panelManagement.DATE_CANNOT_EMPTY"></span>
+                            </div>
+                        </div>
+                        <div id="allRecordTableWrapper" class="mt20 gray-scrollbar">
+                            <table id="allRecordTable">
+                                <thead>
+                                <tr>
+                                    <th width="20%" i18n="admin.panelManagement.TIME"></th>
+                                    <th width="12%">IP</th>
+                                    <th width="12%" class="dn" i18n="admin.panelManagement.ATTRIBUTION"></th>
+                                    <th width="12%" i18n="admin.panelManagement.OPERATING_SYSTEM"></th>
+                                    <th width="12%" i18n="admin.panelManagement.RATIO"></th>
+                                    <th width="20%" i18n="admin.panelManagement.BROWSER"></th>
+                                    <th width="12%" i18n="">归属地</th>
+                                </tr>
+                                </thead>
+                                <tbody id="allRecord"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row dn" id="reportEmailSetting">
+                        <form class="form-horizontal" method="post" action="javascript:void(0)"
+                              id="submit-report-email-list">
+                            <div class="form-group">
+                                <label for="wf-report-setting-name"
+                                       class="col-sm-2 control-label"><span
+                                        i18n="admin.panelManagement.NAME"></span></label>
+
+                                <div class="col-sm-2">
+                                    <input type="text" maxlength="10" class="form-control" id="wf-report-setting-name"
+                                           placeholder="name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span
+                                        i18n="admin.panelManagement.MAILBOX"></span>
+                                </label>
+
+                                <div class="wf-report-setting-email-container">
+                                    <div class="wf-report-setting-email col-sm-3">
+                                        <input type="email" class="form-control"
+                                               placeholder="email"
+                                               required>
+                                        <span class="glyphicon glyphicon-remove wf-report-remove-email"></span>
+                                    </div>
+                                </div>
+                                <span class="glyphicon glyphicon-plus-sign wf-report-email-add"
+                                      id="wf-report-email-add"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span
+                                        i18n="admin.panelManagement.RELATE_PROJECT"></span>
+                                </label>
+
+                                <div class="col-sm-10 wf-report-setting-email-lists scrollbar">
+                                    <ul class="nav wf-project-list clearfix"></ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="tc">
+                                    <button type="submit" class="btn btn-success"
+                                            i18n="admin.panelManagement.DETERMINE"></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row dn" id="accountSecrity">
+
+                        <div class="col-xs-8 col-xs-offset-2" id="accountSecurityContain" style="height: 100%">
+                            <div class="panel-body" style="height: calc(100% - 41px);">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="inputBindPhone" class="col-sm-3 control-label subTitle"
+                                               i18n="accountSecurity.BIND_PHONE">Bind Phone</label>
+
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="inputBindPhone"
+                                                   placeholder="Un-Bind Phone" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputNewBindPhone" class="col-sm-3 control-label subTitle"
+                                               i18n="accountSecurity.NEW_PHONE">New Phone</label>
+
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="inputNewBindPhone"
+                                                   placeholder="Plz input bind phone">
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <button type="button" class="btn btn-default" id="btnPhoneSubmit"
+                                                    i18n="accountSecurity.SUBMIT">Submit
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputCheckCode" class="col-sm-3 control-label subTitle"
+                                               i18n="accountSecurity.CHECK_CODE">Check Code</label>
+
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="inputCheckCode" placeholder="">
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <button type="button" class="btn btn-default" id="btnChkCodeSubmit"
+                                                    i18n="accountSecurity.SUBMIT">Submit
+                                            </button>
+                                        </div>
+
+                                        <div class="col-sm-2" style="padding-top: 6px">
+                                            <span id="spanTimer"></span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row dn" id="groupPushReport">
+                        <div class="companyNameContainer">
+                            <select id="managementSelected" class="form-control" placeholder="请选择集团"></select>
+                        </div>
+                        <div id="groupPageContainer"></div>
+                        <hr/>
+                        <button id="addGrouping" class="btn btn-default">添加分组</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--集团推送添加分组模板-->
+<script id="new_management_page_push_group" type="text/html">
+    <div class="reportPagePushBox">
+        <hr/>
+        <div class="reportPageNav"><!=groupName!></div>
+        <form class="pagePushContent form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-2">邮箱</label>
+                <div class="page-report-push-email-container">
+                    <div class="col-md-3 fl">
+                        <input type="email" class="form-control" placeholder="email"/>
+                        <span class="glyphicon glyphicon-remove page-report-remove-email fl"></span>
+                    </div>
+                    <span class="glyphicon glyphicon-plus-sign report-page-email-add"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">推送报表</label>
+                <div class="col-md-8 page-push-config-container">
+                    <div class="config-content-box">
+                        <div class="project-config">
+                            <div class="project-config-name"></div>
+                            <div class="project-config-report-list"></div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default configReportPage">配置报表</button>
+                </div>
+            </div>
+        </form>
+        <button class="page-group-delete btn btn-default">删除</button>
+    </div>
+</script>
+<!--end-->
+
+<!--集团推送添加分组-->
+<article id="add_management_push_page_group" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <div class="tip-container">
+                    <label class="tip-text tip mr20 control-label">分组名</label>
+                    <input type="text" class="form-control tip" placeholder="请输入分组名" id="new_page_push_group_name"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" i18n="common.CANCEL"></button>
+                <button id="add_page_push_group_btn" type="button" class="btn btn-primary"
+                        i18n="common.CONFIRM"></button>
+            </div>
+        </div>
+    </div>
+</article>
+<!--end-->
+
+<!--切换集团初始化推送-->
+<script type="text/html" id="change_management_push_page_config">
+    <div class="reportPagePushBox">
+        <hr/>
+        <div class="reportPageNav"><!=groupName!></div>
+        <form class="pagePushContent form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-2">邮箱</label>
+                <div class="page-report-push-email-container">
+                    <! if (emailArr && emailArr.length) { !>
+                    <! for (var i = 0; i < emailArr.length; i++) { !>
+                    <div class="col-md-3 fl">
+                        <input type="email" class="form-control" placeholder="email" value="<!=emailArr[i]!>"/>
+                        <span class="glyphicon glyphicon-remove page-report-remove-email fl"></span>
+                    </div>
+                    <! } !>
+                    <! } else { !>
+                    <div class="col-md-3 fl">
+                        <input type="email" class="form-control" placeholder="email"/>
+                        <span class="glyphicon glyphicon-remove page-report-remove-email fl"></span>
+                    </div>
+                    <! } !>
+                    <span class="glyphicon glyphicon-plus-sign report-page-email-add fl"></span>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">推送报表</label>
+                <div class="col-md-8 page-push-config-container">
+                    <div class="config-content-box">
+                        <! for (var i = 0; i < data.length; i++) {!>
+                        <! var content = data[i]; !>
+                        <div class="project-config">
+                            <div class="project-config-name" data-id="<!=content.projectID!>"><!=content.projectName!>
+                            </div>
+                            <div class="project-config-report-list">
+                                <! for (var k = 0; k < content.pageArr.length; k++) {!>
+                                <!var page = content.pageArr[k]; !>
+                                <div class="fl page-report-li" title="<!=page.name!>" data-id="<!=page.id!>"><!=page.name!></div>
+                                <! } !>
+                            </div>
+                        </div>
+                        <! } !>
+                    </div>
+                    <button type="button" class="btn btn-default configReportPage">配置报表</button>
+                </div>
+            </div>
+        </form>
+        <button class="page-group-delete btn btn-default">删除</button>
+    </div>
+</script>
+<!--end-->
+
+<!--配置集团报表推送模态框-->
+<article class="modal fade" id="config_management_push_page_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <div id="pageConfigPushContainer" class="scrollbar">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" i18n="common.CANCEL"></button>
+                <button id="surePushPageReport" type="button" class="btn btn-primary" i18n="common.CONFIRM"></button>
+            </div>
+        </div>
+    </div>
+</article>
+<!--end-->
+
+<!--更新配置显示-->
+<script type="text/html" id="update_config_page">
+    <! for (var i = 0; i < data.length; i++) { !>
+    <! var dataTheme = data[i]; !>
+    <div class="project-config">
+        <div class="project-config-name" data-id="<!=dataTheme.projectID!>"><!=dataTheme.projectName!>
+        </div>
+        <div class="project-config-report-list">
+            <! for (var k = 0; k < dataTheme.pageArr.length; k++) {!>
+            <!var page = dataTheme.pageArr[k]; !>
+            <div class="fl page-report-li" title="<!=page.name!>" data-id="<!=page.id!>"><!=page.name!></div>
+            <! } !>
+        </div>
+    </div>
+    <! } !>
+</script>
+<!--end-->
+
+<!--确认窗口开始-->
+<article id="PromptWin" class="modal fade promptWin">
+    <div class="modal-dialog" style="width: 1000px; top: 60px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" i18n="admin.panelManagement.PROMPT"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="PromptWinInfo" class="infoPrompt" style="text-align:center;"></p>
+            </div>
+        </div>
+    </div>
+</article>
+<!--确认窗口结束-->
+
+<!--模版开始-->
+<script type="template" id="paneProjectUserInfoFormTmpl">
+    <div class="oh">
+        <div id="basicSetInfoWrapper" class="form-horizontal justify-center">
+            <div class="form-group">
+                <label for="editInput" class="col-sm-3 control-label">
+                    <span i18n="admin.panelManagement.NAME"></span>
+                </label>
+
+                <div class="col-sm-9">
+                    <input id="editInput" class="form-control w150 fl" type="text" name="editInput"
+                           value="<!=userfullname!>" maxlength="10" data-toggle="tooltip" data-placement="top"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">
+                    <span i18n="admin.panelManagement.SEX"></span>
+                </label>
+
+                <div class="col-sm-9">
+                    <label class="mr20 mt5">
+                        <!if(usersex=='1') {!>
+                        <input type="radio" name="userSex" value="1" checked="checked"/>
+                        <!} else{ !>
+                        <input type="radio" name="userSex" value="1"/>
+                        <!}!>
+                        <span i18n="admin.panelManagement.MALE" class="fw-normal"></span>
+                    </label>
+                    <label class="mr20 mt5">
+                        <!if(usersex=='0') {!>
+                        <input type="radio" name="userSex" value="0" checked="checked"/>
+                        <!} else{ !>
+                        <input type="radio" name="userSex" value="0"/>
+                        <!}!>
+                        <span i18n="admin.panelManagement.FEMALE" class="fw-normal"></span>
+                    </label>
+                    <label class="mr20 mt5">
+                        <!if(usersex=='2' || usersex==null) {!>
+                        <input type="radio" name="userSex" value="2" checked="checked"/>
+                        <!} else{ !>
+                        <input type="radio" name="userSex" value="2"/>
+                        <!}!>
+                        <span i18n="admin.panelManagement.CONFIDENTIAL" class="fw-normal"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="editInput" class="col-sm-3 control-label">
+                    <span i18n="admin.panelManagement.COMPANY"></span>
+                </label>
+
+                <div class="col-sm-9">
+                    <input id="companyName" class="form-control w150 fl" type="text" name="companyNameInput"
+                           data-toggle="tooltip" data-placement="top"
+                           i18n="placeholder=admin.panelManagement.TYPE_COMPANY_NAME"/>
+                </div>
+            </div>
+
+            <p style="padding-left:190px">
+                <button type="button" id="confrimEditName" class="btn btn-success"
+                        data-dismiss="modal" i18n="admin.panelManagement.DETERMINE">
+                </button>
+            </p>
+        </div>
+    </div>
+</script>
+
+<script type="template" id="paneProjectUserInfoTmpl">
+    <div class="box1">
+        <div class="media">
+            <div class="media-left">
+                <div class="thumbnail image-upload" style="width:70px; height:70px;">
+                    <label for="file-input">
+                        <!if(!!userpic) {!>
+                        <img class="media-object userPic" src="https://beopweb.oss-cn-hangzhou.aliyuncs.com<!=userpic!>"
+                             alt="<!=userfullname!>">
+                        <!} else{ !>
+                        <img class="media-object userPic"
+                             src="/static/images/avatar/default/1.jpg"
+                             alt="<!=userfullname!>">
+                        <!}!>
+                    </label>
+                    <input id="file-input" type="file" accept="image/x-png, image/jpeg, image/jpg"/>
+                </div>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading nameEditor">
+                    <span id="useName"><!=userfullname!></span>
+                </h4>
+
+                <div class="email cl1"><!=useremail!></div>
+                <div class="user mt10">
+                    <!if(supervisorName){!>
+                    <span class="cl1" i18n="admin.panelManagement.INVITER"></span><span
+                        class="userSupervisor cl1 mr15">：<!=supervisorName!></span>
+                    <!}!>
+                    <!if(isManager === 1){!>
+                    <span class="userLevel mr15 cl1" i18n="admin.panelManagement.MANAGEMENT_AUTHORITY_OK"></span>
+                    <!} else {!>
+                    <span class="userLevel mr15 cl1" i18n="admin.panelManagement.MANAGEMENT_AUTHORITY_NO"></span>
+                    <!}!>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="template" id="projectNameList">
+    <!for(var i=0;i < projectNameList.length;i++){!>
+    <li data-project-id="<!=projectNameList[i].id!>">
+        <label>
+            <input type="checkbox">
+            <span><!=projectNameList[i].title!></span>
+            <span class="glyphicon glyphicon-ok projectlist-check"></span>
+        </label>
+    </li>
+    <!}!>
+</script>
+<script type="template" id="projectDetailList">
+    <!if (projectDetailList.length) {!>
+    <ul class="nav wf-project-detail">
+        <!for(var i=0;i < projectDetailList.length;i++){!>
+        <li data-navItems-id="<!=projectDetailList[i].id!>"
+            data-navItems-reportFolder="<!=projectDetailList[i].reportFolder!>">
+            <label>
+                <input type="checkbox">
+                <span><!=projectDetailList[i].text!></span>
+            </label>
+        </li>
+        <!}!>
+    </ul>
+    <!}else{!>
+    <ul class="nav wf-project-detail no-data">
+        <li><span>No Data</span></li>
+    </ul>
+    <!}!>
+</script>
+<!--模版结束-->
+<script>
+    // 账号记录隐藏归属地栏
+    var html=`<th width="20%" i18n="admin.panelManagement.TIME"></th>
+              <th width="15%">IP</th>
+              <th width="15%" class="dn" i18n="admin.panelManagement.ATTRIBUTION"></th>
+              <th width="15%" i18n="admin.panelManagement.OPERATING_SYSTEM"></th>
+              <th width="15%" i18n="admin.panelManagement.RATIO"></th>
+              <th width="20%" i18n="admin.panelManagement.BROWSER"></th>`
+    if(AppConfig.language!='zh'){
+        $('#allRecordTable').find('tr').html(html)
+        
+    }
+</script>

@@ -1,0 +1,136 @@
+import React from 'react';
+import { connect } from 'react-redux';
+
+import Tree from '../../../components/Tree';
+import { Tabs, TabPane } from '../../../components/Tabs';
+import DropdownList from '../../../components/DropdownList';
+import Confirm from '../../../components/Confirm';
+import { getStrategyList } from '../../../redux/epics/home.js';
+import { linkTo } from '../../../';
+
+import css from './FilesTabPane.css';
+
+class FilesTabPane extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      treeItems: [],
+      selectedProjectId: undefined,
+      projectList: []
+    };
+  }
+  componentDidMount() {
+    const { getStrategyList, selectedProjId, strategyList } = this.props;
+    let projectList = window.appConfig.projectList
+        .map(v => ({
+          key: v.id,
+          text: v.name_cn + ' #' + v.id
+        })),
+      selectedProjectId = selectedProjId || projectList[0].key;
+    //http://192.168.1.123/strategyV2/getList/selectedProjectId
+    let treeItems = strategyList.map(v => ({
+      id: v._id,
+      name: v.name,
+      parent: 0,
+      isParent: 0
+    }));
+    if (!treeItems.length) {
+      getStrategyList(selectedProjectId);
+    }
+
+    this.setState({
+      treeItems,
+      projectList,
+      selectedProjectId
+    });
+  }
+  componentWillReceiveProps(nextProps) {
+    const { strategyList } = nextProps;
+    let treeItems = strategyList.map(v => ({
+      id: v._id,
+      name: v.name,
+      parent: 0,
+      isParent: 0
+    }));
+    this.setState({
+      treeItems
+    });
+  }
+  render() {
+    const { strategyId, i18n, strategyPanelFn } = this.props;
+    const { treeItems, selectedProjectId, projectList } = this.state;
+    return (
+      <Tabs>
+        <TabPane tab={i18n.PROGRAM} keyId="2">
+          <DropdownList
+            selectedKey={selectedProjectId}
+            onChanged={this._onChangeProjectId.bind(this)}
+            placeHolder="No Selected"
+            options={projectList}
+            search={true}
+          />
+          <Tree
+            items={treeItems}
+            selectedKeys={[strategyId]}
+            skin="color-white h40"
+            folderIconOpen={
+              <i
+                className="ms-Icon ms-Icon--OpenFolderHorizontal"
+                aria-hidden="true"
+              />
+            }
+            folderIconClose={
+              <i
+                className="ms-Icon ms-Icon--OpenFolderHorizontal"
+                aria-hidden="true"
+              />
+            }
+            leafIcon={
+              <i
+                className="ms-Icon ms-Icon--Questionnaire"
+                aria-hidden="true"
+              />
+            }
+            onSelect={ids => {
+              if (ids.length > 0) {
+                if (strategyPanelFn && strategyPanelFn.getDiff()) {
+                  Confirm({
+                    title: i18n.TOOLTIP,
+                    type: 'info',
+                    content: i18n.UNSAVED_CONTENT_CONFIRM_EXIT,
+                    onOk: () => {
+                      linkTo(`/painter/${ids[0]}`);
+                    },
+                    onCancel: () => {this.setState({})}
+                  });
+                } else {
+                  linkTo(`/painter/${ids[0]}`);
+                }
+              }
+            }}
+          />
+        </TabPane>
+        <TabPane tab={i18n.PLIVATE} keyId="1" />
+      </Tabs>
+    );
+  }
+  _onChangeProjectId(it, id) {
+    const { getStrategyList } = this.props;
+    getStrategyList(id);
+    this.setState({
+      selectedProjectId: id
+    });
+  }
+}
+let mapDispatchToProps = {
+  getStrategyList
+};
+
+let mapStateToProps = function(state) {
+  return {
+    strategyList: state.home.strategyList,
+    selectedProjId: state.home.selectedProjectId
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilesTabPane);

@@ -1,0 +1,447 @@
+﻿<style type="text/css">
+    #map-canvas {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .project-nav {
+        padding: 10px 0;
+    }
+
+    .nav-section {
+        padding-bottom: 5px;
+        color: #999;
+        border-bottom: 1px solid #999;
+        font-size: 15px;
+    }
+
+    .nav-title {
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    .nav-item {
+        margin-top: 15px;
+        text-align: center;
+        float: left;
+        width: 33%;
+    }
+
+    .project-img {
+        display: block;
+        width: 270px;
+        height: 190px;
+        margin: 0px auto 10px auto;
+        padding-top: 5px;
+    }
+
+    .project-desc {
+        margin-left: 5px;
+    }
+
+    .project-desc .name {
+        font-size: 17px;
+    }
+
+    .project-desc .address {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .nav-img {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+
+    .map-card {
+        top: 40px;
+        right: 8%;
+        border-radius: 2px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        font-size: 12px;
+        line-height: 16px;
+        outline: none;
+        position: absolute;
+        width: 280px;
+        z-index: 220;
+    }
+
+    .map-card .project-detail, .map-card .project-nav {
+        background-color: #FFFFFF;
+    }
+
+    .map-scrollbar::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #F5F5F5;
+    }
+
+    .map-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        background-color: #F5F5F5;
+    }
+
+    .map-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #000000;
+    }
+
+    #projectsCard {
+        background-color: #FFFFFF;
+        padding: 0 0 10px 0;
+    }
+
+    .scroll-pane {
+        overflow-y: auto;
+        max-height: 500px;
+    }
+
+    #projectDetailCard .media {
+        cursor: pointer;
+        margin: 5px 0 5px 15px;
+        float: left;
+    }
+
+    #projectsCard .media {
+        cursor: pointer;
+        text-align: center;
+        position: relative;
+        margin-left: 2%;
+        width: 47%;
+        float: left;
+        margin-top: 5px;
+        overflow: hidden;
+    }
+
+    #projectsCard .mask {
+        width: 100%;
+        height: 25%;
+        position: absolute;
+        background-color: black;
+        opacity: 0.6;
+        top: 75%;
+    }
+
+    #projectsCard .mask.hover {
+
+    }
+
+    #projectsCard .title {
+        font-family: 微软雅黑;
+        font-size: 18px;
+        margin: 10px 5px;
+    }
+
+    #projectsCard .project-media-container {
+        overflow-y: hidden;
+        height: 100%;
+        overflow-x: hidden;
+        padding: 0 0 10px 0;
+    }
+
+    #projectsCard .project-media-container img {
+        width: 100%;
+        height: 90px;
+    }
+
+    #projectsCard .media-body {
+        font-family: 微软雅黑;
+        font-size: 14px;
+        display: table;
+        width: 100%;
+    }
+
+    #projectsCard .media-heading {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 13px;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    #projectsCard .project-en {
+        width: 100px;
+        font-size: 13px;
+        font-family: inherit;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    #projectDetailCard .media-body {
+        font-family: 微软雅黑;
+        font-size: 15px;
+        width: 100px;
+        overflow-y: hidden;
+        max-height: 60px;
+        color: #535050;
+    }
+
+    #projectDetailCard .media-heading {
+        margin-top: 5px;
+        font-size: 13px;
+        width: 190px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 35px;
+    }
+
+    #projectDetailCard .project-en {
+        width: 100px;
+        word-wrap: break-word;
+        font-size: 13px;
+        font-family: inherit;
+    }
+
+    .nearby-projects {
+        display: none;
+        max-height: 160px;
+        margin-top: 5px;
+        background-color: rgb(255, 255, 255);
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding: 5px;
+    }
+
+    #system_observer_btn {
+        margin-left: -7px;
+    }
+
+    .card-close {
+        position: absolute;
+        right: 2px;
+        font: 700 16px/14px Tahoma, Verdana, sans-serif;
+        width: 14px;
+        height: 14px;
+        color: #999;
+        top: 3px;
+        cursor: pointer;
+        background-color: white;
+    }
+
+    a.card-close:hover {
+        text-decoration: none;
+    }
+
+    #cardBtnPanel {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    a.amap-info-close {
+        text-decoration: none;
+    }
+
+    .effect .img {
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+
+    .effect .info {
+        background: rgba(0, 0, 0, 0.6);
+        pointer-events: none;
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        height: 32px;
+        width: auto;
+        transition: height 0.5s;
+        -moz-transition: height 0.5s;
+        -webkit-transition: height 0.5s;
+        -o-transition: height 0.5s;
+    }
+
+    .effect .info h4 {
+        color: #fff;
+        height: 32px;
+        line-height: 32px;
+    }
+
+    .effect a:hover .img {
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
+    .effect a:hover .info {
+        height: 150px;
+        line-height: 150px;
+        transition: height 0.5s;
+        -moz-transition: height 0.5s;
+        -webkit-transition: height 0.5s;
+        -o-transition: height 0.5s;
+    }
+
+    .effect a:hover h4 {
+        margin-top: 70px;;
+        transition: margin-top 0.5s;
+    }
+
+    .effect a:hover .media-heading {
+        text-overflow: initial !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        word-break: break-word !important;
+    }
+
+    /*newAdd code*/
+    .project-media-container {
+        overflow: hidden;
+    }
+
+    .project-media-container > div {
+        width: 230px;
+        height: 150px;
+        float: left;
+        overflow: hidden;
+        position: relative;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    .project-media-container > div:first-child {
+        margin-top: 10px;
+    }
+
+    .project-media-container > div img {
+        width: 100%;
+        height: 100%;
+    }
+
+    #imgListCon {
+        width: 1270px;
+        margin: 0 auto;
+        height: 100%;
+    }
+
+    #paneSelector {
+        height: 100%;
+        overflow: auto;
+    }
+
+    #paneSelector .media-body h4 {
+        font-size: 14px;
+    }
+
+    #paneSelector .media-body .imgHover {
+        font-size: 14px;
+    }
+
+    .pa {
+        position: absolute;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    #funList ul {
+        padding-left: 0px;
+    }
+
+    #funList li {
+        margin: 5px 0;
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        line-height: 34px;
+        color: #fff;
+        border-radius: 5px;
+        background: #428bca;
+    }
+
+    #funList li span {
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    #funList .active {
+        background: #ccc;
+        cursor: default;
+    }
+
+    #funList .active:hover span {
+        cursor: default;
+    }
+
+    @media screen and (max-width: 1280px) {
+        /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
+        .project-media-container > div {
+            width: 160px;
+            height: 105px;
+        }
+
+        #imgListCon {
+            width: 900px;
+        }
+
+        .effect a:hover h4 {
+            margin-top: 50px;;
+        }
+
+        .effect a:hover .info {
+            height: 105px;
+            line-height: 105px;
+        }
+    }
+
+    .adminFeature {
+        display: none;
+    }
+
+</style>
+<article id="funList" class="pa" style="z-index:1">
+    <ul>
+        <li>
+            <span id="btnMapSelector" class="glyphicon glyphicon-map-marker" aria-hidden="true"
+                  i18n="title=core.beopMap.AMAP"></span>
+        </li>
+        <li class="adminFeature">
+            <span id="btnUpdate" class="glyphicon glyphicon-refresh" aria-hidden="true"
+                  i18n="title=admin.projectSelector.PANE_BTN_UPDATE"></span>
+        </li>
+        <li class="active">
+            <span id="btnList" class="glyphicon glyphicon-list" aria-hidden="true"
+                  i18n="title=admin.projectSelector.TITLE_PANELSELECTOR"></span>
+        </li>
+    </ul>
+</article>
+<div class="indexContent">
+    <div class="row" id="rowSelector" style="margin-top:10px; opacity: 0; display: none;height: 100%;">
+        <div class="" style="height: 100%;">
+            <div id="imgListCon">
+                <div id="paneSelector" class="gray-scrollbar">
+                    <div>
+                        <div class="title"></div>
+                        <div class="map-scrollbar scroll-pane">
+                            <div class="project-media-container">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

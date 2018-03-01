@@ -1,0 +1,512 @@
+<style>
+    #dataSouceConfigure{background-color: #f5f5f5;}
+    /*.dataSrcClassify .glyphicon{
+        border:1px solid #eeeeee;
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        padding: 3px;
+    }*/
+    .dataSrcClassify {
+        margin-left: 10px;
+        padding-left: 10px;
+    }
+    .dataSrcClassify .pagination {
+        margin: 0;
+    }
+    .dataSrcClassify nav{
+        display: inline-block;
+    }
+    .dataSrcClassifyTip {
+        display: inline-block;
+        width: 120px;
+        position: relative;
+        bottom: 10px;
+        font-weight: bold;
+    }
+    .iconFilter {
+        float: left;
+        display: inline;
+        margin-right: 20px;
+    }
+    #dataSouceConfigure>li.active>a, #dataSouceConfigure>li.active>a:hover, #dataSouceConfigure>li.active>a:focus {
+        border-bottom-color: rgba(255,255,255,0.7);
+        background-color: rgba(255,255,255,0.7);
+    }
+    #originalHeading .control-label{
+        min-width: 50px;
+    }
+    .config-footer{
+        padding: 8px 15px 15px 15px;
+        text-align: right;
+        border-top: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+        height: 54px;
+        position: absolute;
+        width: 100%;
+        bottom: 10px;
+        right: 10px;
+        z-index: 9;
+    }
+    #formulaConfig sup{
+        top: 0;
+    }
+    #formulaConfig {
+        margin-left: 5%;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+    #formulaInput {
+        margin-top: 20px;
+    }
+    #formulaDesc {
+        margin-left: 5%;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: 400;
+    }
+    #inputFormulaDesc {
+        width: 358px;
+        height: 24px;
+    }
+    .mathquill-editable{
+        min-width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .mathquill-editable:hover{
+        box-shadow: #68b4df 0 0 3px 2px;
+    }
+    #varConfig {
+        padding: 30px;
+        margin: 0 2% 0 2%;
+        height: 70%;
+        overflow-y: auto;
+    }
+    #varConfig .row{
+        margin-left: -40px;
+        padding-left: 25px;
+    }
+    #varConfig .row:hover {
+        background-color: cornsilk;
+    }
+    #varConfig .row:first-child:hover {
+        background-color: transparent;
+    }
+    #varConfig .row:hover .varRemove{
+        display: block;
+    }
+    #varConfig .col-xs-12 {
+        border-top:1px solid #eee;
+        position: relative;
+    }
+    #varConfig .varTableTitle{
+        border-top:1px solid transparent;
+    }
+    .formulaVarName{
+        font-size: 16px;
+        margin: 10px 0 10px 0;
+        cursor: pointer;
+    }
+    .formulaVarName input{
+        width: 50%;
+        display: none;
+        position: absolute;
+        top: -3px;
+    }
+    .varRow>.col-xs-4,.varTableTitle>.col-xs-4{
+        padding-left: 0;
+    }
+    .varTableTitle h4{
+        display:inline-block;
+    }
+    .varTableTitle span{
+        color: #777;
+        position: relative;
+        left: 20px;
+        top: 3px;
+        font-size:20px;
+        cursor: pointer;
+    }
+    .varTableTitle span:hover {
+        color: #428bca;
+    }
+    #varConfig .col-xs-6{
+        border-left:1px solid #eee;
+        min-height: 40px;
+    }
+    .varRemove{
+        color: #777;
+        width: 5%;
+        font-size: 18px;
+        position: absolute;
+        top: 12px;
+        left: -10px;
+        display: none;
+        cursor: pointer;
+    }
+    .varRemove:hover{
+        color: darkred;
+    }
+    .formulaVarValue {
+        cursor: pointer;
+        font-size: 16px;
+        padding: 4px 0 0 3%;
+        border-bottom: 1px solid #aaa;
+        margin-bottom: 4px;
+        margin-top: 4px;
+        border-bottom-left-radius: 5px;
+    }
+    .formulaVarValue>span {
+        cursor: pointer;
+    }
+    .formulaVarValue:hover .glyphicon-remove-sign{
+            display: inline;
+            border-radius: 5px;
+    }
+    .formulaVarValue span:first-child{
+        display: inline-block;
+        height: 15px;
+        border-left: 1px solid #ddd;
+        border-bottom-left-radius: 5px;
+        position: absolute;
+        left: 0;
+        bottom: 2px;
+    }
+        .formulaVarValue:hover span:first-child{
+            display: none;
+        }
+        .formulaVarValue div{
+            position: relative;
+            bottom: -5px;
+            display: inline-block;
+            overflow:hidden;
+            width: 4em;
+            text-overflow: ellipsis;
+        }
+        .formulaVarValue:hover{
+            background-color:#60aedb;
+            border-radius: 5px;
+            border-color: transparent;
+        }
+        .formulaVarValue .glyphicon-remove-sign{
+            color: orangered;
+            display: none;
+            font-size: 20px;
+            position: absolute;
+            top: 6px;
+            right: 8px;
+        }
+        .formulaVarValue .glyphicon-remove-sign:hover {
+            color:red;
+        }
+    .varSel {
+        background-color: cornsilk;
+    }
+    /*@keyframes varLackLight {
+        0% {background-color:rgba(255,0,0,1)}
+        100% {background-color:transparent}
+    }
+    @-moz-keyframes varLackLight {
+        0% {background-color:rgba(255,0,0,1)}
+        100% {background-color:transparent}
+    }
+    @-webkit-keyframes varLackLight {
+        0% {background-color:rgba(255,0,0,1)}
+        100% {background-color:transparent}
+    }
+    @-o-keyframes varLackLight {
+        0% {background-color:rgba(255,0,0,1)}
+        100% {background-color:transparent}
+    }*/
+    .varLack{
+        color: darkorange;
+        position: relative;
+        left: 20px;
+        /*animation:varLackLight 1.5s 1;
+        -webkit-animation:varLackLight 1.5s 1;
+        -moz-animation:varLackLight 1.5s 1;
+        -o-animation:varLackLight 1.5s 1;*/
+    }
+    #formulaCustomName sup{
+        top: 0;
+    }
+    #formulaCustomName {
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 16px;
+        width: 135px;
+        text-align: center;
+        cursor: pointer;
+    }
+    #inputCustName {
+        width:120px;
+        height:24px;
+        display: block;
+        position: absolute;
+    }
+    .filterIcon {
+        width: 34px;
+        height: 34px;
+        padding: 0px 0px 0px 0px !important;
+        cursor: pointer;
+    }
+/*    .filterIconSysSelected {
+        background-color: #9ec799 !important;
+        color:#eeeeee !important;
+    }
+    .filterIconDevSelected {
+        background-color: #4fc6cb !important;
+        color:#eeeeee !important;
+    }
+    .filterIconTypeSelected {
+        background-color: #e9c37a !important;
+        color:#eeeeee !important;
+    }*/
+    .filterCustom {
+        height: 30px;
+        cursor: pointer;
+    }
+    .filterCustomSelected {
+        background-color: #428bca !important;
+        color:#eeeeee !important;
+    }
+    .iconComm {
+        width: 19px;
+        height: 19px;
+        background-image:url('http://images.rnbtech.com.hk/static/images/dataSource/filter_icon3.png');
+        background-repeat:no-repeat;
+        background-size:380px 19px;
+    }
+    #iconSys1 { background-position:0px 0px; }
+    #iconSys2 { background-position:-19px 0px; }
+    #iconSys3 { background-position:-38px 0px; }
+    #iconSys4 { background-position:-57px 0px; }
+    #iconDev1 { background-position:-76px 0px; }
+    #iconDev2 { background-position:-95px 0px; }
+    #iconDev3 { background-position:-114px 0px; }
+    #iconDev4 { background-position:-133px 0px; }
+    #iconDev5 { background-position:-152px 0px; }
+    #iconDev6 { background-position:-171px 0px; }
+    #iconType1 { background-position:-190px 0px; }
+    #iconType2 { background-position:-209px 0px; }
+    #iconType3 { background-position:-228px 0px; }
+    #iconType4 { background-position:-247px 0px; }
+    #iconType5 { background-position:-266px 0px; }
+    #iconType6 { background-position:-285px 0px; }
+    #iconType7 { background-position:-304px 0px; }
+    #iconType8 { background-position:-323px 0px; }
+    #iconType9 { background-position:-342px 0px; }
+    #iconType10 { background-position:-361px 0px; }
+
+    .iconTitleComm {
+        width: 32px;
+        height: 32px;
+        background-image:url('http://images.rnbtech.com.hk/static/images/dataSource/filter_icon2.png');
+        background-repeat:no-repeat;
+    }
+    
+    .filterIconSysSelected .iconTitleComm,
+    .filterIconDevSelected .iconTitleComm,
+    .filterIconTypeSelected .iconTitleComm {
+        background-image:url('http://images.rnbtech.com.hk/static/images/dataSource/filter_icon3.png');
+    }
+
+    #iconTitleSys1 { background-position:0px 0px; }
+    #iconTitleSys2 { background-position:-32px 0px; }
+    #iconTitleSys3 { background-position:-64px 0px; }
+    #iconTitleSys4 { background-position:-96px 0px; }
+    #iconTitleDev1 { background-position:-128px 0px; }
+    #iconTitleDev2 { background-position:-160px 0px; }
+    #iconTitleDev3 { background-position:-192px 0px; }
+    #iconTitleDev4 { background-position:-224px 0px; }
+    #iconTitleDev5 { background-position:-256px 0px; }
+    #iconTitleDev6 { background-position:-288px 0px; }
+    #iconTitleType1 { background-position:-320px 0px; }
+    #iconTitleType2 { background-position:-352px 0px; }
+    #iconTitleType3 { background-position:-384px 0px; }
+    #iconTitleType4 { background-position:-416px 0px; }
+    #iconTitleType5 { background-position:-448px 0px; }
+    #iconTitleType6 { background-position:-480px 0px; }
+    #iconTitleType7 { background-position:-512px 0px; }
+    #iconTitleType8 { background-position:-544px 0px; }
+    #iconTitleType9 { background-position:-576px 0px; }
+    #iconTitleType10 { background-position:-608px 0px; }
+    
+</style>
+<!--<ul class="nav nav-tabs" role="tablist" id="dataSouceConfigure">
+  <li role="presentation" class="active"><a href="#divDataSourceAddPage" aria-controls="home" role="tab" data-toggle="tab">Original</a></li>
+  <li role="presentation"><a href="#divDataSourceFormula" aria-controls="profile" role="tab" data-toggle="tab">Formula</a></li>
+</ul>-->
+    <div class="panel-heading" id="originalHeading">
+        <div class="form-inline">
+            <!--<div class="form-group" id="dsConfig" style="display: block">
+                <label class="col-sm-1 control-label" i18n="dataSource.CUSTOM_NAME" style="min-width: 100px;"></label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="inputCustomName" placeholder="Customize name">
+                </div>
+
+                <label class="col-sm-1 control-label" i18n="dataSource.POINT_DESC" style="min-width: 100px;"></label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="inputPointDesc" placeholder="Notes">
+                </div>
+            </div>-->
+
+            <div class="form-group">
+                <label class="control-label" i18n="dataSource.PROJECT_NAME"></label>
+                <select class="form-control" id="dataSrcPrjName">
+                    <option></option>
+                </select>
+
+
+                <!--<div id="dsPtName" style="display: block">
+                    <label class="col-sm-1 control-label" i18n="dataSource.POINT_NAME" style="min-width: 100px;"></label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="inputPointName" placeholder="Point name" disabled>
+                    </div>
+                </div>-->
+            </div>
+
+            <div class="form-group" style="float:right;">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="dataSrcPtSearch" placeholder="搜索" disabled>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="btnSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-heading" id="formulaHeading">Formula</div>
+    <div class="panel-body" id="divDataSourceAddPage" style="height:100%;">
+
+        <div style="padding: 15px;height: calc(100% - 120px);">
+            <div id="dataSrcCustom" class="dataSrcClassify">
+                <nav style="margin-left:-20px;">
+                    <ul class="pagination">
+                        <li><span class="filterCustom filterCustomSelected" id="filterCustomAll" i18n="dataSource.POINT_TYPE_CUSTOM" style="width: 55px;">All</span></li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="dataSrcSys" class="dataSrcClassify iconFilter">
+                <nav style="margin-left:-20px;">
+                    <ul class="pagination">
+                        <li><span class="filterIcon" id="filterSystemAll" i18n="dataSource.POINT_TYPE_SYSTEM" style="width:55px;padding:6px 0 0 10px !important;">All</span></li>
+                        <li title="暖通"><span class="filterIcon" id="filterSystem1"><div class="iconTitleComm" id="iconTitleSys1"></div></span></li>
+                        <li title="动力"><span class="filterIcon" id="filterSystem2"><div class="iconTitleComm" id="iconTitleSys2"></div></span></li>
+                        <li title="照明插座"><span class="filterIcon" id="filterSystem3"><div class="iconTitleComm" id="iconTitleSys3"></div></span></li>
+                        <li title="精密空调"><span class="filterIcon" id="filterSystem4"><div class="iconTitleComm" id="iconTitleSys4"></div></span></li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="dataSrcEquip" class="dataSrcClassify iconFilter">
+                <nav style="margin-left:-20px;">
+                    <ul class="pagination">
+                        <li><span class="filterIcon" id="filterDeviceAll" i18n="dataSource.POINT_TYPE_DEVICE" style="width:55px;padding:6px 0 0 10px !important;">All</span></li>
+                        <li title="冷机"><span class="filterIcon" id="filterDevice1"><div class="iconTitleComm" id="iconTitleDev1"></div></span></li>
+                        <li title="水泵"><span class="filterIcon" id="filterDevice2"><div class="iconTitleComm" id="iconTitleDev2"></div></span></li>
+                        <li title="冷却塔"><span class="filterIcon" id="filterDevice3"><div class="iconTitleComm" id="iconTitleDev3"></div></span></li>
+                        <li title="AHU"><span class="filterIcon" id="filterDevice4"><div class="iconTitleComm" id="iconTitleDev4"></div></span></li>
+                        <li title="VAV"><span class="filterIcon" id="filterDevice5"><div class="iconTitleComm" id="iconTitleDev5"></div></span></li>
+                        <li title="系统"><span class="filterIcon" id="filterDevice6"><div class="iconTitleComm" id="iconTitleDev6"></div></span></li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="dataSrcType" class="dataSrcClassify iconFilter">
+                <nav style="margin-left:-20px;">
+                    <ul class="pagination">
+                        <li><span class="filterIcon" id="filterTypeAll" i18n="dataSource.POINT_TYPE_TYPE" style="width:55px;padding:6px 0 0 10px !important;">All</span></li>
+                        <li title="电量表"><span class="filterIcon" id="filterType1"><div class="iconTitleComm" id="iconTitleType1"></div></span></li>
+                        <li title="冷量表"><span class="filterIcon" id="filterType2"><div class="iconTitleComm" id="iconTitleType2"></div></span></li>
+                        <li title="温度"><span class="filterIcon" id="filterType3"><div class="iconTitleComm" id="iconTitleType3"></div></span></li>
+                        <li title="流量"><span class="filterIcon" id="filterType4"><div class="iconTitleComm" id="iconTitleType4"></div></span></li>
+                        <li title="压力"><span class="filterIcon" id="filterType5"><div class="iconTitleComm" id="iconTitleType5"></div></span></li>
+                        <li title="电流"><span class="filterIcon" id="filterType6"><div class="iconTitleComm" id="iconTitleType6"></div></span></li>
+                        <li title="功率"><span class="filterIcon" id="filterType7"><div class="iconTitleComm" id="iconTitleType7"></div></span></li>
+                        <li title="频率"><span class="filterIcon" id="filterType8"><div class="iconTitleComm" id="iconTitleType8"></div></span></li>
+                        <li title="启停"><span class="filterIcon" id="filterType9"><div class="iconTitleComm" id="iconTitleType9"></div></span></li>
+                        <li title="报警"><span class="filterIcon" id="filterType10"><div class="iconTitleComm" id="iconTitleType10"></div></span></li>
+                    </ul>
+                </nav>
+            </div>
+
+
+            <div class="indexContent gray-scrollbar" id="divPointsBody" style="position: relative;height: calc(100% - 90px); padding:0 10px 0 10px;width:100%;overflow-x:auto;">
+                <table class="table table-condensed table-hover" id="tableWatch" style="cursor:pointer;">
+                    <thead>
+                        <tr>
+                            <th i18n="dataSource.NUMBER"></th>
+                            <th i18n="dataSource.POINT_NAME"></th>
+                            <th i18n="dataSource.POINT_DESC"></th>
+                            <th i18n="dataSource.POINT_ATTR"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="panel-body" id="divDataSourceFormula" style="height: 100%">
+        <div style="padding: 15px;height: calc(100% - 120px);">
+            <div id="formulaConfig">
+                <span i18n="dataSource.FORMULA_TIPS"></span>
+                <div id="formulaInput">
+                    <div class="form-group" id="formulaCustomName">
+                        <input type="text" class="form-control" id="inputCustName" placeholder="Custom name">
+                        Formula
+                    </div>
+                    =
+                    <span id="editable-math" class="mathquill-editable"></span>
+                </div>
+            </div>
+            <div class="form-group" id="formulaDesc">
+                <label i18n="dataSource.POINT_DESC"></label>
+                <input type="text" class="form-control" id="inputFormulaDesc" placeholder="Description">
+            </div>
+            <div id="varConfig">
+                <div class="row">
+                    <div class="col-xs-12 varTableTitle">
+                        <div class="col-xs-4"><h4 i18n="dataSource.FORMULA_VARIABLE_NAME"></h4><span class="glyphicon glyphicon-plus-sign grow" aria-hidden="true"></span></div>
+                        <div class="col-xs-6"><h4 i18n="dataSource.FORMULA_VARIABLE_VALUE"></h4></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 varRow">
+                        <div class="varRemove glyphicon glyphicon-remove-sign grow" aria-hidden="true"></div>
+                        <div class="col-xs-4 formulaVarName"><input type="text" name="inputVarValue" class="varNameChange">a</div>
+                        <div class="col-xs-6 divVarValue"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 varRow">
+                        <div class="varRemove glyphicon glyphicon-remove-sign grow" aria-hidden="true"></div>
+                        <div class="col-xs-4 formulaVarName"><input type="text" name="inputVarValue" class="varNameChange">b</div>
+                        <div class="col-xs-6 divVarValue"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 varRow">
+                        <div class="varRemove glyphicon glyphicon-remove-sign grow" aria-hidden="true"></div>
+                        <div class="col-xs-4 formulaVarName"><input type="text" name="inputVarValue" class="varNameChange">c</div>
+                        <div class="col-xs-6 divVarValue"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer config-footer" id="originalFooter">
+        <button type="button" class="btn btn-primary" id = "btnAddDataSrc" i18n="dataSource.SURE"></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id = "btnCancelDataSrc" i18n="dataSource.CANCEL"></button>
+    </div>
+    <div class="panel-footer config-footer" id="formulaFooter" style="height: 54px;">
+        <button type="button" class="btn btn-primary" id = "btnFormulaDataAdd" i18n="dataSource.SURE"></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id = "btnCancelFormulaData" i18n="dataSource.CANCEL"></button>
+    </div>
+
+
+
+
+

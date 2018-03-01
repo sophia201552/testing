@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simple data table Demo</title>
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="simpleDataTable.css" rel="stylesheet" type="text/css">
+    <script src="../../jquery-2.1.4.min.js"></script>
+    <script src="../../jquery.twbsPagination.min.js"></script>
+    <script src="simpleDataTable.js"></script>
+    <style>
+        .demo {
+            width: 60%;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="demo">
+    <h4>Demo 1: load by array data</h4>
+
+    <div id="demoLoadByArrayData">
+
+    </div>
+</div>
+
+</body>
+
+<script id="demo_load_array_data">
+    var data = [];
+    for (var i = 0; i < 1000; i++) {
+        data.push({
+            id: i,
+            invdate: "2007-10-01",
+            name: "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest",
+            note: "note" + i,
+            amount: "200.00",
+            tax: "10.00",
+            total: "210.00"
+        });
+    }
+    $('#demoLoadByArrayData').simpleDataTable({
+        data: data,
+        colNames: ['Inv No', 'Date', 'Client', 'Amount', 'Tax', 'Total', 'Notes', '操作'],
+        searchIn: [''],
+        colModel: [
+            {name: 'id', index: 'id', width: '60px'},
+            {
+                name: 'invdate', index: 'invdate', width: '60px', type: "date", converter: function (value) {
+                return new Date(value).toLocaleDateString();
+            }
+            },
+            {name: 'name', index: 'name', copy: true},
+            {name: 'amount', index: 'amount', align: "right", type: "float", copy: true},
+            {name: 'tax', index: 'tax', align: "right", type: "float"},
+            {name: 'total', index: 'total', align: "right", type: "float"},
+            {name: 'note', index: 'note', sortable: false},
+            {
+                name: '操作',
+                index: '',
+                html: '<span class="glyphicon glyphicon-share grow span-hover-pointer" style="cursor: pointer;"></span>'
+            }
+        ]
+    });
+</script>
+</html>

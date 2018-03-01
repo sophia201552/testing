@@ -1,0 +1,142 @@
+<style>
+    *{
+        font-family: "Microsoft YaHei";
+    }
+    #indexMain{
+        background-color: #fff;
+    }
+    .wkPart:not(:last-child){
+        border-bottom: 1px solid #ccc;
+    }
+    .wkPart {
+        padding: 1rem;
+        position: relative;
+    }
+    #wkBase {
+        background-color: #ddd;
+    }
+    #wkEmergency {
+        background-color: green;
+        color: white;
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.5rem;
+    }
+    #wkDetail{
+        border-bottom: 1px solid #eee;
+    }
+    #wkDetail .partTitle{
+        display: none;
+        border-bottom: 1px solid #ccc;
+    }
+    #detailTitle {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    #detailContent {
+        color: #8E8E93;
+    }
+    #additionSel {
+        border-bottom: 1px solid #dddddd;
+        padding: 0rem 1rem 1rem;
+    }
+    #additionSel span.selected{
+        color:#428BCA
+    }
+    .divProgress {
+        padding: 1rem 0;
+        border-bottom: 1px solid #ccc;
+    }
+    .progressPic img{
+        height: 3rem;
+    }
+    #wkAddition{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .divReply, .divProgress{
+        position: relative;
+        padding: 1rem;
+        border-bottom: 1px solid #ddd;
+    }
+    .replyPic, .progressPic{
+        width: 4rem;
+        height: 4rem;
+        float: left;
+    }
+    .replyPic img, .progressPic img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: none;
+    }
+    .replyUser, .progressUser{
+        height: 2rem;
+        line-height: 2rem;
+        margin-left: 5rem;
+    }
+    .replyTime, .progressTime{
+        margin-left: 5rem;
+        color: #8e8e93;
+        font-size: 1rem;
+    }
+    .replyDetail, .progressStatus{
+        width: calc(100% - 4rem);
+        margin-left: 5rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        padding-right: .6rem;
+    }
+    .replyDetail img, .progressStatus img{
+        max-width: 100%;
+    }
+    @media (max-device-height:667px) and (-webkit-min-device-pixel-ratio:2) {  /* 兼容iphone4/4s */
+        .divReply, .divProgress{
+            padding: .6rem;
+        }
+        .replyPic, .progressPic {
+            width: 3.6rem;
+            height: 3.6rem;
+        }
+        .replyUser, .progressUser{
+            margin-left: 4.2rem;
+        }
+        .replyTime, .progressTime{
+            margin-left: 4.2rem;
+        }
+        .replyDetail, .progressStatus {
+            margin-left: 4.2rem;
+        }
+    }
+</style>
+<div id="wkBase" class="wkPart">
+    <div id="wkId"><span class="partTitle">工单编号：</span><span class="partContent"></span></div>
+    <div id="wkEmergency"></div>
+    <div id="wkCreateDate"><span class="partTitle">创建于：</span><span class="partContent"></span></div>
+    <div id="wkExecutor"><span class="partTitle">执行人：</span><span class="partContent"></span></div>
+</div>
+<div id="wkDetail" class="wkPart">
+    <div class="partTitle">工单内容：</div>
+    <div id="detailTitle"></div>
+    <div id="detailContent"></div>
+</div>
+<div id="wkDeadline" class="wkPart">
+    <span class="partTitle">截止日期:</span>
+    <span class="partContent"></span>
+</div>
+<div id="wkAddition" class="wkPart">
+    <div id="additionSel">
+        <span id="btnComment" class="partTitle">评论</span>
+        <span id="btnProgress" class="partTitle">工单进程</span>
+    </div>
+    <div id="wkComment" class="divAddition">
+
+    </div>
+    <div id="wkProgress" class="divAddition">
+
+    </div>
+</div>

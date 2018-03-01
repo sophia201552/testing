@@ -1,0 +1,755 @@
+__author__ = 'woody'
+from selenium import webdriver
+import random
+import string,xlrd
+import time, os
+from config import app
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from Methods.Log import Log
+from Methods.OtherTools import OtherTools
+from time import sleep
+import  re,datetime
+from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.keys import Keys
+
+class WebDriverTools:
+    path = app.config['BASE_DIR']
+    __instance = None
+    logName = app.config['WEBDRIVERTOOLS_LOG']
+    filepath = app.config["DOWNLOAD_DIR"]
+
+
+    def __init__(self):
+        pass
+
+    @classmethod
+    def getBrowserVersion(self, browser):
+        driver = None
+        try:
+            driver = eval('webdriver.{}()'.format(browser))
+            version = driver.execute_script('return navigator.userAgent')
+            version = [x for x in version.split(" ") if browser in x][0].replace('/', " ")
+            app.config['BROWSER_VERSION'].append(version)
+        except Exception as e:
+            Log.writeLogError(self.logName, 'funcName: getBrowserVersion error: open %s failed. %s' % (browser, e.__str__()))
+        finally:
+            if driver:
+                driver.quit()
+
+
+    # 给WebdriverTools创建一个实例并返回
+    @classmethod
+    def getInstance(self):
+        if (self.__instance == None):
+            self.__instance = WebDriverTools()
+        return self.__instance
+
+    @classmethod
+    def enterProject(self, driver, projId, projName, errors=[]):
+        id = str(projId)
+        driver.find_element_by_id("navHomeLogo").click()
+        try:
+            WebDriverWait(driver, 10).until(lambda x: x.find_element_by_css_selector('div[project-id="{}"]'.format(id)))
+            driver.find_element_by_css_selector('div[project-id="{}"]'.format(id)).click()
+            self.waitSpinner(driver, projName)
+        except Exception as e:
+            self.get_pic(driver, 'enterProject')
+            errors.append("登陆Beop后进入%s项目失败, 详细信息: %s" % (projName, e.__str__()))
+            OtherTools.raiseError(errors)
+
+    # 计算网页加载时间
+    @classmethod
+    def calculate(self, driver, rotatingBar):
+        driverWait = WebDriverWait(driver, 300)
+        flag = len(driver.find_elements(By.CLASS_NAME, rotatingBar)) > 0
+        if flag:
+            startTime = time.time()
+            print('time begin:')
+        else:
+            print('No time to wait')
+        ss = (driver.find_elements(By.CLASS_NAME, rotatingBar))
+        spinerCount = len(ss)
+        if spinerCount > 0:
+            semaphore = driverWait.until(lambda dr: len(dr.find_elements(By.CLASS_NAME, rotatingBar)) == 0)
+            if semaphore:
+                endTime = time.time()
+                print(
+                    "start: %f, end :%f, All time for loading Page is: %f" % (startTime, endTime, endTime - startTime))
+                # assert 0, "start: %f, end :%f, All time for loading is: %f" % (startTime, endTime, endTime - startTime,)
+            else:
+                assert 0, 'Spinner is still running out of the maximum waiting time,please check API invocation'
+
+    @classmethod
+    def loadEnd(self, driver, name, start, timeout, mode):
+        'mode为1时为超时持续等待模式,为0时为超时不等待模式!'
+        m = 0
+        while 1:
+            if not driver.find_elements_by_css_selector(".%s" % name):
+                return time.time()
+            else:
+                use = time.time() - start
+                if use > timeout and not mode:
+                    m += 1
+                elif use > timeout:
+                    m = 31
+                else:
+                    pass
+            if m > 30:
+                assert 0, "超过%.2f秒spinner仍在加载!" % (use,)
+
+    @classmethod
+    def findSpinner(self, driver, name, timeout, mode, implicit, page):
+        startTime = time.time()
+        while 1:
+            if driver.find_elements_by_css_selector(".%s" % name):
+                endTime = self.loadEnd(driver, name, startTime, timeout, mode)
+                use = endTime - startTime - implicit
+                return use
+            else:
+                if (time.time() - startTime) > (timeout - implicit):
+                    use = timeout - implicit
+                    return use
+
+    @classmethod
+    def waitSpinner(self, driver, page, name='spinnerMask', timeout=23, implicit=8, mode=0):
+        try:
+            use = self.findSpinner(driver, name, timeout, mode, implicit, page)
+            print("进入%s 消耗时间: %.2f秒" % (page, use))
+            return use
+        except Exception as e:
+            Log.writeLogError(self.logName, 'funcName: waitSpinner error: %s' % e.__str__())
+            self.get_pic(driver, 'spinner')
+            assert 0, "进入" + page + e.__str__()
+
+    @classmethod
+    def get_pic(self, driver, testCaseID=None):
+        '截图函数,传入CaseID以及driver即可'
+        try:
+            if testCaseID:
+                dirName = os.path.join(self.path, 'ErrorPicture\%s' % testCaseID)
+            else:
+                dirName = os.path.join(self.path, 'ErrorPicture')
+            if not os.path.exists(dirName):
+                os.mkdir(dirName)
+            driver.get_screenshot_as_file(
+                r'%s\%s.png' % (dirName, time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())))
+        except Exception as e:
+            Log.writeLogError(self.logName, 'funcName: get_pic error: %s' % e.__str__())
+
+    # 确认alert对话框
+    @classmethod
+    def alert(self, driver):
+        try:
+            driver.switch_to_alert().accept()
+        except Exception as e:
+            Log.writeLogError(self.logName, 'funcName: alert error: %s' % e.__str__())
+            #assert 0,'funcName: alert error: %s' % e.__str__()
+    # 进入数据分析第一个图表
+    @classmethod
+    def click_image(self, driver):
+        try:
+            # e元素为第一个图的标题，默认为untitled
+            e = driver.find_element_by_css_selector("#divWSPane>div>h4.divPageTitle")
+            # 将鼠标移动到e元素上方30px的地方并点击，达到进入该图表的功能
+            ActionChains(driver).move_to_element_with_offset(e, 0, 30).click().perform()
+        except Exception as e:
+            Log.writeLogError(self.logName, 'funcName: click_image error: %s' % e.__str__())
+
+    def list_all_dict(self, dict_a):
+        if isinstance(dict_a, dict):
+            for x in range(len(dict_a)):
+                temp_key = dict_a.keys()[x]
+                temp_value = dict_a[temp_key]
+                print("%s : %s" % (temp_key, temp_value))
+                self.list_all_dict(temp_value)
+
+    # 检查元素是否存在
+    @classmethod
+    def isElementPresent(self, driver, ele):
+        a = False
+        try:
+            driver.find_element_by_css_selector(ele)
+            a = True
+        except Exception as e:
+            driver.get_screenshot_as_file(
+                r'.\ErrorPicture\%s.png' % time.strftime("%Y-%m-%d %H-%M-%S", time.localtime()))
+            Log.writeLogError(self.logName, 'funcName: IsElementPresent error: %s' % e.__str__())
+            assert 0,'funcName: IsElementPresent error: %s' % e.__str__()
+        return a
+
+    # 检查elements是否存在通过css_selector
+    @classmethod
+    def isElementsPresent(self, driver, ele):
+        a = False
+        try:
+            eles = driver.find_elements_by_css_selector(ele)
+            if eles:
+                a = True
+        except NoSuchElementException as e:
+            driver.get_screenshot_as_file(
+                r'.\ErrorPicture\%s.png' % time.strftime("%Y-%m-%d %H-%M-%S", time.localtime()))
+            Log.writeLogError(self.logName, 'funcName: IsElementsPresent error: %s' % e.__str__())
+        return a
+
+    # 切换window句柄
+    @classmethod
+    def switchWindow(self, driver, now_handle, window_handles):
+        try:
+            for handle in window_handles:
+                if handle != now_handle:
+                    driver.switch_to_window(handle)
+        except Exception as e:
+            Log.writeLogError(self.logName, 'funcName: switchWindow error: %s' % e.__str__())
+
+    @classmethod
+    def clickEle(self, driver, css, testCaseID, projectName, page, errors=[]):
+        try:
+            WebDriverWait(driver, 5).until(lambda x: x.find_element_by_css_selector(css).is_displayed())
+            driver.find_element_by_css_selector(css).click()
+        except Exception as e:
+            self.get_pic(driver, testCaseID)
+            Log.writeLogError(self.logName, 'funcName: clickEle error: %s' % e.__str__())
+            errors.append('CaseID: %s, error: 点击%s项目-%s元素失败! details: %s' % (testCaseID, projectName, page, e.__str__()))
+
+    # 进入项目页面
+    @classmethod
+    def enterPage(self, driver, pageName, assertResult=None, projName='', timeout=30):
+        try:
+            lis = driver.find_elements_by_css_selector('#ulPages>li')
+            for index, page in enumerate(pageName):
+                for li in lis:
+                    if (li.text == page):
+                        sleep(3)
+                        li.find_element_by_tag_name('a').click()
+                        if index == len(pageName) - 1:
+                            break
+                        elif index == 0:
+                            ul = WebDriverWait(li, timeout).until(lambda x: x.find_element_by_css_selector('ul'))
+                            if ul:
+                                link_close = driver.find_elements_by_css_selector('.dropdown-submenu.active a')
+                                if link_close:
+                                    try:
+                                        if link_close[0].get_attribute('class') == 'showUl':
+                                            link_close[0].click()
+                                    except:
+                                        #说明是2级菜单
+                                        pass
+                                lis = li.find_elements_by_css_selector('.dropdown-menu.popover.bottom>li')
+
+                        else:
+                            ul = WebDriverWait(li, timeout).until(lambda x: x.find_element_by_css_selector('ul'))
+                            if ul:
+
+                                lis = li.find_elements_by_css_selector('li')
+                sleep(1)
+            WebDriverWait(driver, timeout).until_not(lambda x: x.find_element_by_class_name('spinnerMask'))
+            # assertResult为判断页面是否出来的元素
+            if assertResult:
+                WebDriverWait(driver, timeout).until(lambda x: x.find_element_by_css_selector(assertResult))
+
+        except Exception as e:
+            self.get_pic(driver,"enterPage")
+            assert 0, '%s项目--%s页面在%ss内加载失败! 详细信息: %s' % (projName, '--'.join(pageName), timeout, e.__str__())
+
+    @classmethod
+    def enterModuleByUserMenu(self, driver, moduleEle, modeleName, assertResult):
+        # 点击用户菜单，进入模块页面
+        driver.find_element_by_id("iconList").click()
+        try:
+            driver.find_element_by_id(moduleEle).click()
+            WebDriverWait(driver, 15).until(lambda x: x.find_element_by_css_selector(assertResult))
+        except Exception:
+            assert 0, '不选择项目->点击用户下拉菜单->进入%s界面时出错!' % (modeleName,)
+
+    @classmethod
+    def checkNull(self, ele, errors, page, module):  # 检查页面上面数据是否有空值或异常的值
+        text = ele.text
+        values=re.findall(r'\d+\.\d+',text)
+        if (text is None):
+            errors.append('%s页面%s存在None' % ('--'.join(page), str(module),))
+        elif 'Loading' in text:
+            errors.append('%s页面%s存在Loading' % ('--'.join(page), str(module),))
+        elif 'null' in text:
+            errors.append('%s页面%s存在null' % ('--'.join(page), str(module),))
+        elif 'NaN' in text:
+            errors.append('%s页面%s存在NaN' % ('--'.join(page), str(module),))
+        elif 'None' in text:
+            errors.append('%s页面%s存在None' % ('--'.join(page), str(module),))
+        elif text == '':
+            errors.append('%s页面%s存在空内容' % ('--'.join(page), str(module),))
+        elif 'EquationCalculationNotSupoorted' in text:
+            errors.append('%s页面%s存在EquationCalculationNotSupoorted' % ('--'.join(page), str(module),))
+        else:
+            print('%s页面%s显示正常' % ('--'.join(page), str(module),))
+        for value in values:
+            length=len(value.split('.')[1])
+            if(length>3):
+                errors.append('%s页面%s存在小数点超过3位的数字为%s' % ('--'.join(page), str(module),value))
+
+    @classmethod
+    def openShades(self, driver):  # 展开百叶窗
+        trs = driver.find_elements_by_css_selector('table.table1 > tbody > tr')
+        height=800
+        for tr in trs:
+            tr.click()
+            sleep(2)
+            js="$(\'.left-ctn.gray-scrollbar\').scrollTop(%s)" % height
+            driver.execute_script(js)
+            height=height+40
+        table = WebDriverWait(driver, 10).until(lambda x: x.find_element_by_css_selector('.table1'))
+        return table
+
+    @classmethod
+    def checkPageCanvas(self, driver, page, errors):  # 检查页面上面的canvas是否加载出来
+        for p in page:
+            sleep(3)
+            self.enterPage(driver, p, '#paneCenter')
+            self.checkCanvas(driver, errors, p)
+
+    @classmethod
+    def clickElementsByText(self, driver, css, text):
+        '''
+
+        :param driver:
+        :param location:
+        :param text:
+        :return: None
+
+        如果遇到无id,无class,只能用节点text定位时可使用该方法
+        '''
+        elements = driver.find_elements_by_css_selector(css)
+        for ele in elements:
+            if ele.text == text:
+                ele.click()
+                return True
+        return False
+
+
+
+
+
+    @classmethod
+    def waitElement(self, driver, ele, caseID, timeout=10):
+        try:
+            WebDriverWait(driver, timeout).until(lambda x: x.find_element_by_css_selector(ele))
+        except Exception as e:
+            self.get_pic(driver, caseID)
+            Log.writeLogError(self.logName, 'funcname: waitElement error: timeout for wait element %s' % ele)
+            raise Exception('funcname: waitElement error: timeout for wait element %s' % ele)
+
+
+    @classmethod
+    def waitElementNotFound(self, driver, ele, caseID, timeout=15):
+        try:
+            WebDriverWait(driver, timeout).until_not(lambda x: x.find_element_by_css_selector(ele))
+        except Exception as e:
+            self.get_pic(driver,caseID)
+            Log.writeLogError(self.logName, 'funcname: waitElementNotFound error: timeout for wait element disappear %s' % ele)
+            raise Exception('funcname: waitElementNotFound error: timeout for wait element disappear %s' % ele)
+
+
+    @classmethod
+    def switchToIframe(self, driver, CaseID, pageName, index=0, frameEle=None):
+        if frameEle:
+            frame = driver.find_element_by_css_selector(frameEle)
+            driver.switch_to_frame(frame)
+        else:
+            frames = driver.find_elements_by_tag_name('iframe')
+            if frames:
+                driver.switch_to_frame(frames[index])
+            else:
+                raise Exception('CaseID: {} PageName: {} can\'t find <iframe> in the web!Please check your case and your web elements!'.format(CaseID, pageName))
+
+    #检查hover时的值
+    @classmethod
+    def checkHoverData(self,driver,errors,ele,page,module):
+        for index,li in enumerate(ele):
+            chain=ActionChains(driver)
+            chain.move_to_element(li).perform()
+            sleep(1)
+            self.checkNull(li,errors,page,'第%d个%s' %(index+1,module))
+
+    #检查FaultsRanking模块中有无空值有折叠面板的那种 如利物浦-诊断概览中的
+    @classmethod
+    def checkFaultsRanking(self,driver,errors,page,ele):
+        containers=driver.find_elements_by_css_selector(ele)
+        for index,container in enumerate(containers):
+            if(index!=0):
+                container.click()
+            self.checkNull(container,errors,page,'Faults Ranking模块中第%d行' % (index+1))
+
+    #检查故障诊断排名需要点击按钮的那种,如华为-设备-系统诊断-诊断概览中的
+    @classmethod
+    def checkFaultsRankingList(self,driver,errors,page,ele1,ele2):
+        containers=driver.find_elements_by_css_selector(ele1)
+        for value in containers:
+            value.click()
+            content=driver.find_element_by_css_selector(ele2)
+            self.checkNull(content,errors,page,'Faults Ranking模块中点击%s' % (value.text))
+
+    #检查slide模块中有canvas的
+    @classmethod
+    def checkSliderForCanvas(self,driver,errors,page,ele):
+        lis=driver.find_elements_by_css_selector(ele)
+        for index,li in enumerate(lis):
+            li.click()
+            num='第%d个slider' % (index+1)
+            page.append(num)
+            self.checkCanvas(driver,errors,page)
+            page.remove(num)
+
+    #检查SystemSwitching模块有无空值
+    @classmethod
+    def checkSystemSwitching(self,driver,errors,page,ele1,ele2):
+        buttons=driver.find_elements_by_css_selector(ele2)
+        for button in buttons:
+            button.click()
+            container=driver.find_element_by_css_selector(ele1)
+            self.checkNull(container,errors,page,'点击Heating或Cooling按钮情况下')
+            container=driver.find_element_by_css_selector('#screenZoom-left-top')
+            self.checkNull(container,errors,page,'System Switching模块上面')
+    #检查EnergyUseStatistics模块有无空值
+    @classmethod
+    def checkEnergyUseStatistics(self,driver,errors,page,buttons,right):
+        for button in  buttons:
+            button1=driver.find_element_by_css_selector(button)
+            button1.click()
+            text=button1.text
+            sleep(2)
+            right_text=driver.find_element_by_css_selector(right)
+            self.checkNull(right_text,errors,page,'点击Energy Use Statistics处的%s按钮情况下' %text)
+
+    #检查canvas是否加载出来
+    @classmethod
+    def checkCanvas(self,driver,errors,page):
+        try:
+            spinner = WebDriverWait(driver, 10).until_not(lambda x: x.find_element_by_class_name('spinner'))
+            if (spinner):
+                print('%s页面中的canvas图表加载出来' % '--'.join(page))
+        except Exception as e:
+            print(e.__str__())
+            errors.append('%s页面中的canvas图表10s没有加载出来' % '--'.join(page))
+
+    #检查诊断页面左侧的导航上面的报警数字和右侧的是否一致
+    @classmethod
+    def checkDiagnosisLeftAndRightCount(self,driver,errors,fs):
+        text_warning=fs.find_element_by_css_selector('.badge.warningCount').text
+        text_alert=fs.find_element_by_css_selector('.badge.alertCount').text
+        if (text_warning=='' and text_alert==''):
+            return
+        warning_log_total=driver.find_element_by_css_selector('#btnWarningLog').text
+        if(text_alert!='' and text_warning!='' ):
+            total=int(text_alert)+int(text_warning)
+        elif(text_alert=='' and text_warning!=''):
+            total=int(text_warning)
+        elif(text_warning=='' and text_alert!=''):
+            total=int(text_alert)
+        else:
+            total=''
+        if(warning_log_total!='' and total==int(warning_log_total)):
+            print('数目相等')
+        elif(total== warning_log_total):
+            print('数目相等')
+        else:
+            errors.append('%s诊断中左侧的数目之和和右侧的数目不相等'%fs.text)
+
+
+    #检查诊断页面左侧导航内容是否存在,检查导航的故障和异常的数目左右是否正确,检查页面上面的内容是否为空
+    @classmethod
+    def checkNavigation(self,driver,errors,page,floors):
+        for index in range(floors):
+            index=index+1
+            self.checkCanvas(driver,errors,page)
+            js="var a=$('#building_%d').attr('class');return a" %index
+            a=driver.execute_script(js)
+            if(a!="grow subBuildingBtn selected"):
+                driver.find_element_by_css_selector('#building_%d'%index).click()
+            sub_list=driver.find_elements_by_css_selector('#subList_%s > div'% (index))
+            num=random.randint(0, len(sub_list)-1)
+            sub_list[num].find_elements_by_tag_name('span')[0].click()
+            self.checkMadeByFactroyPage(driver,errors,page,sub_list[num].text)
+            self.checkDiagnosisLeftAndRightCount(driver,errors,sub_list[num])
+
+    #检查factory制作的页面,类似诊断的页面,查看是否有None和有没有加载出来
+    @classmethod
+    def checkMadeByFactroyPage(self,driver,errors,page,module):
+        self.checkCanvas(driver,errors,page)
+        try:
+            spans=driver.find_elements_by_css_selector('p > p >span')
+        except  Exception  as e:
+            print('页面上面没有p > p >span这个元素')
+            return
+        for span in spans:
+            if(span.text==''):
+                continue
+            self.checkNull(span,errors,page,module)
+        num=0#该页面文字出现异常的个数
+        des='--'.join(page)
+        for error in errors:
+            if( des in error):
+                num=num+1
+                errors.remove(error)
+                errors.append('%s中文字出现类似None或null异常数据的个数为%d'%(des,num))
+        print(num)
+
+
+
+    #检查页面上面的温度是否为空
+    @classmethod
+    def checkWeather(self,driver,errors,page):
+        ele=driver.find_element_by_id('weatherVal')
+        self.checkNull(ele,errors,page,'天气')
+
+    #检查Summary模块中是否为空
+    @classmethod
+    def checkSummary(self,driver,errors,page,buttons,text_ele):
+        ele=driver.find_element_by_css_selector(text_ele)
+        for button in buttons:
+            button1=driver.find_element_by_css_selector(button)
+            button1.click()
+            text=button1.text
+            self.checkNull(ele,errors,page,'Summary模块点击%s按钮'%text)
+
+    #检查Diagnostics Summary 模块中折叠面板中是否有空值
+    @classmethod
+    def checkDiagnosticsSummary(self,driver,errors,page,ele,isChecked=False):
+        eles=driver.find_elements_by_css_selector(ele)
+        for index,el in enumerate(eles):
+            if(index !=0):
+                el.click()
+                a=el.find_elements_by_css_selector('div')[1]
+                self.checkNull(a,errors,page,'Diagnostics summary')
+            sleep(3)
+            eles2=driver.find_elements_by_css_selector('.fDD-Detail.fDDB')
+            if(isChecked):
+                for ele in eles2:
+                    display=ele.is_displayed()
+                    if(display):
+                        ele.click()
+                        sleep(3)
+                        self.checkCanvas(driver,errors,page)
+                        self.checkHistoryDataView(driver,errors,page)
+
+
+    @classmethod
+    def checkHistoryDataView(self,driver,errors,page):
+        try:
+            self.checkCanvas(driver,errors,page)
+            self.select(driver,'.form-control.sel-timerange',"过去1小时")
+            driver.find_element_by_css_selector('.btn.btn-default.btn-search').click()
+            sleep(2)
+            self.checkCanvas(driver,errors,page)
+            self.select(driver,'.form-control.sel-mode',"固定周期")
+            self.select(driver,'.form-control.sel-interval',"1小时")
+            driver.find_element_by_css_selector('.form-control.form_datetime.ipt-timestart').click()
+            sleep(2)
+            driver.find_elements_by_css_selector('.day.active')[0].click()
+            sleep(2)
+            driver.find_elements_by_css_selector('.hour')[0].click()
+            sleep(2)
+            driver.find_element_by_css_selector('.form-control.form_datetime.ipt-timeend').click()
+            sleep(2)
+            driver.find_elements_by_css_selector('.day.active')[1].click()
+            sleep(2)
+            driver.find_elements_by_css_selector('.hour.active')[1].click()
+            sleep(2)
+            driver.find_element_by_css_selector('.btn.btn-default.btn-search').click()
+            sleep(2)
+            self.checkCanvas(driver,errors,page)
+            driver.find_elements_by_css_selector('.close')[-1].click()
+            sleep(2)
+        except Exception as e:
+            errors.append('点击查看历史数据的控件HistoryDataView没有加载出来')
+
+    @classmethod
+    def select(self,driver,ele,text):
+        page_display = driver.find_element_by_css_selector(ele)
+        select_page_display = Select(page_display)
+        select_page_display.select_by_visible_text(text)
+        sleep(2)
+
+    #进入到factroy中的项目
+    @classmethod
+    def enterProjForFactory(self, driver,errors,js):
+        sleep(4)
+        projs = driver.find_elements_by_css_selector(".proText")
+        if projs != []:
+            driver.execute_script(js)
+        else:
+            errors.append("左侧未找到项目!")
+        sleep(2)
+
+    #在factory里面进入需要的页面中
+    @classmethod
+    def enterPageForFactory(self,driver,errors,ele,page):
+        sleep(2)
+        # 进入到页面
+        try:
+            page = WebDriverWait(driver, 10).until(
+                lambda x: x.find_element_by_css_selector(ele))
+        except:
+            errors.append('没有%s页面'%page)
+        ActionChains(driver).double_click(page).perform()
+        sleep(5)
+
+
+    #检查新报表页面检查
+
+
+
+    @classmethod
+    def CheckoperationReport(self,driver,projectName,error,timeout=10):
+        spinner = False
+        time = datetime.datetime.now().day-1
+        a=WebDriverTools()
+        driver.find_element_by_css_selector(".calendarCtn>input").click()
+        text=driver.find_element_by_css_selector('.table-condensed>tbody>tr>td.day.active').text
+        reporttime=driver.find_element_by_css_selector(".calendarCtn>input").get_attribute('value')
+        if int(text)==int(time):
+            print('报表显示时间正常！')
+        else:
+            error.append('报表页面显示时间错误为%s'%reporttime)
+        timeele=driver.find_elements_by_css_selector(".table-condensed>tbody>tr>td.day")
+        for ele in timeele:
+            if int(ele.text)==int(time-1):
+                ele.click()
+                break
+        WebDriverWait(driver,5).until_not(lambda x:x.find_element_by_css_selector("#spinner"))
+        reporttimeago=driver.find_element_by_css_selector(".calendarCtn>input").get_attribute('value')
+        if reporttime!=reporttimeago:
+            print("点击时间切换为%s时间正常！"%reporttimeago)
+        else:
+            error.append("点击时间切换为其他时间报错，未成功切换其他时间报表")
+        leftare = driver.find_elements_by_css_selector("#leftCtn > ul.repotChapList > li")
+        leftcheck = driver.find_element_by_css_selector('#leftCtn')
+        a.checkNull(leftcheck,error,projectName,'报表列表')
+        for index,ele in enumerate(leftare):
+            if index != 0:
+                ele.click()
+            try:
+                WebDriverWait(driver,15).until_not(lambda x:x.find_element_by_css_selector(".spinnerMask"))
+                spinner = True
+            except Exception as e:
+                print(e.__str__())
+                error.append("%s中的%s加载15s页面未加载成功！"%(projectName,ele.text.split("\n")[0]))
+            if spinner:
+                self.checkDownload(driver,error,ele.text.split("\n")[0],projectName)
+                self.checkDownload(driver,error,ele.text.split("\n")[0],projectName,type=1)
+                elements = ele.find_elements_by_css_selector("div > ul >li")
+                rightare = driver.find_element_by_css_selector("#centerCtn > div > div > div >div")
+                a.checkNull(rightare,error,projectName,ele.text.split("\n")[0])
+                for eles in elements:
+                    if eles.text in rightare.text:
+                        print("%s在%s页面的章节中出现"%(eles.text,ele.get_attribute("title")))
+                    else:
+                        error.append("%s未在%s页面出现"%(eles.text,ele.get_attribute("title")))
+            else:
+                pass
+
+
+    #文件下载type=o为pdf为1为docx
+    @classmethod
+    def checkDownload(self,driver,error,filename,projectName,type=0):
+        dir=r"C:\Users\PC\Downloads"
+        driver.find_elements_by_css_selector("#leftCtn>.leftCtnTop>.downloadBox>div")[type].click()
+        status = False
+        time.sleep(4)
+        filetype = '.pdf'
+        if type:
+            filetype='.docx'
+        for root,dir,files in os.walk(dir):
+            for filenames in files:
+                if filename in filenames and filetype in filenames:
+                    status = True
+                    break
+        if not status:
+            print("下载%s%s失败!"%(filename,filetype))
+            error.append("%s项目->%s报表下载%s失败!因为下载目录中未包含%s文件!" % (projectName,filename,filetype,filename))
+        else:
+            print("下载%s%s成功!"%(filename,filetype))
+
+
+
+    #检查报表链接
+    def linkreport(self,driver,error,projectName):
+        re = False
+        ele = driver.find_element_by_css_selector('.repotChapList>li')
+        ActionChains(driver).move_to_element(ele).perform()
+        try:
+            ele.find_element_by_css_selector('span').click()
+            re = True
+        except Exception as e:
+            print(e.__str__())
+            error.append("在%s中的%s鼠标放上去后未出现分享链接按钮！"%(projectName,ele.text.split("\n")[0]))
+        if re:
+            try:
+                driver.find_element_by_css_selector(".infoBox-footer>button").click()
+            except Exception as e:
+                print(e.__str__())
+                error.append("在%s中的%s鼠标放上去后未出现分享链接确认按钮！"%(projectName,ele.text.split("\n")[0]))
+            rightele = driver.find_element_by_css_selector('#centerCtn>div>div').text
+            driver.get('http://beop.rnbtech.com.hk/')
+            driver.implicitly_wait(3)
+            driver.find_element_by_css_selector(".input-group.clearfix>input").send_keys(Keys.CONTROL,'v')
+            link=driver.execute_script('var a;return a=$(".form-control.project-media-searchBox.active").val()')
+            driver.get(link)
+            driver.implicitly_wait(3)
+            linkpage = False
+            try:
+                linkpage = driver.find_element_by_css_selector(".report-container").text
+            except Exception as e:
+                print(e.__str__())
+                error.append('在%s中的%s链接页面打不开，请检查'%(projectName,ele.text.split("\n")[0]))
+            if linkpage:
+                if linkpage in rightele:
+                    print("在%s中的%s链接分享页面中，数据正常"%(projectName,ele.text.split("\n")[0]))
+                else:
+                    error.append('在%s中的%s链接分享页面中,报表分享数据与原数据不同')
+        else:
+            pass
+
+
+    #检查数据是否相等不同的话返回不同的值
+    @classmethod
+    def checkequals(self,datalist1,datalist2):
+        if isinstance(datalist1,list) and isinstance(datalist2,list):
+            data = set(datalist1)-set(datalist2)
+            return data
+        if isinstance(datalist1,dict) and isinstance(datalist2,dict):
+            data = set(datalist1.items())-set(datalist2.items())
+            return data
+
+    #检查下载excel文件
+    @classmethod
+    def checkloadexcelFile(self,filename,error,datelist):
+        sleep(3)
+        status = False
+        filelist=os.listdir(self.filepath)
+        if filename in filelist:
+            try:
+                data = xlrd.open_workbook(os.path.join(self.filepath,filename))
+                status =True
+            except Exception as e:
+                print(e.__str__())
+            if status:
+                table = data.sheets()[0]
+                nrowsdata = table._cell_values
+                if nrowsdata:
+                    if 'null'in nrowsdata or 'default' in nrowsdata or 'null' in nrowsdata:
+                        error.append('导出数据中有错误信息，请查看！')
+                    else:
+                        print("文件内容正常！")
+                    if nrowsdata.__len__()-1== datelist.__len__():
+                        print("导出文件内容中的信息数量正常！")
+                    else:
+                        error.append("导出文件内容中的信息数量错误，正确数量为%s,实际导出数量为%s"%(datelist.__len__(),len(nrowsdata)-1))
+                else:
+                    error.append("导出文件内容为空！")
+        else:
+            error.append("导出文件后未找到相应的文件！")
+
+
+

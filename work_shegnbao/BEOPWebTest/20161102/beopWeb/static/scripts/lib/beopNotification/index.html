@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BeopAlert</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="infoBox.css"/>
+    <script src="lib/jquery-2.1.4.min.js"></script>
+    <script src="infoBox.js"></script>
+</head>
+<body>
+<div>
+    <button class='alert' data-type='info'>alert-info</button>
+    <button class='alert' data-type='success'>alert-success</button>
+    <button class='alert' data-type='warning'>alert-warning</button>
+    <button class='alert' data-type='danger'>alert-danger</button>
+
+    <button id='simpleUse'>simple use</button>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.alert').click(function () {
+            var $this = $(this);
+            infoBox.alert($this.data('type'), {
+                title: $this.data('type'),
+                msg: '操作Test',
+                movable: false,
+                buttons: {
+                    ok: {
+                        'text': '确定'
+                    }
+                },
+                callback: {
+                    ok: function () {
+                        alert($this.data('type'));
+                    }
+                }
+            })
+        });
+
+        $('#simpleUse').click(function () {
+            infoBox.alert('simple use');
+        })
+    })
+</script>
+</body>
+</html>

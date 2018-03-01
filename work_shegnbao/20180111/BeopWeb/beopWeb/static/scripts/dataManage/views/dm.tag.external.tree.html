@@ -1,0 +1,444 @@
+<script src="/static/scripts/lib/select2/js/select2.min.js"></script>
+<script src="/static/scripts/lib/select2/js/i18n/zh-CN.js"></script>
+<script src="/static/scripts/lib/select2/js/i18n/en.js"></script>
+<link href="/static/scripts/lib/select2/css/select2.min.css" type="text/css" rel="stylesheet"/>
+<style>
+    .tagTreeHeader {
+        color: #eee;
+        font-size: 14px;
+        border-bottom: 1px solid #636770;
+        padding: 3px 10px;
+    }
+
+    #tagTreeContaniner {
+        height: 100%;
+    }
+
+    #tagTreeContaniner .select2-container--default .select2-search--inline .select2-search__field {
+        color: #394f6f;
+    }
+
+    #externalTagTree {
+        position: relative;
+        height: calc(100% - 121px);
+    }
+
+    #tagTreeUlBox {
+        height: 100%;
+        overflow: auto;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li {
+        line-height: 24px !important;
+        border-bottom: none;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li a {
+        width: auto !important;
+        height: 24px;
+        border-radius: 4px;
+        line-height: 24px !important;
+    }
+
+    #listShowBox li:hover, #tagTreeContaniner #tagTreeUlBox li a:hover {
+        text-decoration: none;
+        background-color: #fcb813;
+        color: #fff;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li a.curSelectedNode {
+        border: none;
+        background-color: #fcb813 !important;
+        color: #fff !important;
+        opacity: 1;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox a .button:not(.ico_close):not(.ico_open):not(.icon-shujutubiao02_ico_open):not(.icon-shujutubiao02_ico_close) {
+        margin: 0 3px 0 0;
+        text-decoration: none;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox a .button:not(.ico_close):not(.ico_open):not(.icon-shujutubiao02_ico_open):not(.icon-shujutubiao02_ico_close):hover {
+        color: #5cb85c;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li span.icon-shujutubiao02_ico_close,
+    #tagTreeContaniner #tagTreeUlBox li span.icon-shujutubiao02_ico_open {
+        left: 2px;
+        margin: 0 6px 0 0 !important;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li span.button.ico_open, #tagTreeContaniner #tagTreeUlBox li span.button.ico_close,
+    #tagTreeContaniner #tagTreeUlBox .treeCustomIcon {
+        background: none;
+        font-family: 'Glyphicons Halflings';
+        vertical-align: middle;
+        width: 0;
+        height: 0;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li span.button.ico_open, #tagTreeContaniner #tagTreeUlBox li span.button.ico_close {
+        top: -1px !important;
+        margin: 0 22px 0 0;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li span.button.ico_close:before, #tagTreeContaniner #tagTreeUlBox li span.button.ico_open:before {
+        font-size: 15px;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox .ico_docu {
+        margin: 5px 3px 0 0 !important;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li span.treeTagItem:first-child {
+        margin-left: 12px;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li span.treeTagItem {
+        white-space: nowrap;
+        display: inline-block;
+        padding: 0 10px 0 0;
+        color: black;
+        position: relative;
+        background: #29bb4f;
+        height: 16px;
+        margin-right: 0;
+        margin-left: 8px;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li span.treeTagItem.active {
+        background: #daa011;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li span.treeTagItem.active:before {
+        border-right: 8px solid #daa011;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li span.treeTagItem:before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        left: -8px;
+        top: 0;
+        border-top: 8px solid transparent;
+        border-right: 8px solid #29bb4f;
+        border-bottom: 8px solid transparent;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li span.treeTagItem:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        right: 0;
+        top: 0;
+        border-top: 8px solid transparent;
+        border-right: 6px solid rgb(25, 34, 52);
+        border-bottom: 8px solid transparent;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li a:hover span.treeTagItem:after, #listShowBox li:hover .listTagItem:after {
+        border-right: 6px solid #fcb813;
+    }
+
+    #tagTreeContaniner #tagTreeUlBox li a.curSelectedNode span.treeTagItem:after {
+        border-right: 6px solid #fcb813;
+    }
+
+    #tagTreeUlBox li span.button.ico_close:before {
+        content: "\e117";
+    }
+
+    #tagTreeUlBox li span.button.ico_open:before {
+        content: "\e118";
+    }
+
+    #tagTreeUlBox li .removeNode:before {
+        content: "\e014";
+    }
+
+    #tagTreeUlBox li .edit:before {
+        content: "\270f";
+    }
+
+    #tagTreeUlBox li .copy:before {
+        content: "\e015";
+    }
+
+    #tagTreeUlBox li .debugger:before {
+        content: "\e019";
+    }
+
+    #tagTreeUlBox li .startUp:before {
+        content: "\e013";
+    }
+
+    #tagTreeContaniner .searchTagPoint {
+        height: 28px;
+        font-size: 14px;
+    }
+
+    #tagTreeContaniner .searchBtn {
+        height: 32px;
+        padding: 0px 12px;
+        top: 0;
+    }
+
+    .pd0 {
+        padding: 0;
+    }
+
+    #tagSelectPrjName {
+        padding: 4px 6px;
+        height: 30px !important;
+    }
+
+    .tagTreeHeader .selectTagType {
+        width: 100%;
+        height: 28px;
+        padding: 2px 6px;
+    }
+
+    #tagTreeContaniner .select2 {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .btn-group .btn {
+        height: 28px;
+        padding: 4px 6px;
+    }
+
+    #treeShow span.icon, #treeShow span.icon {
+        color: #E7F1FF;
+    }
+
+    #treeShow.active, #listShow.active {
+        background-color: #0078dc !important;
+        border-color: #0078dc !important;
+    }
+
+    #listShowBox {
+        height: 100%;
+    }
+
+    .listStructureBox {
+        height: 100%;
+    }
+
+    .listTagItemBox {
+        word-spacing: normal;
+    }
+
+    #tagTreeContaniner .listStructureBox .listTagItem {
+        white-space: nowrap;
+        display: inline-block;
+        padding: 0 10px 0 0;
+        color: black;
+        position: relative;
+        background: #29bb4f;
+        height: 16px;
+        margin-right: 0;
+        margin-left: 8px;
+        line-height: 16px;
+    }
+
+    #tagTreeContaniner .listStructureBox .listTagItem:before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        left: -8px;
+        top: 0;
+        border-top: 8px solid transparent;
+        border-right: 8px solid #29bb4f;
+        border-bottom: 8px solid transparent;
+    }
+
+    #tagTreeContaniner .listStructureBox .listTagItem:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        right: 0;
+        top: 0;
+        border-top: 8px solid transparent;
+        border-right: 6px solid rgb(25, 34, 52);
+        border-bottom: 8px solid transparent;
+    }
+
+    .listShowContent {
+        height: calc(100% - 50px);
+        list-style: none;
+        overflow: auto;
+    }
+
+    .listShowContent > li {
+        padding: 5px 0 5px 20px;
+        border-bottom: 1px solid #636770;
+    }
+
+    .pointName {
+        color: #E7F1FF;
+    }
+
+    #paginationWrapper .pagination {
+        margin: 3px 20px 0 0;
+        opacity: 1;
+    }
+
+    .changePage.disable {
+        pointer-events: none;
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .changePage {
+        pointer-events: auto;
+    }
+
+    .ztree li span.button.firstPage {
+        float: right;
+        margin-left: 2px;
+        margin-right: 0;
+        background-position: -144px -16px;
+        vertical-align: top;
+        *vertical-align: middle
+    }
+
+    .ztree li span.button.prevPage {
+        float: right;
+        margin-left: 2px;
+        margin-right: 0;
+        background-position: -144px -48px;
+        vertical-align: top;
+        *vertical-align: middle
+    }
+
+    .ztree li span.button.nextPage {
+        float: right;
+        margin-left: 2px;
+        margin-right: 0;
+        background-position: -144px -64px;
+        vertical-align: top;
+        *vertical-align: middle
+    }
+
+    .ztree li span.button.lastPage {
+        float: right;
+        margin-left: 2px;
+        margin-right: 0;
+        background-position: -144px -32px;
+        vertical-align: top;
+        *vertical-align: middle
+    }
+
+    #tagTreeContaniner #tagTreeUlBox .treeTagItem .tagItemInfoBox {
+        padding: 10px;
+        background-color: #27334b;
+        color: #fff;
+        width: 300px;
+        max-width: 600px;
+        z-index: 1000;
+    }
+
+    #tagTreeUlBox .tooltip {
+        top: -1px !important;
+        background-color: #000;
+    }
+
+    #tagTreeUlBox .tooltip .tooltip-arrow {
+        top: 14px !important;
+        left: -4px;
+    }
+
+    #listShowBox .tooltip {
+        background-color: #000;
+    }
+
+    #listShowBox .tooltip .tooltip-arrow {
+        left: -4px;
+    }
+
+    #tagTreeUlBox .tooltip .tooltip-inner, #listShowBox .tooltip .tooltip-inner {
+        width: 260px;
+        padding: 10px 0;
+        max-width: 300px;
+    }
+
+    #tagTreeUlBox .tooltip-inner span:nth-of-type(odd), #listShowBox .tooltip-inner span:nth-of-type(odd) {
+        text-align: right;
+        float: left;
+        margin: 0;
+        color: #daa011;
+        width: 30%;
+    }
+
+    #tagTreeUlBox .tooltip-inner span:nth-of-type(even), #listShowBox .tooltip-inner span:nth-of-type(even) {
+        float: left;
+        margin: 0;
+        padding: 0 0 0 5px;
+        width: 70%;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__rendered li.isPoint {
+        background-color: #3a507d;
+        border-color: #3a507d;
+        color: #fff;
+    }
+</style>
+<div class="tagTreeContaniner" id="tagTreeContaniner">
+    <header class="oh tagTreeHeader clearfix" id="tagTreeHeader">
+        <div class="row" style="margin: 0;">
+            <div class="col-md-12 mb10 pd0">
+                <div class="col-md-6 pd0 dn selectProject" item="selectPrj">
+                    <select class="form-control select" id="tagSelectPrjName" style="width: 100%;"></select>
+                </div>
+                <div class="col-md-6 pd0 showStyle" style="padding-left: 20px;">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" id="treeShow" class="btn btn-default active" i18n="title=tag.tree.TREE">
+                            <span class="icon iconfont icon-jiegou" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" id="listShow" class="btn btn-default" i18n="title=tag.tree.LIST">
+                            <span class="icon iconfont icon-shebeikongjian" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mb10 pd0 dn searchTreeNodeBox" item="search">
+                <div class="input-group">
+                    <select class="js-example-basic-multiple form-control fl m5" id="searchTreeNode"
+                            placeholder="search" style="width:100%"
+                            multiple="multiple">
+                    </select>
+                    <span class="input-group-btn" id="searchByTagBtn">
+                        <button class="btn btn-default glyphicon glyphicon-search searchBtn"
+                                type="button"></button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6 pd0 mb10 selectTagBox">
+                <select id="selectTagType" class="form-control selectTagType">
+                    <option value="all" i18n="dataSource.TAG_ALL"></option>
+                    <option value="Equipment" i18n="dataSource.TAG_EQUIPMENT"></option>
+                    <option value="Floor" i18n="dataSource.TAG_FLOOR"></option>
+                    <option value="Energy" i18n="dataSource.TAG_ENERGY"></option>
+                </select>
+            </div>
+        </div>
+    </header>
+    <div class="externalTagTree" id="externalTagTree">
+        <ul id="tagTreeUlBox" class="ul ztree ml10 gray-scrollbar"></ul>
+        <div id="listShowBox" class="dn"></div>
+    </div>
+</div>
+
+<script type="text/html" id="tpl_list_structure">
+    <div class="listStructureBox">
+        <ul class="listShowContent pd0 gray-scrollbar"></ul>
+        <div id="paginationWrapper" class="tr">
+            <ul id="listPagination" class="pagination"></ul>
+        </div>
+    </div>
+</script>

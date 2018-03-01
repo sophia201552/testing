@@ -1,0 +1,373 @@
+﻿html, body{
+    height: 100%;
+    overflow: hidden;
+}
+.wrapper{
+    height: 100%;
+    overflow: hidden;
+}
+.wrapper > .panel{
+    float: left;
+    height: 100%;
+}
+.wrapper > .panel:first-of-type{
+    width: 200px;
+}
+.wrapper > .panel:nth-of-type(2){
+    width: calc(100% - 200px);
+}
+.panel.panel-default{
+    background-color: rgb(25, 34, 52);
+}
+/*巡更人员管理*/
+#patrolPerson,#patrolPath{
+    padding:10px;
+    height:100%;
+}
+#patrolPersonOpera,#patrolPathOpera {
+    margin-bottom:30px;
+}
+#unLogout {
+    display:none;
+}
+#patroPersonList .personInfo,#patrolPath .pathInfo {
+    text-align:center;
+}
+#patroPersonList div.trChecked{background-color: #999!important;}
+.personHeader, .personCon,.pathHeader, .pathCon {
+    line-height:35px;
+    border-bottom:1px solid #ddd;
+}
+.personCon,.pathCon {
+    cursor:pointer;
+}
+#patroPathList,#patroPersonList{
+    height:calc(100% - 35px);
+    overflow: auto;
+}
+#patroPersonList .personActive,#patroPathList .pathActive {
+    background:#c7c7c7;
+    color:#fff;
+}
+#patroPathList div.pathCon:nth-child(even){background-color: #29364F;}
+#patroPathList div.pathCon:nth-child(odd){background-color: #38496A;}
+#patroPathList div.pathCon:hover{background-color: #5A95C9}
+#patroPersonList div.personCon:nth-child(even){background-color: #29364F;}
+#patroPersonList div.personCon:nth-child(odd){background-color: #38496A;}
+#patroPersonList div.personCon:hover{background-color: #5A95C9}
+#patroPathList div.trChecked {background-color: #999!important;}
+.perInfoList {
+    width:280px;
+    margin:0 auto;
+}
+.perInfoList div {
+    width:80px;
+    display:inline-block;
+    text-align:right;
+    line-height:30px;
+    margin-bottom:15px
+}
+.perInfoList input, .perInfoList select {
+    width:200px;
+    padding:0 8px;
+    border:1px solid #ddd;
+    border-radius:3px;
+    line-height:30px;
+    margin-bottom:15px
+}
+.perInfoList select {
+    width:100px;
+    height:30px;
+}
+#addPersonModal .modal-dialog,#addPathModal .modal-dialog {
+    z-index:1041;
+}
+/*巡更人员管理 end*/
+
+/*巡更路线*/
+.pathCon .breadcrumb {
+    margin-bottom:0;
+    padding:0;
+    color: #333 !important;
+    background-color: transparent;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display:none;
+}
+.pathCon .breadcrumb a {
+    color:#333;
+}
+.pathList span {
+    display: inline-block;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width:275px;
+    margin-bottom: -12px;
+}
+#addPathModal label {
+    font-weight:400;
+}
+#addPathModal input {
+    border-radius:3px;
+}
+#addPathModal .divRow {
+    width: 100%;
+    height: 50px;
+    padding: 5px 20px 5px 20px;
+    text-align: center;
+}
+#addPathModal .divRow::after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+}
+#addPathModal .flowFlag {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+}
+#addPathModal .flowFlag .label {
+    display: block;
+    width: 100px;
+    margin: 0 auto 0 auto;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 20px 8px 20px;
+}
+#addPathModal .divRow .key {
+    width: 50%;
+    margin: 10px auto 0;
+    border-radius:3px;
+}
+#addPathModal .divRow:last-child::after {
+    content: '';
+}
+#addPathModal .divRow:last-child {
+    margin-top: 22px;
+}
+#addPathModal .dictSelectBox {
+   position:relative; 
+}
+.btnReduceDict {
+    display:none;
+}
+.pathStatus {
+    display:none;
+    border-radius:3px;
+}
+#wrongInfo {
+    display:inline-block;
+    width:400px;
+    height:30px;
+    text-align:center;
+}
+.dictSelectBox span{
+    position: absolute;
+    display: block;
+    top:25px;
+    left:130px;
+}
+/*巡更路线 end*/
+/*PatrolPoint start*/
+#divPatrolPoint,#divPatrolPoint .table-responsive{height:100%;}
+#divPatrolPoint ul,ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#divPatrolPoint a:hover{
+    text-decoration: none;
+    color: #337ab7;
+}
+#divPatrolPoint #iptSearch{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+#addpointModal .modal-backdrop,#codeModal .modal-backdrop,#infoModal .modal-backdrop,#batchModal .modal-backdrop{z-index: 0 !important;}
+#addpointModal .modal-body,#addpointModal .modal-body .form-group{overflow: hidden;}
+#batchModal .modal-content{width: 900px;}
+#codeModal .ewm-p {
+    font-size: 20px;
+    margin-top: 25px;
+    /*border-top: 1px solid #ddd;*/
+    padding-top: 20px;
+}
+#infoModal .panel-body{padding: 0;}
+#infoModal .panel-heading{padding: 0;border: none;}
+#infoModal ul button{float: right}
+#infoModal ul>li{
+    overflow: hidden;
+    padding: 10px 15px;
+    border-bottom: 2px solid #EEEEEE;
+    margin-bottom: -2px;
+}
+#infoModal ol{
+    display: block;
+    margin: 10px 0;
+    padding: 8px 15px;
+}
+#infoModal ol li{float: left}
+#tablePoints tr{cursor: pointer;}
+#tablePoints tbody tr:nth-child(even){background-color: #29364F;}
+#tablePoints tbody tr:nth-child(odd){background-color: #38496A;}
+#tablePoints tbody tr:hover{background-color: #5A95C9}
+#tablePoints tbody tr.trChecked{
+    background-color: #999!important;
+}
+#tablePoints td span{
+    right: 2px;
+    top: 2px;
+}
+#divbtnGroup .input-group{
+    position: absolute;
+    right: 100px;
+    top: 11px;
+    display: inline-block;
+    width: 15%;
+}
+#spanSearch,#spanRemove{
+    color: rgb(25, 34, 52);
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    z-index: 5;
+    cursor: pointer;
+}
+#batchModal .qrcodes{
+    text-align: center;
+    background: #fff;
+    padding: 30px 0 15px;
+    border-radius: 5px;
+}
+#batchModal .ewm-p{
+    font-size: 20px;
+    padding: 10px 0 20px;
+    text-align: center;
+}
+/*PatrolPoint end*/
+/*PatrolReport start*/
+#divPatrolReport,#divPatrolReport .table-responsive{height: 100%;}
+#divPatrolReport .form_datetime{width: 20%;}
+#divPatrolReport ul,ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#divPatrolReport .divPathTitle a,#divPatrolReport .divPathTitle span{
+    width: 33%;
+    display: inline-block;
+    text-align: center;
+}
+#divPatrolReport ol{
+    margin: 10px 0;
+    overflow: hidden;
+    padding: 8px 15px;
+}
+#divPatrolReport ol li{float: left;}
+#divPatrolReport a:hover{
+    text-decoration: none;
+    color: #337ab7;
+}
+#divPatrolReport .btn-group,#divPatrolReport .btn-group select{
+    float: left;
+}
+#divPatrolReport .btn-group select{width: inherit;}
+#tableReport tbody span.glyphicon{cursor: pointer;}
+#tableReport tbody span.glyphicon-remove{color: red;}
+#tableReport tbody span.glyphicon-ok{color: green;}
+#tableReport tbody span.glyphicon-minus{color: yellow;}
+#pathReportModal a:hover{color: #337ab7;}
+#pathReportModal .panel-heading {
+    padding: 0;
+    border-bottom: none;
+}
+#pathReportModal .panel-body{
+    padding: 0;
+    overflow: auto;
+}
+#pathReportModal .panel-body>div{
+    border-top: 2px solid #EEEEEE;
+    margin-top: -2px;
+    padding: 15px;
+}
+#pathDetailsModal li{
+    float: none;
+}
+#pathDetailsModal .panel-body{
+    overflow: auto;
+    padding:0;
+}
+#pathDetailsModal .panel-body ul span{
+    display: block;
+    border-top: 1px solid #eee;
+    padding: 10px 15px;
+    margin-top: -1px;
+}
+#pathDetailsModal .panel-body ul div{    border-top: 1px solid #eee;}
+#pathDetailsModal .panel-body ul a{
+    display: inline-block;
+    width:50%;
+    overflow: auto;
+    padding: 5px;
+}
+#pathDetailsModal img{
+    width: 25%;
+    padding: 10px 5px;
+    display: inline-block;
+}
+/*PatrolReport end*/
+/*巡更排班 start*/
+#tableSchedule tr{cursor: pointer;}
+#tableSchedule td{position: relative;}
+#tableSchedule td .glyphicon-plus-sign,#tableSchedule td .glyphicon-remove-sign{
+    position: absolute;
+    top: 4px;
+    right: 3px;
+}
+#tableSchedule th,#tableSchedule td{text-align: center;}
+#paneTable {
+    width: calc(100% - 230px)!important;
+    margin-right: 50px;
+}
+#listPerson.list-unstyled {
+    width: 150px;
+    padding: 0;
+    border: none;
+    background-color: black;
+}
+#listPerson li.itemExecutor{
+    border: none;
+    text-align: center;
+    border-top: 1px solid #394a6d;
+}
+#tableSchedule.table-bordered,#tableSchedule>thead>tr>th,#tableSchedule .table-bordered>thead>tr>th, .table-bordered>tbody>tr>td{border: 1px solid #394a6d;}
+/*巡更排班 end*/
+/*index start*/
+#listNav a{
+    border: none;
+    background-color: rgb(25, 34, 52);
+}
+#listNav a .glyphicon{color: #fff;}
+#listNav a h4{color: #fff;}
+#listNav .list-group-item:first-child{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+#listNav .list-group-item:last-child{
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+#listNav .list-group-item.active{background-color: #337ab7!important;}
+#paneRightCtn #paneNav {border-bottom: none;}
+#paneNav .panel-body{padding: 0;}
+#paneNav .panel-body div a h4{display: inline-block;}
+#paneNav,#paneNav .panel-body {height:100%;}
+#paneNav .panel-body .fLeft{
+    height: 100%;
+    overflow: auto;
+}
+/*index  end*/

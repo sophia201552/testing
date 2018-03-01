@@ -1,0 +1,234 @@
+<style>
+    #divConfigManager {
+        position: absolute;
+        width: 10%;
+        height: 100%;
+        text-align: center;
+    }
+    #divConfigMapInfo {
+        position: absolute;
+        width: 80%;
+        height: 100%;
+        left: 10%;
+        border: 1px solid black;
+    }
+    #divConfigTool {
+        position: absolute;
+        width: 10%;
+        height: 100%;
+        left: 90%;
+        background-color: white;
+    }
+    #btnNewRoom {
+        border-radius: 0;
+        padding: 10px 0;
+        cursor: pointer;
+        width: 100%;
+        background-color: darkslateblue;
+        border: none;
+    }
+    .divRoom {
+        color: rgb(51, 122, 183);
+        text-align: center;
+        background-color: white;
+        display: block;
+        width: 100%;
+        padding:10px 0;
+        border: none;
+    }
+    .divRoom:focus {
+        outline: none;
+    }
+    .divRoom.selected {
+        color: #fff;
+        background-color: #428bca;
+    }
+    .divRoom:not(.selected):hover {
+        color: rgb(51, 122, 183);
+        background-color: #eee;
+    }
+    .btnRoomConfig {
+        display: none;
+        cursor: pointer;
+    }
+    .btnRoomUpdate {
+        display: none;
+        cursor: pointer;
+    }
+    .divRoom.selected .btnRoomConfig {
+        display: inline-block;
+    }
+    .divRoom.selected .btnRoomUpdate {
+        display: inline-block;
+    }
+    #imageMap {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -ms-user-select: none;
+    }
+    .divSpace {
+        position: absolute;
+        border: 2px dotted #337ab7;
+    }
+    .divSpace.selected {
+        background: rgba(51, 122, 183, 0.1);
+        cursor: default;
+    }
+    @keyframes spaceRelate
+    {
+        from {box-shadow: none;}
+        to {box-shadow: 0 0 10px 5px darkorange;}
+    }
+
+    @-moz-keyframes spaceRelate /* Firefox */
+    {
+        from {box-shadow: none;}
+        to {box-shadow: 0 0 10px 5px darkorange;}
+    }
+
+    @-webkit-keyframes spaceRelate /* Safari 和 Chrome */
+    {
+        from {box-shadow: none;}
+        to {box-shadow: 0 0 10px 5px darkorange;}
+    }
+
+    .divSpace.relate {
+        animation: spaceRelate 1s linear 0s infinite alternate;
+    }
+    .wall:hover{
+        background-color: black;
+    }
+    .topWall{
+        width: 100%;
+        height: 10px;
+        position: absolute;
+        top: -5px;
+        left: 0;
+    }
+    .rightWall {
+        height: 100%;
+        width: 10px;
+        position: absolute;
+        top: 0;
+        left: calc(100% - 5px);
+    }
+    .bottomWall {
+        width: 100%;
+        height: 10px;
+        position: absolute;
+        top: calc(100% - 5px);
+        left: 0;
+    }
+    .leftWall {
+        height: 100%;
+        width: 10px;
+        position: absolute;
+        top: 0;
+        left: -5px;
+    }
+    .divSensor {
+        position: absolute;
+        font-size: 40px;
+        color: #000;
+    }
+    .divSensor.selected {
+        color:#428bca;
+    }
+    .divController {
+        position: absolute;
+        font-size: 40px;
+        color: #000;
+    }
+    .divController.selected{
+        color:#428bca;
+    }
+    #divDirectionTool {
+        position: absolute;
+        left: 5%;
+        top: 5%;
+        font-size: 80px;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+    }
+    #divScaleTool {
+        position: absolute;
+        width: 15%;
+        bottom: 5%;
+        right: 5%;
+    }
+    .btnConfigTool {
+        color: rgb(51, 122, 183);
+        text-align: center;
+        background-color: white;
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        border: none;
+    }
+    .btnConfigTool:focus {
+        outline: none;
+    }
+    .btnConfigTool.selected {
+        color: #fff;
+        background-color: #428bca;
+    }
+    .btnConfigTool:not(.selected):hover {
+        color: rgb(51, 122, 183);
+        background-color: #eee;
+    }
+    #inputMap{
+        display: none;
+    }
+
+</style>
+<div id="divConfigManager">
+    <div id="divNewRoom">
+        <button id="btnNewRoom" class="btn btn-primary">新建房间 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    </div>
+    <div id="divRoomList"></div>
+</div>
+<div id="divConfigMapInfo">
+    <div id="containerMap">
+        <img id="imageMap" ondragstart="return false">
+    </div>
+    <div id="divDirectionTool" class="divMapTool"><span class="glyphicon glyphicon-map-marker"></span></div>
+    <div id="divScaleTool" class="divMapTool"><label for="inputScale"></label><input id="inputScale" type="range" min="-1" max="10" step="1"></div>
+</div>
+<div id="divConfigTool">
+    <button id="btnMapImport" class="btnConfigTool">导入底图</button>
+    <label for="inputMap" style="display:none"></label><input id="inputMap" type="file">
+    <button id="btnAddSpace" class="btnConfigTool">绘制空间</button>
+    <button id="btnAddSensor" class="btnConfigTool">绘制传感器</button>
+    <button id="btnAddController" class="btnConfigTool">绘制控制器</button>
+</div>
+<div id="modalConfigBaseInfo" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">配置基本信息</h4>
+            </div>
+            <div class="modal-body">
+                <div id="divConfigBaseInfo">
+                    <div id="divRoomName" class="form-group">
+                        <label for="inputRoomName">房间名</label>
+                        <input type="text" class="form-control" id="inputRoomName" placeholder="">
+                    </div>
+                    <div id="divRoomFloor" class="form-group">
+                        <label for="inputRoomFloor">楼层</label>
+                        <input type="text" class="form-control" id="inputRoomFloor" placeholder="">
+                    </div>
+                    <div id="divRoomName" class="form-group">
+                        <label for="inputGatewayId">网关</label>
+                        <input type="text" class="form-control" id="inputGatewayId" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnBaseInfoConfirm" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>

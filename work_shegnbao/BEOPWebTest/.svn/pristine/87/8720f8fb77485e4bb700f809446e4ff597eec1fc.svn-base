@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    {% assets "css_index" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+    <link href="/static/content/share-board.css" rel="stylesheet" />
+    
+    <style type="text/css" media="print">
+        #indexMain {
+            position: static!important;
+            /*width: 210mm;*/
+            /*height: 894px;*/
+            /*height: 297mm;*/
+        }
+        #paneCenter {
+            overflow-y:initial!important;
+        }
+        .right-nav {
+            visibility: hidden;
+        }
+    </style>
+
+    <script>
+        var _hmt = _hmt || [];
+    </script>
+</head>
+<body class="container-fluid" style="overflow-x:hidden; background-color: #edf0f5;background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nNicgaGVpZ2h0PSc2Jz4KICA8bGluZSB4MT0nMTAlJyB5MT0nMTAlJyB4Mj0nOTAlJyB5Mj0nOTAlJyBzdHJva2Utd2lkdGg9JzEnIHN0cm9rZT0nI2U4ZThlOCcvPgogIDxsaW5lIHgxPSc5MCUnIHkxPScxMCUnIHgyPScxMCUnIHkyPSc5MCUnIHN0cm9rZS13aWR0aD0nMScgc3Ryb2tlPScjZThmMGZmJy8+ICAKPC9zdmc+');">
+    <div class="row">
+        <nav class="col-xs-12 navbar-default" id="indexNav">
+            <div id="divNavWrap">
+                <div class="left-nav">
+                    <div i18n="shareBoard.TITLE"></div>
+                    <div class="show-detail"><a href="http://beop.rnbtech.com.hk" class="btn btn-primary" i18n="shareBoard.DETAIL"></a></div>
+                </div>
+                <ul class="nav navbar-nav right-nav">
+                    <li><a id="lkCopyLink" href="javascript:;" i18n="shareBoard.COPY"></a></li>
+                    <li><a id="lkSendEmail" href="javascript:;" i18n="shareBoard.EMAIL"></a></li>
+                    <li><a id="lkPrint" href="javascript:;" i18n="shareBoard.PRINT_DOWNLOAD"></a></li>
+                    <!-- <li><a id="lkDownloadPDF" href="javascript:;"></a></li>
+                    <li><a id="lkEdit" href="javascript:;">编辑</a></li> -->
+                </ul>
+            </div>
+        </nav>
+        <div class="col-xs-12" id="indexMain"><div class="divLoading" i18n="shareBoard.LOADING"></div></div>
+    </div>
+    
+    <div class="modal fade" id="modalSendEmail" tabindex="-1" role="dialog" data-backdrop="true">
+        <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" i18n="shareBoard.SEND_EMAIL"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label" i18n="shareBoard.RECIPENTS"></label>
+                        <div id="mailTo" contenteditable="true"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label" i18n="shareBoard.CONTACT_LIST"></label>
+                        <div class="list-group" id="mailList">
+                            <div class="list-group-item item-loading">
+                                Loading...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnSend" i18n="shareBoard.CONFIRM"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- 用于计算 px -> mm 的转换 -->
+    <div id="mm2px" style="width:1mm;display:none;"></div>
+
+    <script type="text/json" id="hidData">{"menuId": "{{menuId}}", "userId": {{userId}}}</script>
+
+    {% assets "js_tool" %} <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+    {% assets "js_share-dashboard" %} <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+</body>
+</html>

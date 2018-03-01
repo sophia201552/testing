@@ -1,0 +1,4 @@
+export default {
+  MODULE_NAME:'Data Sorting',
+  EXPORT_EXCEL:'Export Excel'
+};

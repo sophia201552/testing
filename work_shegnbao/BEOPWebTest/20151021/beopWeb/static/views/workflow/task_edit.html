@@ -1,0 +1,1266 @@
+<style>
+    #wf-detail-funUl {
+        height: 40px;
+        padding-left: 20px;
+        border-bottom: 2px solid #ccc;
+    }
+
+    #wf-detail-funUl li {
+        min-width: 100px;
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 2px solid #ccc;
+        float: left;
+        cursor: pointer;
+        text-align: center;
+        background: #fff;
+    }
+
+    #wf-detail-funUl .active {
+        color: #337ab7;
+        border-bottom: 2px solid #337ab7;
+    }
+
+    .person {
+        width: 30px;
+        height: 30px;
+        border-radius: 60px;
+    }
+    #wf-mineEdit-content{
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+    #wf-mineEdit-content .glyphicon-plus-sign {
+        border-radius: 50%;
+        font-size: 25px;
+        padding: 5px;
+        margin-left: 5px;
+        position: relative;
+        left: 0;
+        border: 1px dashed #999;
+        color: #aaa;
+    }
+
+    #wf-mineEdit-content .glyphicon-plus-sign:hover {
+        border: 1px dashed #666;
+        color: #666;
+    }
+
+    .glyphicon-plus-sign {
+        position: relative;
+        top: 5px;
+        left: 0;
+        font-size: 17px;
+        cursor: pointer;
+    }
+
+    .wf-lableIcon {
+        position: relative;
+        top: 8px;
+        font-size: 18px;
+    }
+
+    #wf-detail-form i {
+        font-style: normal;
+    }
+
+    .wf-detail-table tr td, .wf-detail-table tr th {
+        border: 1px solid #ccc;
+    }
+
+    .wf-detail-table th, .wf-detail-table td {
+        padding: 5px;
+    }
+
+    .wf-detail-table th:nth-of-type(odd), .wf-detail-table td:nth-of-type(odd) {
+        text-align: right;
+    }
+
+    .wf-detail-table th:nth-of-type(even), .wf-detail-table td:nth-of-type(even) {
+        text-align: left;
+    }
+
+    .wf-detail-userInfo {
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin: 3px;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    #wf-detail-comment .wf-detail-userInfo {
+        width: 30px;
+        height: 30px;
+        float: left;
+        margin: 3px 14px 3px 3px;
+        border-radius: 50px;
+        overflow: hidden;
+    }
+
+    .wf-detail-userInfo {
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin: 5px;
+    }
+
+    .wf-person-pic {
+        width: 100%;
+        height: 100%;;
+        /*border-radius: 50px;*/
+    }
+
+    .wf-detail-userName {
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        left: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        color: #fff;
+    }
+
+    .wf-detail-userName {
+        text-align: center;
+        color: #fff;
+        font-size: 13px;
+    }
+
+    .wf-task-type h1 {
+        font-size: 26px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+    }
+
+    #wf-detail-moreWrapper {
+        font-size: 26px;
+        height: 30px;
+        line-height: 30px;
+        bottom: 0;
+        right: 0;
+    }
+
+    .wf-detail-userInfo .closePic {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        background: rgba(0, 0, 0, 0.3);
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .wf-form-height {
+        height: 600px;
+    }
+
+    .wf-detail-tableSearch td, .wf-detail-tableSearch th {
+        border: 1px solid #ccc;
+    }
+
+    #wf-detail-form .hb td, #wf-detail-form .hb th {
+        border: 1px solid #ccc;
+    }
+
+    #wf-detail-form input, #wf-detail-form select {
+        width: 150px;
+    }
+
+    #wf-labelName-error {
+        color: #d9534f;
+    }
+
+    #wf-detail-comment, #wf-detail-progress {
+        min-height: 300px;
+    }
+
+    #wf-detail-comment .wf-reply-detail img {
+        margin: 0 5px;
+    }
+
+    .wf-reply-table tr {
+        border-top: 1px dashed #ccc;
+    }
+
+    .wf-reply-table tr td {
+        padding: 10px;
+    }
+
+    .wf-reply-detail div {
+        line-height: 25px;
+    }
+
+    #wf-editor {
+        max-height: 250px;
+        height: 150px;
+        background-color: white;
+        border-collapse: separate;
+        border: 1px solid rgb(204, 204, 204);
+        padding: 4px;
+        box-sizing: content-box;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+        box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+        overflow: auto;
+        outline: none;
+        margin-top: 10px;
+    }
+
+    #wf-editor .reply-editor {
+        padding-top: 5px;
+        margin-top: 40px;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .wf-reply-info-content > div {
+        line-height: 20px;
+        word-break: break-word;
+    }
+
+    .wf-reply-info-content .wf-reply-info img {
+        max-width: 100%;
+    }
+
+    .wf-reply-user-name {
+        color: #676a6c;
+    }
+
+    .wf-reply-time {
+        color: #888;
+    }
+
+    .wf-reply-info {
+        color: #333;
+    }
+
+    /* 历史记录样式开始 */
+    time {
+        margin: 0 12px;
+    }
+
+    .timeLine ul {
+        margin-left: 10px;
+    }
+
+    .timeLine li {
+        line-height: 25px;
+        margin: 10px 0;
+        overflow: hidden;
+    }
+
+    .recordtime {
+        width: 220px;
+        height: 30px;
+        line-height: 30px;
+        top: -2px;
+    }
+
+    .recordTime time {
+        display: inline-block;
+        position: relative;
+        top: 3px;
+    }
+
+    .recordContent {
+        width: calc(98% - 200px);
+    }
+
+    .recordContent .contentTitle {
+        display: inline-block;
+        position: relative;
+        top: 3px;
+    }
+
+    #wf-detail-verticalLine {
+        display: block;
+        width: 1px;
+        background: chocolate;
+        left: 15px;
+        top: 45px;
+        z-index: 0;
+    }
+
+    .timeLineIcon {
+        z-index: 4;
+    }
+
+    .horizontalLine {
+        display: block;
+        top: 17px;
+        left: 29px;
+        width: 15px;
+        height: 1px;
+        background: chocolate;
+    }
+
+    #wf-detail-funWrapper {
+        min-height: 300px;
+    }
+
+    #wf-detail-funWrapper ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    #wf-detail-progress {
+        overflow: auto;
+        position: relative;
+        padding-top: 20px;
+    }
+
+    #wf-detail-progress img {
+        width: 30px;
+        height: 30px;
+    }
+
+    #wf-detail-progress .historyEdit {
+        margin-left: 40px;
+    }
+
+    #wf-detail-progress .historyEdit li {
+        margin: 1px;
+    }
+
+    .historyConTitle {
+        color: #000;
+        display: inline-block;
+        width: 135px;
+        text-align: right;
+    }
+
+    .oldName {
+        color: #369;
+        margin-right: 5px;
+    }
+
+    .newName {
+        color: #369;
+        margin-left: 5px;
+    }
+
+    .historyAction {
+        color: #979797;
+        font-weight: normal;
+    }
+
+    .text-detail {
+        resize: vertical;
+        height: 200px !important;
+    }
+
+    .wf-verify-status {
+        position: absolute;
+        top: 28%;
+        width: 100%;
+    }
+
+    .wf-task-detail {
+        background-color: #FFFFFF;
+        border: none;
+        max-width: 900px;
+        font-family: "微软雅黑", "Microsoft YaHei", simsun;
+        padding-left: 10px;
+        font-size: inherit;
+    }
+
+    .wf-table-head {
+        background: #e5f3ff;;
+    }
+
+    .wf-detail-tag-delete {
+        top: 0;
+        right: 0;
+        display: block;
+        height: 16px;
+        width: 16px;
+        font-size: 12px;
+        text-align: center;
+        line-height: 16px;
+        cursor: pointer;
+        z-index: 12;
+    }
+
+    .wf-detail-show-table .wf-detail-tag-delete {
+        display: none;
+    }
+
+    .wf-ellipsis-item {
+        display: inline-block;
+        width: 100px;
+    }
+
+    /* 历史记录样式结束 */
+</style>
+<div id="wf-mineEdit-content" class="scrollbar">
+    <div id="wf-detail-container">
+    </div>
+    <div id="wf-fault-curve" style="height: 400px;display: none;"></div>
+    <div id="wf-detail-other-fun-wrapper"></div>
+</div>
+
+
+<!-- 详情标签查看页面标签文字显示开始 -->
+<script type="text/html" id="tpl_wf_detail_new_tags_option">
+    <option disabled selected value="0" i18n="workflow.task.SELECT_TAG_NAME_INFO"></option>
+    <!for(var e=0; e < tags.length; e++){!>
+    <!var tag = tags[e]; !>
+    <option value="<!=tag.id!>" data-userid="<!=tag.id!>"><!=tag.name!></option>
+    <!}!>
+</script>
+<!-- 详情标签查看页面标签文字显示结束 -->
+<!-- 详情标签下拉选项开始 -->
+<script type="text/html" id="tpl_wf_detail_show_tags_text">
+    <!var htmlTags="";!>
+    <!for(var l=0; l < tags.length; l++){!>
+    <!var tag=tags[l];!>
+    <!if(l!=tags.length-1){!>
+    <!htmlTags+=tag.name+",";!>
+    <!}else{!>
+    <!htmlTags+=tag.name;!>
+    <!}!>
+    <!}!>
+    <!=htmlTags!>
+</script>
+<!-- 详情标签下拉选项结束 -->
+<!-- 详情标签开始 -->
+<script type="text/html" id="tpl_wf_detail_labels">
+    <!for(var e=0; e < tags.length; e++){!>
+    <!var tag = tags[e]; !>
+    <span class="pr wf-task-label-wrapper pr">
+            <i class="pa wf-detail-tag-delete icon-remove" data-id="<!=tag.id!>"></i>
+            <span class="glyphicon glyphicon-tag"></span>
+            <span class="wf-task-label"><!=tag.name!></span>
+            <input type="hidden" value="<!=tag.id!>" name="tags[]"/>
+        </span>
+    <!}!>
+</script>
+<!-- 详情标签结束 -->
+<!-- 详情下部功能模板开始 -->
+<script type="text/html" id="tpl_wf_detail_fun">
+    <div id="wf-detail-funWrapper">
+        <ul id="wf-detail-funUl" class="wf-ul">
+            <li id="wf-detail-comment-nav" class="active hasEvent" data-topic="wf-fun-change" data-param="comment"><span
+                    class="glyphicon glyphicon-comment" aria-hidden="true"></span><span
+                    i18n="workflow.activities.REVIEW"></span>
+            </li>
+            <li id="wf-detail-progress-nav" class="hasEvent" data-topic="wf-fun-change" data-param="progress"><span
+                    i18n="workflow.task.TASK_PROGRESS"></span></li>
+        </ul>
+        <div id="wf-detail-comment"></div>
+        <ul id="wf-detail-progress" class="dn timeLine"></ul>
+    </div>
+</script>
+<!-- 详情下部功能模板结束 -->
+
+<!-- 详情取消/提交模板开始 -->
+<script type="text/html" id="tpl_wf_detail_btn_fun">
+    <div class="tc oh mt20">
+        <button type="submit" id="wf-detail-submit" class="btn btn-primary" data-topic="wf-detail-submit"
+                data-param="edit"
+                i18n="workflow.insert.CONFIRM;value=workflow.insert.CONFIRM;title=workflow.insert.CONFIRM">
+        </button>
+    </div>
+</script>
+<!-- 详情取消/提交模板结束 -->
+
+<!-- 评论模板开始 -->
+<script type="text/html" id="tpl_detail_reply">
+    <div class="mb20 oh">
+        <div class="reply-editor">
+            <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+                <div class="btn-group">
+                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                       data-original-title="Font">
+                        <i class="icon-font"></i><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a data-edit="fontName Serif" style="font-family:Serif;">Serif</a></li>
+                        <li><a data-edit="fontName Sans" style="font-family:Sans;">Sans</a></li>
+                        <li><a data-edit="fontName Arial" style="font-family:Arial;">Arial</a></li>
+                        <li><a data-edit="fontName Arial Black" style="font-family:Arial Black;">Arial
+                            Black</a>
+                        </li>
+                        <li><a data-edit="fontName Courier" style="font-family:Courier;">Courier</a></li>
+                        <li><a data-edit="fontName Courier New" style="font-family:Courier New;">Courier
+                            New</a>
+                        </li>
+                        <li><a data-edit="fontName Comic Sans MS" style="font-family:Comic Sans MS;">Comic
+                            Sans
+                            MS</a></li>
+                        <li><a data-edit="fontName Helvetica" style="font-family:Helvetica;">Helvetica</a>
+                        </li>
+                        <li><a data-edit="fontName Impact" style="font-family:Impact;">Impact</a></li>
+                        <li><a data-edit="fontName Lucida Grande" style="font-family:Lucida Grande;">Lucida
+                            Grande</a></li>
+                        <li><a data-edit="fontName Lucida Sans" style="font-family:Lucida Sans;">Lucida
+                            Sans</a>
+                        </li>
+                        <li><a data-edit="fontName Tahoma" style="font-family:Tahoma;">Tahoma</a></li>
+                        <li><a data-edit="fontName Times" style="font-family:Times;">Times</a></li>
+                        <li><a data-edit="fontName Times New Roman" style="font-family:Times New Roman;">Times
+                            New
+                            Roman</a></li>
+                        <li><a data-edit="fontName Verdana" style="font-family:Verdana;">Verdana</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title=""
+                       data-original-title="Font Size"><i class="icon-text-height"></i>&nbsp;<b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
+                        <li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
+                        <li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-default" data-edit="bold" title=""
+                       data-original-title="Bold (Ctrl/Cmd+B)"><i
+                            class="icon-bold"></i></a>
+                    <a class="btn btn-default" data-edit="italic" title=""
+                       data-original-title="Italic (Ctrl/Cmd+I)"><i
+                            class="icon-italic"></i></a>
+                    <a class="btn btn-default" data-edit="strikethrough" title=""
+                       data-original-title="Strikethrough"><i
+                            class="icon-strikethrough"></i></a>
+                    <a class="btn btn-default" data-edit="underline" title=""
+                       data-original-title="Underline (Ctrl/Cmd+U)"><i
+                            class="icon-underline"></i></a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-default" data-edit="insertunorderedlist" title=""
+                       data-original-title="Bullet list"><i
+                            class="icon-list-ul"></i></a>
+                    <a class="btn btn-default" data-edit="insertorderedlist" title=""
+                       data-original-title="Number list"><i
+                            class="icon-list-ol"></i></a>
+                    <a class="btn btn-default" data-edit="outdent" title=""
+                       data-original-title="Reduce indent (Shift+Tab)"><i
+                            class="icon-indent-left"></i></a>
+                    <a class="btn btn-default" data-edit="indent" title="" data-original-title="Indent (Tab)"><i
+                            class="icon-indent-right"></i></a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-default btn-info" data-edit="justifyleft" title=""
+                       data-original-title="Align Left (Ctrl/Cmd+L)"><i
+                            class="icon-align-left"></i></a>
+                    <a class="btn btn-default" data-edit="justifycenter" title=""
+                       data-original-title="Center (Ctrl/Cmd+E)"><i
+                            class="icon-align-center"></i></a>
+                    <a class="btn btn-default" data-edit="justifyright" title=""
+                       data-original-title="Align Right (Ctrl/Cmd+R)"><i
+                            class="icon-align-right"></i></a>
+                    <a class="btn btn-default" data-edit="justifyfull" title=""
+                       data-original-title="Justify (Ctrl/Cmd+J)"><i class="icon-align-justify"></i></a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-default" title="" id="pictureBtn"
+                       data-original-title="Insert picture (or just drag &amp; drop)"><i
+                            class="icon-picture"></i>
+                        <input type="file" data-role="magic-overlay" data-target="#pictureBtn"
+                               data-edit="insertImage"
+                               style="opacity: 0; position: absolute; top: 0px; left: 0px; width: 41px; height: 30px;">
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-default" data-edit="undo" title=""
+                       data-original-title="Undo (Ctrl/Cmd+Z)"><i
+                            class="icon-undo"></i></a>
+                    <a class="btn btn-default" data-edit="redo" title=""
+                       data-original-title="Redo (Ctrl/Cmd+Y)"><i
+                            class="icon-repeat"></i></a>
+                </div>
+            </div>
+            <div id="wf-editor" contenteditable="true"></div>
+            <button id="wf-btn-reply" class="btn btn-success btn-reply mt10 fr"
+                    i18n="workflow.notice.COMMENTS;value=workflow.notice.COMMENTS;title=workflow.notice.COMMENTS"></button>
+        </div>
+    </div>
+    </div>
+    <table class="wf-table wf-reply-table" id="wf-reply-table">
+
+    </table>
+</script>
+<!-- 评论模板结束 -->
+
+<script type="text/html" id="tpl_reply_table_body">
+    <tbody>
+    <!for(var n=0; n < data.length; n++){!>
+    <!var reply = data[n]; !>
+    <tr>
+        <td class="vt">
+            <dl class="pr wf-detail-userInfo">
+                <dt class="wf-detail-userPic">
+                    <img src="<!=reply.userpic!>" class="wf-person-pic">
+                </dt>
+                <dd class="pa wf-detail-userName ellipsis dn" title="<!=reply.userfullname!>"><!=reply.userfullname!>
+                </dd>
+            </dl>
+            <div class="wf-reply-info-content fl" style="width: 80%">
+                <div class="wf-reply-user-name"><!=reply.userfullname!></div>
+                <div class="wf-reply-time">
+                    <!var replyTime = moment(reply.replyTime);!>
+                    <!if(replyTime.diff(new Date, 'days') < 5){!>
+                    <!=replyTime.fromNow()!>
+                    <!}else{!>
+                    <!=reply.replyTime!>
+                    <!}!>
+                </div>
+                <div class="wf-reply-info"><!=reply.detail!></div>
+            </div>
+        </td>
+    </tr>
+    <!}!>
+    </tbody>
+</script>
+
+<!-- 历史记录模板开始 -->
+<script type="text/html" id="tpl_detail_progress">
+    <span id="wf-detail-verticalLine" class="pa"></span>
+    <!for(var i=0;i < data.length; i++){!>
+    <!var progress = data[i]; !>
+    <li>
+        <div class="fl recordTime pr">
+            <img src="<!=progress.userpic!>" title="<!=progress.userfullname!>"
+                 class="glyphicon glyphicon-record mr10 timeLineIcon"/>
+            <span class="pa horizontalLine"></span>
+            <span title="<!=progress.opTime!>" class="ellipsis wf-ellipsis-item"
+                  style="margin: 0 5px;top: 3px;position: relative;height: 25px;">
+                <!var opTimeMoment = moment(progress.opTime);!>
+                <!if(opTimeMoment.diff(new Date, 'days') > -5){!>
+                    <!=opTimeMoment.fromNow()!>
+                <!}else{!>
+                    <!=progress.opTime!>
+                <!}!>
+            </span>
+        </div>
+        <div class="fl recordContent">
+            <span class="contentTitle"><!=WorkflowTool.translate(progress.op)!></span>
+            <!if(progress.op==='edit'){!>
+            <span class="content"><!=WorkflowTool.translate(progress.detail)!></span>
+            <!}!>
+        </div>
+    </li>
+    <!}!>
+</script>
+<!-- 历史记录模板结束 -->
+
+<!-- 新建详情模板开始 -->
+<script type="text/html" id="tpl_wf_detail_new">
+    <form id="wf-detail-form" action="javascript:void(0);" method="post" class="task-new">
+        <div class="mb30" class="wf-form-height">
+            <div class="wf-task-type"><h1></h1></div>
+            <table class="mb30 wf-table wf-detail-table">
+                <tbody>
+                <tr>
+                    <td width="10%" class="wf-table-head">
+                        <span i18n=workflow.mine.WORK_ORDER_NAME></span><i>：</i>
+                    </td>
+                    <td width="40%">
+                        <input type="text" class="form-control w200" maxlength="40"
+                               i18n="placeholder=workflow.task.INPUT_TASK_TITLE_INFO"
+                               style="width: 300px;"
+                               required
+                               name="title"/>
+                    </td>
+                    <td width="10%" class="wf-table-head">
+                        <span i18n="workflow.notice.DEADLINE"></span><i>：</i>
+                    </td>
+                    <td width="40%">
+                        <input type="text" name="dueDate" class="form-control w200" readonly
+                               i18n="placeholder=workflow.task.SELECTED_DUE_DATE_INFO"
+                               id="dueTime" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.task.TASK_GROUP"></span><i>：</i>
+                    </td>
+                    <td>
+                        <select class="form-control w200" id="wf-group-type"
+                                i18n="placeholder=workflow.task.SELECT_TASK_GROUP" name="groupId">
+                            <!var groupList = beop.model.stateMap.group_list;!>
+                            <!for(var m=0; m < groupList.length; m++){!>
+                            <option value="<!=groupList[m].id!>"><!=groupList[m].name!></option>
+                            <!}!>
+                        </select>
+                    </td>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.urgencyLevel.URGENCY_LEVEL"></span><i>：</i>
+                    </td>
+                    <td>
+                        <select id="wf-detail-critical" class="form-control" name="critical">
+                            <option value="0" i18n="workflow.urgencyLevel.0"></option>
+                            <option value="1" i18n="workflow.urgencyLevel.1"></option>
+                            <option value="2" i18n="workflow.urgencyLevel.2"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.main.FAULT_INFO"></span><i>：</i>
+                    </td>
+                    <td colspan="3">
+                        <textarea class="form-control fl text-detail" id="wfDetail" name="detail"
+                                  i18n="placeholder=workflow.task.CHECK_TASK_INFO"
+                                  maxlength="500" required></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.task.STARING"></span><i>：</i>
+                    </td>
+                    <td>
+                        <span id="wf-detail-star"
+                              class="glyphicon glyphicon-star-empty wf-detail-star cp hasEvent wf-has-star"
+                              data-topic="wf-star-select"></span>
+                        <input id="wf-detail-collection" type="hidden" name="collection" value="false"/>
+                    </td>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.mine.EXECUTOR"></span><i>：</i>
+                    </td>
+                    <td>
+                        <div class="wf-detail-userInfoWrapper" data-type="executor">
+                        </div>
+                        <span class="glyphicon glyphicon-plus-sign wf-add-user" data-type="executor"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.task.VERIFIERS"></span><i>：</i>
+                    </td>
+                    <td>
+                        <div class="wf-detail-userInfoWrapper" data-type="verifiers"></div>
+                        <span class="glyphicon glyphicon-plus-sign wf-add-user" data-type="verifiers"></span>
+                    </td>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.task.WATCHERS"></span><i>：</i>
+                    </td>
+                    <td>
+                        <div class="wf-detail-userInfoWrapper" data-type="watchers"></div>
+                        <span class="glyphicon glyphicon-plus-sign wf-add-user" data-type="watchers"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.task.TAGS"></span><i>：</i>
+                    </td>
+                    <td colspan="3">
+                        <div id="wf-detail-labelWrapper" class="mr10 fl"></div>
+                        <select class="form-control fl mr10" id="labelName"></select>
+                        <span id="wf-labelName-error" class="dn" i18n="workflow.task.ADD_TAGS_INFO"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="tc oh mt20">
+                <button type="submit" id="wf-task-new-submit" class="btn btn-primary" data-topic="wf-task-new-submit"
+                        data-param="edit"
+                        i18n="workflow.insert.CONFIRM;value=workflow.insert.CONFIRM;title=workflow.insert.CONFIRM">
+                </button>
+            </div>
+        </div>
+    </form>
+</script>
+<!-- 新建详情模板结束 -->
+<script type="text/html" id="tpl_wf_detail_empty">
+    <form id="wf-detail-form" action="">
+        <a href="javascript:void (0)" class="btn btn-white btn-sm" id="wf-task-return" data-topic="wf-task-return">
+            <i class="icon-arrow-left"></i> <span i18n="workflow.task.BACK"></span>
+        </a>
+
+        <div style="margin: 0 auto;width: 400px;">
+            <img src="static/images/workflow/emptyActivitys.gif" style="height: 100%;">
+
+            <div i18n="workflow.task.TASK_NOT_EXIST_INFO"></div>
+        </div>
+    </form>
+</script>
+<!-- 显示详情模板开始 -->
+<script type="text/html" id="tpl_wf_detail_show">
+    <form id="wf-detail-form" action="">
+        <a href="javascript:void (0)" class="btn btn-white btn-sm" id="wf-task-return" data-topic="wf-task-return">
+            <i class="icon-arrow-left"></i> <span i18n="workflow.task.BACK"></span>
+        </a>
+        <!if(trans.permission >= 4 ){!>
+        <a href="javascript:void (0)" class="btn btn-white btn-sm" id="wf-detail-edit">
+            <i class="icon-edit"></i> <span i18n="workflow.main.EDIT"></span>
+        </a>
+        <!}!>
+        <!if(trans.statusId < 4 && (trans.permission === 4 || trans.permission === 5 || trans.permission === 6 ||
+        trans.permission === 12|| trans.permission === 14|| trans.permission === 15)){!>
+        <a href="javascript:void (0)" class="btn btn-white btn-sm" id="wf-detail-complete" data-toggle="tooltip"
+           data-placement="bottom" i18n="data-original-title=workflow.task.FINISH_INFO">
+            <i class="icon-check"></i> <span i18n="workflow.main.FINISH"></span>
+        </a>
+        <!}!>
+        <!if(trans.statusId >= 4 && (trans.permission === 2 || trans.permission === 3 || trans.permission === 6 ||
+        trans.permission === 7|| trans.permission === 10|| trans.permission === 14 || trans.permission === 15)){!>
+        <div class="btn-group verified-btn-group" data-toggle="buttons">
+            <!var verifier_status = trans.verifiers_status ? trans.verifiers_status[AppConfig.userId] : 0;!>
+
+            <!if(verifier_status == 1){!>
+            <a href="javascript:void (0)" class="btn btn-white btn-sm active" id="wf-verify-pass" data-toggle="tooltip"
+               data-placement="bottom" i18n="data-original-title=workflow.task.VERIFIER_PASS">
+                <input type="radio" name="options" autocomplete="off"><i class="icon-ok-circle"></i> <span
+                    i18n="workflow.task.PASS"></span>
+            </a>
+            <!}else{!>
+            <a href="javascript:void (0)" class="btn btn-white btn-sm" id="wf-verify-pass" data-toggle="tooltip"
+               data-placement="bottom" i18n="data-original-title=workflow.task.VERIFIER_PASS">
+                <input type="radio" name="options" autocomplete="off"><i class="icon-ok-circle"></i> <span
+                    i18n="workflow.task.PASS"></span>
+            </a>
+            <!}!>
+            <!if(verifier_status == 2){!>
+            <a href="javascript:void (0)" class="btn btn-white btn-sm active" id="wf-verify-not-pass"
+               data-toggle="tooltip"
+               data-placement="bottom" i18n="data-original-title=workflow.task.VERIFIERS_NOT_PASS">
+                <input type="radio" name="options" autocomplete="off"><i class="icon-remove-circle"></i> <span
+                    i18n="workflow.task.NOT_PASS"></span>
+            </a>
+            <!}else{!>
+            <a href="javascript:void (0)" class="btn btn-white btn-sm" id="wf-verify-not-pass" data-toggle="tooltip"
+               data-placement="bottom" i18n="data-original-title=workflow.task.VERIFIERS_NOT_PASS">
+                <input type="radio" name="options" autocomplete="off"><i class="icon-remove-circle"></i> <span
+                    i18n="workflow.task.NOT_PASS"></span>
+            </a>
+            <!}!>
+        </div>
+        <!}!>
+        <table class="wf-table wf-detail-table hb mb30 mt20 wf-detail-show-table">
+            <tbody>
+            <tr>
+                <td width="10%" class="wf-table-head"><span i18n="workflow.task.SERIAL_NUMBER"></span><i>：</i></td>
+                <td width="40%"><!=trans.id!></td>
+                <td width="10%" class="wf-table-head"><span i18n="workflow.mine.STATUS"></span><i>：</i></td>
+                <td width="40%" i18n="workflow.taskStatus.<!=trans.statusId!>"></td>
+            </tr>
+            <tr>
+                <td width="10%" class="wf-table-head"><span i18n="workflow.task.CREATE_TIME"></span><i>：</i></td>
+                <td width="40%"><!=trans.createTime ? trans.createTime : ''!></td>
+                <td width="10%" class="wf-table-head"><span i18n="workflow.notice.DEADLINE"></span><i>：</i></td>
+                <td width="40%">
+                    <!if(trans.dueDate){!>
+                    <!var dueDate = trans.dueDate.toDate().format('yyyy-MM-dd');!>
+                    <!=dueDate!>
+                    <!if(!trans.dueDate){!>
+                    <!=''!>
+                    <!}else if(parseInt(trans.statusId) > 3){!>
+                    <!}else if(moment(dueDate).diff(new Date().format('yyyy-MM-dd'), 'days') < 0){!>
+                    <label class="label label-danger" title="<!=dueDate!>"><span i18n="workflow.task.OVERDUE"></span>
+                        <!=Math.abs(moment(dueDate).diff(new
+                        Date().format('yyyy-MM-dd'), 'days'))!> <span i18n="workflow.task.DAY"></span></label>
+                    <!}else if(moment(dueDate).diff(new Date().format('yyyy-MM-dd'), 'days') == 0){!>
+                    <label class="label label-danger" title="<!=dueDate!>" i18n="workflow.calendar.TODAY"></label>
+                    <!}else if(moment(dueDate).diff(new Date().format('yyyy-MM-dd'), 'days') == 1){!>
+                    <label class="label label-warning" title="<!=dueDate!>" i18n="workflow.task.TOMORROW"></label>
+                    <!}!>
+                    <!}!>
+                </td>
+            </tr>
+            <tr>
+                <td class="wf-table-head">
+                    <span i18n="workflow.task.TASK_GROUP"></span><i>：</i>
+                </td>
+                <td>
+                    <!=trans.groupName!>
+                    <input type="hidden" name="groupId" value="<!=trans.groupid!>"/>
+                </td>
+                <td class="wf-table-head">
+                    <span i18n="workflow.calendar.TITLE"></span><i>：</i>
+                    <input type="hidden" name="title" value="<!=trans.title!>"/>
+                </td>
+                <td style="word-break: break-word;"><!=trans.title!></td>
+            </tr>
+            <tr>
+                <td class="wf-table-head">
+                    <span i18n="workflow.task.STARING"></span><i>：</i>
+                </td>
+                <td>
+                    <!if(trans.star){!>
+                    <span i18n="workflow.task.HAS_COLLECTED"></span>
+                    <!}else{!>
+                    <span i18n="workflow.task.NOT_COLLECTED"></span>
+                    <!}!>
+                </td>
+                <td class="wf-table-head">
+                    <span i18n="workflow.urgencyLevel.URGENCY_LEVEL"></span><i>：</i>
+                </td>
+                <td i18n="workflow.urgencyLevel.<!=trans.critical!>"></td>
+            </tr>
+            <tr>
+                <td class="wf-table-head">
+                    <span i18n="workflow.main.FAULT_INFO"></span><i>：</i>
+                </td>
+                <td colspan="3">
+                    <pre class="wf-task-detail"><!=trans.detail!></pre>
+                </td>
+            </tr>
+            <tr>
+                <td class="wf-table-head">
+                    <span i18n="workflow.task.CREATED_PERSON"></span><i>：</i>
+                </td>
+                <td>
+                    <!var creatorData=trans.creator;!>
+                    <!if(creatorData){!>
+                    <div class="wf-detail-userInfoWrapper">
+                        <dl class="pr wf-detail-userInfo">
+                            <dt class="wf-detail-userPic">
+                                <img src="<!=creatorData.userpic!>" class="wf-person-pic">
+                            </dt>
+                            <dd class="pa wf-detail-userName ellipsis" title="<!=creatorData.userfullname!>">
+                                <!=creatorData.userfullname!>
+                            </dd>
+                        </dl>
+                    </div>
+                    <!}!>
+                </td>
+                <td class="wf-table-head">
+                    <span i18n="workflow.mine.EXECUTOR"></span><i>：</i>
+                </td>
+                <td>
+                    <!var executorData=trans.executor;!>
+                    <!if(executorData){!>
+                    <div class="wf-detail-userInfoWrapper" data-type="executor">
+                        <dl class="pr wf-detail-userInfo">
+                            <dt class="wf-detail-userPic">
+                                <img src="<!=executorData.userpic!>" class="wf-person-pic">
+                            </dt>
+                            <dd class="pa wf-detail-userName ellipsis" title="<!=executorData.userfullname!>">
+                                <!=executorData.userfullname!>
+                            </dd>
+                        </dl>
+                    </div>
+                    <!}!>
+                </td>
+            </tr>
+            <tr>
+                <td class="wf-table-head">
+                    <span i18n="workflow.task.VERIFIERS"></span><i>：</i>
+                </td>
+                <td>
+                    <div class="wf-detail-userInfoWrapper" data-type="verifiers">
+                        <!for(var l=0; l < trans.verifiers.length; l++){!>
+                        <!var verifiersData=trans.verifiers[l];!>
+                        <dl class="pr wf-detail-userInfo">
+                            <dt class="wf-detail-userPic">
+                                <img src="<!=verifiersData.userpic!>" class="wf-person-pic">
+                                <!var verifier_status = trans.verifiers_status ?
+                                trans.verifiers_status[verifiersData.id] : 0;!>
+                                <!if(verifier_status == 1){!>
+                                <label class="label label-success wf-verify-status" i18n="workflow.task.PASS"></label>
+                                <!}else if(verifier_status == 2){!>
+                                <label class="label label-danger wf-verify-status"
+                                       i18n="workflow.task.NOT_PASS"></label>
+                                <!}!>
+                            </dt>
+                            <dd class="pa wf-detail-userName ellipsis" title="<!=verifiersData.userfullname!>">
+                                <!=verifiersData.userfullname!>
+                            </dd>
+                        </dl>
+                        <!}!>
+                    </div>
+                </td>
+                <td class="wf-table-head">
+                    <span i18n="workflow.task.WATCHERS"></span><i>：</i>
+                </td>
+                <td>
+                    <div class="wf-detail-userInfoWrapper" data-type="watchers">
+                        <!for(var l=0; l < trans.watchers.length; l++){!>
+                        <!var watchersData=trans.watchers[l];!>
+                        <dl class="pr wf-detail-userInfo">
+                            <dt class="wf-detail-userPic">
+                                <img src="<!=watchersData.userpic!>" class="wf-person-pic">
+                            </dt>
+                            <dd class="pa wf-detail-userName ellipsis" title="<!=watchersData.userfullname!>">
+                                <!=watchersData.userfullname!>
+                            </dd>
+                        </dl>
+                        <!}!>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="wf-table-head">
+                    <span i18n="workflow.task.TAGS"></span><i>：</i>
+                </td>
+                <td colspan="3">
+                    <div id="wf-detail-labelWrapper" class="mr10 fl"></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+</script>
+<!-- 查询详情模板结束 -->
+
+<!-- 编辑详情模板开始 -->
+<script type="text/html" id="tpl_wf_detail_edit">
+    <form id="wf-detail-form" action="">
+        <a href="javascript:void (0)" class="btn btn-white btn-sm" id="wf-task-return" data-topic="wf-task-return">
+            <i class="icon-arrow-left"></i> <span i18n="workflow.task.BACK"></span></a>
+        <a href="javascript:void (0)" class="btn btn-white btn-sm" id="wf-detail-show" data-topic="wf-detail-show">
+            <i class="icon-eye-open"></i> <span i18n="workflow.task.SEE"></span></a>
+        <a href="javascript:void (0)" class="btn btn-white btn-sm" id="wf-detail-save">
+            <i class="icon-save"></i> <span i18n="workflow.task.SAVE"></span></a>
+        <!if(trans.permission >= 8){!>
+        <a href="javascript:void (0)" class="btn btn-white btn-sm" id="wf-detail-delete">
+            <i class="icon-remove"></i> <span i18n="workflow.main.DELETE"></span></a>
+        <!}!>
+        <div class="mb30">
+            <table class="mt20 mb30 wf-table wf-detail-table">
+                <tbody>
+                <tr>
+                    <td width="10%" class="wf-table-head"><span i18n="workflow.task.SERIAL_NUMBER"></span><i>：</i></td>
+                    <td width="40%"><!=trans.id!></td>
+                    <td width="10%" class="wf-table-head"><span i18n="workflow.mine.STATUS"></span><i>：</i></td>
+                    <td width="40%" i18n="workflow.taskStatus.<!=trans.statusId!>"></td>
+                </tr>
+                <tr>
+                    <td width="10%" class="wf-table-head">
+                        <span i18n="workflow.task.CREATE_TIME"></span><i>：</i>
+                    </td>
+                    <td width="40%"><!=trans.createTime ? trans.createTime : ''!></td>
+                    <td width="10%" class="wf-table-head">
+                        <span i18n="workflow.notice.DEADLINE"></span><i>：</i>
+                    </td>
+                    <td width="40%">
+                        <!if(trans.permission >= 8){!>
+                        <input type="text" id="dueTime" name="dueDate" class="form-control w200"
+                               i18n="placeholder=workflow.task.SELECTED_DUE_DATE_INFO"
+                               required
+                               value="<!=trans.dueDate ? trans.dueDate : new Date()!>"/>
+                        <!}else{!>
+                        <!if(trans.dueDate){!>
+                        <!var dueDate = trans.dueDate.toDate().format('yyyy-MM-dd');!>
+                        <!=dueDate!>
+                        <!if(!trans.dueDate){!>
+                        <!=''!>
+                        <!}else if(parseInt(trans.statusId) > 3){!>
+                        <!}else if(moment(dueDate).diff(new Date().format('yyyy-MM-dd'), 'days') < 0){!>
+                        <label class="label label-danger" title="<!=dueDate!>"><span
+                                i18n="workflow.task.OVERDUE"></span> <!=Math.abs(moment(dueDate).diff(new
+                            Date().format('yyyy-MM-dd'), 'days'))!> <span i18n="workflow.task.DAY"></span></label>
+                        <!}else if(moment(dueDate).diff(new Date().format('yyyy-MM-dd'), 'days') == 0){!>
+                        <label class="label label-danger" title="<!=dueDate!>" i18n="workflow.calendar.TODAY"></label>
+                        <!}else if(moment(dueDate).diff(new Date().format('yyyy-MM-dd'), 'days') == 1){!>
+                        <label class="label label-warning" title="<!=dueDate!>" i18n="workflow.task.TOMORROW"></label>
+                        <!}!>
+                        <!}!>
+                        <!}!>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.task.TASK_GROUP"></span><i>：</i>
+                    </td>
+                    <td>
+                        <!if(trans.permission >= 8){!>
+                        <select class="form-control w200" id="wf-group-type"
+                                i18n="placeholder=workflow.task.SELECT_TASK_GROUP" name="groupId">
+                            <!var groupList = beop.model.stateMap.group_list;!>
+                            <!for(var m=0; m < groupList.length; m++){!>
+                            <!if(groupList[m].id === trans.groupid){!>
+                            <option value="<!=groupList[m].id!>" selected="selected"><!=groupList[m].name!></option>
+                            <!}else{!>
+                            <option value="<!=groupList[m].id!>"><!=groupList[m].name!></option>
+                            <!}!>
+                            <!}!>
+                        </select>
+                        <!}else{!>
+                        <!=trans.groupName!>
+                        <input type="hidden" name="groupId" value="<!=trans.groupid!>"/>
+                        <!}!>
+                    </td>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.calendar.TITLE"></span><i>：</i>
+                        <input type="hidden" name="title" value="<!=trans.title!>"/>
+                    </td>
+                    <td>
+                        <!if(trans.permission >= 8){!>
+                        <input type="text" class="form-control w200" maxlength="40"
+                               i18n="workflow.task.INPUT_TASK_TITLE_INFO" id="wfName"
+                               style="width: 300px"
+                               name="title" value="<!=trans.title!>"/>
+                        <!}else{!>
+                        <!=trans.title!>
+                        <!}!>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.task.STARING"></span><i>：</i>
+                    </td>
+                    <td>
+                        <!if(trans.star){!>
+                        <span id="wf-detail-star"
+                              class="glyphicon glyphicon-star wf-detail-star cp hasEvent wf-has-star"
+                              data-topic="wf-star-select" data-param=""></span>
+                        <!}else{!>
+                        <span id="wf-detail-star"
+                              class="glyphicon glyphicon-star-empty wf-detail-star cp hasEvent wf-has-star"
+                              data-topic="wf-star-select" data-param=""></span>
+                        <!}!>
+                        <input id="wf-detail-collection" type="hidden" name="collection" value="0"/>
+                    </td>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.urgencyLevel.URGENCY_LEVEL"></span><i>：</i>
+                    </td>
+                    <!if(trans.permission >= 8){!>
+                    <td>
+                        <select id="wf-detail-critical" name="critical" class="form-control">
+                            <option disabled="" value="-1" i18n="workflow.urgencyLevel.URGENCY_LEVEL"></option>
+                            <!if(trans.critical === 0){!>
+                            <option value="0" selected i18n="workflow.urgencyLevel.0">></option>
+                            <!}else{!>
+                            <option value="0" i18n="workflow.urgencyLevel.0">></option>
+                            <!}!>
+                            <!if(trans.critical === 1){!>
+                            <option value="1" selected i18n="workflow.urgencyLevel.1">></option>
+                            <!}else{!>
+                            <option value="1" i18n="workflow.urgencyLevel.1">></option>
+                            <!}!>
+                            <!if(trans.critical === 2){!>
+                            <option value="2" selected i18n="workflow.urgencyLevel.2">></option>
+                            <!}else{!>
+                            <option value="2" i18n="workflow.urgencyLevel.2">></option>
+                            <!}!>
+                        </select>
+                    </td>
+                    <!}else{!>
+                    <td i18n="workflow.urgencyLevel.<!=trans.critical!>"></td>
+                    <!}!>
+                </tr>
+                <tr>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.main.FAULT_INFO"></span><i>：</i>
+                    </td>
+                    <td colspan="3">
+                        <!if(trans.permission >= 8){!>
+                        <textarea class="form-control fl text-detail" id="wfDetail" name="detail"
+                                  i18n="placeholder=workflow.task.CHECK_TASK_INFO"
+                                  maxlength="500"><!=trans.detail!></textarea>
+                        <!}else{!>
+                        <pre class="wf-task-detail"><!=trans.detail!></pre>
+                        <!}!>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.task.CREATED_PERSON"></span><i>：</i>
+                    </td>
+                    <td>
+                        <!var creatorData=trans.creator;!>
+                        <!if(creatorData){!>
+                        <div class="wf-detail-userInfoWrapper" data-type="creator">
+                            <dl class="pr wf-detail-userInfo">
+                                <dt class="wf-detail-userPic">
+                                    <img src="<!=creatorData.userpic!>" class="wf-person-pic">
+                                </dt>
+                                <dd class="pa wf-detail-userName ellipsis" title="<!=creatorData.userfullname!>">
+                                    <!=creatorData.userfullname!>
+                                    <input type="hidden" name="creator" value="<!=creatorData.id!>"/>
+                                </dd>
+                            </dl>
+                        </div>
+                        <!}!>
+                    </td>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.mine.EXECUTOR"></span><i>：</i>
+                    </td>
+                    <td>
+                        <!var executorData=trans.executor;!>
+                        <!if(executorData){!>
+                        <div class="wf-detail-userInfoWrapper" data-type="executor">
+                            <dl class="pr wf-detail-userInfo">
+                                <dt class="wf-detail-userPic">
+                                    <img src="<!=executorData.userpic!>" class="wf-person-pic">
+                                </dt>
+                                <dd class="pa wf-detail-userName ellipsis" title="<!=executorData.userfullname!>">
+                                    <!=executorData.userfullname!>
+                                </dd>
+                                <input type="hidden" name="executor[]" value="<!=executorData.id!>"></dl>
+                        </div>
+                        <!}!>
+                        <!if(trans.permission >=4 ){!>
+                        <span class="glyphicon glyphicon-plus-sign wf-add-user" data-type="executor"></span>
+                        <!}!>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.task.VERIFIERS"><i>：</i></span>
+                    </td>
+                    <td>
+                        <div class="wf-detail-userInfoWrapper" data-type="verifiers">
+                            <!for(var l=0; l < trans.verifiers.length; l++){!>
+                            <!var verifiersData=trans.verifiers[l];!>
+                            <dl class="pr wf-detail-userInfo">
+                                <dt class="wf-detail-userPic">
+                                    <img src="<!=verifiersData.userpic!>" class="wf-person-pic">
+                                </dt>
+                                <dd class="pa wf-detail-userName ellipsis" title="<!=verifiersData.userfullname!>">
+                                    <!=verifiersData.userfullname!>
+                                </dd>
+                                <input type="hidden" name="verifiers[]" value="<!=verifiersData.id!>">
+                            </dl>
+                            <!}!>
+                        </div>
+                        <!if(trans.permission >= 8 ){!>
+                        <span class="glyphicon glyphicon-plus-sign wf-add-user" data-type="verifiers"></span>
+                        <!}!>
+                    </td>
+                    <td class="wf-table-head"><span i18n="workflow.task.WATCHERS"></span><i>：</i>
+                    </td>
+                    <td colspan="3">
+                        <div class="wf-detail-userInfoWrapper" data-type="watchers">
+                            <!for(var l=0; l < trans.watchers.length; l++){!>
+                            <!var watchersData=trans.watchers[l];!>
+                            <dl class="pr wf-detail-userInfo">
+                                <dt class="wf-detail-userPic">
+                                    <img src="<!=watchersData.userpic!>" class="wf-person-pic">
+                                </dt>
+                                <dd class="pa wf-detail-userName ellipsis" title="<!=watchersData.userfullname!>">
+                                    <!=watchersData.userfullname!>
+                                </dd>
+                                <input type="hidden" name="watchers[]" value="<!=watchersData.id!>"></dl>
+                            <!}!>
+                        </div>
+                        <!if(trans.permission >= 8 ){!>
+                        <span class="glyphicon glyphicon-plus-sign wf-add-user" data-type="watchers"></span>
+                        <!}!>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wf-table-head">
+                        <span i18n="workflow.task.TAGS"></span><i>：</i>
+                    </td>
+                    <td colspan="3">
+                        <div id="wf-detail-labelWrapper" class="mr10 fl"></div>
+                        <select class="form-control fl mr10" id="labelName">
+
+                        </select>
+                        <span id="wf-labelName-error" class="dn" i18n="workflow.task.ADD_TAGS_INFO"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</script>
+<!-- 编辑详情模板结束 -->

@@ -1,0 +1,350 @@
+<style>
+    #paneIotData span {
+        cursor: pointer;
+    }
+
+    .paneIot {
+        padding: 5px;
+    }
+
+    #paneIotSearch input, .selClass{
+        float: left;
+        margin-left: 6px;
+        width: calc(100% - 80px);
+        color: #555;
+        /*text-shadow: 1px 1px 1px rgba(50,50,50,0.5);*/
+        background: rgba(255, 255, 255, 0.85);
+        border: 0;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+    #paneIotSearch .spSearchClear {
+        position: absolute;
+        right: 15px;
+        top: 16px;
+        color: #aaa;
+        cursor: pointer;
+    }
+    #filterWrapper .form-control{
+        width: auto;
+        display: inline-block;
+    }
+    #paneIot-projects,#paneIot-groups,#paneIot-things {
+        display: none;
+    }
+    #paneIot-projects.on,#paneIot-groups.on,#paneIot-things.on {
+        display: block;
+    }
+
+    #paneIotType {
+        z-index: 1;
+    }
+    .paneIot .divSelect {
+        cursor: pointer;
+        width: calc(33% - 4px);
+        margin-right: 6px;
+        float: left;
+        position: relative;
+        text-align: center;
+        font-size: 12px;
+        color: #969696;
+        border-radius: 4px;
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 2px 0;
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+    }
+    .paneIot .divSelect:last-child {
+        margin-right: 0;
+    }
+
+    .paneIot .divSelect:hover .selClass{
+        display: block;
+    }
+    .paneIot .divSelect>.glyphicon {
+        transform: scale(0.5);
+    }
+    .paneIot .divSelect ul.selClass{
+        top: 100%;
+        left: 0;
+    }
+    .paneIot .divSelect:last-of-type ul:not(.selClass) {
+        right: 100%;
+        left: initial;
+    }
+    .paneIot .divSelect>.spSelRs{
+        max-width: calc(100% - 20px);
+        display: inline-block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        vertical-align: text-top;
+    }
+    .paneIot .divSelect ul {
+        position: absolute;
+        width: 100%;
+        left: 100%;
+        top: 0;
+        border-radius: 4px;
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 0;
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+        display: none;
+    }
+    .selClass li {
+        list-style: none;
+        position: relative;
+        cursor: pointer;
+        color: #969696;
+        padding: 1px;
+    }
+    .selClass li:hover {
+        background-color: #192234;
+        color: #EEEEEE;
+    }
+    .selClass li:hover>ul{
+        display: block;
+    }
+    #paneIotSearch .selClass{
+        width: 100%;
+        margin: 0;
+        text-shadow: none;
+        font-size: 12px;
+        cursor: pointer;
+        position: absolute;
+        padding: 0;
+        float: left;
+        top: 20px;
+        color: #555;
+        background: rgba(255, 255, 255, 0.85);
+        border: 0;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+    /*#paneIotData li span.switch {
+        vertical-align: middle;
+        border: 0 none;
+        cursor: pointer;
+        outline: none;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-image: url("../images/ztree/zTreeStandard.png");
+    }
+    #paneIotData li span.button.edit:before {
+        content: "\e065";
+    }
+    #paneIotData li span.button.remove:before {
+        content: "\e083";
+    }*/
+    #paneIotData{
+        font-size: 12px;
+    }
+    #paneIotData li ul{
+        padding: 0 0 0 18px;
+    }
+    #paneIotData li ul.line {
+        background: url('/static/images/ztree/line_conn.gif') 0 0 repeat-y;
+    }
+    #paneIotData li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        text-align: left;
+        white-space: nowrap;
+        outline: 0;
+        position: relative;
+        line-height: 32px !important;
+        border-bottom: 1px solid transparent;
+    }
+    #paneIotData li:last-child {
+        border-bottom-width: 0;
+    }
+    #paneIotData li>a{
+        width: calc(100% - 20px);
+        height: 32px !important;
+        position: relative;
+        display: inline-block;
+        color:#eee;
+    }
+    #paneIotData li>a>span:nth-child(2){
+        width: calc(100% - 85px);
+        display: inline-block;
+    }
+    #paneIotData li .button {
+        line-height: 0;
+        margin: 0;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+        border: 0 none;
+        cursor: pointer;
+        outline: none;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-image: url("/static/images/ztree/zTreeStandard.png");
+        position: relative;
+        top: -2px;
+        display: inline-block!important;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: normal;
+        -webkit-font-smoothing: antialiased;
+    }
+    #paneIotData li span.button.roots_open{
+        background-position: -92px 0;
+    }
+    #paneIotData li span.button.root_open{
+        background-position: -92px 0;
+    }
+    #paneIotData li span.button.roots_close{
+        background-position: -74px 0;
+    }
+    #paneIotData li span.button.root_close{
+        background-position: -74px 0;
+    }
+    #paneIotData li span.button.center_open{
+        background-position: -92px -36px;
+    }
+    #paneIotData li span.button.center_close{
+        background-position: -74px -36px;
+    }
+    #paneIotData li span.button.bottom_open{
+        background-position: -92px -36px;
+    }
+    #paneIotData li span.button.bottom_close{
+        background-position: -74px -36px;
+    }
+    #paneIotData li span.button.roots_docu {
+        background-position: -56px 0;
+    }
+    #paneIotData li span.button.center_docu {
+        background-position: -56px -18px;
+    }
+    #paneIotData li span.button.bottom_docu {
+        background-position: -56px -36px;
+    }
+    #paneIotData li span.button.ico_open {
+        background-image: url('');
+        top: 6px;
+        margin-right: 4px;
+        margin-left: 4px;
+    }
+    #paneIotData li span.button.ico_open:before {
+        content: "\e118";
+    }
+    #paneIotData li span.button.ico_close {
+        background-image: url('');
+        top: 6px;
+        margin-right: 4px;
+        margin-left: 4px;
+    }
+    #paneIotData li span.button.ico_close:before {
+        content: "\e117";
+    }
+    #paneIotData li span.button.ico_docu {
+        background-image: url('');
+        color: #9ec799;
+    }
+    #paneIotData li span.button.ico_docu:before {
+        content: "\e250";
+        margin-top: 9px;
+        display: inline-block;
+    }
+    #paneIotData li.things>a:hover>.btnTreeNode {
+        color: #eee;
+    }
+    #paneIotData li>a:hover>.btnTreeNode {
+        display: inline-block;
+        width: 19px;
+    }
+    #paneIotData li>a:hover {
+        text-decoration: none;
+    }
+    #paneIotData .btnTreeNode {
+        display: none;
+        float: right;
+        top: 11px;
+        position: relative;
+        margin-left: 4px;
+    }
+    #paneIotAdd .btnAddEle {
+        float: right;
+        margin: 8px 10px 0 2px;
+        cursor: pointer;
+    }
+    .modal-backdrop.in{
+        z-index: 0;
+    }
+    #templateModal iframe{
+        height: 100%;
+        width: 100%;
+    }
+
+    #paneIotData li span.button.chk {top:0;width:13px; height:13px; margin:0 3px 0 0; cursor: auto}
+    #paneIotData li span.button.chk.checkbox_false_full {background-position:0 0}
+    #paneIotData li span.button.chk.checkbox_false_full_focus {background-position:0 -14px}
+    #paneIotData li span.button.chk.checkbox_false_part {background-position:0 -28px}
+    #paneIotData li span.button.chk.checkbox_false_part_focus {background-position:0 -42px}
+    #paneIotData li span.button.chk.checkbox_false_disable {background-position:0 -56px}
+    #paneIotData li span.button.chk.checkbox_true_full {background-position:-14px 0}
+    #paneIotData li span.button.chk.checkbox_true_full_focus {background-position:-14px -14px}
+    #paneIotData li span.button.chk.checkbox_true_part {background-position:-14px -28px}
+    #paneIotData li span.button.chk.checkbox_true_part_focus {background-position:-14px -42px}
+    #paneIotData li span.button.chk.checkbox_true_disable {background-position:-14px -56px}
+</style>
+<div style="position: relative; width: 100%; height: 100%;" id="filterWrapper">
+    <div class="col-xs-12 paneIot" id="paneIotSearch">
+        <input i18n="placeholder=dataSource.SEARCH_KEYWORD" style="float: right;width: 100%;" class="form-control" />
+        <span class="spSearchClear glyphicon glyphicon-remove"></span>
+    </div>
+
+    <div class="col-xs-12 paneIot" id="paneIot-projects">
+    </div>
+
+    <div class="col-xs-12 paneIot" id="paneIotType">
+    </div>
+
+
+    <div class="col-xs-12 paneIot" id="paneIot-groups">
+    </div>
+
+    <div class="col-xs-12 paneIot" id="paneIot-things"></div>
+
+    <!--<div class="col-xs-12 paneIot" id="paneIotButton">
+        <button>检索</button>
+    </div>-->
+
+    <div class="col-xs-12 paneIot gray-scrollbar" id="paneIotData" style="height: calc(100% - 100px); overflow-x: hidden; overflow-y: auto;">
+
+    </div>
+    <!--<div class="col-xs-12 paneIot" id="paneIotAdd">
+        <button id="btnAddThing" class="btnAddEle" typeAdd="things">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"> 添加thing</span>
+        </button>
+        <button id="btnAddGroup" class="btnAddEle" typeAdd="groups">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"> 添加Group</span>
+        </button>
+    </div>-->
+
+    <div id="paneIotAdd" style="position: absolute; width: 100%; height: 30px; bottom: 0; background-color: #333;">
+        <span id="btnAddThing" class="btnAddEle grow glyphicon glyphicon-file" typeadd="things" i18n="title=benchmark.conmmenTree.ADD_THING"></span>
+        <span id="btnAddGroup" class="btnAddEle grow glyphicon glyphicon-folder-open" typeadd="groups" i18n="title=benchmark.conmmenTree.ADD_GROUP"t></span>
+    </div>
+</div>
+<div id="modalIotCfg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalIotCfg">
+  <div class="modal-dialog modal-lg">
+    <div id="ctnIotCfg" class="modal-content">
+    </div>
+  </div>
+</div>
+<div id="templateModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="templateModal">
+  <div class="modal-dialog modal-lg" style="height: 90%;">
+    <div id="templateContent" class="modal-content" style="height: 100%;">
+    </div>
+  </div>
+</div>

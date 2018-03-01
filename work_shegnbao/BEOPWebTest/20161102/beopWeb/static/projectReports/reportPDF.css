@@ -1,0 +1,22 @@
+.page-header, h3, .summary {
+    page-break-after: avoid;
+}
+
+.step-item-container, .pageHeaderWrapper, h1, h3, .report-unit, .well {
+    page-break-inside: avoid;
+}
+
+.report-table {
+    width: 90%;
+}
+
+.summary, table {
+    position: relative;
+    left: 5%;
+}
+
+.chartImage {
+    position: relative;
+    width: 90%;
+    left: 23px;
+}

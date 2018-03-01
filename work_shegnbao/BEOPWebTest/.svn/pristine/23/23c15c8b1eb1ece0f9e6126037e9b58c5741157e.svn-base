@@ -1,0 +1,62 @@
+<div class="modal fade" id="importProjectModalWrap">
+    <style>
+        #importProjectModalWrap .modal-header {
+            color: #333;
+        }
+
+        #importProjectModalWrap .btn-primary {
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        #importProjectModalWrap .btn-default {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #333;
+            background-color: #fff;
+        }
+
+        #importProjectModalWrap .btn-default:hover {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;
+        }
+
+        #importProjectModalWrap .btn-primary:hover {
+            color: #fff;
+            background-color: #286090;
+            border-color: #204d74;
+        }
+
+        #importProjectModalWrap .modal-body {
+            color: #333;
+        }
+    </style>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" i18n="admin.welcom.importProjectModal.TITLE"></h4>
+            </div>
+            <div class="modal-body">
+                <form id="formProject">
+                    <div class="form-group">
+                        <label for="selProjectList" i18n="admin.welcom.importProjectModal.PROJECT_LIST_LABEL"></label>
+                        <select name="selectedProject" class="form-control" id="selProjectList"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="iptNewProjectName">新项目名称</label>
+                        <input type="text" name="iptNewProjectName" class="form-control" id="iptNewProjectName" placeholder="请输入导入后项目的新名称" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnSubmit" i18n="admin.welcom.importProjectModal.CONFIRM_IMPORT"></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="addClose" i18n="admin.welcom.importProjectModal.CANCEL"></button>
+            </div>
+        </div>
+    </div>
+</div>

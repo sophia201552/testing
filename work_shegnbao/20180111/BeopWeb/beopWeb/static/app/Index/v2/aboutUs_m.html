@@ -1,0 +1,511 @@
+<style>
+    body {
+        overflow-x: hidden;
+    }
+
+    .row {
+        padding: 80px 0 40px 0;
+    }
+
+    .insititu-container {
+        display: flex;
+        display: -webkit-flex;
+    }
+
+    .sig-jafco-container {
+        height: 100%;
+        position: relative;
+        padding-bottom: 7rem;
+    }
+
+    .newsContainer {
+        display: none;
+    }
+
+    .newsContainer.focus {
+        display: block;
+    }
+    .about_top_text {
+        padding:0 1rem;
+    }
+    .our_mission {
+        /* font-size: 5rem;*/
+        margin: 1.5rem 2rem;
+    }
+    /*
+    .about_top_text {
+        font-size: 3rem;
+    }
+
+    .isMobile .title-contener-text {
+        font-size: 3rem;
+    }
+
+    .isMobile .row-container {
+        font-size: 2.3rem;
+    }
+
+    .isMobile .title-bottom-line {
+        margin-bottom: 1rem;
+    }*/
+
+    .isMobile .title-bottom-line {
+        width: 30px;
+        height: 4px;
+        background: #6fb7ff;
+        display: inline-block;
+    }
+
+    .isMobile .title-text-info {
+        line-height: 1.7;
+        margin-top: 2rem;
+        /*font-size: 2.3rem;*/
+    }
+
+    .isMobile .img-title,
+    .sig-jafco-text,
+    .new-title,
+    .news-info,
+    .check-more,
+    .isMobile .img-work,
+    .isMobile .title-text-info,
+    .isMobile .row-container {
+        font-size: 1.3rem;
+    }
+
+    .isMobile .mobile-margin-top {
+        margin-top: 3rem;
+    }
+
+    .isMobile .row-padding,
+    .row-title {
+        padding: 0.5rem;
+    }
+    /*    .isMobile .sig-jafco-title,
+    .sig-jafco-title-text {
+        font-size: 2.8rem;
+    }*/
+
+    .sig-jafco-text,
+    .news-info {
+        /* font-size: 2.3rem;*/
+        line-height: 1.7;
+    }
+
+    .about_left_line,
+    .about_right_line {
+        width: 2px;
+        height: 4.5rem;
+        background-color: #6fb7ff;
+        position: static;
+    }
+
+    .our_mission_box {
+        display: flex;
+    }
+
+    .check-more-box {
+        bottom: 1rem !important;
+    }
+
+    .ourNews,
+    .instituInverst,
+    .teamManagement,
+    .companyInfo {
+        overflow: hidden;
+    }
+
+    .sig-jafco-text {
+        min-height: 22rem;
+    }
+    .our_mission {
+        width:initial;
+        padding: 0 2.5rem;
+        white-space: nowrap;
+        border-left: 3px solid #6fb7ff;
+        border-right:3px solid #6fb7ff;
+    } 
+
+    a:focus, a:hover{
+        text-decoration: none;
+    }
+
+    canvas {
+        display: block;
+        vertical-align: bottom;
+        display: block;
+        vertical-align: bottom;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }    
+    </style>
+<header id="particles-js" class="aboutUsHeader header">
+    <div class="text-vertical-center">
+        <div class="our_mission_box" data-scroll-reveal>
+<!--            <div class="about_left_line"></div>
+            <h3 class="our_mission" i18n="About.OUR_MISSION"></h3>
+            <div class="about_right_line"></div>-->
+            <h3 class="our_mission" i18n="About.OUR_MISSION"></h3>
+        </div>
+        <br>
+        <h4 class="about_top_text" data-scroll-reveal="enter top" i18n="About.ABOUT_TOP_TEXT"></h4>
+    </div>
+</header>
+
+
+<!--companyInfo-starts-->
+<div id="companyInfo" class="companyInfo">
+    <div class="content-company">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-lg-push-8 col-md-push-8 col-sm-push-8" data-scroll-reveal="enter bottom over 0.6s and move 110px">
+                    <img class="img-responsive" src="img/aboutUs/about1.jpg">
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-lg-pull-2 col-md-pull-2 col-sm-pull-2" data-scroll-reveal="enter bottom over 0.5s and move 100px">
+                    <div class="leftDot"></div>
+                    <div class="row-title">
+                        <span class="title-top-line"></span>
+                        <div class="title-contener">
+                            <span class="title-contener-text" i18n="About.ABOUT_US"></span>
+                            <span class="title-contener-line"></span>
+                        </div>
+                    </div>
+                    <div class="row-container" i18n="About.COMPANY_INFO"></div>
+                    <div class="title-bottom-line"></div>
+                </div>
+
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12" data-scroll-reveal="enter left over 0.5s and move 100px">
+                    <img class="img-responsive" src="img/aboutUs/about2.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--companyInfo-end-->
+<div id="teamManagement" class="teamManagement">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 title-contener-text" i18n="About.TEAM_MANAGEMENT" data-scroll-reveal="enter bottom over 0.6s and move 100px">
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 title-text-info" i18n="About.TEAM_TITLE" data-scroll-reveal="enter bottom over 0.7s and move 100px">
+            </div>
+        </div>
+        <div class="laydersInfo clearfix">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" data-scroll-reveal="enter bottom over 0.4s and move 100px">
+                <div class="img-container">
+                    <img class="layderImg" src="img/aboutUs/member_1.jpg">
+                    <div class="totalInfo">
+                        <div>
+                            <div class="layder-name" i18n="About.MEMBER_NAME_1"></div>
+                            <div class="layder-work" i18n="About.MEMBER_WORK_1"></div>
+                            <div class="layder-work-info" i18n="About.MEMBER_WORKINFO_1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="img-info">
+                    <div class="img-title" i18n="About.MEMBER_NAME_1"></div>
+                    <div class="img-work" i18n="About.MEMBER_WORK_1"></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" data-scroll-reveal="enter bottom over 0.5s and move 100px">
+                <div class="img-container">
+                    <img class="layderImg" src="img/aboutUs/member_2.jpg">
+                    <div class="totalInfo">
+                        <div>
+                            <div class="layder-name" i18n="About.MEMBER_NAME_2"></div>
+                            <div class="layder-work" i18n="About.MEMBER_WORK_2"></div>
+                            <div class="layder-work-info" i18n="About.MEMBER_WORKINFO_2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="img-info">
+                    <div class="img-title" i18n="About.MEMBER_NAME_2"></div>
+                    <div class="img-work" i18n="About.MEMBER_WORK_2"></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" data-scroll-reveal="enter bottom over 0.6s and move 100px">
+                <div class="img-container">
+                    <img class="layderImg" src="img/aboutUs/member_3.jpg">
+                    <div class="totalInfo">
+                        <div>
+                            <div class="layder-name" i18n="About.MEMBER_NAME_3"></div>
+                            <div class="layder-work" i18n="About.MEMBER_WORK_3"></div>
+                            <div class="layder-work-info" i18n="About.MEMBER_WORKINFO_3"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="img-info">
+                    <div class="img-title" i18n="About.MEMBER_NAME_3"></div>
+                    <div class="img-work" i18n="About.MEMBER_WORK_3"></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" data-scroll-reveal="enter bottom over 0.7s and move 100px">
+                <div class="img-container">
+                    <img class="layderImg" src="img/aboutUs/member_4.jpg">
+                    <div class="totalInfo">
+                        <div>
+                            <div class="layder-name" i18n="About.MEMBER_NAME_4"></div>
+                            <div class="layder-work" i18n="About.MEMBER_WORK_4"></div>
+                            <div class="layder-work-info" i18n="About.MEMBER_WORKINFO_4"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="img-info">
+                    <div class="img-title" i18n="About.MEMBER_NAME_4"></div>
+                    <div class="img-work" i18n="About.MEMBER_WORK_4"></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" data-scroll-reveal="enter bottom over 0.8s and move 100px">
+                <div class="img-container">
+                    <img class="layderImg" src="img/aboutUs/member_5.jpg">
+                    <div class="totalInfo">
+                        <div>
+                            <div class="layder-name" i18n="About.MEMBER_NAME_5"></div>
+                            <div class="layder-work" i18n="About.MEMBER_WORK_5"></div>
+                            <div class="layder-work-info" i18n="About.MEMBER_WORKINFO_5"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="img-info">
+                    <div class="img-title" i18n="About.MEMBER_NAME_5"></div>
+                    <div class="img-work" i18n="About.MEMBER_WORK_5"></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" data-scroll-reveal="enter bottom over 0.9s and move 100px">
+                <div class="img-container">
+                    <img class="layderImg" src="img/aboutUs/member_6.jpg">
+                    <div class="totalInfo">
+                        <div>
+                            <div class="layder-name" i18n="About.MEMBER_NAME_6"></div>
+                            <div class="layder-work" i18n="About.MEMBER_WORK_6"></div>
+                            <div class="layder-work-info" i18n="About.MEMBER_WORKINFO_6"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="img-info">
+                    <div class="img-title" i18n="About.MEMBER_NAME_6"></div>
+                    <div class="img-work" i18n="About.MEMBER_WORK_6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 机构投资 -->
+<div id="instituInverst" class="instituInverst">
+    <div class="container" data-scroll-reveal="enter bottom over 0.5s and move 100px">
+        <div class="rightLine"></div>
+        <div class="row-title">
+            <span class="title-top-line"></span>
+            <div class="title-contener">
+                <span class="title-contener-text" i18n="About.INSTITUT_INVERST"></span>
+                <span class="title-contener-line"></span>
+            </div>
+        </div>
+        <div class="row row-padding clearfix">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mobile-margin-top" data-scroll-reveal="enter bottom over 0.5s and move 100px">
+                <div class="sig-jafco-container">
+                    <div><img src="img/aboutUs/sig.jpg" width="100%"></div>
+                    <div>
+                        <div class="sig-jafco-title">
+                            <span class="sig-jafco-title-text">SIG</span>
+                        </div>
+                        <div class="sig-jafco-text" i18n="About.SIG_CONTAINER"></div>
+                    </div>
+                    <div class="learn-more-box">
+                        <a class="learnMoreBtn" i18n="About.LEARN_MORE"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mobile-margin-top" data-scroll-reveal="enter bottom over 0.5s and move 110px">
+                <div class="sig-jafco-container">
+                    <div><img src="img/aboutUs/jafco.jpg" width="100%"></div>
+                    <div>
+                        <div class="sig-jafco-title">
+                            <span class="sig-jafco-title-text">JAFCO ASIA</span>
+                        </div>
+                        <div class="sig-jafco-text" i18n="About.JAFCO_CONTAINER"></div>
+                    </div>
+                    <div class="learn-more-box">
+                        <a class="learnMoreBtn" i18n="About.LEARN_MORE"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 机构投资end -->
+<div id="ourNews" class="ourNews">
+    <div class="container clearfix">
+        <a class="check-more-box" style="position: absolute;bottom:10rem;left:15px;" href="#news" data-scroll-reveal="enter bottom over 0.6s and move 100px"
+            href="#news">
+                    <span class="check-more" i18n="About.CHECK_MORE"></span>
+<!--                    <svg class="check-more-svg" xmlns="http://www.w3.org/2000/svg" width="50" height="13" viewBox="0 0 50 13">
+                        <path fill="#333" fill-rule="evenodd" d="M36.44 6.029L28.647 2v2.947H4V7.11h24.646l.045 2.814z"/>
+                    </svg>-->
+                </a>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <div class="news-list-title" i18n="About.OUR_NEWS" data-scroll-reveal="enter bottom over 0.3s and move 100px"></div>
+            <div class="news-list">
+                <div class="new-title focus" data-target="recent" i18n="About.RECENT_NEWS" data-scroll-reveal="enter bottom over 0.35s and move 100px"></div>
+                <!--<div class="new-title" data-target="2016"  i18n="About.SIX_YEAR_NEW"  data-scroll-reveal="enter bottom over 0.4s and move 100px"></div>
+                    <div class="new-title" data-target="2015" i18n="About.FIVE_YEAR_NEW"  data-scroll-reveal="enter bottom over 0.45s and move 100px"></div>
+                    <div class="new-title" data-target="2014" i18n="About.FOUR_YEAR_NEW"  data-scroll-reveal="enter bottom over 0.5s and move 100px"></div>
+                    <div class="new-title" data-target="2013" i18n="About.THREE_YEAR_NEW"  data-scroll-reveal="enter bottom over 0.55s and move 100px"></div>-->
+            </div>
+        </div>
+        <div class="newsContainer focus col-lg-10 col-md-10 col-sm-10 col-xs-12 clearfix" data-date="init">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mobile-margin-top" data-scroll-reveal="enter bottom over 0.3s and move 100px">
+                <a href="#news">
+                <div class="new-img"><img src="img/aboutUs/201607.jpg"></div>
+                <div class="news-time" i18n="About.D201607_DATE"></div>
+                <div class="news-info" i18n="About.D201607_NEW"></div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mobile-margin-top" data-scroll-reveal="enter bottom over 0.35s and move 100px">
+                <a href="#news">
+                <div class="new-img"><img src="img/aboutUs/201606.jpg"></div>
+                <div class="news-time" i18n="About.D201606_DATE"></div>
+                <div class="news-info" i18n="About.D201606_NEW"></div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mobile-margin-top" data-scroll-reveal="enter bottom over 0.4s and move 100px">
+                <a href="#news">
+                <div class="new-img"><img src="img/aboutUs/201603.jpg"></div>
+                <div class="news-time" i18n="About.D201603_DATE"></div>
+                <div class="news-info" i18n="About.D201603_NEW"></div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <script src='./js/particles.min.js'></script>
+    <script src='./js/stats.min.js'></script>
+    <script>
+        $('.solutionBtn').off('click').on('click', function () {
+            var hash = location.hash;
+            location.hash = $(this).attr('href');
+        });
+
+        /* ---- particles.js config ---- */
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 40,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.2,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+
+        /* ---- stats.js config ---- */
+
+        var count_particles, stats, update;
+        stats = new Stats;
+        stats.setMode(0);
+        stats.domElement.style.position = 'absolute';
+        stats.domElement.style.left = '0px';
+        stats.domElement.style.top = '0px';
+    </script>    

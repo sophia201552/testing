@@ -1,0 +1,18 @@
+FROM python:3.4.7-jessie
+
+WORKDIR /project
+
+COPY ./requirements_jisuandian /requirements
+COPY ./requirements_jisuandian/additional/sources.list /etc/apt/sources.list
+
+ENV LANG C.UTF-8
+
+RUN apt-get update && apt-get install -y \
+	supervisor && \
+    pip install -r /requirements/requirements.txt --index http://pypi.doubanio.com/simple --trusted-host pypi.doubanio.com && \
+    rm -rf /requirements /var/lib/apt/lists/*
+
+COPY ./supervisor/jisuandian-supervisord-test.conf /etc/supervisord.conf
+
+VOLUME /project
+EXPOSE 9001

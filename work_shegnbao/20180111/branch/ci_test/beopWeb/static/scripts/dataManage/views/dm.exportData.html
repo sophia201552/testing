@@ -1,0 +1,160 @@
+<div id="exportDataBox">
+    <div id="exportDataContent">
+        <div class="exportDataHeader clearfix">
+            <select id="point_format" name="format" class="form-control fl mr10">
+                <option value="-1" disabled="disabled"
+                        i18n="debugTools.sitePoint.PLEASE_SELECT_TYPE"></option>
+                <option value="m5">m5</option>
+                <option value="h1">h1</option>
+                <option value="d1">d1</option>
+            </select>
+            <div class="input-group fl w1366">
+                <input class="form-control" type="text" value="" id="batchHistoryTimeStart" val=""
+                       i18n="placeholder=debugTools.sitePoint.PLEASE_SELECT_THE_START_TIME">
+            </div>
+            <div id="batchHistoryTimeTo" class="fl" i18n="admin.panelManagement.TO"></div>
+            <div class="input-group fl mr10 w1366" id="batchHistoryTimeEndBox">
+                <input class="form-control" type="text" value="" id="batchHistoryTimeEnd"
+                       i18n="placeholder=debugTools.sitePoint.PLEASE_SELECT_THE_END_TIME">
+            </div>
+            <div id="allPoints" class="fl changePointType">
+                <label class="oh">
+                    <input type="radio" name="changePoint" id="batchAllPoints" value="-1" checked>
+                    <span style="position: relative; top: -1px;" i18n="debugTools.exportData.ALL_POINTS"></span>
+                </label>
+            </div>
+            <div id="mappingPoint" class="fl changePointType">
+                <label class="oh">
+                    <input type="radio" name="changePoint" id="bindMappingPoint" value="0">
+                    <span style="position: relative; top: -1px;" i18n="dataManage.MAPPING_POINT"></span>
+                </label>
+            </div>
+            <div id="virtualPoint" class="fl changePointType">
+                <label class="oh">
+                    <input type="radio" name="changePoint" id="bindVirtualPoint" value="1">
+                    <span style="position: relative; top: -1px;" i18n="dataManage.VIRTUAL_POINT"></span>
+                </label>
+            </div>
+            <div id="calculationPoint" class="fl changePointType">
+                <label class="oh">
+                    <input type="radio" name="changePoint" id="bindCalculationPoint" value="2">
+                    <span style="position: relative; top: -1px;" i18n="dataManage.CALCULATION_POINT"></span>
+                </label>
+            </div>
+
+            <div class="exportDataTextSearchBox fl">
+                <span class="icon iconfont icon_position exportDataSearchIcon cp dmPointHover">&#xe713;</span>
+                <input type="text" id="exportData_Search" class="form-control"
+                       i18n="placeholder=debugTools.sitePoint.SEARCH"/>
+            </div>
+
+            <div class="exportBox clearfix fl ml15">
+                <div class="fl cp exportType" i18n="title=debugTools.exportData.EXPORT;">
+                    <span id="exportData">
+                        <span class="icon iconfont">&#xe701;</span>
+                        <span class="exportTypeWords" i18n="debugTools.exportData.EXPORT"></span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType" i18n="title=debugTools.exportData.LIST;">
+                    <span id="exportList">
+                        <span class="icon iconfont">&#xe605;</span>
+                        <span class="exportTypeWords" i18n="debugTools.exportData.LIST"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div id="exportData_list_table"></div>
+    </div>
+    <!-- 导出数据start-->
+    <article id="exportDataList" class="modal fade gray-scrollbar" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" i18n="debugTools.exportData.EXPORT_DATA_LIST"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="exportBox clearfix mb10" style="width: auto; display: inline-block; ">
+                        <div id="exportClear" class="cp exportType">
+                            <span class="icon iconfont">&#xe712;</span>
+                            <span class="exportTypeWords" i18n="debugTools.exportData.DELETE_ALL_POINTS;"></span>
+                        </div>
+                    </div>
+                    <div id="exportDataListBox" class="gray-scrollbar">
+                        <div id="DataList">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th width="160px;" i18n="debugTools.exportData.DERIVED_POINT_TABLE"></th>
+                                    <th width="150px;" i18n="debugTools.exportData.START_TIME"></th>
+                                    <th width="150px;" i18n="debugTools.exportData.END_TIME"></th>
+                                    <th width="80px;" i18n="debugTools.exportData.TIME_INTERVAL"></th>
+                                    <th width="90px;" i18n="debugTools.exportData.PROMOTER"></th>
+                                    <th width="246px;" i18n="debugTools.exportData.DOCUMENT"></th>
+                                    <th width="80px;" i18n="debugTools.exportData.STATUS"></th>
+                                    <th width="90px;" i18n="debugTools.exportData.OPERATION"></th>
+                                </tr>
+                                </thead>
+                                <tbody id="exportDataListTBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!--导出数据end-->
+</div>
+<!--@formatter:off-->
+<script type="text/html" id="tpl_exportData_List">
+    <!for(var i=0; i < list.length; i++){!>
+    <!var data = list[i];!>
+    <tr taskId="<!=data.taskId!>">
+        <!if (data.points.length) {!>
+            <td width="160px;" i18n="debugTools.exportData.CUSTOM;"></td>
+        <!} else if (!data.points.length) {!>
+            <!if(data.flag == -1){!>
+                <td width="160px;" i18n="debugTools.exportData.ALL_POINTS;"></td>
+            <!}else if(data.flag == 0){!>
+                <td width="160px;" i18n="dataManage.MAPPING_POINT;"></td>
+            <!}else if(data.flag == 1){!>
+                <td width="160px;" i18n="dataManage.VIRTUAL_POINT;"></td>
+            <!}else if(data.flag == 2){!>
+                <td width="160px;" i18n="dataManage.CALCULATION_POINT;"></td>
+            <!}else{!>
+                <td width="160px;"></td>
+            <!}!>
+        <!}!>
+        <td width="150px;"><!=timeFormat(data.startTime,timeFormatChange('yyyy-mm-dd hh:ii'))!></td>
+        <td width="150px;"><!=timeFormat(data.endTime,timeFormatChange('yyyy-mm-dd hh:ii'))!></td>
+        <td width="80px;"><!=data.format!></td>
+        <td width="90px;"><!=data.userName!></td>
+        <td width="246px;" class="file-url-box">
+            <!if(data.file){!>
+                <!if(data.status){!>
+                    <!if(data.file.link === 'null'){!>
+                        <span class="text-warning"><!=data.file.name!></span>
+                    <!}else{!>
+                        <a style="text-decoration: none;" href="<!=url!><!=data.file.link!>" target="_blank"><!=data.file.name!></a>
+                    <!}!>
+                <!}else{!>
+                    <!=data.file.name!>
+                <!}!>
+            <!}!>
+        </td>
+        <td width="80px;">
+            <span><!=data.progress!>%</span>
+        </td>
+        <td width="90px;" style="font-size: 16px;">
+            <!if(data.status){!>
+                <span class="icon iconfont cp record-delete" i18n="title=debugTools.exportData.DELETE;">&#xe712;</span>
+            <!}else{!>
+                <span class="icon iconfont cp ml5 record-stop" i18n="title=debugTools.exportData.END;">&#xe682;</span>
+            <!}!>
+        </td>
+    </tr>
+    <!}!>
+</script>
+<!--@formatter:on-->

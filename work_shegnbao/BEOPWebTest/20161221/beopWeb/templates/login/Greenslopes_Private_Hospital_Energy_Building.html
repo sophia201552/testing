@@ -1,0 +1,339 @@
+{% extends "./layout/index_layout.html" %}
+{% block style %}
+    <style>
+        .login-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            font-family: "Microsoft YaHei", "微软雅黑", "Helvetica", "arial", "sans-serif";
+        }
+
+        input:-webkit-autofill,
+        textarea:-webkit-autofill,
+        select:-webkit-autofill {
+            background-color: #ffffff;
+        }
+
+        .login-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .login-container {
+            z-index: 88;
+        }
+
+        .login-bg {
+            width: 100%;
+            z-index: 1;
+        }
+
+        .login-content {
+            height: 100%;
+        }
+
+        .login-form-box {
+            position: relative;
+            height: 100%;
+        }
+
+        .login-form {
+            position: relative;
+            padding: 2% 6% 1% 6%;
+            border-radius: 4px;
+            width: 35%;
+            top: 14%;
+            left: 3%;
+        }
+
+        .precise-air-logo-white {
+            width: 75%;
+            margin: 0 auto 20px;
+        }
+
+        .logo-developBox {
+            width: 28%;
+            display: inline-block;
+        }
+
+        .logoBox {
+            width: 13%;
+            display: inline-block;
+        }
+
+        .logo {
+            width: 100%;
+            position: relative;
+            top: -1px;
+        }
+
+        .logo-tricyclic {
+            width: 100%;
+        }
+
+        .rememberBox {
+            font-size: 14px;
+            font-family: "Microsoft YaHei", "微软雅黑", "Helvetica", "arial", "sans-serif";
+            padding-top: 2px;
+        }
+
+        .form-icon-box {
+            height: 49px;
+            line-height: 39px;
+            width: 49px;
+            border-radius: 2px 0 0 2px;
+            float: left;
+            text-align: center;
+            z-index: 33;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+
+        .form-icon {
+            color: #858585;
+        }
+
+        #divLogin .form-input {
+            text-indent: 43px;
+        }
+
+        .form-icon-box .glyphicon {
+            top: 6px;
+        }
+
+        #divLogin .form-group {
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        #divLogin .form-control,
+        #btnLogin,
+        #passwordResetBtn {
+            border-radius: 2px;
+            border: none;
+            border-bottom: 1px solid #8f8f8f;
+            font-size: 18px;
+        }
+
+        #passwordResetBtn {
+            height: 40px;
+        }
+
+        #divLogin .form-control,
+        #btnLogin {
+            height: 50px;
+        }
+
+        .from-group-box {
+            width: 96%;
+            margin-top: 130px;
+        }
+
+        #passwordResetBtn {
+            background: #2978ec;
+            border-color: #2978ec;
+            margin-bottom: 5px;
+        }
+
+        #btnLogin {
+            width: 65%;
+            margin: 40px auto 0 auto;
+            font-size: 30px;
+            font-family: "Microsoft YaHei", "微软雅黑", "Helvetica", "arial", "sans-serif";
+            background: #2978ec;
+            border-radius: 30px;
+            line-height: 30px;
+            outline: none;
+            border: 1px solid #2978ec;
+            box-shadow: 0 0 30px #2978ec;
+        }
+
+        .btn-success:hover {
+            border: none;
+        }
+
+        .btn-success {
+            border: none;
+        }
+
+        #cbRememberPwd {
+            position: relative;
+            top: 2px;
+        }
+
+        #cbRememberPwd:active {
+            background: blue;
+            color: #ffffff;
+        }
+
+        .login-wrapper .dropdown-menu > li > a {
+            color: #ccc;
+            padding: 3px 6px;
+            text-align: left;
+        }
+
+        #selectLanguage li {
+            border-radius: 3px;
+        }
+
+        #selectLanguage li:hover span {
+            color: #333;
+        }
+
+        .font1 {
+            color: #a4ccc1;
+            font-size: 12px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        #resetPasswordModal .modal-dialog {
+            width: 340px;
+        }
+
+        #txtName,
+        #txtPwd {
+            box-shadow: none;
+        }
+
+        #inputEmail {
+            margin: 3px 0 20px 0;
+            border-radius: 2px;
+            border: 1px solid #c9c9c9;
+        }
+
+        .authorLogo {
+            margin: 30px auto 0;
+            width: 180px;
+        }
+
+        .authorLogo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        #btnForgetPwd {
+            margin-top: 6px;
+            color: #c1c1c1;
+            font-size: 14px;
+            font-family: "Helvetica", "arial", "sans-serif";
+        }
+
+        #btnForgetPwd:hover {
+            text-decoration: underline;
+            color: #a4ccc1;
+        }
+
+        #resetPasswordModal {
+            font-size: 12px;
+        }
+
+        #resetPasswordModal .modal-content {
+            border-radius: 4px;
+        }
+
+        #resetPasswordModal .close {
+            position: relative;
+            top: -13px;
+            left: 10px;
+        }
+
+        #myModalLabel {
+            color: #323232;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block indexMain %}
+
+    <div id="cbreProject" class="login-wrapper">
+        <img src="http://images.rnbtech.com.hk/custom/project_img/421_login_bg.jpg" class="login-bg">
+
+        <div class="login-container">
+            <div class="login-content">
+                <div class="login-form-box" id="divLogin">
+                    <div class="login-form m-auto">
+                        <div class="precise-air-logo-white">
+                            <img style="width: 100%;"
+                                 src="http://images.rnbtech.com.hk/custom/project_img/421_bg_logo.png">
+                        </div>
+                        <div class="login-frame">
+                            <div class="from-group-box m-auto">
+                                <form autocomplete="off">
+                                    <div class="form-group pr">
+                                        <div class="form-icon-box pa">
+                                            <span class="glyphicon glyphicon-user form-icon"></span>
+                                        </div>
+                                        <input type="text" id="txtName" class="form-control form-input pa"
+                                               i18n="placeholder=admin.login.PANE_PLACEHOLDER_ACCOUNT" autofocus="">
+                                    </div>
+                                    <div class="form-group pr" style="margin-bottom: 15px">
+                                        <div class="form-icon-box pa">
+                                            <span class="glyphicon glyphicon-lock form-icon"></span>
+                                        </div>
+                                        <input type="password" id="txtPwd" class="form-control form-input pa"
+                                               i18n="placeholder=admin.login.PANE_PLACEHOLDER_PWD">
+                                    </div>
+                                    <div class="oh">
+                                        <span class="rememberBox">
+                                            <input type="checkbox" id="cbRememberPwd" class="pr cp"
+                                                   i18n="title=admin.login.PANE_CHECKBOX_REMEMBER" title="Remember">
+                                            <label for="cbRememberPwd" class="font1"
+                                                   style="color: #c1c1c1; font-size: 14px; font-family: 'Helvetica', 'arial', 'sans-serif'; "
+                                                   i18n="admin.login.PANE_CHECKBOX_REMEMBER">
+
+                                            </label>
+                                        </span>
+                                        <span id="btnForgetPwd" class="fr font1" data-toggle="modal"
+                                              data-target="#resetPasswordModal" i18n="admin.login.PANE_FORGET">
+
+                                        </span>
+                                    </div>
+                                    <button type="button" class="btn btn-success btn-block" id="btnLogin"
+                                            i18n="admin.login.PANE_BTN_LOGIN"></button>
+                                    <div class="authorLogo">
+                                        <img src="http://images.rnbtech.com.hk/custom/project_img/poweredby.png">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="top:200px;">
+            <div class="modal-content">
+                <div class="modal-body clearfix">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel" i18n="admin.resetPassword.RETRIEVE_PASSWORD"></h4>
+
+                    <div i18n="admin.resetPassword.ENTER_EMAIL_ACCOUNT" style="color: #909090"></div>
+                    <div style="margin-top: 10px;">
+                        <input type="text" class="form-control" id="inputEmail" style="color: #646464"
+                               i18n="placeholder=admin.resetPassword.MAIL">
+                    </div>
+                    <div class="message"></div>
+                    <button type="button" class="btn btn-success btn-block" id="passwordResetBtn"
+                            i18n="admin.resetPassword.OK;data-complete-text=admin.resetPassword.MAIL_COMPLETE;data-loading-text=admin.resetPassword.MAIL_SENDING"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block scriptLoaded %} {% endblock %}

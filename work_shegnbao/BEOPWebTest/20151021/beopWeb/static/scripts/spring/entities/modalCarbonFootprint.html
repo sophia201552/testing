@@ -1,0 +1,261 @@
+﻿<style>
+    .cfBackground {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    .cfProcessCanvas {
+        padding: 20% 40px 0 40px;
+    }
+
+    .cfProcessMain {
+        position: relative;
+        width: 100%;
+        height: 80px;
+        border: solid 12px #ffffff;
+        border-radius: 80px;
+        background: -webkit-gradient(linear, left top, right top, from(#2989cc), color-stop(0.05, #2989cc), color-stop(0.5, #569b2c), color-stop(0.95, #eeb13b), to(#eeb13b));
+        box-sizing: border-box;
+    }
+
+    .cfProcessScale {
+        position: absolute;
+        top: -20px;
+        left: 0;
+        right: 0;
+        height: 8px;
+    }
+
+        .cfProcessScale td {
+            position: relative;
+            display: inline-block;
+            width: 20%;
+            float: left;
+            height: 8px;
+            border-left: 1px solid #eee;
+        }
+
+            .cfProcessScale td:last-child {
+                border-right: 1px solid #eee;
+            }
+
+    .cfProcessScaleNum {
+        position: absolute;
+        width: 80px;
+        top: -16px;
+        left: -40px;
+        text-align: center;
+        font-family: Arial;
+        font-size: 12px;
+        color: #eee;
+    }
+
+    .cfProcessScaleNumLast {
+        left: auto;
+        right: -40px;
+    }
+
+    .cfProcessMask {
+        position: relative;
+        float: right;
+        margin-right: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 86px;
+        border-bottom-right-radius: 86px;
+        background-color: #ccc;
+        width: 0px;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .cfFootprint {
+        position: absolute;
+        top: 2px;
+        left: -26px;
+        border-radius: 40px;
+        height: 50px;
+        width: 50px;
+        background-color: #eee;
+        -webkit-box-shadow: 2px 3px 3px #666;
+        box-shadow: 2px 3px 3px #666;
+    }
+
+    .cfLegendBar {
+        margin: 16px 12px 0 12px;
+        width: calc(100% - 24px);
+        height: 20px;
+        background-color: #ccc;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    .cfLegendBarWarning {
+        position: relative;
+        float: right;
+        width: 0;
+        height: 100%;
+        background-color: #ff7676;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+    .cfFootprintFlag {
+        position: absolute;
+        width: 1px;
+        height: 240px;
+        top: -110px;
+        left: 0;
+        background: #eee;
+        -webkit-box-shadow: 1px 1px 1px #666;
+        box-shadow: 1px 1px 3px #666;
+    }
+
+    .cfFootprintFlagEgg {
+        position: absolute;
+        bottom: 31px;
+        left: -6px;
+        width: 13px;
+        height: 13px;
+        background-color: #8cd580;
+        border-radius: 13px;
+        border: solid 2px #eee;
+        box-sizing: border-box;
+        -webkit-box-shadow: 1px 2px 3px #666;
+        box-shadow: 1px 2px 3px #666;
+    }
+
+    .cfFootprintDashboard {
+        position: absolute;
+        top: 0;
+        border: solid 4px #eee;
+        box-sizing: border-box;
+        -webkit-box-shadow: 2px 3px 3px #666;
+        box-shadow: 2px 3px 3px #666;
+    }
+
+    .cfFootprintDashboardCurrent {
+        padding-top: 12px;
+        width: 70px;
+        height: 70px;
+        border-radius: 70px;
+        background-color: #7db773;
+        left: -34px;
+    }
+
+    .cfFootprintDashboardStandard {
+        padding-top: 16px;
+        width: 80px;
+        height: 80px;
+        border-radius: 80px;
+        background-color: #eeb13b;
+        left: -40px;
+    }
+
+    .cfFont {
+        color: #eee;
+        font-family: Arial;
+        font-size: 22px;
+        text-align: center;
+    }
+
+        .cfFont span {
+            display: block;
+        }
+
+    .cfSmall {
+        font-size: 16px;
+    }
+
+    .cfStandardFlag {
+        position: absolute;
+        width: 1px;
+        height: 300px;
+        top: -260px;
+        left: 0;
+        background: #eee;
+        -webkit-box-shadow: 1px 1px 1px #666;
+        box-shadow: 1px 1px 3px #666;
+    }
+
+    .cfFontField {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .divCFTitle {
+        display: block;
+        color: #eee;
+        font-family: 微软雅黑;
+        font-size: 22px;
+        padding: 30px 0 0 30px;
+    }
+</style>
+
+<div style="width: 100%; height: 100%; position: relative;">
+    <div class="divCFTitle"><span i18n="dashboard.carbonFootprint.TITLE"></span><span id="divCFTitle"></span>Ton</div>
+    <div class="cfProcessCanvas">
+        <div class="cfProcessMain">
+            <div class="cfProcessScale">
+                <table style="width: 100%;">
+                    <tr>
+                        <td><div class="cfProcessScaleNum"></div></td>
+                        <td><div class="cfProcessScaleNum"></div></td>
+                        <td><div class="cfProcessScaleNum"></div></td>
+                        <td><div class="cfProcessScaleNum"></div></td>
+                        <td>
+                            <div class="cfProcessScaleNum"></div>
+                            <div class="cfProcessScaleNum cfProcessScaleNumLast"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="cfProcessMask">
+                <div class="cfFootprintFlag">
+                    <div class="cfFootprintDashboard cfFont cfFootprintDashboardCurrent"><span id="cfFootprintDashboardCurrent"></span><span class="cfSmall">Ton</span></div>
+                    <div class="cfFootprintFlagEgg"></div>
+                </div>
+                <div class="cfFootprint">
+                    <svg x="0px" y="0px" width="100%" height="100%" viewBox="0 0 620 1026.667" enable-background="new 0 0 620 1026.667" xml:space="preserve">
+                    <g>
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#2989cc" d="M148.19,249.597c10.17-4.395,22.446,7.324,27.397,26.168
+                                		c4.959,18.875,0.709,37.72-9.476,42.114c-10.17,4.38-22.446-7.339-27.405-26.184C133.755,272.835,137.982,253.991,148.19,249.597z
+                                		 M186.177,253.06c-5.509-20.95-0.793-41.885,10.521-46.783c11.314-4.867,24.948,8.148,30.449,29.083
+                                		c5.516,20.951,0.793,41.901-10.521,46.784C205.319,287.026,191.693,274.011,186.177,253.06z M240.514,220.666
+                                		c-6.104-23.254-0.854-46.524,11.704-51.956c12.573-5.432,27.717,9.033,33.836,32.318c6.119,23.27,0.885,46.539-11.704,51.972
+                                		C261.785,258.431,246.648,243.951,240.514,220.666z M294.438,192.407c-6.126-23.254-0.885-46.524,11.688-51.941
+                                		c12.565-5.448,27.718,9.018,33.836,32.303c6.119,23.27,0.885,46.54-11.711,51.971C315.694,230.142,300.542,215.692,294.438,192.407
+                                		z M371.06,170.571c-8.163-31.037-1.19-62.058,15.595-69.29c16.754-7.248,36.957,12.039,45.105,43.076
+                                		c8.148,31.036,1.175,62.058-15.594,69.305C399.411,220.879,379.208,201.608,371.06,170.571z M465.665,272.958
+                                		c18.28,67.475-50.72,109.665-50.72,109.665c-69.016,48.508-64.606,145.554-64.606,145.554
+                                		c-26.512,100.952,58.869,164.933,58.869,164.933c95.382,84.366,16.205,152.436,16.205,152.436
+                                		c-48.935,63.003-105.866,54.26-105.866,54.26c-79.193-18.967-79.193-172.958-79.193-172.958
+                                		c8.125-33.737-14.183-97.016-14.183-97.016c-58.884-143.433-83.229-192.353-83.229-192.353
+                                		c-14.206-124.466,117.706-145.569,117.706-145.569c36.553,0,73.098-25.284,73.098-25.284
+                                		C435.224,188.562,465.665,272.958,465.665,272.958z" />
+                                </g>
+                            </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="cfLegendBar">
+            <span class="cfFont cfFontField">Normal</span>
+            <div class="cfLegendBarWarning">
+                <span class="cfFont cfFontField">Alert</span>
+                <div class="cfStandardFlag">
+                    <div class="cfFootprintDashboard cfFont cfFootprintDashboardStandard"><span id="cfFootprintDashboardStandard"></span><span class="cfSmall">Ton</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img class="cfBackground" src="http://images.rnbtech.com.hk/static/images/spring/entities/modalCarbonFootprint.jpg" />
+</div>

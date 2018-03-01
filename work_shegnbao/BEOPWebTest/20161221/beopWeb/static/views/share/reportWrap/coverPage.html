@@ -1,0 +1,45 @@
+<div class="pdfCover">
+    <div class="info">
+        <h1>{title}</h1>
+        <div>
+            <span>{projName}</span>
+            <span>{date}</span>
+        </div>
+    </div>
+    <img class="projectImg" src="{projectImg}" onerror="this.onerror=null;this.src='http://images.rnbtech.com.hk/custom/project_img/pdf_cover.png'" width="100%"/>
+</div>
+<style type="text/css">
+    .pdfCover{
+        width: 100%;
+        height:100%;
+        position: relative;
+        font-family: 'Arial';
+    }
+    .pdfCover .info{
+        width: 100%;
+        height: 20%;
+        color: #13477d;
+        position: absolute;
+        top:20%;
+        left: 0;
+        z-index: 5;
+    }
+    .pdfCover .info h1{
+        font-size: 33px;
+        font-weight: bold;
+    }
+    .pdfCover .info span{
+        font-size: 22px;
+    }
+    .pdfCover .info span:nth-child(1){
+        padding-right: 20px;
+    }
+    .pdfCover .projectImg{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+
+
+

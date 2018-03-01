@@ -1,0 +1,295 @@
+<style type="text/css">
+    .tabNav{
+        width: 18%;
+        border: 1px solid #aaa;
+        border-right: none;
+    }
+    .tab-content{
+        width: 72%;
+    }
+    .btnConfig{
+        width: 60%;
+    }
+    .btnItem{
+        /*background-color: #87cefa;*/
+        padding: 2px 5px;
+        border-radius: 5px;
+        min-width: 56px;
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+        color: #fff;
+    }
+    .chosen .btnItem{
+        opacity: 0.9;
+    }
+    .notChosen .btnItem {
+        opacity: 0.5;
+    }
+
+    .buildList li{
+        position: relative;
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    .buildList li .close{
+        position: absolute;
+        top: -3px;
+        right: 6px;
+        color: #fff;
+        opacity: 1;
+        font-size: 16px;
+    }
+    .grow:hover {
+      background-color: transparent;
+    }
+    .title{
+        font-size: 16px;
+        padding: 6px;
+    }
+    .tab-pane .row{
+        border: 1px solid #ccc;
+        border-top: none;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .tab-pane > .row:first-child{
+        border-top: 1px solid #ccc;
+    }
+    .tab-pane .glyphicon{
+        cursor: pointer;
+    }
+    .list ul{
+        margin-left: 15px;
+        border-left: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding: 2px;
+        max-height: 200px;
+        overflow: auto;
+    }
+    .caseTab{
+        border: 1px solid #ccc;
+        text-align: center;
+        width: 88%;
+        margin: 6px;
+        padding: 4px;
+        border-radius: 4px;
+    }
+    .caseTab.active{
+        border-color: #408ac0;
+        box-shadow: inset 0 0 8px 0px #408ac0;
+    }
+    .chosen .close{
+        display: block;
+    }
+    .notChosen .close{
+        display: none;
+    }
+    #btnCreateCase{
+        margin: 6px 6px 0;
+        width: 88%
+    }
+    .btnContainer{
+        text-align: center; padding: 30px;  border-bottom: 1px solid #ccc;
+    }
+    .disabled{
+        background-color: #ccc !important;
+    }
+    .enabled{
+
+    }
+    #buildList .btnItem, .all .btnItem{
+        background-color: #428bca;
+    }
+    .input-group{
+        float: left !important;
+    }
+    .input-group .btn{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+</style>
+
+<div class="modal-content" id="diagnosisConfig">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+
+        </button>
+        <h4 class="modal-title" i18n="diagnosis.config.TITLE"></h4>
+    </div>
+    <div class="modal-body" style="height: calc(100% - 50px);">
+        </br>
+        <div class="form-group row">
+            <div class="col-lg-5 input-group" style="text-align: right;">
+                <button type="button" class="btn btn-default" id="btnDiagnosisShow" i18n="diagnosis.config.DIAGNOSIS_SHOW"></button>
+                <span class="input-group-addon" style="padding-top: 2px;">
+                    <input type="checkbox" id="limitCheckbox" style="position: absolute; top: 10px;">
+                    <label for="cbRememberPwd" style="margin: 2px 0 0 17px; font-size: 12px; font-weight:normal;" i18n="diagnosis.config.ACTIVE"></label>
+                </span>
+            </div>
+
+            <div class="col-lg-5 input-group" style="text-align: right;">
+                <button type="button" class="btn btn-default" id="btnAutoPushWO" i18n="diagnosis.config.AUTO_PUSH_WO"></button>
+                <span class="input-group-addon" style="padding-top: 2px;">
+                    <input type="checkbox" id="orderCheckbox" style="position: absolute; top: 10px;">
+                    <label for="cbRememberPwd" style="margin: 2px 0 0 17px; font-size: 12px; font-weight:normal;" i18n="diagnosis.config.ACTIVE"></label>
+                </span>
+            </div>
+        </div>
+        </br>
+        <div class="form-group row">
+            <div class="col-lg-5 input-group" style="text-align: right;">
+                <button type="button" class="btn btn-default" id="btnDiagnosisPause" i18n="diagnosis.config.DIAGNOSIS_PAUSE_SET"></button>
+                <span class="input-group-addon" style="padding-top: 2px;">
+                    <input type="checkbox" id="enableCheckbox" style="position: absolute; top: 10px;">
+                    <label for="cbRememberPwd" style="margin: 2px 0 0 17px; font-size: 12px; font-weight:normal;" i18n="diagnosis.config.ACTIVE"></label>
+                </span>
+            </div>
+            <div class="col-lg-5 input-group" style="text-align: right;">
+                <button type="button" class="btn btn-default" id="btnAlarmRule" i18n="diagnosis.config.RULE_SET"></button>
+            </div>
+        </div>
+        </br>
+    </div>
+</div>
+
+<div class="modal-content commonPane" id="" style="display: none">
+    <div class="modal-header">
+        <button type="button" class="close" onclick="$(this).closest('.commonPane').hide();$('#diagnosisConfig').show();">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" i18n="diagnosis.config.SET"></h4>
+    </div>
+    <div class="modal-body" style="height: calc(100% - 50px); display: flex;">
+        <div class="tabNav">
+            <ul class="list-unstyled caseNav" id="limitNav">
+                <li><a class="btn btn-primary" id="btnCreateCase" data-toggle="tab" href="#createCase" i18n="diagnosis.config.subConfig.CREATE_CASE"></a></li>
+            </ul>
+            <ul class="list-unstyled caseNav" id="orderNav">
+                <li><a class="btn btn-primary" id="btnCreateCase" data-toggle="tab" href="#createCase" i18n="diagnosis.config.subConfig.CREATE_CASE"></a></li>
+            </ul>
+            <ul class="list-unstyled caseNav" id="enableNav">
+                <li><a class="btn btn-primary" id="btnCreateCase" data-toggle="tab" href="#createCase" i18n="diagnosis.config.subConfig.CREATE_CASE"></a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div id="createCase" class="tab-pane fade active in">
+                <div class="row">
+                    <div class="col-lg-4"><label for="caseName" i18n="diagnosis.config.subConfig.CASE_NAME" placeholder="Please input case name ..."></label></div>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" id="caseName" placeholder="" required>
+                    </div>
+                </div>
+                <div class="row title">
+                    <span class="glyphicon glyphicon-minus-sign"></span>
+                    <span i18n="diagnosis.config.subConfig.CHOOSE_BUILD"></span>
+                </div>
+                <div class="row list">
+                    <ul class="list-inline buildList" id="buildList">
+                        <li class="all grow notChosen">
+                            <span class="btnItem enabled">all</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="row title">
+                    <span class="glyphicon glyphicon-minus-sign"></span>
+                    <span i18n="diagnosis.config.subConfig.CHOOSE_AREA"></span>
+                </div>
+                <div class="row list">
+                    <ul class="list-inline buildList" id="areaList">
+                        <li class="all grow notChosen">
+                            <span class="btnItem disabled">all</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="row title">
+                    <span class="glyphicon glyphicon-minus-sign"></span>
+                    <span i18n="diagnosis.config.subConfig.CHOOSE_EQUIPMENT_TYPE"></span>
+                </div>
+                <div class="row list">
+                    <ul class="list-inline buildList" id="equipmentList">
+                        <li class="all grow notChosen">
+                            <span class="btnItem disabled">all</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="row title option enable">
+                    <span class="glyphicon glyphicon-minus-sign"></span>
+                    <span i18n="diagnosis.config.subConfig.CHOOSE_STOP_TIME"></span>
+                </div>
+                <div class="row list">
+                    <input type="text" value="" class="form-datetime form-control">
+                </div>
+                <div class="row title option order">
+                    <span class="glyphicon glyphicon-minus-sign"></span>
+                    <span i18n="diagnosis.config.subConfig.CHOOSE_DISTRIBUTE_PERSON"></span>
+                </div>
+                <div class="row list">
+                    <div class="col-lg-2"><label for="group" i18n="diagnosis.config.subConfig.PROJECT"></label></div>
+                    <div class="col-lg-4">
+                        <select class="form-control" id="group" placeholder="">
+
+                        </select>
+                    </div>
+                    <div class="col-lg-2"><label for="operatorId" i18n="diagnosis.config.subConfig.USER"></label></div>
+                    <div class="col-lg-4">
+                        <select class="form-control" id="operatorId" placeholder="">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row option order">
+                    <div class="col-lg-2"><label for="alarm" i18n="diagnosis.config.subConfig.ALARM_LEVEL"></label></div>
+                    <div class="col-lg-4">
+                        <select class="form-control" id="alarm" placeholder="">
+                            <option value="0" i18n="diagnosis.config.subConfig.NORMAL"></option>
+                            <option value="1" i18n="diagnosis.config.subConfig.ALERT"></option>
+                            <option value="2" i18n="diagnosis.config.subConfig.WARNING"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row title option limit">
+                    <span class="glyphicon glyphicon-minus-sign"></span>
+                    <span i18n="diagnosis.config.CHOOSE_DIAGNOSIS_SHOW"></span>
+                </div>
+                <div class="row list">
+                    <div class="row">
+                        <div class="col-lg-4"><label for="normal" i18n="diagnosis.config.NORMAL"></label></div>
+                        <div class="col-lg-4">
+                            <input type="number" class="form-control" id="normal" placeholder="">
+                        </div>
+                        <div class="col-lg-4">小时</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4"><label for="alert" i18n="diagnosis.config.subConfig.ALERT"></label></div>
+                        <div class="col-lg-4">
+                            <input type="number" class="form-control" id="alert" placeholder="">
+                        </div>
+                        <div class="col-lg-4">小时</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4"><label for="warning" i18n="diagnosis.config.subConfig.WARNING"></label></div>
+                        <div class="col-lg-4">
+                            <input type="number" class="form-control" id="warning" placeholder="">
+                        </div>
+                        <div class="col-lg-4">小时</div>
+                    </div>
+                </div>
+
+                <div class="row btnContainer" id="btnCt">
+                    <div class="col-lg-5">
+                        <button type="button" class="btn btn-primary btnConfig" id="confirmCreateCase" i18n="diagnosis.config.CONFIRM"></button>
+                    </div>
+                    <div class="col-lg-5">
+                        <button type="button" class="btn btn-default btnConfig cancelCreateCase" id="" i18n="diagnosis.config.CANCEL"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

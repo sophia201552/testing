@@ -1,0 +1,260 @@
+{
+    "BigFanVSDFreq": {
+        "FanPower": "风机功率",
+        "FanVSDFreq": "风机频率",
+        "FanVSDFreqSetPoint": "风机频率设定值",
+        "power": "幂次方"
+    },
+    "BigOADamperRatio": {
+        "AHUServiceZoneArea": "AHU服务房间面积",
+        "AHUTerminalRunningNum": "AHU末端个数",
+        "OACO2": "新风CO2浓度",
+        "OADamperRatio": "新风阀开度",
+        "PlantGroupPower": "总能耗率",
+        "RACO2": "回风CO2浓度",
+        "RACO2SetPoint": "回风CO2浓度设定值",
+        "TotalAirConditioningZoneArea": "空调房间总面积",
+        "TotalTerminalRunningNum": "系统末端总个数"
+    },
+    "BigPumpDiffPressure": {
+        "DP": "水泵压差",
+        "DPSetPoint": "水泵压差设定值",
+        "PumpPower": "水泵总功率",
+        "power": "幂次方"
+    },
+    "BigPumpDiffPressureSetPoint": {
+        "DPSetPoint": "水泵压差设定值",
+        "ProperDPSetPoint": "合理的水泵压差设定值",
+        "PumpPower": "水泵总功率",
+        "power": "幂次方"
+    },
+    "BigSAPressure": {
+        "FanPower": "风机功率",
+        "SAPressure": "静压",
+        "SAPressureSetPoint": "静压设定值",
+        "power": "幂次方"
+    },
+    "BigSupplyWFlow": {
+        "PumpPower": "水泵功率",
+        "PumpType": "水泵类型",
+        "SupplyWFlow": "供水流量",
+        "SupplyWFlowSetPoint": "供水流量设定值",
+        "power1": "幂次方",
+        "power2": "幂次方"
+    },
+    "Boma_EconomizerDisable": {
+        "FanSpeed": "风机变频速度",
+        "MATemp": "混风湿度",
+        "OADamper": "新风阀开度",
+        "OAHumidity": "新风湿度",
+        "OATemp": "新风温度",
+        "RAHumidity": "回风湿度"
+    },
+    "Boma_SATResetDisable": {
+        "SATemp": "送风温度",
+        "SATempCalc": "送风温度重置"
+    },
+    "Boma_SWTResetDisable": {
+        "SWFlow": "锅炉供水流量",
+        "SWTemp": "锅炉供水温度",
+        "SWTempCalc": "锅炉供水温度重置"
+    },
+    "Boma_SimultaneousHeatCoolFault": {
+        "AHUTerminalRunningNum": "AHU的末端运行个数",
+        "PlantGroupPower": "机房总能耗",
+        "SpaceStpt": "房间温度设定",
+        "SpaceTemp": "房间温度",
+        "TotalTerminalRunningNum": "末端运行个数"
+    },
+    "CCValveFeedbackFault": {
+        "AHUTerminalRunningNum": "AHU的末端运行个数",
+        "PlantGroupPower": "机房总能耗",
+        "SuperTemp": "过冷过热度",
+        "TotalTerminalRunningNum": "末端运行个数"
+    },
+    "CCValveLeaking": {
+        "AHUTerminalRunningNum": "AHU的末端运行个数",
+        "PlantGroupPower": "机房总能耗",
+        "SuperTemp": "过冷过热度",
+        "TotalTerminalRunningNum": "末端运行个数"
+    },
+    "CCValveOperationInEconomyMode": {
+        "AHUTerminalRunningNum": "AHU的末端运行个数",
+        "PlantGroupPower": "机房总能耗",
+        "SuperTemp": "过冷过热度",
+        "TotalTerminalRunningNum": "末端运行个数"
+    },
+    "CCValveOperationInWinter": {
+        "AHUTerminalRunningNum": "AHU的末端运行个数",
+        "PlantGroupPower": "机房总能耗",
+        "SuperTemp": "过冷过热度",
+        "TotalTerminalRunningNum": "末端运行个数"
+    },
+    "CCValveRatioTooBig": {
+        "AHUTerminalRunningNum": "AHU的末端运行个数",
+        "PlantGroupPower": "机房总能耗",
+        "SuperTemp": "过冷过热度",
+        "TotalTerminalRunningNum": "末端运行个数"
+    },
+    "CHWPOn_ChillerOff": {
+        "CHWPGroup_PumpPower": "冷冻水泵功率",
+        "CHWPGroup_RunNum": "冷冻水泵运行数量",
+        "ChGroup_RunNum": "冷机运行数量"
+    },
+    "CTOn_ChillerOff": {
+        "CTGroup_CTPower": "冷却塔功率",
+        "CTGroup_RunNum": "冷却塔运行数量",
+        "ChGroup_RunNum": "冷机运行数量"
+    },
+    "CWPOn_ChillerOff": {
+        "CWPGroup_PumpPower": "冷却水泵功率",
+        "CWPGroup_RunNum": "冷却水泵运行数量",
+        "ChGroup_RunNum": "冷机运行数量"
+    },
+    "ChillerLowLoad": {
+        "ChAMPS": "冷机电流百分比",
+        "ChAMPS_optimized": "优化后冷机电流百分比",
+        "ChPower": "冷机功率",
+        "ChRunNum": "冷机运行数量"
+    },
+    "CoilValveRatioErrOp": {
+        "AHUTerminalRunningNum": "AHU的末端运行个数",
+        "PlantGroupPower": "机房总能耗",
+        "SuperTemp": "过冷过热度",
+        "TotalTerminalRunningNum": "末端运行个数"
+    },
+    "CondenserFouling": {
+        "ChCondAppTSetPoint": "冷凝器趋近温度标准值",
+        "ChCondTemp": "冷凝温度",
+        "ChEvapTemp": "蒸发温度",
+        "ChLeaveCondTemp": "冷凝器出口水温度",
+        "ChPower": "冷机功率"
+    },
+    "EvaporOutletTempLower": {
+        "ChCondTemp": "冷凝温度",
+        "ChEvapTemp": "蒸发温度",
+        "ChPower": "冷机功率",
+        "EvaporatorOutletTemp": "蒸发器出水温度",
+        "EvaporatorOutletTempSetPoint": "蒸发器出水温度设定值"
+    },
+    "EvaporOutletTempSensorFault": {
+        "ChPower": "冷机功率",
+        "EvaporatorOutletTemp": "蒸发器出水温度",
+        "EvaporatorOutletTempSetPoint": "蒸发器出水温度设定值"
+    },
+    "EvaporatorFouling": {
+        "ChCondTemp": "冷凝温度",
+        "ChEvapAppTSetPoint": "蒸发器趋近温度标准值",
+        "ChEvapTemp": "蒸发温度",
+        "ChLeaveEvapTemp": "蒸发器出口水温",
+        "ChPower": "冷机功率"
+    },
+    "FlowAbnormallySmall": {
+        "PlantGroupPower": "机房总能耗",
+        "SuperTemp": "过冷过热度",
+        "TerminalRunningNum": "末端个数",
+        "TotalTerminalRunningNum": "末端总个数"
+    },
+    "HCValveFault": {
+        "AHUTerminalRunningNum": "AHU的末端运行个数",
+        "PlantGroupPower": "机房总能耗",
+        "SuperTemp": "过冷过热度",
+        "TotalTerminalRunningNum": "末端运行个数"
+    },
+    "HighChCondTemp": {
+        "ChCondTemp": "冷凝温度",
+        "ChEvapTemp": "蒸发温度",
+        "ChPower": "冷机功率",
+        "WetbulbTemp": "室外湿球温度"
+    },
+    "OADamperRatioNotGoodforVentilation": {
+        "AHUServiceZoneArea": "AHU服务房间面积",
+        "AHUTerminalRunningNum": "AHU末端个数",
+        "OADamperRatio": "新风阀开度",
+        "OATemp": "新风温度",
+        "PlantGroupPower": "总能耗率",
+        "TotalAirConditioningZoneArea": "空调房间总面积",
+        "TotalTerminalRunningNum": "系统末端总个数"
+    },
+    "PumpDiffPressureSensorBiased_small": {
+        "PumpPower": "水泵功率",
+        "PumpVSDFrequency_max": "水泵最大频率",
+        "PumpVSDFrequency_normal": "水泵正常运行时的频率",
+        "power": "幂次方"
+    },
+    "PumpDiffPressureSensorReadingFrozen": {
+        "DP": "水泵压差",
+        "DPSetPoint": "水泵压差设定值",
+        "PumpPower": "水泵功率",
+        "PumpVSDFrequency_max": "水泵最大频率",
+        "PumpVSDFrequency_normal": "水泵正常运行时的频率",
+        "power": "幂次方"
+    },
+    "SAPressureSensorBiased_small": {
+        "FanPower": "风机功率",
+        "FanVSDFrequency_max": "风机最大频率",
+        "FanVSDFrequency_normal": "风机正常运行时的频率",
+        "power": "幂次方"
+    },
+    "SAPressureSensorReadingFrozen": {
+        "FanPower": "风机功率",
+        "FanVSDFrequency_max": "风机最大频率",
+        "FanVSDFrequency_normal": "风机正常运行时的频率",
+        "SAPressure": "送风压力",
+        "SAPressureSetPoint": "送风压力设定值",
+        "power": "幂次方"
+    },
+    "SmallHXPriDeltaT": {
+        "HXPriTempDiff": "供回水温差",
+        "HXPriTempDiffSetPoint": "供回水温差设定值",
+        "PumpPower": "水泵功率",
+        "PumpType": "水泵类型",
+        "power1": "幂次方",
+        "power2": "幂次方"
+    },
+    "SmallHxSecDeltaT": {
+        "HxSecTempDiff": "供回水温差",
+        "HxSecTempDiffSetPoint": "供回水温差设定值",
+        "PumpPower": "水泵功率",
+        "PumpType": "水泵类型",
+        "power1": "幂次方",
+        "power2": "幂次方"
+    },
+    "SmallSRWaterDeltaT": {
+        "PumpPower": "水泵功率",
+        "PumpType": "水泵类型",
+        "TempDiff": "供回水温差",
+        "TempDiffSetPoint": "供回水温差设定值",
+        "power1": "幂次方",
+        "power2": "幂次方"
+    },
+    "ZoneTempSensorFault": {
+        "PlantGroupPower": "总能耗率",
+        "SeasonMode": "季节模式",
+        "TerminalRunningNum": "末端个数",
+        "TotalAirConditioningZoneArea": "空调房间总面积",
+        "TotalTerminalRunningNum": "末端总个数",
+        "ZoneArea": "房间面积",
+        "ZoneTemp": "房间温度",
+        "ZoneTempSetPoint": "房间温度设定值"
+    },
+    "ZoneTempSettingFault": {
+        "PlantGroupPower": "总能耗率",
+        "SeasonMode": "季节模式",
+        "TerminalRunningNum": "末端个数",
+        "TotalAirConditioningZoneArea": "空调房间总面积",
+        "TotalTerminalRunningNum": "末端总个数",
+        "ZoneArea": "房间面积",
+        "ZoneTemp": "房间温度"
+    },
+    "ZoneTempSuperColdorHot": {
+        "PlantGroupPower": "总能耗率",
+        "SeasonMode": "季节模式",
+        "TerminalRunningNum": "末端个数",
+        "TotalAirConditioningZoneArea": "空调房间总面积",
+        "TotalTerminalRunningNum": "末端总个数",
+        "ZoneArea": "房间面积",
+        "ZoneTemp": "房间温度",
+        "ZoneTempSetPoint": "房间温度设定值"
+    }
+}

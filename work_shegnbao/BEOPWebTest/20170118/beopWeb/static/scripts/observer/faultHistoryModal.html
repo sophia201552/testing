@@ -1,0 +1,59 @@
+<style>
+    #modalFaultHist .modal-dialog{
+        width: 100%;
+        margin-top: 22px;
+        margin-bottom: 0;
+        height: calc(100% - 60px);
+    }
+    #modalFaultHist .modal-content{
+        height: 100%;
+        padding: 0;
+        background-color: transparent;
+    }
+    #modalFaultHist .modal-header{
+        border-bottom: none;
+        position: relative;
+    }
+    #modalFaultHist .modal-header button{
+        position: absolute;
+        right: 15px;
+        top: 5px;
+        box-shadow: 0 0px 5px 0px #fff;
+        background-color: #fff;
+        padding: 1px 4px 3px 4px;
+        border-radius: 50%;
+    }
+    #modalFaultHist .modal-body{
+        height: 100%;
+        padding: 0;
+    }
+    #modalFaultHist iframe{
+        width: 100%;
+        height: 100%;
+    }
+    #navTop{
+        display: none;
+    }
+</style>
+
+<div class="modal fade" id="modalFaultHist">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+          <iframe src="/diagnosisEngine" id="ifDE"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.getElementById('ifDE').onload=function(){
+        window.frames[0].document.getElementById('navTop').style.display = 'none';
+        window.frames[0].document.getElementById('indexMain').style.top = '0px';
+        window.frames[0].document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+        window.frames[0].ScreenManager.show(window.frames[0].FaultHistoryScreen, window.frames[0].AppConfig.projectId);
+    };
+</script>

@@ -1,0 +1,50 @@
+<style>
+    #ulMessageDivide .list-group-item {
+        font-size: 1.6rem;
+        position: relative;
+        font-family: "Microsoft YaHei";
+        color: white;
+        border: none;
+        background-color: transparent;
+    }
+    .messageListIcon {
+        position: relative;
+        top: 0.4rem;
+        margin-right: 0.8rem;
+        font-size: 2.2rem;
+    }
+    .list-group-item .badge{
+        float: none;
+        position: absolute;
+        right: 2rem;
+        top: 1.3rem;
+        padding: 0.2rem 1rem;
+        font-size: 1.6rem;
+        background: rgba(155,155,155,0.5);
+    }
+    #liReportMsg .spinner {
+        height: 40px;
+        text-align: center;
+        font-size: 10px;
+        position: absolute;
+        right: 2rem;
+        top: 0.5rem;
+        display: inline-block;
+    }
+</style>
+<ul id="ulMessageDivide" class="list-group">
+    <li class="list-group-item zepto-ev" id="liReportMsg">
+        <span class="messageListIcon glyphicon glyphicon-file" aria-hidden="true"></span>
+        <span i18n="appDashboard.message.MY_REPORT">My Report</span>
+        <span class="badge"></span>
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </li>
+    <li class="list-group-item" id="liWkMsg"><span class="messageListIcon glyphicon glyphicon-tasks" aria-hidden="true"></span><span i18n="appDashboard.message.MY_WORKFLOW">My Workflow</span><span class="badge"></span></li>
+    <li class="list-group-item" id="liScheduleMsg"><span class="messageListIcon glyphicon glyphicon-flag" aria-hidden="true"></span><span i18n="appDashboard.message.MY_CALENDAR">My Calendar</span></li>
+    <li class="list-group-item" id="liAffairMsg"><span class="messageListIcon glyphicon glyphicon-briefcase" aria-hidden="true"></span><span i18n="appDashboard.message.WORKFLOW_DYNAMIC">Workflow Dynamic</span></li></ul>

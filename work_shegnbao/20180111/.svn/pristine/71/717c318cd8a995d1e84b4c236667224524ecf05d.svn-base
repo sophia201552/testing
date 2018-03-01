@@ -1,0 +1,83 @@
+<style type="text/css">
+    .skinMannageBox{
+        width:100%;
+    }
+    .skinMain,.skinReport, .fontSizeReport, .fontSizeDiagnosis{
+        padding:10px 0;
+    }
+    .optionName{
+        width: 130px;
+        float: left;
+    }
+    .optionDetail{
+        width: calc(100% - 130px);
+        float: left;
+    }
+    #changeReportFont, #changeDiagnosisFont{
+        width: 60%;
+    }
+    #btnChangeReportSkin,#btnChangeSkin{
+        color: #2a3e50;
+        width: 200px;
+        height: 25px;
+        line-height: 25px;
+    }
+    .skinMannageBox .language.clearfix{
+        padding-bottom: 10px;
+    }
+</style>
+<div class="modal fade" id="skinManege" tabindex="-1" role="dialog" style="margin-top:60px;">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" i18n="admin.ddlUser.MENU_CONFIG">配置</h4>
+        </div>
+        <div class="modal-body">
+            <div class="skinMannageBox">
+                <div class="language clearfix">
+                    <div class="optionName" i18n="platform_app.base.LANGUAGE">语言</div>
+                    <div class="optionDetail">
+                        <select id="btnLanguage" style="border-radius: 4px;color: #2a3e50;">
+                            <option value="zh">中文</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="skinMain clearfix">
+                    <div class="optionName" i18n="admin.ddlUser.MENU_CHANGE_SKIN_MAIN">主界面皮肤：</div>
+                    <div class="optionDetail">
+                        <select id="btnChangeSkin" style="border-radius: 4px;color: #2a3e50;">
+                            <!-- <option value="dark" i18n="admin.ddlUser.MENU_CHANGE_SKIN_DARK"></option> -->
+                            <option value="dark" >Observer</option>
+                            <option value="platform" i18n="observer.menu.PLATFORM"></option>
+                            <!-- <option value="default" i18n="admin.ddlUser.MENU_CHANGE_SKIN_DEFAULT"></option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class="skinReport clearfix">
+                    <div class="optionName" i18n="admin.ddlUser.MENU_CHANGE_SKIN_REPORT">报表皮肤：</div>
+                    <div class="optionDetail">
+                        <select id="btnChangeReportSkin" style="border-radius: 4px;color: #2a3e50;">
+                            <option value="default" i18n="admin.ddlUser.MENU_CHANGE_SKIN_REPORT_DEFAULT">default</option>
+                            <option value="dcolor">D_Color</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="fontSizeReport clearfix">
+                    <div class="optionName" i18n="admin.ddlUser.MENU_CHANGE_REPORT_FONT_SIZE">报表下载字体大小：</div>
+                    <div class="optionDetail">
+                        <input type="range" min='12' max='26' defaultValue='12' id="changeReportFont">
+                    </div>
+                </div>
+                <div class="fontSizeDiagnosis clearfix">
+                    <div class="optionName" i18n="admin.ddlUser.MENU_CHANGE_DIAGNOSIS_FONT">诊断字体大小：</div>
+                    <div class="optionDetail">
+                        <input type="range" min='12' max='16' defaultValue='12' id="changeDiagnosisFont">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

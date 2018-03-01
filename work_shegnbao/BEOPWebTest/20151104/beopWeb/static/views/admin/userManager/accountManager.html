@@ -1,0 +1,268 @@
+<div id="accountManage" class="scrollbar">
+    <div class="row" id="userInfo"></div>
+    <div class="row" id="accountManagePanel">
+        <div class="panel blank-panel">
+            <div class="panel-heading">
+                <div class="panel-options">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="javascript:void(0)" data-toggle="tab" data-shown="operationRecords"
+                                              i18n="admin.panelManagement.ACCOUNT_RECORD_OPERATION"></a></li>
+                        <li class=""><a href="javascript:void(0)" data-toggle="tab" data-shown="reportEmailSetting"
+                                        i18n="admin.panelManagement.REPRORT_EMAIL_SETTING"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="row" id="operationRecords">
+                        <div>
+                            <div class="bg1  oh">
+                                <span id="selectRecord" i18n="admin.panelManagement.ACCOUNT_LOGIN_RECORD"></span>
+
+                                <div class="fl ml20">
+                                    <label for="txtLogDateStart" class="dateTit"
+                                           i18n="admin.panelManagement.TIME"></label>
+
+                                    <div class="input-group date form_datetime fl" data-date=""
+                                         data-link-field="dtp_inputStart">
+                                        <input class="form-control" size="16" type="text" value="" id="txtLogDateStart"
+                                               style="border-radius:5px 0 0 5px;"/>
+                                    </div>
+                                    <div class="dib obj1" i18n="admin.panelManagement.TO"></div>
+                                    <div class="input-group date form_datetime fl" data-date=""
+                                         data-link-field="dtp_inputStart">
+                                        <input class="form-control" size="16" type="text" value="" id="txtLogDateEnd"
+                                               style="border-radius:0 5px 5px 0;">
+                                    </div>
+                                    <button type="button" id="searchRecord" class="btn btn-primary ml30 fl"
+                                            data-dismiss="modal"
+                                            i18n="admin.panelManagement.DETERMINE"></button>
+                        <span id="infoDate" class="infoPrompt dn pr"
+                              i18n="admin.panelManagement.DATE_CANNOT_EMPTY"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul id="allRecord" class="bg1 mt10 gray-scrollbar"></ul>
+                    </div>
+                    <div class="row" id="reportEmailSetting" style="display: none;">
+                        <form class="form-horizontal" method="post" action="javascript:void(0)"
+                              id="submit-report-email-list">
+                            <div class="form-group">
+                                <label for="wf-report-setting-name"
+                                       class="col-sm-2 control-label"><span
+                                        i18n="admin.panelManagement.NAME"></span><span>:</span></label>
+
+                                <div class="col-sm-2">
+                                    <input type="text" maxlength="10" class="form-control" id="wf-report-setting-name"
+                                           placeholder="name" required
+                                           oninvalid="alert(I18n.resource.admin.reportEmailSetting.PLEASE_INPUT_NAME);return false;">
+                                </div>
+                                <div class="col-sm-8" id="wf-report-setting-sex">
+                                    <label for="" class="col-sm-2 control-label"><span
+                                            i18n="admin.panelManagement.SEX"></span><span>:</span></label>
+                                    <label style="padding-top: 7px;font-weight: normal;margin-right: 30px"
+                                           data-wf-report-setting-sex-type="1">
+                                        <input type="radio">
+                                        <span i18n="admin.panelManagement.MAN"></span>
+                                    </label>
+                                    <label style="padding-top: 7px;font-weight: normal;"
+                                           data-wf-report-setting-sex-type="0">
+                                        <input type="radio">
+                                        <span i18n="admin.panelManagement.WOMAN"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label"><span
+                                        i18n="admin.panelManagement.MAILBOX"></span><span>:</span></label>
+
+                                <div class="wf-report-setting-email-container">
+                                    <div class="wf-report-setting-email col-sm-3">
+                                        <input type="email" class="form-control"
+                                               placeholder="email"
+                                               required>
+                                        <span class="glyphicon glyphicon-remove wf-report-remove-email"></span>
+                                    </div>
+                                </div>
+                                <span class="glyphicon glyphicon-plus-sign wf-report-email-add"
+                                      id="wf-report-email-add"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label"><span
+                                        i18n="admin.panelManagement.RELATE_PROJECT"></span><span>:</span></label>
+
+                                <div class="col-sm-10">
+                                    <ul class="nav wf-project-list clearfix"></ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10" style="text-align: center">
+                                    <button type="button" class="btn btn-default dn"
+                                            i18n="admin.panelManagement.CANCEL;value=admin.panelManagement.CANCEL;title=admin.panelManagement.CANCEL"></button>
+                                    <button type="submit" class="btn btn-success"
+                                            i18n="admin.panelManagement.CONFIRM;value=admin.panelManagement.CONFIRM;title=admin.panelManagement.CONFIRM">
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--修改密码模态窗口开始-->
+<div class="modal fade" id="editPwdWin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel" i18n="admin.panelManagement.MODIFY_THE_PASSWORD"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="editOldPwd" class="col-sm-3 col-sm-offset-1 control-label"
+                               i18n="admin.panelManagement.ORIGINAL_PASSWORD"></label>
+
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control" id="editOldPwd" placeholder=""
+                                   i18n="placeholder=admin.panelManagement.ORIGINAL_PASSWORD">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editNewPwd" class="col-sm-3 col-sm-offset-1 control-label"
+                               i18n="admin.panelManagement.NEW_PASSWORD"></label>
+
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control" id="editNewPwd" placeholder=""
+                                   i18n="placeholder=admin.panelManagement.NEW_PASSWORD">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCheckNewPwd" class="col-sm-3 col-sm-offset-1 control-label"
+                               i18n="admin.panelManagement.CONFIRM_NEW_PASSWORD"></label>
+
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control" id="editCheckNewPwd" placeholder=""
+                                   i18n="placeholder=admin.panelManagement.CONFIRM_NEW_PASSWORD">
+                        </div>
+                    </div>
+                    <div style="text-indent: 98px;color: #f0ad4e;height: 30px;"
+                         i18n="admin.panelManagement.PASSWORD_FORMAT"></div>
+                    <div id="returnInfoCon" class="form-group" style="display:none;">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-8 infoPrompt" id="returnInfo"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                        i18n="admin.panelManagement.CANCEL"></button>
+                <button type="button" class="btn btn-primary" id="submitResetPwd"
+                        i18n="admin.panelManagement.CONFIRM"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--修改密码模态窗口结束-->
+
+<!--确认窗口开始-->
+<article id="PromptWin" class="modal fade promptWin">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" i18n="admin.panelManagement.PROMPT">:</h4>
+            </div>
+            <div class="modal-body">
+                <p id="PromptWinInfo" class="infoPrompt" style="text-align:center;"></p>
+            </div>
+        </div>
+    </div>
+</article>
+<!--确认窗口结束-->
+
+<!--模版开始-->
+<script type="template" id="paneProjectUserInfoTmpl">
+    <div class="box1">
+        <div class="media">
+            <div class="media-left">
+                <div class="thumbnail image-upload">
+                    <label for="file-input">
+                        <!if(!!userpic) {!>
+                        <img class="media-object userPic" src="http://images.rnbtech.com.hk<!=userpic!>"
+                             alt="<!=userfullname!>">
+                        <!} else{ !>
+                        <img class="media-object userPic"
+                             src="/static/images/avatar/default/1.jpg"
+                             alt="<!=userfullname!>">
+                        <!}!>
+                    </label>
+
+                    <input id="file-input" type="file" accept="image/x-png, image/jpeg, image/jpg"/>
+                </div>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading nameEditor">
+                    <span id="useName"><!=userfullname!></span>
+                    <input type="text" class="dn w150" id="editInput" value="<!=userfullname!>" maxlength="10"
+                           data-toggle="tooltip"
+                           data-placement="top"/>
+                    <span id="editName" class="glyphicon glyphicon-pencil op1 ml7 cp"></span>
+                    <button type="button" id="confrimEditName" class="btn btn-default ml10 dn" data-dismiss="modal"
+                            i18n="admin.panelManagement.CONFIRM_THE_CHANGE"></button>
+                </h4>
+
+                <div class="email cl1"><!=useremail!></div>
+                <div class="user mt10">
+                    <span class="userPwd mr15 cp"><span i18n="admin.panelManagement.MODIFY_THE_PASSWORD"></span><span
+                            id="editPwd" class="glyphicon glyphicon-lock op1 ml7"></span></span>
+                    <!if(supervisorName){!>
+                    <span class="cl1" i18n="admin.panelManagement.SUPERIOR"></span><span
+                        class="userSupervisor cl1 mr15">：<!=supervisorName!></span>
+                    <!}!>
+                    <!if(isManager === 1){!>
+                    <span class="userLevel mr15 cl1" i18n="admin.panelManagement.MANAGEMENT_AUTHORITY_OK"></span>
+                    <!} else {!>
+                    <span class="userLevel mr15 cl1" i18n="admin.panelManagement.MANAGEMENT_AUTHORITY_NO"></span>
+                    <!}!>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="template" id="projectNameList">
+    <!for(var i=0;i < projectNameList.length;i++){!>
+    <li data-project-id="<!=projectNameList[i].id!>">
+        <label>
+            <input type="checkbox">
+            <span><!=projectNameList[i].title!></span>
+        </label>
+    </li>
+    <!}!>
+</script>
+<script type="template" id="projectDetailList">
+    <!if (projectDetailList.length) {!>
+    <ul class="nav wf-project-detail">
+        <!for(var i=0;i < projectDetailList.length;i++){!>
+        <li data-navItems-id="<!=projectDetailList[i].id!>"
+            data-navItems-reportFolder="<!=projectDetailList[i].reportFolder!>">
+            <label>
+                <input type="checkbox">
+                <span><!=projectDetailList[i].text!></span>
+            </label>
+        </li>
+        <!}!>
+    </ul>
+    <!}else{!>
+    <ul class="nav wf-project-detail no-data">
+        <li><span>No Data</span></li>
+    </ul>
+    <!}!>
+</script>
+<!--模版结束-->

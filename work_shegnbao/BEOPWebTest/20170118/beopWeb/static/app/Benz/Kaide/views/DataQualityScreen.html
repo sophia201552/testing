@@ -1,0 +1,24 @@
+<style>
+
+</style>
+<div class="crosswisePlane">
+	<div class="timeQueryPlane">
+		<button class="btn" id="choiceTime" datetimepicker=""><span class="glyphicon glyphicon-time" ></span><span>Time</span></button>
+		<input class="timeStyle" id="iptTime" size="16" type="text" data-format="yyyy-mm-dd" value="2016-11-7" >
+	</div>
+	<div class="topBtnWrap">
+		<button class="btn btn-info" id="btnDownload"><a href="http://images.rnbtech.com.hk/custom/beop_sales/Data_Report_2017-01.pdf" target="_blank">下载报表</a></button> 
+	</div>
+	<div class="echartPlane">
+		<div class="btnLegend">
+			<ul>
+				<li><span class="water active" type="Integrity"></span><span> 完整性</span></li>
+				<li><span class="elec active" type="Validity"></span><span> 有效性</span></li>
+				<li><span class="gas active" type="Relevance"></span><span> 关联性</span></li>
+			</ul>
+		</div>
+		<div id="crosswiseChart" class="gray-scrollbar">
+			<div class="crosswiseChart"></div>
+		</div>
+	</div>
+</div>

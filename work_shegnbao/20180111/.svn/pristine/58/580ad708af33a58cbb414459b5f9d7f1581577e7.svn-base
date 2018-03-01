@@ -1,0 +1,14 @@
+export default {
+  ANNOTATION_COST: 'Cost function',
+  ANNOTATION_EPSILON: 'epsilon-SVR Tolerance of difference in model',
+  ANNOTATION_KERNEL: 'Kernel function',
+  ANNOTATION_LINEAR: 'Linear function',
+  ANNOTATION_POLY: 'Polynomial functions',
+  ANNOTATION_RBF: 'Radial basis function',
+  ANNOTATION_SIFMOID: 'sigmoid function',
+  ANNOTATION_PRECOMPUTED: 'In advance.',
+  ANNOTATION_CV_SPLIT_RATIO: 'Test set proportions for cross-validation',
+  DATA: 'Data',
+  HISTORY_VALUE: 'History value',
+  PREDICTED_VALUE: 'Predicted value'
+};

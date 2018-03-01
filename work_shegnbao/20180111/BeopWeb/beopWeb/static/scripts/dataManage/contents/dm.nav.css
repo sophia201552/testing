@@ -1,0 +1,191 @@
+.dataManagerNav {
+    left: 0;
+    width: 240px;
+    height: 100%;
+    top: 0;
+}
+
+.dataManagerBox #dataManagerCloudMenu > li > a {
+    color: #7b7a7b;
+}
+
+.dataManagerBox #dataManagerCloudMenu a:hover {
+    background: #3c4046;
+    color: #fcb813;
+}
+
+.dataManagerBox #dataManagerCloudMenu > li a.active {
+    color: #fcb813;
+    background: #3c4046;
+}
+
+#dataManagerCloudMenu .nav_title_details {
+    display: none;
+}
+
+#dataManagerCloudMenu .pointManagerCloudPointUl > li a {
+    text-indent: 12px;
+    height: 45px;
+    line-height: 45px;
+    width: 100%;
+    color: #eee;
+    padding-left: 10px;
+}
+
+#dataManagerCloudMenu .pointManagerCloudPointUl > li a .iconfont {
+    font-size: 20px;
+}
+
+#dataManagerCloudMenu .pointManagerCloudPointUl > li a .nav-label {
+    user-select: none;
+    -webkit-user-select: none;
+    margin-left: 20px;
+    position: relative;
+    left: 0;
+    top: -1.5px;
+}
+
+#dataManagerCloudMenu > li > a .glyphicon {
+    margin-right: 4px;
+}
+
+.pointManagerCloudPointUl {
+    list-style: none;
+    margin: 15px 0;
+    padding: 0;
+}
+
+#dataManagerCloudMenu {
+    padding-left: 0;
+    list-style: none;
+}
+
+#dataManagerCloudMenu > li a {
+    display: block;
+    text-align: left;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.dataManagerBox.dark #dataManagerCloudMenu li a {
+    color: #fff;
+}
+
+#dataManagerContainer .dataManagerNav {
+    background: #25272b;
+    padding-top: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.pointManagerCloudPoint {
+    position: relative;
+    padding-left: 15px;
+    color: rgba(238, 238, 238, 0.5);
+    height: 20px;
+}
+
+.pointManagerCloudPoint .nav-label {
+    background-color: #25272b;
+    padding-right: 10px;
+    z-index: 9;
+    display: inline-block;
+    position: relative;
+}
+
+.pointManagerCloudPoint .nav-line {
+    width: 203px;
+    height: 1px;
+    margin-top: -1px;
+    background-color: #2f3034;
+    position: relative;
+    top: -23px;
+    display: inline-block;
+}
+
+@media (max-width: 1366px) {
+    #indexMain #dataManagerCloudMenu a:hover {
+        border-radius: 6px 0 0 6px;
+        position: relative;
+        color: #fcb813 !important;
+        background: #646669;
+    }
+
+    #indexMain #dataManagerCloudMenu a:hover .nav_title_details {
+        visibility: visible;
+        transition: width 0.4s ease-out;
+        width: 90px;
+        padding-right: 10px;
+    }
+
+    #dataManagerCloudMenu .nav_title_details {
+        display: block;
+        visibility: hidden;
+        width: 0;
+        position: absolute;
+        background-color: #646669;
+        color: #fcb813;
+        z-index: 2000;
+        padding: 0;
+        border-radius: 0 6px 6px 0;
+        top: 0;
+        left: 46px;
+        height: 42px;
+        overflow: hidden;
+        font-size: 14px;
+        text-align: center;
+        border-left: 1px solid #565656;
+    }
+
+    #dataManagerCloudMenu .pointManagerCloudPointUl > li a {
+        height: 42px;
+        line-height: 42px;
+    }
+
+    .pointManagerCloudPointUl {
+        padding: 0 6px;
+    }
+
+    .pointManagerCloudPointUl {
+        margin: 10px 0;
+    }
+
+    #indexMain #dataManagerCloudMenu a {
+        width: auto;
+        text-indent: 5px;
+    }
+
+    #dataManagerCloudMenu {
+        font-size: 12px;
+    }
+
+    #dataManagerCloudMenu .page-link > span:last-child {
+        display: none;
+    }
+
+    #dataManagerCloudMenu .pointManagerCloudPoint {
+        height: auto;
+        border-bottom: 1px solid #3c4046;
+        text-align: center;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    #dataManagerCloudMenu .pointManagerCloudPoint .nav-label {
+        padding-right: 0;
+    }
+
+    #dataManagerCloudMenu .nav-line {
+        display: none;
+    }
+
+    #dataManagerCloudMenu .nav-label {
+        display: none;
+    }
+
+    #dataManagerContainer .dataManagerNav {
+        padding-top: 0;
+    }
+}

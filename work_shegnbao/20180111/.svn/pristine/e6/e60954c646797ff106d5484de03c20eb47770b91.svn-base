@@ -1,0 +1,8 @@
+export default {
+  CATALOG: 'Catalog',
+  ATTRIBUTE: 'Attribute',
+  TEMPLATE: 'Template',
+  ELEMENT: 'Element',
+  DATA: 'Data',
+  CONFIG: 'Config'
+};

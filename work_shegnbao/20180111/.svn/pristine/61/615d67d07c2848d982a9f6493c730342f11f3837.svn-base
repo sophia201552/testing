@@ -1,0 +1,10 @@
+export default {
+  DATA_ACCESS: 'Data Access',
+  DATA_PROCESSING: 'Data Processing',
+  METHODOLOGY: 'Methodology',
+  DATA_VISUALIZATION: 'Data Visualization',
+  DATA_OUTPUT: 'Data Output',
+  UTILITY: 'Utility',
+  FORECAST: 'Forecast',
+  NO_DESCRIPTION: 'No Description'
+};

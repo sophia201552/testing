@@ -1,0 +1,280 @@
+﻿<style>
+    .pm table {
+        margin-top: 10px;
+    }
+
+    .pm .table > thead {
+        background-color: #f5f5f5;
+    }
+
+        .pm .table > thead > tr > th {
+            border-bottom: none;
+            padding-top: 15px;
+            text-align: center;
+        }
+
+    .pm .table > tbody > tr > td {
+        border-top: none;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .pm td .btn-danger {
+        margin-left: 10px;
+        padding: 1px 10px;
+    }
+
+    .pm .panel-heading span {
+        font-size: 18px;
+    }
+
+    .pm .table-responsive {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .pm .dropdown {
+        margin-right: 20px;
+    }
+
+    .pm .inventory {
+        margin-top: 20px;
+    }
+
+        .pm .inventory span {
+            float: left;
+            margin-right: 5px;
+            width: 15px;
+        }
+
+    .pm .table-hover > tbody > tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    #modalIntervalConifg .num {
+        text-align: right;
+    }
+
+    #tbody .tdHasRun{
+        text-align: center;
+        cursor: pointer;
+    }
+
+        #tbody .tdHasRun:hover {
+            background-color: darkseagreen;
+        }
+
+    .inputHasRun {
+        width: 60px;
+        text-align: right;
+        margin-right: 5px;
+    }
+</style>
+
+<div>
+    <div class="container pm" style="height: 100%">
+        <div class="row" style="height: 100%">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span>零配件管理</span>
+                </div>
+                <div class="panel-body whitePanel">
+                    <div class="row">
+                        <div class="dropdown col-md-1">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">部件型号 <span class="caret"></span></button>
+                            <ul class="dropdown-menu selectItem">
+                                <li><a href="javascript:void(0);">ListItem1</a></li>
+                                <li><a href="javascript:void(0);">ListItem2</a></li>
+                                <li><a href="javascript:void(0);">ListItem3</a></li>
+                                <li><a href="javascript:void(0);">ListItem4</a></li>
+                                <li><a href="javascript:void(0);">ListItem5</a></li>
+                                <li><a href="javascript:void(0);">ListItem6</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown col-md-1">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">适用机型 <span class="caret"></span></button>
+                            <ul class="dropdown-menu selectItem">
+                                <li><a href="javascript:void(0);">ListItem1</a></li>
+                                <li><a href="javascript:void(0);">ListItem2</a></li>
+                                <li><a href="javascript:void(0);">ListItem3</a></li>
+                                <li><a href="javascript:void(0);">ListItem4</a></li>
+                                <li><a href="javascript:void(0);">ListItem5</a></li>
+                                <li><a href="javascript:void(0);">ListItem6</a></li>
+                            </ul>
+                        </div>
+
+                        <button onclick="gotoPartsPurchaseHtml()" class="btn btn-default btn-primary" style="float: right; width: 120px; margin-right: 20px;">补充库存</button>
+                        <button data-toggle="modal" data-target="#modalIntervalConifg" class="btn btn-default btn-primary" style="float: right; width: 120px; margin-right: 10px;">维护周期设置</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>配件类型</th>
+                                    <th>配件型号</th>
+                                    <th>适用机型</th>
+                                    <th>更换次数</th>
+                                    <th>库存</th>
+                                    <th>责任人</th>
+                                    <th>运行时间</th>
+                                    <th>下次更换时间</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalIntervalConifg" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document" style="margin-top: 100px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">设置维护周期</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>类型</th>
+                                <th>提醒时刻(小时)</th>
+                                <th>维护周期(小时)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>火花塞</td>
+                                <td><input type="text" class="num" value="900" /></td>
+                                <td><input type="text" class="num" value="1000" /></td>
+                            </tr>
+                            <tr>
+                                <td>机油过滤器</td>
+                                <td><input type="text" class="num" value="1000" /></td>
+                                <td><input type="text" class="num" value="2000" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align: center; font-size: 20px;">
+                                    <span class="glyphicon glyphicon-plus-sign"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var components = [
+        {
+            componentType: '机油',
+            componentModel: 'O-200',
+            applicableModel: 'CG200/S-NG',
+            replaceTimes: 260,
+            inventory: 6,
+            dutyPerson: "Alice",
+            nextMaintenanceTime: "2015-12-20"
+        },
+        {
+            componentType: '机油过滤器',
+            componentModel: 'OL-200',
+            applicableModel: 'CG200/S-NG',
+            replaceTimes: 260,
+            inventory: 3,
+            dutyPerson: "Alice",
+            nextMaintenanceTime: "2015-12-20"
+        },
+        {
+            componentType: '火花塞',
+            componentModel: 'HHS-230',
+            applicableModel: 'CG200/S-NG',
+            replaceTimes: 2,
+            inventory: 6,
+            dutyPerson: "Alice",
+            nextMaintenanceTime: "2015-12-20"
+        },
+        {
+            componentType: '油气分离器',
+            componentModel: 'OFS-200',
+            applicableModel: 'CG200/S-NG',
+            replaceTimes: 2,
+            inventory: 4,
+            dutyPerson: "Alice",
+            nextMaintenanceTime: "2015-12-20"
+        }
+    ];
+
+    for (var i = 0; i < components.length; i++) {
+        var order = components[i];
+        var tpl = '<tr><td>' + (i + 1) + '</td>';
+        tpl += '<td>' + order.componentType + '</td>';
+        tpl += '<td>' + order.componentModel + '</td>';
+        tpl += '<td>' + order.applicableModel + '</td>';
+        tpl += '<td>' + order.replaceTimes + '</td>';
+        if (order.componentType == '火花塞') {
+            if (AppConfig.HasBuy) {
+                tpl += '<td><div class="inventory"><span>' + order.inventory + '</span><div class="progress"><div class="progress-bar" style="width: ' + (order.inventory / 6) * 100 + '%;"></div></div></div></td>';
+                AppConfig.HasBuy = false;
+            } else {
+                tpl += '<td><div class="inventory"><span>4</span><div class="progress"><div class="progress-bar progress-bar-danger" style="width: ' + (4 / 6) * 100 + '%;"></div></div></div></td>';
+            }
+        } else {
+            tpl += '<td><div class="inventory"><span>' + order.inventory + '</span><div class="progress"><div class="progress-bar" style="width: ' + (order.inventory / 6) * 100 + '%;"></div></div></div></td>';
+        }
+
+        tpl += '<td>' + order.dutyPerson + '</td>';
+        tpl += '<td class="tdHasRun">500</td>';
+        tpl += '<td>' + order.nextMaintenanceTime + ' &nbsp;&nbsp;<button class="btn btn-xs btn-success">30d </button></td></tr>';
+        $('#tbody').append(tpl);
+    }
+    $('.selectItem li').off('click').click(function () {
+        var $current = $(this);
+        for (var n = 1; n < 3; n++) {
+            $current.parent('ul').siblings('#dropdownMenu' + n).html($current.find('a').html());
+        }
+    });
+    $('#tbody .tdHasRun').off('click').click(function () {
+        var td = event.currentTarget;
+        var input = document.createElement('input');
+        input.type = 'text';
+        input.value = 900;
+        input.className = 'inputHasRun';
+
+        var span = document.createElement('span');
+        span.textContent = '确定';
+        span.className = 'btn btn-default';
+        span.onclick = function () {
+            var data = {
+                "title": "【库存不足】采购GXC150S用火花塞",
+                "dueDate": "2015-12-30",
+                "groupId": "307",
+                "critical": "0",
+                "detail": "GXC150S运行时间即将达到1000小时，需要更换火花塞等配件。需要配件数量：6，实际配件数量：4，需要补充库存。请点击以下按钮进行采购。\
+                          </br><div class='btn btn-default' id='btnTestBuy' style='color:#333' onclick = 'ScreenManager.show(PartsPurchaseScreen);'>点击进行采购</div>",
+                "collection": "false",
+                "executor[]": ["1018"],
+                "userId": 1018
+            };
+            WebAPI.post('/workflow/transaction/new/', data)
+                .done(function (result) {
+                    alert('您有一条新的工单');
+                });
+        };
+
+        td.onclick = null;
+        td.innerHTML = '';
+        td.appendChild(input);
+        td.appendChild(span);
+    });
+
+    function gotoPartsPurchaseHtml() {
+        ScreenManager.show(PartsPurchaseScreen);
+    }
+</script>

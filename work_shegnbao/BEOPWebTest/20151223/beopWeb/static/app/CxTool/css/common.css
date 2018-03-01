@@ -1,0 +1,709 @@
+/*样式覆盖 开始*/
+body {
+    background: #e7e7e7;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.pr {
+    position: relative;
+}
+
+.pa {
+    position: absolute;
+}
+
+.pf {
+    position: fixed;
+}
+
+.tl {
+    text-align: left;
+}
+
+.tc {
+    text-align: center;
+}
+
+.tr {
+    text-align: right;
+}
+
+.cp {
+    cursor: pointer;
+}
+
+.pl10 {
+    padding-left: 10px;
+}
+
+.pr10 {
+    padding-right: 10px;
+}
+
+.p20 {
+    padding: 20px;
+}
+
+.ps20 {
+    padding: 0 20px;
+}
+
+.pv20 {
+    padding: 20px 0;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt30 {
+    margin-top: 30px;
+}
+
+.mt50 {
+    margin-top: 50px;
+}
+
+.mt80 {
+    margin-top: 80px;
+}
+
+.mb10 {
+    margin-bottom: 15px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.ml10 {
+    margin-left: 10px;
+}
+
+.ml15 {
+    margin-left: 15px;
+}
+
+.ml20 {
+    margin-left: 20px;
+}
+
+.ml30 {
+    margin-left: 30px;
+}
+
+.mr5 {
+    margin-right: 5px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.mr25 {
+    margin-right: 25px;
+}
+
+.mv15 {
+    margin: 15px 0;
+}
+
+.m_auto {
+    margin: 0 auto;
+}
+
+.ti5 {
+    text-indent: 5px;
+}
+
+.ti10 {
+    text-indent: 10px;
+}
+
+.oh {
+    overflow: hidden;
+}
+
+.oa {
+    overflow: auto;
+}
+
+.vm {
+    vertical-align: middle;
+}
+
+.vi {
+    vertical-align: inherit;
+}
+
+.w150 {
+    width: 150px;
+}
+
+.w180 {
+    width: 180px;
+}
+
+.w200 {
+    width: 200px;
+}
+
+.w400 {
+    width: 400px;
+}
+
+.wr100 {
+    width: 100%;
+}
+
+.db {
+    display: block;
+}
+
+.dn {
+    display: none;
+}
+
+.cp {
+    cursor: pointer;
+}
+
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tb1 {
+    width: 100%;
+}
+
+.tb1 td, .tb1 th {
+    border: 1px solid #c7c7c7;
+    padding: 10px;
+    text-align: center;
+}
+
+.btn-group {
+    margin-right: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    float: left;
+}
+
+/*样式覆盖 结束*/
+
+#buttonGroup {
+    margin: 10px 0;
+    color: #333;
+}
+
+#buttonGroup button {
+    border: 1px solid #d7d7d7;
+    background: #fff;
+    color: #000;
+}
+
+#text_search {
+    float: left;
+    position: relative;
+    top: 0;
+}
+
+#text_search, #select_project {
+    width: 180px;
+    margin-bottom: 10px;
+}
+
+#search {
+    float: right;
+}
+
+#select_project {
+    float: left;
+    margin-right: 15px;
+}
+
+.sheet {
+    width: 100%;
+    overflow: hidden;
+    height: calc(100vh - 260px);
+}
+
+.energy-section {
+    min-height: calc(100vh - 350px);;
+}
+
+@media (max-height: 768px) {
+    .sheet {
+        width: 100%;
+        overflow: hidden;
+        height: calc(100vh - 250px);
+    }
+
+    .energy-section {
+        min-height: calc(100vh - 275px);;
+    }
+}
+
+.sheet .htSearchResult {
+    color: #1E90FF;
+}
+
+.sheet .htSearchResult .keyword {
+    color: orange;
+}
+
+.sheet tbody .searchCurrent {
+    border: 1px solid red;
+}
+
+.sheet .htCheckboxRendererInput {
+    margin-top: 0;
+    vertical-align: middle;
+}
+
+/*浮动窗口 开始*/
+.appWin .modal-dialog {
+    margin-top: 200px;
+}
+
+.winP {
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+}
+
+.winP .title {
+    width: 100px;
+    float: left;
+    margin-right: 10px;
+    font-weight: normal;
+}
+
+#isDelPointWin .modal-dialog, #editPointWin .modal-dialog {
+    margin-top: 200px;
+}
+
+#isDelPointWin .modal-dialog, #editPointWin .modal-dialog {
+    margin-top: 50px;
+}
+
+#isDelPointWin .modal-dialog {
+    width: 400px;
+}
+
+#editPointWin .modal-dialog {
+    width: 740px;
+}
+
+#pointBasicWrapper {
+    width: 270px;
+}
+
+#pointBasicWrapper p {
+    height: 40px;
+    line-height: 40px;
+}
+
+.basicParameterName {
+    width: 100px;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#editPointWin input[type="text"], #editPointWin select {
+    width: 150px;
+}
+
+#pointInfoDownWrapper .boxMr {
+    margin-right: 109px;
+}
+
+#pointInfoUpWrapper {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #ccc;
+}
+
+#pointRelatedWrapper .reserveParamWrapper {
+    width: 33%;
+    margin-bottom: 15px;
+    float: left;
+    overflow: hidden;
+}
+
+#pointBasicWrapper input, #pointBasicWrapper select {
+    float: right;
+}
+
+.editWinbox {
+    float: left;
+    width: 150px;
+}
+
+#systemNameContentWrapper {
+    width: 265px;
+    margin: 0 auto;
+}
+
+#systemNameSheet td, #systemNameSheet th, #pointNameWrapper td, #pointNameWrapper th {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    background: #fff;
+}
+
+#systemNameSheet .editOk, #pointNameSheet .editOk {
+    border: 1px solid #ccc;
+    padding: 2px 10px;
+    box-shadow: 0 0 5px #ccc;
+    border-radius: 4px;
+    display: block;
+}
+
+/*浮动窗口 结束*/
+
+#point_import {
+    position: relative;
+    overflow: hidden;
+}
+
+#point_import input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.currentRow {
+    background-color: #E7E8EF !important;
+}
+
+.point_setting {
+    margin: 20px auto;
+    padding: 20px;
+    width: 992px;
+    background: #fff;
+}
+
+.point_setting h1 {
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-size: 26px;
+    margin: 0;
+}
+
+/*点表配置页面开始*/
+#point_setting {
+    height: 700px;
+}
+
+#point_set_source {
+    width: 180px;
+}
+
+#point_setting_up_wrapper, #point_set_source_wrapper {
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 50px;
+    margin: 30px 0 50px 0;
+}
+
+.point_set_title {
+    height: 45px;
+    line-height: 45px;
+    font-size: 20px;
+}
+
+#point_setting input {
+    width: 180px;
+}
+
+#point_setting_down_ul > li, #point_setting_edit_ul li {
+    margin: 0 auto 20px auto;
+}
+
+#point_setting_down_ul, #point_setting_edit_ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+#point_setting_down_ul li, #point_setting_edit_ul li {
+    width: 20%;
+    float: left;
+}
+
+#point_setting_down_ul .title, #point_setting_edit_ul .title {
+    display: block;
+    width: 150px;
+    text-indent: 10px;
+}
+
+#point_set_btn_warpper .active {
+    color: #d9534f;
+}
+
+#pointSetSubmitWrapper {
+    bottom: 50px;
+    text-align: center;
+    width: 952px;
+}
+
+.points-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/*点表配置页面结束*/
+
+/*chosen插件样式改写*/
+#pointForm .chosen-search > input {
+    width: 100%;
+}
+
+.chosen-container {
+    width: 200px;
+}
+
+/*cxtool样式开始*/
+#loginForm {
+    width: 300px;
+    padding: 20px 40px;
+    margin: 300px auto;
+    /* background: #fff; */
+    border: 1px dashed #c7c7c7;
+}
+
+#loginForm h1 {
+    font-size: 20px;
+    height: 40px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/*cxtool样式结束*/
+#addPointNameForm .addSystemParamName {
+    width: 200px;
+}
+
+#addPointNameWin .modal-dialog {
+    width: 450px;
+    margin-top: 120px;
+}
+
+#addPointNameWin .form-group {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+#paramNameInputWrapper, #paramSystemNameInputWrapper {
+    padding: 5px 10px;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+#systemNameSelect {
+    width: 172px;
+}
+
+#paramNameInputWrapper input[type=text], #paramSystemNameInputWrapper input[type=text] {
+    display: block;
+    float: left;
+    width: 172px;
+    margin: 5px;
+}
+
+/*cxtool样式结束*/
+.spinnerMask {
+    position: absolute;
+    z-index: 1000;
+    opacity: 0.4;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #808080;
+}
+
+.form1 input[type='text'], .form1 select {
+    width: 150px;
+    margin-right: 10px;
+}
+
+.form1 table input[type='text'], .form1 table select {
+    width: 150px;
+    margin: 0 auto;
+}
+
+/*cxtool操作记录开始*/
+#op_record_error_info {
+    display: block;
+    float: left;
+    color: #a94442;
+    text-indent: 30px;
+    position: relative;
+    left: -2px;
+    top: 7px;
+}
+
+/*cxtool操作记录结束*/
+.pagination a {
+    border: 1px solid grey;
+    padding: 2px 5px;
+}
+
+#page-wrapper {
+    overflow: hidden;
+}
+
+#wrapper .pagination {
+    margin: 10px 0;
+}
+
+#search_result {
+    margin-top: 11px;
+    max-height: 700px;
+}
+
+@media (max-height: 768px) {
+    #wrapper #page-wrapper {
+        min-height: 700px;
+    }
+
+    #search_result {
+        max-height: 500px;
+    }
+}
+
+#search_result td, #search_result th {
+    border: 1px solid #ccc;
+}
+
+#search_result tbody td {
+    background: #fff;
+}
+
+#search_result .engine_point_mapping {
+    padding: 0;
+    text-align: center;
+}
+
+#mappingResultContainer label, .engine_point_mapping label {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.search_panel_tool {
+    position: absolute;
+    top: -28px;
+    left: 0;
+    font-size: 16px;
+}
+
+.search_panel_tool .glyphicon {
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    background-color: #FFFFFF;
+    padding: 5px;
+}
+
+#servers_table tr:hover {
+    cursor: pointer;
+}
+
+#manualAddPointWin .modal-dialog {
+    width: 400px;
+}
+
+#pointsContent {
+    height: 100px;
+}
+
+.searchterm {
+    color: blue;
+    background-color: yellow;
+}
+
+.count {
+    margin: 0 2px 0 5px;
+}
+
+#point_table_info {
+    overflow: hidden;
+    height: 41px;
+    line-height: 32px;
+}
+
+#mappingResultWrapper {
+    width: 100%;
+    height: 700px;
+    background-color: white;
+    position: relative;
+    top: -56px;
+    display: none;
+}
+
+#closeMappingResult {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+}
+
+#divPointsList .panel-heading {
+    background-color: #fff;
+    border-color: #fff;
+}
+
+#dialogContent .modal-header {
+    display: none;
+}
+
+#dialogContent .modal-body {
+    padding: 15px;
+}
+
+#tableMonitorBox {
+    min-height: 150px;
+    max-height: 300px;
+    overflow-y: auto;
+}

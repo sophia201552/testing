@@ -1,0 +1,140 @@
+<style>
+    .modal-body .carousel-inner .item{
+        min-height: 375px;
+        max-height: 520px;
+        overflow-x:hidden; 
+        overflow-y: auto; 
+    }
+    .modal-backdrop.in{
+        z-index: 0;
+    }
+    .form-control-label{
+        padding: 6px 0;
+    }
+    .batchBtn:last-child{
+        margin-left:40px; 
+    }
+    #boxParentList {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    #addedGroup .btn{
+        border: 1px solid #ccc;
+        margin: 5px;
+    }
+    #btnAddParent{
+        display: none;
+        margin: 2px auto;
+        padding: 4px 6px;
+    }
+    textarea{
+        resize: none;
+        overflow: auto;
+    }
+    .iptNeed {
+        display: inline-block;
+        height: 6px;
+        width: 6px;
+        background-color: red;
+        border-radius: 10px;
+    }
+    /*#selGroupList {
+        display: none;
+    }*/
+</style>
+<!--div class="modal fade" id="createDeviceModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">-->
+            <div class="modal-header">
+                <button id="closeBtn" type="button" class="close" >&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body next">
+                <div id="createModalSld" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">            
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <!-- <div class="form-group row">
+                                <h3 class="text-center col-ms-12 form-control-label">基本信息</h3>
+                            </div> -->
+                            <div class="form-group row" id="divBatch">
+                                <label class="col-sm-2 text-right form-control-label">添加数量:
+                                </label>
+                                <div class="col-sm-8">
+                                    <input type="radio" name="batchBtn" class="batchBtn" data-batch="false" checked>单个</input>
+                                    <input type="radio" name="batchBtn" class="batchBtn" data-batch="true">批量</input>
+                                </div>
+                            </div>
+                            <div class="form-group row" id="divName">
+                                <label class="text-right col-sm-2 form-control-label" for="nameInput">名称(Name):
+                                </label>
+                                <div class="col-sm-8">
+                                    <input id="nameInput" type="text" class="form-control" required>
+                                </div>
+                                <span class="iptNeed"></span>
+                            </div>
+                            <div class="form-group row hide" id="divNameBatch">
+                                <label class="text-right col-sm-2 form-control-label" for="batchNameArea">名称批量设置:
+                                </label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" id="batchNameArea" placeholder="例：名字设置为：冷机<#x#>---批量设置为：{x:['1','2']}---得到冷机1，冷机2两个设备"></textarea>
+                                </div>
+                                <span class="iptNeed"></span>
+                            </div>
+                            <div class="form-group row" id="divTypeList">
+                                <label class="text-right col-sm-2 form-control-label" for="typeList">类型(Type):
+                                </label>
+                                <div class="col-sm-8">
+                                    <select class="form-control col-sm-10" id="typeList">
+                                    </select>
+                                </div>
+                                <span class="iptNeed"></span>
+                            </div>
+                            <div class="form-group row" id="divParentSet">
+                                <label for="type" class="text-right col-sm-2 form-control-label">组别(Group):</label>
+                                <div class="col-sm-8" id="boxParentList">
+                                    <div class="col-sm-6">
+                                        <select class="form-control" id="parentTypeList"></select>
+                                    </div>
+                                    <div class="col-sm-6 divParentList">
+                                        <select class="form-control parentList"></select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button id="btnAddParent" type="button" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                                </div>
+                            </div>
+                            <div class="form-group row hide col-sm-offset-2" id="addedGroup">
+                            </div>
+                            <div class="form-group row" id="divPrefix">
+                                <label for="type" class="text-right col-sm-2 form-control-label">前缀(Prefix):</label>
+                                <div class="col-sm-8">
+                                    <input id="prefixInput" type="text" class="form-control">
+                                </div>    
+                            </div>
+                            <div class="form-group row hide" id="divPrefixBatch">
+                                <label class="text-right col-sm-2 form-control-label">前缀批量设置:</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" id="batchPrefixArea" placeholder="例：前缀设置为：Test<#x#>---批量设置格式为：{x:['1','2']}---为设备按顺序设置成Test1，Test2两个前缀"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="item">
+                                    
+                        </div> -->
+                        <div class="item" id="bindDataGroup">
+                        </div>
+                       <!--  <div class="item">
+                        </div>
+                               -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <!--<button type="button" id="skipBtn" class="btn btn-default" href="#createModalSld" role="button" data-slide="next">跳过</button>-->
+                <button type="button" id="nextBtn" class="btn btn-primary" >下一步</button>
+                <button type="button" id="confirmBtn" class="btn btn-primary hide">完成</button>
+            </div>
+        <!--/div>
+</div>
+</--div>

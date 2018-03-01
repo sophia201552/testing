@@ -1,0 +1,332 @@
+<div id="tagContainer" class="tag-box"></div>
+<!--@formatter:off-->
+<script type="text/html" id="tpl_tag_create">
+    <div id="tagCreateBox">
+        <h3 class="mb20">该项目首次进行tag标记,系统将为您筛选出关键字字符串。</h3>
+        <div>
+            <button type="button" class="btn btn-default mr30" id="dmEdit">手动分类</button>
+            <button type="button" class="btn btn-primary" id="dmNext">下一步</button>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="tpl_tag_loading">
+    <div id="tagLoadingBox">
+        <div><span class="glyphicon glyphicon-refresh"></span></div>
+        <h3 class="mb20">系统正在为您搜索关键字,共4324个点,大约需要1min。</h3>
+        <div><button type="button" class="btn btn-default" id="dmCancel">取消</button></div>
+    </div>
+</script>
+<script type="text/html" id="tpl_tag_edit">
+    <div id="tagEditBox">
+        <div class="tag-left-box fl gray-scrollbar" id="tagTreeBox"></div>
+        <div id="tagEditContent" class="fl tag-center-box">
+        </div>
+        <div class="tag-right-box fl">keywords</div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_tag_rule_edit">
+    <div class="rule-title">规则编辑</div>
+    <form class="mt20">
+        <div class="oh rule-basic-info">
+            <label class="fl mr20">
+                <span class="fl mt5">文件夹名称</span>
+                <input type="text" name="ruleFolderName" id="ruleFolderName" class="form-control fl"/>
+            </label>
+            <label class="fl mr20">
+                <span class="fl mt5">是否生成子文件夹</span>
+                <select class="form-control fl" id="isCreateSubFolder">
+                    <option value="1">是</option>
+                    <option value="2" selected="selected">否</option>
+                </select>
+            </label>
+            <label class="fl dn" id="ruleSubFolderNameBox">
+                <span class="fl mt5">子文件夹名称</span>
+                <input type="text" name="ruleSubFolderName" id="ruleSubFolderName" class="form-control fl"/>
+            </label>
+        </div>
+        <div id="ruleBox">
+            <ul id="ruleUl" class="oh mt20"></ul>
+        </div>
+        <div class="mt20 tc">
+            <button type="button" class="btn btn-default" id="dmReset">重置</button>
+            <button type="button" class="btn btn-success" id="dmRuleTest">规则测试</button>
+            <button type="button" class="btn btn-success" id="dmRuleConfirm">确定</button>
+        </div>
+    </form>
+    <div id="ruleTable" class="pr mt20" style="padding: 0 10px;"></div>
+</script>
+<script type="text/html" id="tpl_tag_view">
+    <div id="tagModelsBox">
+        <div class="tag-left-box fl" id="tagTreeBox"></div>
+        <div class="tag-center-box fl"></div>
+        <div class="tag-right-box fl"></div>
+    </div>
+</script>
+
+
+<script type="text/html" id="tpl_tag_keyword_box">
+    <div id="tag-list-box">
+        <div id="keywordName" class="keywordName">
+          AHU
+        </div>
+        <div class="keyword-list-header clearfix">
+            <div class="input-group clearfix fl" style="max-width: 325px;">
+                <input id="textSearch" class="form-control" type="text" placeholder="关键字" required>
+                <span class="input-group-addon">
+                    <button type="button" id="keywordSearch" class="glyphicon glyphicon-search"></button>
+                </span>
+            </div>
+            <div class="fl" style="padding-left: 10px;">
+                <button id="all-select" class="btn btn-default tag-btn-select">全选</button>
+                <button id="reverse-select" class="btn btn-default tag-btn-select" style="margin-left: 5px;">反选</button>
+            </div>
+        </div>
+        <div id="keyword-list-table">
+
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_tag_mode_box">
+    <div id="tag-list-box">
+        <div class="modeType clearfix">
+            <div class="fl modeStyle tabMode cp" id="mark-mode">标记模式</div>
+            <div class="fl modeStyle cp" id="tag-mode">TAG模式</div>
+        </div>
+        <div id="modeType-content">
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_tag_table_item">
+    <div id="tag-list-box">
+        <div class="modeType clearfix">
+            <div class="fl modeStyle tabMode cp" id="mark-mode">标记模式</div>
+            <div class="fl modeStyle cp" id="tag-mode">TAG模式</div>
+        </div>
+        <div id="modeType-content">
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_markMode_point">
+    <div class="mode-list-header">
+        <div class="exportDataHeader clearfix">
+            <select id="point_format" name="format" class="form-control fl mr10 markMode-select">
+                <option value="all">全部</option>
+                <option value="0">未标记</option>
+                <option value="1">已标记</option>
+            </select>
+
+            <div class="exportDataTextSearchBox fl">
+                <span class="icon iconfont icon_position modeDataSearchIcon cp dmPointHover">&#xe713;</span>
+                <input type="text" id="mode-data-Search" class="form-control"
+                       i18n="placeholder=debugTools.sitePoint.SEARCH"/>
+            </div>
+
+            <div class="list-operating-box clearfix fl ml15">
+
+                <div class="fl cp exportType">
+                    <span id="last-stage" title="上一级">
+                        <span class="icon iconfont" style="display:inline-block;transform:rotate(180deg); top: -2px;">&#xe652;</span>
+                        <span class="exportTypeWords">上一级</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="all-select" title="全选">
+                        <span class="icon iconfont">&#xe661;</span>
+                        <span class="exportTypeWords">全选</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="reverse-select" title="反选">
+                        <span class="icon iconfont">&#xe6c8;</span>
+                        <span class="exportTypeWords">反选</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="markMode-backed" title="撤回">
+                        <span class="icon iconfont">&#xe66d;</span>
+                        <span class="exportTypeWords">撤回</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="markMode-return" title="返回">
+                        <span class="icon iconfont">&#xe652;</span>
+                        <span class="exportTypeWords">返回</span>
+                    </span>
+                </div>
+
+                <div class="fl exportType cp">
+                    <span id="markMode-format" title="格式化">
+                        <span class="icon iconfont">&#xe6d4;</span>
+                        <span class="exportTypeWords">格式化</span>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="markMode-point-table">
+
+    </div>
+</script>
+
+<script type="text/html" id="tpl_markMode_folder">
+    <div class="mode-list-header">
+        <div class="exportDataHeader clearfix">
+            <select name="format" class="form-control fl mr10 markMode-select">
+                <option value="all">全部</option>
+                <option value="0">未标记</option>
+                <option value="1">已标记</option>
+            </select>
+
+            <div class="exportDataTextSearchBox fl">
+                <span class="icon iconfont icon_position modeDataSearchIcon cp dmPointHover">&#xe713;</span>
+                <input type="text" id="mode-data-Search" class="form-control"
+                       i18n="placeholder=debugTools.sitePoint.SEARCH"/>
+            </div>
+
+            <div class="list-operating-box clearfix fl ml15">
+                <div class="fl cp exportType">
+                    <span id="all-select" title="全选">
+                        <span class="icon iconfont">&#xe661;</span>
+                        <span class="exportTypeWords">全选</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="reverse-select" title="反选">
+                        <span class="icon iconfont">&#xe6c8;</span>
+                        <span class="exportTypeWords">反选</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="markMode-backed" title="撤回">
+                        <span class="icon iconfont">&#xe66d;</span>
+                        <span class="exportTypeWords">撤回</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="markMode-return" title="返回">
+                        <span class="icon iconfont">&#xe652;</span>
+                        <span class="exportTypeWords">返回</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="markMode-folder-table">
+
+    </div>
+</script>
+
+<script type="text/html" id="tpl_tag_mode_list">
+     <div class="mode-list-header clearfix">
+         <div class="exportDataTextSearchBox fl">
+             <span class="icon iconfont icon_position modeDataSearchIcon cp dmPointHover">&#xe713;</span>
+             <input type="text" id="mode-data-Search" class="form-control"
+                    i18n="placeholder=debugTools.sitePoint.SEARCH"/>
+         </div>
+     </div>
+     <div id="tagMode-table">
+
+     </div>
+</script>
+
+<article id="tag-markMode-edit" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" id="modeEditContent">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</article>
+
+<script type="text/html" id="tpl_tag_modeEdit">
+    <div class="clearfix">
+        <div class="fl editType cp">楼层</div>
+        <div class="fl editType selectType cp">冷机参数</div>
+        <div class="fl editType cp">冷机规格</div>
+        <div class="fl editType cp">冷机参数</div>
+        <div class="fl editType cp">冷机规格</div>
+    </div>
+    <div id="modeEdit-content">
+        <div class="row dn editContentBox">
+            <div class="editContentType clearfix">
+                <label class="control-label col-md-3 editName">额定值冷量</label>
+                <div class="col-md-9 editContent">
+                    <input type="text" class="form-control" name="" value="">
+                </div>
+            </div>
+            <div class="editContentType clearfix">
+                <label class="control-label col-md-3 editName">输入电源</label>
+                <div class="col-md-9 editContent">
+                    <input type="text" class="form-control" name="" value="">
+                </div>
+            </div>
+            <div class="editContentType clearfix">
+                <label class="control-label col-md-3 editName">输入功率</label>
+                <div class="col-md-9 editContent">
+                    <input type="text" class="form-control" name="" value="">
+                </div>
+            </div>
+            <div class="editContentType clearfix">
+                <label class="control-label col-md-3 editName">额定值冷量</label>
+                <div class="col-md-9 editContent">
+                    <input type="text" class="form-control" name="" value="">
+                </div>
+            </div>
+        </div>
+
+        <div class="row editContentBox">
+            <div class="editContentType clearfix">
+                <label class="control-label col-md-3 editName">额定值冷量</label>
+                <div class="col-md-9 editContent">
+                    <input type="text" class="form-control" name="" value="">
+                </div>
+            </div>
+            <div class="editContentType clearfix">
+                <label class="control-label col-md-3 editName">输入电源</label>
+                <div class="col-md-9 editContent">
+                    <input type="text" class="form-control" name="" value="">
+                </div>
+            </div>
+            <div class="editContentType clearfix">
+                <label class="control-label col-md-3 editName">输入功率</label>
+                <div class="col-md-9 editContent">
+                    <input type="text" class="form-control" name="" value="">
+                </div>
+            </div>
+            <div class="editContentType clearfix">
+                <label class="control-label col-md-3 editName">额定值冷量</label>
+                <div class="col-md-9 editContent">
+                    <input type="text" class="form-control" name="" value="">
+                </div>
+            </div>
+        </div>
+        <div class="row editContentBox dn">
+
+        </div>
+        <div class="row editContentBox dn">
+
+        </div>
+        <div class="row editContentBox dn">
+
+        </div>
+    </div>
+</script>
+
+<!--@formatter:on-->

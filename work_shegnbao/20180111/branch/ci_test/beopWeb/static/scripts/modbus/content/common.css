@@ -1,0 +1,45 @@
+.md-text {
+    width: 100px;
+    text-align: right;
+    float: left;
+}
+
+.text-search {
+    width: 285px;
+    height: 30px;
+    font-size: 12px;
+    border: 1px solid #eae9ea;
+    padding-left: 11px;
+    outline: none;
+    background-color: #fafafa;
+    padding-right: 27px;
+}
+
+.btn-groups {
+    padding: 8px 0 8px 0;
+    margin: 16px 0 10px;
+    background: #fafafa;
+    border: 1px solid #eae9ea;
+}
+
+.btn-group .navBtnStyle:not(:last-child):after {
+    content: '';
+    background: #eae9ea;
+    width: 1px;
+    height: 13px;
+    display: inline-block;
+    position: relative;
+    right: 0;
+    margin: 0 15px;
+    top: 2px;
+}
+
+.btn-group .navBtnStyle:last-child:after {
+    content: '';
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.table-plugin .pagination .active a {
+    color: orange !important;
+}

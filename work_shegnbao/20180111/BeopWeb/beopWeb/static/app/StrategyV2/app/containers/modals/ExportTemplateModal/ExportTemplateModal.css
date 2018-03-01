@@ -1,0 +1,96 @@
+.modal-container {
+  width: 430px;
+  border-radius: 6px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 6px 20px 0 rgba(23, 28, 53, 0.5);
+}
+.modal-container .modal-title {
+  line-height: 40px;
+  font-size: 16px;
+  height: 40px;
+  background-image: linear-gradient(
+    93deg,
+    rgb(91, 136, 247),
+    rgb(91, 183, 247)
+  );
+  color: rgb(255, 255, 255);
+  padding: 0 24px;
+}
+.modal-body {
+  margin-top: 32px;
+  padding: 0 40px;
+}
+.modal-body > div {
+  margin-top: 16px;
+}
+.modal-container .modal-body label {
+  display: block;
+  height: 18px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  color: rgb(153, 153, 153);
+}
+.modal-container .modal-body input {
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  padding-left: 8px;
+  height: 30px;
+  line-height: 28px;
+  background-color: #f6f8f9;
+  outline: none;
+}
+.modal-container .modal-body input:hover,
+.modal-container .modal-body input:focus,
+.modal-container
+  .modal-body
+  .tagsDropdown
+  > div
+  > div
+  > span:first-child:hover {
+  border-color: rgba(91, 136, 247, 0.6);
+}
+.modal-container .modal-body .tagsDropdown > div {
+  width: 100%;
+}
+.modal-container .modal-body .tagsDropdown > div > div > span:first-child {
+  padding-left: 8px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid transparent;
+  background-color: #f6f8f9;
+  border-radius: 2px;
+}
+.modal-container .modal-footer {
+  height: 50px;
+  overflow: hidden;
+  margin-top: 40px;
+  padding-right: 40px;
+}
+.modal-container .modal-footer > div {
+  float: right;
+}
+.modal-container .modal-footer > div button {
+  float: right;
+  width: 81px;
+  margin-left: 12px;
+  height: 31px;
+  line-height: 31px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: solid 1px #d3d3d3;
+  cursor: pointer;
+  padding: 0 16px;
+  color: #999999;
+}
+
+.modal-container .modal-footer > div button:first-child {
+  border-color: #5182f1;
+  background-color: #5182f1;
+  color: #ffffff;
+}

@@ -1,0 +1,99 @@
+{% extends "./layout/index_layout.html" %}
+{% block style %}
+    <style>
+        .loginColumns {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 20px 20px 20px;
+            position: relative;
+            top: 51%;
+            transform: translateY(50%);
+        }
+
+        .ibox-content {
+            clear: both;
+        }
+
+        .ibox-content {
+            background-color: #ffffff;
+            color: inherit;
+            padding: 15px 20px 10px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .m-t {
+            margin-top: 15px;
+        }
+
+        .btn-primary {
+            background-color: #1ab394;
+            border-color: #1ab394;
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+            background-color: #18a689;
+            border-color: #18a689;
+            color: #FFFFFF;
+        }
+
+        .btn {
+            border-radius: 3px;
+        }
+
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            z-index: 100;
+        }
+
+        .fadeInDown {
+            -webkit-animation-name: fadeInDown;
+            animation-name: fadeInDown;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(20px);
+                -ms-transform: translateY(20px);
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(50%);
+                -ms-transform: translateY(50%);
+                transform: translateY(50%);
+            }
+        }
+    </style>
+{% endblock %}
+{% block indexMain %}
+    <img src="/static/images/home/index_bg.jpg"
+         style="position: absolute; width: 100%; height: 100%; background-color: #16599C;">
+    <div class="loginColumns animated fadeInDown">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6" id="divLogin">
+                <div class="ibox-content">
+                    <img src="http://images.rnbtech.com.hk/{{ logo }}" style="width: 86px;"
+                         onerror="if (this.src != '/static/images/logo_beop.png') this.src = '/static/images/logo_beop.png';"/>
+                </div>
+                <div class="ibox-content">
+                    <div class="m-t clearfix">
+                        <div class="form-group">
+                            <input type="text" class="form-control" required="" id="txtName">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" required="" id="txtPwd">
+                        </div>
+                        <button type="button" class="btn btn-primary full-width m-b" id="btnLogin" style="float: right">Sign in
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

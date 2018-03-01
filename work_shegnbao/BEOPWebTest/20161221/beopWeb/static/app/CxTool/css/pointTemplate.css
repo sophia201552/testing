@@ -1,0 +1,57 @@
+#wrapper .templateWin {
+    z-index: 8888 !important;
+}
+
+#wrapper .templateWin .modal-dialog {
+    width: 910px;
+    margin-top: 50px;
+}
+
+#wrapper .templateWin .modal-backdrop.in {
+    opacity: 0.9;
+}
+
+.templateLeft, .templateRight {
+    padding: 10px;
+}
+
+.templateLeft {
+    width: 20%;
+}
+
+.templateRight {
+    width: 78%;
+}
+
+#editorBox {
+    border: 1px solid #ccc;
+}
+
+#addFolderBox {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+#addFolder {
+    margin: 8px 0 0 5px;
+}
+
+#addFolderInput {
+    width: 140px;
+}
+
+#templateImportWin #addFolder {
+    display: none !important;
+}
+
+#templateImportWin .CodeMirror {
+    background: #f7f7f7;
+}
+
+#templateTreeMenu {
+    height: 314px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+

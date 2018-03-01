@@ -1,0 +1,597 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Document</title>
+
+    {% assets "css_index" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+
+    <script>
+        var _hmt = _hmt || [];
+    </script>
+
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .indexMain {
+            width: 100%;
+            height: 100%;
+        }
+
+        .indexContent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navHeader" class="navbar navbar-default" role="navigation"
+         style="margin-bottom: 0; z-index: 3; display: none;">
+        <div class="container-fluid" id="navPane">
+            <div class="navbar-header" id="navHomeLogo" style="float: left;">
+                <a class="navbar-brand" style="padding: 10px 0 0 20px;" title="Home">
+                    <img src="http://images.rnbtech.com.hk/static/images/logo_beop.png" style="width: 78px; height: 32px;" />
+                </a>
+                <a class="navbar-brand" id="navLogoTitle" style="padding:0; margin: -3px 0 0 -6px;">
+                    <h5 i18n="admin.navIndex.LOGO" id="txtProjectTitle"></h5>
+                </a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 15px;display:none;" id="right-nav">
+                <li class="dropdown" id="liProjectMenu">
+                    <a href="#" class="dropdown-toggle navbar-link" data-toggle="dropdown">
+                        <span id="projectMenu" i18n="admin.navAdmin.LINK_PROJECTS"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a id="btnOperatingRecord" i18n="admin.ddlUser.MENU_OPERATING_RECORD"></a></li>
+                        <li class="dn">
+                            <a id="btnTemperatureSetting" i18n="observer.menu.TITLE_TEMPERATURE_CONFIGURE"></a>
+                        </li>
+                        <li><a id="btnPointManager" i18n="admin.ddlUser.MENU_POINT_MANAGER"></a></li>
+                        <li class="dn"><a id="btnMenuConfigure" i18n="observer.menu.TITLE_MENU_CONFIGURE"></a></li>
+                        <li class="divider"></li>
+                        <li><a id="btnChangeProject" i18n="admin.ddlUser.MENU_CHANGE_PROJECT"></a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle navbar-link" data-toggle="dropdown">
+                        <span id="paneUser"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" id="dropdown-menu-ul" role="menu">
+                        <li><a id="btnDataAnalys" i18n="observer.menu.TITLE_ANALYSIS"></a></li>
+                        <li><a id="btnShareLog" i18n="analysis.shareLog.TITLE_SHARE_LOG"></a></li>
+                        <li><a id="btnAccountManage" i18n="admin.panelManagement.ACCOUNT"></a></li>
+                        <li><a id="btnMemberManage" i18n="admin.panelManagement.STAFF_MANAGEMENT"></a></li>
+                        <li class="dn"><a id="btnBenchmark" i18n="observer.menu.TITLE_BENCHMARK_CONFIGURE"></a></li>
+                        <li class="divider"></li>
+                        <li><a id="btnLogout" i18n="admin.ddlUser.MENU_LOGOUT"></a></li>
+                    </ul>
+                </li>
+                <li class="dropdown alarm-bell" id="liProjectAlarm">
+                    <a href="javascript:;" class="dropdown-toggle navbar-link" data-toggle="dropdown" aria-expanded="false">
+                        <span class="badge"></span>
+                        <span class="glyphicon glyphicon-bell"></span>
+                    </a>
+                    <ul class="dropdown-menu" id="ulAlarmPanel" role="menu"></ul>
+                </li>
+                <li class="dropdown" id="paneWorkflow">
+                    <a href="#" class="dropdown-toggle navbar-link workflow-menu-button" data-toggle="dropdown"
+                       title="Work order">
+                        <span class="glyphicon glyphicon-link" style="font-size: 18px;"></span>
+                        <span class="badge"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li screen="main"><a i18n="workflow.pageInfo.PROJECT_TEAM"></a></li>
+                        <li screen="notice"><a i18n="workflow.pageInfo.TITLE_WO_DYNAMIC"></a></li>
+                        <li screen="report"><a i18n="workflow.pageInfo.TITLE_WEEK_REPORT"></a></li>
+                        <li screen="team"><a i18n="workflow.pageInfo.STAFFING"></a></li>
+                        <li screen="efficiency"><a i18n="workflow.pageInfo.TITLE_EFFIC"></a></li>
+                        <li class="menuItemCalendar pr" screen="calendar"><a i18n="workflow.pageInfo.TITLE_SCHEDULER">日程</a><span class="badge"></span></li>
+                        <li class="menuItemMine pr" screen="mine"><a i18n="workflow.pageInfo.TITLE_WO_MY"></a><span class="badge"></span></li>
+                        <li screen="set" class="dn"><a i18n="workflow.pageInfo.SET"></a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div id="divPages">
+                <span class="glyphicon glyphicon-chevron-left" id="btnPageScrollRight" aria-hidden="true"></span>
+
+                <div id="scrollPages">
+                    <ul id="ulPages" class="nav nav-pills navbar-left" role="tablist" style="padding-top: 7px;"></ul>
+                </div>
+                <span class="glyphicon glyphicon-chevron-right" id="btnPageScrollLeft" aria-hidden="true"></span>
+            </div>
+
+            <ul id="ulTools" class="nav nav-pills navbar-right" role="tablist" style="padding-top: 17px;"></ul>
+
+            <ul id="ulLogin" class="nav nav-pills navbar-right" role="tablist" style="padding-top: 7px;">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <span i18n="admin.navIndex.LINK_LANGUAGE"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" id="selectLanguage">
+                        <li><a value="zh"><span class="vMiddle" style="margin-left: 4px;">中文</span></a></li>
+                        <li><a value="en"><span class="vMiddle" style="margin-left: 4px;">English</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="indexMain">
+        <style>
+            .wrap {
+                position: absolute;
+            }
+
+            .divLayoutHalf {
+                position: relative;
+                float: left;
+                margin: 0 auto;
+                width: 100%;
+                height: 50%;
+            }
+
+            .divLogin {
+                margin: 50px auto 0 auto;
+                width: 220px;
+                height: 100px;
+                opacity: 0;
+            }
+
+            @-webkit-keyframes show
+            {
+                0% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            .show {
+                opacity: 1;
+                animation: hide 0.5s ease-in;
+                -webkit-animation: hide 0.5s ease-in;
+            }
+
+            .divInput {
+                width: 100%;
+                height: 40px;
+                border-radius: 16px;
+                display: table;
+            }
+
+            .divLogin .glyphicon {
+                top: 0;
+            }
+
+            .divLogin .input-group {
+                background-color: rgba(255, 255,255, 0.8);
+            }
+
+            .divLogin .input-group-addon, .divLogin .form-control {
+                background-color: transparent;
+            }
+
+            .boxLeft {
+                border-top-left-radius: 16px;
+                border-bottom-left-radius: 16px;
+                padding-left: 16px;
+            }
+
+            .boxRight {
+                border-top-right-radius: 16px;
+                border-bottom-right-radius: 16px;
+            }
+        </style>
+
+        <img src="/static/images/home/index_bg.jpg" style="position: absolute; width: 100%; height: 100%; background-color: #16599C;" />
+
+        <div class="wrap">
+            <canvas id="Canvas2D">Internet Explorer Not Supported :(</canvas>
+            <svg id="imgLogo" version="1.1" width="100%" viewBox="0 0 500 219.16" enable-background="new 0 0 500 219.16" xml:space="preserve" style='display: none;'>
+            <linearGradient id="SVGID_fill_" gradientUnits="userSpaceOnUse" x1="210.3037" y1="121.6182" x2="210.3037" y2="12.1006">
+            <stop offset="0" style="stop-color:#16599C;" />
+            <stop offset="0.2" style="stop-color:#27719A;" />
+            <stop offset="0.8" style="stop-color:#59A776;" />
+            <stop offset="1" style="stop-color:#6CBB5A;" />
+            </linearGradient>
+            <path fill="rgba(255, 255, 255, 0.85)" d="M262.528,113.025c0-0.022,0-0.044,0-0.066h-0.077c-0.012-4.111-0.355-8.139-1.032-12.056
+	            c-3.662-21.177-16.708-39.13-34.689-49.46c-0.533-0.305-3.95-2.125-4.693-2.479c-0.011-0.006-0.033-0.017-0.056-0.028
+	            c-9.26-4.422-19.629-6.896-30.575-6.896c-0.05,0-0.094,0-0.144,0v24.872c0.05,0,0.094-0.006,0.144-0.006
+	            c21.288,0,39.197,14.408,44.545,33.998h-91.966c-5.792-33.421-34.861-58.864-69.938-58.864c-0.05,0-0.094,0-0.144,0v24.872
+	            c0.05,0,0.094-0.006,0.144-0.006c25.376,0,45.951,20.467,46.167,45.793c0,0.11-0.011,0.216-0.011,0.327
+	            c0,0.133,0.014,0.261,0.014,0.394c-0.177,25.354-20.771,45.86-46.17,45.86c-25.507,0-46.184-20.678-46.184-46.188
+	            c0-0.022,0-0.044,0-0.066V13.184L2.99,1.927v111.099c0,0.022,0,0.044,0,0.066v0.277h0.014c0.152,39.119,31.893,70.781,71.042,70.781
+	            c24.361,0,45.84-12.271,58.643-30.958c6.666,9.698,15.648,17.682,26.187,23.086c0.632,0.327,6.375,2.891,6.718,3.023
+	            c8.003,3.118,16.703,4.849,25.812,4.849v-0.072v-24.799c-21.11,0-38.899-14.164-44.409-33.51h91.861
+	            c6.014,33.154,34.966,58.314,69.852,58.314v-24.871C283.212,159.213,262.528,138.535,262.528,113.025z M425.961,41.512
+	            c-24.455,0-46.015,12.355-58.797,31.152c-12.827-18.536-34.209-30.697-58.454-30.697c-0.044,0-0.089,0.005-0.145,0.005v24.872
+	            c0.056,0,0.101-0.005,0.145-0.005c25.51,0,46.192,20.677,46.192,46.187v94.854l24.866,9.354V112.637c0-0.027,0-0.044,0-0.072
+	            c0-25.504,20.684-46.187,46.192-46.187c25.499,0,46.182,20.683,46.182,46.187c0,25.51-20.683,46.188-46.182,46.188
+	            c-0.055,0-0.1,0-0.144,0v24.872c0.044,0,0.089,0,0.144,0c39.236,0,71.048-31.813,71.048-71.06
+	            C497.009,73.324,465.197,41.512,425.961,41.512z" />
+        </svg>
+
+            <script>
+                var loadingAnimation = (function () {
+                    // 坐标系声明
+                    //   左手坐标系，屏幕左上角为坐标轴中心，向右为 X 轴正方向，向下为 Y 轴正方向，由屏幕内指向屏幕外为 Z 轴正方向
+                    // 投影平面声明
+                    //   投影平面与 XY 轴平行
+
+                    // 定义投影平面和坐标系 XY 平面的距离
+                    var fov = 800;
+                    var distance = 800;
+                    var rotation = 0;
+                    var oneAlphaOffset = 500;
+
+                    var fps = 60;
+
+                    // 屏幕尺寸
+                    var SCREEN_WIDTH = window.innerWidth;
+                    var SCREEN_HEIGHT = window.innerHeight;
+                    var HALF_WIDTH = SCREEN_WIDTH / 2;
+                    var HALF_HEIGHT = SCREEN_HEIGHT / 2;
+                    var centerSphereX = HALF_WIDTH;
+                    var centerSphereY = HALF_HEIGHT;
+
+                    //var itemColor = [70, 255, 140];
+                    var itemColor = [171, 255, 184];
+                    var rgbString = 'rgba(' + itemColor.join(',') + ',';
+
+                    var isRunning = true; //是否停止动画
+                    var isShowLoginPane = false; //是否显示登录框
+                    var logoOpacity = 0;
+                    var sizeGrain = 5;
+                    var svg = (new XMLSerializer()).serializeToString(document.getElementById("imgLogo"));
+                    var imgLogo = new Image();
+                    imgLogo.src = "data:image/svg+xml;base64," + window.btoa(svg);
+
+                    var canvas = document.getElementById('Canvas2D');
+                    var ctx = canvas.getContext('2d');
+
+
+                    // 定义球的实例
+                    var sphere = new Sphere3D();
+
+                    // 点的通用属性
+                    var POINT = {
+                        // 僵直时间，单位：帧
+                        stuckTime: (30 + Math.random() * 30) * fps,
+                        // 亮度达到稳定时的时间，单位：帧
+                        holdTime: 0.5 * fps,
+                        // 亮度开始衰退的时间，单位：帧
+                        decay: 8 * fps,
+                        // 寿命，单位：帧
+                        life: 10 * fps
+                    };
+
+                    canvas.width = SCREEN_WIDTH;
+                    canvas.height = SCREEN_HEIGHT;
+
+                    // 样式
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+
+                    /*---------- 基本元素类 ----------*/
+
+                    function Point3D() {
+                        this.x = 0;
+                        this.y = 0;
+                        this.z = 0;
+
+                        this.age = 0;
+                        this.flowFrames = 0;
+                        this.theta = 0;
+                        this.phi = 0;
+                    }
+
+                    function getRandPoint(from, to) {
+                        var theta = Math.random() * 2 * Math.PI;
+                        var phi = Math.acos(Math.random() * 2 - 1);
+                        var rad = Math.random() * (to - from) + from;
+                        var p = new Point3D();
+                        var time = Math.random() * 2 + 1;
+
+                        p.theta = theta;
+                        p.phi = phi;
+                        // 坐标
+                        p.x = rad * Math.sin(phi) * Math.cos(theta);
+                        p.y = rad * Math.sin(phi) * Math.sin(theta);
+                        p.z = rad * Math.cos(phi);
+
+                        p.d = Math.sqrt(p.x * p.x + p.y * p.y + p.z * p.z) - sphere.radius;
+
+                        p.flowFrames = time * fps;
+
+                        p.text = Math.random() > .5 ? '0' : '1';
+
+                        return p;
+                    }
+
+                    function Sphere3D(radius) {
+                        this.points = [];
+                        this.flowPoints = [];
+                        this.radius = radius || 200.0;
+                        // 顶点的数量
+                        this.numberOfVertexed = 0;
+                    }
+
+                    /*-- 定义一些变换操作 --*/
+                    function rotateX(point, radians) {
+                        var y = point.y;
+                        point.y = (y * Math.cos(radians)) + (point.z * Math.sin(radians) * -1.0);
+                        point.z = (y * Math.sin(radians)) + (point.z * Math.cos(radians));
+                    }
+
+                    function rotateY(point, radians) {
+                        var x = point.x;
+                        point.x = (x * Math.cos(radians)) + (point.z * Math.sin(radians) * -1.0);
+                        point.z = (x * Math.sin(radians)) + (point.z * Math.cos(radians));
+                    }
+
+                    function rotateZ(point, radians) {
+                        var x = point.x;
+                        point.x = (x * Math.cos(radians)) + (point.y * Math.sin(radians) * -1.0);
+                        point.y = (x * Math.sin(radians)) + (point.y * Math.cos(radians));
+                    }
+
+                    function projection(xy, z, xyOffset, zOffset, distance) {
+                        return (distance * xy) / (z - zOffset) + xyOffset;
+                    }
+
+                    /*-- 绘图引擎 --*/
+                    function drawPoint(ctx, x, y, size, color, params) {
+                        ctx.save();
+                        ctx.beginPath();
+                        if (params === null) {
+                            ctx.arc(x, y, size, 0, 2 * Math.PI, true);
+                            ctx.fillStyle = color;
+                            ctx.fill();
+                        } else {
+                            ctx.strokeStyle = color;
+                            ctx.lineWidth = params.lineWidth;
+                            ctx.font = params.fontSize + 'px Arial';
+                            ctx.strokeText(params.text, x, y);
+                        }
+                        ctx.restore();
+                    }
+
+                    function drawPointWithGradient(ctx, x, y, size, color, gradient) {
+                        var reflection, radgrad;
+
+                        reflection = size / 4;
+
+                        ctx.save();
+                        ctx.translate(x, y);
+
+                        radgrad = ctx.createRadialGradient(-reflection, -reflection, reflection, 0, 0, size);
+                        radgrad.addColorStop(0, '#FFFFFF');
+                        radgrad.addColorStop(gradient, color);
+                        radgrad.addColorStop(1, 'rgba(1,159,98,0)');
+
+                        ctx.fillStyle = radgrad;
+                        ctx.fillRect(-size, -size, size * 2, size * 2);
+                        ctx.restore();
+                    }
+
+                    function cubicBezier(t, p0, p1, p2, p3) {
+                        var dt = 1 - t;
+                        return dt * dt * dt * p0 + 3 * dt * dt * t * p1 + 3 * dt * t * t * p2 + t * t * t * p3;
+                    }
+
+                    // 新增粒子
+                    function addParticle() {
+                        var rad = sphere.radius;
+                        var p = getRandPoint(rad * 3, rad * 4);
+                        sphere.points.push(p);
+                    }
+
+                    function render(step) {
+                        var p, x, y, z, size, alpha, d, delta, params;
+                        var numberOfEachFrame = 1;
+                        var len;
+                        var width = canvas.getAttribute('width');
+                        var height = canvas.getAttribute('height');
+
+                        ctx.save();
+                        ctx.clearRect(0, 0, width, height);
+
+                        // 每帧增加 n 个粒子
+                        for (var i = 0; i < numberOfEachFrame; i++) {
+                            addParticle();
+                        }
+
+                        // 粒子处理
+                        for (var i = 0, len = sphere.points.length; i < len; i++) {
+                            p = sphere.points[i];
+                            // 距离圆面的距离
+                            d = p.d;
+
+                            delta = oneAlphaOffset / (-p.z + fov);
+                            if (step == 2)
+                                sizeGrain = sizeGrain > 1 ? sizeGrain - 0.0005 : 1;
+                            size = sizeGrain * delta;
+                            alpha = 1 * delta;
+
+                            if (d > 10) {
+                                var b = 0;
+                                if (p.age <= p.flowFrames) {
+                                    var t = p.age / p.flowFrames;
+                                    b = d * cubicBezier(t, 0, 0, 0.58, 1);
+                                }
+
+                                p.x = p.x - b * Math.sin(p.phi) * Math.cos(p.theta);
+                                p.y = p.y - b * Math.sin(p.phi) * Math.sin(p.theta);
+                                p.z = p.z - b * Math.cos(p.phi);
+
+                                p.d = d - b;
+
+                                if (p.age < POINT.holdTime) {
+                                    alpha = alpha * p.age / POINT.holdTime;
+                                }
+
+                                if (p.d <= 10) {
+                                    p.smooth = Math.PI;
+                                    p.smoothStep = p.smooth / (0.15 * fps);
+                                }
+
+                                params = {
+                                    fontSize: 8 + 10 * delta,
+                                    lineWidth: 0.8 * delta,
+                                    text: p.text
+                                }
+
+                            } else {
+                                params = null;
+
+                                if (p.age > POINT.life) {
+                                    sphere.points.splice(i, 1);
+                                    len--;
+                                    i--;
+                                    continue;
+                                }
+                                rotateY(p, rotation);
+
+                                if (p.age > POINT.decay) {
+                                    alpha = alpha * (POINT.life - p.age) / (POINT.life - POINT.decay);
+                                }
+                                if (p.smooth >= 0) {
+                                    size = size * (Math.sin(p.smooth) + 1);
+                                    p.smooth = p.smooth - p.smoothStep;
+                                }
+                            }
+                            p.age++;
+
+                            //第二阶段动画
+                            if (step == 2) {
+                                //球缩小
+                                distance = distance > 120 ? distance -= 0.04 : 120;
+                                //球心平移
+                                centerSphereX = centerSphereX < HALF_WIDTH + 50 ? centerSphereX + 0.003 : HALF_WIDTH + 50;
+                                centerSphereY = centerSphereY < HALF_HEIGHT - 70 ? centerSphereY - 0.007 : HALF_HEIGHT - 70;
+
+                                //弹出登录框
+                                if (distance == 120 && !isShowLoginPane) {
+                                    isShowLoginPane = true;
+                                    document.getElementById('divLogin').classList.add('show');
+                                }
+                            }
+
+                            x = projection(p.x, p.z, centerSphereX, fov, distance);
+                            y = projection(p.y, p.z, centerSphereY, fov, distance);
+
+                            if ((x >= 0) && (x < SCREEN_WIDTH)) {
+                                if ((y >= 0) && (y < SCREEN_HEIGHT)) {
+                                    drawPoint(ctx, x, y, size, rgbString + alpha + ')', params);
+                                }
+                            }
+                        }
+
+                        ctx.restore();
+                        rotation = Math.PI / 360;
+
+                        //LOGO
+                        if (step == 2) {
+                            ctx.save();
+                            logoOpacity = logoOpacity < 1 ? logoOpacity + 0.03 : 1;
+                            ctx.globalAlpha = logoOpacity;
+                            ctx.drawImage(imgLogo, HALF_WIDTH - 215, HALF_HEIGHT - 165, 430, 185);
+                            ctx.restore();
+                        }
+                    }
+
+                    // entry point
+                    function mainLoop() {
+                        var interval = 1000 / fps;
+                        var now, then = new Date().getTime();
+                        var delta;
+                        var frames;
+
+                        var startTime = new Date();
+
+                        return (function loop() {
+                            if (!isRunning) return;
+                            requestAnimationFrame(loop);
+                            now = new Date().valueOf();
+                            delta = now - then;
+
+                            if (delta > interval) {
+                                then = now - (delta % interval);
+                                render(now - startTime > 5000 ? 2 : 1);
+                            }
+                        }());
+                    }
+
+                    function close() {
+                        isRunning = false;
+                    }
+
+                    mainLoop();
+                })();
+            </script>
+
+        </div>
+
+        <div class="indexContent">
+            <div class="divLayoutHalf">
+            </div>
+            <div class="divLayoutHalf" style="top: 0;">
+                <div id="divLogin" class="divLogin">
+                    <div class="row">
+                        <div class="input-group boxLeft boxRight" style="padding: 0; margin-bottom: 10px;">
+                            <span class="input-group-addon glyphicon glyphicon-user boxLeft"></span>
+                            <input type="text" class="form-control boxRight" id="txtName" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-group boxLeft boxRight" style="padding: 0;">
+                            <span class="input-group-addon glyphicon glyphicon-lock boxLeft"></span>
+                            <input type="password" class="form-control" id="txtPwd" required>
+                            <span class="input-group-addon boxRight" style="padding-top: 2px;">
+                                <input type="checkbox" id="cbRememberPwd" style="position: absolute; top: 10px;"
+                                       i18n="title=admin.login.PANE_CHECKBOX_REMEMBER">
+                                <label for="cbRememberPwd" style="margin: 2px 0 0 17px; font-size: 12px; font-weight:normal;"
+                                       i18n="admin.login.PANE_CHECKBOX_REMEMBER"></label>
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <!--<span id="btnRegister" i18n="admin.login.PANE_REGIST"></span>
+        <span id="btnForgetPwd" data-toggle="modal" data-target="#resetPasswordModal" i18n="admin.login.PANE_FORGET"></span>
+        <div class="row" style="margin-top: 10px;">
+            <div class="form-group">
+                <button id="btnLogin" class="col-xs-12 btn btn-primary btn-lg"
+                        i18n="admin.login.PANE_BTN_LOGIN"></button>
+            </div>
+
+        </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    {% assets "js_tool" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+    {% assets "js_index" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+    {% assets "js_screen" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+</body>
+</html>

@@ -1,0 +1,167 @@
+.SearchGroupWrap {
+  width: 100%;
+  height: 100%;
+  padding: 4px 0;
+}
+/* 下拉框 */
+.dropDownWrap {
+  width: 120px;
+  height: 100%;
+  float: left;
+}
+.Dropdown:global(.is-open) {
+  height: 24px;
+}
+.Dropdown > span:first-child {
+  height: 24px;
+  line-height: 22px;
+  font-size: 12px;
+  letter-spacing: 0;
+}
+.Dropdown > span:first-child,
+.Dropdown:hover > span:first-child,
+.Dropdown:focus > span:first-child {
+  border-color: #a6a6a6;
+  border-radius: 4px;
+}
+.Dropdown > span:last-child {
+  height: 24px;
+  line-height: 22px;
+  right: 4px;
+}
+/* 搜索框样式 */
+
+.searchWrap {
+  width: calc(100% - 190px);
+  height: 100%;
+  float: left;
+  margin: 0 8px;
+}
+.search > div:first-child {
+  width: 100%;
+  height: 24px;
+  padding-left: 4px;
+  font-size: 12px;
+  border-radius: 4px;
+  float: right;
+  border: 1px solid #a6a6a6;
+  background: #fff;
+}
+.search > div:first-child div:first-child {
+  width: 18px;
+  color: #000;
+}
+.search > div:global(.is-active) div:first-child {
+  width: 4px;
+}
+.search > div:first-child > div:first-child i {
+  width: 14px;
+  font-size: 12px;
+}
+
+.search > div:first-child > :global(.ms-SearchBox-clearButton) i {
+  font-size: 10px;
+  line-height: 16px;
+}
+.search > div:first-child > input {
+  font-size: 12px;
+  border: none;
+  line-height: 22px;
+}
+
+.search > div:first-child > input::-webkit-input-placeholder {
+  vertical-align: bottom;
+}
+.search > div:last-child {
+  float: right;
+  line-height: 40px;
+}
+.search > div:last-child > span {
+  padding: 0 8px;
+}
+
+/* 查询按钮 */
+.searchBtn {
+  cursor: pointer;
+  float: left;
+}
+.searchBtn > span {
+  width: 54px;
+  height: 24px;
+  line-height: 22px;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #a6a6a6;
+  text-align: center;
+  display: inline-block;
+}
+
+/* timepicker */
+.search:global(.hide),
+.pointValueWrap:global(.hide),
+.timePickerWrap:global(.hide) {
+  display: none;
+}
+.pointValueWrap > div,
+.timePickerWrap > div {
+  display: inline-block;
+}
+
+.pointValueWrap> div.spinButtonWrap,
+.timePickerWrap > div:global(.ms-DatePicker) {
+  width: calc((100% - 21px)/2);
+}
+.inputWrap > input,
+.timePickerWrap :global(.ms-TextField-fieldGroup) {
+  width: 100%;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: #fff;
+  border-color: #a6a6a6 !important;
+}
+.timePickerWrap :global(.ms-TextField-fieldGroup:hover) {
+  border-color: #a6a6a6;
+}
+.timePickerWrap :global(.ms-TextField-fieldGroup) > input {
+  font-size: 12px;
+  padding: 0 12px 0 6px;
+}
+
+.timePickerWrap :global(.ms-TextField-fieldGroup) > i {
+  font-size: 12px;
+  line-height: 14px;
+  right: 6px;
+  top: 4px;
+}
+.toTime {
+  padding: 0 4px;
+  line-height: 24px;
+  vertical-align: top;
+}
+/* 点值输入框 */
+.inputWrap {
+  position: relative;
+  width: 100%;
+}
+.inputWrap > label.ChevronUp,
+.inputWrap > label.ChevronDown {
+  position: absolute;
+  bottom: 0;
+  right: 6px;
+  bottom: 10px;
+}
+.inputWrap > label > i {
+  font-size: 6px
+}
+.inputWrap > label > i:active {
+  background: #f0f0f0;
+}
+.inputWrap > label.ChevronDown {
+  bottom: 0;
+}
+.inputWrap > input {
+  outline: none;
+  padding-left: 4px;
+  border: 1px solid;
+}

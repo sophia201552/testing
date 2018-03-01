@@ -1,0 +1,112 @@
+<style>
+    .projectWrap {
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        color: #999;
+    }
+    
+    .divHover {
+        height: 37px;
+        color: #ddd;
+        line-height: 37px;
+        vertical-align: middle;
+        text-indent: 20px;
+        list-style: none;
+        /*border-top: 1px solid #3c3c3c;*/
+        border-bottom: 1px solid #3c3c3c;
+        position: relative;
+    }
+    
+    .fileMenu.current {
+        background: #31708f;
+    }
+    
+    .fileContent {
+        text-indent: 20px;
+    }
+    
+    .ProjectTitle {
+        cursor: pointer;
+    }
+    
+    .fileMenu {
+        text-indent: 30px;
+        cursor: pointer;
+    }
+    
+    .progress {
+        height: 12px;
+        background: #ebebeb;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        border-radius: 10px;
+    }
+    
+    .progress .blue {
+        background: #5aaadb;
+        border-color: #459fd6 #3094d2 #277db2;
+        background-image: -webkit-linear-gradient(top, #aed5ed 0%, #7bbbe2 70%, #5aaadb 100%);
+        background-image: -moz-linear-gradient(top, #aed5ed 0%, #7bbbe2 70%, #5aaadb 100%);
+        background-image: -o-linear-gradient(top, #aed5ed 0%, #7bbbe2 70%, #5aaadb 100%);
+        background-image: linear-gradient(to bottom, #aed5ed 0%, #7bbbe2 70%, #5aaadb 100%);
+    }
+    
+    .progress>span {
+        position: relative;
+        float: left;
+        margin: 0 -1px;
+        height: 12px;
+        line-height: 16px;
+        text-align: right;
+        background: #cccccc;
+        border: 1px solid;
+        border-color: #bfbfbf #b3b3b3 #9e9e9e;
+        border-radius: 10px;
+        background-image: -webkit-linear-gradient(top, #f0f0f0 0%, #dbdbdb 70%, #cccccc 100%);
+        background-image: -moz-linear-gradient(top, #f0f0f0 0%, #dbdbdb 70%, #cccccc 100%);
+        background-image: -o-linear-gradient(top, #f0f0f0 0%, #dbdbdb 70%, #cccccc 100%);
+        background-image: linear-gradient(to bottom, #f0f0f0 0%, #dbdbdb 70%, #cccccc 100%);
+        -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .spaceSize {
+        position: absolute;
+        width: 200px;
+        height: 50px;
+        bottom: 10px;
+        left: 50%;
+        margin-left: -100px;
+    }
+    
+    #progressNum {
+        position: relative;
+        top: -18px;
+        left: 0;
+        color: #ccc;
+        z-index: 1;
+        width: 100%;
+        font-size: 12px;
+    }
+</style>
+<div class="projectWrap">
+    <div>
+        <div>
+            <div class="ProjectTitle divHover" data-type="0">All Files</div>
+            <div class="fileContent" id="fileContent">
+                <div class="divHover fileMenu" data-type="2">Document</div>
+                <div class="divHover fileMenu" data-type="3">Spreadsheet</div>
+                <div class="divHover fileMenu" data-type="1">Photo</div>
+                <div class="divHover fileMenu" data-type="4">Drawing</div>
+                <div class="divHover fileMenu" data-type="5">Other</div>
+            </div>
+        </div>
+    </div>
+    <div class="spaceSize">
+        <div class="progress" style="width: 100%">
+            <span class="blue" id="progressBar"></span>
+        </div>
+        <div id="progressNum"></div>
+    </div>
+</div>

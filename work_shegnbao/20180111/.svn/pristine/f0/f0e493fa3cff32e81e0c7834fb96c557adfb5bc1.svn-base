@@ -1,0 +1,300 @@
+<script src="/static/scripts/lib/select2/js/select2.min.js"></script>
+<script src="/static/scripts/lib/select2/js/i18n/zh-CN.js"></script>
+<script src="/static/scripts/lib/select2/js/i18n/en.js"></script>
+<link href="/static/scripts/lib/select2/css/select2.min.css" type="text/css" rel="stylesheet" />
+<style>
+    .loadImg{
+        position: relative;
+        height: 100px;
+        width: 100px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 10px auto;
+    }
+    #resetImg, #addImg{
+        position: absolute;
+        left: 0;
+        top: 50%;        
+        width: 100%;
+        transform: translateY(-50%);
+    }
+    
+    .plus {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        margin-right: 5px;
+        font-size: 30px;
+        font-style: inherit;
+        cursor: pointer;
+        border-radius: 100px;
+        color: #fff;
+        background: #C2C2C2;
+    }
+    .bindProject {
+        border: none;
+        background: none;
+    }
+    #bindProject {
+        margin-top: 100px;
+    }
+    .bindProjcetList{
+        height: 400px;
+        overflow-y: auto;
+    }
+    .rowProject {
+        display: inline-block;
+        margin-top: 5px;
+        text-align: center;
+        margin-right: 10px;
+        width: 48%;
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;        
+    }
+    .rowProject.select{
+        background: #ccc;
+    }
+    .userName {
+        width: 120px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;        
+    }
+</style>
+
+<div id="groupManage">
+    <div class="oh p20">
+        <div class="bg1 p15 oh mb20">
+            <select class="form-control w200 fl" id="selectProject">
+                <option value="all" i18n="admin.panelManagement.ALL_ITEMS"></option>
+            </select>
+            <div id="addProject" class="fr cp">
+                <em class="plus">+</em><span id="addProjectTxt" i18n="admin.panelManagement.ADD_ITEMS"></span>
+            </div>
+        </div>
+        <ul id="projectCon" class="gray-scrollbar"></ul>
+        <input type="hidden" id="dragObj" value="" />
+    </div>
+</div>
+<script type="text/html" id="tpl_group_manage">
+    <li class="proCompany" id="<!=project.id!>">
+        <ul>
+            <li class="oh">
+                <h3 class="project-name">
+                    <span class="mr10">
+                        <!if(localStorage.getItem('language') === 'zh'){!>
+                            <!=project.name_cn!>
+                        <!}else{!>
+                            <!=project.name_en!>
+                        <!}!>
+                    </span>
+                    <span>
+                        <span>(ID:</span>
+                    <span><!=project.id!></span>
+                    <span>)</span>
+                    </span>
+                </h3>
+                <button type="button" class="btn btn-default delProject fr" data-dismiss="modal"
+                        data-projectid="<!=project.id!>" data-roleid="<!=project.id!>" i18n="admin.panelManagement.DELETE">                       
+                </button>                    
+                <button class="btn btn-default config-btn" data-project-id="<!=project.id!>" i18n="admin.panelManagement.CON_PROJECT"><span class="iconfont icon-shezhi11"></span></button>
+            </li>
+            <li class="oh proListWrapper">
+                <div class="proList" roleId="<!=project.id!>">
+                    <div class="h40">
+                        <span class="ml20 fb role"><!=project.name_cn!></span>
+                        <!if(AppConfig.userProfile.isManager == 1){!>
+                         
+                            <button type="button" class="bindProject fr" data-dismiss="modal"
+                                    data-projectid="<!=project.id!>" data-roleid="<!=project.id!>">
+                                    <em class="glyphicon glyphicon-plus plus" style="font-size:16px;"></em>
+                            </button>                            
+                            
+                        <!}!>
+                    </div>
+        <!if(project.projectList){!>        
+            <! for(var j=0; j < project.projectList.length; j++){!>
+            <!if(!project.projectList[j].id){continue;}!>
+                <article class="userList">
+                    
+                    <!if(project.projectList[j].id){!>
+                    <dl class="proUser pr" userId="<!=project.projectList[j].id!>" userName="<!=project.projectList[j].name!>" draggable="true">
+                        <dt>
+                            <!if(project.projectList[j].pic){!>
+                            <img class="media-object" src="/static/images/project_img/<!=project.projectList[j].pic!>">
+                            <!}else{!>
+                            <img class="media-object" src="/static/images/avatar/default/1.png">
+                            <!}!>
+                        </dt>
+                        <dd><em class="closed dn" userId="<!=project.projectList[j].id!>" roleId="<!=project.projectList[j].id!>">X</em></dd>
+                        <dd class="userName" title="<!=project.projectList[j].name_cn!>">
+                            <!if(localStorage.getItem('language') === 'zh'){!>
+                                <!=project.projectList[j].name_cn!>
+                            <!}else{!>
+                                <!=project.projectList[j].name_en!>
+                            <!}!>
+                        </dd>
+                    </dl>
+                    <!}!>
+                   
+                </article>
+            <!}!>
+        <!}!>
+                </div>
+            </li>         
+
+        </ul>
+    </li>
+</script>
+
+<!--添加项目浮动窗口开始-->
+<div class="modal fade" id="addGroupPage" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel" i18n="admin.panelManagement.ADD_ITEMS"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal" style="display: flex;">
+                    <div class="col-md-4">
+                        <div class="form-group">                            
+                            <div class="loadImg">
+                                <img id="addImg" src="" alt="">
+                                <input type="file" value="Select image" class="fileUpload" id="newImgUpload" style="display:none;">
+                            </div>
+                            <button class="btn btn-primary center-block" id="newImg">设置图片</button>
+                        </div>                        
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="nameCN">中文名称</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="nameCN" placeholder="中文名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="nameEnglish">英文名称</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="nameEnglish" placeholder="英文名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="codeName">代码名称</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="codeName" placeholder="代码名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="addPhone">联系电话</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="addPhone" placeholder="联系电话">
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                        i18n="admin.panelManagement.CANCEL"></button>
+                <button type="button" class="btn btn-primary" id="saveProject" data-loading-text="" data-dismiss="modal"
+                        i18n="admin.panelManagement.CONFIRM;data-loading-text=admin.panelManagement.SAVEING"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--添加项目浮动窗口结束-->
+
+<!--绑定项目浮动窗口开始-->
+<div class="modal fade" id="bindProject" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel" i18n="admin.panelManagement.ADD_ITEMS"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal" style="display: flex;">
+                </div>
+                <div class="bindProjcetList gray-scrollbar">
+                </div>               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                        i18n="admin.panelManagement.CANCEL"></button>
+                <button type="button" class="btn btn-primary" id="sucBindProject" data-loading-text="" data-dismiss="modal"
+                        i18n="admin.panelManagement.CONFIRM;data-loading-text=admin.panelManagement.SAVEING"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--绑定项目浮动窗口开始-->
+
+<!--配置项目浮动窗口开始-->
+<div class="modal fade" id="updateGroupPage" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel" i18n="admin.panelManagement.PAGE_CONFIGURATION"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal" style="display:flex">
+                    <div class="col-md-4">
+                        <div class="form-group">                            
+                            <div class="loadImg">
+                                <img id="resetImg" src="" alt="">
+                                <input type="file" value="Select image" class="fileUpload" id="fileUpload" style="display:none;">
+                            </div>
+                            <button class="btn btn-primary center-block pr" id="setImg">设置图片</button>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="">中文名称</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="change_nameCN" placeholder="中文名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="">英文名称</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="change_nameEnglish" placeholder="英文名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="">代码名称</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="change_codeName" placeholder="代码名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="divPhone">联系电话</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="divPhone" placeholder="联系电话">
+                            </div>
+                        </div>                         
+                    </div>                  
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                        i18n="admin.panelManagement.CANCEL"></button>
+                <button type="button" class="btn btn-primary" id="updateProject" data-loading-text="" data-dismiss="modal"
+                        i18n="admin.panelManagement.CONFIRM;data-loading-text=admin.panelManagement.SAVEING"></button>
+                        
+            </div>
+        </div>
+    </div>
+</div>
+<!--配置项目浮动窗口结束-->

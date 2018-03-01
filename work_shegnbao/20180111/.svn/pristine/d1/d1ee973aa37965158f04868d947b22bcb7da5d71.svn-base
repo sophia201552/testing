@@ -1,0 +1,263 @@
+.clear::after {
+  display: block;
+  content: '';
+  clear: both;
+  width: 0;
+  height: 1px;
+}
+.listModalWrap,
+.rowModalWrap {
+  width: 860px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 6px 20px 0 rgba(23, 28, 53, 0.5);
+}
+.listModalWrap button:focus,
+.rowModalWrap button:focus {
+  outline: none;
+}
+.listModalWrap .head,
+.rowModalWrap .head {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-image: linear-gradient(93deg, #5b88f7, #5bb7f7);
+  font-size: 20px;
+  font-weight: 600;
+  color: #f1f4f5;
+  padding-left: 16px;
+  padding-right: 100px;
+  position: relative;
+}
+.listModalWrap .head .remove {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: center;
+  top: 10px;
+  right: 10px;
+}
+.listModalWrap .content {
+  width: 100%;
+  height: 438px;
+  padding-top: 40px;
+  position: relative;
+  overflow-y: auto;
+}
+.listModalWrap .foot,
+.rowModalWrap .foot {
+  width: 100%;
+  height: 50px;
+}
+.listModalWrap .content .detailsListWrap {
+  width: 100%;
+  height: 398px;
+  overflow: auto;
+}
+.listModalWrap .content .btnGroup {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40px;
+  line-height: 40px;
+  padding: 6px 16px;
+  width: 100%;
+}
+.listModalWrap .content .btnGroup button {
+  float: left;
+  height: 28px;
+  line-height: 28px;
+  margin-right: 16px;
+  border: none;
+  background-color: transparent;
+  color: #5bb7f7;
+  cursor: pointer;
+}
+.listModalWrap .content .btnGroup button:hover {
+  color: #10b8f9;
+}
+.listModalWrap .content .btnGroup button i {
+  margin-right: 4px;
+}
+.listModalWrap .content .btnGroup button span {
+  vertical-align: top;
+}
+
+.rowModalWrap {
+  width: 476px;
+}
+.rowModalWrap .head {
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+}
+.rowModalWrap .content {
+  padding-top: 16px;
+  overflow-y: auto;
+}
+.rowModalWrap .content .item {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  margin-bottom: 16px;
+}
+.rowModalWrap .content .item label {
+  display: block;
+  text-align: right;
+  padding: 0 8px;
+  float: left;
+  width: 20%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rowModalWrap .content .item input {
+  width: 68%;
+  height: 100%;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  padding-left: 8px;
+}
+.rowModalWrap .foot {
+  height: 60px;
+  line-height: 40px;
+  margin-top: 80px;
+  padding: 0 24px 24px 0;
+}
+.rowModalWrap .foot button {
+  float: right;
+  width: 80px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 6px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: solid 1px #d3d3d3;
+  cursor: pointer;
+  padding: 0 16px;
+  color: #999999;
+}
+.rowModalWrap .foot button.ok {
+  background-color: #5182f1;
+  color: #ffffff;
+}
+
+.detailsListWrap :global(.ms-DetailsList) {
+  overflow-x: hidden;
+}
+.detailsListWrap > div > div > div div:global(.ms-DetailsHeader) {
+  height: 48px;
+  line-height: 48px;
+  background-color: #fff;
+  border-bottom-color: #fff;
+  border-bottom: 1px solid #eceff4;
+}
+.detailsListWrap
+  > div
+  > div
+  > div
+  div:global(.ms-DetailsHeader)
+  div:global(.ms-DetailsHeader-cell):active,
+.detailsListWrap
+  > div
+  > div
+  > div
+  div:global(.ms-DetailsHeader)
+  div:global(.ms-DetailsHeader-cell):hover {
+  background-color: #fff !important;
+}
+
+.detailsListWrap :global(.ms-DetailsHeader) {
+  height: 48px;
+  line-height: 48px;
+  background-color: #fff;
+  border: none;
+}
+.detailsListWrap :global(.ms-DetailsHeader) > div {
+  height: 48px;
+  color: #333e5e;
+}
+/* .detailsListWrap :global(.ms-List-page) > div:nth-child(odd) > div {
+  background-color: #f0f1f2;
+} */
+.detailsListWrap :global(.ms-DetailsHeader) > div:active {
+  background-color: #fff !important;
+}
+.detailsListWrap :global(.ms-List-page) > div > div,
+.detailsListWrap :global(.ms-List-page) > div > div:before {
+  background-color: #fff;
+  border: none;
+}
+.detailsListWrap :global(.ms-List-page) > div > div:before {
+  display: none;
+}
+
+.detailsListWrap :global(.ms-List-page) > div > div:global(.is-selected),
+.detailsListWrap :global(.ms-List-page) > div:hover > div {
+  background-color: #f4f7fc;
+}
+.detailsListWrap :global(.ms-List-page) > div > div > div > div {
+  padding: 0 8px;
+  line-height: 40px;
+}
+.detailsListWrap :global(.ms-DetailsList) i {
+  color: #f4f7fc;
+}
+.detailsListWrap :global(.ms-DetailsList) i:global(.ms-Check-circle) {
+  opacity: 0;
+}
+.detailsListWrap :global(.ms-DetailsList) div:global(.ms-Check::before) {
+  border-radius: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: solid 1px rgba(130, 144, 179, 0.4);
+}
+.detailsListWrap
+  :global(.ms-DetailsList)
+  div:global(.ms-Check.is-checked::before) {
+  background-color: #4c84ff;
+}
+.detailsListWrap :global(.ms-DetailsList) i:global(.ms-Check-check) {
+  left: -0.8px;
+  font-size: 18px;
+  line-height: 14px;
+}
+.detailsListWrap :global(.ms-DetailsHeader-cell) i:global(.ms-Check),
+.detailsListWrap :global(.ms-DetailsList) :global(.ms-DetailsRow-cellCheck) {
+  margin-top: 3px;
+}
+.detailsListWrap button:global(.ms-DetailsRow-check) {
+  opacity: 0.5;
+}
+.detailsListWrap button:global(.ms-DetailsRow-check) > div {
+  width: 12px;
+  height: 12px;
+}
+.tagUl {
+  margin-top: 4px;
+}
+.tagUl li {
+  user-select: none;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 12px;
+  background-color: rgba(99, 207, 65, 0.1);
+  color: #63cf41;
+  cursor: default;
+  float: left;
+  margin-right: 4px;
+  max-width: 99%;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  padding: 0 10px 0 10px;
+  text-align: center;
+  margin-bottom: 4px;
+}

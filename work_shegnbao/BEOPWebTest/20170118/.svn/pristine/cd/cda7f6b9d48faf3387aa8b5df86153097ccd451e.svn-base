@@ -1,0 +1,27 @@
+<style>
+.divLogItem {
+    padding: 1rem;
+}
+.divLogItem:nth-child(even) {
+	background-color: #eee;
+}
+.divLogItem>span{
+    font-size: 1.6rem;
+}
+.divPatrol{
+    margin-top: 0.6rem;
+}
+.divPatrol>span{
+    display: block;
+}
+.divPatrol .spPlanTime{
+    display: block;
+}
+</style>
+<div id="ctnFilter">
+    <div class="filterItem"></div>
+    <div class="filterItem"></div>
+</div>
+<div id="ctnLog">
+
+</div>

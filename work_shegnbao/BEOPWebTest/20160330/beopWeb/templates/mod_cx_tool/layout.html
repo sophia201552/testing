@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% assets "css_cx_tool_point_table" %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+    {% endassets %}
+    <link href="/static/app/CxTool/css/animate.css" rel="stylesheet">
+    <link href="/static/app/CxTool/css/style.css" rel="stylesheet">
+
+    {% block head %}
+    {% endblock %}
+    {% block script %}
+        <script>
+            var beop = beop || {};
+            var _hmt;
+            var AppConfig = {
+                userId:{{ user['id'] }},
+                permission:{{ permission|safe }}
+            };
+        </script>
+    {% endblock %}
+    {% block style %}
+    {% endblock %}
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <img alt="image" class="img-circle" src="{{ user.userpic }}" width="48px"/>
+                        <span class="text-muted text-xs block" id="tools_user_name">{{ user.userfullname }}</span>
+                    </div>
+                </li>
+
+                {% for id, href, icon, caption,permission in navigation_bar %}
+                    <li permission="{{ permission|e }}">
+                        <a href="{{ href|e }}"><i class="{{ icon|e }}"></i>
+                            <span class="nav-label">{{ caption|e }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom" style="height: 40px;overflow: hidden">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary "><i
+                            class="glyphicon glyphicon-align-justify"></i></a>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message" i18n="debugTools.login.WELCOME_TEXT"></span>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="page-content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% assets "js_cx_tool_point_table" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+
+<!-- Mainly scripts -->
+<script src="/static/app/CxTool/scripts/lib/jquery.metisMenu.js"></script>
+<script src="/static/app/CxTool/scripts/lib/jquery.slimscroll.min.js"></script>
+
+<script>
+    $(function () {
+        var $body = $('body'), $sideMenu = $('#side-menu');
+
+        function SmoothlyMenu() {
+            if (!$body.hasClass('mini-navbar') || $body.hasClass('body-small')) {
+                $sideMenu.hide();
+                setTimeout(
+                        function () {
+                            $('#side-menu').fadeIn(500);
+                        }, 100);
+            } else if ($body.hasClass('fixed-sidebar')) {
+                $('#side-menu').hide();
+                setTimeout(
+                        function () {
+                            $('#side-menu').fadeIn(500);
+                        }, 300);
+            } else {
+                $sideMenu.removeAttr('style');
+            }
+        }
+
+        $('.navbar-minimalize').click(function () {
+            $body.toggleClass("mini-navbar");
+            SmoothlyMenu();
+        });
+        $sideMenu.on('click', 'li:not(:first)', function () {
+            $sideMenu.children('li').removeClass('active');
+            $(this).addClass('active');
+        })
+    })
+</script>
+</body>
+</html>

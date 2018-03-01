@@ -1,0 +1,88 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>BEOP energy leader</title>
+    {% assets "css_report_detail" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+    {% endassets %}
+    <link rel="stylesheet" href="/static/projectReports/report.css"/>
+    <style>
+        body {
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+        }
+
+        .reportNavigation {
+            height: 100%;
+            position: static !important;
+        }
+
+        .reportNavigation > .nav {
+            position: absolute;
+            top: 120px !important;
+        }
+    </style>
+</head>
+<body style="width:100%;font-family: 微软雅黑; overflow-x:hidden; background-color: #edf0f5;background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nNicgaGVpZ2h0PSc2Jz4KICA8bGluZSB4MT0nMTAlJyB5MT0nMTAlJyB4Mj0nOTAlJyB5Mj0nOTAlJyBzdHJva2Utd2lkdGg9JzEnIHN0cm9rZT0nI2U4ZThlOCcvPgogIDxsaW5lIHgxPSc5MCUnIHkxPScxMCUnIHgyPScxMCUnIHkyPSc5MCUnIHN0cm9rZS13aWR0aD0nMScgc3Ryb2tlPScjZThmMGZmJy8+ICAKPC9zdmc+');">
+<nav id="navHeader" class="navbar navbar-default" role="navigation" style="margin-bottom: 0px; z-index: 3;">
+    <div class="container-fluid" id="navPane">
+        <div class="navbar-header" id="navHomeLogo" style="float: left;">
+            <a class="navbar-brand" style="padding: 10px 0 0 20px;" title="Home" href="/">
+                <img src="http://images.rnbtech.com.hk/static/images/logo_beop.png" style="width: 78px; height: 32px;">
+            </a>
+        </div>
+    </div>
+</nav>
+<div id="indexMain" style="top: 55px;">
+    {{ report_detail|safe }}
+</div>
+</body>
+{% assets "js_report_detail" %}
+<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+<script>
+    var i18n_resource = {
+        observer: {
+            widgets: {
+                TOTAL_AMOUNT: '总量'
+            },
+            reportScreen: {
+                TITLE_NO_DATA: "没有数据"
+            }
+        }
+    };
+    (function () {
+        localStorage["i18n"] = JSON.stringify(i18n_resource);
+        I18n = new Internationalization();
+    })();
+    $(function () {
+        function detachMouseWheel() {
+            setTimeout(function () {
+                $('#indexMain').off();
+            }, 0)
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener('load', detachMouseWheel, false);
+        } else if (window.attachEvent) {
+            window.attachEvent('onload', detachMouseWheel);
+        } else {
+            window.onload = function () {
+                detachMouseWheel();
+            }
+        }
+        $('.form_datetime').remove();
+        $('.reportNavigation').addClass('col-md-2');
+
+        var reportScreen = new ReportScreen();
+        reportScreen.renderCharts($('#beopReport .report-unit'));
+        $('.reportNavigation').affix({
+            offset: {
+                top: 100
+            }
+        });
+        $('.step-container').scrollspy({target: '.reportNavigation'});
+    })
+</script>
+</html>

@@ -1,0 +1,8 @@
+export default {
+  CATALOG: 'Index',
+  ATTRIBUTE: 'Attr.',
+  TEMPLATE: 'Temp.',
+  ELEMENT: 'Widget',
+  DATA: 'DS',
+  CONFIG: 'Attr.'
+};

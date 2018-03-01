@@ -1,0 +1,174 @@
+<style>
+    *{
+        font-family: "Microsoft YaHei";
+    }
+    #containerWorkFlowList{
+        height: calc(100% - 3.6rem);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    #btnworkflowSelect {
+        font-size: 2rem;
+        top: 0.6rem;
+    }
+    #btnWorkFlowSort {
+        font-size: 2rem;
+        top: 0.6rem;
+        right: calc(6% + 2.4rem);
+    }
+    #iconWorkFlowAdd {
+        background-position: -25.7rem 0;
+    }
+    .liWkRecord {
+        position: relative;
+        height: 9.4rem;
+        border-bottom:1px solid #ccc;
+    }
+    .liWkRecord:last-child {
+        border-bottom: none;
+    }
+    .wkEmergency {
+        height: 86%;
+        position: absolute;
+        left: 1rem;
+        width: 0.4rem;
+        top: 7%;
+    }
+    .wkEmergency_0{
+        background-color: #63b962;
+    }
+    .wkEmergency_1{
+        background-color: #fead21;
+    }
+    .wkEmergency_2{
+        background-color: red;
+    }
+    .wkTitle {
+        position: absolute;
+        left: 2.5rem;
+        font-size: 1.8rem;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: calc(100% - 3rem);
+        top: 0.5rem;
+        color: white;
+    }
+    .wkInfo {
+        position: absolute;
+        width: calc(100% - 4.5rem);
+        left: 2.5rem;
+        top: 3rem;
+        height: 3.6rem;
+        color: #8E8E93;
+        overflow : hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        word-break: break-all;
+    }
+    .wkUser {
+        position: absolute;
+        left: 2.5rem;
+        bottom: 0.6rem;
+        color: #8E8E93;
+    }
+    .wkDate {
+        position: absolute;
+        left: 10rem;
+        bottom: 0.6rem;
+        color: #8E8E93;
+    }
+    #workflowTool {
+        height: 3.6rem;
+        width: 100%;
+        position: relative;
+        z-index: 3;
+    }
+    #workflowSelect {
+        position: absolute;
+        left: 1rem;
+    }
+    #workflowSelect .dropdown-menu, #workflowSort .dropdown-menu{
+        min-width: 96px;
+        background-color: rgba(53,126,236,0.92);
+        color: #fff;
+    }
+    #workflowSort .dropdown-menu {
+        left: initial;
+        right: 0;
+    }
+    #workflowSort{
+        position: absolute;
+        right: 1rem;
+    }
+    #workflowSelect .dropdown-menu li, #workflowSort .dropdown-menu li{
+        padding: 1px 12px;
+    }
+    .btnWkSelect.selected{
+
+    }
+    #workflowTool .dropdown .dropdown-toggle{
+        color: rgb(53,126,236);
+        background-color: transparent;
+        border: none;
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+    #workflowTool .dropdown.open .dropdown-toggle{
+        background-color: rgba(53,126,236,0.92);
+        color: #fff;
+    }
+    .wkGetStatus {
+        position: absolute;
+        height: 1rem;
+        width: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        border-radius: 1rem;
+    }
+    .get_false {
+        background-color: red;
+    }
+    .true {
+        background-color: white;
+    }
+
+</style>
+<div id="workflowTool">
+    <div id="workflowSelect" class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="ulWkSelect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span id="wkType" i18n="appDashboard.workflow.DOING">Doing</span>
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="ulWkSelect">
+            <li id="btnWorking" class="btnWkSelect selected zepto-ev" i18n="appDashboard.workflow.DOING">Doing</li>
+            <li id="btnCreated" class="btnWkSelect zepto-ev" i18n="appDashboard.workflow.CREATE">Create</li>
+            <li id="btnFinished" class="btnWkSelect zepto-ev" i18n="appDashboard.workflow.FINISH">Finish</li>
+            <li id="btnJoined" class="btnWkSelect zepto-ev" i18n="appDashboard.workflow.JOIN">Join</li>
+        </ul>
+    </div>
+    <div id="workflowSort" class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="ulWkSort" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span id="wkType" i18n="appDashboard.workflow.SORT">Sort</span>
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="ulWkSort">
+            <li id="idSort" class="btnSort zepto-ev" i18n="appDashboard.workflow.PROJECT_NUM">Project Num</li>
+            <li id="createTimeSort" class="btnSort zepto-ev" i18n="appDashboard.workflow.CREATE_TIME">Create Time</li>
+            <li id="deadlineSort" class="btnSort zepto-ev" i18n="appDashboard.workflow.DEADLINE">Deadline</li>
+            <li id="emergencySort" class="btnSort zepto-ev" i18n="appDashboard.workflow.EMERGENCY">Emergency</li>
+            <li id="executorSort" class="btnSort zepto-ev" i18n="appDashboard.workflow.EXECUTOR">Executor</li>
+            <li id="teamSort" class="btnSort zepto-ev" i18n="appDashboard.workflow.TASK_GROUP">Task Group</li>
+            <li id="collectSort" class="btnSort zepto-ev" i18n="appDashboard.workflow.FAVORITES">Favorites</li>
+        </ul>
+    </div>
+</div>
+<div id="containerWorkFlowList">
+    <div id="divWorking" class="divWkList"></div>
+    <div id="divCreated" class="divWkList"></div>
+    <div id="divFinished" class="divWkList"></div>
+    <div id="divJoined" class="divWkList"></div>
+</div>

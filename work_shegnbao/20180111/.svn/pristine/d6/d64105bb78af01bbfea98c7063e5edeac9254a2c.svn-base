@@ -1,0 +1,178 @@
+.clear::after {
+  display: block;
+  content: '';
+  clear: both;
+  width: 0;
+  height: 1px;
+}
+.rulePanel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.left {
+  float: left;
+  width: 340px;
+  height: 100%;
+  border-right: 1px solid #d8d8d8;
+}
+.right {
+  float: left;
+  width: calc(100% - 340px);
+  height: 100%;
+}
+.right .titleWrap {
+  width: 100%;
+  height: 58px;
+  border-bottom: 1px solid #d8d8d8;
+  padding: 0 16px 0 24px;
+}
+.right .footWrap {
+  width: 100%;
+  height: 44px;
+  padding: 8px 16px;
+}
+
+.right .contentWrap {
+  width: 100%;
+  height: calc(100% - 102px);
+}
+.right .titleWrap .titleText {
+  float: left;
+  line-height: 58px;
+  font-size: 16px;
+  color: #333333;
+  letter-spacing: 0;
+  text-align: left;
+}
+.right .titleWrap .titleBtn {
+  height: 30px;
+  line-height: 30px;
+  padding: 0 16px 0 12px;
+  float: right;
+  margin-top: 13px;
+  background: #70ce7b;
+  box-shadow: 0 4px 10px 0 #fff;
+  border-radius: 22px;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 8px;
+}
+.right .titleWrap .titleBtn.disabled {
+  cursor: not-allowed;
+  background: rgba(170, 170, 170, 0.8);
+}
+.right .titleWrap .titleBtn > span {
+  font-size: 14px;
+  vertical-align: top;
+  margin-left: 6px;
+}
+
+.right .contentWrap .checkGroupWrap {
+  background-color: #fff;
+  padding: 16px;
+}
+.right .contentWrap .tableWrap {
+  width: 100%;
+  background-color: #fff;
+  padding: 16px;
+}
+.right .contentWrap .tableWrap .content {
+  width: 100%;
+  height: 100%;
+}
+.right .contentWrap .tableWrap .content :global(.react-grid-Header) {
+  background-color: #7da2f5;
+}
+.right .contentWrap .tableWrap .content :global(.react-grid-Header) div {
+  background: transparent;
+}
+.tableWrap .content :global(.react-grid-Header) div {
+  background: transparent;
+  text-align: center;
+  color: #fff;
+}
+.tableWrap
+  .content
+  :global(.react-grid-checkbox:checked)
+  + :global(.react-grid-checkbox-label:before) {
+  background: #4c83ff;
+  box-shadow: inset 0 0 0 5px #fff;
+}
+.tableWrap
+  .content
+  :global(.radio-custom)
+  + :global(.radio-custom-label:before),
+.tableWrap
+  .content
+  :global(.react-grid-checkbox)
+  + :global(.react-grid-checkbox-label:before) {
+  border-radius: 2px;
+  border: none;
+}
+.tableWrap
+  .content
+  :global(.react-grid-checkbox:focus)
+  + :global(.react-grid-checkbox-label) {
+  outline: none;
+}
+.tableWrap .content :global(.react-grid-Canvas) {
+  overflow-y: auto !important;
+}
+.tableWrap .content :global(.react-grid-checkbox-label) {
+  border: 1px solid #bdd1ff;
+  border-radius: 2px;
+}
+
+.tableWrap .content :global(.widget-HeaderCell__value) {
+  line-height: 28px;
+}
+.right .contentWrap .rulePanel :global(.ms-Panel-content) {
+  height: 100%;
+}
+
+.tableWrap .content :global(.react-grid-Canvas) {
+  overflow-y: auto !important;
+}
+.tableWrap .content :global(.react-grid-checkbox-label) {
+  border: 1px solid #bdd1ff;
+  border-radius: 2px;
+}
+.tableWrap .content :global(.react-grid-Row:hover) :global(.react-grid-Cell) {
+  background-color: rgba(125, 162, 245, 0.15);
+}
+
+.tableWrap .content :global(.react-grid-Row) :global(.react-grid-Cell) {
+  border-color: #bdd1ff;
+  color: #7f7f7f;
+}
+.right .footWrap button {
+  float: right;
+  margin-left: 8px;
+  height: 28px;
+  line-height: 26px;
+  border-radius: 4px;
+  padding: 0 16px;
+  border: none;
+  box-shadow: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+.right .footWrap button.cancel {
+  background: #d8d8d8;
+  border: 1px solid #e8e8e8;
+  color: #9b9b9b;
+}
+.right .footWrap button.save {
+  background: #598cff;
+  border: 1px solid #e8e8e8;
+  color: #ffffff;
+}
+.right .footWrap button,
+.right .footWrap button:focus {
+  outline: none;
+}
+.right .contentWrap .checkGroupWrap li > button + div {
+  top: 0px;
+}

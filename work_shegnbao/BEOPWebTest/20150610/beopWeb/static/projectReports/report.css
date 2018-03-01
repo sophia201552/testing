@@ -1,0 +1,532 @@
+#day-report .report {
+    border: 10px solid #d5e1ed;
+}
+
+.each-block {
+    margin: 5px 0;
+    padding: 30px 0 30px 0;
+
+    background-color: #fff;
+}
+
+.device-title {
+    height: 300px;
+    padding: 10px;
+}
+
+.each-block .h-2 {
+    font-size: 2em;
+
+    padding: 100px 0;
+
+    text-align: center;
+
+    color: #366090;
+    border-right: 1px solid #5f91b5;
+}
+
+.detail-block {
+    margin: 5px 0;
+    padding: 12px 0;
+    padding-bottom: 100px;
+
+    background-color: #fff;
+    box-shadow: 3px 3px 3px rgba(153, 154, 155, .69);
+}
+
+.day {
+    position: relative;
+
+    padding: 0 0 0 58px;
+}
+
+.day-title {
+    font-family: arial, sans-serif;
+    font-size: 24px;
+    line-height: 35px;
+
+    position: relative;
+    top: 58px;
+    left: -50px;
+
+    width: 90px;
+    height: 90px;
+
+    text-align: center;
+
+    color: #769bb3;
+    border: 4px solid #d2e8ea;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.form_datetime {
+    margin-bottom: 15px;
+    border: 1px solid #563d7c;
+    border-radius: 5px;
+    width:150px;
+}
+
+.form_datetime:hover {
+    box-shadow: 0 0 5px #563d7c;
+}
+
+.form_datetime .add-on {
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    width: 25px;
+}
+
+.form_datetime .add-on .icon-calendar {
+    margin-left: 5px;
+}
+
+.form_datetime input {
+    width: 114px;
+    height: 25px;
+    line-height: 25px;
+    text-indent: 5px;
+    border: none;
+    border-left: 1px solid #563d7c;;
+    background: none;
+    font-size: 13px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#reportFailCon {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 500px;
+    height: 160px;
+    position: relative;
+    top: calc(50% - 80px);
+}
+
+#reportFailCon > img, #reportFailCon > div {
+    float: left;
+}
+
+#reportErrorInfo {
+    margin-left: 50px;
+    width: 170px;
+    position: relative;
+    top: 30%;
+}
+
+.weekday {
+    display: block;
+}
+
+.time {
+    font-size: 12px;
+
+    left: 10px;
+
+    color: #888;
+}
+
+.actor {
+    margin-left: 5px;
+}
+
+.action {
+    font-size: 100%;
+
+    margin-left: 20px;
+}
+
+.chart-title {
+    font-size: 20px;
+    font-weight: 600;
+
+    top: 0;
+
+    margin-left: 80px;
+    padding-right: 20px;
+
+    text-align: left;
+
+    color: mediumblue;
+}
+
+.color {
+    display: inline-block;
+
+    width: 10px;
+    height: 10px;
+
+    -webkit-print-color-adjust: exact;
+}
+
+.chart-comment {
+    height: 20px;
+    margin: 15px 0 15px 100px;
+}
+
+.chart-comment-block {
+    float: left;
+
+    margin-right: 10px;
+}
+
+.comment-text {
+    display: inline-block;
+}
+
+.chart-body {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.detail-block-title {
+    margin: 40px 20px 0 20px;
+
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.detail-block-title .title-content {
+    position: relative;
+    top: -35px;
+    left: 80px;
+
+    width: 162px;
+    padding-left: 5px;
+
+    background-color: white;
+}
+
+.report-img {
+    margin-bottom: 30px;
+    margin-left: 15%;
+}
+
+.report-img img {
+    width: 80%;
+    height: 80%;
+}
+
+.report-img h4 {
+    font-weight: bold;
+
+    width: 400px;
+    margin: 60px auto 20px auto;
+}
+
+.close-eqp {
+    padding-left: 5px;
+
+    border-left: 15px solid red;
+}
+
+.open-eqp {
+    padding-left: 5px;
+
+    border-left: 15px solid green;
+}
+
+.summary {
+    font-size: 15px;
+    padding: 0 25px 30px 25px;
+}
+
+.chart-summary {
+    width: 100%;
+    height: 100px;
+}
+
+.canvas-container {
+    width: 100%;
+}
+
+.report-table {
+    margin: 30px auto;
+    width: 70%;
+    text-align: center;
+}
+
+.report-table th {
+    text-align: center;
+}
+
+.report-block {
+    background: #ffffff;
+    box-shadow: 3px 3px 3px rgba(153, 154, 155, .69);
+}
+
+.day:before,
+.day:after {
+    display: table;
+
+    content: '';
+}
+
+#day-report .day {
+    padding-top: 20px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.day:after {
+    visibility: hidden;
+    clear: both;
+
+    height: 0;
+}
+
+.day .hd {
+    display: table;
+    float: left;
+
+    width: 100px;
+
+    content: '';
+
+    color: #999;
+}
+
+.day .hd .m-d {
+    font-size: 20px;
+}
+
+.day .hd .w {
+    font-size: 12px;
+
+    display: inline-block;
+}
+
+.day .bd {
+    margin-left: 140px;
+
+    color: black;
+}
+
+.day .bd .list {
+    margin-bottom: 20px;
+}
+
+.daylist {
+    position: relative;
+
+    margin: 0 0 20px 0;
+}
+
+.day .bd .list .li {
+    font-size: 14px;
+
+    position: relative;
+
+    margin: 0;
+    padding: 2px 0 2px 20px;
+
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.day .bd .list .li:before {
+    font-weight: normal;
+
+    position: absolute;
+    left: 0;
+
+    padding-right: 5px;
+
+    content: '\2714';
+
+    color: #bbcfb5;
+}
+
+#reportTab {
+
+    float: left;
+
+    margin-top: 40px;
+
+    background-color: white;
+}
+
+#aday-report {
+    border-color: #ddd transparent #ddd #ddd;
+}
+
+#reportTab > li.active > a {
+    background-color: #87bbe7;
+}
+
+#reportTab li {
+    background-color: #eee;
+}
+
+.chapter {
+    margin-left: 40px;
+}
+
+.chapter-xs {
+    margin: 30px 0;
+}
+
+.weekly-report-title {
+    margin-left: 20px;
+}
+
+#week-report .last-week {
+    position: absolute;
+    top: 35px;
+    left: 25%;
+    cursor: pointer;
+    color: #428bca;
+}
+
+#week-report .next-week {
+    position: absolute;
+    top: 35px;
+    right: 25%;
+    cursor: pointer;
+    color: #428bca;
+}
+
+#week-report .summary-date {
+
+    padding: 10px;
+
+    text-align: center;
+
+    background: rgb(213, 225, 237);
+    box-shadow: 3px 3px 3px rgba(153, 154, 155, .69);
+}
+
+/* @import url(/static/projectreports/print.css) print;  */
+
+@media print {
+    .last-week {
+        display: none !important;
+    }
+
+    .next-week {
+        display: none;
+    }
+
+    .report {
+        border: none;
+    }
+
+    .tab-content {
+        margin-left: 0 !important;
+    }
+
+}
+
+.reportNavigation {
+    position: absolute;
+}
+
+.reportNavigation li a {
+    display: block;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #767676;
+}
+
+.reportNavigation > .nav > li {
+    width: 200px;
+}
+
+.reportNavigation > .nav > li a:hover {
+    color: #563d7c;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #563d7c;
+}
+
+.reportNavigation .nav .nav li a:hover {
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #563d7c;
+    margin-left: 5px;
+}
+
+.reportNavigation > .nav > li.active > a {
+    padding-left: 10px;
+    font-weight: 700;
+    color: #563d7c;
+    background-color: transparent;
+    border-left: 2px solid #563d7c;
+}
+
+.reportNavigation .nav .nav li.active a {
+    padding-left: 18px;
+    font-weight: 700;
+    background-color: transparent;
+    border-left: 1px solid #563d7c;
+    margin-left: 5px;
+}
+
+.reportNavigation .nav .nav {
+    display: none;
+    padding-bottom: 10px;
+}
+
+.reportNavigation > .nav > li.active > .nav {
+    display: block;
+}
+
+.reportNavigation .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+@media (max-width: 992px){
+    #beopReport .step-container {
+        width: 70%;
+        margin-left: 5%;
+    }
+}
+
+
+.step-container {
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 90%;
+    margin-top: 20px;
+}
+
+.step-play-container {
+    position: relative;
+}
+
+.step-play-list {
+    position: absolute;
+    width: 100%;
+}
+
+@media print {
+    .step-play-list {
+        position: static;
+    }
+}
+
+.step-item-container {
+    display: inline-block;
+    float: left;
+    background: #fff;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.report-unit h3 {
+    text-indent: 10px;
+}
+
+.step-item-container .page-header {
+    padding-top: 20px;
+    margin-top: 0;
+}

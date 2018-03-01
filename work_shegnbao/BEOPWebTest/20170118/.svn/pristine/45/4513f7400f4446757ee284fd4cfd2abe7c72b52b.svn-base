@@ -1,0 +1,354 @@
+<style>
+    * {
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    .canSelect {
+        -webkit-user-select: text;
+        user-select: text;
+    }
+    .scroll-wrap {
+        height: 100%;
+        overflow-y: auto;
+        background-color: rgb(50, 56, 67);
+    }
+
+    #projectSel {
+        color: #eee;
+        text-shadow: 1px 1px 3px #666;
+    }
+
+    #projectSel .list-group-item {
+        border-radius: 0;
+    }
+    .divRoom{
+        padding: 0.8rem;
+        font-size: 1.6rem;
+    }
+    .divRoom.disabled{
+        color: #cdcdcd;
+        opacity: 0.6;
+    }
+        .divRoom .name{
+            display: inline-block;
+            width: calc(100% - 80px);
+            margin-left: 10px;
+        }
+        .divRoom .glyphicon{
+            color: #61b1f9;
+            font-size: 1.4rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            float: right;
+        }
+
+    .btnCtn .btn{
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+    .btnCtn .btnLeft{
+        float: left;
+        margin-left: 2rem;
+    }
+    .btnCtn .btnRight{
+        float: right;
+        margin-right: 2rem;
+    }
+    .btnCtn + div{
+        clear: both;
+    }
+    #btnEdit{
+        display:flex;
+        padding:8px 12px 3px 12px;
+        font-size:1.4rem;
+    }
+    #btnAdd {
+        padding:8px 12px 3px 12px;
+    }
+    #btnAdd i.iconfont{
+        display:block;
+        float:left;
+    }
+    .editLabel,.addLabel{
+        padding:0.3rem 0 0 0.5rem;
+    }
+    .addLabel{
+        
+        font-size:1.4rem;
+    }
+    #btnEdit .iconfont,#btnAdd .iconfont{
+        font-size:2.2rem;
+    }
+    #btnAdd .addLabel{
+        float:left;
+    }
+    #btnAdd .dropdown-menu{
+        top: 3.5rem;right: 0;left: auto;
+    }
+    #btnAddList .dropdown-menu{
+        top: 17rem;right: 0;left: auto;
+    }
+    #btnAdd .dropdown-menu li a{
+        font-size: 1.8rem;
+    }
+    .show{
+        display: inline-block;
+    }
+    .qrcode{
+        text-align: center;
+    }
+    .modal-dialog, .modal-content{
+        margin-top: 50%;
+        width: 240px;
+        left: 50%;
+        margin-left: -120px;
+    }
+    .itemQrcode{
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    .itemQrcode .token{
+        font-weight: 600;
+        font-size: 1.6rem;
+        color: #eee;
+        margin: 2px 1rem;
+    }
+    .itemQrcode .room{
+        color: #ddd;
+    }
+    .itemQrcode .elapse{
+        color: #ccc;
+    }
+    .listCtn{
+        display: none;
+        height: 100%;
+
+    }
+    .listCtn.active{
+        display: block;
+    }
+    #divMapList .divImgItem{
+        margin:1rem 0.5rem;
+        height: 15rem;
+        position: relative;
+        background:#343a46;
+        border-radius: 4px;
+    }
+    #divMapList .divImgItem.active{
+        border:2px solid rgba(255,162,0,0.6);
+    }
+    #divMapList .divImgItem.active .imgMask .roomName{
+        color:#4e93ec;
+    }
+    #divMapList img{
+        position: absolute;
+        top: -1rem;
+        width: 80%;
+        left: 10%;
+        right: 10%;
+        opacity: 0.5;
+        height: 17rem;
+        -webkit-transform: perspective(1200px) rotateX(60deg) translateZ(30px);
+        transform: perspective(1200px) rotateX(60deg) translateZ(30px);
+    }
+    #divMapList .divImgItem.active img{
+        -webkit-transform: perspective(1200px) rotateX(60deg) translateZ(30px) scale(1.1,1.1);
+        transform: perspective(1200px) rotateX(60deg) translateZ(30px) scale(1.1,1.1);
+        -webkit-transition: -webkit-transform 0.4s;
+        transition: transform 0.4s;
+        opacity: 1;
+    }
+    #divMapList .imgMask{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+    #divMapList .imgMask .roomName{
+        width:100%;
+        height:35px;
+        line-height:30px;
+        padding: 3px 8px 3px 8px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        position: absolute;
+        bottom:0;
+        z-index: 9;
+        text-shadow: 3px 5px 5px #444;
+        background-color: rgba(92, 102, 119, 0.8);
+        color:#ccd6ec;
+    }
+    #divMapList .imgMask .roomName > span.glyphicon{
+        margin-right: 5px;
+        padding-right: 5px;
+    }
+
+    #divMapList{
+        height: calc(100% - 80px);
+        overflow: auto;
+        background-color: rgb(41, 47, 56);
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding:0 0.5rem;
+    }
+
+    .divBtm{
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 3rem;
+    }
+    .divBtm .btnTabRoom, .divBtm .btnTabRoom:hover, .divBtm .btnTabRoom:active{
+        width: 50%;
+        height: 100%;
+        float: left;
+        border: none;
+        color: #999;
+        background-color: #eee;
+        padding-right: 1.8rem;
+        padding-left: 1.8rem;
+        background:none;
+        border-top: 1px solid #FFA200;
+    }
+    .divBtm .btnTabRoom.active{
+        background-color: #FFA200;
+        color: #fff;
+        text-shadow: 2px 2px 3px #555;
+    }
+    .userCtn{
+        text-align: center;
+        padding-top: 2rem;
+    }
+    .userCtn .divUserPic{
+        width: 5rem;
+        height: 5rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+        border: 3px solid rgb(238, 238, 238);
+        border-radius: 50%;
+    }
+    .userCtn .divUserPic img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 1px inset rgba(136, 136, 136, 0.33);
+    }
+    .divHead{
+        background: -webkit-gradient(linear,0 0,0 100%,from(rgb(32,35,44)),to(rgb(49,51,64)));
+    }
+    #roomPane{
+        height: 100%;
+    }
+    .btnCtn .btnColor{
+        color: rgb(232,197,52);
+    }
+    #txtCopyCode{
+        color: #666;padding: .2rem .5rem;background-color: #eee;border-radius: 2px;text-align: center;
+    }
+    .hostIpSel option{
+        height:30px;
+        line-height:30px;
+    }
+    .hostIpSel,#iptHostOrIp{
+        width:80%;
+        margin:10px 10%;
+    }
+    #btnAccess{
+        margin-left:calc(50% - 60px);
+    }
+</style>
+<div class="scroll-wrap">
+    <!-- 房间列表-->
+    <div id="roomPane">
+        <!-- 地图 -->
+        <div class="listCtn active" id="mapPane">
+            <div class="btnCtn">
+                <div class="btn btnLeft btnColor" id="btnEdit"><i class="iconfont">&#xe66c;</i><div class="editLabel" i18n="admin.roomPage.EDIT">编辑</div></div>
+                <div class="btn btnRight btnColor" id="btnAdd">
+                    <div><i class="iconfont">&#xe66b;</i><div class="addLabel" i18n="admin.roomPage.ADD">添加</div></div>
+                    <ul class="dropdown-menu">
+                        <li id="scanCode"><a href="javascript:void(0);" i18n="admin.roomPage.SWEEP">扫一扫</a></li>
+                        <li id="inviteCode"><a href="javascript:void(0);" i18n="admin.roomPage.INVITE_CODE">邀请码</a></li>
+                        <li id="btnQrcode"><a href="javascript:void(0);" i18n="admin.roomPage.MY_QR_CODE">我的二维码</a></li>
+                        <li id="btnDirectAccess"><a href="javascript:void(0);" i18n="admin.roomPage.DIRECT_ACCESS">直联进入</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="divMapList"></div>
+        </div>
+        <!-- 列表 -->
+        <div class="listCtn" id="listPane">
+            <div class="divHead">
+                <div class="userCtn">
+                    <div class="divUserPic">
+                        <img class="imgUser" id="imgUser"/>
+                    </div>
+                    <div id="divUserName">
+
+                    </div>
+                    <div style="border-bottom: 1px solid; display: inline-block; width: 66%; color: rgba(204,204,204,0.2);"></div>
+                </div>
+                <div class="btnCtn" style="margin: auto;width: 72%;">
+                <div class="btn btnLeft btnColor" id="btnEditList"><i class="iconfont">&#xe66c;</i><div i18n="admin.roomPage.EDIT">编辑</div></div>
+                <div class="btn hidden" id="btnCancel" style="float: left;"><div i18n="admin.roomPage.CANCEL">取消</div></div>
+                <div class="btn hidden" id="btnGenerate"  style="float: right;"><div i18n="admin.roomPage.GENERATE_QR_CODE">生成二维码</div></div>
+                <div class="btn btnRight btnColor" id="btnAddList">
+                    <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="iconfont">&#xe66b;</i><div i18n="admin.roomPage.ADD">添加</div></span>
+                    <ul class="dropdown-menu">
+                        <li id="scanCode"><a href="javascript:void(0);" i18n="admin.roomPage.SWEEP">扫一扫</a></li>
+                        <li id="inviteCode"><a href="javascript:void(0);" i18n="admin.roomPage.INVITE_CODE">邀请码</a></li>
+                        <li id="btnQrcode"><a href="javascript:void(0);" i18n="admin.roomPage.MY_QR_CODE">我的二维码</a></li>
+                    </ul>
+                </div>
+                <br style="clear: both;">
+            </div>
+            </div>
+            <div id="projectSel"></div>
+        </div>
+        <!-- 切换地图和列表的按钮 -->
+        <div class="divBtm">
+            <button type="button" class="btnTabRoom active" data-target="mapPane" i18n="admin.roomPage.MAP">地图</button>
+            <button type="button" class="btnTabRoom" data-target="listPane" i18n="admin.roomPage.LIST">列表</button>
+        </div>
+    </div>
+
+    <!-- 输入邀请码 -->
+    <div id="inviteCodePane" class="hidden" style="padding: 60px 40px;">
+        <div class="form-group">
+            <input type="text" class="form-control" id="iptInviteCode" i18n="placeholder=admin.roomPage.INTER_INVITE_CODE">
+        </div>
+        <button class="btn btn-default" id="btnInviteCode" i18n="admin.roomPage.SURE">确定</button>
+        <button class="btn btn-default" id="btnCancelInvite" i18n="admin.roomPage.CANCEL">取消</button>
+    </div>
+
+    <!-- 二维码模态框 -->
+    <div class="modal" id="qrcodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div id="qrcode"></div>
+            <div style="margin-top: 2rem;"><div class="" id="txtCopyCode"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 我的二维码列表-->
+    <div id="qrcodePane" class="hidden">
+        <div id="qrcodeList"></div>
+    </div>
+    <!-- 直联进入-->
+    <div id="directAccessBox"  class="hidden" >
+        <select class="hostIpSel form-control">
+            <option value="hostname">hostname</option>
+            <option value="IP">IP</option>
+        </select>
+        <input type="text" id="iptHostOrIp" class="form-control"/>
+        <div>
+            <button class="btn btn-default" id="btnAccess" i18n="admin.roomPage.SURE">确定</button>
+            <button class="btn btn-default" id="btnCancelAccess" i18n="admin.roomPage.CANCEL">取消</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿<div class="col-xs-12 vertical-roll">
+    <div class="col-xs-offset-1 col-xs-10 workflow-container" id="workflow-mine">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 top-section">
+                <div class="col-xs-6">
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <div class="avatar-icon"
+                                 style="background: url(/static/images/login_feature_icons.jpg) no-repeat 0 0;"></div>
+                        </a>
+
+                        <div class="media-body">
+                            <span class="media-heading mine-avatar-name"></span>
+
+                            <div class="mine-avatar-desc"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 pull-right list-complete">
+                    <a class="linkage" href="#/mine" id="ckeck_completed"><span
+                            class="glyphicon glyphicon-check"></span><span style="padding-left: 10px;"><span
+                            i18n="workflow.mine.CHECK_COMPLETED"></span></span></a>
+                </div>
+            </div>
+        </div>
+        <div class="row mine-buttons">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="member-nav clearfix">
+                    <ul>
+                        <li class="active">
+                            <a class="btn-tasks"><span i18n="workflow.mine.TASK"></span></a>
+                        </li>
+                        <li class="">
+                            <a class="btn-starreds">
+                                <span i18n="workflow.mine.STARRED"></span><span class="star icon-star"
+                                                                                aria-hidden="true"
+                                                                                style="color: yellowgreen;position: absolute;top: 14px;"></span>
+                            </a></li>
+                        <li class="">
+                            <a class="btn-cates"><span i18n="workflow.mine.CATEGORY"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row tasks screen-row">
+            <div class="col-xs-12">
+                <div class="row task-row new-task-row">
+                    <div class="col-xs-10 col-xs-offset-1 task-items" data-priority="5">
+                        <span i18n="workflow.mine.TASK_TYPE_NEW_TASK" class="task-type"></span>
+
+                        <div class="empty-message" i18n="workflow.mine.TASK_EMPTY_MESSAGE_NEW_TASK"></div>
+                    </div>
+                </div>
+                <div class="row task-row urgent-task-row droppable-row" data-priority="6">
+                    <div class="col-xs-10 col-xs-offset-1 task-items">
+                        <span i18n="workflow.mine.TASK_TYPE_URGENT_TASK" class="task-type"></span>
+
+                        <div class="empty-message" i18n="workflow.mine.TASK_EMPTY_MESSAGE_URGENT_TASK"></div>
+                    </div>
+                </div>
+                <div class="row task-row pend-task-row droppable-row" data-priority="4">
+                    <div class="col-xs-10 col-xs-offset-1 task-items">
+                        <span i18n="workflow.mine.TASK_TYPE_PEND_TASK" class="task-type"></span>
+
+                        <div class="empty-message" i18n="workflow.mine.TASK_EMPTY_MESSAGE_PEND_TASK"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row starreds screen-row">
+            <div class="col-xs-12 starreds-container">
+            </div>
+        </div>
+
+        <div class="row categories screen-row">
+            <div class="col-xs-12 categories-container">
+            </div>
+        </div>
+
+        <div class="row completed screen-row">
+            <div class="col-xs-12 completed-container">
+            </div>
+        </div>
+    </div>
+</div>

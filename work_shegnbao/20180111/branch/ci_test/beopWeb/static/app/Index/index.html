@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta  charset="UTF-8">
+        <script>
+            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                window.location.href = 'mobile/index.html'
+            }
+        </script>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="css/animate.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="js/i18n/i18n.js"></script>
+        <title>RNB Web - Home</title>
+    </head>
+
+<body class="commenFont">
+    <div class="reg-hd sticky">
+        <div class="hd-wrap">
+            <div class="container clearfix">
+                <div class="hd-logo">
+                    <a href="" class="hd-logo-link">
+                        <img src="img/img/rnb-logo-alt.png" title="RNB Logo" alt="LOGO"></img>
+                    </a>
+                </div>
+                <nav>
+                    <ul class="hd-bar no-style inline">
+                        <li class="hd-section text-center">
+                            <a href="platform.html" class="hd-btn" i18n="index.banner.PLATFORM"></a>
+                        </li>
+                        <li class="hd-section text-center">
+                            <a href="service.html" class="hd-btn" i18n="index.banner.SERVICES"></a>
+                        </li>
+                        <li class="hd-section text-center">
+                            <a href="smart-devices.html" class="hd-btn" i18n="index.banner.SMART_DEVICES"></a>
+                        </li>
+                        <li class="hd-section text-center">
+                            <a href="industry.html" class="hd-btn" i18n="index.banner.INDUSTRY"></a>
+                        </li>
+                        <li class="hd-section text-center">
+                            <a href="aboutUs.html" class="hd-btn" i18n="index.banner.ABOUT_US"><span></span></a>
+                        </li>
+                        <li class="hd-section text-center">
+                            <a href="news.html" class="hd-btn" i18n="index.banner.NEWS"><span></span></a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="mobile-nav-toggle">
+                    <a class="btn menu-trigger">Menu</a>
+                    <ul>
+                        <li>
+                            <a></a>
+                            <a href="platform.html">Platform</a>
+                        </li>
+                        <li>
+                            <a></a>
+                            <a href="service.html">Services</a>
+                        </li>
+                        <li>
+                            <a></a>
+                            <a href="smart-devices.html">Smart Devices</a>
+                        </li>
+                        <li>
+                            <a></a>
+                            <a href="industry.html">Industry</a>
+                        </li>
+                        <li>
+                            <a></a>
+                            <a href="aboutUs.html"><span>About Us</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="divLanguage" class="divLanguage" style="display: block;">
+                    <a>
+                        <span i18n="index.language.LIN_LANGUAGE"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" id="selectLanguage">
+                        <li><a value="zh"><img src="img/img/zn.png" width="20px"><span class="vMiddle">中文</span></a></li>
+                        <li><a value="en"><img src="img/img/en.png" width="20px"><span class="vMiddle">English</span></a></li>
+                    </ul>
+                </div>
+                <!--<a target="_blank" href="http://beop.rnbtech.com.hk/observer" class="btn">
+                    <img src="img/img/beop-btn.png"></img>
+                </a>-->
+            </div>
+        </div>
+    </div>
+    <!-- navigation end-->
+    <div class="main-wrap">
+        <!-- slider warp -->
+        <div class="sld-wrap service-sld-wrap sub-wrap only-wrap" style="background-color:#fafafa">
+            <div id="beop-sld" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#beop-sld" data-slide-to="0" class="active"></li>
+                    <li data-target="#beop-sld" data-slide-to="1"></li>
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="container" style="background:url('img/img/banner-1.png') no-repeat 85% 110px;width:100%">
+                            <div class="col-sm-6 vertical-outer">
+                                <div class="vertical-inner black-text sld-toggle">
+                                   <ul>
+                                        <li i18n="index.swipe.ONE_WORD"></li>
+                                        <li i18n="index.swipe.TWO_WORD"></li>
+                                        <li i18n="index.swipe.THREE_WORD"></li>
+                                   </ul>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="container" style="background:url('img/img/banner-2.png') no-repeat 100% 0;width:100%;position:relative;">
+                            <div class="col-sm-6 vertical-outer">
+                                <div class="vertical-inner black-text sld-toggle" >
+                                    <ul>
+                                        <li i18n="index.swipe.ONE_WORD"></li>
+                                        <li i18n="index.swipe.TWO_WORD"></li>
+                                        <li i18n="index.swipe.THREE_WORD"></li>
+                                   </ul>
+                                </div>
+                            </div>
+                            <img src="img/img/banner-2-2.png" style="position:absolute;top:120px;right:8%"></img>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#beop-sld" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left icon icon-banner-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#beop-sld" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right icon icon-banner-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!-- slider wrap end-->
+        <!-- 2nd slider wrap -->
+        <div class="sld-wrap feature-sld-wrap sub-wrap two-slider-wrap" style="background-color:#f5f5f5" id="indexFeature">
+            <div id="feature-sld" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <!--  <ol class="carousel-indicators">
+                     <li data-target="#feature-sld" data-slide-to="0" class="active"></li>
+                     <li data-target="#feature-sld" data-slide-to="1"></li>
+                 </ol> -->
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="container">
+                            <div class="text-center intro">
+                                <h1 class="blue-text" i18n="index.feature.TITLE"></h1>
+                                <!-- <p class="black-text">BeOP&trade;,a comprehensive cloud  platform, supports smart services, such as analytics, diagnostics, and workflow management, which are enabled and delivered to buildings, facilities, machines, and so on.</p> -->
+                            </div>
+                            <div class="timeline">
+                                <article class="timeline-item timeline-item-R">
+                                    <div class="text-left">
+                                        <h3 class="blue-text" i18n="index.feature.OPENNESS"></h3>
+                                        <span i18n="index.feature.OPENNESS_CON"></span>
+                                    </div>
+                                    <div>
+                                        <i class="icon icon-open"></i>
+                                    </div>
+                                </article>
+                                <article class="timeline-item timeline-item-L">
+                                    <div class="text-left">
+                                        <h3 class="blue-text" i18n="index.feature.SMARTNESS"></h3>
+                                        <span i18n="index.feature.SMARTNESS_CON"></span>
+                                    </div>
+                                    <div>
+                                        <i class="icon icon-smart"></i>
+                                    </div>
+                                </article>
+                                <article class="timeline-item timeline-item-R">
+                                    <div class="text-left">
+                                        <h3 class="blue-text" i18n="index.feature.INTEROPERABILITY"></h3>
+                                        <span i18n="index.feature.INTEROPERABILITY_CON">
+
+                                        </span>
+                                    </div>
+                                    <div class="text-left">
+                                        <i class="icon icon-intero "></i>
+                                    </div>
+                                </article>
+                                <article class="timeline-item timeline-item-L">
+                                    <div class="text-left">
+                                        <h3 class="blue-text" i18n="index.feature.UNIVERSALITY"></h3>
+                                        <span i18n="index.feature.UNIVERSALITY_CON">
+
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <i class="icon icon-uni"></i>
+                                    </div>
+                                </article>
+                                <article class="timeline-item timeline-item-R">
+                                    <div class="text-left">
+                                        <h3 class="blue-text" i18n="index.feature.CONNECTIVITY"></h3>
+                                        <span i18n="index.feature.CONNECTIVITY_CON">
+
+                                        </span>
+                                    </div>
+                                    <div class="text-left">
+                                        <i class="icon icon-connectivity"></i>
+                                    </div>
+                                </article>
+                                <article class="timeline-item timeline-item-L">
+                                    <div class="text-left">
+                                        <h3 class="blue-text" i18n="index.feature.MOBILITY"></h3>
+                                        <span i18n="index.feature.MOBILITY_CON">
+
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <i class="icon icon-mobility"></i>
+                                    </div>
+                                </article>
+                                <div class="stroke"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- 2nd slider wrap end -->
+        <div class="app-info sub-wrap" style="height:319px;max-height:319px;min-height:319px" id="beopTm">
+            <div class="flex-container container" style="height:100%;">
+                <div class="col-md-6 rnb-animate slideInLeft text-center">
+                    <img class="sample-img" src="img/img/app-sample.png" title="Sample" alt="Sample Image"></img>
+                </div>
+                <div class="col-lg-6 col-md-6 rnb-animate slideInRight">
+                    <div class="download-btn-wrap text-left row">
+                        <a href="" class="btn pc-download clearfix">
+                            <i class="icon icon-pc icon-left"></i>
+                            <span>BeOP&trade;</span>
+                            <i class="icon icon-arrow-right icon-right"></i>
+                        </a>
+                        <a href="" class="btn mob-download clearfix">
+                            <i class="icon icon-mob icon-left"></i>
+                            <span>APP</span>
+                            <i class="icon icon-arrow-down icon-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main wrap end -->
+    <!-- footer -->
+    <footer>
+        <div class="footer-list clearfix">
+            <div class="col-sm-9">
+                <div class="col-sm-2">
+                    <div class="footer-one-title"><a href="index.html" i18n="index.bottomBanner.HOME"></a></div>
+                    <div class="footer-two-title"><a href="index.html#indexFeature" i18n="index.bottomBanner.FEATURES"></a></div>
+                    <div class="footer-two-title"><a href="index.html#beopTm">BeOP™</a></div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="footer-one-title"><a href="service.html" i18n="index.banner.SERVICES"></a></div>
+                    <div class="footer-two-title"><a href="service.html" i18n="index.bottomBanner.END_USER"></a></div>
+                    <div class="footer-two-title"><a href="service.html#platformUser" i18n="index.bottomBanner.PLATFORM_USER"></a></div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="footer-one-title" style="margin:0 -16px"><a href="smart-devices.html" i18n="index.banner.SMART_DEVICES"></a></div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="footer-one-title"><a href="industry.html" i18n="index.banner.INDUSTRY"></a></div>
+                    <div class="footer-two-title" style="margin-right: -12px;"><a href="industry.html" i18n="index.bottomBanner.SMART_BUILDINGS"></a></div>
+                    <div class="footer-two-title" style="margin-right: -9px;"><a href="industry.html#cloudService" i18n="index.bottomBanner.ClOUD_SERVICE"></a></div>
+                    <div class="footer-two-title"><a href="industry.html#industryRFID" i18n="index.bottomBanner.RFID"></a></div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="footer-one-title"><a href="aboutUs.html" i18n="index.banner.ABOUT_US"></a></div>
+                    <div class="footer-two-title"><a href="aboutUs.html" i18n="index.bottomBanner.COMPANY"></a></div>
+                    <div class="footer-two-title"><a href="aboutUs.html#ourTeam" i18n="index.bottomBanner.OUR_TEAM"></a></div>
+                    <div class="footer-two-title"><a href="contact.html" i18n="index.bottomBanner.CONTACT"></a></div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="footer-one-title"><a i18n="index.banner.LOCATION"></a></div>
+                    <div class="footer-two-title"><a class="hover-color-turn address" data-toggle="tooltip" data-placement="right"  i18n="title=company.THREE_PART_ONE_CON;index.bottomBanner.ADDRESS_ONE"></a></div>
+                    <div class="footer-two-title"><a class="hover-color-turn" data-toggle="tooltip" data-placement="right" title="" i18n="title=company.THREE_PART_TWO_CON;index.bottomBanner.ADDRESS_TWO"></a></div>
+                    <div class="footer-two-title"><a class="hover-color-turn" data-toggle="tooltip" data-placement="right" title="" i18n="title=company.THREE_PART_THREE_CON;index.bottomBanner.ADDRESS_THREE"></a></div>
+                </div>
+            </div>
+            <div class="col-sm-3 footerRight">
+                <a href="http://beop.rnbtech.com.hk/observer" title="BeOP"><img src="img/icon/beop.svg" /></a>
+                <a href="http://beop.rnbtech.com.hk/factory" title="WebFactory"><img src="img/icon/factory.svg" /></a>
+                <!-- <a href="#" title="Smart Devices"><img src="img/icon/wenkong.svg" /></a>
+                <a href="#" title="CX Tool"><img src="img/icon/tiaoshigongju.svg" /></a> -->
+            </div>
+        </div>
+        <div class="footer-recod-numer">Copyright 2016 R&B Technology CO., Ltd. All rights reserved. Privacy Policy</div>
+    </footer>
+    <!-- footer end -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <script type="text/javascript" src="js/general.js"></script>
+</body>
+
+
+    
+</html>

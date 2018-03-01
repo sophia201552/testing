@@ -1,0 +1,154 @@
+<div class="news">
+    <div class="greenFrame">
+        <div class="newsTitle">
+            <div class="greenLine"></div>
+            <div class="contentCenter">
+                <p i18n="News.ALL_NEWS"></p>
+                <div class="blueLine forPc"></div>
+            </div>
+        </div>
+        <div class="newsContent">
+            <div class="iconCtn">
+                <img src="./img/news/icon.png" alt="" width="100%">
+            </div>
+            <div class="timeLine">
+                <div class="yearBox leftLocation">
+                    <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <p i18n="News.YEAR_ONE"></p>
+                    <img src="./img/news/one.png" alt="" width="100%">
+                </div>
+                <div class="itemInfo leftLocation">
+                    <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <div class="itemContent">
+                        <p class="itemTitle" i18n="News.YEAR_ONE_TITLE_ONE"></p>
+                        <p class="itemDesc" i18n="News.YEAR_ONE_DESC_ONE"></p>
+                    </div>
+                </div>
+                <div class="itemInfo rightLocation">
+                    <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <div class="itemContent">
+                        <p class="itemTitle" i18n="News.YEAR_ONE_TITLE_TWO"></p>
+                        <p class="itemDesc" i18n="News.YEAR_ONE_DESC_TWO"></p>
+                    </div>
+                </div>
+                <div class="itemInfo leftLocation">
+                    <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <div class="itemContent">
+                        <p class="itemTitle" i18n="News.YEAR_ONE_TITLE_THREE"></p>
+                        <p class="itemDesc" i18n="News.YEAR_ONE_DESC_THREE"></p>
+                    </div>
+                </div>
+                <div class="itemInfo rightLocation">
+                    <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <div class="itemContent">
+                        <p class="itemTitle" i18n="News.YEAR_ONE_TITLE_FOUR">2016年03月</p>
+                        <p class="itemDesc" i18n="News.YEAR_ONE_DESC_FOUR"></p>
+                    </div>
+                </div>
+                <div class="itemInfo leftLocation">
+                    <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <div class="itemContent">
+                        <p class="itemTitle" i18n="News.YEAR_ONE_TITLE_FIVE"></p>
+                        <p class="itemDesc" i18n="News.YEAR_ONE_DESC_FIVE"></p>
+                    </div>
+                </div>
+                <div class="yearBox rightLocation">
+                    <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <p i18n="News.YEAR_TWO"></p>
+                    <img src="./img/news/two.png" alt="" width="100%">
+                </div>
+                <div class="itemInfo rightLocation">
+                    <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <div class="itemContent">
+                        <p class="itemTitle" i18n="News.YEAR_TWO_TITLE_ONE"></p>
+                        <p class="itemDesc" i18n="News.YEAR_TWO_DESC_ONE"></p>
+                    </div>
+                </div>
+                <div class="itemInfo leftLocation">
+                    <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <div class="itemContent">
+                        <p class="itemTitle" i18n="News.YEAR_TWO_TITLE_TWO">2015年01月</p>
+                        <p class="itemDesc" i18n="News.YEAR_TWO_DESC_TWO"></p>
+                    </div>
+                </div>
+                <div class="yearBox rightLocation">
+                    <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <p i18n="News.YEAR_THREE"></p>
+                    <img src="./img/news/three.png" alt="" width="100%">
+                </div>
+                <div class="itemInfo rightLocation">
+                    <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <div class="itemContent">
+                        <p class="itemTitle" i18n="News.YEAR_THREE_TITLE_ONE"></p>
+                        <p class="itemDesc" i18n="News.YEAR_THREE_DESC_ONE"></p>
+                    </div>
+                </div>
+                <div class="yearBox leftLocation">
+                    <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <p i18n="News.YEAR_FOUR"></p>
+                    <img src="./img/news/four.png" alt="" width="100%">
+                </div>
+                <div class="itemInfo leftLocation">
+                   <div class="smallMark">
+                        <div class="oneCircle"></div>
+                        <div class="twoCircle"></div>
+                        <div class="threeCircle"></div>
+                    </div>
+                    <div class="itemContent">
+                        <p class="itemTitle" i18n="News.YEAR_FOUR_TITLE_ONE"></p>
+                        <p class="itemDesc" i18n="News.YEAR_FOUR_DESC_ONE"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div> 

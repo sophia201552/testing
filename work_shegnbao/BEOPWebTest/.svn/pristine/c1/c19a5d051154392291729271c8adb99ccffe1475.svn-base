@@ -1,0 +1,1698 @@
+/*Dashboard渲染基础start*/
+.springContainer.noScroll>.panel{
+    position: relative;
+    width: calc(100% - 10px);
+}
+.springContainer .springSeHead {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+/*Dashboard渲染基础end*/
+/*配置框基础start*/
+.cfgModal{
+    color: #323232;
+    font-size: 14px;
+}
+.cfgModal .grow:hover, .grow:focus, .grow:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: transform 0.2s;
+    -webkit-transition: -webkit-transform 0.2s;
+}
+.cfgModal .modal-backdrop {
+    position: absolute;
+}
+.cfgModal .form-control{
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.cfgModal .inlineBlock .form-control{
+    display: inline-block;
+    width: auto;
+}
+.cfgModal .form-inline>label{
+    margin-right: 20px;
+}
+.cfgModal .flexCenter {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    width: 100%;
+}
+.modal-body .cfgArea {
+    border-bottom: 1px solid #ccc;
+    margin: 0 -15px;
+    padding: 10px 0;
+}
+.cfgModal .modal-content label{
+    font-weight: bold;
+}
+.modal-body .cfgArea:last-of-type{
+    border-bottom: none;
+}
+.modal-body .cfgWidget {
+    padding: 0 15px;
+    margin-bottom: 10px;
+}
+.cfgOptionWidget {
+    display: inline-block;
+}
+.cfgFooterWidget.divCancel,.cfgFooterWidget.divConfirm{
+    float: right;
+    margin-left: 20px;
+}
+/*配置框基础end*/
+
+/*数据拖拽区配置start*/
+.divDsWorkspace .divVar {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: relative;
+    margin: 10px 0;
+    padding-top: 10px;
+}
+.divDsWorkspace .spVarLabel {
+    position: absolute;
+    background-color: #eee;
+    padding: 0 12px;
+    top: -10px;
+    left: -10px;
+}
+.divDsWorkspace .divDs {
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    color: #4c9f42;
+    cursor: pointer;
+    font-size: 14px;
+    height: 30px;
+    display: inline-block;
+    margin: 5px 1%;
+    padding: 4px 15px;
+    border-radius: 5px;
+    width: 31%;
+}
+@media (min-width: 1200px) {
+    .divDsWorkspace .divDs {
+        width: 23%;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+}
+.divDsWorkspace .divDs:hover .btnDsDel{
+    color: darkorange;
+}
+.divDsWorkspace .spDs {
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 84%;
+    white-space: nowrap;
+}
+.divDsWorkspace .btnDsDel {
+    top: 2px;
+    color: #ccc;
+    float: right;
+}
+.divDsWorkspace .divDsTip {
+    text-align: center;
+    color: #ccc;
+    background-color: transparent;
+    border: 1px dashed #ccc;
+    height: 30px;
+}
+.divDsWorkspace .divDsTip:hover {
+    border-color: #66afe9;
+    cursor: pointer;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.divDsWorkspace .divDsTip:hover>span {
+    visibility: hidden;
+}
+.divDsWorkspace .divDsTip.dragover {
+    border-color: #66afe9;
+    cursor: pointer;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.divDsWorkspace .divDsTip.dragover>span {
+    visibility: hidden;
+}
+.divDsWorkspace .btnChartCog {
+    position: absolute;
+    font-size: 18px;
+    top: -9px;
+    right: -9px;
+    padding: 0;
+    background: #eee;
+}
+.divDsWorkspace .panelChartCog {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 #428bca;
+    z-index: 1400;
+    background-color: white;
+    display: none;
+    color: #333;
+}
+.divDsWorkspace .divBtnCogGrp{
+    position: relative;
+    float: right;
+    right: 10px;
+    font-size: 18px;
+}
+.divDsWorkspace .btnPanelCogHide {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #aaa;
+}
+/*数据拖拽区配置end*/
+
+/*历史数据拖拽控件*/
+.widgetHistoryAnalyze   >div{
+    background-color: rgba(44,58,84,0.9);
+    border: 1px solid #969696;
+    border-radius: 4px;
+    color:#fff;
+}
+.widgetHistoryAnalyze.forDashboard >div{
+    border: none;
+}
+.widgetHistoryAnalyze  .divChartTtl{
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    background: linear-gradient(#eee,grey);
+    background: -webkit-linear-gradient(#eee,grey);
+    border-bottom: 1px solid #969696;
+}
+.widgetHistoryAnalyze  .dragTip {
+    font-size: 18px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 40%;
+}
+.widgetHistoryAnalyze  .ctnTimeConfig {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: flex-end;
+    -webkit-align-items: flex-end;
+    flex-wrap: wrap;
+    background-color: rgba(44,58,84,0.9);
+    z-index: 1;
+    max-height: calc(100% - 30px);
+    overflow: auto;
+    padding:5px;
+}
+.widgetHistoryAnalyze  .divTimeConfig {
+    margin:5px 0;
+    display:inline-block;
+}
+.widgetHistoryAnalyze  .divTimeConfig>div{
+    display: inline-block;
+    margin: 0 4px;
+    float: left;
+}
+.widgetHistoryAnalyze .btnTimeConfigGrp{
+    margin-bottom: 5px;
+}
+#paneContent .widgetHistoryAnalyze .btnTimeConfigGrp .btn{
+    color: #fff;
+}
+.widgetHistoryAnalyze.forDashboard .divConfigCancel{
+    background-color: transparent;
+}
+.widgetHistoryAnalyze  .divTimeConfig .label{
+    margin-bottom:0;
+}
+.widgetHistoryAnalyze  .divTimeConfig .form-control{
+    height:20px;
+    padding:1px 2px;
+    font-size:12px;
+}
+.widgetHistoryAnalyze  .divTimeConfig .input-group-addon{
+    padding:0 10px;
+    font-size:12px;
+}
+.widgetHistoryAnalyze  .divTimeConfig .btn{
+    padding:1px 10px;
+    font-size:12px;
+}
+.widgetHistoryAnalyze  .form-control {
+    background-color:#fff
+}
+.widgetHistoryAnalyze  .btn{
+    padding:1px 10px;
+    font-size: 12px;
+}
+.widgetHistoryAnalyze  .divTimeRange  {
+    max-width:300px;
+}
+.widgetHistoryAnalyze  .divConfigConfirm {
+    color: white;
+    margin-left: 4px;
+    margin-right: 10px;
+}
+.widgetHistoryAnalyze  .divConfigCancel {
+    color: white;
+    margin-right: 10px;
+}
+.widgetHistoryAnalyze.forDashboard .btnShowTimeConfig {
+    top: 15px;
+}
+.widgetHistoryAnalyze  .btnShowTimeConfig {
+    position: absolute;
+    font-size: 24px;
+    right: 15px;
+    top: 35px;
+    z-index:1;
+    cursor: pointer;
+}
+.widgetHistoryAnalyze  .divHistoryChart {
+    display: block;
+    position: relative;
+    height: calc(100% - 22px);
+    width: 100%;
+}
+.widgetHistoryAnalyze   .labelDataRole{
+    background-color:transparent;
+}
+
+/*移动端kpi分项评估控件*/
+/*配置框样式start*/
+.divMultiDataWorkSpace .divDataBindList .glyphicon {
+    cursor:pointer;
+}
+.divMultiDataWorkSpace .divDataBindList{
+    overflow-y: auto;
+}
+.divMultiDataWorkSpace .divDataListTtl {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding-right: 5%;
+}
+.divMultiDataWorkSpace .spDataListTtl {
+    width: 39%;
+    text-align: center;
+}
+.divMultiDataWorkSpace .spDataListNameTtl {
+    width: 26%;
+}
+.divMultiDataWorkSpace .spDataListUnitTtl {
+    width: 20%;
+}
+.divMultiDataWorkSpace .spDataListScaleTtl{
+    width:16%;
+}
+.divMultiDataWorkSpace .spDataListDsTtl {
+    width: 41%;
+}
+.cfgModal .flexCenter {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    width: 100%;
+}
+.divMultiDataWorkSpace .divDataParam {
+    margin-bottom:1%;
+}
+.divMultiDataWorkSpace .divTitleLabel{
+    font-size:1.5rem;
+    font-weight:600;
+}
+.divMultiDataWorkSpace .divDataTitleName{
+    font-size:1.5rem;
+    font-weight:600;
+    display:inline-block;
+}
+.divMultiDataWorkSpace .iptParam  {
+    margin: 0 0.5%;
+}
+.divMultiDataWorkSpace .iptName {
+    width:25%;
+}
+.divMultiDataWorkSpace .iptUnit {
+    width:15%;
+}
+.divMultiDataWorkSpace .iptScale{
+    width:15%;
+}
+.divMultiDataWorkSpace .divDs  {
+    margin: 0 0.5%;
+    width: 41%;
+    text-align: center;
+    color: #ccc;
+    border: 1px dashed #ccc;
+    height: 34px;
+    display: inline-block;
+    padding: 6px 15px;
+    border-radius: 5px;
+}
+.divMultiDataWorkSpace .divDs:hover  {
+    border-color: #66afe9;
+    cursor: pointer;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+.divMultiDataWorkSpace .divDs.hasDs  {
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    color: #4c9f42;
+    border-radius: 5px;
+}
+.divMultiDataWorkSpace .divDs.hasDs:hover  {
+    cursor: pointer;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.divMultiDataWorkSpace .divDs .spDs{
+    display:none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 80%;
+}
+.divMultiDataWorkSpace .divDs .btnDsDel{
+    display:none;
+    top: 2px;
+    color: #ccc;
+    float: right;
+}
+.divMultiDataWorkSpace .divDs .spHoverTip{
+    display:none;
+}
+.divMultiDataWorkSpace .divDs:hover .spNormalTip  {
+    display:none;
+}
+.divMultiDataWorkSpace .divDs:hover .spHoverTip  {
+    display:inline-block;
+}
+.divMultiDataWorkSpace .divDs.hasDs .btnDsDel  {
+    display:inline-block;
+}
+.divMultiDataWorkSpace .divDs.hasDs:hover .btnDsDel  {
+    color: darkorange;
+}
+.divMultiDataWorkSpace .divDs.hasDs .spDsTip {
+    display:none;
+}
+.divMultiDataWorkSpace .divDs.hasDs .spDs {
+    display:inline-block;
+}
+.divMultiDataWorkSpace .btnParamDel {
+    width: 4%;
+}
+.divMultiDataWorkSpace .divRoleConfigTtl{
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.divMultiDataWorkSpace .divRoleConfigTtl>*{
+    display: inline-block;
+}
+.divMultiDataWorkSpace .divRoleConfigTtl .iptRoleTtl{
+    display: inline-block;
+    margin-bottom:10px;
+    width: 80%;
+}
+.divMultiDataWorkSpace .divRoleConfigTtl .divDs {
+    width: 30%;
+}
+.divMultiDataWorkSpace .divRoleConfigTtl .iptRoleTtlUnit {
+    width: 15%;
+}
+.divMultiDataWorkSpace .divRoleConfigTtl .iptRoleTtlScale {
+    width: 15%;
+}
+.divMultiDataWorkSpace .divDiaTitle{
+    font-weight:bold;
+}
+.divMultiDataWorkSpace .col-xs-2{
+    font-size:16px;
+}
+.divMultiDataWorkSpace .divRoleTtl{
+    margin-top:20px;
+}
+.divKPIList .divSingleType:nth-of-type(odd){
+    background-color:#fff;
+}
+.divKPIList .divSingleType:nth-of-type(even){
+    background-color: #e4e4e4;
+}
+/*配置框样式end*/
+.widgetKPIItemEval {
+    background-color: #192234;
+    overflow: auto;
+}
+.widgetKPIItemEval .divKPIDetail {
+    display: none;
+}
+.widgetKPIItemEval.showSubContainer .divKPIIndex{
+    display: inline-block;
+    height: 100%;
+    width: 25%;
+    float: left;
+}
+.widgetKPIItemEval.showSubContainer .divKPIDetail{
+    display: inline-block;
+}
+.widgetKPIItemEval .divStructCtn{
+    position: relative;
+    background-color: #28364E;
+    cursor: pointer;
+    margin: 0.3rem;
+}
+.widgetKPIItemEval .divStructCtn.focus .divStructTtl{
+    background-color: #38486A;
+}
+.widgetKPIItemEval .divStructTtl{
+    height: 5rem;
+    position: relative;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: white;
+    padding: 8px 8px 8px 5.4rem;
+    line-height: 1.42857143;
+    /*border: 1px solid #ddd;*/
+    vertical-align: middle;
+}
+.diagnosisCtn .divStructTtl{/*兼容诊断汇总*/
+    height: auto;
+    padding-left: 38px;
+}
+.widgetKPIItemEval .spStructIcon{
+    height: 100%;
+    width: 3.2rem;
+    position: absolute;
+    left: 1rem;
+    top: 0;
+}
+.diagnosisCtn .spStructIcon{/*兼容诊断汇总*/
+    top: 1rem;
+}
+.widgetKPIItemEval .spStructIcon>svg{
+    height: 100%;
+    width:100%
+}
+.widgetKPIItemEval .spStructIcon>svg>path{
+    fill: white;
+    stroke: white;
+}
+.widgetKPIItemEval .spStructName{
+    display: block;
+}
+.widgetKPIItemEval .spStructValue{
+    display: block;
+}
+.widgetKPIItemEval .rowPointDetail{
+    display: none;
+}
+.widgetKPIItemEval .rowPointDetail.focus{
+    display: table-row;
+}
+.widgetKPIItemEval .divPointDetail{
+    display: table-cell;
+}
+.widgetKPIItemEval .pointDetail{
+    padding: 8px;
+    height: 0;
+}
+.widgetKPIItemEval .pointDetail{
+    padding: 8px;
+    height: 0;
+}
+.widgetKPIItemEval .divStructItem.focus .pointDetail{
+    height: auto;
+    display: block;
+    -webkit-transition: height 0.5s;
+    -moz-transition: height 0.5s;
+    -ms-transition: height 0.5s;
+    -o-transition: height 0.5s;
+    transition: height 0.5s;
+}
+.widgetKPIItemEval .divStructCtn.focus .divStuctBody{
+    display: table;
+}
+.widgetKPIItemEval .divStuctBody{
+    /*border: 1px solid #ddd;*/
+    width: 100%;
+    display: none;
+    margin-top: 0.3rem;
+}
+.widgetKPIItemEval .divStructItemTtl{
+    display: table-row;
+    width: 100%;
+}
+.widgetKPIItemEval .divStructItemTtl>span{
+    display: table-cell;
+    padding: 0.5rem;
+    color: #CCB38C;
+    font-size: 1.4rem;
+    border-top: 1px solid #485468;
+    text-align: center;
+}
+.widgetKPIItemEval .divStructItemTtl>span:first-of-type{
+    text-align: left;
+}
+.widgetKPIItemEval .divStructItem{
+    display: table-row;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    width: 100%;
+}
+.widgetKPIItemEval .spItemInfo{
+    display: table-cell;
+    padding: 0.5rem;
+    border-top: 1px solid #485468;
+    text-align: center;
+}
+/*诊断汇总: 和KPI汇总小小的区别*/
+.diagnosisCtn .spItemInfo{
+    text-align: left;
+}
+.diagnosisCtn .spItemInfo:nth-of-type(1){
+    width: 25%;
+}
+.diagnosisCtn .spItemInfo:nth-of-type(2){
+    width: 15%;
+}
+.diagnosisCtn .spItemInfo:nth-of-type(3){
+    width: 60%;
+}
+/*诊断汇总*/
+.widgetKPIItemEval .spItemInfo:first-of-type{
+    text-align: left;
+}
+.widgetKPIItemEval .spItemKPIRs .label{
+    display: none;
+}
+.widgetKPIItemEval .spItemKPIRs.danger .label-danger{
+    display: inline;
+}
+.widgetKPIItemEval .spItemKPIRs.success .label-success{
+    display: inline;
+}
+.widgetKPIItemEval .spItemKPIRs.default .label-default{
+    display: inline;
+}
+
+/* 移动端KPI监视模块 */
+.appKpi{
+    width: 100%;
+    height: 100%;
+}
+.appKpi .divKPIList{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+.divSingleType{
+    padding:0.7rem .02rem;
+    border-bottom:1px solid #eee;
+    width:100%;
+    font-size:1.4rem;
+    position:relative;
+}
+.divListTitle{
+    font-size:1.8rem;
+    font-weight:600;
+}
+.divTypeTitle{
+    display:inline-block;
+    color:black;
+    padding-left:0.7rem;
+}
+.divTypeVal{
+    display:inline-block;
+    float:left;
+    padding:0.1rem;
+    text-align:center;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-size:1.2rem;
+    color:black;
+}
+.divKPINow{
+    display: inline-block;
+    padding: 0.1rem;
+    font-size: 1.8rem;
+    border: none;
+    font-weight: 700;
+    color: black;
+}
+.divTypeUnit{
+    float:left;
+    text-align:center;
+    color:black;
+    font-size:1.2rem;
+    margin-top:0.3rem;
+    top:50%;
+    line-height:1.2rem;
+}
+.divKPIListRight{
+    position: absolute;
+    right: 5%;
+    transform: translateY(-50%);
+    top: 50%;
+}
+.divKPIUnit{
+    font-size:1.8rem;
+    line-height:1.8rem;
+    display:inline-block;
+    color:black;
+}
+
+/* 历史拖拽面板 start */
+.historyDrag{
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    background-color: rgba(44,58,84,0.9);
+    z-index: 5;
+    border-radius: 4px;
+    border: 1px solid rgb(55, 62, 76);
+}
+.historyDrag > div{
+    color:#fff;
+    cursor: default;
+}
+.historyDrag.forDashboard >div{
+    border: none;
+}
+.historyDrag .divChartTtl{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    background: linear-gradient(rgba(126, 134, 162, 0.79),rgba(29, 41, 64, 0.77));
+    background: -webkit-linear-gradient(rgba(126, 134, 162, 0.79),rgba(29, 41, 64, 0.77));
+    border-bottom: 1px solid rgba(68, 82, 109, 0.9);
+    cursor: move;
+    padding: 5px;
+}
+.historyDrag .dragTip {
+    font-size: 16px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 40%;
+}
+.historyDrag .ctnTimeConfig {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: flex-end;
+    -webkit-align-items: flex-end;
+    flex-wrap: wrap;
+    background-color: rgba(3, 13, 33, 0.7);
+    z-index: 1;
+    max-height: calc(100% - 30px);
+    overflow: auto;
+    padding:5px;
+}
+.historyDrag .divTimeConfig {
+    margin:5px 0;
+    display:inline-block;
+    width: 100%;
+}
+.historyDrag .divTimeConfig>div{
+    display: inline-block;
+    margin: 0 4px;
+    float: left;
+}
+.historyDrag .btnTimeConfigGrp{
+    position: absolute;
+    width: 160px;
+    right: 0;
+    top: 8px;
+}
+.historyDrag .input-group-addon{
+    padding: 0;
+}
+#paneContent .historyDrag .btnTimeConfigGrp .btn{
+    color: #fff;
+}
+.historyDrag.forDashboard .divConfigCancel{
+    background-color: transparent;
+}
+.historyDrag .divTimeConfig label{
+    margin-bottom:0;
+}
+.historyDrag .divTimeConfig .form-control{
+    height:20px;
+    padding:1px 2px;
+    font-size:12px;
+}
+.historyDrag .divTimeConfig .btn{
+    padding:1px 10px;
+    font-size:12px;
+}
+.historyDrag .form-control {
+    background-color:#fff
+}
+.historyDrag .btn{
+    padding:1px 10px;
+    font-size: 12px;
+}
+.historyDrag .divTimeRange  {
+    max-width:280px;
+}
+.historyDrag .divConfigConfirm {
+    color: white;
+    margin-left: 4px;
+    margin-right: 10px;
+}
+.historyDrag .divConfigCancel {
+    color: white;
+    margin-right: 10px;
+}
+.historyDrag .btnShowTimeConfig {
+    position: absolute;
+    font-size: 20px;
+    right: 70px;
+    top: 5px;
+    z-index: 1;
+    cursor: pointer;
+    color: #A1A3AF;
+    padding: 0 8px;
+}
+.historyDrag .btnShowAddPanel {
+    position: absolute;
+    font-size: 20px;
+    right: 40px;
+    top: 5px;
+    z-index: 1;
+    cursor: pointer;
+    color: #A1A3AF;
+    padding: 0 8px;
+}
+.historyDrag .divHistoryChart {
+    display: block;
+    position: relative;
+    height: calc(100% - 36px);
+    width: calc(100% - 20px);
+    margin: auto;
+}
+.historyDrag .btnClosePanel{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    color: #A1A3AF;
+    padding: 0 8px;
+    font-size: 20px;
+}
+.historyDrag .divBackground{
+    width: 100%;
+    border-top: 1px solid;
+    padding: 5px 2px;
+}
+.historyDrag .divBackground .bg.selected{
+    border: none;
+    box-shadow: 0 0 3px 1px #ED9624;
+}
+.historyDrag .divBackground .bg{
+        margin: 0 0 0 15px;
+    border: 1px solid #888;
+    padding: 2px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.historyDrag .divBackground .bg.dark{
+    background-color: rgba(44,58,84,1);
+    color: #fff;
+}
+.historyDrag .divBackground .bg.light{
+    background-color: #fff;
+    color: #333;
+    text-shadow: none;
+}
+.historyDrag .divBackground .bg.transparent{
+    background-color: transparent;
+    color: #fff;
+    text-shadow: 0 0 1px #000;
+}
+
+/*light*/
+.historyDrag.light{
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.historyDrag.light > div {
+    color: #333;
+}
+.historyDrag.light .divBackground{
+    border-top-color: #ccc;
+}
+.historyDrag.light .divConfigCancel {
+    color: #333;
+}
+.historyDrag.light .divChartTtl {
+    background: linear-gradient(rgba(126, 134, 162, 0.79),rgba(199, 206, 218, 0.77));
+    background: -webkit-linear-gradient(rgba(126, 134, 162, 0.79),rgba(199, 206, 218, 0.77));
+    border-bottom: 1px solid rgba(200, 206, 218, 0.9);
+}
+.historyDrag.light .ctnTimeConfig{
+    background-color: rgba(157, 160, 171, 0.9);
+}
+
+/*transparent*/
+.historyDrag.transparent{
+    background-color: transparent;
+    border: 1px solid #CBCED6;
+}
+.historyDrag.transparent > div {
+    color: #fff;
+    text-shadow: 1px 1px 0px #333;
+}
+.historyDrag.transparent .divChartTtl {
+    background: linear-gradient(rgba(126, 134, 162, 0.29),rgba(199, 206, 218, 0.17));
+    background: -webkit-linear-gradient(rgba(126, 134, 162, 0.29),rgba(199, 206, 218, 0.17));
+    border-bottom: 1px solid rgba(200, 206, 218, 0.2);
+    color: #fff;
+    text-shadow: 1px 1px 3px #000;
+}
+.historyDrag.transparent .ctnTimeConfig{
+    background-color: rgba(136, 139, 148, 0.7);
+}
+/* 历史拖拽面板 end */
+
+
+/* Monitor模块 start*/
+#modalMonitorConfig #ctnMonitor,#ModalAppButtonConfig  #ctnMonitor{
+    position: relative;
+    height: 360px;
+    overflow: auto;
+    padding: 10px;
+}
+#modalMonitorConfig .btnMonitorAdd,#ModalAppButtonConfig .btnMonitorAdd {
+    font-size: 32px;
+    position: absolute;
+    right: 50px;
+    top: 10px;
+}
+#modalMonitorConfig, #ModalAppButtonConfig{/*observer*/
+    position: absolute;
+}
+.tab-host #modalMonitorConfig, .tab-host #ModalAppButtonConfig, .tab-host .cfgModal{/*factory*/
+    position: fixed;
+    right: 20%;
+}
+#modalMonitorConfig .modal-backdrop,#ModalAppButtonConfig .modal-backdrop{
+    position: absolute;
+}
+#modalMonitorConfig .divMonitor,#ModalAppButtonConfig .divMonitor {
+    width: calc(50% - 5px);
+    height:50%;
+    float: left;
+    background-color: white;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    border-radius: 5px;
+    position: relative;
+    border: 1px dotted;
+    display: inline-block;
+}
+#modalMonitorConfig .divMonitor input,#modalMonitorConfig .divMonitor select,#ModalAppButtonConfig .divMonitor input{
+    padding: 0 3px;
+    display: inline-block;
+    height: 18px;
+    font-size: 12px;
+    width: calc(100% - 45px);
+}
+#modalMonitorConfig .divMonitor .divIcon,#ModalAppButtonConfig .divMonitor .divIcon {
+    font-size: 20px;
+    position: relative;
+    top: 50px;
+    left: 8%;
+    border-radius: 30px;
+    padding: 10px;
+    box-shadow: 0 0 5px #f6c700;
+}
+#modalMonitorConfig .divMonitor .divMonitorInfo,#ModalAppButtonConfig .divMonitor .divMonitorInfo {
+    display: inline-block;
+    height: 100%;
+    width: 70%;
+    float: right;
+}
+#modalMonitorConfig .divMonitor .divMonitorInfo>div,#ModalAppButtonConfig .divMonitor .divMonitorInfo>div {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    width: 80%;
+    padding: 5px 0;
+}
+#modalMonitorConfig .divMonitor label,#ModalAppButtonConfig .divMonitor label {
+    margin-bottom: 0;
+    margin-right: 10px;
+    width: 30px;
+}
+#modalMonitorConfig .divMonitor .spName,#ModalAppButtonConfig .divMonitor .spName {
+    display: inline;
+    max-width: calc(100% - 40px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#ModalAppButtonConfig .linkList {
+    height: 26px;
+    padding: 2px 12px;
+}
+#modalMonitorConfig .divMonitor .divName{
+
+}
+#modalMonitorConfig .divMonitor .iptUnit{
+}
+#modalMonitorConfig .divMonitor .divValue {
+
+}
+#modalMonitorConfig .divMonitor .spValue {
+    display: inline;
+    max-width: calc(100% - 40px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#modalMonitorConfig .divMonitor .spValueTip {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 1px 10px;
+}
+#modalMonitorConfig .divMonitor .divUnit {
+}
+#modalMonitorConfig .divMonitor .iptUnit {
+}
+#modalMonitorConfig .modal-footer input,#ModalAppButtonConfig .modal-footer input{
+    height: 35px;
+    float: left;
+    width: 13%;
+}
+#modalMonitorConfig .divMonitor .divMonitorDel,#ModalAppButtonConfig .divMonitor .divMonitorDel{
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.springContent .divMonitor {
+    float: left;
+    display: inline-block;
+    width: 100%;
+    height: 140px;
+    position: relative;
+    color: #444;
+    border-bottom:3px solid  #0a0031;
+    /*background:-webkit-gradient(radial, 184 -25, 161, 220 -257, 465, from(#fabd3e), to(#f4ae32));*/
+}
+.springContent .divMonitor:last-child{
+    border-bottom:none;
+}
+.springContent .divMonitor:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.springContent .divMonitor.semiCol {
+    width: 50%;
+    height: 33%;
+    box-shadow: 0 0 1px 0  #ccc inset;
+    background-color: #f7f7f7;
+    padding: 0 15px;
+    border: none;
+}
+.springContent .divMonitor.semiCol:nth-child(even) {
+}
+.springContent .divMonitor .divIcon {
+    width: 28%;
+    height: 100%;
+    top: 0;
+    vertical-align: top;
+    font-size: 50px;
+    display: inline-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+.springContent .divMonitor.semiCol .divIcon {
+    width: auto;
+    height: 100%;
+    font-size: 2rem;
+}
+.springContent .divMonitor.semiCol .divIcon .glyphicon{
+    padding: 0.5rem;
+    border-radius: 10rem;
+}
+.springContent .divMonitor.semiCol .divIcon .glyphicon:before {
+    position: relative;
+    left: 1px;
+    top: -1px;
+}
+.springContent .divMonitor .divMonitorInfo {
+    height: 100%;
+    width: 70%;
+    vertical-align: text-bottom;
+    font-size: 22px;
+    padding: 0 5px;
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    align-content: center;
+    -webkit-align-content: center;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+    align-items: center;
+    -webkit-align-items: center;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
+.springContent .divMonitor.semiCol .divMonitorInfo {
+    left: 5%;
+    position: relative;
+}
+.springContent .divMonitor .divMonitorInfo>div {
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.springContent .divMonitor label {
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+.springContent .divMonitor .spName {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #ccc;
+    text-align: left;
+}
+.springContent .divMonitor .spValue {
+    font-weight: bold;
+    font-size: 36px;
+    margin-right: 10px;
+}
+.springContent .divMonitor .spUnit {
+    position: relative;
+    top: 5px;
+}
+.springContent .divMonitor.semiCol .spUnit{
+    top:0;
+}
+.springContent .divMonitor .spType {
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.springContent .divMonitor.semiCol .spName {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.7;
+    font-size: 1.2rem;
+}
+.springContent .divMonitor.semiCol  .spValue {
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin-right: 10px;
+}
+.springContent .divMonitor.semiCol  .spUnit {
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+.springContent .divMonitor.semiCol  .spType {
+    margin-left: 10px;
+    font-size: 16px;
+}
+/* Monitor模块 End*/
+/* dashboard end */
+/* appButton模块 start*/
+.springContent .divAppButton {
+    height: 50%;
+    padding-top: 1rem;
+    margin:0 auto;
+    cursor:pointer;
+    text-align: center;
+}
+.springContent .divAppButtonOne,.springContent .divAppButtonTwo,.springContent .divAppButtonThree {
+    height:100%;
+}
+.springContent .divAppButtonFour,.springContent .divAppButtonFive,.springContent .divAppButtonSix {
+    height:50%;
+}
+.springContent .divAppButtonOne {
+    margin-left:25%;
+}
+.springContent .divAppButtonOne .divIcon,.springContent .divAppButtonTwo .divIcon {
+    width:10rem;
+    height:10rem;
+    border-radius:10rem;
+    margin: 0 auto;
+    margin-top: calc(50% - 5rem);
+    font-size:6rem;
+    line-height: 10rem;
+}
+.springContent .divAppButtonThree .divIcon,.springContent .divAppButtonFour .divIcon,.springContent .divAppButtonFive .divIcon,.springContent .divAppButtonSix .divIcon {
+    width:5rem;
+    height:5rem;
+    border-radius:5rem;
+    margin: 0 auto;
+    margin-top: 65%;
+    font-size:3rem;
+    line-height: 5rem;
+}
+.springContent .divAppButtonFive:nth-child(4) {
+    margin-left:16%;
+}
+.springContent .divAppButtonFour .divIcon,.springContent .divAppButtonFive .divIcon,
+.springContent .divAppButtonSix:nth-child(1) .divIcon,.springContent .divAppButtonSix:nth-child(2) .divIcon,.springContent .divAppButtonSix:nth-child(3) .divIcon {
+    margin-top: 20%;
+}
+.springContent .divAppButtonSix .divIcon {
+     margin-top: 5%;
+}
+.springContent .divAppButtonFour:nth-child(3) .divIcon,.springContent .divAppButtonFour:nth-child(4) .divIcon,
+.springContent .divAppButtonFive:nth-child(4) .divIcon,.springContent .divAppButtonFive:nth-child(5) .divIcon
+ {
+    margin-top: 5%;
+}
+.springContent .divAppButtonOne .divMonitorInfo,.springContent .divAppButtonTwo .divMonitorInfo {
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+.springContent .divAppButtonThree .divMonitorInfo,.springContent .divAppButtonFour .divMonitorInfo,.springContent .divAppButtonFive .divMonitorInfo,.springContent .divAppButtonSix .divMonitorInfo {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+/* appButton模块 End*/
+/* appBHistoryQuery模块 start*/
+.middlePointers{
+    border-top: 8px solid rgb(237,238,240);
+    overflow-x:scroll;
+}
+.gray-scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+.gray-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+.gray-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.middlePointers .singleContent{
+    float: left;
+    background: #ffffff;
+    color: #646464;
+    cursor: pointer;
+}
+.middlePointers .singleContent.activeSingle {
+    background: #5a96f9;
+    color: #fff;
+}
+.middlePointers .singleContent>div{
+    padding: 10px;
+    border:1px solid rgb(237,238,240);
+}
+#bottomSearchHistory .bottomTitle, #bottomSearchHistory .bottomContent {
+    padding: 0 2%;
+}
+#bottomSearchHistory .bottomTitle {
+    font-size: 18px;
+    padding:1rem;
+    border-bottom:1px solid rgb(240,240,240);
+}
+.hisCommen {
+    background: none;
+    border: none;
+    height: 35px;
+    line-height: 35px;
+}
+
+.hisCommenBox {
+    background: rgb(237,238,240);
+    color: #646464;
+    box-shadow: none;
+    margin-top: 8px;
+}
+.btnQuery {
+    width: 50%;
+    height: 30px;
+    line-height: 30px;
+    margin: 20px auto 0;
+    background: none;
+    border: 1px solid #ededef;
+    border-radius: 5px;
+}
+/* appBHistoryQuery模块 end*/
+/* AppDiagRanking模块 start*/
+table.diagRanking{
+    width: 100%;
+}
+table.diagRanking thead{
+    color: rgb(193,193,193);
+}
+table.diagRanking tbody{
+    color: #969696;
+}
+table.diagRanking tbody tr{
+    cursor: pointer;
+}
+table.diagRanking tbody tr:hover {
+    background-color: #38496a;
+}
+table.diagRanking th{
+    padding:0.4rem;
+    text-align: center;
+    font-weight: 400;
+}
+table.diagRanking td{
+    padding:0.6rem 1rem;
+    text-align: center;
+}
+/* AppDiagRanking模块 end*/
+/* APP Month History模块 start*/
+#topMonthShow{
+    overflow: hidden;
+    background: rgb(47,145,232);
+    color:#ffffff;
+}
+#chartContainer{
+    background: #ffffff;
+}
+#topMonthShow>div{
+    padding: 0.6rem;
+    text-align: center;
+    font-size: 1.4rem;
+}
+#topMonthShow>.month{
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+/* APP Month History模块 end*/
+/* APP 百叶窗模块 */
+.blindConTitle{
+    width:100%;
+    height:35px;
+    line-height:35px;
+    background: #d9d9d9;
+    padding-left:10px;
+    font-size: 16px;
+    cursor:pointer;
+    border-bottom:1px solid #ddd;
+    font-weight:600;
+}
+.hideSibling{
+    background:#fff;
+}
+.hideSibling + div.blindConContent{
+    display:none;
+}
+.blindConContent .springContainer > .panel {
+    top: 0px;
+    bottom: 0;
+    position: relative;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+#blindDivBox{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+/* APP 百叶窗模块 end*/
+/* APP 饼图组合模块*/
+.appPieTotalBox{
+    width:100%;
+    height:100%;
+}
+.appPieTotalBox .appPieTotalBoxTitle{
+    text-align: center;
+    font-size: 1.6rem;
+    font-family: "微软雅黑", "Microsoft YaHei",Helvetica;
+    font-weight: 600;
+    top: 3%;
+    width: 100%;
+    color:#646464;
+}
+.appPieTotalBox .appPieTotalBoxTitle span{
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 0.3rem;
+}
+.appPieTotalBox .leftAppChartLegend{
+    width: 60%;
+    bottom: 5%;
+    left: 5%;
+    font-size: 1rem;
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    color:#646464
+}
+.appPieTotalBox .divAppChartTip{
+    position: absolute;
+    display: inline-block;
+}
+.appPieTotalBox .spAppChartLegend{
+    white-space: nowrap;
+    overflow: hidden;
+}
+.appPieTotalBox .spIcon{
+    height:8px;
+    width: 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+.appPieTotalBox .divAppEnergyLabel{
+    height: 100%;
+    width: 40%;
+    position: absolute;
+    right: 3%;
+    top:22.8%
+    /*top: 16.8%;24.8*/
+}
+@media screen and (max-width: 418px){
+    .appPieTotalBox .divAppEnergyLabel{
+        top:24.8%
+    }
+    .appPieTotalBox .divAppTotalEnergy{
+        top:-1.5%
+    }
+}
+@media screen and (max-width: 376px){
+    .appPieTotalBox .divAppEnergyLabel{
+        top:23.8%
+    }
+    .appPieTotalBox .divAppTotalEnergy{
+        top:-2%
+    }
+}
+@media screen and (max-width: 323px){
+    .appPieTotalBox .divAppEnergyLabel{
+        top:22%
+    }
+    .appPieTotalBox .divAppTotalEnergy{
+        top:-5%
+    }
+}
+.divAppEnergyLabel .ctnRealVal{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+}
+.divAppEnergyLabel .divRealVal{
+    width: 100%;
+    font-size: 1rem;
+    height: 20%;
+    color: #646464;
+    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+}
+.divAppEnergyLabel .ctnPercentage{
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 2%;
+    font-size: 1rem;
+}
+.divAppEnergyLabel .divPercentage{
+    height: 20%;
+    position: relative;
+    color: #646464;
+}
+.divAppEnergyLabel .spLabelName{
+
+}
+.divAppEnergyLabel .spRealVal{
+
+}
+.divAppEnergyLabel .spPercentVal{
+    border-bottom: 1px solid #ccc;
+}
+.divAppEnergyLabel .spPercentIcon{
+    display: inline-block;
+    height: 4px;
+    width: 4px;
+    position: absolute;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    left: -10%;
+    top: 1.25rem;
+    display: none;
+}
+.appPieTotalBox .spPercentVal{
+    border-bottom: 1px solid #ccc;
+}
+.appPieTotalBox .spPercentIcon{
+    display: inline-block;
+    height: 4px;
+    width: 4px;
+    position: absolute;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    left: -10%;
+    top: 1.25rem;
+    display: none;
+}
+.appPieTotalBox .divAppChart{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+.appPieTotalBox .divAppChildChart {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+}
+.appPieTotalBox .divAppItemEnergy{
+    width: 60%;
+}
+.appPieTotalBox .divAppTotalEnergy{
+    width: 37%;
+    top:-5%;
+}
+/* APP 饼图组合模块 end*/
+
+/* 轮播左右箭头 start */
+.carousel-control{
+    background-image:none !important;
+    color:rgba(128,128,128,0.6);
+    width:40px;
+    height:30%;
+    top:35%;
+    transform: scalex(0.8);
+}
+.carousel-control:hover{
+    color: rgba(255,255,255,0.6) !important;
+}
+.carousel-caption{
+    text-shadow: none;
+}
+/* 轮播左右箭头 end */
+
+/* 百叶窗模态框 start */
+#blindChartShow{
+    right: 20%;
+}
+#blindChartShow .modal-backdrop{
+    position: absolute;
+}
+/* 百叶窗模态框 end */
+/*kpi总览 modalKpiOverview*/
+.kpiOverviewCtn{
+    width: 100%;
+    height:100%;
+}
+.leftKpiOverview{
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -100px;
+    margin:0 10px;
+    float: left;
+}
+.leftKpiOverview .circleContainer{
+    position: relative;
+    
+}
+.leftKpiOverview .percentageNum{
+    color: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 30%;
+    text-align: center;
+}
+.leftKpiOverview .smallCircleContainer{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top:0;
+    left: 0;
+    background: #63b15b;
+    border-radius: 50%;
+}
+.leftKpiOverview .smallWhite{
+    width: 70%;
+    height:70%;
+    border-radius: 50%;
+    background: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+.rightKpiOverview{
+    width: 75%;
+    height: 200px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    
+    margin-top: -130px;
+    float: left;
+}
+.rightKpiOverview h3{
+    color:#ffffff;
+    margin-top: 0;
+}
+.rightKpiOverview .kpiInfoBox{
+    overflow: hidden;
+}
+.rightKpiOverview>div{
+    position: relative;
+    margin-bottom: 4%;
+}
+.rightKpiOverview .kpiInfo{
+    border-radius: 20px;
+    padding: 6px;
+    color: #ffffff;
+    width: 100%;
+    font-size: 12px;
+}
+.rightKpiOverview .kpiInfo>div span{
+    float: left;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.rightKpiOverview .kpiInfo>div span:hover{
+    cursor: pointer;
+}
+.rightKpiOverview .kpiInfo>div span:nth-child(1){
+    width: 60%;
+}
+.rightKpiOverview .kpiInfo>div span:nth-child(2){
+    width: 28%;
+}
+.rightKpiOverview .kpiInfo>div span:nth-child(3){
+    width: 12%;
+}
+.rightKpiOverview .kpiInfo.passGreen:before,.rightKpiOverview .kpiInfo.noPassGreen:before{
+    background: #63b15b;
+    position: absolute;
+    content: " ";
+    display: block;
+    border: 1px solid #666666;
+    border-radius: 100%;
+    opacity: 0.9;
+    left: 0;
+    top: 0.8rem;
+    width: 1rem;
+    height: 1rem;
+}
+.rightKpiOverview .kpiInfo.noPassGreen{
+    color: #f1b23e;
+}
+.rightKpiOverview .kpiInfo.noPassGreen:before{
+    background: #f1b23e;
+}
+/*kpi总览 modalKpiOverview*/
+/* 数据监视列表  modalDataMonitorList start*/
+.monitorListLeft{
+/*     width: 24%; */
+    height: 100%;
+    margin: 5px;
+    margin-right: 0px;
+    /* border: 1px solid #888; */
+    float: left;
+    background-color: #192234;
+    overflow: auto;
+}
+.monitorListLeft table td:nth-child(3n+1) {
+    width: 32%;
+}
+.monitorListLeft .table {
+    margin-bottom: 0px;
+    /* text-align: left; */
+}
+.monitorListLeft table td:nth-child(3n+2) {
+    width: 9%;
+    text-align: center;
+}
+.monitorListLeft table td:nth-child(3n) {
+    width: 18%;
+    text-align: center;
+}
+.monitorListLeft tr > td {
+    padding: 8px;
+}
+.alertErrorInfo{
+    width:40%;
+    height:31%;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    z-index:999;
+    background:#eee;
+    color:#aaa;
+    border-radius:6px;
+    padding:10px;
+}
+/* 数据监视列表  modalDataMonitorList end*/

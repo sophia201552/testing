@@ -1,0 +1,178 @@
+{% block content %}
+    <!--放大图表浮动窗口开始-->
+    <article id="zoomInChartWin" class="modal fade confirmWin">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="zoomInChartBox" class="tableOperatingRecord">
+                        <div class="tableOperatingRecord"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!--放大图表浮动窗口开始结束-->
+    <!--确认是否删除观察列表点浮动窗口开始-->
+    <article id="isDelPointsBtnWin" class="modal fade confirmWin">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p class="infoPrompt" i18n="debugTools.realTimeData.DELETE_WATCH_CONFIRM"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" i18n="common.CANCEL"></button>
+                    <button id="delPointsBtn" type="button" class="btn btn-primary" i18n="common.CONFIRM"></button>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!--确认是否删除观察列表点浮动窗口结束-->
+    <!--确认是否删除所有曲线浮动窗口开始-->
+    <article id="isDelCurvesBtnWin" class="modal fade confirmWin">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p class="infoPrompt" i18n="debugTools.realTimeData.DELETE_CURVES_CONFIRM"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" i18n="common.CANCEL"></button>
+                    <button id="delCurvesBtn" type="button" class="btn btn-primary" i18n="common.CONFIRM"></button>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!--确认是否删除所有曲线浮动窗口结束-->
+    <!--手动添加点名浮动窗口开始-->
+    <article id="manualAddPointWin" class="modal fade confirmWin">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" i18n="debugTools.realTimeData.INPUT_POINT_NAME"></h4>
+                </div>
+                <div class="modal-body">
+                    <textarea id="pointsContent" class="form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" i18n="common.CANCEL"></button>
+                    <button id="manualAddPointBtn" type="button" class="btn btn-primary" i18n="common.CONFIRM"></button>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!--手动添加点名浮动窗口结束-->
+    <div class="oh mv10">
+        <select id="select_project" class="form-control" name="select_project">
+            <option disabled selected i18n="debugTools.sitePoint.PLEASE_SELECT_PROJECT"></option>
+        </select>
+        <script>
+            var projects = {{ projects|safe }};
+            var optionHtml = '';
+            for(var i=0;i<projects.length;i++) {
+                var name, project = projects[i];
+                if (localStorage.language == 'en') {
+                    name = project.name_en;
+                } else {
+                    name = project.name_cn;
+                }
+                optionHtml += '<option value="'+project.id+'">'+name+'</option>';
+            }
+            $('#select_project').append(optionHtml);
+        </script>
+    </div>
+    <div class="tab-content" id="real-time-data-wrapper">
+        <div class="tab-pane fade in active" id="pane1">
+            <div class='indexContent' id="divPointManagerPage">
+                <div class='row-fluid'>
+                    <div style="padding: 0">
+                        <div class="col-md-6">
+                            <div id="divProjectList" class="pointList ibox">
+                                <div class="ibox-title">
+                                    <span class="listTitle" i18n="debugTools.realTimeData.WATCH_LIST"></span>
+                                <span id="manualAddPoint" class="glyphicon glyphicon-plus-sign cp fr"
+                                      data-dismiss="modal" i18n="title=debugTools.realTimeData.ADD_MANUAL_INPUT"></span>
+                                <span id="delSelect" class="glyphicon glyphicon-trash cp fr mr5"
+                                      data-dismiss="modal" i18n="title=common.DELETE"></span>
+                                </div>
+                                <div class="ibox-content gray-scrollbar">
+                                    <div id="tableMonitorBox">
+                                        <table class="table" id="tableMonitor" overflow="auto">
+                                            <thead>
+                                            <tr>
+                                                <th width="40%" i18n="debugTools.realTimeData.POINT_NAME"></th>
+                                                <th width="22%" i18n="debugTools.realTimeData.POINT_VALUE"></th>
+                                                <th width="38%" i18n="debugTools.realTimeData.UPDATE_TIME"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="tableMonitorTbody"></tbody>
+                                        </table>
+                                    </div>
+
+                                    <div id="dialogContentWrapper">
+                                        <h3 class="oh">
+                                            <span i18n="debugTools.realTimeData.HISTORY_CURVE_GRAPH" class="fl"></span>
+                                        <span class="glyphicon glyphicon-zoom-in fr cp" i18n="title=common.ZOOM_IN;"
+                                              id="chartZoomIn"></span>
+                                        <span class="glyphicon glyphicon-trash fr cp mr5" i18n="title=common.DELETE;"
+                                              id="delAllCurve"></span>
+                                        </h3>
+
+                                        <div id="dialogContent" i18n="debugTools.realTimeData.ADD_POINT_GRAPH"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="divPointsList" class="panel panel-default col-md-6 pointList fr" style="padding: 0;">
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <span class="listTitle" i18n="debugTools.realTimeData.ENGINE_POINT_LIST"></span>
+
+                                    <div class="pr fr mr5 w400">
+                                    <span id="searchDel" class="glyphicon glyphicon-remove pa"
+                                          aria-hidden="true"></span>
+                                        <input type="text" id="searchPointName" i18n="placeholder=common.SEARCH"
+                                               class="form-control" value=""/>
+                                    </div>
+                                </div>
+                                <div class="ibox-content gray-scrollbar">
+                                    <table class="table" id="tableWatch" overflow="auto">
+                                        <thead>
+                                        <tr>
+                                            <th width="40%" i18n="debugTools.realTimeData.POINT_NAME"></th>
+                                            <th width="22%" class="tableWatchOrder" data-value="pointValue">
+                                                <span class="glyphicon"></span><span i18n="debugTools.realTimeData.POINT_VALUE"></span>
+                                            </th>
+                                            <th width="38%" class="tableWatchOrder" data-value="updateTime">
+                                                <span class="glyphicon"></span><span i18n="debugTools.realTimeData.UPDATE_TIME"></span>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tableWatchTbody"></tbody>
+                                    </table>
+                                    <div class="tr" id="realTimePaginationWrapper">
+                                        <ul id="realTimePagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="uploadMask" style="display:none;"></div>
+{% endblock %}

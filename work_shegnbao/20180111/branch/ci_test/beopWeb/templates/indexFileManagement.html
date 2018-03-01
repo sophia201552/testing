@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>file Management</title>
+    {% assets "file_css_bundle" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+    <link rel="stylesheet" type="text/css" href="/static/fonts/beopIconFont/iconfont.css">
+</head>
+
+<body>
+    <div id="divNavContainer">
+    </div>
+    <div id="divScreenContainer">
+    </div>
+    {% assets "file_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    <script>
+        window.onload = function () {
+            AppConfig = window.parent.AppConfig;
+            new NavFiles().show();
+        }
+    </script>
+</body>
+
+</html>

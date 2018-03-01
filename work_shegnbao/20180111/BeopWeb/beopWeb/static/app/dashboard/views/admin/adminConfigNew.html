@@ -1,0 +1,112 @@
+<style type="text/css">
+    .adminConfigMask{
+        position:fixed;
+        top:0;
+        right:0;
+        z-index:9998;
+        background:rgba(0,0,0,.5);
+        width:100%;
+        height:100%;
+        -webkit-transition: all .4s ease-in;
+        transition: all .4s ease-in;
+    }
+    .adminConfig{
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 9999;
+        background-image: -webkit-gradient(linear, 0 0, 100% 100%,color-stop(.08, rgb(140,109,116)), color-stop(.45, #44425b), to(rgb(43,39,62)));
+        background-image: -moz-linear-gradient(140deg, rgb(140,109,116) 8%,#44425b 45%, rgb(43,39,62));
+        background-image: -o-linear-gradient(140deg, rgb(140,109,116) 8%,#44425b 45%, rgb(43,39,62));
+        background-image: linear-gradient(140deg, rgb(140,109,116) 8%,#44425b 45%, rgb(43,39,62));
+        width:80%;
+        height:100%;
+        -webkit-transition: all .4s ease-in;
+        transition: all .4s ease-in;
+    }
+    .adminConfigContainer{
+        width: 100%;
+        height:100%;
+        margin-top: 20%;
+        color: rgb(228,228,228);
+    }
+    .adminConfigContainer .userInfo{
+        text-align: center;
+    }
+    .adminConfigContainer .config{
+        padding-top: 20px;
+        padding-left: 10%;
+    }
+    .adminConfigContainer .userInfo>span{
+        -webkit-transition:all .4s ease-in;
+        transition: all .4s ease-in;
+    }
+    .adminConfigContainer .userInfo .headPic{
+        width:80px;
+        height:80px;
+        margin: 0 auto;
+        padding: 5px;
+        -webkit-transition:all .4s ease-in;
+        transition: all .4s ease-in;
+    }
+    .adminConfigContainer .userInfo .headPic img{
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+    } 
+    .adminConfigContainer .userInfo span{
+        padding-top: 6px;
+        font-size: 1.2rem;
+    }
+    .adminConfigContainer .userInfo span:nth-of-type(1){
+        padding-top: 12px;
+        font-size: 1.6rem;
+    }
+    .adminConfigContainer ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .adminConfigContainer li{
+        padding: 16px 16px 10px 5px;
+        border-bottom: 1px solid rgb(98,94,128);
+        position: relative;
+    }
+    .adminConfigContainer .activeInfo{
+        position: absolute;
+        right: 10%;
+    }
+    #btnLogout{
+        background: transparent;
+        border:1px solid rgb(98,94,128);
+        width: 80%;
+        padding: 10px;
+        margin-top: 36px;
+        border-radius: 50px;
+        position: absolute;
+        bottom: 5rem;
+    }
+    .configHide{
+        right: -100%;
+        -webkit-transition:all .4s ease-in;
+        transition: all .4s ease-in;
+    }
+
+    .configHide .adminConfigContainer .userInfo .headPic{
+        width: 30%;
+        -webkit-transition:all .4s ease-in;
+        transition: all .4s ease-in;
+    }
+</style>
+<div class="adminConfigContainer">
+    <div class="userInfo">
+        
+    </div>
+    <div class="config">
+        <ul>
+        </ul>
+        <button id="btnLogout" i18n="appDashboard.apply.LOGOUT">退出</button>
+    </div>
+</div>
+
+

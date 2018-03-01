@@ -1,0 +1,317 @@
+<style>
+
+    #wkAddInfo {
+        padding: 1rem 0;
+        overflow: auto;
+    }
+    #wkAddInfo .sr-only {
+        display: none;
+    }
+    #inputWkTitle {
+        width: 100%;
+        background-color: #f4f5f6;
+    }
+    #wkDetail {
+        height: 10rem;
+        padding-bottom: 2rem;
+    }
+    #inputWkDetail {
+        width: 100%;
+        height: 100%;
+        background-color: #f4f5f6;
+    }
+    .form-group {
+        margin-bottom: 0;
+        padding: 0.5rem 1rem;
+        position: relative;
+        border-bottom: 1px solid #ccc;
+    }
+    .form-control{
+        display: inline-block;
+        width: initial;
+    }
+    #inputWkImg {
+        display: none;
+    }
+    #wkDeadline {
+        background-color: #eee;
+    }
+    #inputWkDeadline {
+        padding: 0;
+        height: auto;
+        border: none;
+        box-shadow: none;
+        background-color: #eee;
+    }
+    .btnSel {
+        width: 3.2rem;
+        display: inline-flex;
+        display: -webkit-inline-flex;
+        height: 100%;
+        position: absolute;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: center;
+        -webkit-justify-content: center;
+        right: 0;
+        top: 0;
+        color: #969696;
+        text-decoration: none;
+    }
+    .btnSel:focus{
+        text-decoration: none;
+    }
+    .ctnUserShow {
+        display: inline-table;
+        width: calc(100% - 10rem);
+        width: -webkit-calc(100% - 10rem);
+    }
+    #wkAddInfo .dropdown-menu{
+        width: 100%;
+    }
+    #wkAddInfo .dropdown-menu>li{
+        padding: 0.4rem 1rem;
+        border-bottom: 1px solid #eee;
+    }
+    #wkAddInfo .dropdown-menu>li:last-child {
+        border: none;
+    }
+    #workflowAddBtn {
+        width: 100%;
+        text-align: center;
+        padding: 0.6rem;
+        position: relative;
+        bottom: 0;
+        height: 4rem;
+     }
+    #wkTeam .dropdown-menu{
+        position: relative;
+        width: calc(100% + 20px);
+        width: -webkit-calc(100% + 20px);
+        left: -10px;
+        top: 5px;
+    }
+    #wkExecutor .userRemove{display:none}
+    .inputWkVerifier,.inputWkWatcher,.inputWkExecutor {
+        border-radius: 0.4rem;
+        display: inline-block;
+        position: relative;
+        margin: 0.2rem;
+        padding: 0 1rem;
+        background-color: #36a0ff;
+        color: #eee;
+    }
+    .userRemove {
+        display: inline-block;
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+    }
+    .form-group label{
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    #btnAddWk{
+        padding: 0.5rem 2rem;
+        background-color: #1FAB3E;
+        border: none;
+        width: 95%;
+        font-size: 1.8rem;
+    }
+        .divWkMem {
+        width: 29%;
+        height: 7rem;
+        display: inline-block;
+        position: relative;
+        margin: 2%;
+    }
+    .imgWkMem{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .imgWkMem img {
+        width: 100%;
+        height: 100%;
+    }
+    .nameWkMem {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 0;
+        z-index: 2;
+        background: rgba(153,154,153,0.7);
+        color: white;
+    }
+    .checkWkMem {
+        visibility: hidden;
+        z-index: 1;
+        position: relative;
+        text-align: right;
+        right: 0.4rem;
+        color: darkorange;
+    }
+    .divWkMem.selected .checkWkMem {
+        visibility: visible;
+    }
+    #wkUserDialog {
+        position: absolute;
+        height: 100%;
+    }
+    #wkUserDialog .modal-backdrop {
+        position: absolute;
+        height: 100%;
+    }
+    #wkUserDialog .modal-dialog {
+        height: calc(100% - 20px);
+        height: -webkit-calc(100% - 20px);
+    }
+    #wkUserDialog .modal-content{
+        height: 100%;
+    }
+    #divWkUserDialog {
+        height: calc(100% - 121px);
+        height: -webkit-calc(100% - 121px);
+        overflow-x: auto;
+    }
+    #wkCollection {
+        color: black;
+    }
+    #inputWkCollection{
+        position: relative;
+        top: 0.1rem;
+    }
+    #inputWkCollection svg{
+        height: 1rem;
+        width: 1rem;
+    }
+    #inputWkCollection path{
+        fill:#ccc;
+    }
+    #inputWkCollection.isCollect path{
+        fill:red;
+    }
+    .spanUserSel{
+        display: inline-block;
+        line-height: 34px;
+        background-color: #ccc;
+        padding: 0 1rem;
+        margin: 0.1rem;
+        border-radius: 0.5rem;
+    }
+    #divUserSel {
+        width: 80%;
+        white-space: nowrap;
+        overflow: auto;
+        display: inline-block;
+    }
+    #btnSure {
+        position: absolute;
+        right: 15px;
+        top: 16px;
+    }
+    #divModal .modal-footer {
+        text-align: initial;
+    }
+
+    #ctnUserSel{
+        display: none;
+        position: fixed;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 2000;
+        background-color: white;
+    }
+</style>
+<div id="wkAddInfo">
+    <div id="wkTitle" class="form-group">
+        <label class="sr-only" for="inputWkTitle"></label>
+        <input type="text" class="form-control" id="inputWkTitle" i18n="placeholder=appDashboard.workflow.TITLE">
+    </div>
+    <div id="wkDetail" class="form-group">
+        <label class="sr-only" for="inputWkTitle"></label>
+        <textarea class="form-control" id="inputWkDetail" i18n="placeholder=appDashboard.workflow.DETAIL"></textarea>
+    </div>
+    <div id="wkDeadline" class="form-group">
+        <label class="additionText" for="inputWkDeadline" i18n="appDashboard.workflow.DEADLINE"></label>
+        <input type="text" class="additionText form-control" id="inputWkDeadline" placeholder="">
+        <a id="aTimeSel" class="btnSel" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+        </a>
+        <ul class="dropdown-menu zepto-ev" aria-labelledby="aTimeSel">
+            <li value="d1" class="zepto-ev" i18n="appDashboard.workflow.TIME_SEL_D1"></li>
+            <li value="d3" class="zepto-ev" i18n="appDashboard.workflow.TIME_SEL_D3"></li>
+            <li value="w1" class="zepto-ev" i18n="appDashboard.workflow.TIME_SEL_W1"></li>
+            <li value="w2" class="zepto-ev" i18n="appDashboard.workflow.TIME_SEL_W2"></li>
+        </ul>
+    </div>
+    <div id="wkImportance" class="form-group">
+        <label class="additionText" for="inputWkImportance" i18n="appDashboard.workflow.EMERGENCY"></label>
+        <span id="inputWkImportance" class="additionText"></span>
+        <a id="aEmergencySel" class="btnSel" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+        </a>
+        <ul class="dropdown-menu zepto-ev" aria-labelledby="aEmergencySel">
+            <li value="0" class="zepto-ev" i18n="appDashboard.workflow.NORMAL"></li>
+            <li value="1" class="zepto-ev" i18n="appDashboard.workflow.URGENT"></li>
+            <li value="2" class="zepto-ev" i18n="appDashboard.workflow.SERIOUS"></li>
+        </ul>
+    </div>
+    <!--<div id="wkImg" class="form-group">
+        <label for="inputWkImg">故障图片</label>
+        <input type="file" class="form-control" id="inputWkImg" placeholder="">
+        <span id="spanWkImg" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </div>-->
+    <div id="wkExecutor" class="form-group zepto-ev">
+        <label class="additionText" for="inputWkExecutor" i18n="appDashboard.workflow.EXECUTOR"></label>
+        <div id="ctnWkExecutor" class="ctnUserShow">
+            <span id="executorTip" class="inputWkExecutor" i18n="appDashboard.workflow.NO_CHOICE"></span>
+        </div>
+        <span class="glyphicon glyphicon-plus btnSel zepto-ev"></span>
+    </div>
+    <div id="wkVerifier" class="form-group zepto-ev">
+        <label class="additionText" for="inputWkVerifier" i18n="appDashboard.workflow.REVIEWER"></label>
+        <div id="ctnWkVerifier" class="ctnUserShow">
+            <span id="verifierTip" class="inputWkVerifier" i18n="appDashboard.workflow.NO_CHOICE"></span>
+        </div>
+        <span class="glyphicon glyphicon-plus btnSel zepto-ev"></span>
+    </div>
+    <div id="wkWatcher" class="form-group zepto-ev">
+        <label class="additionText" for="inputWkWatcher" i18n="appDashboard.workflow.WATCHER"></label>
+        <div id="ctnWkWatcher" class="ctnUserShow">
+            <span id="watcherTip" class="inputWkWatcher" i18n="appDashboard.workflow.NO_CHOICE"></span>
+        </div>
+        <span class="glyphicon glyphicon-plus btnSel zepto-ev"></span>
+    </div>
+    <div id="wkTeam" class="form-group">
+        <label class="additionText" for="inputWkTeam" i18n="appDashboard.workflow.PROJECT_TEAM"></label>
+        <span id="inputWkTeam" class="additionText"></span>
+        <a id="aEmergencySel" class="btnSel" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+        </a>
+        <ul class="dropdown-menu zepto-ev" aria-labelledby="aEmergencySel">
+        </ul>
+    </div>
+    <!--<div id="wkTag" class="form-group">
+        <label for="inputWkTag">标签</label>
+        <select class="form-control" id="inputWkTag">
+        </select>
+    </div>-->
+    <div id="wkCollection" class="form-group zepto-ev">
+        <label class="additionText" for="inputWkCollection" i18n="appDashboard.workflow.FAVORITES"></label>
+        <span id="inputWkCollection"  collect="false">
+            <svg x="0px" y="0px" width="1024px" height="1024px" viewBox="0 0 1024 1024" enable-background="new 0 0 1024 1024" xml:space="preserve">
+                <path class="svgpath" data-index="path_0" fill="#272636" d="M716.671055 93.888256c-101.071788 0-173.475129 91.451985-204.682018 139.824671-31.232432-48.372685-103.599283-139.824671-204.672287-139.824671-145.03413 0-262.988314 131.242381-262.988314 292.534939 0 75.421007 50.950048 183.552265 112.799458 240.136265 85.549229 110.370485 326.057684 309.058523 355.755132 309.058523 30.218028 0 265.564461-194.820169 352.665702-307.735177 62.931927-57.581375 114.122805-165.854941 114.122805-241.459611C979.671533 225.130637 861.701537 93.888256 716.671055 93.888256M917.665218 386.423195c0 60.320507-43.564608 150.337246-95.121595 196.555845-1.413353 1.294155-2.696561 2.708724-3.979769 4.264386-76.639751 100.265374-230.94582 224.638031-305.517842 279.111732C457.61629 825.612391 290.647209 698.672102 204.932562 586.846909c-1.155495-1.519172-2.501952-2.939823-3.916521-4.26317-51.358729-46.15535-94.689805-135.939774-94.689805-196.160544 0-126.975562 90.155398-230.301175 200.991731-230.301175 71.448536 0 140.230919 77.654154 176.693487 154.64177 4.837269 10.203632 15.557833 16.556424 27.983665 16.556424 12.430698 0 23.148829-6.352792 28.010424-16.556424 36.430945-76.987616 105.187785-154.64177 176.666728-154.64177C827.503739 156.122021 917.665218 259.447633 917.665218 386.423195" />
+            </svg>
+        </span>
+    </div>
+</div>
+<div id="workflowAddBtn">
+    <button id="btnAddWk" type="button" class="btn btn-primary zepto-ev" i18n="appDashboard.workflow.BTN_WORKFLOW_ADD">Create</button>
+</div>
+<div id="ctnUserSel">
+
+</div>

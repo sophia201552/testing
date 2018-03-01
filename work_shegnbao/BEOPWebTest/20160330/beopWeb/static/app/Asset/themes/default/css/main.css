@@ -1,0 +1,332 @@
+/* index page layout start */
+html, body {
+    height: 100%;
+    overflow: hidden;
+    color: #d7d7d7;
+    font-family: 'Microsoft YaHei', 'Helvetica';
+}
+
+.gray-scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.gray-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+.gray-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.tab-pane {
+    padding: 20px 10px 10px 20px;
+}
+
+#wrapper {
+    height: 100%;
+}
+
+#wrapper > div {
+    float: left;
+    height: 100%;
+}
+
+.panel-titlebar-button-close .glyphicon-remove{
+    display: none;
+}
+
+#paneAssetList .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #29364f;
+}
+
+#paneAssetList .table-striped > tbody > tr {
+    background-color: #38496a;
+}
+
+#paneAssetList tbody > tr:hover {
+    background-color: #3171a4 !important;
+    cursor: pointer;
+}
+
+.panel-content {
+    background-color: #192234;
+}
+
+.tab-content {
+    background-color: #192234; /* 覆盖dockspawn的样式 */
+}
+
+.form-control {
+    color: inherit;
+}
+ 
+.pagination .active a{
+    color: #EBC124 !important;
+}
+
+/* index page layout end */
+
+/* assetPanel start */
+#tbAsset tr {
+    cursor: pointer;
+}
+
+#tbAsset tr.selected {
+    background-color: #3171a4 !important;
+}
+#tbAsset td {
+    height: 36px;
+}
+
+.modal-content {
+    color: #555;
+}
+
+    .modal-content .btn {
+        color: #555;
+    }
+
+@media screen and (max-width: 1366px) {
+    #tbAsset .tdDes {
+        max-width: 220px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@media screen and (min-width: 1367px) {
+    #tbAsset .tdDes {
+        max-width: 572px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+/* assetPanel end */
+
+/* detail info start */
+#myTabs {
+    width: 100%;
+}
+
+#myTabs.nav > li > a {
+    position: relative;
+    display: block;
+}
+
+@media screen and (max-width: 1366px) {
+    #myTabs.nav > li > a {
+        position: relative;
+        display: block;
+        padding: 10px 2px;
+    }
+}
+.imgAsset{
+    max-width: 200px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* detail info end */
+.panel-base {
+    /*TODO: docker无法响应*/
+    position: relative;
+}
+
+.tabPanelToolBox {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.tabPanelToolBox .btnTool {
+    float: right;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.tabPanelToolBox .btnTool:hover {
+    color: #eee;
+}
+
+.paneInfo {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.paneInfo .form-group {
+    width: 330px;
+}
+
+.paneInfo .form-group > label {
+    float: left;
+    width: 60px;
+    padding: 6px 0;
+
+}
+
+.paneInfo .form-group .divValue {
+    float: left;
+    margin-left: 6px;
+    width: calc(100% - 80px);
+
+    color: #bbb;
+    text-shadow: 1px 1px 1px black;
+    background: rgba(0, 0, 0, 0.16);
+    border: 0;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.paneInfo .form-group .divValue[disabled] {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    cursor: default;
+}
+
+.paneWfItem {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #666;
+    padding: 2px 10px 4px;
+}
+
+.table-bordered {
+    border: none;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td {
+    border-right: none;
+    border-left: none;
+}
+
+/* nameplate info start */
+#nameplateType label, #nameplateType input, #nameplateType select {
+    color: #f90;
+}
+
+#nameplateType label {
+    width: 30%;
+}
+
+#nameplateType input {
+    width: 65%;
+}
+
+#selectNameplatetype {
+    margin-bottom: 10px;
+}
+
+#selectNameplatetype label {
+    margin-right: 6px;
+}
+
+#nameplate .form-group {
+    clear: both;
+}
+
+#nameplate .form-group label {
+    clear: left;
+}
+
+#nameplate input {
+    display: inline-block;
+}
+
+#nameplateInfo {
+    margin-bottom: 10px;
+    display: table;
+}
+
+#nameplateInfo label {
+    width: 30%;
+}
+
+#btnAddNameplate {
+    color: #bbb;
+    text-shadow: 1px 1px 1px black;
+    background: rgba(0, 0, 0, 0.16);
+    border: 0;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* nameplate info end */
+
+/* realtime data start */
+.form-group .viewHisData {
+    display: none;
+}
+
+.form-group:hover .viewHisData {
+    display: inline-block;
+}
+.labelDs{
+    width: 46% !important;/*只有历史数据面板的label宽度*/
+    text-align: right;
+    border-bottom:rgba(200,200,200,.15) 1px solid;
+    padding-right: 5px;
+}
+/* realtime data end */
+
+
+/* asset 维保工单详情 start*/
+#listMaintenance .paneWfItem {
+    cursor: pointer;
+}
+
+#listMaintenance .paneWfItem:hover {
+    background-color: black;
+}
+
+#wfDetail .modal-backdrop {
+    background-color: transparent;
+}
+
+#wfDetail .table-bordered {
+    border: 1px solid #ddd;
+}
+
+#wfDetail2 .modal-backdrop {
+    background-color: transparent;
+}
+
+#workflow-insert-container .modal-backdrop {
+    background-color: transparent;
+    display: none;
+}
+
+#wfDetail2 .table-bordered {
+    border: 1px solid #ddd;
+}
+
+#wfDetail3 .modal-backdrop {
+    background-color: transparent;
+}
+
+#wfDetail3 .table-bordered {
+    border: 1px solid #ddd;
+}
+
+/* asset 维保工单详情 end*/
+
+/* 历史数据面板 start */
+.divLegend{
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin-top: 6px;
+    color: #eee;
+}
+.divLegend > *{
+    display: inline-block;
+}
+.divLegend .btnShow{
+    margin-left: 10px;
+}
+/* 历史数据面板 end */
+

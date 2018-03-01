@@ -1,0 +1,759 @@
+{
+  "id": 0,
+  "type": "equipment",
+  "attrInputs": [
+    {
+      "unit": "",
+      "name": {
+        "zh": "设备编号",
+        "en": "Equipment Number"
+      },
+      "tag": {
+        "zh": "设备,编号",
+        "en": "Equipment,Number"
+      },
+      "description": {
+        "zh": "设备编号",
+        "en": "Equipment Number"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "COP",
+        "en": "COP"
+      },
+      "tag": {
+        "zh": "COP",
+        "en": "COP"
+      },
+      "description": {
+        "zh": "COP",
+        "en": "COP"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "动力来源",
+        "en": "Power source"
+      },
+      "tag": {
+        "zh": "动力,来源",
+        "en": "Power,source"
+      },
+      "description": {
+        "zh": "动力来源",
+        "en": "Power source"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷媒充注量",
+        "en": "Refrigerant charge quantity"
+      },
+      "tag": {
+        "zh": "冷媒,充注量",
+        "en": "Refrigerant,charge,quantity"
+      },
+      "description": {
+        "zh": "冷媒充注量",
+        "en": "Refrigerant charge quantity"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷凝器水量",
+        "en": "Condenser water"
+      },
+      "tag": {
+        "zh": "冷凝器,水量",
+        "en": "Condenser,water"
+      },
+      "description": {
+        "zh": "冷凝器水量",
+        "en": "Condenser water"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷凝器型号",
+        "en": "Condenser type"
+      },
+      "tag": {
+        "zh": "冷凝器,型号",
+        "en": "Condenser,type"
+      },
+      "description": {
+        "zh": "冷凝器型号",
+        "en": "Condenser type"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "外形尺寸",
+        "en": "Outline dimension"
+      },
+      "tag": {
+        "zh": "外形尺寸",
+        "en": "Outline,dimension"
+      },
+      "description": {
+        "zh": "外形尺寸",
+        "en": "Outline dimension"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "效率",
+        "en": "efficiency"
+      },
+      "tag": {
+        "zh": "效率",
+        "en": "efficiency"
+      },
+      "description": {
+        "zh": "效率",
+        "en": "efficiency"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "型号",
+        "en": "Model"
+      },
+      "tag": {
+        "zh": "型号",
+        "en": "Model"
+      },
+      "description": {
+        "zh": "型号",
+        "en": "Model"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "压缩机数量",
+        "en": "Compressor quantity"
+      },
+      "tag": {
+        "zh": "压缩机,数量",
+        "en": "Compressor,quantity"
+      },
+      "description": {
+        "zh": "压缩机数量",
+        "en": "Compressor quantity"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "蒸发器水量",
+        "en": "Evaporator water"
+      },
+      "tag": {
+        "zh": "蒸发器,水量",
+        "en": "Evaporator,water"
+      },
+      "description": {
+        "zh": "蒸发器水量",
+        "en": "Evaporator water"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "蒸发器型号",
+        "en": "Evaporator model"
+      },
+      "tag": {
+        "zh": "蒸发器,型号",
+        "en": "Evaporator,model"
+      },
+      "description": {
+        "zh": "蒸发器型号",
+        "en": "Evaporator model"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "制冷剂",
+        "en": "Cryogen"
+      },
+      "tag": {
+        "zh": "制冷剂",
+        "en": "Cryogen"
+      },
+      "description": {
+        "zh": "制冷剂",
+        "en": "Cryogen"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "制冷剂充注量",
+        "en": "Refrigerant Charge"
+      },
+      "tag": {
+        "zh": "制冷剂,充注量",
+        "en": "Refrigerant,Charge"
+      },
+      "description": {
+        "zh": "制冷剂充注量",
+        "en": "Refrigerant Charge"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "制冷量",
+        "en": "Refrigerating capacity"
+      },
+      "tag": {
+        "zh": "制冷量",
+        "en": "Refrigerating,capacity"
+      },
+      "description": {
+        "zh": "制冷量",
+        "en": "Refrigerating capacity"
+      }
+    }
+  ],
+  "name": {
+    "zh": "冷机",
+    "en": "Chiller"
+  },
+  "tag": {
+    "zh": "冷机",
+    "en": "Chiller"
+  },
+  "attrPoints": [
+    {
+      "unit": "",
+      "name": {
+        "zh": "报警",
+        "en": "alarm"
+      },
+      "tag": {
+        "zh": "报警",
+        "en": "alarm"
+      },
+      "description": {
+        "zh": "报警",
+        "en": "alarm"
+      }
+    },
+    {
+      "unit": [
+        "W",
+        "kW"
+      ],
+      "name": {
+        "zh": "功率",
+        "en": "power"
+      },
+      "tag": {
+        "zh": "功率",
+        "en": "power"
+      },
+      "description": {
+        "zh": "功率",
+        "en": "power"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "机组关机/开机",
+        "en": "onoffset"
+      },
+      "tag": {
+        "zh": "状态,设定",
+        "en": "onoff,set"
+      },
+      "description": {
+        "zh": "机组关机/开机",
+        "en": "onoffset"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "冷冻水出水温度",
+        "en": "chilled water leaving tempreture"
+      },
+      "tag": {
+        "zh": "冷冻水,出,温度",
+        "en": "chilled water,leaving,tempreture"
+      },
+      "description": {
+        "zh": "冷冻水出水温度",
+        "en": "chilled water leaving tempreture"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "冷冻水出水温度设定点",
+        "en": "chilled water tempreture setpoint"
+      },
+      "tag": {
+        "zh": "冷冻水,出水,温度,设定",
+        "en": "chilled water,tempreture,set"
+      },
+      "description": {
+        "zh": "冷冻水出水温度设定点",
+        "en": "chilled water tempreture setpoint"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "冷冻水进水温度",
+        "en": "chilled water entering tempreture"
+      },
+      "tag": {
+        "zh": "冷冻水,进,温度",
+        "en": "chilled water,entering,tempreture"
+      },
+      "description": {
+        "zh": "冷冻水进水温度",
+        "en": "chilled water entering tempreture"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷冻水流量开关",
+        "en": "Chilled water flow switch"
+      },
+      "tag": {
+        "zh": "冷冻水流量开关",
+        "en": "Chilled water,flow,switch"
+      },
+      "description": {
+        "zh": "冷冻水流量开关",
+        "en": "Chilled water flow switch"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "冷冻水温度设定值（备用）",
+        "en": "Chilled water temperature setting (standby)"
+      },
+      "tag": {
+        "zh": "冷冻水温度设定值（备用）",
+        "en": "Chilled water,temperature,set,standby"
+      },
+      "description": {
+        "zh": "冷冻水温度设定值（备用）",
+        "en": "Chilled water temperature setting (standby)"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "冷冻水小温差",
+        "en": "chilled water approach tempreture"
+      },
+      "tag": {
+        "zh": "冷冻水,小温差",
+        "en": "chilled water,approach,tempreture"
+      },
+      "description": {
+        "zh": "冷冻水小温差",
+        "en": "chilled water approach tempreture"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷机控制模式",
+        "en": "mode"
+      },
+      "tag": {
+        "zh": "模式",
+        "en": "mode"
+      },
+      "description": {
+        "zh": "冷机控制模式",
+        "en": "mode"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷机运行状态",
+        "en": "onoff"
+      },
+      "tag": {
+        "zh": "状态",
+        "en": "status"
+      },
+      "description": {
+        "zh": "冷机运行状态",
+        "en": "onoff"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "冷凝器出水温度",
+        "en": "leaving condenser tempreture"
+      },
+      "tag": {
+        "zh": "冷凝器,出水温度",
+        "en": "leaving,condenser,tempreture"
+      },
+      "description": {
+        "zh": "冷凝器出水温度",
+        "en": "leaving condenser tempreture"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "冷凝器进水温度",
+        "en": "entering condenser tempreture"
+      },
+      "tag": {
+        "zh": "冷凝器,进水,温度",
+        "en": "entering,condenser,tempreture"
+      },
+      "description": {
+        "zh": "冷凝器进水温度",
+        "en": "entering condenser tempreture"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "冷凝器冷媒温度",
+        "en": "condenser temperature"
+      },
+      "tag": {
+        "zh": "冷凝器,冷媒温度",
+        "en": "condenser,temperature"
+      },
+      "description": {
+        "zh": "冷凝器冷媒温度",
+        "en": "condenser temperature"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷凝器冷媒压力",
+        "en": "condenser pressure"
+      },
+      "tag": {
+        "zh": "冷凝器,冷媒压力",
+        "en": "condenser,pressure"
+      },
+      "description": {
+        "zh": "冷凝器冷媒压力",
+        "en": "condenser pressure"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷凝器水流状态",
+        "en": "condenser flow status"
+      },
+      "tag": {
+        "zh": "冷凝器,水流,状态",
+        "en": "condenser,flow,status"
+      },
+      "description": {
+        "zh": "冷凝器水流状态",
+        "en": "condenser flow status"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "冷凝器小温差",
+        "en": "Condenser Small Temperature Difference "
+      },
+      "tag": {
+        "zh": "冷凝器,小温差",
+        "en": "Condenser,Small,Temperature, Difference "
+      },
+      "description": {
+        "zh": "冷凝器小温差",
+        "en": "Condenser Small Temperature Difference "
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "排气过热度",
+        "en": "Discharge superheat"
+      },
+      "tag": {
+        "zh": "排气,过热度",
+        "en": "Discharge,superheat"
+      },
+      "description": {
+        "zh": "排气过热度",
+        "en": "Discharge superheat"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "排气湿度",
+        "en": "Discharge humidity"
+      },
+      "tag": {
+        "zh": "排气,湿度",
+        "en": "Discharge,humidity"
+      },
+      "description": {
+        "zh": "排气湿度",
+        "en": "Discharge humidity"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "排气温度",
+        "en": "Discharge temperature"
+      },
+      "tag": {
+        "zh": "排气,温度",
+        "en": "Discharge,temperature"
+      },
+      "description": {
+        "zh": "排气温度",
+        "en": "Discharge temperature"
+      }
+    },
+    {
+      "unit": [
+        "%"
+      ],
+      "name": {
+        "zh": "排气压力",
+        "en": "Discharge pressure"
+      },
+      "tag": {
+        "zh": "排气,压力",
+        "en": "Discharge,pressure"
+      },
+      "description": {
+        "zh": "排气压力",
+        "en": "Discharge pressure"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "设定点来源",
+        "en": "setpoint source"
+      },
+      "tag": {
+        "zh": "设定,来源",
+        "en": "set,source"
+      },
+      "description": {
+        "zh": "设定点来源",
+        "en": "setpoint source"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "实际供水温度设定值",
+        "en": "Actual water temperature setting value"
+      },
+      "tag": {
+        "zh": "实际供水温度设定值",
+        "en": "Actual,water,temperature,set"
+      },
+      "description": {
+        "zh": "实际供水温度设定值",
+        "en": "Actual water temperature setting value"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "实际冷量",
+        "en": "ActualCapacity"
+      },
+      "tag": {
+        "zh": "实际,冷量",
+        "en": "Actual,Capacity"
+      },
+      "description": {
+        "zh": "实际冷量",
+        "en": "ActualCapacity"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "蒸发器出水温度",
+        "en": "leaving evaporator tempreture"
+      },
+      "tag": {
+        "zh": "蒸发器,出水温度",
+        "en": "leaving,evaporator,tempreture"
+      },
+      "description": {
+        "zh": "蒸发器出水温度",
+        "en": "leaving evaporator tempreture"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "蒸发器进水温度",
+        "en": "entering evaporator tempreture"
+      },
+      "tag": {
+        "zh": "蒸发器,进水,温度",
+        "en": "entering,evaporator,tempreture"
+      },
+      "description": {
+        "zh": "蒸发器进水温度",
+        "en": "entering evaporator tempreture"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "蒸发器冷媒温度",
+        "en": "evaporator temperature"
+      },
+      "tag": {
+        "zh": "蒸发器,冷媒温度",
+        "en": "evaporator,temperature"
+      },
+      "description": {
+        "zh": "蒸发器冷媒温度",
+        "en": "evaporator temperature"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "蒸发器冷媒压力",
+        "en": "evaporator pressure"
+      },
+      "tag": {
+        "zh": "蒸发器,冷媒压力",
+        "en": "evaporator,pressure"
+      },
+      "description": {
+        "zh": "蒸发器冷媒压力",
+        "en": "evaporator pressure"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "蒸发器水流状态",
+        "en": "evaporator flow status"
+      },
+      "tag": {
+        "zh": "蒸发器,水流,状态",
+        "en": "evaporator,flow,status"
+      },
+      "description": {
+        "zh": "蒸发器水流状态",
+        "en": "evaporator flow status"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "蒸发器中饱和温度",
+        "en": "evaporator Saturation temperature"
+      },
+      "tag": {
+        "zh": "蒸发器,饱和,温度",
+        "en": "evaporator,Saturation,temperature"
+      },
+      "description": {
+        "zh": "蒸发器中饱和温度",
+        "en": "evaporator Saturation temperature"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "总负载",
+        "en": "load"
+      },
+      "tag": {
+        "zh": "总负载",
+        "en": "load"
+      },
+      "description": {
+        "zh": "总负载",
+        "en": "load"
+      }
+    }
+  ]
+}

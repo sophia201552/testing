@@ -1,0 +1,1303 @@
+<style type="text/css">
+    /*tooltip样式修改*/
+    .tooltip.top .tooltip-arrow {
+        border-top-color: rgb(165, 42, 42);
+    }
+
+    .tooltip.right .tooltip-arrow {
+        border-right-color: rgb(165, 42, 42);
+    }
+
+    .tooltip-inner {
+        background: rgb(165, 42, 42);
+    }
+
+    .fw-normal {
+        font-weight: normal;
+    }
+
+    #projectManager, #userManager {
+        margin-top: 5px;
+    }
+
+    #projectManager .tab-content, #userManager .tab-content {
+        background-color: white;
+    }
+
+    #basicSetInfoWrapper, #loginPwdWrapper {
+        padding: 0 20px;
+    }
+
+    #basicSetInfoWrapper p, #loginPwdWrapper p {
+        height: 40px;
+        line-height: 35px;
+    }
+
+    #userInfo .image-upload {
+        border-radius: 80px;
+        margin-left: 17px;;
+    }
+
+    .userPic {
+        width: 60px;
+        height: 60px;
+        border-radius: 80px;
+    }
+
+    .userMiniPic {
+        width: 32px;
+        height: 32px;
+        border-radius: 50px;
+        border: 2px solid #ccc;
+    }
+
+    ul, li {
+        list-style: none;
+    }
+
+    .hv:hover {
+    }
+
+    input[type=text] {
+        text-indent: 5px;;
+    }
+
+    .line1 {
+        height: 1px;
+        border-top: 1px solid #ccc;
+    }
+
+    .ic1 {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        line-height: 28px;
+        text-align: center;
+        margin-right: 5px;
+        font-size: 30px;
+        font-style: inherit;
+        cursor: pointer;
+        border-radius: 100px;
+        color: #fff;
+        background: #C2C2C2;
+    }
+
+    .ic2 {
+        display: inline-block;
+        font-size: 21px;
+        font-style: inherit;
+        cursor: pointer;
+        color: #999;
+        background: none;
+    }
+
+    .closed {
+        display: inline-block;
+        width: 22px;
+        text-align: center;
+        height: 22px;
+        line-height: 20px;
+        border: 1px solid #F1DBDE;
+        font-weight: bold;
+        font-size: 10px;
+        font-style: inherit;
+        border-radius: 100px;
+        color: #AE504E;
+        background: #F2E0E0;
+    }
+
+    .dib {
+        display: inline-block;
+    }
+
+    .obj1 {
+        width: 28px;
+        height: 34px;
+        line-height: 34px;
+        float: left;
+        background: #fff;
+        color: #555A6F;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+        vertical-align: top;
+    }
+
+    .box1 {
+        padding: 30px 0 10px 0;
+    }
+
+    .button1 {
+        padding: 3px 25px;
+        background: #ACCD99;
+        border: 1px solid #BED8AF;
+        border-radius: 100px;
+        color: #000;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+    #userManager .panel-body {
+        padding: 20px 15px;
+    }
+
+    #allRecordTable, #userAllRecordTable {
+        width: 100%;
+    }
+
+    #allRecordTable tr, #userAllRecordTable tr {
+        border-top: 1px solid #e7e7e7;
+    }
+
+    #allRecordTable th, #allRecordTable td, #userAllRecordTable th, #userAllRecordTable td {
+        padding: 10px;
+    }
+
+    #allRecordTable tr:nth-child(even), #allRecordTable thead tr, #userAllRecordTable tr:nth-child(even), #userAllRecordTable thead tr {
+        background: #f5f5f5;
+    }
+
+    #userAllRecordTableWrapper {
+        height: 280px;
+        overflow: auto;
+    }
+
+    #allRecordTableWrapper {
+        height: 400px;
+        overflow: auto;
+    }
+
+    .dateTit {
+        float: left;
+        height: 33px;
+        line-height: 33px;;
+        color: #999;
+        margin-right: 7px;
+    }
+
+    #infoDate {
+        left: -2px;
+        top: 7px;
+        float: left;
+    }
+
+    .nameEditor.editing #editInput {
+        display: none;
+    }
+
+    .infoPrompt {
+        text-indent: 30px;
+        color: #a94442;
+    }
+
+    #selectRecord, #userRecord {
+        margin: 8px 0 0 10px;
+        float: left;
+        width: 120px;
+    }
+
+    /*员工管理的样式*/
+    #searchUserCon {
+        width: 230px;
+        float: left;
+    }
+
+    #searchUser {
+        width: 210px;
+        height: 30px;
+    }
+
+    #addPerson {
+        border: 1px solid #F5F5F5;
+        border-radius: 50px;
+        padding-right: 6px;
+    }
+
+    #addPerson:hover {
+        background: #666;
+        color: #fff;
+    }
+
+    #userListUl {
+        width: 210px;
+        position: absolute;
+        padding-left: 0;
+        padding-bottom: 1px;
+        background: #fff;
+        cursor: pointer;
+        z-index: 30;
+        overflow-x: hidden;
+        overflow-y: auto;
+        min-height: 30px;
+        max-height: 600px;
+        border: 1px solid #87cefa;
+        border-radius: 0 0 5px 5px;
+        position: absolute;
+        top: 30px;
+    }
+
+    #userListUl li {
+        height: 25px;
+        line-height: 25px;
+        margin: 5px 0;
+        cursor: pointer;
+    }
+
+    #userListUl li img {
+        width: 25px;
+        height: 25px;
+        border-radius: 50px;
+        right: 3px;
+        top: 0;
+    }
+
+    #userListUl li input {
+        width: 100%;
+        border: none;
+        height: 25px;
+        line-height: 25px;
+        text-indent: 17px;
+        cursor: pointer;;
+    }
+
+    #userListUl li input:focus {
+        background: #87cefa;
+        color: #fff;
+    }
+
+    #searchUserIc {
+        left: 189px;
+        cursor: pointer;
+        top: -23px;
+    }
+
+    #givenMRCon {
+        height: 32px;
+        line-height: 32px;
+    }
+
+    #givenMR {
+        vertical-align: text-top;
+        margin-right: 5px;
+    }
+
+    #selectInfos {
+        padding-left: 15px;
+    }
+
+    #selectInfos {
+        width: 460px;
+        padding-left: 20px;
+        margin: 10px auto 0 auto;
+    }
+
+    #selectInfos > select {
+        margin-right: 20px;
+    }
+
+    #userInfos {
+        width: 450px;
+        padding-left: 5px;
+        margin: 40px auto 0 auto;
+    }
+
+    #userInfos li {
+        margin: 10px;
+    }
+
+    #userInfos li input[type=text] {
+        width: 200px;
+    }
+
+    #addPersonWin .modal-content {
+        border-radius: 10px;;
+    }
+
+    #addPersonWin .modal-dialog {
+        width: 550px;
+    }
+
+    #addPersonWin .modal-header {
+        background: #909090;
+        color: #fff;
+        font-size: 29px;
+        padding: 7px 15px;
+        border-radius: 9px 9px 0 0;
+    }
+
+    #addPersonWin .modal-header .close {
+        color: #fff;
+        opacity: 0.8;
+    }
+
+    #addPersonWin .modal-header .close:hover {
+        opacity: 1;
+    }
+
+    #addPersonWin .modal-footer button {
+        width: 100px;
+        border-radius: 50px;
+        color: #333;
+    }
+
+    #addPersonWin .modal-footer .btn-default {
+        background: #c3c3c3;
+        border-color: #c3c3c3;
+    }
+
+    #addPersonWin .modal-footer .btn-default:hover {
+        box-shadow: 0 0 8px #c3c3c3;
+    }
+
+    #addPersonWin .modal-footer .btn-primary {
+        background: #adcd9a;
+        border-color: #adcd9a;
+    }
+
+    #addPersonWin .modal-footer .btn-primary:hover {
+        box-shadow: 0 0 8px #adcd9a;
+    }
+
+    /*页面管理的样式*/
+    #addProject {
+        border: 1px solid #F5F5F5;
+        border-radius: 50px;;
+    }
+
+    #addProject:hover {
+        background: #666;
+        color: #fff;
+    }
+
+    #projectCon {
+        padding-left: 0;
+        overflow-y: auto;
+        height: 512px;
+    }
+
+    #addProjectTxt, .addPersonTxt {
+        position: relative;
+        top: -4px;
+    }
+
+    .proCompany {
+        overflow: hidden;
+        margin-bottom: 20px;
+        background: #F5F5F5;
+    }
+
+    .proCompany .project-name {
+        margin-top: 0px;
+        font-size: 18px;
+        font-weight: bold;
+        float: left;
+    }
+
+    .proCompany .btn {
+        float: right;
+        margin: 0 5px 5px 5px;
+    }
+
+    .proCompany > ul {
+        padding: 10px 20px;
+    }
+
+    .proCompany > ul > li {
+        overflow: hidden;
+    }
+
+    .proListWrapper {
+        min-height: 161px;
+    }
+
+    .proList {
+        overflow: hidden;
+        border-top: 1px dashed #ccc;
+        min-height: 161px;
+    }
+
+    .proList > div {
+        padding: 5px 10px 0px 20px;
+    }
+
+    .userList {
+        margin-left: 65px;
+    }
+
+    .proUser {
+        float: left;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        margin: 10px;
+        padding: 10px 0;
+        border-radius: 5px;
+        background: #F5F5F5;
+    }
+
+    .proUser:hover {
+        background: #E4E4E4;
+    }
+
+    .proUser .dn {
+        display: none;
+    }
+
+    .proUser .closed {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    .proUser img {
+        padding: 2px;
+        border: 1px solid #ccc;
+        border-radius: 100px;
+        background: #fff;
+        width: 65px;
+        height: 65px;
+        margin: 0 auto;
+    }
+
+    #staffList {
+        padding: 10px;
+        position: absolute;
+        width: 195px;
+        top: 0;
+        right: 34px;
+        border: 1px solid #ccc;
+        background: #fff;
+    }
+
+    #searchWrapper {
+        position: relative;
+        width: 175px;
+    }
+
+    #searchProjectUser {
+        width: 100%;
+        height: 30px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    #staffList ul {
+        padding-left: 0px;
+        margin: 0 auto;
+        max-height: 496px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        margin-top: 10px;
+    }
+
+    #staffList li {
+        margin-top: 8px;
+        text-indent: 5px;
+        background: #D1E1F5;
+        cursor: move;
+        border: 1px solid transparent;
+    }
+
+    #staffList li:hover {
+        border: 1px solid #00A1FF;
+    }
+
+    #staffList li:first-child {
+        margin-top: 0;
+    }
+
+    #staffList li span {
+        display: inline-block;
+        width: 100px;
+        height: 32px;
+        line-height: 32px;
+        vertical-align: middle;
+    }
+
+    #staffList h4 {
+        font-size: 16px;
+    }
+
+    #userList li {
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+    }
+
+    #userList li .media-middle {
+        padding-right: 0;
+    }
+
+    #userList li .media-body {
+        width: 100%;
+        padding: 5px 5px 5px 0;
+    }
+
+    #userList li .media-body p {
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .addGroupWrapper {
+        height: 36px;
+        line-height: 27px;
+        margin: 0 20px;
+        color: #999;
+        border-top: 1px dashed #ccc;
+    }
+
+    #benchmarkSet .modal-dialog {
+        margin-top: 80px;
+    }
+
+    /*页面管理-页面配置窗口样式*/
+    #pageSet .modal-body {
+        max-height: 600px;
+        overflow: auto;
+    }
+
+    #pageSet label {
+        cursor: pointer;
+        width: 100%;
+    }
+
+    #pageSet input[type="checkbox"] {
+        vertical-align: text-top;
+        margin-right: 5px;
+    }
+
+    .image-upload img {
+        cursor: pointer;
+    }
+
+    .image-upload:hover {
+        border: 1px solid #428bca;
+        box-shadow: 0 0 8px #428bca;
+    }
+
+    .image-upload label {
+        margin-bottom: 0;
+    }
+
+    .image-upload > input {
+        display: none;
+    }
+
+    .userTree {
+        min-height: 30px;
+        margin-bottom: 0;
+        color: #333;
+        border: none;
+        border-top: none;
+        overflow: auto;
+    }
+
+    .userTree > ul {
+        padding-left: 15px;
+    }
+
+    .userTree li {
+        list-style-type: none;
+        margin: 0;
+        padding: 10px 5px 0 63px;
+        position: relative
+    }
+
+    .userTree li::before, .userTree li::after {
+        content: '';
+        left: -7px;
+        position: absolute;
+        right: auto
+    }
+
+    .userTree li::before {
+        border-left: 1px solid #000;
+        bottom: 50px;
+        height: 100%;
+        top: 0;
+        width: 1px
+    }
+
+    .userTree li::after {
+        border-top: 1px solid #000;
+        height: 20px;
+        top: 57px;
+        width: 70px
+    }
+
+    .userTree li > span {
+        border: 1px solid skyblue;
+        border-radius: 3px;
+        display: inline-block;
+        padding: 5px;
+        text-decoration: none;
+        min-width: 195px;
+    }
+
+    .userTree li > .selected[ismanager="0"] {
+        background: skyblue;
+        color: #fff;
+    }
+
+    .userTree li > .selected[ismanager="1"] {
+        background: #f0ad4e;
+        color: #fff;
+    }
+
+    .userTree li > .selected .bg-info {
+        background: none;
+    }
+
+    .userTree li > .selected .bg-danger {
+        background: none;
+    }
+
+    .userTree li > .selected .userInfo {
+        color: #555;
+    }
+
+    .userTree li.parent_li > span {
+        cursor: pointer;
+    }
+
+    .userTree > ul > li::before, .userTree > ul > li::after {
+        border: 0
+    }
+
+    .userTree li:last-child::before {
+        height: 57px
+    }
+
+    .userTree li.parent_li > span:hover, .userTree li.parent_li > span:hover + ul li span {
+        background: #ff6c60;
+        color: #333;
+    }
+
+    .userTree li.parent_li > span:hover + ul li.li_selected span {
+        background: #e5e2e1;
+        color: #e56155;
+    }
+
+    .userTree li > span > a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .userTree li > span > span.glyphicon-folder-close, .userTree li > span > span.glyphicon-folder-open {
+        margin-right: 5px;
+    }
+
+    .userTree li.li_selected > span, .userTree li.li_selected > span > a {
+        background: #e5e2e1;
+        color: #e56155;
+    }
+
+    .userTree li.li_selected > span:hover, .userTree li.li_selected > span:hover > a {
+        background: #fafafa;
+        color: #ff6c60;
+    }
+
+    .userTree .userTree-toolbar {
+        background-color: #333;
+    }
+
+    .userTree .userTree-toolbar > div {
+        display: inline-block;
+    }
+
+    .userTree .userTree-toolbar > div > button {
+        border-radius: 0;
+        margin: 20px 5px;
+    }
+
+    #treeUl {
+        position: relative;
+    }
+
+    #treeUl dl {
+        overflow: hidden;
+        margin: 5px;
+    }
+
+    #treeUl > li {
+        padding: 0;
+    }
+
+    #treeUl dl dt, #treeUl dl dd {
+        float: left;
+    }
+
+    #treeUl dl dt {
+        width: 56px;
+        height: 56px;
+    }
+
+    #treeUl dl dd {
+        margin-left: 10px;
+    }
+
+    #treeUl dl dd h4 {
+        margin: 0;
+        height: 32px;
+        line-height: 40px;
+        width: 100px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    #treeUl dl dd .userInfo {
+        margin: 0;
+        font-size: 12px;
+        text-align: center;
+        padding: 3px 5px;
+    }
+
+    #treeUl dl dd .userInfo i {
+        cursor: pointer;
+    }
+
+    #treeUl dl dd .re-invite {
+        margin: 0;
+        font-size: 12px;
+        text-align: center;
+        padding: 3px 3px;
+    }
+
+    #treeUl .glyphicon-minus-sign, #treeUl .glyphicon-plus-sign {
+        font-size: 15px;
+    }
+
+    #treeUl .personImg {
+        width: 50px;
+        height: 50px;
+        padding: 3px;
+        margin: 3px;
+        background: #fff;
+        top: 0;
+        left: 0;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    #treeUl .personImg:hover {
+        border: 1px solid #428bca;
+        box-shadow: 0 0 5px #428bca;
+    }
+
+    #treeUl .glyphicon-minus-sign, #treeUl .glyphicon-plus-sign {
+        cursor: pointer;
+    }
+
+    .tree {
+        min-height: 20px;
+        padding: 19px;
+        margin-bottom: 20px;
+        background-color: #fbfbfb;
+        border: 1px solid #999;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        -webkit-user-select: none;
+    }
+
+    .tree li {
+        list-style-type: none;
+        margin: 0;
+        padding: 10px 5px 0 5px;
+        position: relative;
+    }
+
+    .tree li::before, .tree li::after {
+        content: '';
+        left: -20px;
+        position: absolute;
+        right: auto;
+    }
+
+    .tree li::before {
+        border-left: 1px solid #000;
+        bottom: 50px;
+        height: 100%;
+        top: 0;
+        width: 1px;
+    }
+
+    .tree li::after {
+        border-top: 1px solid #000;
+        height: 20px;
+        top: 25px;
+        width: 25px;
+    }
+
+    .tree li span {
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border: 1px solid #999;
+        border-radius: 5px;
+        display: inline-block;
+        padding: 5px 8px;
+        text-decoration: none;
+    }
+
+    .tree li label span {
+        border: 1px solid #ccc;
+    }
+
+    .tree li .input-group-addon {
+        width: 34px;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1;
+        color: #555;
+        text-align: center;
+        background-color: #eee;
+        border: 1px solid #ccc;
+        border-right: none;
+        border-radius: 4px 0 0 4px;
+    }
+
+    .tree li.parent_li > span {
+        cursor: pointer;
+    }
+
+    #pageSet .parent_li > span label {
+        cursor: pointer;
+        width: 108px;
+    }
+
+    .tree > ul > li::before, .tree > ul > li::after {
+        border: 0;
+    }
+
+    .tree li:last-child::before {
+        height: 26px;
+    }
+
+    .tree li.parent_li > span:hover, .tree li.parent_li > span:hover + ul li span {
+        background: #eee;
+        border: 1px solid #94a0b4;
+        color: #000;
+    }
+
+    .winCon > ul {
+        padding-left: 0;
+        width: 345px;
+        margin: 0 auto;
+    }
+
+    .winCon ul li > span {
+        width: 220px;
+    }
+
+    .winCon .funcNav {
+        position: absolute;
+        top: 10px;
+        left: 51px;
+    }
+
+    .tree li .setFunctionMenu {
+        width: 120px;
+    }
+
+    #userSettingWin .modal-dialog {
+        width: 880px;
+    }
+
+    #userSettingWin .thumbnail {
+        border-radius: 80px;
+        margin-left: 17px;
+    }
+
+    #userSettingWin .userPic {
+        width: 60px;
+        height: 60px;
+        max-width: none;
+    }
+
+    #supervisor, #isManager {
+        position: absolute;
+        top: -7px;
+        left: 70px;
+    }
+
+    #userAllRecord {
+        height: 188px;
+        overflow: auto;
+        padding: 10px 0 10px 17px;
+    }
+
+    #userDel {
+        top: 10px;
+        right: 120px;
+    }
+
+    #userEditConfrim {
+        top: 10px;
+        right: 60px;
+    }
+
+    #userAllRecord li {
+        height: 30px;
+        line-height: 30px;
+        text-indent: 10px;
+        margin-right: 15px;
+    }
+
+    #userAllRecord li:nth-child(odd) {
+        background: #fff;
+        color: #333;
+    }
+
+    #recordInfoDate {
+        left: -30px;
+        top: 8px;
+        float: left;
+        margin-left: 25px;
+    }
+
+    #inviteMsg li {
+        margin-left: 10px;
+    }
+
+    #inviteMsg .apply {
+        color: #5bc0de;
+    }
+
+    #inviteMsg .invited {
+        color: #337ab7;
+    }
+
+    #inviteMsg .registered {
+        color: #f0ad4e;
+    }
+
+    #inviteMsg .token_failed {
+        color: #d9534f;
+    }
+
+    #inviteMsg .succeed {
+        color: #5cb85c;
+    }
+
+    #accountManagePanel {
+        overflow: hidden;
+    }
+
+    .wf-project-list {
+    }
+
+    .wf-project-list > li {
+        float: left;
+        max-width: 210px;
+        min-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: keep-all;
+        padding-top: 7px;
+        white-space: nowrap;
+        margin-right: 15px;
+        color: #333;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .wf-project-list > li.disabled {
+        color: #ccc;
+        cursor: not-allowed;
+    }
+
+    .wf-project-list > li.disabled label {
+        cursor: not-allowed;
+        padding: 5px;
+    }
+
+    .wf-project-list > li.selected {
+        color: #f00;
+    }
+
+    .wf-hasAddReporter > label {
+        color: #1543fa;
+    }
+
+    .wf-hasRestore > label {
+        color: #1543fa;
+    }
+
+    .wf-project-list > li > label {
+        font-weight: normal;
+        padding: 5px 5px 5px 22px;
+        width: 100%;
+        background: #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    #reportEmailSetting {
+        height: 430px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding-top: 10px;
+    }
+
+    .wf-project-detail {
+        background: #F2F2F2;
+        border: 1px solid #ccc;
+        padding-left: 0;
+        text-align: center;
+        border-radius: 3px;
+        font-size: 12px;
+        width: 100%;
+    }
+
+    .wf-project-detail label {
+        font-weight: normal;
+        margin: 0;
+        cursor: pointer;
+    }
+
+    .wf-project-detail li {
+        padding-left: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .wf-project-detail li:last-of-type {
+        border-bottom: none;
+    }
+
+    .wf-report-email-add {
+        border-radius: 50%;
+        font-size: 20px;
+        padding: 5px;
+        position: relative;
+        left: 0;
+        cursor: pointer;
+        border: 1px dashed #999;
+        color: #aaa;
+    }
+
+    .wf-report-email-add:hover {
+        border: 1px dashed #666;
+        color: #666;
+    }
+
+    #accountManageWrapper {
+        height: 100%;
+    }
+
+    .wf-project-list .projectlist-check {
+        font-size: 12px;
+        padding: 3px;
+        background: transparent;
+        border-radius: 50%;
+    }
+
+    .wf-project-list li .projectlist-check {
+        color: transparent;
+    }
+
+    .wf-project-list li.selected .projectlist-check {
+        display: inline-block;
+        color: #F6D12B;
+        background: #fff;
+    }
+
+    .wf-project-list li.disabled .projectlist-check {
+        display: none;
+    }
+
+    #accountManage {
+        height: 100%;
+    }
+
+    .wf-report-setting-email {
+        position: relative;
+    }
+
+    .wf-report-setting-email > span {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .wf-reprot-email-notice {
+        animation: wf-shake 1s .2s ease both;
+    }
+
+    @-webkit-keyframes wf-shake {
+        0%, 100% {
+            -webkit-transform: translateX(0);
+        }
+        10%, 30%, 50%, 70%, 90% {
+            -webkit-transform: translateX(-20px);
+        }
+        20%, 40%, 60%, 80% {
+            -webkit-transform: translateX(20px);
+        }
+    }
+
+    @-moz-keyframes wf-shake {
+        0%, 100% {
+            -moz-transform: translateX(0);
+        }
+        10%, 30%, 50%, 70%, 90% {
+            -moz-transform: translateX(-20px);
+        }
+        20%, 40%, 60%, 80% {
+            -moz-transform: translateX(20px);
+        }
+    }
+
+    .wf-project-list > li > label > input {
+        display: none;
+    }
+
+    .wf-project-list > li.selected > label {
+        background: #BBDFBB;
+        color: #333;
+        display: block;
+    }
+
+    #accountManage .panel {
+        border: none 0;
+        box-shadow: none;
+    }
+
+    #accountManage .panel-heading {
+        border: none 0;
+    }
+
+    #setPermissionWin .modal-dialog {
+        margin-top: 200px;
+        width: 350px;
+    }
+
+    #submit-report-email-list {
+        padding-right: 20px;
+    }
+
+    #reportEmailSetting .wf-report-setting-email-lists {
+        height: 250px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    #contentWrapper {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        height: 500px;
+    }
+</style>
+<div class="bgWrapper oh">
+    <div class="col-xs-8 col-xs-offset-2" id="userManager">
+        <ul class="nav nav-tabs dn" role="tablist" id="manageTab">
+            <li role="presentation" screen="AccountManager">
+                <a href="#accountManageWrapper" role="tab" data-toggle="tab"
+                   i18n="admin.panelManagement.ACCOUNT"></a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="panelContentWrapper">
+            <div role="tabpanel" class="tab-pane ps20" id="accountManageWrapper">
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="memberManageWrapper">
+
+            </div>
+            <div role="tabpanel" class="tab-pane pr" id="permissionManageWrapper">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--模版开始-->
+<script type="text/html" id="loginRecordTmpl">
+    <! for(var i=0;i < obj.length; i++){!>
+    <!var item = obj[i]; !>
+    <tr>
+        <td>
+            <div class="ellipsis w150" title="<!=item.time.replace('GMT', '').toDate().format('yyyy-MM-dd HH:mm:ss')!>">
+                <!=item.time.replace('GMT', '').toDate().format('yyyy-MM-dd HH:mm:ss')!>
+            </div>
+        </td>
+        <td><!=item.ip!></td>
+        <td>
+            <!if(item.agent){!>
+            <!=item.agent.os!> <!=item.agent.osVersion!>
+            <!}!>
+        </td>
+        <td>
+            <!if(item.agent){!>
+            <!=item.agent.screen!>
+            <!}!>
+        </td>
+        <td>
+            <!if(item.agent){!>
+            <div class="ellipsis w150" title="<!=item.agent.browser!> <!=item.agent.browserVersion!>">
+                <!=item.agent.browser!> <!=item.agent.browserVersion!>
+            </div>
+            <!}!>
+        </td>
+    </tr>
+    <!}!>
+</script>
+
+<script type="text/html" id="userManageRecordTmpl">
+    <! for(var i=0;i < obj.length; i++){!>
+    <li>
+        <span><!=obj[i].time.replace('GMT', '').toDate().format('yyyy-MM-dd HH:mm:ss')!></span>
+        <span style="margin: 0 50px;"><!=obj[i].userfullname!></span>
+        <span><!=obj[i].title!></span>
+    </li>
+    <!}!>
+</script>
+
+<script type="text/html" id="pageManageRecordTmpl">
+    <! for(var i=0;i < obj.length; i++){!>
+    <li>
+        <span><!=obj[i].time.replace('GMT', '').toDate().format('yyyy-MM-dd HH:mm:ss')!></span>
+        <span style="margin: 0 50px;"><!=obj[i].userfullname!></span>
+        <span><!=obj[i].title!></span>
+    </li>
+    <!}!>
+</script>
+
+<script type="text/html" id="allRecordTmpl">
+    <! for(var i=0;i < obj.length; i++){!>
+    <li>
+        <span><!=obj[i].time.replace('GMT', '').toDate().format('yyyy-MM-dd HH:mm:ss')!></span>
+        <span style="margin: 0 50px;"><!=obj[i].userfullname!></span>
+        <span><!=obj[i].title!></span>
+    </li>
+    <!}!>
+</script>
+
+<script type="text/html" id="managerTabTmpl">
+    <!if(userProfile.isManager){!>
+    <li role="presentation" screen="MemberManager" permission="TeamSet">
+        <a href="#memberManageWrapper" role="tab" data-toggle="tab"
+           i18n="admin.panelManagement.STAFF_MANAGEMENT"></a>
+    </li>
+    <li role="presentation" screen="ProjectPermissionManager" permission="ProjectVSet;TeamSet">
+        <a href="#permissionManageWrapper" role="tab" data-toggle="tab"
+           i18n="admin.panelManagement.PROJECT_MANAGEMENT"></a>
+    </li>
+    <!}!>
+</script>
+<!--模版结束-->

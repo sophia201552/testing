@@ -1,0 +1,186 @@
+.templateCtn {
+  color: #ffffff;
+  font-size: 12px;
+  height: 100%;
+}
+.conditionCtn {
+  height: calc(100% - 60px);
+}
+.clearCondition {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.clearCondition button{
+  background: none;
+  color: #ffffff;
+  border: 1px solid rgba(108, 149, 255, .5);
+  border-radius: 4px
+}
+.clearCondition button:hover{
+  background: none;
+  color: #ffffff;
+  border: 1px solid rgba(108, 149, 255, .8);
+}
+.clearCondition button *{
+  font-weight: normal;
+}
+.templateCtn .conditionCtn > div {
+  border-bottom: 2px solid #1f2540;
+  padding: 12px;
+}
+.templateCtn .conditionCtn .tagCtn{
+  padding: 0;
+}
+.gradeCtn{
+  height: 98px;
+}
+.sourceCtn{
+  height: 76px;
+}
+.tagCtn{
+  height: calc(100% - 174px);
+  overflow-y: auto;
+}
+.gradeCtn span,
+.sourceCtn span {
+  color: rgb(128, 162, 255);
+}
+.templateCtn .title {
+  color: #ffffff;
+  padding: 0;
+  padding-bottom: 12px;
+  font-size: 14px;
+}
+.templateCtn .tagCtn > label {
+  padding: 12px;
+  border-bottom: 2px solid #1f2540;
+}
+/* TemplateNav start*/
+.templateNavCtn {
+  padding: 12px;
+}
+.singleTemplate {
+  border-bottom: 1px solid #171d34;
+}
+.singleTemplate .itemName {
+  padding: 0 12px;
+  display: flex;
+  justify-content: space-between;
+  line-height: 30px;
+  cursor: pointer;
+}
+.singleTemplate .itemName span {
+  color: #95a3b4;
+}
+.singleTemplate .itemName i {
+  color: #687296;
+}
+.singleTemplate.selected .itemName span,
+.singleTemplate.selected .itemName i {
+  color: #10b8f9;
+}
+.singleTemplate:hover .itemName {
+  background: #273159;
+}
+.singleTemplate .itemData {
+  background: rgba(18, 22, 49, 1);
+  flex-wrap: wrap;
+  display: flex;
+}
+.itemData > div {
+  background: #191f37;
+  margin: 5px auto;
+  width: 80%;
+  border-radius: 20px;
+  text-align: center;
+  color: #6c95ff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: context-menu;
+  height: 26px;
+  cursor: pointer;
+  line-height: 26px;
+  padding: 0 4px;
+}
+.itemData > div:hover {
+  background: #273159;
+}
+.itemData > div.selected {
+  border: 1px solid rgba(16, 184, 249, 0.6);
+  color: #10b8f9;
+  line-height: 24px;
+}
+.searchBox input {
+  display: none;
+}
+.searchBox.hoverSearch input {
+  border: 1px solid #cccccc;
+  border-radius: 15px;
+  padding: 2px 20px 2px 4px;
+  outline: none;
+  width: 100%;
+  color: #555;
+  display: none;
+}
+.searchBox.hoverSearch {
+  width: 120px;
+  position: relative;
+}
+.searchBox.hoverSearch input {
+  display: inline-block;
+}
+.singleTemplate .itemName .searchBox.hoverSearch i {
+  position: absolute;
+  right: 4px;
+  color: #555;
+}
+/*TemplateNav end*/
+/*checkBox start*/
+.sourceCtn .checkBoxCtn{
+  display: flex;
+  justify-content: space-around;
+}
+.checkBoxCtn > div {
+  display: flex;
+  align-items: center;
+  padding: 2px 0;
+}
+.checkBoxCtn > div span {
+  position: relative;
+  padding-right: 8px;
+  cursor: pointer;
+}
+.checkBoxCtn > div > label {
+  color: #6c95ff;
+  cursor: pointer;
+}
+.checkBoxCtn > div.check_block_ctn > label {
+  margin-top: -2px;
+}
+.checkBoxCtn .input_check {
+  position: absolute;
+  visibility: hidden;
+}
+.checkBoxCtn .input_check + label {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  border: 1px solid #47567a;
+  cursor: pointer;
+}
+.checkBoxCtn .input_check:checked + label:after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 5px;
+  width: 3px;
+  height: 6px;
+  background: #fedb5d;
+  -webkit-transform: rotate(45deg);
+  box-shadow: 0 0 1px 1px rgba(249, 233, 177, 0.4);
+}
+/* checkBox end */

@@ -1,0 +1,47 @@
+{
+  "success": true,
+  "data": [
+    {
+      "detail": "bbbb",
+      "id": 28,
+      "ofTransactionId": 2526,
+      "replyTime": "2015-09-01 18:53:12",
+      "replyUserId": 1,
+      "title": null,
+      "userfullname": "admin",
+      "userpic": "http://images.rnbtech.com.hk/static/images/avatar/user/16307108.Jpg"
+    },
+    {
+      "detail": "\u75f4\u75f4\u7f20\u7f20",
+      "id": 39,
+      "ofTransactionId": 2526,
+      "replyTime": "2015-09-02 17:13:57",
+      "replyUserId": 1,
+      "title": null,
+      "userfullname": "admin",
+      "userpic": "http://images.rnbtech.com.hk/static/images/avatar/user/16307108.Jpg"
+    },
+    {
+      "detail": "fafdsaf<img src=\"/static/images/reply_images/2526_2015.09.07_14.15.27_0.png\" />&nbsp;fdsfds<img src=\"/static/images/reply_images/2526_2015.09.07_14.15.27_1.png\" />fdsf",
+      "id": 40,
+      "ofTransactionId": 2526,
+      "replyTime": "2015-09-07 14:15:27",
+      "replyUserId": 1,
+      "title": null,
+      "userfullname": "admin",
+      "userpic": "http://images.rnbtech.com.hk/static/images/avatar/user/16307108.Jpg"
+    },
+    {
+      "detail": "fgdsfsdfd",
+      "id": 41,
+      "ofTransactionId": 2526,
+      "replyTime": "2015-09-07 14:15:45",
+      "replyUserId": 1,
+      "title": null,
+      "userfullname": "admin",
+      "userpic": "http://images.rnbtech.com.hk/static/images/avatar/user/16307108.Jpg"
+    }
+  ],
+  "code": 1
+}
+

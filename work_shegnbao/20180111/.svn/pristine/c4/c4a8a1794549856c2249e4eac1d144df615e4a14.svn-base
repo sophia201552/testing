@@ -1,0 +1,43 @@
+/**
+ * Painter 页面
+ * @author Peter
+ */
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import s from './Painter.css';
+import StrategyTree from '../containers/StrategyList/StrategyTree';
+import StrategyPanel from '../containers/StrategyPanel';
+import I18n from './HOC/I18n';
+
+class Painter extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this._strategyPanelGetDiff = this._strategyPanelGetDiff.bind(this);
+  }
+  render() {
+    const { match } = this.props;
+    return (
+      <div className={s['container']}>
+        <div className={s['sidebar']}>
+          <StrategyTree
+            strategyId={match.params.id}
+            strategyPanelFn={{
+              getDiff: this._strategyPanelGetDiff
+            }}
+          />
+        </div>
+        <div className={s['content']}>
+          <StrategyPanel ref="StrategyPanel" strategyId={match.params.id} />
+        </div>
+      </div>
+    );
+  }
+  _strategyPanelGetDiff() {
+    return this.refs.StrategyPanel.getWrappedInstance().getWrappedInstance().getDiff();
+  }
+}
+
+Painter.propTypes = {};
+
+export default I18n(Painter);

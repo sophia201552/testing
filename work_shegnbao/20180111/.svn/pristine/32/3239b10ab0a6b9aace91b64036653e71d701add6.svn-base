@@ -1,0 +1,658 @@
+<style>
+    .analysisContainer {
+        width: 100%;
+        height: 100%;
+        padding: 0 20px 20px 20px;
+        box-sizing: border-box;
+        background: rgb(239, 242, 249)
+    }
+
+    .analysisTitle {
+        width: 100%;
+        height: 60px;
+        padding:10px 0;
+        font-size: 20px;
+        line-height: 40px;
+        font-weight: bold;
+        border-bottom: 1px solid rgb(224, 224, 232);
+        box-sizing: border-box;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .analysisContent {
+        width: 100%;
+        height: calc(100% - 60px);
+        box-sizing: border-box;
+        padding: 0 10px;
+    }
+
+    .analysisFactorsContainer {
+        padding-top: 20px;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .analysisFaultsContainer {
+        padding-top: 20px;
+        width: 100%;
+        height: 40%;
+        box-sizing: border-box;
+    }
+
+    .analysisFactorsTitle,
+    .analysisFaultsTitle {
+        height: 30px;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .analysisFactorsContent,
+    .analysisFaultsContent {
+        width: 100%;
+        /*padding-top: 10px;*/
+        margin-top: 10px;
+        height: calc(100% - 30px);
+        display: flex;
+    }
+
+    .analysisFactorsContent {
+        justify-content: space-between;
+    }
+
+    .analysisFaultsContent {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .analysisFactorsHead,
+    .analysisFactorsTips,
+    .analysisFaultsHead,
+    .analysisFaultsTips {
+        display: inline-block;
+        line-height: 30px;
+    }
+
+    .analysisFactorsHead,
+    .analysisFaultsHead {
+        font-size: 16px;
+        font-weight: bold;
+        color: rgb(48, 49, 53);
+        padding-right: 5em;
+    }
+
+    .analysisFactorsTips,
+    .analysisFaultsTips {
+        font-size: 16px;
+        font-weight: bold;
+        color: rgb(135, 136, 140);
+    }
+
+    .analysisFactorsPanel {
+        width: 33%;
+        height: 50%;
+        padding: 5px;
+    }
+
+
+    .analysisFactorsPanelCanvas {
+        width: 31%;
+        height: 100%;
+        padding-right: 15px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+
+    .analysisFactorsSinglePanelCanvas {
+        width: 100%;
+        height: 100%;
+        background: white;
+        box-shadow: 0px 4px 6px 0 rgba(191, 193, 201, 0.50);
+        border-radius: 6px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .analysisFactorsSinglePanel {
+        width: 100%;
+        height: 100%;
+        background: white;
+        box-shadow: 0px 4px 6px 0 rgba(191, 193, 201, 0.50);
+        border-radius: 6px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .analysisFaultsPanel {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .analysisFaultsSinglePanel {
+        line-height: 30px;
+        height: 50px;
+        padding: 10px;
+        width: 100%;
+        background: white;
+        box-shadow: 0px 4px 6px 0 rgba(191, 193, 201, 0.50);
+        box-sizing: border-box;
+        border-radius: 6px;
+    }
+
+    .factorsTop {
+        width: 100%;
+        height: calc(100% - 90px);
+        box-sizing: border-box;
+        padding-bottom: 8px;
+    }
+
+    .factorsMain {
+        width: 100%;
+        height: 90px;
+    }
+
+    .factorsTopTitleCanvas {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 30px;
+        height: 30px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .factorsTopTitle {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 30px;
+        height: 30px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .factorsTopContent {
+        height: calc(100% - 60px);
+        width: 100%;
+        box-sizing: border-box;
+        padding-top: 10px;
+        color: rgb(135, 136, 140);
+        font-size: 14px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .factorsMainTop {
+        height: 40px;
+        font-size: 24px;
+        font-weight: bold;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .progress1 {
+        height: 9px;
+        background: #ebeef7;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        border-radius: 1px;
+    }
+
+    .progress1>span {
+        position: relative;
+        float: left;
+        margin: 0 -1px;
+        height: 9px;
+        line-height: 9px;
+        text-align: right;
+        border-radius: 1px;
+    }
+
+    .factorsMainBar {
+        width: 100%;
+        height: 15px;
+        line-height: 15px;
+    }
+
+    .factorsMainBarTip {
+        width: 100%;
+        height: 35px;
+        font-size: 14px;
+        color: rgb(135, 136, 140);
+        vertical-align: middle;
+        line-height: 35px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .factorsCanvas {
+        width: 100%;
+        height: calc(100% - 30px);
+    }
+
+    .falutsTag {
+        white-space: nowrap;
+        position: relative;
+        margin: 0 5px 0 10px;
+        display: inline-block;
+        height: 25px;
+        padding: 0 8px 0 8px;
+        background: rgb(253, 151, 40);
+        color: #fff;
+        line-height: 25px;
+        z-index: 77;
+        font-size: 14px;
+        border-radius: 3px;
+        width: 80px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-align: right;
+    }
+    /*.falutsMain,
+    .falutsTime {
+        display: inline-block;
+        font-size: 14px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .falutsTime {
+        width: 120px;
+        color: rgb(135, 136, 140);
+        vertical-align: super;
+    }
+
+    .falutsMain {
+        width: calc(100% - 130px);
+    }
+
+    .falutsContents {
+        color: rgb(135, 136, 140);
+        white-space: nowrap;
+        position: relative;
+        margin: 0 5px 0 10px;
+        display: inline-block;
+        height: 25px;
+        padding: 0 8px 0 8px;
+        line-height: 25px;
+        z-index: 77;
+        font-size: 14px;
+        border-radius: 3px;
+        width: calc(100% - 300px);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .falutsTitle {
+        font-weight: bold;
+        padding-left: 20px;
+        white-space: nowrap;
+        position: relative;
+        margin: 0 5px 0 10px;
+        display: inline-block;
+        height: 25px;
+        padding: 0 8px 0 8px;
+        line-height: 25px;
+        z-index: 77;
+        font-size: 14px;
+        border-radius: 3px;
+        width: 150px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .falutsContents {
+        padding-left: 20px;
+    }*/
+
+    .analysisFaultDetailPanel {
+        height: 200px;
+        background: #333;
+        position: relative;
+        top: -200px;
+        z-index: 222;
+        color: white;
+    }
+
+    #btnClose {
+        position: absolute;
+        right: 16px;
+        top: 5px;
+        color: #aaa;
+        font-size: 16px;
+        display: inline-block;
+        cursor: pointer;
+        z-index: 1;
+        background-color: rgba(170, 170, 170, 0.18);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        opacity: 0.95;
+    }
+
+
+    .analysisFactorsPanelOther {
+        width: 69%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .curveBtn {
+        color: #4c8be3;
+        border: 1px solid #4c8be3;
+        background-color: #fff;
+        display: inline-block;
+        padding: 6px 10px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.12857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border-radius: 4px;
+    }
+
+    .curveBtn:hover {
+        color: #fff !important;
+        border: 1px solid #4c8be3!important;
+        background-color: #4c8be3 !important;
+        outline: none !important;
+    }
+
+    .curveBtnHover {
+        color: #fff;
+        border: 1px solid #4c8be3;
+        background-color: #4c8be3;
+        outline: none !important;
+    }
+
+    .curveBtn:active {
+        color: #4c8be3 !important;
+        border: 1px solid #4c8be3 !important;
+        background-color: #fff !important;
+        outline: none !important;
+    }
+    .btnPanel{
+        padding-top:5px;
+    }
+    .shortcutBtnBox {
+        width:300px;
+        float:right;
+    }   
+    .timeFormatBox{
+        float:right;
+        width:360px;
+    }
+    .shortcutBtnBox >div:hover{
+        color:#4c8be4;
+    }  
+    .yearHistoryBtn,.monthHistoryBtn,.dayHistoryBtn{
+        display: inline-block;
+        width: initial;
+        cursor: pointer;
+        border: none;
+        border: 1px solid #DFE2E5;
+        box-shadow: none;
+        margin-right: 5px;
+    }
+    #historyQuery{
+        float: right;
+        margin-top: 5px;
+        border: 1px solid #DFE2E5;
+        box-shadow: none;
+        padding: 6px 12px;
+        background: none;
+        position: relative;
+        color: white;
+        background: #4c8be4;
+    }
+    #historyQuery::before{
+        content: '';
+        position: absolute;
+        height: 44px;
+        width: 1px;
+        right: -8px;
+        top: -5px;
+        background: #ccc;
+        display:none;
+    }
+    #startTime,.onTimeGroup .onTimeStart{
+        text-align:right;
+        padding:6px 0;
+        cursor: pointer;
+        height:34px;
+        line-height:34px;
+        margin-right:10px;
+        width:120px;
+        text-align:center;
+    }
+    .onTimeGroup .onTimeStart{
+        text-align:left;
+    }
+    .addTo,.addonOn{
+        margin-right:10px;
+    }
+    #endTime,.onTimeGroup .onTimeEnd{
+        padding:6px 0;
+        cursor: pointer;
+        height:34px;
+        line-height:34px;
+        width:120px;
+        text-align:center;
+    }
+    #startTime,.addTo,#endTime,.addCycle,.cycleBox,.onTimeGroup .onTimeStart,.onTimeGroup .onTimeEnd,.onTimeGroup .input-group-addon{
+        border:none;
+        box-shadow:none;
+        outline: none;
+        background:transparent;
+    }
+    .addCycle{
+        display:none;
+    }   
+    #startTime,#endTime {
+        font-size:16px;
+    }                
+</style>
+<div class="analysisContainer">
+    <div class="analysisTitle"><span>Energy Analysis For </span><span style="color:#4c8be3">Jul 2017</span>
+    <div class="shortcutBtnBox col-xs-4">
+        <div class="form-control yearHistoryBtn" i18n="energyManagement.history.THIS_YEAR">本年</div>
+        <div class="form-control monthHistoryBtn" i18n="energyManagement.history.THIS_MONTH">本月</div>
+        <div class="form-control dayHistoryBtn" i18n="energyManagement.history.THIS_DAY">本日</div>
+    </div>
+    <div id="historyQuery" class="btn btn-default avtive" i18n="energyManagement.overview.QUERY">查询</div>
+    <div class="timeFormatBox col-xs-5">
+        <div class="input-group">
+            <input type="text" id="startTime">
+            <span class="addTo">To</span>
+            <input type="text" id="endTime">
+            <!--<span class="input-group-addon">间隔</span>
+                    <div class="form-control">
+                        <select class="timeSelsect intervalHistory">
+                            <option value="h1">时</option>
+                            <option value="d1">天</option>
+                        </select>
+                    </div>-->
+            <span class="input-group-addon addCycle" i18n="energyManagement.history.CYCLE">周期</span>
+        </div>
+
+    </div>
+    </div>
+    <div class="analysisContent">
+        <div class="analysisFactorsContainer">
+            <div class="analysisFactorsTitle">
+                <!--<div class="analysisFactorsHead">Related Factors</div>-->
+                <div class="analysisFactorsTips" title=" Incremental Energy Use & Saving Potential 38,820kWh">Incremental Energy Use & Saving Potential <span style="color:rgb(226,82,32);text-decoration:underline;font-size:20px; padding:0 2px 0 2px;"> 38,820</span>kWh</div>
+            </div>
+            <div class="analysisFactorsContent">
+                <div class="analysisFactorsPanelCanvas">
+                    <div class="analysisFactorsSinglePanelCanvas">
+                        <div class="factorsTopTitleCanvas" title="Weighting Factor">Weighting Factor</div>
+                        <div class="factorsCanvas"></div>
+                    </div>
+                </div>
+                <div class="analysisFactorsPanelOther">
+                    <div class="analysisFactorsPanel">
+                        <div class="analysisFactorsSinglePanel">
+                            <div class="factorsTop">
+                                <div class="factorsTopTitle" title="Primary Chilled Water Pump">Primary chilled water pump</div>
+                                <div class="factorsTopContent" title="More primary chilled water pumps are running than necessary, increased electricity use.">More primary chilled water pumps are running than necessary, increased electricity use.</div>
+                                <div class="btnPanel"><button type="button" class="curveBtn" data-name="Primary chilled water pump" data-toggle="modal"
+                                        data-target="#curvePanel">Fault curve</button></div>
+                            </div>
+                            <div class="factorsMain">
+                                <div class="factorsMainTop">16,900kWh</div>
+                                <div class="factorsMainBar">
+                                    <div class="progress1" style="width: 100%">
+                                        <span class="progressBar" style="width:43.9%;background:rgb(237,74,9);"></span>
+                                    </div>
+                                </div>
+                                <div class="factorsMainBarTip" title="Weighting factor：43.9%">Weighting factor： <span style="color:#333;font-weight:bold;"> 43.9%</span></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="analysisFactorsPanel">
+                        <div class="analysisFactorsSinglePanel">
+                            <div class="factorsTop">
+                                <div class="factorsTopTitle" title="Fouling in condenser of chiller">Fouling in condenser of chiller</div>
+                                <div class="factorsTopContent" title="Condenser approach temperature of chiller is abnormally high, which may be a result of fouling">Condenser approach temperature of chiller is abnormally high, which may be a result of fouling.</div>
+                                <div class="btnPanel"><button type="button" class=" curveBtn" data-name="Fouling in condenser of chiller" data-dsId="qunlou_Ch03_CondSatuTemp,qunlou_Ch03_CondLeaveT"
+                                        data-toggle="modal" data-target="#curvePanel">Fault curve</button></div>
+                            </div>
+                            <div class="factorsMain">
+                                <div class="factorsMainTop">8,400kWh</div>
+                                <div class="factorsMainBar">
+                                    <div class="progress1" style="width: 100%">
+                                        <span class="progressBar" style="width:21.8%;background:rgb(248,147,41);"></span>
+                                    </div>
+                                </div>
+                                <div class="factorsMainBarTip" title="Weighting factor：21.8%">Weighting factor： <span style="color:#333;font-weight:bold;"> 21.8%</span></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="analysisFactorsPanel">
+                        <div class="analysisFactorsSinglePanel">
+                            <div class="factorsTop">
+                                <div class="factorsTopTitle" title="Outdoor dry bulb temperature">Outdoor dry bulb temperature</div>
+                                <div class="factorsTopContent" title="High outdoor dry-bulb temperature, increased chillers' energy">High outdoor dry-bulb temperature, increased chillers' energy.</div>
+                                <div class="btnPanel"><button type="button" class="curveBtn" data-name="Weather outdoor dry bulb temperature" data-toggle="modal"
+                                        data-target="#curvePanel">Fault curve</button></div>
+                            </div>
+                            <div class="factorsMain">
+                                <div class="factorsMainTop">5,240kWh</div>
+                                <div class="factorsMainBar">
+                                    <div class="progress1" style="width: 100%">
+                                        <span class="progressBar" style="width:13.6%;background:rgb(245,210,82);;"></span>
+                                    </div>
+                                </div>
+                                <div class="factorsMainBarTip" title="Weighting factor：13.6%">Weighting factor： <span style="color:#333;font-weight:bold;"> 13.6%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analysisFactorsPanel">
+                        <div class="analysisFactorsSinglePanel">
+                            <div class="factorsTop">
+                                <div class="factorsTopTitle" title="Cooling tower status control fault">Cooling tower status control fault</div>
+                                <div class="factorsTopContent" title="Cooling towers keep running for a long time while all chillers are off">Cooling towers keep running for a long time while all chillers are off</div>
+                                <div class="btnPanel"><button type="button" class="curveBtn" data-name="Cooling tower status control fault" data-toggle="modal"
+                                        data-target="#curvePanel">Fault curve</button></div>
+
+                            </div>
+                            <div class="factorsMain">
+                                <div class="factorsMainTop">4,200kWh</div>
+                                <div class="factorsMainBar">
+                                    <div class="progress1" style="width: 100%">
+                                        <span class="progressBar" style="width:10.9%;background:rgb(117,148,230);"></span>
+                                    </div>
+                                </div>
+                                <div class="factorsMainBarTip" title="Weighting factor：10.9%">Weighting factor： <span style="color:#333;font-weight:bold;"> 10.9%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analysisFactorsPanel">
+                        <div class="analysisFactorsSinglePanel">
+                            <div class="factorsTop">
+                                <div class="factorsTopTitle" title="Secondary chilled water pump">Secondary chilled water pump</div>
+                                <div class="factorsTopContent" title="More secondary chilled water pumps are running than necessary, increased electricity use.">More secondary chilled water pumps are running than necessary, increased electricity use.</div>
+                                <div class="btnPanel"><button type="button" class=" curveBtn" data-name="Secondary chilled water pump" data-toggle="modal"
+                                        data-target="#curvePanel">Fault curve</button></div>
+
+                            </div>
+                            <div class="factorsMain">
+                                <div class="factorsMainTop">3,420kWh</div>
+                                <div class="factorsMainBar">
+                                    <div class="progress1" style="width: 100%">
+                                        <span class="progressBar" style="width:8.9%;background:rgb(68,168,254);"></span>
+                                    </div>
+                                </div>
+                                <div class="factorsMainBarTip" title="Weighting factor：8.9%">Weighting factor： <span style="color:#333;font-weight:bold;"> 8.9%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analysisFactorsPanel">
+                        <div class="analysisFactorsSinglePanel">
+                            <div class="factorsTop">
+                                <div class="factorsTopTitle" title="Cooling water pump status control fault">Cooling water pump status control fault</div>
+                                <div class="factorsTopContent" title="Cooling water pumps keep running for a long time while all chillers are off.">Cooling water pumps keep running for a long time while all chillers are off.</div>
+                                <div class="btnPanel"><button type="button" class=" curveBtn" data-name="Cooling water pump status control fault"
+                                        data-toggle="modal" data-target="#curvePanel">Fault curve</button></div>
+                            </div>
+                            <div class="factorsMain">
+                                <div class="factorsMainTop">360kWh</div>
+                                <div class="factorsMainBar">
+                                    <div class="progress1" style="width: 100%">
+                                        <span class="progressBar" style="width:0.9%;background:rgb(120,196,220);"></span>
+                                    </div>
+                                </div>
+                                <div class="factorsMainBarTip" title="Weighting factor：0.9%">Weighting factor： <span style="color:#333;font-weight:bold;"> 0.9%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade bs-example-modal-sm" id="curvePanel" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+
+        <div class="modal-content " style="width:550px;background:white">
+            <div class="modal-header" style="width:550px;font-weight:bold;">Fault Curve</div>
+            <div class="curvePanelCanvas" style="width:550px;height:360px;background:white"></div>
+        </div>
+    </div>
+</div>
+</div>

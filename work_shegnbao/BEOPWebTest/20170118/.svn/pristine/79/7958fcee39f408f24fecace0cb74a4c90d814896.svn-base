@@ -1,0 +1,84 @@
+<div id="releaseModalWrap">
+    <style>
+            #releaseModal .modal-header {
+                color: #333;
+            }
+
+            #releaseModal .modal-body {
+                color: #333;
+            }
+            /*#releaseModal .releaseFst {
+            padding-bottom:15px;
+            font-size:16px;
+        }*/
+            #releaseModal .releaseSnd {
+                display: block;
+                font-size: 14px;
+            }
+
+            #releaseModal .relPass, #releaseModal .relProName {
+                margin: 10px 0;
+            }
+
+                #releaseModal .relPass span, #releaseModal .relProName span {
+                    display: inline-block;
+                    width: 70px;
+                    text-align: right;
+                    padding-right: 5px;
+                }
+
+                #releaseModal .relPass input, #releaseModal .relProName input {
+                    display: inline-block;
+                    width: calc(100% - 200px);
+                    height: 30px;
+                    line-height: 30px;
+                    border: 1px solid #e5e5e5;
+                    border-radius: 5px;
+                    padding: 0 5px;
+                }
+
+            .wrongPromt {
+                color: #ff0000;
+                margin-bottom: 10px;
+            }
+
+            .projNameBox {
+                display: none;
+            }
+    </style>
+    <div class="modal fade" id="releaseModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" i18n="mainPanel.releaseRepeat.RELEASE_TITLE"></h4>
+                    <!--mainPanel.releaseRepeat.TITLE-->
+                </div>
+                <div class="modal-body">
+                    <div class="releaseSnd">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="relPass" class="col-sm-2 control-label" i18n="mainPanel.releaseRepeat.PASSWORD">密 码:</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="relPass" i18n="placeholder=mainPanel.releaseRepeat.PASSWORD_INFO">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="relProj" class="col-sm-2 control-label" i18n="mainPanel.releaseRepeat.RELEASE_TO">发布到:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="relProj" disabled />
+                                </div>
+                            </div>
+                        </form>
+                        <div class="wrongPromt"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default directRelease" i18n="mainPanel.releaseRepeat.TITLE">发布</button>
+                    <!--mainPanel.releaseRepeat.RELEASE_START-->
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" i18n="mainPanel.releaseRepeat.RELEASE_NO">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Strategy Builder</title>
+    <link rel="shortcut icon" type="image/ico" href="/static/images/favicon.ico">
+    <script>
+        var _hmt = _hmt || [];
+    </script>
+    {% assets "strategy_css_bundle" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+</head>
+<body class="strategy-builder">
+    <div id="mainframe"></div>
+
+    <!--登录页面-->
+    <!--<div id="modalLogin">
+        <div id="factoryLogin" class="factoryLogin">
+            <div class="titleBrand">Strategy Builder</div>
+            <div class="loginBox">
+            	<div class="input-group userNameBox">
+					<span class="input-group-addon glyphicon glyphicon-user textBefore"></span>
+					<input type="text" required="required" class="form-control" id="userName" autofocus required i18n="placeholder=admin.login.PANE_PLACEHOLDER_ACCOUNT" autocomplete="off"/>
+				</div>
+                <div class="hr"></div>
+                <div class="input-group passWord">
+					<span class="input-group-addon glyphicon glyphicon-lock textBefore"></span>
+					<input type="password" required="required" class="form-control" id="userPass" i18n="placeholder=admin.login.PANE_PLACEHOLDER_PWD" autocomplete="off"/>
+				</div>
+                <div class="checkBox">
+                	<input type="checkbox" class="rememberPass" id="rememberPass" checked="checked"/>
+                	<label for="rememberPass"></label>
+                	<label class="checkboxTxt" i18n="admin.login.PANE_CHECKBOX_REMEMBER2"></label>
+                </div>
+                <div id="curtain"></div>
+                <div id="btnBox">
+                	<button id="login">
+                		<div class="loginSj"></div>
+                		<div class="spinner">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                        </div>
+                	</button>
+                </div>
+            </div>
+        </div>
+        <div id="divFactoryLanguage" class="divLanguage" style="display: block;">
+	        <a>
+	            <span id="languageTitle" class="country zhChecked"></span>
+	            <span class="glyphicon glyphicon-menu-right divLanguage-down"></span>
+	        </a>
+	        <ul class="dropdown-menu" id="selectLanguage">
+	            <li><a value="zh"><span class="country vMiddle zhChecked"></span><span> 中文</span></a></li>
+	            <li><a value="en"><span class="country vMiddle enChecked"></span><span> English</span></a></li>
+	        </ul>
+	    </div>
+    </div>-->
+        
+    <input type="hidden" value="{{token if token else ''}}" id="hidToken">
+    
+    {% assets "strategy_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+    <script type="text/javascript" src="/static/app/Strategy/scripts/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+/*修改信息 模态框 start*/
+.updateModal {
+  width: 30%;
+  padding: 15px;
+}
+.updateModal .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.updateModal .title .titeleName {
+  font-size: 16px;
+}
+.updateModal .container {
+  margin: 10px 0;
+}
+.updateModal .footer > div {
+  float: right;
+  display: flex;
+  align-items: center;
+}
+.updateModal .footer > div > div:first-child {
+  margin-right: 10px;
+}
+.footer {
+  overflow: hidden;
+  margin-top: 60px;
+}
+/*修改信息 模态框 end*/

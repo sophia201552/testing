@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Beop DashBoard</title>
+    <script>
+        var _hmt = _hmt || [];
+    </script>
+
+    {% assets "css_dashboard" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            height: 100%;
+            background-color: #F1F5F8;
+        }
+        #indexMain {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+        }
+        #divAlert {
+            position: fixed;
+            top: 40%;
+            text-align: center;
+            width: 80%;
+            left: 10%;
+            z-index: 10;
+        }
+        .top-nav #indexMain {
+            height:calc(100% - 3.6rem);
+            top: 3.6rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .bottom-nav #indexMain {
+            height:calc(100% - 3.6rem);
+            bottom: 3.6rem;
+        }
+        .top-nav.bottom-nav #indexMain {
+            height:calc(100% - 7.2rem);
+            top: 3.6rem;
+        }
+        #navTop {
+            background-color: #272D45;
+            width: 100%;
+            height: 3.6rem;
+            display: none;
+            position: absolute;
+            top: 0;
+            font-family: "Microsoft YaHei";
+        }
+        #navBottom {
+            border-top: 1px solid #eee;
+            background-color: white;
+            width: 100%;
+            height: 3.6rem;
+            display: none;
+            position: absolute;
+            bottom: 0;
+        }
+        .top-nav #navTop {
+            display: block;
+        }
+        .bottom-nav #navBottom {
+            display: block;
+        }
+        #navTop .btn-back{
+            font-size: 2rem;
+            position: absolute;
+            top: 0.9rem;
+            left: 6%;
+            color: white;
+            z-index: 1;
+            transform: scale(0.9,1);
+        }
+        .topNavLeft{
+            color: white;
+            font-size: 2.2rem;
+            position: absolute;
+            top: 0.9rem;
+            z-index: 1;
+            left: 6%;
+        }
+        .topNavTitle{
+            color: white;
+            font-size: 2.2rem;
+            font-weight: 500;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            display: inline-block;
+            line-height: 200%;
+            position: absolute;
+            left: 0;
+            font-family: "Microsoft Yahei";
+        }
+        .topNavInput{
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            height: 100%;
+        }
+        .topNavInput input {
+            width: 50%;
+            height: 2.6rem;
+            border: none;
+            border-radius: 0.5rem;
+            padding-left: 0.5rem;
+            position: relative;
+            top: 0.5rem;
+        }
+        .topNavRight {
+            color: white;
+            font-size: 2.2rem;
+            position: absolute;
+            top: 0.8rem;
+            right: 6%;
+            z-index: 1;
+        }
+        .navTool  {
+            color: #ccc;
+            font-size: 2.6rem;
+            padding: 0.4rem;
+            position: absolute;
+        }
+        .navTool.selected {
+            color:#428BCA
+        }
+        #btnProject {
+            left: 6%;
+        }
+        #btnMessage {
+            left: calc(6% + 3.2rem + (88% - 12.8rem) / 3);
+        }
+        #btnWorkFlow {
+            right: calc(6% + 3.2rem + (88% - 12.8rem) / 3);
+        }
+        #btnAdminConfig {
+            right: 6%;
+        }
+        .carousel-indicators {
+            display: none;
+        }
+        .panel-title{
+            font-size: 1.4rem;
+        }
+        #reportSelect button, #reportSelect button:focus, #reportSelect button:active{
+            background: none;
+            border: none;
+            color: #fff;
+            outline-color: transparent;
+        }
+        #reportSelect .dropdown-menu{
+            left: 50%;
+            margin-left: -80px;
+            background: rgba(39, 45, 69,0.9);
+            top: 95%;
+        }
+        #reportSelect .dropdown-menu li{
+            padding: .2rem .8rem;
+            line-height: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="navTop">
+        <div class="btn-back glyphicon glyphicon-chevron-left" aria-hidden="true"></div>
+    </div>
+    <div id="indexMain"></div>
+    <div id="navBottom">
+        <span id="btnProject" class="navTool glyphicon glyphicon-th-large" aria-hidden="true"></span>
+        <span id="btnMessage" class="navTool glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+        <span id="btnWorkFlow" class="navTool glyphicon glyphicon-wrench" aria-hidden="true"></span>
+        <span id="btnAdminConfig" class="navTool glyphicon glyphicon-cog" aria-hidden="true"></span>
+    </div>
+    <div id="divAlert"></div>
+    <div id="divModal"></div>
+    {% assets "js_mobile_tool" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+    {% assets "js_dashboard" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+</body>
+</html>

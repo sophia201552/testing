@@ -1,0 +1,437 @@
+<style>
+    .solutionHeader {
+        display: table;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(./img/solution/background.png) no-repeat center center scroll;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    #particles-js {
+        background-image: url(./img/solution/background.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+
+    .solutionHeader .text-vertical-center h1 {
+        color: #fff;
+    }
+
+    canvas {
+        display: block;
+        vertical-align: bottom;
+    }
+
+    .solutionHeader .text-vertical-center h4 {
+        color: #fff;
+        max-width: 58rem;
+        line-height: 3rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .solutionPanel {
+        padding: 0 5rem;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+
+    .solutionPanelOne {
+        background: #fff url(./img/solution/1.png) no-repeat;
+        display: block;
+        max-width: 100%;
+        height: auto;
+        text-align: left;
+    }
+
+    .solutionPanel .row {
+        margin: 0;
+    }
+
+    .solutionLine {
+        width: 4rem;
+        height: 0.2rem;
+        background: #6fb7ff;
+        margin-bottom: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .solutionPanelTitle {
+        color: #333;
+        font-size: 3rem;
+        height: auto;
+        text-align: left;
+        margin-bottom: 2rem;
+    }
+
+    .solutionPanelContent {
+        color: #666;
+        font-size: 1.2rem;
+        /* height: 6rem; */
+        text-align: left;
+        line-height: 2rem;
+    }
+
+    .solutionBtn {
+        width: 12rem;
+        line-height: 2.5rem;
+        border: 1px solid#333;
+        color: #333;
+        display: none;
+        margin-top: 1rem;
+        border-radius: 0;
+    }
+
+    .solutionPanelRight {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        box-sizing: border-box;
+        height: 100%;
+    }
+
+    .solutionPanel img {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .solutionContent {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .proPadRight1 {
+        height: 100%
+    }
+
+    .solutionPanelEnergy {
+        padding: 0 10rem;
+        box-shadow: 0
+    }
+
+    .solutionPanelIot {
+        display: table;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(./img/solution/3.png) no-repeat center center scroll;
+        background-attachment: scroll;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    .solutionPanelUser {
+        display: table;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(./img/solution/6.png) no-repeat center right scroll;
+        background-attachment: scroll;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        background-repeat: repeat-y
+    }
+
+    .imgEnergy {
+        display: table;
+        position: relative;
+        width: 100%;
+        height: 60vh;
+        background: url(./img/solution/4.png) no-repeat center center scroll;
+        background-attachment: scroll;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+    }
+
+    .energyPanel {
+        margin: 0 10%;
+        display: table;
+        box-shadow: 0 4px 20px 0 rgba(191, 193, 201, 0.50);
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 0.5rem;
+        padding: 2rem;
+    }
+
+    .solutionEnergy {
+        padding-left: 4rem;
+        padding-right: 4rem;
+        position: relative;
+        display: table-cell;
+        width: 49%;
+        vertical-align: middle;
+    }
+
+
+    @media ( max-width: 1366px) {
+        .solutionEnergy {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+        .solutionPanelContent {
+            /* height: 8.8rem; */
+        }
+        .solutionPanelTitle {
+            height: auto;
+            margin-bottom: 2rem;
+        }
+        .solutionIOT .solutionPanelTitle {
+            height: auto;
+            margin-bottom: 2rem;
+        }
+    }
+
+    @media ( max-width: 760px) {
+        .solutionIOT {
+            position: relative;
+            top: 50%;
+            transform: translateY(-100%) translateX(-1rem);
+        }
+        .solutionPanelRight {
+            height: 50%;
+        }
+        .proPadRight1 {
+            height: 50%;
+        }
+        .solutionPanelEnergy {
+            padding: 0 0.5rem;
+        }
+        .solutionEnergy {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .solutionPanelEnergy .proPadRight1 {
+            height: 100%;
+        }
+        .energyPanel {
+            margin: 0 1%;
+        }
+        canvas {
+            width: 100%;
+            height: 100vh !important;
+        }
+    }
+</style>
+
+<section id="pageCtn" style="width:100%;">
+    <header id="particles-js" class="solutionHeader">
+        <div class="text-vertical-center" style=" position:absolute;top:50%;transform:translateY(-50%);width: 100%;">
+            <h1 data-scroll-reveal i18n="Solution.SOLUTION">解决方案</h1>
+            </h3>
+            <br>
+            <h4 data-scroll-reveal i18n="Solution.TITLE">升宝基于服务各大企业的经验，深刻理解企业真实的需求，聚焦智能能源管理系统，为您提供建筑运维、冷链物流、IOT数据管理、能耗优化、平台用户等服务</h4>
+        </div>
+
+    </header>
+    <section id="building" data-scroll-reveal="enter bottom over 0.5s and move 100px" class="solutionPanel solutionBuild" style="background:rgb(250,250,250)">
+        <div data-scroll-reveal class="col-lg-7 col-md-7 col-sm-7 col-xs-12 proPadRight1">
+            <img class="img-responsive" src="./img/solution/1.png" alt="">
+        </div>
+        <div data-scroll-reveal="enter bottom over 1.5s and move 110px" class="col-lg-5 col-md-5 col-sm-5 col-xs-12 solutionPanelRight">
+            <div class="solutionContent">
+                <div class="solutionPanelTitle" i18n="Solution.TITLE_ONE">建筑运维解决方案</div>
+                <div class="solutionPanelContent" i18n="Solution.CONTENT_ONE">对建筑设备设施全面实时监控，用KPI对运维评估，分析运维方案的优劣，根据历史运维行为自学习，从而给出优化建议。</div>
+                <div class="solutionLine"></div>
+                <div class="solutionBtn btn" href="#buildingMaintenance" i18n="Solution.BTN">了解更多 →</div>
+            </div>
+        </div>
+    </section>
+    <section id="chain" data-scroll-reveal="enter bottom over 0.5s and move 100px" class="solutionPanel" style="background:white">
+        <div data-scroll-reveal="enter bottom over 1.5s and move 110px " class="col-lg-5 col-md-5 col-sm-5 col-xs-12 solutionPanelRight">
+            <div class="solutionContent">
+                <div class="solutionPanelTitle" i18n="Solution.TITLE_TWO">冷链物流解决方案</div>
+                <div class="solutionPanelContent" i18n="Solution.CONTENT_TWO">提供冷链数据监测功能，车辆追踪功能以及运输和存储过程中的温度情况。同时可对工作人员排班，记录其工作路径和状态。</div>
+                <div class="solutionLine"></div>
+                <div class="solutionBtn btn" href="#coldChain" i18n="Solution.BTN">了解更多 →</div>
+            </div>
+        </div>
+        <div data-scroll-reveal class="col-lg-7 col-md-7 col-sm-7 col-xs-12 proPadRight1">
+            <img class="img-responsive" src="./img/solution/2.png" alt="">
+        </div>
+    </section>
+    <section id="iot" data-scroll-reveal="enter bottom over 0.5s and move 100px" class="solutionPanel solutionPanelIot">
+        <div data-scroll-reveal="enter top over 1.5s  and move 150px" class="col-lg-5 col-md-5 col-sm-5 col-xs-12 solutionPanelRight"
+            style="height:100%;z-index:111;">
+            <div class="solutionContent solutionIOT">
+                <div class="solutionPanelTitle" i18n="Solution.TITLE_THREE">IOT数据管理解决方案</div>
+                <div class="solutionPanelContent" i18n="Solution.CONTENT_THREE">提供冷链数据监测功能，车辆追踪功能以及运输和存储过程中的温度情况。同时可对工作人员排班，记录其工作路径和状态。</div>
+                <div class="solutionLine"></div>
+                <div class="solutionBtn btn" href="#iot" i18n="Solution.BTN">了解更多 →</div>
+            </div>
+        </div>
+    </section>
+    <section id="energy" data-scroll-reveal="enter bottom over 0.5s and move 100px" class="solutionPanel solutionPanelEnergy" style="background:white;">
+        <div data-scroll-reveal="enter top, move 40px, over 2s, wait 0.3s" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 proPadRight1">
+            <div class="energyPanel">
+                <div class="imgEnergy"></div>
+                <div class="solutionEnergy">
+                    <div class="solutionPanelTitle" i18n="Solution.TITLE_FOUR">能耗优化解决方案</div>
+                    <div class="solutionPanelContent" i18n="Solution.CONTENT_FOUR">一体化管理工具深入挖掘节能潜力，给出专业运行建。能耗管理实现实时能耗监控，历史能耗查询，能耗故障诊断，能耗对标以及能耗报表</div>
+                    <div class="solutionLine"></div>
+                    <div class="solutionBtn btn" href="#energy" i18n="Solution.BTN">了解更多 →</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- <section data-scroll-reveal="enter bottom over 0.5s and move 100px" class="solutionPanel solutionPanelUser">
+        <div data-scroll-reveal="enter top, move 140px, over 2s, wait 0.3s" class="col-lg-5 col-md-5 col-sm-5 col-xs-12 solutionPanelRight"
+            style="height:100%;z-index:111;">
+            <div class="solutionContent">
+                <div class="solutionPanelTitle" i18n="Solution.TITLE_FIVE">平台用户解决方案</div>
+                <div class="solutionPanelContent" i18n="Solution.CONTENT_FIVE">数据接入→数据识别与清洗→诊断图形化工具→webfactory页面制作工具提供完整的工具和大量模板，让平台用户快速完成从现场数据到网站页面制作。</div>
+                <div class="solutionLine"></div>
+                <div class="solutionBtn btn" href="#platform" i18n="Solution.BTN">了解更多 →</div>
+            </div>
+        </div>
+    </section> -->
+
+    </section>
+
+    <script src='./js/particles.min.js'></script>
+    <script src='./js/stats.min.js'></script>
+    <script>
+        $('.solutionBtn').off('click').on('click', function () {
+            var hash = location.hash;
+            location.hash = $(this).attr('href');
+        });
+
+        /* ---- particles.js config ---- */
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 40,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.2,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+
+        /* ---- stats.js config ---- */
+
+        var count_particles, stats, update;
+        stats = new Stats;
+        stats.setMode(0);
+        stats.domElement.style.position = 'absolute';
+        stats.domElement.style.left = '0px';
+        stats.domElement.style.top = '0px';
+    </script>

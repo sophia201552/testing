@@ -1,0 +1,96 @@
+<form id="ct_op_server_manage_form" class="form-horizontal p20 form1">
+    <div class="oh mb20">
+        <button type="submit" id="op_server_manage_refresh_btn" class="btn btn-primary fl ml30">刷新</button>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title oh">
+                DTU数据端
+                <button id="editConfirmDtuBtn" class="btn btn-warning fr">提交修改</button>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <table class="tb1">
+                <tr>
+                    <td width="50%">DTU检测</td>
+                    <td width="50%"><input type="checkbox" value="" name="dtuCheck" />启用</td>
+                </tr>
+                <tr>
+                    <td>零点发送全部数据</td>
+                    <td><input type="checkbox" value="" name="zeroTimeSendDtuAllData" />启用</td>
+                </tr>
+                <tr>
+                    <td>端口号</td>
+                    <td>
+                        <select id="portDtuNo" class="form-control" name="portDtuNo">
+                            <option value="1">端口号1</option>
+                            <option value="2">端口号2</option>
+                            <option value="3">端口号3</option>
+                            <option value="4">端口号4</option>
+                            <option value="5">端口号5</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>最小发送类型</td>
+                    <td>
+                        <select id="minSendDtuType" class="form-control" name="minSendDtuType">
+                            <option value="1">类型1</option>
+                            <option value="2">类型2</option>
+                            <option value="3">类型3</option>
+                            <option value="4">类型4</option>
+                            <option value="5">类型5</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title oh">
+                网络TCP数据端
+                <button id="editConfirmNetBtn" class="btn btn-warning fr">提交修改</button>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <table class="tb1">
+                <tr>
+                    <td width="50%">TCP</td>
+                    <td width="50%"><input type="checkbox" value="" name="netCheck" />启用</td>
+                </tr>
+                <tr>
+                    <td>零点发送全部数据</td>
+                    <td><input type="checkbox" value="" name="zeroTimeSendNetAllData" />启用</td>
+                </tr>
+                <tr>
+                    <td>最小发送类型</td>
+                    <td>
+                        <select id="minSendNetType" class="form-control" name="minSendNetType">
+                            <option value="1">类型1</option>
+                            <option value="2">类型2</option>
+                            <option value="3">类型3</option>
+                            <option value="4">类型4</option>
+                            <option value="5">类型5</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>TCP数据中心地址</td>
+                    <td><input type="text" id="tcpNetDataCenterAddress" value="" class="form-control" name="tcpNetDataCenterAddress" /></td>
+                </tr>
+                <tr>
+                    <td>TCP项目标识</td>
+                    <td><input type="text" id="tcpNetProjectIdentification" value="" class="form-control" name="tcpNetProjectIdentification" /></td>
+                </tr>
+                <tr>
+                    <td>端口</td>
+                    <td><input type="text" id="portNetNo" value="" class="form-control" name="portNetNo" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,273 @@
+<script src="/static/scripts/lib/select2/js/select2.min.js"></script>
+<script src="/static/scripts/lib/select2/js/i18n/zh-CN.js"></script>
+<script src="/static/scripts/lib/select2/js/i18n/en.js"></script>
+<link href="/static/scripts/lib/select2/css/select2.min.css" type="text/css" rel="stylesheet"/>
+<style>
+    #tagTreeInfo {
+        height: 100%;
+        user-select: none;
+    }
+
+    #editFolder,
+    #finishFolder {
+        margin-top: 0;
+        font-size: 16px;
+        padding: 1px 5px 0;
+    }
+
+    #editFolder span:first-child,
+    #finishFolder span:first-child {
+        font-size: 16px;
+    }
+
+    #tagTreeAdd, #addEmptyFolder {
+        padding: 1px 5px 0;
+    }
+
+    .markView {
+        overflow: hidden;
+        line-height: 27px;
+    }
+
+    .markView .icon.iconfont {
+        cursor: pointer;
+    }
+
+    #dragDirectory, #autoMatch {
+        font-size: 18px;
+        margin-top: 0;
+        padding: 2px 5px 0;
+        cursor: pointer;
+        background: none;
+        border: none;
+        outline: none;
+    }
+
+    #dragDirectory[disabled], #autoMatch[disabled] {
+        cursor: not-allowed;
+        color: #9ed0a5;
+    }
+
+    #tagTreeInfo #tagZtreeBox {
+        height: calc(100% - 170px);
+    }
+
+    #tagTreeInfo #tagTreeInfoHeader .select2-container {
+        font-size: 12px !important;
+    }
+
+    #tagTreeInfo .searchBtn {
+        top: -0.5px;
+        left: -1px;
+        height: 32px;
+        padding: 0 10px;
+        background-color: #1e79e7;
+        border-color: #1e79e7;
+        color: #E7F1FF;
+    }
+
+    #searchByTagTree .searchBtn {
+        height: 33px;
+        left: -6px;
+    }
+
+    #tagTreeInfo .selection {
+        height: inherit;
+    }
+
+    #tagTreeInfo .select2-selection--multiple {
+        height: inherit;
+    }
+
+    #tagTreeInfo .select2-selection--multiple ul {
+        height: inherit;
+    }
+
+    #tagTreeInfo .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+        height: 23px;
+        padding: 3px;
+        line-height: 18px;
+        margin-top: 3px;
+    }
+
+    #tagTreeInfo .select2-container .select2-search--inline .select2-search__field {
+        margin-top: 0;
+    }
+
+    #tagTreeInfoHeader .btn-group .btn {
+        height: 32px;
+    }
+
+    #functionTreeBtn.active, #tagTreeBtn.active {
+        background-color: #1e79e7;
+        border-color: #1e79e7;
+        color: #ffffff;
+    }
+
+    #tagTreeInfoHeader .functionInput {
+        width: 100%;
+        height: 32px;
+    }
+
+    #tagZtreeBox .allNodesFolder {
+        background-color: #4e5157;
+        color: #fff;
+        border-radius: 4px;
+        width: 96%;
+        margin: 0 auto 5px;
+        height: 28px;
+        line-height: 28px;
+        padding-left: 3px;
+        border: 1px solid #616873;
+    }
+
+    #tagZtreeBox .allNodesFolder.active {
+        background-color: #fcb813;
+    }
+
+    @media (max-width: 1366px) {
+        #tagTreeInfo #tagTreeInfoHeader .select2-container {
+            width: 83% !important;
+        }
+    }
+
+    #tagTreeUl li span.treeTagItem:first-child {
+        margin-left: 12px;
+    }
+
+    #tagTreeUl li span.treeTagItem {
+        white-space: nowrap;
+        display: inline-block;
+        padding: 0 10px 0 0;
+        color: black;
+        position: relative;
+        background: #29bb4f;
+        height: 16px;
+        margin-right: 0;
+        margin-left: 8px;
+    }
+
+    #tagTreeUl li span.treeTagItem.active {
+        background: #daa011;
+    }
+
+    #tagTreeUl li span.treeTagItem.active:before {
+        border-right: 8px solid #daa011;
+    }
+
+    #tagTreeUl li span.treeTagItem:before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        left: -8px;
+        top: 0;
+        border-top: 8px solid transparent;
+        border-right: 8px solid #29bb4f;
+        border-bottom: 8px solid transparent;
+    }
+
+    #tagTreeUl li span.treeTagItem:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        right: 0;
+        top: 0;
+        border-top: 8px solid transparent;
+        border-right: 6px solid #3c4046;
+        border-bottom: 8px solid transparent;
+    }
+
+    #tagTreeUl li a:hover span.treeTagItem:after,
+    #listShowBox li:hover .listTagItem:after {
+        border-right: 6px solid #ae882f;
+    }
+
+    #tagTreeUl li a.curSelectedNode span.treeTagItem:after {
+        border-right: 6px solid #fcb813;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__rendered li.isPoint {
+        background-color: #3a507d;
+        border-color: #3a507d;
+        color: #fff;
+    }
+
+</style>
+
+<div class="tagTreeInfo" id="tagTreeInfo">
+    <header class="oh tagTreeInfoHeader clearfix" id="tagTreeInfoHeader">
+        <select class="form-control select dn fl m5 w150" id="tagSelectPrjName" item="selectPrj">
+            <option></option>
+        </select>
+
+        <div class="pd0 dn" item="search">
+            <div class="btn-group selectTreeType" role="group" style="margin-bottom: 10px;">
+                <button type="button" id="functionTreeBtn" class="btn btn-default active" title="function tree">
+                    <span class="icon iconfont icon-shezhi11" aria-hidden="true"></span>
+                </button>
+                <button type="button" id="tagTreeBtn" class="btn btn-default" title="tag tree">
+                    <span class="icon iconfont icon-shujuguanli-2" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="input-group tagTreeBox dn" style="width: 100%;">
+                <select class="js-example-basic-multiple dn" id="searchTreeNode"
+                        style="width: 88%; height: 33px;"
+                        placeholder="search"
+                        multiple="multiple">
+                </select>
+                <span class="input-group-btn" id="searchByTagTree" style="display:inline-block;">
+                    <button class="btn btn-default glyphicon glyphicon-search searchBtn"
+                            type="button"></button>
+                </span>
+            </div>
+            <div class="input-group functionTreeBox">
+                <input type="text" id="functionTreeInput" class="form-control functionInput">
+                <span class="input-group-btn" id="searchByFunctionTree">
+                    <button class="btn btn-default glyphicon glyphicon-search searchBtn" type="button"></button>
+                </span>
+            </div>
+        </div>
+
+        <span id="catalogName"></span>
+
+        <div class="markView">
+            <span class="dn" i18n="tag.inspect.EDIT_THE_CATALOG" item="finish" style="line-height: 30px;"></span>
+            <span class="fr mt10 dn icon iconfont" id="finishFolder" item="finish"
+                  i18n="title=tag.inspect.FINISH_CATALOGUE">
+                &#xe855;
+            </span>
+            <div class="icon iconfont fr dn" id="tagTreeAdd" i18n="title=tag.inspect.ADD"
+                 item="btnGroup">
+                &#xe856;
+            </div>
+        </div>
+        <div class="markView">
+            <span class="dn" i18n="tag.inspect.THIS_DIRECTORY" item="dragDirectory" style="line-height: 30px;"></span>
+            <span class="fr dn icon iconfont" id="editFolder" i18n="title=tag.inspect.MODIFY"
+                  item="edit">
+                &#xe853;
+            </span>
+
+            <div class="dn dragDirectoryBox fr" item="dragDirectory">
+                <button id="dragDirectory" class="iconfont icon-weibiaoti--16"
+                        i18n="title=tag.inspect.TAG_BRUSH"></button>
+            </div>
+
+            <div class="dn fr" item="dragDirectory">
+                <button id="autoMatch" class="icon iconfont icon-zidongshibie"
+                        i18n="title=tag.tree.TAG_RECOGNITION" disabled></button>
+            </div>
+
+        </div>
+    </header>
+    <div class="tagZtreeBox pr" id="tagZtreeBox" style="position: relative;">
+        <div id="allNodesFolder" class="allNodesFolder dn">
+            <span class='glyphicon glyphicon-folder-close' style="position: relative; top: 1px;"></span>
+            <span style="font-size: 12px;" i18n="tag.inspect.ALL"></span>
+        </div>
+        <ul id="tagTreeUl" class="ul ztree ml10 gray-scrollbar"></ul>
+        <ul id="apiTreeSearchUl" class="ul ztree gray-scrollbar dn"></ul>
+    </div>
+</div>

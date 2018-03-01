@@ -1,0 +1,171 @@
+{
+  "name": "diagnosis-transformer",
+  "version": "1.0.0",
+  "lockfileVersion": 1,
+  "dependencies": {
+    "adler-32": {
+      "version": "http://registry.npm.taobao.org/adler-32/download/adler-32-1.0.0.tgz",
+      "integrity": "sha1-KHKKcXVvYpZm3RZTzYB5Op3xhlE=",
+      "dependencies": {
+        "exit-on-epipe": {
+          "version": "http://registry.npm.taobao.org/exit-on-epipe/download/exit-on-epipe-1.0.0.tgz",
+          "integrity": "sha1-9uBXnIIU0zoIEJ/W4uXB28cEY/w="
+        }
+      }
+    },
+    "bignumber.js": {
+      "version": "3.1.2",
+      "resolved": "http://registry.npm.taobao.org/bignumber.js/download/bignumber.js-3.1.2.tgz",
+      "integrity": "sha1-8725mtUmihX8HwvtL7AY4mk/4jY="
+    },
+    "buffer-shims": {
+      "version": "http://registry.npm.taobao.org/buffer-shims/download/buffer-shims-1.0.0.tgz",
+      "integrity": "sha1-mXjOMXOIxkmth5MCjDR37wRKi1E="
+    },
+    "cfb": {
+      "version": "http://registry.npm.taobao.org/cfb/download/cfb-0.11.1.tgz",
+      "integrity": "sha1-qW248nKmw/uZ27sj70EiP0i+Hqc=",
+      "dependencies": {
+        "commander": {
+          "version": "http://registry.npm.taobao.org/commander/download/commander-2.9.0.tgz",
+          "integrity": "sha1-nJkJQXbhIkDLItbFFGCYQA/g99Q="
+        }
+      }
+    },
+    "codepage": {
+      "version": "http://registry.npm.taobao.org/codepage/download/codepage-1.8.1.tgz",
+      "integrity": "sha1-8aAJ1SYdwnVGKLrLb7vw5uKr/6o=",
+      "dependencies": {
+        "commander": {
+          "version": "http://registry.npm.taobao.org/commander/download/commander-2.9.0.tgz",
+          "integrity": "sha1-nJkJQXbhIkDLItbFFGCYQA/g99Q="
+        },
+        "exit-on-epipe": {
+          "version": "http://registry.npm.taobao.org/exit-on-epipe/download/exit-on-epipe-1.0.0.tgz",
+          "integrity": "sha1-9uBXnIIU0zoIEJ/W4uXB28cEY/w="
+        }
+      }
+    },
+    "colors": {
+      "version": "http://registry.npm.taobao.org/colors/download/colors-0.6.2.tgz",
+      "integrity": "sha1-JCP+ZnisDF2uiFLl0OW+CMmXq8w="
+    },
+    "commander": {
+      "version": "http://registry.npm.taobao.org/commander/download/commander-2.9.0.tgz",
+      "integrity": "sha1-nJkJQXbhIkDLItbFFGCYQA/g99Q="
+    },
+    "concat-stream": {
+      "version": "http://registry.npm.taobao.org/concat-stream/download/concat-stream-1.6.0.tgz",
+      "integrity": "sha1-CqxmL9Ur54lk1VMvaUeE5wEQrPc="
+    },
+    "core-util-is": {
+      "version": "http://registry.npm.taobao.org/core-util-is/download/core-util-is-1.0.2.tgz",
+      "integrity": "sha1-tf1UIgqivFq1eqtxQMlAdUUDwac="
+    },
+    "crc-32": {
+      "version": "http://registry.npm.taobao.org/crc-32/download/crc-32-1.0.1.tgz",
+      "integrity": "sha1-Lvvdt8y7e+tNGBgDsQ4zopyf0hQ=",
+      "dependencies": {
+        "exit-on-epipe": {
+          "version": "http://registry.npm.taobao.org/exit-on-epipe/download/exit-on-epipe-1.0.0.tgz",
+          "integrity": "sha1-9uBXnIIU0zoIEJ/W4uXB28cEY/w="
+        }
+      }
+    },
+    "exit-on-epipe": {
+      "version": "http://registry.npm.taobao.org/exit-on-epipe/download/exit-on-epipe-1.0.0.tgz",
+      "integrity": "sha1-9uBXnIIU0zoIEJ/W4uXB28cEY/w="
+    },
+    "frac": {
+      "version": "http://registry.npm.taobao.org/frac/download/frac-0.3.1.tgz",
+      "integrity": "sha1-V3Z3t/3L5vr3xGHxgB00E3zaQ1Q="
+    },
+    "fs-extra": {
+      "version": "http://registry.npm.taobao.org/fs-extra/download/fs-extra-2.1.2.tgz",
+      "integrity": "sha1-BGxwFjzvmq1GsOSn+kZ/si1x3jU="
+    },
+    "graceful-fs": {
+      "version": "http://registry.npm.taobao.org/graceful-fs/download/graceful-fs-4.1.11.tgz",
+      "integrity": "sha1-Dovf5NHduIVNZOBOp8AOKgJuVlg="
+    },
+    "graceful-readlink": {
+      "version": "http://registry.npm.taobao.org/graceful-readlink/download/graceful-readlink-1.0.1.tgz",
+      "integrity": "sha1-TK+tdrxi8C+gObL5Tpo906ORpyU="
+    },
+    "inherits": {
+      "version": "http://registry.npm.taobao.org/inherits/download/inherits-2.0.3.tgz",
+      "integrity": "sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4="
+    },
+    "isarray": {
+      "version": "http://registry.npm.taobao.org/isarray/download/isarray-1.0.0.tgz",
+      "integrity": "sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE="
+    },
+    "jsonfile": {
+      "version": "http://registry.npm.taobao.org/jsonfile/download/jsonfile-2.4.0.tgz",
+      "integrity": "sha1-NzaitCi4e72gzIO1P6PWM6NcKug="
+    },
+    "mysql": {
+      "version": "2.13.0",
+      "resolved": "http://registry.npm.taobao.org/mysql/download/mysql-2.13.0.tgz",
+      "integrity": "sha1-mY8fjKRuLj3XFJzpgkE2U5hqrkc=",
+      "dependencies": {
+        "isarray": {
+          "version": "0.0.1",
+          "resolved": "http://registry.npm.taobao.org/isarray/download/isarray-0.0.1.tgz",
+          "integrity": "sha1-ihis/Kmo9Bd+Cav8YDiTmwXR7t8="
+        },
+        "readable-stream": {
+          "version": "1.1.14",
+          "resolved": "http://registry.npm.taobao.org/readable-stream/download/readable-stream-1.1.14.tgz",
+          "integrity": "sha1-fPTFTvZI44EwhMY23SB54WbAgdk="
+        },
+        "string_decoder": {
+          "version": "0.10.31",
+          "resolved": "http://registry.npm.taobao.org/string_decoder/download/string_decoder-0.10.31.tgz",
+          "integrity": "sha1-YuIDvEF2bGwoyfyEMB2rHFMQ+pQ="
+        }
+      }
+    },
+    "printj": {
+      "version": "http://registry.npm.taobao.org/printj/download/printj-1.0.0.tgz",
+      "integrity": "sha1-XDfebFdyo/7YRoOZwgY7WyJSiGc="
+    },
+    "process-nextick-args": {
+      "version": "http://registry.npm.taobao.org/process-nextick-args/download/process-nextick-args-1.0.7.tgz",
+      "integrity": "sha1-FQ4gt1ZZCtP5EJPyWk8q2L/zC6M="
+    },
+    "readable-stream": {
+      "version": "http://registry.npm.taobao.org/readable-stream/download/readable-stream-2.2.9.tgz",
+      "integrity": "sha1-z3jsb0ptHrQ9JkiMrJfwQudLf8g="
+    },
+    "sqlstring": {
+      "version": "2.2.0",
+      "resolved": "http://registry.npm.taobao.org/sqlstring/download/sqlstring-2.2.0.tgz",
+      "integrity": "sha1-wxNcTqirzX5+50GklmqJHYak8ZE="
+    },
+    "ssf": {
+      "version": "http://registry.npm.taobao.org/ssf/download/ssf-0.9.0.tgz",
+      "integrity": "sha1-6rRF7cjIW8G2N+qmLDzwrOkrcUg="
+    },
+    "string_decoder": {
+      "version": "http://registry.npm.taobao.org/string_decoder/download/string_decoder-1.0.0.tgz",
+      "integrity": "sha1-8G9BFXtmTYYGn4S9vcmw2KsoFmc="
+    },
+    "typedarray": {
+      "version": "http://registry.npm.taobao.org/typedarray/download/typedarray-0.0.6.tgz",
+      "integrity": "sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c="
+    },
+    "util-deprecate": {
+      "version": "http://registry.npm.taobao.org/util-deprecate/download/util-deprecate-1.0.2.tgz",
+      "integrity": "sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8="
+    },
+    "voc": {
+      "version": "http://registry.npm.taobao.org/voc/download/voc-0.5.0.tgz",
+      "integrity": "sha1-vmynx25KV9kwzID2sx+9gMqGBFw="
+    },
+    "xlsx": {
+      "version": "http://registry.npm.taobao.org/xlsx/download/xlsx-0.9.12.tgz",
+      "integrity": "sha1-l8VYunHasIjOiUmkEAuHdAeWAfI="
+    }
+  }
+}

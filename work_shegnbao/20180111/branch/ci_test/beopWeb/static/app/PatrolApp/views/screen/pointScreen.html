@@ -1,0 +1,102 @@
+<style>
+    #ctnPoint {
+        border-bottom: 1px solid #ccc;
+        font-size: 3rem;
+        height: 60%;
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: center;
+        -webkit-justify-content: center;
+    }
+    #btnPhoto {
+        display: none;
+    }
+    #boxPoint {
+        text-align: center;
+    }
+    #ctnScan {
+        text-align: center;
+        height: 40%;
+    }
+    #btnBarCode {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.8rem;
+    }
+    #btnSkip {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.8rem;
+    }
+    #ctnJudge {
+        display: none;
+        text-align: center;
+        height: 40%;
+    }
+    #btnPtRight{
+    }
+    .divContent{
+        font-size: 1.6rem;
+        color: #aaa;
+    }
+    .divPtTip {
+        font-size: 1.6rem;
+        color: #aaa;
+    }
+    .divPrePt.statusErr{
+        color: #a94442;
+    }
+    .divPrePt.statusOk{
+        color: #3c763d;
+    }
+    .spGuideLine{
+        height: 2rem;
+        width: 1px;
+        display: inline-block;
+        background: #aaa;
+    }
+    #btnPtList{
+        font-size: 1.8rem;
+        padding-left: 2rem;
+    }
+    .btnPoint{
+        font-size: 1.8rem;
+        width: 100%;
+        height: 50%;
+        border: none;
+        border-radius: 0;
+        display: inline-block;
+    }
+    #btnBarCode {
+        color: white;
+        background-color: #337AB7;
+    }
+    #btnPtRight{
+        color: white;
+        background-color: #5BC0DE;
+    }
+    #btnPtError{
+        color: white;
+        background-color: #D9534F;
+    }
+    #btnHomePage {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 1rem;
+    }
+</style>
+<div id="ctnPoint">
+    <!--<div id="btnHomePage"><span class="glyphicon glyphicon-home"></span></div>-->
+    <div id="boxPoint">
+
+    </div>
+</div>
+<div id="ctnScan">
+    <button id="btnBarCode" class="btn btn-default zepto-ev btnPoint">扫描二维码</button>
+    <button id="btnSkip" class="btn btn-default zepto-ev btnPoint">跳过该设备</button>
+</div>
+<div id="ctnJudge">
+    <button id="btnPtRight" class="btn btn-default zepto-ev btnJudge btnPoint">设备正常</button>
+    <button id="btnPtError" class="btn btn-default zepto-ev btnJudge btnPoint">设备异常</button>
+</div>

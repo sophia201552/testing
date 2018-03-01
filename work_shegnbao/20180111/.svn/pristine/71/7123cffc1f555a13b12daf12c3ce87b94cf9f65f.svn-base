@@ -1,0 +1,128 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import UnknownTooltip from '../../../components/UnknownTooltip';
+
+import s from './DataSetComponent.css';
+const css = (className1, className2 = '') => {
+  return className1
+    .split(' ')
+    .map(v => s[v])
+    .concat(className2.split(' '))
+    .join(' ')
+    .trim();
+};
+/*
+  items               [xx,xx],
+  defaultSelectedKeys []
+  onSelect            ()=>{}
+  isRadio             true/false 是否单选
+  isShowTooltip       true/false是否显示提示
+  content             提示内容   
+*/
+class DataSetComponent extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedKeys: new Set()
+    };
+    this._onSelected = this._onSelected.bind(this);
+  }
+  componentDidMount() {
+    const { defaultSelectedKeys = [] } = this.props;
+    if (defaultSelectedKeys !== 'ALL' && defaultSelectedKeys !== 'CLEAR') {
+      this.setState({
+        selectedKeys: new Set(defaultSelectedKeys)
+      });
+    }
+
+    this.componentWillReceiveProps(this.props);
+  }
+  componentWillReceiveProps(nextProps) {}
+  render() {
+    const {
+      items = [],
+      title = '',
+      defaultSelectedKeys,
+      isShowTooltip = false,
+      content = []
+    } = this.props;
+    const { selectedKeys } = this.state;
+    return (
+      <div className={css('datasetWrap')}>
+        <div className={css('title')}>{title}</div>
+        <div className={css('content clear')}>
+          {items.map((it, index) => {
+            let className = 'item';
+            if (
+              selectedKeys.has(it) ||
+              ((defaultSelectedKeys == 'ALL' ||
+                defaultSelectedKeys == 'CLEAR') &&
+                selectedKeys.has(defaultSelectedKeys)) ||
+              (defaultSelectedKeys && defaultSelectedKeys.indexOf(it) !== -1)
+            ) {
+              className += ' active';
+            }
+            return (
+              <div
+                key={it}
+                className={css(className)}
+                onClick={this._onSelected.bind(this, it)}
+              >
+                {it}
+                {isShowTooltip && <UnknownTooltip content={content[index]} />}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+  _onSelected(id, ev) {
+    const { selectedKeys } = this.state;
+    const { onSelect = () => {}, isRadio, items = [] } = this.props;
+    let selected = true;
+    if (selectedKeys.has(id)) {
+      //取消选中
+      if (id === 'ALL') {
+        selectedKeys.clear();
+      } else if (id === 'CLEAR') {
+        if (items.length > 0) {
+          selectedKeys.clear();
+          this.props.onChange(items);
+        }
+      } else {
+        selectedKeys.delete(id);
+      }
+      selected = false;
+    } else {
+      //选中
+      //多选
+      // selectedKeys.clear();
+      if (isRadio) {
+        selectedKeys.clear();
+        selectedKeys.add(id);
+      } else {
+        if (id == 'ALL' || id == 'CLEAR') {
+          this.props.items.forEach(row => {
+            selectedKeys.add(row);
+          });
+        } else {
+          selectedKeys.add(id);
+        }
+      }
+    }
+    this.setState({
+      selectedKeys: new Set(selectedKeys)
+    });
+    onSelect(Array.from(selectedKeys), {
+      selected,
+      node: ev.target,
+      event: ev
+    });
+  }
+}
+
+DataSetComponent.propTypes = {};
+
+export default DataSetComponent;

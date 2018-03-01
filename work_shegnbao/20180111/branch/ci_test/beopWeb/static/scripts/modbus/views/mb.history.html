@@ -1,0 +1,69 @@
+<!--@formatter:off-->
+<article id="historyOperation" class="modal fade">
+    <div class="modal-content">
+        <div class="modal-header mb15">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title"><span i18n="modBus.info.HISTORY_OPERATE"></span></h4>
+        </div>
+        <div class="modal-body">
+            <div id="operationBox">
+                <div class="fr time-box">
+                    <div class="cp time-group">
+                        <input class="form-control time" size="16" type="text" value="" id="mdHistoryLogStart"
+                               i18n="placeholder=common.SELECT_START_TIME">
+                    </div>
+                    <span class="to time-group" i18n="common.TO"></span>
+                    <div class="cp time-group">
+                        <input class="form-control time" size="16" type="text" value="" id="mdHistoryLogEnd"
+                               i18n="placeholder=common.SELECT_CLOSING_TIME">
+                    </div>
+                    <button type="button" class="btn time-group btn-primary mr10" id="filterMBLog"
+                        i18n="common.CONFIRM"></button>
+                </div>
+            </div>
+            <div id="historyTableList" class="history-table-list"></div>
+        </div>
+    </div>
+</article>
+
+<article id="historyLog" class="modal fade">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="historyLog-header">
+                <div class="clearfix">
+                    <div class="fl ml10">
+                        <button type="button" class="btn" id="mbLogClear" i18n="modBus.info.CLEAR"></button>
+                    </div>
+                     <div class="fl ml10">
+                         <select id="mbLogTypeSelect" class="form-control w150">
+                             <option value="100" i18n="modBus.info.ALL_LOG"></option>
+                             <option value="1">send</option>
+                             <option value="2">receive</option>
+                         </select>
+                    </div>
+                    <div class="fl pr ml10">
+                        <span id="mb-search-mode-log" class="icon iconfont icon_position modeDataSearchIcon cp dmPointHover">&#xe713;</span>
+                        <input type="text" id="mode-data-Search" class="form-control" i18n="placeholder=common.SEARCH" />
+                    </div>
+                </div>
+            </div>
+            <div id="historyLogContent" class="history-log-content gray-scrollbar mt15"></div>
+        </div>
+    </div>
+</article>
+
+<script type="text/html" id="tpl_history_log">
+    <ul class="history-log-ul">
+        <!for(var i = 0;i< list.length;i++){!>
+            <li><!=list[i].time!> : <!=list[i].log!></li>
+        <!}!>
+    </ul>
+</script>
+<!--@formatter:on-->

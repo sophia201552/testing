@@ -1,0 +1,27 @@
+export default {
+  MODULE_NAME: 'Diagnosis Debugger',
+  OPERATING_INDEX: 'Settings',
+  OPERATION_PROCESS: 'Process',
+  COMPUTATIONAL_RESULTS: 'Result',
+  CONSUMING_TIME: 'Time Elapsed',
+  RESULT_HIT: 'Hit',
+  CLASSIFY: 'Classification',
+  IS_OCCUR: 'State',
+  UNKNOWN: 'Unknown',
+  EMERGENCY: 'Emergency',
+  NOT_OCCURR: 'Not Occurred',
+  HAS_OCCURRED: 'Occurred',
+  LOGICAL_JUDGMENT: 'AND-OR Logic',
+  SAMPLE: 'Sample',
+  DESCRIPTION: 'Description',
+  FAULT_NAME: 'Fault',
+  GRADE: 'Grade',
+  DIAGNOSIS: 'Diagnosis',
+  METHOD: 'Method',
+  ANNOTATION_AUC: 'Metrics for the diagnostic ability of a binary classifier',
+  ANNOTATION_F1: 'F1 score',
+  ANNOTATION_RESULT_HIT: 'The right result',
+  ANNOTATION_RECALL:
+    'The ratio of positive instances that are correctly detected by the classifier ',
+  ANNOTATION_PRECISION: 'The accuracy of the positive predictions'
+};

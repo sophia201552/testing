@@ -1,0 +1,4 @@
+export default {
+  MODULE_NAME:'数据整理',
+  EXPORT_EXCEL:'导出Excel'
+};

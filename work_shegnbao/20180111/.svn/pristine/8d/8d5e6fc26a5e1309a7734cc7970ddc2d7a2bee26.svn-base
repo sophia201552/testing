@@ -1,0 +1,241 @@
+
+ /*Created by vicky on 2015/10/13.
+ */
+EnergyManagementScreen.prototype.chartTheme = {
+    backgroundColor: 'transport',
+    // color: [
+    //     '#E2583A','#FD9F08','#1D74A9','#04A0D6','#689C0F','#109d83','#FEC500'
+    // ],   
+    color:['#426ec1','#7094ec','#3faaff','#4fcade','#71d360','#ffd600'],
+    title: {
+        textStyle: {
+            fontWeight: 'normal',
+            color: '#fff'
+        }
+    },
+    legend: {
+        textStyle: {
+            color: '#999999'
+        },
+        top:30
+    },
+    visualMap:{
+        itemWidth: 15,
+        color: ['#FFF808','#21BCF9'],
+        textStyle: {
+            color: '#ccc'
+        }
+    },
+    toolbox: {
+        showTitle:false
+    },
+    tooltip: {
+        trigger: 'axis',
+        // backgroundColor: 'rgba(250,250,250,0.9)',
+        axisPointer : {
+            type : 'line',
+            lineStyle : {
+                color: '#aaa'
+            },
+            crossStyle: {
+                color: '#aaa'
+            },
+            shadowStyle : {
+                color: 'rgba(200,200,200,0.2)'
+            }
+        },
+        textStyle: {
+            // color: '#333'
+        },
+        extraCssText: 'text-align: left;'
+    },
+    dataZoom: {
+        dataBackgroundColor: '#555',
+        fillerColor: 'rgba(200,200,200,0.2)',
+        handleColor: '#eee'
+    },
+    grid: {
+        borderWidth: 0,
+        left:48,
+        bottom:40,
+        right:18,
+        top:80
+    },
+    valueAxis:{
+        axisLine: {
+            show:false
+        },
+        axisTick: {
+            show: false
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#a2adbc'
+            },
+            margin:10
+        },
+        splitLine: {
+            lineStyle: {
+                color: ['#dfe2e5'],
+                type:"solid",
+                opacity:'0.6'
+            }
+        },
+        nameTextStyle:{
+            color:'#999999'
+        }
+    },
+    categoryAxis: {
+        axisLine: {
+            lineStyle: {
+                color: '#4e5d77'
+            },
+        },
+        axisTick: {
+            show: false
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#a2adbc'
+            },
+            margin:10
+        },
+        splitLine: {
+            show: false
+        },
+        nameTextStyle:{
+            color:'#999999'
+        }
+    },
+
+
+    textStyle: {
+        fontFamily: 'Microsoft YaHei, Arial, Verdana, sans-serif'
+    },
+    polar : {
+        name : {
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+        axisLine: {
+            lineStyle: {
+                color: '#ddd'
+            }
+        },
+        splitArea : {
+            show : true,
+            areaStyle : {
+                color: ['rgba(250,250,250,0.2)','rgba(200,200,200,0.2)']
+            }
+        },
+        splitLine : {
+            lineStyle : {
+                color : '#ddd'
+            }
+        }
+    },
+    timeline : {
+        label: {
+            textStyle:{
+                color: '#ccc'
+            }
+        },
+        lineStyle : {
+            color : '#aaa'
+        },
+        controlStyle : {
+            normal : { color : '#fff'},
+            emphasis : { color : '#FE8463'}
+        },
+        symbolSize : 3
+    },
+    /*各种图*/
+    line:{ //带阴影的曲线
+        smooth : true,
+        symbolSize:0,
+        lineStyle: {
+            normal: {
+                width: 3,
+                color: new echarts.graphic.LinearGradient(0, 0, 1, 0,[{offset: 0,color: '#c292f0'}, {offset: 1,color: '#6091ff'}] , false),
+                shadowColor: 'rgba(0,0,0,0.4)',
+                shadowBlur: 10,
+                shadowOffsetY: 10
+            }
+        },
+        areaStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 1, 0,[{offset: 0,color: 'rgba(194,146,240,0.3)'}, {offset: 1,color: 'rgba(96,145,255,0.3)'}], false)
+            }
+        },
+        itemStyle: {
+            normal: {
+                color: '#ffd843'
+            }
+        },
+    },
+    pie:{
+        type:'pie',
+        radius: ['50%', '70%'],
+        labelLine: {
+            normal: {
+                show: true,
+                lineStyle:{
+                    width:[2]
+                }
+            }
+        },
+        label:{
+            normal:{
+                show:false,
+            },
+            emphasis:{
+                show:false,
+            }
+        },
+        hoverAnimation:false
+    },
+    gauge:{
+        center:['50%','70%'],
+        itemStyle:{
+            normal:{
+                color:['#d7603f']
+            }
+        },
+        detail : {
+            offsetCenter:['0','20%'],
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+        radius:'105%',
+        startAngle: 180,
+        endAngle:0,
+        axisLine:{ // 坐标轴线
+            show: true,
+            lineStyle: {
+                color: [[0.25, '#04A0D6'],[0.5, '#689C0F'],[0.75, '#FEC500'],[1, '#109d83']],
+                width:5
+            }
+        },
+        axisTick: {// 坐标轴小标记
+            length :35,
+            lineStyle: {
+                color: 'auto',
+                width:3
+            }
+        },
+        axisLabel: {//刻度标签
+            textStyle: {
+                color: '#a2adbc'
+            }
+        },
+        splitLine: {// 分隔线
+            length :45,
+            lineStyle: {
+                width:4,
+                color:'auto'
+            }
+        }
+    }
+};

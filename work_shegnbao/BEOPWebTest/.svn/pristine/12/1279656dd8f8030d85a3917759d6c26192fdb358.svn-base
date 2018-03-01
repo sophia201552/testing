@@ -1,0 +1,75 @@
+<style>
+    .row {
+        margin: 0;
+    }
+    .divSelTopTool {
+        text-align: center;
+        display: inline-block;
+        padding: 0;
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        background-color: #f7f7f7;
+        position: relative;
+    }
+    .divSelTopTool:last-of-type{
+        border-right: none;
+    }
+    .btnSelTopTool {
+        border: none;
+        background: transparent;
+        width: 100%;
+        padding: 0.5rem;
+    }
+    .btnSelTopTool:focus{
+        color: #0E93DB;
+    }
+    .divSelTopTool .dropdown-menu{
+        width: calc(100% + 1px);
+        min-width: 0;
+        float: none;
+        margin: 0;
+        border-radius: 0;
+    }
+    .liBtnDepart{
+        border-bottom: 1px solid #ccc;
+        padding: 0.6rem;
+        text-align: center;
+    }
+    .liBtnDepart:last-of-type{
+        border-bottom: none;
+    }
+    .divUser {
+        border-bottom: 1px solid #ccc;
+        padding: 0.8rem 1.5rem;
+        font-size: 1.6rem;
+    }
+    .divUserDepart {
+        text-align: right;
+        font-size: 1.4rem;
+        color: #aaa;
+    }
+</style>
+<div id="ctnUserSelBtn" class="row">
+    <div id="divDepartSel" class="col-xs-4 dropdown divSelTopTool">
+        <button id="btnDepartSel" class="btnSelTopTool" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            部门
+            <span class="caret"></span>
+        </button>
+        <ul id="ulBtnDepart" class="dropdown-menu" aria-labelledby="btnDepartSel">
+        </ul>
+    </div>
+    <div class="col-xs-4 dropdown divSelTopTool">
+        <button id="btnDepartSel" class="btnSelTopTool" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            历史
+        </button>
+    </div>
+    <div class="col-xs-4 dropdown divSelTopTool">
+        <button class="btnSelTopTool" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            更多
+            <span class="caret"></span>
+        </button>
+    </div>
+</div>
+<div id="ctnUserList">
+
+</div>

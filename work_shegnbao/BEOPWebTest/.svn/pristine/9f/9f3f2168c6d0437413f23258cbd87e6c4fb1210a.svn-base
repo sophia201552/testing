@@ -1,0 +1,66 @@
+<style>
+    #wf-task-tableWrapper {
+        height: auto;
+    }
+
+    #wf-task-table tr {
+        border: 1px solid #ccc;
+    }
+
+    #wf-task-table tbody tr:nth-of-type(even) {
+        background: -moz-linear-gradient(top, rgba(240, 248, 255, 0.2) 0%, rgba(240, 248, 255, 0.8) 50%, rgba(168, 164, 164, 0.2) 100%);
+        background: -webkit-linear-gradient(top, rgba(240, 248, 255, 0.2) 0%, rgba(240, 248, 255, 0.8) 50%, rgba(240, 248, 255, 0.2) 100%);
+    }
+
+    #wf-task-table th, #wf-task-table td {
+        text-align: center;
+        padding: 2px;
+        border: none;
+    }
+
+    #wf-task-table thead tr th {
+        background: #e5f3ff;
+    }
+
+    #wf-task-table tbody tr:hover {
+        background: #e5f3ff;
+        color: #333;
+    }
+
+    #task-pagination {
+        margin-right: 0
+    }
+
+    .ellipsis_wf_name {
+        display: inline-block;
+        width: 300px;
+        vertical-align: middle;
+    }
+</style>
+<script type="text/html" id="tpl_wf_taskList">
+    <! for(var m=0; m < transactions.length; m++){ !>
+    <! var transaction = transactions[m]; !>
+    <tr>
+        <td width="5%" data-topic="wf-load-detail" data-param="show;<!=transaction.id!>"><!=transaction.id!></td>
+        <td width="26%" data-topic="wf-load-detail" data-param="show;<!=transaction.id!>" title="<!=transaction.title!>"
+            style="text-align: left;"><div class="ellipsis ellipsis_wf_name"><!=transaction.title!></div></td>
+        <td width="7%" data-topic="wf-load-detail" data-param="show;<!=transaction.id!>" style="text-align: left">
+            <!=transaction.executorName!>
+        </td>
+        <td width="15%" data-topic="wf-load-detail" data-param="show;<!=transaction.id!>"><!=transaction.dueDate ?
+            transaction.dueDate.toDate().format('yyyy-MM-dd') : ''!>
+        </td>
+        <td width="18%" data-topic="wf-load-detail" data-param="show;<!=transaction.id!>"
+            title="<!=transaction.groupName!>"><div class="ellipsis ellipsis_wf_name"><!=transaction.groupName!></div>
+        </td>
+        <td width="10%" data-topic="wf-load-detail" data-param="show;<!=transaction.id!>"><!=transaction.critical!></td>
+        <td width="5%" data-topic="wf-load-detail" data-param="show;<!=transaction.id!>" class="ellipsis"><!=transaction.statusId!></td>
+        <td width="7%" data-topic="wf-star-select" data-param=""><span class="glyphicon glyphicon-star-empty wf-task-star cp hasEvents"></span></td>
+        <td width="5%" data-topic="wf-load-detail" data-param="edit;<!=transaction.id!>"><span
+                class="glyphicon glyphicon-edit wf-task-edit cp hasEvents"></span></td>
+    </tr>
+    <! } !>
+</script>
+
+
+

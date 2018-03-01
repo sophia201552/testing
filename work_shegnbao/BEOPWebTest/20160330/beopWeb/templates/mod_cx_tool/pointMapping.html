@@ -1,0 +1,143 @@
+{% block content %}
+    <!--确认是否删除点浮动窗口结束-->
+    <div class="container-fluid">
+        <div class="row">
+            <div id="buttonGroup" class="oh col-md-12">
+                <div class="fl">
+                    <select id="select_project" class="form-control" name="select_project">
+                        <option disabled selected i18n="debugTools.sitePoint.PLEASE_SELECT_PROJECT"></option>
+                    </select>
+                    <script>
+                        var projects = {{ projects|safe }};
+                        var optionHtml = '';
+                        for(var i=0;i<projects.length;i++) {
+                            var name, project = projects[i];
+                            if (localStorage.language == 'en') {
+                                name = project.name_en;
+                            } else {
+                                name = project.name_cn;
+                            }
+                            optionHtml += '<option value="'+project.id+'">'+name+'</option>';
+                        }
+                        $('#select_project').append(optionHtml);
+                    </script>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button id="point_mapping" type="button" class="btn btn-default">
+                            <a href="#autoMapping" style="color: #333;">
+                                <span class="glyphicon glyphicon-flag db" aria-hidden="true"></span>
+                                <span i18n="debugTools.btnNav.AUTO_MATCH"></span>
+                            </a>
+                        </button>
+                        <!--<button id="point_verify" type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-eye-open db" aria-hidden="true"></span>
+                            <span>审校</span>
+                        </button>
+                        -->
+                        <button type="button" class="btn btn-default">
+                            <a id="export_mapping" target="_blank" style="color: #333;"
+                               href="/point_tool/export/mapping/">
+                                <span class="glyphicon glyphicon-export db" aria-hidden="true"></span>
+                                <span i18n="debugTools.btnNav.EXPORT"></span>
+                            </a>
+                        </button>
+                        <button type="button" class="btn btn-default" id="point_import">
+                            <span class="glyphicon glyphicon-import db" aria-hidden="true"></span>
+                            <span i18n="debugTools.btnNav.IMPORT"></span>
+                            <input type="file" id="import_mapping"
+                                   accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="pointManageWrapper" class="form-inline col-md-8">
+                <div class="oh" style="padding: 5px 0;">
+
+                    <div style="float:right;position: relative;top: 12px;" id="display_type">
+
+                        <div class="radio mr10 vi">
+                            <label style="-webkit-user-select: none;">
+                                <input type="radio" value="all" checked name="display-type" class="mapped_type">
+                                <span i18n="debugTools.pointMapping.MAPPING_ALL"></span>
+                            </label>
+                        </div>
+                        <div class="radio mr10 vi">
+                            <label style="-webkit-user-select: none;">
+                                <input type="radio" value="noMapped" name="display-type" class="mapped_type">
+                                <span i18n="debugTools.pointMapping.MAPPING_NO"></span>
+                            </label>
+                        </div>
+                        <div class="radio mr10 vi">
+                            <label style="-webkit-user-select: none;">
+                                <input type="radio" value="mapped" name="display-type" class="mapped_type">
+                                <span i18n="debugTools.pointMapping.MAPPING_ALREADY"></span>
+                            </label>
+                        </div>
+
+                    <span style="margin-left: 10px;position: relative;top: 3px;">
+                        <span i18n="debugTools.sitePoint.ALTOGETHER"></span>
+                        <span class="count"></span>
+                        <span i18n="debugTools.sitePoint.POINTS"></span>
+                    </span>
+
+                    </div>
+                    <input type="text" id="text_search" class="form-control mr10 fl" placeholder=""
+                           i18n="placeholder=debugTools.pointMapping.FINDING_CLOUD_POINT"/>
+                </div>
+
+                <div class="sheet sheet-point-map"></div>
+                <div class="tr">
+                    <ul id="mappingPagination" class="pagination"></ul>
+                </div>
+            </div>
+            <div class="energy-section draggable-panel col-md-4">
+                <div class="search_panel_tool">
+                    <!--
+                    <span class="glyphicon glyphicon-move move" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-resize-small" aria-hidden="true"></span>
+                    -->
+                </div>
+
+                <div class="oh tr">
+                    <input type="text" id="point_search" class="form-control" placeholder=""
+                           i18n="placeholder=debugTools.pointMapping.FIND_SCENE_POINT" style="margin-top:15px;"/>
+                </div>
+                <div id="search_result" class="oa table-responsive"></div>
+                <div class="tr">
+                    <ul id="enginePointPagination" class="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="tpl_search_result">
+        <table id="enginePoint_result_table" class="table table-bordered">
+            <thead>
+            <tr>
+                <th style="width:50px;" i18n="debugTools.pointMapping.MAPPING"></th>
+                <th i18n="debugTools.pointMapping.NAMED_OR_NOTES"></th>
+                <th i18n="debugTools.pointMapping.POINT_VALUE"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <!for(var m=0; m < list.length; m++) {!>
+            <!var item=list[m];!>
+            <tr>
+                <th scope="row" class="engine_point_mapping">
+                    <label>
+                        <input type="radio" value="<!=item.value!>" name="engine_points" class="point_selector"
+                               point-id="<!=item._id!>" id="<!=item.value!>"/>
+                    </label>
+                </th>
+                <td>
+                    <label for="<!=item.value!>">
+                        <!=item.value_text!>
+                        </br>
+                        <span style="font-size: 12px;font-weight: 400;line-height: 1;color: #777;"><!=item.params.remark_text!></span>
+                    </label>
+                </td>
+                <td><!=item.pointvalue!></td>
+            </tr>
+            <!}!>
+            </tbody>
+        </table>
+    </script>
+{% endblock %}

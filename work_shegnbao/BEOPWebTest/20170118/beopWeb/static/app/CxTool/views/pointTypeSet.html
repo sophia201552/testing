@@ -1,0 +1,105 @@
+<div id="point_setting" class="pr point_setting">
+    <h1 i18n="debugTools.sitePoint.POINT_SOURCE_CONFIGURATION"></h1>
+
+    <div id="point_set_btn_wrapper" class="oh">
+        <nav class="oh mt30">
+            <ul id="standardNameTab" class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#point_set_new_form" data-toggle='tab'>new</a></li>
+                <li role="presentation"><a href="#point_set_edit_form" data-toggle='tab'>edit</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="mt30 tab-content">
+        <form class="add-source-form tab-pane active" id="point_set_new_form">
+            <div id="point_set_add_Wrapper">
+                <section id="point_setting_up_wrapper" class="mb15">
+                    <span class="point_set_title"><span i18n="debugTools.sitePoint.ENTER_TYPE_NAME"></span>：</span>
+                    <input type="text" class="form-control" value="" name="name" required i18n="placeholder=debugTools.sitePoint.ENTER_TYPE_NAME"/>
+                </section>
+                <section id="point_setting_down_wrapper">
+                    <span class="point_set_title"><span i18n="debugTools.sitePoint.ENTER_TYPE_PARAMETER"></span>：</span>
+                    <ul id="point_setting_down_ul" class="oh">
+                        <li>
+                            <span class="title">param1:</span>
+                            <input type="text" class="form-control" value="" name="param1" i18n="placeholder=debugTools.sitePoint.ENTER_TYPE_PARAMETER"/>
+                        </li>
+                        <li>
+                            <span class="title">param2:</span>
+                            <input type="text" class="form-control" value="" name="param2" i18n="placeholder=debugTools.sitePoint.ENTER_TYPE_PARAMETER"/>
+                        </li>
+                        <li>
+                            <span class="title">param3:</span>
+                            <input type="text" class="form-control" value="" name="param3" i18n="placeholder=debugTools.sitePoint.ENTER_TYPE_PARAMETER"/>
+                        </li>
+                        <li>
+                            <span class="title">param4:</span>
+                            <input type="text" class="form-control" value="" name="param4" i18n="placeholder=debugTools.sitePoint.ENTER_TYPE_PARAMETER"/>
+                        </li>
+                        <li>
+                            <span class="title">param5:</span>
+                            <input type="text" class="form-control" value="" name="param5" i18n="placeholder=debugTools.sitePoint.ENTER_TYPE_PARAMETER"/>
+                        </li>
+                        <li>
+                            <span class="title">param6:</span>
+                            <input type="text" class="form-control" value="" name="param7" i18n="placeholder=debugTools.sitePoint.ENTER_TYPE_PARAMETER"/>
+                        </li>
+                        <li>
+                            <span class="title">param7:</span>
+                            <input type="text" class="form-control" value="" name="param7" i18n="placeholder=debugTools.sitePoint.ENTER_TYPE_PARAMETER"/>
+                        </li>
+                        <li>
+                            <span class="title">param8:</span>
+                            <input type="text" class="form-control" value="" name="param8" i18n="placeholder=debugTools.sitePoint.ENTER_TYPE_PARAMETER"/>
+                        </li>
+                        <li>
+                            <span class="title">param9:</span>
+                            <input type="text" class="form-control" value="" name="param9" i18n="placeholder=debugTools.sitePoint.ENTER_TYPE_PARAMETER"/>
+                        </li>
+                        <li>
+                            <span class="title">param10:</span>
+                            <input type="text" class="form-control" value="" name="param10" i18n="placeholder=debugTools.sitePoint.ENTER_TYPE_PARAMETER"/>
+                        </li>
+                    </ul>
+                </section>
+                <div class="pa">
+                    <button type="submit" class="btn btn-primary" i18n="common.SUBMIT"></button>
+                </div>
+            </div>
+        </form>
+        <form class="update-source-form tab-pane" id="point_set_edit_form">
+            <div id="point_set_edit_Wrapper">
+                <div id="point_set_source_wrapper">
+                    <span class="point_set_title"><span i18n="debugTools.sitePoint.POINT_SOURCE_TYPE"></span>：</span>
+                    <select id="point_set_source" class="form-control w180" name="name">
+
+                    </select>
+                </div>
+                <section id="point_set_edit_name_param">
+                    <span class="point_set_title dn"><span i18n="debugTools.sitePoint.EDIT_TYPE_PARAMETER"></span>：</span>
+                    <ul id="point_setting_edit_ul" class="oh"></ul>
+                </section>
+                <div class="pa">
+                    <button type="submit" class="btn btn-primary" i18n="common.SUBMIT"></button>
+                    <button type="button" class="btn btn-danger" id="del-point-type" i18n="common.DELETE"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/html" id="tpl_source_type_options">
+    <option value="-1" disabled="disabled" i18n="debugTools.sitePoint.SELECT_POINT_SOURCE"></option>
+    <!for(var sourceName in sourceTypes){!>
+    <option value="<!=sourceName!>"><!=sourceName!></option>
+    <!}!>
+</script>
+
+<script type="text/html" id="tpl_source_type_values">
+    <!for(var m = 0; m < params.length; m++){!>
+    <li>
+        <span class="title"><!=params[m].name!></span>
+        <input type="text" i18n="placeholder=debugTools.sitePoint.ENTER_TYPE_PARAMETER" value="<!=params[m].value!>" class="form-control"
+               name="<!=params[m].name!>">
+    </li>
+    <!}!>
+</script>

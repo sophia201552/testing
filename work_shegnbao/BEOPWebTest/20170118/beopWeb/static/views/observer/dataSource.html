@@ -1,0 +1,359 @@
+<script src="/static/scripts/lib/select2/js/select2.min.js"></script>
+<script src="/static/scripts/lib/select2/js/i18n/en.js"></script>
+<link href="/static/scripts/lib/select2/css/select2.min.css" type="text/css" rel="stylesheet"/>
+<style>
+    .yFull {
+        height: 100%;
+    }
+
+    .yScroll {
+        height: calc(100% - 32px);
+        overflow-y: auto;
+    }
+
+    /*.ztree [treenode]:hover {
+        background-color: ActiveCaption;
+    }*/
+
+    #dataSrcContain .ztree li {
+        position: relative;
+        line-height: 32px !important;
+        border-bottom: 1px solid #666;
+    }
+
+    #dataSrcContain .ztree li:last-child {
+        border-bottom-width: 0;
+    }
+
+    #dataSrcContain .ztree li a {
+        width: 70%;
+        height: 24px !important;
+        position: relative;
+    }
+
+    #dataSrcContain .ztree li li a {
+        width: 95%;
+        height: 24px !important;
+        position: relative;
+    }
+
+    /*.ztree li a span {
+        font-size: 14px;
+    }*/
+    #dataSrcContain .ztree li a .button {
+        margin-top: 8px;
+    }
+
+    #dataSrcContain .ztree li a input.rename {
+        height: 20px;
+        display: inline-block;
+        width: 100%;
+    }
+
+    #dataSrcContain .ztree li span.button.addFormula {
+        margin-right: 2px;
+        background-position: -127px -64px;
+        vertical-align: top;
+        *vertical-align: middle;
+    }
+
+    .treeBadge {
+        padding: 2px 10px 2px 10px;
+        margin-top: 5px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    #tableDsCloud span {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        word-break: break-all;
+    }
+    #tableDsCloud .activeTr {
+        background:rgb(255, 230, 176);
+        color:#333;
+    }
+    #tableDsCloud .activeTr .tabColName {
+        color:#333;
+    }
+
+    .tabColName {
+        display: block;
+        font-weight: bold;
+    }
+
+    .tabColDesc {
+        position: relative;
+        display: block;
+    }
+
+    .btnFav {
+        position: absolute;
+        right: 10px;
+        display: none;
+    }
+
+    #tableDsCloud td:hover .btnFav {
+        display: block;
+    }
+
+    #dataSrcContain .ztree li span.button.ico_close {
+        margin-right: 2px;
+        background-position: -110px 0;
+        vertical-align: top;
+        *vertical-align: middle;
+        margin-top: 8px
+    }
+
+    #dsNavContain .nav-tabs a {
+        padding: 5px 10px 4px 10px;
+        border-width: 0;
+        border-radius: 0;
+    }
+
+    #tableDsCloud td {
+        width: 100%;
+    }
+
+    #dsNavContain .yScroll {
+        overflow-x: hidden;
+    }
+
+    #dsNavContain .nav-tabs {
+        border-color: #3292db;
+    }
+
+    #dsNavContain .nav-tabs a {
+        font-weight: bold;
+    }
+
+    #dsNavContain .nav-tabs li.active a {
+        background-color: #3292db;
+        color: #000000;
+    }
+
+    #pageCloud .yScroll {
+        position: relative;
+    }
+
+    #pageCloud .yScroll .table-condensed tr td {
+        border-top-color: #636363;
+    }
+
+    #pageCloud .pagination > .active > a, .pagination > .active > span, #pageCloud .pagination > .active > a:hover, #pageCloud .pagination > .active > span:hover,
+    #pageCloud .pagination > .active > a:focus, #pageCloud .pagination > .active > span:focus {
+        z-index: 2;
+        color: #fff;
+        cursor: default;
+        background-color: #337ab7 !important;
+        border-color: #337ab7 !important;
+    }
+
+    .tipStyle {
+        color: #333;
+        word-break: break-all;
+        /*font-size: 14px;*/
+    }
+
+    .tipTitleStyle {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    #dataSrcContain .ztree * {
+        font-family: 'Microsoft YaHei'; /*'Glyphicons Halflings'*/
+    }
+
+    #dataSrcContain .ztree li a.curSelectedNode {
+        background-color: transparent !important;
+        border-color: transparent !important;
+    }
+
+    #dataSrcContain .ztree li span.button {
+        position: relative;
+        top: 1px;
+        display: inline-block !important;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: normal;
+        line-height: 0;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    #dataSrcContain .ztree li [treenode_a] span.button {
+        background: none;
+    }
+
+    #dataSrcContain .ztree li span.button.ptNormal_ico_docu {
+        background-image: url('');
+        color: #9ec799;
+    }
+
+    #dataSrcContain .ztree li span.button.ptNormal_ico_docu:before {
+        content: "\e250";
+    }
+
+    #dataSrcContain .ztree li span.button.ptFormula_ico_docu {
+        background-image: url('');
+        color: #4fc6cb;
+    }
+
+    #dataSrcContain .ztree li span.button.ptFormula_ico_docu:before {
+        content: "\e250";
+    }
+
+    #dataSrcContain .ztree li span.button.edit {
+        background-image: url('');
+        top: 8px;
+        margin-left: 6px;
+    }
+
+    #dataSrcContain .ztree li span.button.center_docu + a span.button.edit, .ztree li span.button.bottom_docu + a span.button.edit {
+        background-image: url('');
+        top: 8px;
+        margin-left: 6px;
+        position: absolute;
+        right: 16px;
+    }
+
+    #dataSrcContain .ztree li span.button.edit:before {
+        content: "\e065";
+    }
+
+    #dataSrcContain .ztree li span.button.remove {
+        background-image: url('');
+        top: 8px;
+        margin-left: 4px;
+    }
+
+    #dataSrcContain .ztree li span.button.center_docu + a span.button.remove, .ztree li span.button.bottom_docu + a span.button.remove {
+        background-image: url('');
+        top: 8px;
+        margin-left: 4px;
+        position: absolute;
+        right: 0;
+    }
+
+    #dataSrcContain .ztree li span.button.ptNormal_ico_docu + span {
+        display: inline-block;
+        width: 95%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #dataSrcContain .ztree li span.button.remove:before {
+        content: "\e083";
+    }
+
+    #dataSrcContain .ztree li span.button.ico_open {
+        background-image: url('');
+        top: 8px!important;
+        margin-right: 4px;
+    }
+
+    #dataSrcContain .ztree li span.button.ico_open:before {
+        content: "\e118";
+    }
+
+    #dataSrcContain .ztree li span.button.ico_close {
+        background-image: url('');
+        top: 8px;
+        margin-right: 4px;
+    }
+
+    #dataSrcContain .ztree li span.button.ico_close:before {
+        content: "\e117";
+    }
+
+    #dataSrcContain .ztree li span.button.switch {
+        top: -2px;
+    }
+
+    #pageCloud .select, #pageCloud .search {
+        height: 24px;
+        font-size: 12px;
+        line-height: 24px;
+        padding: 0 16px 0 4px;
+    }
+
+    #pageCloud .select, #pageCloud .searchSpan {
+        top: 6px;
+        right: 4px;
+    }
+
+    #pageCloud .pagination {
+        margin-top: 0;
+        margin-right: 0;
+    }
+    .select2-results__option {
+        color: #444;
+    }
+</style>
+
+<div id="dsNavContain" class="yFull">
+    <ul class="nav nav-tabs" style="cursor:pointer">
+        <li role="presentation" class="active" id="liMine"><a i18n="dataSource.NAV_MINE">Mine</a></li>
+        <li role="presentation" id="liCloud"><a i18n="dataSource.NAV_CLOUD">Cloud</a></li>
+        <li role="presentation" id="liIot"><a i18n="iot.IOT">Iot</a></li>
+    </ul>
+
+    <div id="pageMine" style="height: calc(100% - 100px);">
+        <div class="col-sm-12" style="margin-top: 14px;">
+            <input type="text" class="form-control" id="inputDsMineSearch" placeholder="Search" style="">
+            <span class="glyphicon glyphicon-remove" id="spanDsMineSearch"
+                  style="cursor: pointer;position: absolute;top: 10px;right: 30px;color: #555;"></span>
+        </div>
+        <div class="col-sm-12 yScroll scrollbar">
+            <ul id="treeMine" class="ztree"></ul>
+        </div>
+    </div>
+
+    <div id="pageCloud" style="display:none; padding: 10px;padding-top: 15px; height: calc(100% - 26px)">
+        <div>
+            <div class="col-sm-6" style="padding-left: 0; padding-right: 4px;">
+                <select class="form-control select" id="selectPrjName" style="width:100%;">
+                    <option></option>
+                </select>
+            </div>
+            <div class="col-sm-6" style="padding-left: 0; padding-right: 0;">
+                <input type="text" class="form-control search" id="inputDsCloudSearch" placeholder="Search" style="height:28px;line-height:28px; background:#fff;box-shadow:none;border: 1px solid #aaa;color:#444;">
+                <span class="glyphicon glyphicon-remove searchSpan" id="spanDsCloudSearch"
+                      style="cursor: pointer;position: absolute;top: 8px;right: 4px;color:#555;"></span>
+            </div>
+        </div>
+        <div class="yScroll scrollbar gray-scrollbar"
+             style="display: block;clear: both;color:#abb8bf;height: calc(100% - 59px);">
+            <table class="col-sm-12 table table-condensed" id="tableDsCloud" style="cursor:pointer; margin-top: 5px;">
+                <!--<thead>
+                    <tr>
+                        <th><span class="tabColName" i18n="dataSource.POINT_NAME"></span></th>
+                        <th><span class="tabColDesc" i18n="dataSource.POINT_DESC"></span></th>
+                        <th></th>
+                    </tr>
+                </thead>-->
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div>
+            <nav id="navPageNum">
+                <ul class="pagination pageGroup" style="margin-top: 0;">
+                    <li><a class="pageFlag" value="First"><span aria-hidden="true">&laquo;</span></a></li>
+                    <li><a class="pageFlag" value="Previous"><span aria-hidden="true">&lsaquo;</span></a></li>
+                    <li><a class="pageFlag pageNum" value="1">1</a></li>
+                    <li><a class="pageFlag pageNum" value="2">2</a></li>
+                    <li><a class="pageFlag pageNum" value="3">3</a></li>
+                    <li><a class="pageFlag pageNum" value="4">4</a></li>
+                    <li><a class="pageFlag pageNum" value="5">5</a></li>
+                    <li><a class="pageFlag" value="Next"><span aria-hidden="true">&rsaquo;</span></a></li>
+                    <li><a class="pageFlag" value="Last"><span aria-hidden="true">&raquo;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="pageIot" style="display:none; padding: 10px; height: calc(100% - 30px)">
+
+    </div>
+</div>

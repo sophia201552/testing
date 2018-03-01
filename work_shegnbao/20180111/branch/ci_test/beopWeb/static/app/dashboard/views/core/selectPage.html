@@ -1,0 +1,142 @@
+<style>
+    #ctnSubSelTopNav {
+        width: 100%;
+        height: 0;
+        position: relative;
+        z-index: 3;
+        padding: 0 0.75rem;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        /* position: relative; */
+        background-image: linear-gradient(100deg, rgb(140, 109, 116) 28%, rgba(140, 106, 120, 1) 65%, rgb(91, 86, 117));
+    }
+    
+    #ctnSubSelMain {
+        position: relative;
+        height: calc(100% - 44px);
+    }
+    
+    #btnSubBack {
+        width: 3rem;
+        padding-left: 0.75rem;
+    }
+    
+    #btnSubBack .btnIcon {
+        width: 20px;
+        height: 18px;
+        background: none;
+    }
+    
+    #ctnSubSelContent {
+        width: 100%;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        height: calc(100% - 49px);
+    }
+    
+    #ctnSubSelRs {
+        border-top: 1px solid #ccc;
+        display: block;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+    
+    .divSelUnit {
+        margin: 2% 0;
+        position: relative;
+        display: flex;
+        width: 100%;
+        padding-left: 10px;
+        height: 4rem;
+        text-align: center;
+        border-bottom: 1px solid #e8e8e8;
+    }
+    
+    .imgSel {
+        height: 3.5rem;
+        width: 3.5rem;
+        border-radius: 3.5rem;
+    }
+    
+    .spTitle {
+        font-size: 1.4rem;
+        color: #646464;
+        padding: 13px 0 0 10px;
+    }
+    
+    .divSelUnit.selected .spSelClk {
+        color: #0E93DB;
+    }
+    
+    .spSelClk {
+        position: absolute;
+        top: 0.5rem;
+        right: 1.5rem;
+        font-size: 2rem;
+        color: #ccc;
+    }
+    
+    .divSelTip {
+        display: -webkit-inline-flex;
+        display: inline-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        background-color: #eee;
+        border: 1px solid #ccc;
+        padding: 0.5rem 1rem;
+        position: relative;
+        margin-left: 1rem;
+        height: 80%;
+        border-radius: 0.5rem;
+        top: 10%;
+    }
+    
+    #spTopSearch {
+        display: inline-flex;
+        display: -webkit-inline-flex;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-align-items: center;
+        align-items: center;
+        height: 100%;
+        width: 60%;
+        left: 20%;
+        position: absolute;
+    }
+    
+    #spTopSearch input {
+        background: rgba(91, 86, 117, 0.12);
+        height: 25px;
+        line-height: 50px;
+        border: 1px solid rgba(243, 221, 251, 0.32);
+        display: inline-block;
+        width: 90%;
+        color: #fff;
+        box-sizing: border-box;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 18px!important;
+        transition: all .4s;
+    }
+    
+    #spTopSearch input:focus {
+        outline: 0;
+        border-radius: 20px;
+    }
+</style>
+<div id="ctnSubSelTopNav">
+    <span id="btnSubBack" class="navTopItem left icon iconfont icon-zhankai zepto-ev" aria-hidden="true">
+        <!--<span class="btnIcon">
+            <svg style="width:20px;height:18px;" version="1.1" id="图形" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1024px" height="1024px" viewBox="0 0 1024 1024" enable-background="new 0 0 1024 1024" xml:space="preserve">
+                <path class="svgpath" data-index="path_0" fill="#ecf0f1" d="M137.728 509.12 598.656 48.128 564.032 13.44 65.472 512 564.032 1010.56 601.6 972.992Z" />
+            </svg>
+        </span>-->
+    </span>
+</div>
+<div id="ctnSubSelMain">
+    <div id="ctnSubSelContent" class="zepto-ev"></div>
+    <div id='ctnSubSelRs'></div>
+</div>

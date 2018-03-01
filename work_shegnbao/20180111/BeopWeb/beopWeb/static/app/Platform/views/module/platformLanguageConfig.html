@@ -1,0 +1,81 @@
+<style>
+    #dataSrcContain {
+        display: inline-block;
+        /* width: 320px; */
+        height: 100%;
+        position: absolute;
+        right: 0;
+        background: #2d333c;
+    }
+
+    #dataSrcContain .ztree li a {
+        color: #eee;
+    }
+
+    #workspaceCtn {
+        display: inline-block;
+        width: calc(100%);
+        height: 100%;
+        background: #333955;
+    }
+
+    .workspace.json {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
+
+    .wrapIpt {
+        margin-bottom: 10px;
+        width: 100%;
+        height: calc(100% - 80px);
+    }
+
+    #iptConfigJSON {
+        width: 100%;
+        height: 100%;
+        resize: none;
+        padding: 10px 25px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px #ccc;
+        color: #222;
+    }
+
+    .btnConfirm {
+        width: 160px;
+    }
+
+    .selLanguage {
+        float: left;
+        width: 95px;
+        margin-right: 5px;
+        background: none;
+        color: #a9c6ff;
+        border: 1px solid #a9c6ff;
+    }
+
+    #btnSure {
+        float: left;
+    }
+</style>
+<div id="workspaceCtn">
+    <div class="workspace drag">
+        <div id="mainPoint"></div>
+        <div id="detailPoint"></div>
+    </div>
+    <div class="workspace json">
+        <div class="wrapIpt">
+            <textarea id="iptConfigJSON"></textarea>
+        </div>
+
+        <div class="btnConfirm fr">
+            <select id="selLanguage" class="selLanguage form-control">
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+            </select>
+            <button type="button" class="btn btn-primary" id="btnSure">Save</button>
+        </div>
+    </div>
+</div>
+<div id="dataSrcContain"></div>

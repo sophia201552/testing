@@ -1,0 +1,21 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": { "chrome": 56 },
+        "include": ["transform-es2015-classes"]
+      }
+    ],
+    "stage-0",
+    "react"
+  ],
+  "env": {
+    "production": {
+      "presets": ["react-optimize"]
+    },
+    "development": {
+      "presets": ["react-hmre"]
+    }
+  }
+}

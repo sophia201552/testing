@@ -1,0 +1,222 @@
+<style>
+    .btnCtn{
+        border-bottom: 1px solid #ddd;
+        height: 34px;
+    }
+    .btnCtn .btnLeft{
+        float: left;
+    }
+    .btnCtn .btnRight{
+        float: right;
+    }
+    .btn-switch {
+        display: inline-block;
+        border-radius: 11px;
+        background-color: #ccc;
+        border: 1px solid #bbb;
+        padding-left: 0;
+        padding-right: 22px;
+        vertical-align: middle;
+        height: 24px;
+
+    }
+    .btn-switch-on {
+        display: inline-block;
+        border-radius: 11px;
+        background-color: #68E432;
+        border: 1px solid #bbb;
+        padding-left: 22px;
+        padding-right: 0;
+        vertical-align: middle;
+        height: 24px;
+
+    }
+    .btn-switch-slider {
+        width: 22px;
+        height: 22px;
+        background-color: #fff;
+        border-radius: 50%;
+        border-right: 1px solid #ccc;
+        box-shadow: 0 1px 1px #999;
+    }
+
+    .btnCtn + div{
+        clear: both;
+    }
+        .itemSchedule{
+            border-top: 1px solid #eee;
+            padding: 10px 20px;
+        }
+            .itemSchedule .glyphicon{
+                display: none;
+            }
+            .itemSchedule.selected .glyphicon{
+                display: inline-block;
+            }
+            .itemSchedule .time{
+                width: 80%;
+                display: inline-block;
+            }
+
+    .divCtn{
+        padding: 15px 20px;
+    }
+
+    #wrapSchedule > div{
+        display: none;
+    }
+
+    #wrapSchedule > #listSchedulePane{
+        display: block;
+    }
+
+    #ulRepeat .itemRepeat{
+        border-top: 1px solid #eee;
+        padding: 10px 20px;
+    }
+    .item .glyphicon-ok{
+        display: none;
+    }
+    .item.selected .glyphicon-ok{
+        display: inline-block;
+        color: #ff0000;
+    }
+
+    #ulProj .itemRoom{
+        border-top: 1px solid #eee;
+        padding: 10px 20px;
+    }
+    #ulProj .itemRoom .glyphicon-ok{
+        display: none;
+    }
+    #ulProj .itemRoom.selected .glyphicon-ok{
+        display: inline-block;
+        color: #ff0000;
+    }
+    #ulOperateType li{
+        width: 25%;
+    }
+</style>
+<div id="wrapSchedule">
+    <!-- 日程列表 -->
+    <div id="listSchedulePane">
+        <div class="btnCtn">
+            <div class="btn btnLeft" id="btnEdit">编辑</div>
+            <div class="btn btnLeft" id="btnFinish" style="display: none;">完成</div>
+            <div class="btn btnRight" id="btnAdd"><span class="glyphicon glyphicon-plus"></span></div>
+        </div>
+        <div id="listScheduleCtn">
+            <!--
+            <div class="itemSchedule">
+                <div class="">
+                    <span class="glyphicon glyphicon-minus btnRemove"></span>
+                    <span class="time">8:00</span>
+                    <div class="opt-btn btn-switch" id="" data-key="">
+                        <div class="btn-switch-slider"></div>
+                    </div>
+                </div>
+                <div class="">
+                    <span class="tag">闹钟</span>
+                    <span class="repeat">工作日</span>
+                </div>
+            </div>
+            <div class="itemSchedule">
+                <div class="">
+                    <span class="glyphicon glyphicon-minus btnRemove"></span>
+                    <span class="time">8:00</span>
+                    <div class="opt-btn btn-switch" id="" data-key="">
+                        <div class="btn-switch-slider"></div>
+                    </div>
+                </div>
+                <div class="">
+                    <span class="tag">闹钟</span>
+                    <span class="repeat">工作日</span>
+                </div>
+            </div>
+            <div class="itemSchedule">
+                <div class="">
+                    <span class="glyphicon glyphicon-minus btnRemove"></span>
+                    <span class="time">8:00</span>
+                    <div class="opt-btn btn-switch" id="" data-key="">
+                        <div class="btn-switch-slider"></div>
+                    </div>
+                </div>
+                <div class="">
+                    <span class="tag">闹钟</span>
+                    <span class="repeat">工作日</span>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+
+    <!-- 日程编辑/新建 -->
+    <div id="editPane">
+        <div class="btnCtn">
+            <div class="btn btnLeft" id="btnCancel">取消</div>
+            <div class="btn btnRight" id="btnSave">保存</div>
+        </div>
+        <div class="divCtn" id="selTime">
+            <input type="time" id="iptPickTime" class="form-control" value="8:00">
+        </div>
+        <!--
+        <div class="divCtn">
+            <span>重复</span>
+            <span class="glyphicon glyphicon-chevron-right" id="btnRepeat"></span>
+        </div>
+        -->
+        <div class="divCtn">
+            <!-- <span>类型</span> -->
+            <ul class="list-inline" id="ulOperateType">
+                <li class="item" data-value="1"><span>开机</span><span class="glyphicon glyphicon-ok"></span></li>
+                <li class="item" data-value="0"><span>关机</span><span class="glyphicon glyphicon-ok"></span></li>
+            </ul>
+        </div>
+        <div class="divCtn" id="controlCtn">
+            <!-- <span>控制器</span>
+            <span class="glyphicon glyphicon-chevron-right zepto-ev" id="btnShowControl"></span> -->
+        </div>
+        <div class="divCtn">
+            <button class="btn btn-danger" id="btnDelete" style="display: none">删除</button>
+        </div>
+    </div>
+
+    <!-- 日期重复列表 -->
+    <div id="dateListPane">
+        <div class="btnCtn">
+            <div class="btn btnLeft" id="btnBack">返回</div>
+        </div>
+        <div>
+            <ul class="list-unstyled" id="ulRepeat">
+                <li class="itemRepeat">
+                    <span>每周日</span>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </li>
+                <li class="itemRepeat">
+                    <span>每周一</span>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </li>
+                <li class="itemRepeat">
+                    <span>每周二</span>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </li>
+                <li class="itemRepeat">
+                    <span>每周三</span>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </li>
+                <li class="itemRepeat">
+                    <span>每周四</span>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </li>
+                <li class="itemRepeat">
+                    <span>每周五</span>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </li>
+                <li class="itemRepeat">
+                    <span>每周六</span>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

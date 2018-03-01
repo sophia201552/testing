@@ -1,0 +1,333 @@
+<style>
+    #divContent {
+        position: relative;
+        height: 100%
+        overflow: auto;
+    }
+    .wkPart:not(:last-child){
+        border-bottom: 1px solid #ccc;
+    }
+    .wkPart {
+        padding: 1rem;
+        position: relative;
+    }
+    .partContent {
+        margin-left: 0.8rem;
+    }
+    #wkBase {
+        border-bottom: 1.5rem solid #eee;
+        color: #969696;
+    }
+    #wkEmergency {
+        color: white;
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.5rem;
+    }
+    #wkDetail{
+        border-bottom: 1px solid #eee;
+    }
+    #wkDetail .partTitle{
+        display: none;
+        border-bottom: 1px solid #ccc;
+    }
+    #wkDeadline {
+        border-bottom: 1.5rem solid #eee;
+        color: #969696;
+    }
+    #detailTitle {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+    #detailContent {
+        white-space: pre;
+        overflow-wrap: break-word;
+    }
+    #additionSel {
+        border-bottom: 1px solid #dddddd;
+        padding: 1rem;
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        position: relative;
+    }
+    #additionSel>span.selected{
+        color:#428BCA
+    }
+    #btnComment{
+        margin-right: 1rem;
+    }
+    .divProgress {
+        padding: 1rem 0;
+        border-bottom: 1px solid #ccc;
+    }
+    .progressPic img{
+        height: 3rem;
+    }
+    #wkAddition{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .divReply, .divProgress{
+        position: relative;
+        padding: 1rem;
+        border-bottom: 1px solid #ddd;
+    }
+    .replyPic, .progressPic{
+        width: 4rem;
+        height: 4rem;
+        float: left;
+    }
+    .replyPic img, .progressPic img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: none;
+    }
+    .replyUser, .progressUser{
+        height: 2rem;
+        line-height: 2rem;
+        margin-left: 5rem;
+    }
+    .replyTime, .progressTime{
+        margin-left: 5rem;
+        color: #8e8e93;
+        font-size: 1rem;
+        position: absolute;
+        top: 0.8rem;
+        right: 1rem;
+    }
+    .replyDetail, .progressStatus{
+        width: calc(100% - 4rem);
+        width: -webkit-calc(100% - 4rem);
+        margin-left: 5rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        padding-right: .6rem;
+    }
+    .replyDetail img, .progressStatus img{
+        max-width: 100%;
+    }
+    @media (max-device-height:667px) and (-webkit-min-device-pixel-ratio:2) {  /* 兼容iphone4/4s */
+        .divReply, .divProgress{
+            padding: .6rem;
+        }
+        .replyPic, .progressPic {
+            width: 3.6rem;
+            height: 3.6rem;
+        }
+        .replyUser, .progressUser{
+            margin-left: 4.2rem;
+        }
+        .replyTime, .progressTime{
+            margin-left: 4.2rem;
+        }
+        .replyDetail, .progressStatus {
+            margin-left: 4.2rem;
+        }
+    }
+    #wkEdit {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    #wkEdit .spBtnEdit {
+    }
+    #wkEdit .glyphicon {
+    }
+    #wkEdit .divBtnWrap{
+        margin-right: 1rem;
+        display: none;
+        text-align: center;
+        padding: 0.4rem 1.2rem;
+        border-radius: 0.6rem;
+        background-color: #0E93DB;
+        color: white;
+    }
+    #btnWkComplete {
+    }
+    .divWkMem {
+        width: 29%;
+        height: 7rem;
+        display: inline-block;
+        position: relative;
+        margin: 2%;
+    }
+    .imgWkMem{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .imgWkMem img {
+        width: 100%;
+        height: 100%;
+    }
+    .nameWkMem {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 0;
+        z-index: 2;
+        background: rgba(153,154,153,0.7);
+        color: white;
+    }
+    .checkWkMem {
+        visibility: hidden;
+        z-index: 1;
+        position: relative;
+        text-align: right;
+        right: 0.4rem;
+        color: darkorange;
+    }
+    .divWkMem.selected .checkWkMem {
+        visibility: visible;
+    }
+    #wkUserDialog {
+        position: absolute;
+        height: 100%;
+    }
+    #wkUserDialog .modal-backdrop {
+        position: absolute;
+        height: 100%;
+    }
+    #wkUserDialog .modal-dialog {
+        height: calc(100% - 20px);
+        height: -webkit-calc(100% - 20px);
+    }
+    #wkUserDialog .modal-content{
+        height: 100%;
+    }
+    #divWkUserDialog {
+        height: calc(100% - 121px);
+        height: -webkit-calc(100% - 121px);
+        overflow: auto;
+    }
+    #spanUserSel {
+        display: none;
+    }
+    #spanUserSel.tipShow{
+        display: inline-block;
+        line-height: 34px;
+        background-color: #ccc;
+        padding: 0 1rem;
+        border-radius: 0.5rem;
+    }
+    #divInsertComment {
+        padding: 1rem;
+        position: relative;
+        border-bottom: 1px solid #ccc;
+    }
+    #btnCommentSure {
+        position: absolute;
+        right: 1rem;
+        top: 0.8rem;
+        padding: 0.2rem;
+        width: 12%;
+        border-radius: 0.4rem;
+    }
+    #inputInsertComment {
+        height: 2.2rem;
+        width: 80%;
+        padding: 0 12px;
+        line-height: 2.2rem;
+        overflow: hidden;
+    }
+    #divUserSel {
+        width: 80%;
+        white-space: nowrap;
+        overflow: auto;
+        display: inline-block;
+    }
+    #btnWkTransmitSure {
+        position: absolute;
+        right: 15px;
+        top: 16px;
+    }
+    #divModal .modal-footer {
+        text-align: initial;
+    }
+    #ctnUserSel {
+        display: none;
+        position: fixed;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 2000;
+        background-color: white;
+    }
+</style>
+<div id="divContent">
+    <div id="wkBase" class="wkPart">
+        <div id="wkId" class="additionText"><span class="partTitle" i18n="appDashboard.workflow.WORKFLOW_NUM"></span>:<span class="partContent"></span></div>
+        <div id="wkEmergency"></div>
+        <div id="wkCreateDate" class="additionText"><span class="partTitle" i18n="appDashboard.workflow.CREATE_BY"></span>:<span class="partContent"></span></div>
+        <div id="wkExecutor" class="additionText"><span class="partTitle" i18n="appDashboard.workflow.EXECUTOR"></span>:<span class="partContent"></span></div>
+        <div id="wkStatus" class="additionText"><span class="partTitle">状态</span>:<span class="partContent"></span></div>
+    </div>
+    <div id="wkDetail" class="wkPart">
+        <div class="partTitle text" i18n="appDashboard.workflow.WORKFLOW_CONTENT"></div>
+        <div id="detailTitle" class="title"></div>
+        <div id="detailContent" class="text"></div>
+    </div>
+    <div id="wkDeadline" class="wkPart additionText">
+        <span class="partTitle" i18n="appDashboard.workflow.DEADLINE"></span>:
+        <span class="partContent"></span>
+    </div>
+    <div id="wkAddition" class="wkPart">
+        <div id="wkComment" class="divAddition">
+            <div id="divWkComment"></div>
+        </div>
+        <div id="wkProgress" class="divAddition">
+
+        </div>
+        <div id="additionSel" class="text">
+            <span id="btnComment" class="partTitle zepto-ev" i18n="appDashboard.workflow.REMARKS"></span>
+            <span id="btnProgress" class="partTitle zepto-ev" i18n="appDashboard.workflow.WORKFLOW_PROGRESS"></span>
+        </div>
+        <div id="divInsertComment" class="form-group">
+            <label for="inputInsertComment" class="sr-only"></label>
+            <textarea class="form-control" id="inputInsertComment" i18n="placeholder=appDashboard.workflow.MAKE_REMARKS"></textarea>
+            <button type="button" id="btnCommentSure" class="btn btn-default zepto-ev" i18n="appDashboard.workflow.SEND"></button>
+        </div>
+        <div id="wkEdit">
+            <div id="btnWkStart" class="divBtnWrap zepto-ev">
+                <span class="spBtnEdit glyphicon glyphicon-play" aria-hidden="true"></span>
+                <span i18n="appDashboard.workflow.BTN_START"></span>
+            </div>
+            <div id="btnWkEnd" class="divBtnWrap zepto-ev">
+                <span class="spBtnEdit glyphicon glyphicon-stop" aria-hidden="true"></span>
+                <span i18n="appDashboard.workflow.BTN_END"></span>
+            </div>
+            <div id="btnWkVerifyPass" class="divBtnWrap zepto-ev">
+                <span class="spBtnEdit glyphicon glyphicon-ok" aria-hidden="true"></span>
+                <span i18n="appDashboard.workflow.BTN_VERIFY_PASS"></span>
+            </div>
+            <div id="btnWkVerifyNotPass" class="divBtnWrap zepto-ev">
+                <span class="spBtnEdit glyphicon glyphicon-remove" aria-hidden="true"></span>
+                <span i18n="appDashboard.workflow.BTN_VERIFY_NOT_PASS"></span>
+            </div>
+            <div id="btnWkComplete" class="divBtnWrap zepto-ev">
+                <span class="spBtnEdit glyphicon glyphicon-ok" aria-hidden="true"></span>
+                <span i18n="appDashboard.workflow.BTN_COMPLETE"></span>
+            </div>
+            <div id="btnWkTransmit" class="divBtnWrap zepto-ev">
+                <span class="spBtnEdit glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                <span i18n="appDashboard.workflow.BTN_TRANSMIT"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="ctnUserSel">
+
+</div>
+<!--<div id="wkEdit">
+    <div id="btnWkComplete" class="btn btn-primary zepto-ev" i18n="appDashboard.workflow.FINISH">Finish</div>
+    <div id="btnWkTransmit" class="btn btn-primary zepto-ev" i18n="appDashboard.workflow.FORWARD">Forward</div>
+</div>-->

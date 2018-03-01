@@ -1,0 +1,49 @@
+<style>
+    #modalBlockConfig, #modalBlockConfig .modal-backdrop { position: absolute; }
+    #iptDataId{margin-top: 10px;padding-left: 17px;}
+</style>
+<div class="modal" id="modalBlockConfig">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" i18n="report.blockConfig.TITLE">动态报表块配置</h4>
+        </div>
+        <div class="modal-body form-wrap">
+            <form class="form-horizontal" id="formModal">
+                <!-- Base Options -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="" i18n="report.blockConfig.DATA_ID">数据ID</label>
+                    <div class="col-md-8">
+                        <select class="form-control" id="selReportData">
+                            <option value="id" id="optId">根据报表ID查询</option>
+                            <option value="name" id="optName">根据报表名称查询</option>
+                        </select>
+                        <input class="form-control" type="text" id="iptDataId" i18n="placeholder=report.blockConfig.WRITE_ID" />
+                    </div>
+                    <!-- <div class="col-md-4">
+                        <div class="btn-group dropdown-wrap">
+                            <button class="btn btn-default btn-sm clearfix" id="btnDataId" type="button" data-toggle="dropdown" data-value="line">
+                            <span>请选择</span>
+                            <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="ulDataList" role="menu">
+                                <li><a href="javascript:;" data-value="-1">请选择</a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="" i18n="report.blockConfig.IS_PAGE_BREAK">分页</label>
+                    <div class="col-md-8">
+                        <input type="checkBox" id="iptIsPageBreak"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="btnSubmit" i18n="report.reportConfig.SURE">确定</button>
+        </div>
+    </div>
+</div>
+</div>

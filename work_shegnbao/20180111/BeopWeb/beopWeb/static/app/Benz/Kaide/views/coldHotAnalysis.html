@@ -1,0 +1,487 @@
+<style>
+  #coldHotDetail{
+  position:relative;
+  width:100%;
+  height:100%;
+  color:#cbd6ec;
+}
+#kdColdHotAnalysis{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:50;
+  background:#182334;
+}
+.temperatureNav{
+    position:absolute;
+    margin-left:10px;
+    height:50px;
+    width:100%;
+    display:flex;
+    font-size:18px;
+    text-align:center;
+    z-index:10;
+  }
+.statistics{
+    margin-top:0!important;
+    width: 12%;
+    height: 51px;
+    line-height: 51px;
+    margin-top: 10px;
+}
+.statistics.active{
+  color:#539ff2;
+  background:#1e293d;
+  border-left:1px solid #364459;
+  border-right:1px solid #364459;
+  border-top: 1px solid #364459;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+#temperatureSum{
+  position:relative;
+  float:left;
+  width:45%;
+  height:calc(100% - 120px);
+  margin-top:50px;
+  margin-left:10px;
+  margin-right:10px;
+  background:#1e293d;
+  border-radius:2px;
+  border:1px solid #364459;
+}
+#temperatureTre{
+  position:relative;
+  float:left;
+  margin-top:50px;
+  width:calc(55% - 30px);
+  height:calc(100% - 113px);
+}
+#coolHotBox{
+  height:100%;
+  color:#c4d1e5;
+}
+table.diagRanking th,table.diagRanking td{color:#9ca9c4}
+.indexContent .panel-default > .panel-heading{
+  background-color:#182334!important;
+  border-color: #182334!important
+}
+#coolHotBox .coldOrHot{
+  width: 100%;
+  height:100%;
+  margin-bottom:10px;
+}
+#coolHotBox .coldOrHotTitle{
+  padding:0 15px;
+  height:6rem;
+  line-height:6rem;
+  font-size: 2rem;
+  text-align:center;
+  border-bottom:0;
+  color:#cbd5eb;
+}
+#coolHotBox .coldOrHotCycle{
+  width:80%;
+  margin:0 auto;
+  height:19rem;
+}
+#coolHotBox .floorColdOrHot{
+  height:calc(100% - 30rem);
+  overflow-y: auto;
+}
+#coolHotBox .coldOrHotTable{
+  width:100%;
+  height:100%;
+  color:#c4d1e5;
+  margin:0 auto;
+  border-collapse: collapse;
+}
+/*#coolHotBox .coldOrHotTable tr{
+  height:1.8rem
+}*/
+#coolHotBox .coldOrHotTable .tdColumn{
+  border-left:none;
+}
+#coolHotBox .coldOrHotTable td,#coolHotBox .coldOrHotTable th{
+  border-left:1px solid #2c3b58;
+  text-align: center;
+  color:#818ca2;
+  font-size:14px;
+}
+#coolHotBox .coldOrHotTable td[data-zone]:hover {
+  background-color: rgba(103, 154, 255, .7);
+  cursor: pointer;
+}
+#coolHotBox .coldOrHotTable thead{
+  background:#1d2438;
+}
+#coolHotBox .coldOrHotTable tbody tr:nth-child(odd){
+  background:#212c42;
+}
+#coolHotBox .coldOrHotSmTitle{
+  height:5rem;
+  line-height:5rem;
+  font-size:1rem;
+  padding:0 15px;
+  color:#818ca2;
+}
+#coolHotBox .toolCodeTitle{
+  color:#c3d0e9;
+  /*text-align:left;*/
+}
+#coolHotBox .toolCodeLag{
+  color:#828da1;
+  margin-top:0.3rem;
+}
+#coolHotBox .thTitle{
+  color:#a3b1c4;
+  font-weight: bold;
+}
+#coolHotBox .coolingNumS{
+  margin-right:10px;
+  color:#2b98f4;
+  font-weight: bold;
+}
+#coolHotBox .hotNumS{
+  margin-left:10px;
+  color:#e9a64b;
+  font-weight: bold;
+}
+#tooCold{
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0),rgba(68,123,229, 0.29),rgb(68,123,229));
+}
+#tooHot{
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0),rgba(228,175,0, 0.29),rgb(228,175,0));
+}
+#tooCold,#tooHot{
+  width:8rem;
+  height:8rem;
+  float:left;
+}
+#coolHotBox .tooHotTextNum,#coolHotBox .tooColdTextNum{
+  font-size:2.5rem;
+  height: 8rem;
+  line-height: 9rem;
+  width:8rem;
+  text-align: center;
+}
+.tooColdRight{
+  float:left;
+  padding-top: 1.5rem;
+  margin-left: 1rem;
+  font-size:1.3rem
+}
+
+@media screen and (max-width:1900px){
+/*  #coolHotBox .coldOrHotCycle{
+    width:100%;
+  }*/
+    .temperatureNav{
+    font-size:16px;
+  }
+/*  #coolHotBox .coldOrHotCycle{
+    width: 500px;
+    height:10rem;
+  }*/
+  #tooCold, #tooHot{
+    float:none;
+    width:8rem;
+    height:8rem;
+    margin:0 auto;
+  }
+  #coolHotBox .tooHotTextNum,#coolHotBox .tooColdTextNum {
+    font-size: 2.5rem;
+    width:8rem;
+    height: 8rem;
+    line-height: 9rem;
+  }
+  .tooColdRight{
+    float:none;
+    margin-top: 1.5rem;
+    padding-top: 0.8rem;
+    margin:1 auto;
+    width: 80%;
+  }
+  #coolHotBox .floorColdOrHot{
+    height: calc(100% - 28rem);
+  }
+
+  #coolHotBox .coldOrHotSmTitle{
+    height:3rem;
+  }
+}
+@media screen and (max-width:1368px){
+
+}
+#coolHotBox{
+  height:100%;
+  width:100%;
+}
+
+
+@media (max-width: 1400px) {
+  #coolHotBox, .datetimepicker{
+    zoom: 0.75;
+  }
+
+}
+
+.trendyPlane{
+  position:relative;
+  width:100%;
+  height:calc(54% - 10px);
+  border:1px solid #364459;
+  border-radius:2px;
+}
+.trendyPlaneTitle{
+  height:5rem;
+  line-height:5rem;
+  text-align:center;
+  font-size:1.8rem;
+}
+#TimeQuery{
+    position:absolute;
+	width:100%;
+	height:75px;
+	padding-left:20px;
+	padding-top:10px;
+    z-index:200;
+}
+#TimeQuery .divTimeRange{
+    display: block;
+    float:left;
+    width: 500px;
+}
+#TimeQuery .timeText{
+	width:25px;
+	height:34px;
+	text-align: center;
+    background: #222d43;
+    border: 1px solid #2d3b50;
+
+}
+#btnPreMonth{
+    border-top-left-radius:3px;
+    border-bottom-left-radius:3px;
+}
+#btnNextMonth{
+    border-top-right-radius:3px;
+    border-bottom-right-radius:3px;
+}
+.btnTime{
+    position: relative;
+    width:100px;
+    height: 34px;
+    padding: 0px 12px;
+    font-size: 14px;
+    color: #a7b5ca;
+    background:#222d43;
+    border-top:1px solid #2d3b50;
+    border-bottom:1px solid #2d3b50;
+    border-left:none;
+    border-right:none;
+    background:url(/static/app/WebFactory/themes/default/images/calendar.svg) no-repeat  75px 5px;
+}
+.kdechartPlane{
+  width:100%;
+  height:calc(100% - 5rem);
+}
+
+.ichnography{
+    position:relative;
+    margin-top:10px;
+    width:100%;
+    height:45%;
+    border:1px solid #364459;
+    border-radius:2px;
+  
+}
+#backHome{
+  position:absolute;
+  z-index:200;
+  width:30px;
+  height:30px;
+  top:20px;
+  left:20px;
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid #333;
+  background: rgba(100,100,100,0.5);
+  border-radius: 4px;
+  cursor:pointer;
+}
+.divBack{
+  width:calc(100% - 20px);
+  height:60px;
+  padding:15px 10px;
+  background:#1e293d;
+  margin-left:10px;
+  margin-right:10px;
+}
+.btnBack{
+  width:100px;
+  height:30px;
+  line-height: 30px;
+  border-radius:5px;
+  text-align: center;
+  background:#C0C2C7;
+  color: #333;
+  cursor:pointer;
+}
+</style>
+
+<div id="coldHotDetail">
+  <div class="divBack"><div class="btnBack"><span class="glyphicon glyphicon-chevron-left"></span>返回</div></div>
+    <div class="temperatureNav">
+        <div class="statistics active" data-type="tooColdTooHot">过冷过热统计</div>
+        <div class="statistics" data-type="controlEffect">控制效果统计</div>
+        <div class="statistics" data-type="temperatureSet">温度设定统计</div>
+    </div>
+    <div id="temperatureSum">
+        <div id="coolHotBox">
+            <div class="coldOrHot">
+                <div class="coldOrHotTitle">温度汇总</div>
+                <div class="coldOrHotSmTitle"></div>
+                <div class="coldOrHotCycle clearfix">
+                    <div class="col-xs-6 text-center clearfix" style="position:relative">
+                        <div id="tooCold"><div class="tooColdTextNum"></div></div>
+                        <div class="tooColdRight">
+                            <div class="toolCodeTitle"><span class="iconfont icon-weibiaoti--3" style="color:rgb(68,123,229);font-size:18px;margin-right:5px"></span><span class="tooColdText">过冷区域数</span></div>
+                            <div class="toolCodeLag"><span class="degreeLabel">标准</span> ： <span class="coolingFlag">20</span>℃</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 text-center clearfix" style="position:relative">
+                        <div id="tooHot"><div class="tooHotTextNum"></div></div>
+                        <div class="tooColdRight">
+                            <div class="toolCodeTitle"><span class="iconfont icon-weibiaoti--1" style="color:rgb(228,175,0);font-size:18px;margin-right:5px"></span><span class="tooHotText">过热区域数</span></div>
+                            <div class="toolCodeLag"><span class="degreeLabel1">标准</span> ：  <span class="sethotFlag">20</span>℃</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="floorColdOrHot gray-scrollbar">
+                    <table class="coldOrHotTable">
+                        <thead>
+                            <!--<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+<th>H</th>
+<th>J</th>
+</tr>-->
+                        </thead>
+                        <tbody>
+                          <!--  <tr>
+                                <td class="tdColumn"></td>
+                                <td class="thTitle">1F</td>
+                                <td class="thTitle">2F</td>
+                                <td class="thTitle">3F</td>
+                                <td class="thTitle">4F</td>
+                                <td class="thTitle">5F</td>
+                            </tr>
+                            <tr>
+                                <td class="thTitle tdColumn">A</td>
+                                <td data-zone="VAV_A_1" data-link-to="1470119747271456179fd22f" data-link-type="DiagnosisScreen">2/30</td>
+                                <td data-zone="VAV_A_2" data-link-to="14708217168754560ffef6b4" data-link-type="DiagnosisScreen">4/30</td>
+                                <td data-zone="VAV_A_3" data-link-to="1470821845612456e13a83a0" data-link-type="DiagnosisScreen">3/30</td>
+                                <td data-zone="VAV_A_4" data-link-to="14708218816484560342a7d4" data-link-type="DiagnosisScreen">3/30</td>
+                                <td data-zone="VAV_A_5" data-link-to="1470821916252456e394107c" data-link-type="DiagnosisScreen">4/30</td>
+                            </tr>
+                            <tr>
+                                <td class="thTitle tdColumn">B</td>
+                                <td data-zone="VAV_B_1" data-link-to="14703094997674569a857a6e" data-link-type="DiagnosisScreen">1/28</td>
+                                <td data-zone="VAV_B_2" data-link-to="1470905503443456ca17587e" data-link-type="DiagnosisScreen">3/28</td>
+                                <td data-zone="VAV_B_3" data-link-to="14709734987804563ea57fb8" data-link-type="DiagnosisScreen">2/28</td>
+                                <td data-zone="VAV_B_4" data-link-to="14709880227634566a459045" data-link-type="DiagnosisScreen">4/28</td>
+                                <td data-zone="VAV_B_5" data-link-to="1471080991753456d3ef8ddc" data-link-type="DiagnosisScreen">6/28</td>
+                            </tr>
+                            <tr>
+                                <td class="thTitle tdColumn">C</td>
+                                <td data-zone="VAV_C_1" data-link-to="147031020677745623ebd0e9" data-link-type="DiagnosisScreen">2/32</td>
+                                <td data-zone="VAV_C_2" data-link-to="1470910432653456ce211b22" data-link-type="DiagnosisScreen">3/32</td>
+                                <td data-zone="VAV_C_3" data-link-to="14709748105614564b4bd6dd" data-link-type="DiagnosisScreen">1/32</td>
+                                <td data-zone="VAV_C_4" data-link-to="1470991840233456c7a6c79a" data-link-type="DiagnosisScreen">2/32</td>
+                                <td data-zone="VAV_C_5" data-link-to="14710989796394564fd94442" data-link-type="DiagnosisScreen">4/32</td>
+                            </tr>
+                            <tr>
+                                <td class="thTitle tdColumn">D</td>
+                                <td data-zone="VAV_D_1" data-link-to="1470190963070456f149c063" data-link-type="DiagnosisScreen">2/26</td>
+                                <td data-zone="VAV_D_2" data-link-to="1470822643100456cccdb1bd" data-link-type="DiagnosisScreen">3/26</td>
+                                <td data-zone="VAV_D_3" data-link-to="1471275674777456fe430893" data-link-type="DiagnosisScreen">2/26</td>
+                                <td data-zone="VAV_D_4" data-link-to="147127574262045611eafefe" data-link-type="DiagnosisScreen">3/26</td>
+                                <td data-zone="VAV_D_5" data-link-to="1471275873782456ba43ea72" data-link-type="DiagnosisScreen">1/26</td>
+                            </tr>
+                            <tr>
+                                <td class="thTitle tdColumn">E</td>
+                                <td data-zone="VAV_E_1" data-link-to="1470205574608456935ba585" data-link-type="DiagnosisScreen">1/15</td>
+                                <td data-zone="VAV_E_2" data-link-to="14708227795844564cc43c4a" data-link-type="DiagnosisScreen">1/15</td>
+                                <td data-zone="VAV_E_3">3/15</td>
+                                <td data-zone="VAV_E_4" data-link-to="14708228068644560d512bab" data-link-type="DiagnosisScreen">2/15</td>
+                                <td data-zone="VAV_E_5" data-link-to="1470822822496456a34d53f4" data-link-type="DiagnosisScreen">2/15</td>
+                            </tr>
+                            <tr>
+                                <td class="thTitle tdColumn">F</td>
+                                <td data-zone="VAV_F_1" data-link-to="14702056249354565241d9b6" data-link-type="DiagnosisScreen">3/16</td>
+                                <td data-zone="VAV_F_2" data-link-to="1470822886971456b94ca654" data-link-type="DiagnosisScreen">2/16</td>
+                                <td data-zone="VAV_F_3" data-link-to="14708229028754563ee30764" data-link-type="DiagnosisScreen">1/16</td>
+                                <td data-zone="VAV_F_4" data-link-to="147082292367545625a06d3a" data-link-type="DiagnosisScreen">2/16</td>
+                                <td data-zone="VAV_F_5" data-link-to="1470822943412456d8490ce7" data-link-type="DiagnosisScreen">1/16</td>
+                            </tr>
+                            <tr>
+                                <td class="thTitle tdColumn">G</td>
+                                <td data-zone="VAV_G_1" data-link-to="147031048461745687c08ffb" data-link-type="DiagnosisScreen">2/28</td>
+                                <td data-zone="VAV_G_2" data-link-to="1470918747035456614c3acc" data-link-type="DiagnosisScreen">3/28</td>
+                                <td data-zone="VAV_G_3" data-link-to="14709811604234561c25245f" data-link-type="DiagnosisScreen">1/28</td>
+                                <td data-zone="VAV_G_4" data-link-to="1470998641364456ea951a99" data-link-type="DiagnosisScreen">3/28</td>
+                                <td data-zone="VAV_G_5" data-link-to="1471182389104456f6adfafb" data-link-type="DiagnosisScreen">2/28</td>
+                            </tr>
+                            <tr>
+                                <td class="thTitle tdColumn">H</td>
+                                <td data-zone="VAV_H_1" data-link-to="14703106791624569bc2f72f" data-link-type="DiagnosisScreen">1/24</td>
+                                <td data-zone="VAV_H_2" data-link-to="14709199425044563ba4d239" data-link-type="DiagnosisScreen">3/34</td>
+                                <td data-zone="VAV_H_3" data-link-to="14709824411864562813e9c3" data-link-type="DiagnosisScreen">2/34</td>
+                                <td data-zone="VAV_H_4" data-link-to="14709994935104566789f527" data-link-type="DiagnosisScreen">2/34</td>
+                                <td data-zone="VAV_H_5" data-link-to="1471184201437456686c6ba0" data-link-type="DiagnosisScreen">1/34</td>
+                            </tr>
+                            <tr>
+                                <td class="thTitle tdColumn">J</td>
+                                <td data-zone="VAV_J_1" data-link-to="147031089471345634d233f5" data-link-type="DiagnosisScreen">1/22</td>
+                                <td data-zone="VAV_J_2" data-link-to="14709672743104567e1313f5" data-link-type="DiagnosisScreen">2/22</td>
+                                <td data-zone="VAV_J_3" data-link-to="147098435333845659dd8405" data-link-type="DiagnosisScreen">1/22</td>
+                                <td data-zone="VAV_J_4" data-link-to="14710004844684569be69a66" data-link-type="DiagnosisScreen">3/22</td>
+                                <td data-zone="VAV_J_5" data-link-to="1471185522497456fc41ed1d" data-link-type="DiagnosisScreen">2/22</td>
+                            </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="temperatureTre">
+        <div class="trendyPlane" style="background:#1e293d;">
+          <div class="trendyPlaneTitle">温度超标趋势图</div>
+            <div id="TimeQuery">
+                <div class="divTimeRange">
+                    <div class="input-group divIptGrpDateTime" style="width: 100%;">
+                        <button class="timeText" id="btnPreMonth"><span
+                                            class="glyphicon glyphicon-chevron-left"></span></button>
+                        <input class="btnTime" id="iptTimeStart" size="16" type="text" data-format="yyyy-mm-dd hh:ii" datetimepicker="">
+                        <button class="timeText" id="btnNextMonth"><span
+                                            class="glyphicon glyphicon-chevron-right"></span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="kdechartPlane"></div>
+        </div>
+        <div class="ichnography">
+            <div id="backHome"><span class="iconfont icon-2"></span></div>
+            <div id="floorMap" style="width: 100%;height: 100%;position: relative;"></div>
+        </div>
+    </div>
+</div>

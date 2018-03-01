@@ -1,0 +1,102 @@
+{% extends "wxTemplate.html" %}
+{% block title %}我的关注{% endblock %}
+{% block style %}
+    <style type="text/css">
+        .icon{
+            max-width: 32px;
+            max-height: 32px;
+            position: relative;
+            right: 20px;
+        }
+
+        .panel-color{
+            border-color: #4d749b;
+        }
+
+        .panel-color>.panel-heading {
+            color: white;
+            background-color: #98b4d0;
+            border-color: #4d749b;
+        }
+
+        body{
+            background-color: #ebebeb;
+        }
+
+        li.list-group-item div:not(.icon-col){
+            padding: 5px 0;
+        }
+
+        .list-group-item-deep-color{
+            color: black;
+            background-color: #eaf0f6;
+            border-top: 1px solid #4d749b;
+        }
+
+        .list-group-item-color{
+            color: black;
+            background-color: #f5f8fa;
+            border-top: 1px solid #4d749b;
+        }
+
+        .mt-10{
+            margin-top: 10px
+        }
+
+        .list-group-item .value{
+            min-width: 90px
+        }
+
+        .list-group-item .title{
+            padding-left: 5px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+<div class="container mt-10">
+    <div class="row">
+        <div class="col-xs-12 lists">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="/static/scripts/lib/jquery-1.11.1.min.js"></script>
+<script>
+        $(function() {
+            var userid = 1;
+            WebAPI.get('/getMyfavorite/' + 1).done(function(result){
+
+                try{
+                    var data = JSON.parse(result)
+                }catch(e){
+                    $('.favorite-list').append('<div class="list-group-item list-group-item-danger">服务器出错!请联系管理员。</div>')
+                }
+                
+                for(var n=0, nlen=data.length; n<nlen; n++){
+                    var group = data[n], groupNm = group.groupName, listData = group.listData
+                    var list = $('<div class="panel panel-color"><div class="panel-heading">' + groupNm + '</div><ul class="list-group favorite-list"></ul></div>')
+                    for(var m=0, mlen=listData.length; m < mlen; m++){
+                        var item = listData[m];
+                        var li = $('<li class="list-group-item clearfix '+ (m % 2 === 1 ? 'list-group-item-deep-color': 'list-group-item-color')  +'"><div class="col-xs-1 icon-col"><img class="icon"></img></div><div class="col-xs-5 title"></div><div class="col-xs-3 value"></div><div class="col-xs-2 unit"></div></li>');
+                        li.find('.title').append(item.displayName);
+                        var value = item.pointValue;
+                        if(item.displayFormat.indexOf('f')>0){
+                            value = Number(value).toFixed(item.displayFormat.match(/\.(\d)/)[1])
+                        }
+                        if(!value){
+                            value = '--'
+                        }
+                        li.find('.value').text(value);
+                        li.find('.unit').text(item.displayUnit);
+                        li.find('.icon').attr('src', 'http://images.rnbtech.com.hk/static/images/' + item.displayType + '.png');
+                        list.find('.favorite-list').append(li);
+                        
+                    }
+                    $('.lists').append(list);
+                }
+            })
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,97 @@
+<style>
+    #modalInteract, #modalInteract .modal-backdrop {position: absolute;}
+    .tab-host #modalInteract{
+        display: block;
+        position: fixed;
+        right: 20%;
+}
+    .divDataGrid {
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+    .divDsGridNum {
+        width: 20px;
+        display: inline-block;
+        vertical-align: super;
+    }
+    .divDsGridItem {
+        width: 80%;
+        margin: 0px 10px 10px 10px;
+        padding: 5px 10px 5px 10px;
+        border-radius: 5px;
+        background-color: #ffffff;
+        border: 1px solid transparent;
+        color: #4c9f42;
+        cursor: pointer;
+        font-size: 14px;
+        height: 30px;
+    }
+    .divDsGridItem .contentDS{
+        display: inline-block;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 65%;
+        white-space: nowrap;
+    }
+    .divDsGridItem .dsUnit{
+        width: 40px;
+        height: 25px;
+        float: right;
+        margin: -3px 5px 0 0;
+    }
+    .divDsGridItem .btnRemoveDS{
+        top: 2px;
+        color: #ccc;
+        float: right;
+    }
+    .divDsGridItem:hover .btnRemoveDS{
+        color:orange;
+    }
+    .divDsGrid {
+        width: 50%;
+    }
+</style>
+
+<div class="modal" id="modalInteract" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: #efeeee">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" i18n="modalConfig.TITLE">Config</h4>
+            </div>
+            <div class="modal-body form-wrap">
+
+                <div class="modal-body" id="dataConfig" style="display: block; height: 100%;">
+                    <div class="divConfigData" datatype="X">
+                        <div class="dataTypeName" i18n="modalConfig.data.DATA_CONFIG_TITLE">Data Points</div>
+                        <!--
+                        <span class="chartPointCog glyphicon glyphicon-cog grow" style="display: none;"></span>
+                        -->
+                        <div class="row" id="divDataGrid">
+                            <!--
+                            <div class="col-lg-3 col-xs-4 divDsGrid">
+                                <span class="divDsGridNum">1</span>
+                                <span class="divDsGridItem grow" dsid="5609f4cf77d2f00ee8a7487c">
+                                    <span class="contentDS" title="AverageLoad2">AverageLoad2</span>
+                                    <span class="glyphicon glyphicon-remove btnRemoveDS" aria-hidden="true"></span>
+                                    <input type="text" class="form-control dsUnit" value="%">
+                                </span>
+                            </div>
+                            -->
+
+                            <div class="dataDragTip divDsGrid col-lg-3 col-xs-4">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </div>
+
+                        </div>
+                        <div i18n="modalConfig.data.DATA_CONFIG_TIPS">The max number is 20.</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-submit" id="btnSubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

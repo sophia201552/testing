@@ -1,0 +1,89 @@
+<div class="modal-kpi-config-wrap" id="modalKPIConfigWrap">
+    <style>
+        /*#modalKPIConfig * {border-radius: 0;}*/
+        
+        #modalKPIConfigWrap {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+        
+        #modalKPIConfig,
+        #modalKPIConfig .modal-backdrop {
+            position: absolute;
+        }
+        
+        .tab-host #modalKPIConfig {
+            display: block;
+            position: fixed;
+            right: 20%;
+        }
+        
+        .modal {
+            display: block;
+        }
+        
+        .modal-dialog {
+            width: 400px;
+        }
+        
+        .dataTr {
+            display: flex;
+            cursor: pointer;
+            border-top: 1px solid #ccc;
+        }
+        
+        .dataHead {
+            width: 100%;
+            height: 25px;
+            justify-content: space-between;
+        }
+        
+        .dataTr:hover {
+            
+        }
+        
+        .dataTr span {
+            padding: 10px;
+            text-align: center;
+        }
+        
+        #backAdmin {
+            /*  padding: 0 6px;*/
+        }
+        
+        #backAdmin .iconfont {
+            font-size: 22px;
+        }
+        #backAdmin:hover{
+            background: #46b8da;
+        }
+        #adminContent{
+            height: 500px;
+            overflow-y: auto;
+        }
+    </style>
+    <div class="modal in" id="modalKPIConfig" data-backdrop="static">
+        <div class="modal-backdrop in"></div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" id="btnCloseAccount" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">账户切换</h4>
+                </div>
+                <div class="modal-body" id="formWrap">
+                    <div class="form-horizontal">
+                        <div class="dataHead">
+                            <span>当前账号:</span><span id="curAccount" style="padding-left: 5px;">管理员账号</span>
+                        </div>
+                        <div id="adminContent" class="gray-scrollbar">
+                            <div class="btn btn-default" id="backAdmin" style="display: block;">管理员账号</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿<style>
+    #workflow-set {
+        background: #fff;
+        min-height: 600px;
+    }
+
+    .mt50 {
+        margin-top: 50px;
+    }
+
+    .wd80 {
+        width: 80px;
+    }
+
+    #workflow-set ul, li {
+        list-style: none;
+    }
+
+    #workflow-set ul {
+        padding-left: 0;
+        -webkit-user-select: none;
+    }
+
+    .tc {
+        text-align: center;
+    }
+
+    #workflow-set h1 {
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    #workflow-set li {
+        margin: 5px 0;
+    }
+
+    #workflow-set input[checkbox] {
+        margin-right: 5px;
+        position: relative;
+        top: 1px;
+    }
+
+    #mailNotifiOptionsUl {
+        margin: 20px auto 10px auto;
+        width: 185px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .mailErrorInfo em {
+        margin-right: 5px;
+        vertical-align: sub;
+    }
+
+</style>
+<div class="col-xs-8 col-xs-offset-2">
+    <div class="col-xs-12 mt50" id="workflow-set">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 i18n="workflow.set.EMAIL_NOTIFICATION_OPTION"></h1>
+
+                <div class="col-xs-12">
+                    <ul id="mailNotifiOptionsUl">
+                    </ul>
+                </div>
+                <div class="tc">
+                    <button id="btnSet" type="button" class="btn btn-primary tc wd80"
+                            style="position: relative;top:25px;" i18n="workflow.set.CONFIRM"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="settingListTmpl">
+    <!for(var prop in obj){!>
+    <li>
+        <div class="input-group">
+              <span class="input-group-addon">
+                <!if(obj[prop].isChecked){!>
+                    <input type="checkbox" id="<!=prop!>" name="mailNotifiOptions" value="<!=prop!>" checked/>
+                <!}else{!>
+                    <input type="checkbox" id="<!=prop!>" name="mailNotifiOptions" value="<!=prop!>"/>
+                <!}!>
+              </span>
+            <label class="form-control" for="<!=prop!>"><!=obj[prop].text!></label>
+        </div>
+    </li>
+    <!}!>
+</script>

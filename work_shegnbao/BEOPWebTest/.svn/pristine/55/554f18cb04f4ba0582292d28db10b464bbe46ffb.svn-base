@@ -1,0 +1,163 @@
+<div id="templateEditorModalWrap" class="stretch">
+<style>
+.stretch {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+#templateEditorModalWrap {
+    z-index: 1999;
+    background-color: #fff;
+}
+#templateEditorModal {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#header { background-color: #333; }
+#header .close {
+    float: right;
+    font-size: 20px;
+    color: #fff;
+    opacity: .5;
+    text-shadow: none;
+    line-height: 20px;
+}
+#header .close:hover {
+    opacity: .8;
+}
+
+/* layout styles */
+#content {
+    top: 40px;
+}
+#content .column {
+    display: block;
+    height: 100%;
+    width: 50%;
+}
+#content .left {
+    left: 0;
+    position: absolute;
+}
+#content .right {
+    right: 0;
+    position: absolute;
+}
+
+/* handler styles */
+
+
+/* box styles */
+#content .box {
+    width: 100%;
+}
+.box-top {
+    height: 40%;
+    top: 0;
+    border-bottom: 1px solid #cfd6d9;
+}
+.box-bottom {
+    height: 60%;
+    bottom: 0;
+}
+.box-top, .box-bottom {
+    position: absolute;
+    border-right: 1px solid #cfd6d9;
+}
+#content textarea, #content iframe {
+    min-width: 100px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+#content .CodeMirror {
+    line-height: 1.55em;
+    font-size: 12px;
+    font-family: "Fira Mono",Monaco,"Andale Mono","Lucida Console","Bitstream Vera Sans Mono","Courier New",Courier,monospace;
+    overflow: hidden;
+    height: 100%;
+    background: 0 0;
+    color: #39464E;
+}
+#content .box-label {
+    border: 1px solid rgba(255,255,255,0);
+    background: rgba(243,245,246,.8);
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    text-align: center;
+    font-size: 11px;
+    border-radius: 20px;
+    color: #7f94a1;
+    line-height: 23px;
+    padding: 0 7px;
+    z-index: 30;
+    letter-spacing: 1px;
+
+    transition: all .1s;
+}
+#content .box-label:hover {
+    border: 1px solid #1C90F3;
+    color: #1C90F3;
+    text-decoration: none;
+}
+#content .box-label i {
+    margin-left: 5px;
+}
+
+</style>
+<div id="templateEditorModal">
+    <div class="container-fluid" id="header">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="javascript:;">代码编辑器</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+            <ul class="nav navbar-nav">
+                <li><a href="javascript:;" id="btnRunCode">运行代码</a></li>
+                <li><a href="javascript:;" id="btnSaveAndExit">保存并退出</a></li>
+            </ul>
+            <div class="navbar-text navbar-right">
+                <button type="button" class="close"><span aria-hidden="true">×</span></button>
+            </div>
+        </div>
+    </div>
+    <form id="formResult" action="/codePreview" method="post" target="result">
+        <div class="stretch" id="content">
+            <div class="column left">
+                <div class="box box-top">
+                    <textarea id="idCodeVar" rows="10" cols="40" name="codeVar" style="display: none;"></textarea>
+                    <a href="javascript:;" class="box-label" id="btnVarRefresh">
+                        <span>VARIABLE<i class="glyphicon glyphicon-refresh"></i></span>
+                    </a>
+                </div>
+                <div class="box box-bottom">
+                    <textarea id="idCodeTemplate" rows="10" cols="40" name="codeTemplate" style="display: none;"></textarea>
+                    <a href="javascript:;" class="box-label">
+                        <span>TEMPLATE</span>
+                    </a>
+                </div>
+            </div>
+            <div class="column right">
+                <div class="box box-top">
+                    <textarea id="idCodeJs" rows="10" cols="40" name="codeJs" style="display: none;"></textarea>
+                    <a href="javascript:;" class="box-label">
+                        <span>CODE</span>
+                    </a>
+                </div>
+                <div class="box box-bottom">
+                    <iframe name="result" id="frmResult" sandbox="allow-forms allow-popups allow-scripts allow-same-origin allow-modals" frameborder="0"></iframe>
+                    <a href="javascript:;" class="box-label">
+                        <span>RESULT</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</div>

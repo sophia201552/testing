@@ -1,0 +1,1364 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Asset Management</title>
+    {% assets "asset_css_bundle" %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+    {% endassets %}
+</head>
+<body>
+<div id="diagnosisDetailWin" class="modal fade in">
+    <div class="modal-dialog mt100">
+        <div class="modal-content" style="background-color:mintcream; font-size: 15px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">新建故障工单</h4>
+            </div>
+            <div class="modal-body oh">
+                <div id="diagnosisDetailInfoBox"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="wrapper" style="position: fixed">
+    <div id="paneDock"></div>
+    <div id="paneAssetFilter">
+    </div>
+    <div id="paneAssetList" style="display: none;">
+        <div class="panel-titlebar disable-selection">
+            <div class="panel-titlebar-text"><i class="icon-circle-arrow-right"></i> 设备列表</div>
+            <span id="spanPath" class="panel-titlebar-text" style="margin-left: 6px; font-weight: normal;"></span>
+            <!--<div class="panel-titlebar-button-close"><i class="icon-remove"></i><span class="glyphicon glyphicon-export" style="cursor: pointer;" title="导出"></span></div>-->
+            <span id="totalEquipment" style="float: right;margin: 3px 45px 3px 10px;"></span>
+        </div>
+        <div class="gray-scrollbar" style=" height: 100%; overflow-x: hidden; overflow-y: auto; padding: 5px;">
+            <table class="table table-bordered  table-striped table-hover" id="tbAsset" cellpadding="1" cellspacing="1">
+                <thead>
+                <tr>
+                    <!--
+                    <th>类型</th>
+                    <th>名称</th>
+                    <th>描述</th>
+                    <th>责任人</th>
+                    <th>更新时间</th>
+                    <th>到期时间</th>
+                    <th>状态</th>
+                    -->
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+        </div>
+        <div id="paneProjectConfig">
+            <div class="panel-titlebar">
+                <div class="panel-titlebar-text">项目配置</div>
+                <span id="spanPath" class="panel-titlebar-text" style="margin-left: 6px; font-weight: normal;"></span>
+                <!--<div class="panel-titlebar-button-close"><i class="icon-remove"></i><span class="glyphicon glyphicon-export" style="cursor: pointer;" title="导出"></span></div>-->
+            </div>
+            <div class="gray-scrollbar" id="projConfigContent"
+                 style="height: 100%; overflow-x: hidden; overflow-y: auto; padding: 5px;">
+                <div class="divConfigPart" style="width: 100%; height: 60px;">
+                    <label for="iptProjectName">名称</label>
+                    <input id="iptProjectName" class="form-control"/>
+                </div>
+                <div class="divConfigPart" style="width: 100%; height: calc(50% - 60px);">
+                    <label id="labelProjectAttr" style="float: left; width: 100px;">置顶属性</label>
+
+                    <div id="divProjectAttr"
+                         style="height: 100%; width: calc(100% - 100px); float: left; padding: 5px;">
+
+                    </div>
+                </div>
+                <div class="divConfigPart" style="width: 100%; height: calc(50% - 60px);">
+                    <label id="labelProjectDevice" style="float: left; width: 100px;">设备</label>
+
+                    <div id="divProjectDevice"
+                         style="height: 100%; width: calc(100% - 100px); float: left; padding: 5px;">
+
+                    </div>
+                </div>
+                <div class="divFooterGrp" style="width: 100%; height: 60px;">
+                    <div class="btnSure btn btn-primary" style="background-color: #2786e4">确定</div>
+                    <div class="btnCancel btn btn-default">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 基本信息 start -->
+    <div role="tabpanel" class="tab-pane paneInfo gray-scrollbar gray-scrollbar" id="tabBaseInfo"
+         aria-labelledby="baseInfo-tab" style="display: none;">
+        <div class="tabPanelToolBox">
+            <span id="btnEditBaseInfo" class="btnTool glyphicon glyphicon-edit" title="编辑"></span>
+                <span id="btnSaveBaseInfo" class="btnTool glyphicon glyphicon-ok-sign" style="display: none;"
+                      title="保存"></span>
+                <span id="btnCancelBaseInfo" class="btnTool glyphicon glyphicon-remove-sign" style="display: none;"
+                      title="取消"></span>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="iptAssetName">名称</label>
+                <input type="text" class="form-control divValue" id="iptAssetName" disabled>
+            </div>
+            <div class="form-group">
+                <label for="selStatus">状态</label>
+                <select class="form-control divValue" id="selStatus" disabled>
+                    <option value="0">外借</option>
+                    <option value="1">外修</option>
+                    <option value="2">使用</option>
+                    <option value="3">仓库</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="iptAssetId">ID</label>
+                <input type="text" class="form-control divValue" id="iptAssetId" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="iptDescription">描述</label>
+                <input type="text" class="form-control divValue" id="iptDescription" disabled>
+            </div>
+            <div class="form-group">
+                <label for="iptBrand">品牌</label>
+                <input type="text" class="form-control divValue" id="iptBrand" disabled>
+            </div>
+            <div class="form-group">
+                <label for="iptAssetType">资产类型</label>
+                <input type="text" class="form-control divValue" id="iptAssetType" disabled>
+            </div>
+            <div class="form-group">
+                <label for="iptAssetTag">标签</label>
+                <input type="text" class="form-control divValue" id="iptAssetTag" disabled>
+            </div>
+            <div class="form-group">
+                <label for="iptSerialNum">序列号</label>
+                <input type="text" class="form-control divValue" id="iptSerialNum" disabled>
+            </div>
+            <div class="form-group">
+                <label for="iptManager">责任人</label>
+                <input type="text" class="form-control divValue" id="iptManager" disabled>
+            </div>
+
+            <br/>
+            <hr/>
+            <div class="form-group">
+                <label for="iptSupplier">供应商</label>
+                <input type="text" class="form-control divValue" id="iptSupplier" disabled>
+            </div>
+            <div class="form-group">
+                <label for="iptPurchaser">采购人</label>
+                <input type="text" class="form-control divValue" id="iptPurchaser" disabled>
+            </div>
+            <div class="form-group">
+                <label for="iptBuyPrice">购置价格</label>
+                <input type="text" class="form-control divValue" id="iptBuyPrice"
+                       onkeyup="this.value=this.value.replace(/\D/g,'')"
+                       onafterpaste="this.value=this.value.replace(/\D/g,'')" disabled>
+            </div>
+            <div class="form-group">
+                <label for="iptBuyTime">购置时间</label>
+                <input type="text" class="form-control divValue datetimepicker" id="iptBuyTime" disabled
+                       data-format="yyyy-mm-dd" datetimepicker/>
+            </div>
+            <div class="form-group">
+                <label for="iptOvertime">过保时间</label>
+                <input type="text" class="form-control divValue datetimepicker" id="iptOvertime" disabled
+                       data-format="yyyy-mm-dd" datetimepicker/>
+            </div>
+            <div class="form-group">
+                <label for="iptUseTime">投入使用</label>
+                <input type="text" class="form-control divValue datetimepicker" id="iptUseTime" disabled
+                       data-format="yyyy-mm-dd" datetimepicker/>
+            </div>
+            <div class="form-group">
+                <label for="iptEndTime">到期时间</label>
+                <input type="text" class="form-control divValue datetimepicker" id="iptEndTime" disabled
+                       data-format="yyyy-mm-dd" datetimepicker/>
+            </div>
+            <div class="form-group">
+                <label for="iptProductTime">出厂时间</label>
+                <input type="text" class="form-control divValue datetimepicker" id="iptProductTime" disabled
+                       data-format="yyyy-mm-dd" datetimepicker/>
+            </div>
+            <div class="form-group">
+                <label for="iptServiceLife">使用寿命</label>
+                <input type="text" class="form-control divValue" id="iptServiceLife" disabled/>
+            </div>
+            <div class="form-group">
+                <label for="iptProductArea">产地</label>
+                <input type="text" class="form-control divValue" id="iptProductArea" disabled/>
+            </div>
+            <br/>
+            <hr/>
+            <div class="form-group" style="display: block;width: 100%;">
+                <label for="txtRemark">备注</label>
+                    <textarea id="txtRemark" class="form-control divValue" rows="4"
+                              style="width: calc(100% - 100px);border: 1px solid #666;" disabled></textarea>
+            </div>
+            <div class="form-group">
+                <label style="width: 100%;">设备照片</label>
+                <input type="file" class="form-control" id="iptAssetPhoto" accept="image/*" style="display: none;"/>
+
+                <div id="divAssetImg" style="margin-top: 30px;"></div>
+                <div id="divQRCodeImg"></div>
+            </div>
+        </div>
+    </div>
+    <!-- 基本信息 end -->
+    <!-- 铭牌信息 start -->
+    <div role="tabpanel" class="tab-pane paneInfo gray-scrollbar" id="tabNameplate" aria-labelledby="nameplate-tab">
+        <div class="tabPanelToolBox">
+            <span id="btnEditNameplate" class="btnTool glyphicon glyphicon-edit" title="编辑"></span>
+                <span id="btnSaveNameplate" class="btnTool glyphicon glyphicon-ok-sign" title="保存"
+                      style="display:none"></span>
+                <span id="btnCancelNameplate" class="btnTool glyphicon glyphicon-remove-sign" title="取消"
+                      style="display:none"></span>
+        </div>
+        <div id="nameplateType" class="form-inline"></div>
+        <div id="divNameplate" class="form-inline"></div>
+        <button type="button" class="btn btn-default btn-block active" id="btnAddNameplate" style="display:none;"><span
+                class="btnTool glyphicon glyphicon-plus" title="增加"></span></button>
+    </div>
+    <!-- 铭牌信息 end -->
+    <!-- 实时数据 start -->
+    <div role="tabpanel" class="tab-pane paneInfo gray-scrollbar" id="tabRealtimeData"
+         aria-labelledby="realtimeData-tab">
+        <div class="tabPanelToolBox">
+            <span id="btnJoinAnalysis" class="btnTool glyphicon glyphicon-log-out" title="添加到数据分析"></span>
+            <span id="btnHistory" class="btnTool glyphicon glyphicon-equalizer" title="查看历史"></span>
+            <span id="btnEditDs" class="btnTool glyphicon glyphicon-edit" title="编辑点位" disabled></span>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group" style="display: block; text-align: center;">
+                <label id="equipType" style="float:none; font-size: 16px; color: #f90; margin-bottom: 10px;"></label>
+            </div>
+        </div>
+
+        <div class="form-inline" id="divRealtimeAttrs">
+
+        </div>
+    </div>
+    <!-- 实时数据 end -->
+
+    <!-- 预防性维护 start -->
+    <div role="tabpanel" class="tab-pane paneInfo gray-scrollbar dn tab_marginLeft" id="tabPreventiveMaintain"
+         aria-labelledby="diagnosis-tab">
+
+    </div>
+    <!-- 预防性维护 end -->
+
+    <!-- 维修记录 start -->
+    <div role="tabpanel" class="tab-pane paneInfo gray-scrollbar dn" id="tabMaintainRecord"
+         aria-labelledby="diagnosis-tab">
+    </div>
+    <!-- 维修记录 end -->
+
+    <!-- 零配件 start -->
+    <div role="tabpanel" class="tab-pane paneInfo gray-scrollbar dn" id="tabSpareParts"></div>
+    <!-- 零配件 end -->
+
+    <!-- 出入库记录 start -->
+    <div role="tabpanel" class="tab-pane paneInfo gray-scrollbar dn" id="tabOutOfStorageRecords"></div>
+    <!-- 出入库记录 end -->
+
+    <!--诊断记录 start-->
+    <div role="tabpanel" class="tab-pane paneInfo gray-scrollbar dn" id="tabDiagnosticRecords"></div>
+    <!--诊断记录  end-->
+
+    <!-- 发布工单 start -->
+    <div role="tabpanel" class="tab-pane paneInfo gray-scrollbar" id="tabWorkflow"
+         aria-labelledby="tabWorkflow-tab"></div>
+    <!-- 发布工单 end -->
+
+    <!-- 历史数据 start -->
+    <div id="paneHisData">
+        <div id="divEchart" style="width: 80%;height: 100%;float: left;"></div>
+        <div id="divLegendWrap" style="width: 20%;height: 100%;float: left;"></div>
+        <div style="clear: both"></div>
+    </div>
+    <!-- 历史数据 end -->
+
+    <!-- 工单详情 start -->
+    <div class="modal fade" id="workOrderDetailModal" style="color: black;display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                        <span class="label label-danger"><span class="glyphicon glyphicon-wrench"
+                                                               aria-hidden="true"></span> 维修</span>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <td class="wf-table-head" width="20%">工单名称</td>
+                            <td width="80%" class="tdWorkOrderTitle"></td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">创建人</td>
+                            <td class="tdWorkOrderCreator"></td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">状态</td>
+                            <td class="tdWorkOrderStatus"></td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">截止时间</td>
+                            <td class="tdWorkOrderDueDate"></td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">紧急程度</td>
+                            <td class="tdWorkOrderCritical"></td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">人工成本</td>
+                            <td class="tdWorkOrderLaborCost"></td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">物料成本</td>
+                            <td class="tdWorkOrderMaterialCost"></td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">税</td>
+                            <td class="tdWorkOrderTax"></td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">服务商</td>
+                            <td class="tdWorkOrderServicer"></td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">工单详情</td>
+                            <td class="tdWorkOrderDetail"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="wfDetail" style="color: black;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                        <span class="label label-danger"><span class="glyphicon glyphicon-wrench"
+                                                               aria-hidden="true"></span> 维修</span>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <td class="wf-table-head" width="20%">维修项目</td>
+                            <td width="80%">9-13F灯具配电箱检查</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">设备名称</td>
+                            <td>9-13F灯具</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">维修详情</td>
+                            <td>9-13F灯具配电箱检查</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">负责人</td>
+                            <td>李道道</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">截止时间</td>
+                            <td>2015/01/05 08:00</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">维护周期</td>
+                            <td>6个月一次</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">提前发送时间</td>
+                            <td>2015/01/02 15:00</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">审核人</td>
+                            <td>任石峰</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">相关人员</td>
+                            <td>岳森，沈兰花</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="wfDetail2" style="color: black;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                        <span class="label label-success"><span class="glyphicon glyphicon-grain"
+                                                                aria-hidden="true"></span> 保养</span>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td class="wf-table-head" width="20%">保养项目</td>
+                            <td width="80%">检查AHU-E-1 温度传感器</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">设备名称</td>
+                            <td>AHU-E-1</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">保养详情</td>
+                            <td>根据诊断系统反馈，该设备送风温度读数较长时间未变化,可能是传感器故障, 请检查相应传感器</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">负责人</td>
+                            <td>golding2</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">截止时间</td>
+                            <td>2016/02/26 08:00</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">维护周期</td>
+                            <td>6个月一次</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">提前发送时间</td>
+                            <td>2015/02/22 15:00</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head">审核人</td>
+                            <td>irenel</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="wfDetail3" style="color: black;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                        <span class="label label-success"><span class="glyphicon glyphicon-grain"
+                                                                aria-hidden="true"></span> 保养</span>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td class="wf-table-head" width="20%">保养项目</td>
+                            <td width="80%">清洗5#冷却水泵过滤器。</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head" width="20%">设备名称</td>
+                            <td width="80%">5#冷却水泵过滤器</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head" width="20%">保养详情</td>
+                            <td width="80%">
+                                近日发现5#螺杆机组单独运行时，冷凝趋近温度非常高，超过6度，严重影响机组运行。经分析后发现，对应的冷却水流量很低。初步怀疑是过滤器脏堵所致。建议清洗5#冷却泵过滤器。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head" width="20%">负责人</td>
+                            <td width="80%">golding2</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head" width="20%">截止时间</td>
+                            <td width="80%">2016/02/25 08:00</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head" width="20%">维护周期</td>
+                            <td width="80%">3个月一次</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head" width="20%">提前发送时间</td>
+                            <td width="80%">2015/02/23 15:00</td>
+                        </tr>
+                        <tr>
+                            <td class="wf-table-head" width="20%">审核人</td>
+                            <td width="80%">irenel</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 工单详情 end -->
+    <div style="clear: both;"></div>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        型号管理面板
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="inpBox"><input id="itemSearch" placeholder="Search" type="type" name="name"
+                                               value=""/>
+                    </div>
+                    <div class="from itemBox">
+                        <ul></ul>
+                    </div>
+                    <div class="to itemBox">
+                        <ul></ul>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">
+                        取消
+                    </button>
+                    <button type="button" id="btnSave" class="btn btn-primary">
+                        确定
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>
+<!--查看图片-->
+<div class="showImg">
+    <span class="btnClose">×</span>
+    <img src="" alt=""/>
+</div>
+<!--Template-->
+<!--@formatter:off-->
+<template id="tpl-tabWorkflow">
+    <div class="tabPanelToolBox workflowToolBox">
+        <span id="btnBack" class="btnTool glyphicon glyphicon-arrow-left" title="返回"></span>
+        <span id="btnEdit" class="btnTool glyphicon glyphicon-pencil" title="编辑"></span>
+        <span id="btnSave" class="btnTool glyphicon glyphicon-ok-sign" title="保存"></span>
+        <span id="btnDelete" class="btnTool glyphicon glyphicon-trash" title="删除"></span>
+        <span id="btnSend" class="btnTool glyphicon glyphicon-send" title="发布"></span>
+    </div>
+    <div class="form-inline">
+        <div class="tab-workflow-content"></div>
+    </div>
+</template>
+<template id="tpl-preventive">
+    <div class="tabPreventiveheader">
+        <div class="tabPreventiveheader_select">
+            <select id="preventiveMaintainSystemType" class="form-control selectStyle">
+                <option value="0">电梯系统</option>
+                <option value="1">给排水系统</option>
+                <option value="2">暖通系统</option>
+                <option value="3">照明系统</option>
+                <option value="4">强电系统</option>
+                <option value="5">弱电系统</option>
+                <option value="6">消防系统</option>
+                <option value="other">其他系统</option>
+                <option value="all" selected>查看全部</option>
+            </select>
+        </div>
+        <div class="addPreventive">
+            <span id="tabHandle" class="glyphicon glyphicon-plus-sign preventiveAdd"></span>
+        </div>
+    </div>
+    <table class="table table-bordered" id="preventiveMaintainTable">
+        <thead>
+        <tr>
+            <th style="min-width:97px;">保养项目</th>
+            <th style="min-width:58px;">周期</th>
+            <th style="min-width:70px;">负责人</th>
+            <th style="min-width:94px;">下次保养</th>
+        </tr>
+        </thead>
+        <tbody id="preventiveMaintainTBody"></tbody>
+    </table>
+</template>
+
+<template id="tpl-record-list">
+    <div class="tabPanelToolBox">
+        <span id="addMaintainRecord" class="btnTool glyphicon glyphicon-plus-sign" title="新增记录"></span>
+    </div>
+    <div style="margin-top:-12px" class="clearfix form-group">
+        <input style="width:135px; text-align: center" class="form-control fl datePicker divValue" type="text" value="" id="maintainRecordStartTime"
+               placeholder="起始时间"
+               data-format="yyyy-mm-dd" datetimepicker="">
+        <input style="width:135px; text-align: center" class="form-control fl datePicker divValue" type="text" value="" id="maintainRecordEndTime" placeholder="结束时间"
+               data-format="yyyy-mm-dd" datetimepicker="">
+        <span class="glyphicon glyphicon-search fl time-search" id="maintainRecordSearch" title="查询"></span>
+    </div>
+    <div class="maintainRecord_table">
+        <table class="table table-bordered" style="margin-top:9px;width:100%">
+            <thead>
+            <tr style="height:35px">
+                <th style="min-width:130px;">时间</th>
+                <th style="min-width:120px;">工作内容</th>
+                <th style="min-width:80px;">负责人</th>
+            </tr>
+            </thead>
+            <tbody id="maintainRecordList">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="maintainRecordPaging">
+        <ul id="maintainRecordPagination" class="pagination"></ul>
+    </div>
+</template>
+<template id="tpl-diagnosis">
+         <div>
+            <div class="form-group clearfix">
+                <input type="text" id="diagnosisStartTime"
+                       class="form-control cp fl datePicker divValue diagnosis-date-picker"
+                       data-date-format="yyyy-mm-dd" placeholder="起始时间">
+                <input type="text" id="diagnosisEndTime"
+                       class="form-control cp fl datePicker divValue diagnosis-date-picker"
+                       data-date-format="yyyy-mm-dd" placeholder="结束时间">
+                <span class="glyphicon glyphicon-search fl time-search diagnosis-search-btn"  title="查询"></span>
+            </div>
+            <div id="paneNoticeItems" class="gray-scrollbar"></div>
+
+        </div>
+</template>
+<script  type="text/html"  id="tpl_diagnosis_item">
+    <!for(var i=0; i < items.length; i++){!>
+        <div class="div-pane-log adNormal" data-points="<!=items[i].points!>">
+            <div style="white-space: nowrap; padding-bottom: 6px;">
+                <!if(items[i].grade === 1){!>
+                    <span class="badge" style="color: rgb(255, 255, 255); background-color: rgba(240, 173, 78, 0.901961);">异 常</span>
+                <!}else if(items[i].grade === 2){!>
+                    <span class="badge" style="color: rgb(255, 255, 255); background-color: rgba(240, 173, 78, 0.901961);">故 障</span>
+                <!}!>
+                <span class="badge grow span-hover-pointer" title="Equipment name"><!=equipment!></span>
+                <span class="diagnosis_time" title="Triggering time" data-time="<!=new Date(items[i].time).format('mm-dd HH:MM')!>" ><!=items[i].time!></span>
+                <span class="glyphicon glyphicon-edit cp diagnosis-detail" title="查看详情"></span>
+            </div>
+            <p class="pFaultName" style="font-weight: bold; padding: 0px 8px 0px 0px;"><!=items[i].name!></p>
+            <p><!=items[i].description!></p>
+        </div>
+    <!}!>
+</script>
+<script  type="text/html" id="tpl-add-maintain-record">
+    <div class="tabPanelToolBox">
+        <span id="cancelAddBtn" class="btnTool glyphicon glyphicon-arrow-left" style="" title="取消"></span>
+        <span id="saveAddBtn" class="btnTool glyphicon glyphicon-ok-sign" style="" title="保存"></span>
+        <span id="deleteRecord" class="btnTool glyphicon glyphicon-trash" title="删除"></span>
+    </div>
+    <div class="form-inline">
+        <div class="form-group clearfix">
+            <label>开始时间</label>
+            <input type="text" class="form-control divValue" id="addStartDate">
+        </div>
+        <div class="form-group clearfix">
+            <label>结束时间</label>
+            <input type="text" class="form-control divValue" id="addEndDate">
+        </div>
+        <div class="form-group clearfix">
+            <label>负责人</label>
+            <input type="text" class="form-control divValue" id="operator">
+        </div>
+        <div class="form-group clearfix">
+            <label>成本</label>
+            <input type="text" class="form-control divValue" id="cost">
+        </div>
+        <div class="form-group clearfix">
+            <label>工作内容</label>
+            <textarea type="text" class="form-control divValue" rows="6" id="workContent" style="overflow:visible"></textarea>
+        </div>
+        <div class="form-group oh upload">
+            <label class="col-md-1 control-label pr0">附件</label>
+            <div class="row taskEditSection wf-task-split col-md-9" id="taskAttachments">
+                <div>
+                    <div id="wf-attachment-labelWrapper" class="mr10 fl">
+                        <ul class="wf-attachment-nav" id="wf-attachment-list-container">
+
+                        </ul>
+                        <div class="files file-add-btn">
+                            <section class="file-type">
+                                    <span id="wf-attachment-input-btn">
+                                        +
+                                    </span>
+                            </section>
+                            <section class="file-info">
+                                <p class="file-time" i18n="workflow.task.ATTACHMENT_INFO"
+                                   style="line-height: 40px;"></p>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="upload-list">
+
+        </div>
+    </div>
+</script>
+<script type="text/html" id="tpl_upload_list">
+    <div class="maintain-upload-list">
+        <ul>
+            <!for(var i = 0,iLen = files.length;i < iLen;i++){!>
+                <li>
+                    <div class="upload-list-content">
+                        <a href="<!=files[i].url!>">
+                            <!if(files[i].fileClass != 'icon-file-pic'){!>
+                            <div class="<!=files[i].fileClass!>"></div>
+                            <!}else{!>
+                            <div style="background-image:url('<!=files[i].url!>')"></div>
+                            <!}!>
+                        </a>
+                        <div class="content-msg">
+                            <p><!=files[i].fileName!></p>
+                            <p><!=files[i].fileUploadTime!></p>
+                        </div>
+                    </div>
+                </li>
+            <!}!>
+        </ul>
+    </div>
+</script>
+<script type="text/html" id="tpl_WorkflowMaintain">
+    <div class="form-group">
+        <label>工单类型</label>
+        <span style="margin-left: 19px; position:relative; font-size:12px; top:6px;">保养</span>
+    </div>
+    <div class="form-group">
+        <label>保养项目</label>
+        <input type="text" id="divWorkOrderMaintainProject" class="form-control divValue" disabled="<!=!editable!>"
+               value="<!=record.title!>">
+    </div>
+    <div class="form-group">
+        <label>生效时间</label>
+        <input type="text" size="16" class="form-control divValue cp" id="takeEffectDatetime" disabled="<!=!editable!>"
+               data-date-format="yyyy-mm-dd" readonly="true" value="<!=record.fields.effectiveDate!>">
+    </div>
+    <div class="form-group">
+        <label>提醒时间</label>
+        <input type="text" id="divWorkOrderRemindTime" class="form-control divValue" disabled="<!=!editable!>"
+               value="<!=record.fields.reminderDay!>">
+        <span class="maintainUnit">天</span>
+    </div>
+    <div class="form-group">
+        <label>保养周期</label>
+        <select id="divWorkOrderMaintainCycle" class="form-control divValue selectStyle" disabled="<!=!editable!>">
+            <option value="4">每两周</option>
+            <option value="0">每月</option>
+            <option value="1">每季度</option>
+            <option value="2">每半年</option>
+            <option value="3">每年</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>计划时长</label>
+        <input type="text" id="divWorkOrderPlanTimeLong" class="form-control divValue" disabled="<!=!editable!>"
+               value="<!=record.fields.duration!>">
+        <span class="maintainUnit">天</span>
+    </div>
+    <div class="form-group">
+        <label>维保详情</label>
+        <textarea id="divWorkOrderMaintenanceDetail" rows=10 class="form-control divValue" disabled="<!=!editable!>"><!=record.fields.detail!></textarea>
+    </div>
+    <div class="form-group">
+        <label class="fl">关联设备</label>
+        <ul id="relatedEquipmentUl" class="ul fl"></ul>
+    </div>
+    <div class="form-group mb10">
+        <label>负责人</label>
+        <div class="wf-detail-userInfoWrapper member-box" data-type="executor">
+            <!if(record.fields && record.fields.userInfo && record.fields.userInfo.executor){!>
+                <!var executors = record.fields.userInfo.executor;!>
+                <!for(var m=0;m < executors.length; m++){!>
+                    <span class="wf-detail-userInfoWrapper" data-type="executor">
+                        <dl class="pr wf-detail-userInfo wf_detail_userInfo">
+                            <dt class="wf-detail-userPic">
+                                <img src="<!=executors[m].userpic!>" class="wf-person-pic wf_person_pic">
+                            </dt>
+                            <dd class="pa wf-detail-userName ellipsis wf_detail_userName"
+                                title="<!=executors[m].useremail!>"><!=executors[m].userfullname!>
+                            </dd>
+                            <input type="hidden" name="executor[]" value="<!=executors[m].id!>">
+                        </dl>
+                    </span>
+                <!}!>
+            <!}!>
+        </div>
+        <!if(editable){!>
+            <span class="glyphicon glyphicon-edit wf-people-add cp" data-type="executor"></span>
+        <!}!>
+    </div>
+
+    <div class="form-group mb10">
+        <label>审核人</label>
+        <div class="wf-detail-userInfoWrapper member-box" data-type="verifiers">
+            <!if(record.fields && record.fields.userInfo && record.fields.userInfo.verifiers){!>
+                <!var verifiers = record.fields.userInfo.verifiers;!>
+                <!for(var m=0;m < verifiers.length; m++){!>
+                     <span class="wf-detail-userInfoWrapper" data-type="verifiers">
+                        <dl class="pr wf-detail-userInfo wf_detail_userInfo">
+                            <dt class="wf-detail-userPic">
+                                <img src="<!=verifiers[m].userpic!>" class="wf-person-pic wf_person_pic">
+                            </dt>
+                            <dd class="pa wf-detail-userName ellipsis wf_detail_userName"
+                                title="<!=verifiers[m].useremail!>"> <!=verifiers[m].userfullname!>
+                            </dd>
+                            <input type="hidden" name="verifiers[]" value="<!=verifiers[m].id!>">
+                        </dl>
+                     </span>
+                 <!}!>
+            <!}!>
+        </div>
+        <!if(editable){!>
+            <span class="glyphicon glyphicon-edit wf-people-add cp" data-type="verifiers"></span>
+        <!}!>
+    </div>
+    <div class="form-group mb10">
+        <label>相关人员</label>
+        <div class="wf-detail-userInfoWrapper member-box" data-type="watchers">
+            <!if(record.fields && record.fields.userInfo && record.fields.userInfo.watchers){!>
+                <!var watchers = record.fields.userInfo.watchers;!>
+                <!for(var m=0;m < watchers.length; m++){!>
+                     <dl class="pr wf-detail-userInfo wf_detail_userInfo">
+                        <dt class="wf-detail-userPic">
+                            <img src="<!=watchers[m].userpic!>" class="wf-person-pic wf_person_pic">
+                        </dt>
+                        <dd class="pa wf-detail-userName ellipsis wf_detail_userName"
+                            title="<!=watchers[m].useremail!>"> <!=watchers[m].userfullname!>
+                        </dd>
+                        <input type="hidden" name="watchers[]" value="<!=watchers[m].id!>">
+                    </dl>
+                 <!}!>
+            <!}!>
+        </div>
+        <!if(editable){!>
+            <span class="glyphicon glyphicon-edit wf-people-add cp" data-type="watchers"></span>
+        <!}!>
+    </div>
+    <div class="form-group">
+        <label>系统分类</label>
+        <select id="divWorkOrderSystemType" class="form-control divValue selectStyle" disabled="<!=!editable!>">
+            <option value="0">电梯系统</option>
+            <option value="1">给排水系统</option>
+            <option value="2">暖通系统</option>
+            <option value="3">照明系统</option>
+            <option value="4">强电系统</option>
+            <option value="5">弱电系统</option>
+            <option value="6">消防系统</option>
+            <option value="7">其他系统</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="col-md-1 control-label pr0">附件</label>
+        <div class="row taskEditSection wf-task-split col-md-9" id="taskAttachments">
+            <div>
+                <div id="wf-attachment-labelWrapper" class="mr10 fl">
+                    <ul class="wf-attachment-nav" id="wf-attachment-list-container"></ul>
+                    <div class="files file-add-btn">
+                        <section class="file-type">
+                                    <span id="wf-attachment-input-btn">
+                                        +
+                                    </span>
+                        </section>
+                        <section class="file-info">
+                            <p class="file-time" i18n="workflow.task.ATTACHMENT_INFO"
+                               style="line-height: 40px;"></p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!if(!editable){!>
+        <div class="upload-list">
+            <div class="maintain-upload-list">
+                <ul>
+                    <!for(var i = 0,iLen = record.attachment.length;i < iLen;i++){!>
+                        <li>
+                            <div class="upload-list-content">
+                                <a href="<!=record.attachment[i].url!>">
+                                    <!if(record.attachment[i].fileClass != 'icon-file-pic'){!>
+                                    <div class="<!=record.attachment[i].fileClass!>"></div>
+                                    <!}else{!>
+                                    <div style="background-image:url('<!=record.attachment[i].url!>')"></div>
+                                    <!}!>
+                                </a>
+                                <div class="content-msg">
+                                    <p><!=record.attachment[i].fileName!></p>
+                                    <p><!=record.attachment[i].fileUploadTime!></p>
+                                </div>
+                            </div>
+                        </li>
+                    <!}!>
+                </ul>
+            </div>
+        </div>
+    <!}!>
+</script>
+
+<script type="text/html" id="tpl_wfRelatedEquipmentLi">
+    <!for(var i=0; i < nameList.length; i++){!>
+    <li>
+        <span class="equip-name"><!=nameList[i]!></span>
+        <span class="glyphicon glyphicon-remove cp delete-name"></span>
+    </li>
+    <!}!>
+</script>
+
+<script type="text/html" id="tpl_maintainRecords">
+    <!for(var i=0,iLen = records.length; i < iLen;i++){!>
+    <!var startTime = new Date(records[i].startTime).format('yyyy-MM-dd');!>
+    <tr data-id="<!=records[i]._id!>" style="height:30px">
+        <td><!=startTime!></td>
+        <td style="word-break:break-all"><!=records[i].content!></td>
+        <td style="word-break:break-all"><!=records[i].operator!></td>
+    </tr>
+    <!}!>
+</script>
+
+<script type="text/html" id="tpl_spare_part_show">
+    <div class="tabPanelToolBox">
+        <span id="btnExportDb" class="btnTool glyphicon glyphicon-export" title="出库"></span>
+        <span id="btnImportDb" class="btnTool glyphicon glyphicon-import" title="入库"></span>
+        <span id="btnEditSpareParts" class="btnTool glyphicon glyphicon-edit" title="编辑"></span>
+    </div>
+    <form class="editable-form">
+        <! if (data.images) { !>
+            <img src="<!=data.images!>" class="item-img"/>
+        <!}!>
+        <div class="form-group">
+            <span class="param-name">名称</span>
+            <span class="param-value"><!=data.name!></span>
+        </div>
+        <div class="form-group">
+            <span class="param-name">型号</span>
+            <span class="param-value"><!=data.model!></span>
+        </div>
+        <div class="form-group">
+            <span class="param-name">规格</span>
+            <span class="param-value"><!=data.spec!></span>
+        </div>
+        <div class="form-group">
+            <span class="param-name">品牌</span>
+            <span class="param-value"><!=data.brand!></span>
+        </div>
+        <div class="form-group">
+            <span class="param-name">供应商</span>
+            <span class="param-value"><!=data.supplier!></span>
+        </div>
+        <div class="form-group">
+            <span class="param-name">单位</span>
+            <span class="param-value"><!=data.unit!></span>
+        </div>
+        <div class="form-group">
+            <span class="param-name">数量</span>
+            <span class="param-value"><!=data.qty!></span>
+        </div>
+        <div class="form-group">
+            <span class="param-name">单价</span>
+            <span class="param-value"><!=data.price!></span>
+        </div>
+        <div class="form-group">
+            <span class="param-name">库存警戒值</span>
+            <span class="param-value"><!=data.alarmValue!></span>
+        </div>
+        <div class="form-group">
+            <span class="param-name">备注</span>
+            <span class="param-value"><!=data.remark!></span>
+        </div>
+        <div class="mr10 fl oh one_attachment_box">
+            <div class="param-name">附件</div>
+            <div id="wf-attachment-labelWrapper" class="min-attachment">
+                <ul class="wf-attachment-nav ul oh"></ul>
+            </div>
+        </div>
+        <div class="form-group oh">
+            <div class="param-name fl">执行人</div>
+            <!if(data.executor && data.executor.length && data.executor[0]){!>
+                <!var executor = userMap[data.executor[0]];!>
+                <div class="wf-detail-userInfoWrapper fl" data-type="executor">
+                    <dl class="pr wf-detail-userInfo">
+                        <dt class="wf-detail-userPic">
+                            <img src="<!=executor.userpic!>"
+                                 class="wf-person-pic">
+                        </dt>
+                        <dd class="pa wf-detail-userName ellipsis" title="<!=executor.userfullname!> <!=executor.useremail!>"><!=executor.userfullname!></dd>
+                    </dl>
+                </div>
+            <!}!>
+        </div>
+        <div class="form-group oh">
+            <div class="param-name fl">审核人</div>
+            <!if(data.verifiers && data.verifiers.length && data.verifiers[0]){!>
+                <div class="wf-detail-userInfoWrapper fl" data-type="verifiers">
+                    <!for(var i=0, iLen = data.verifiers.length; i < iLen; i++){!>
+                    <!var verifier = userMap[data.verifiers[i]];!>
+                    <dl class="pr wf-detail-userInfo fl">
+                        <dt class="wf-detail-userPic"><img
+                                src="<!=verifier.userpic!>"
+                                class="wf-person-pic">
+                        </dt>
+                        <dd class="pa wf-detail-userName ellipsis" title="<!=verifier.userfullname!> <!=verifier.useremail!>"><!=verifier.userfullname!></dd>
+                    </dl>
+                    <!}!>
+                </div>
+            <!}!>
+        </div>
+        <div class="form-group oh">
+            <div class="param-name fl">相关人员</div>
+            <!if(data.watchers && data.watchers.length && data.watchers[0]){!>
+                <div class="wf-detail-userInfoWrapper fl" data-type="watchers">
+                    <!for(var i=0, iLen = data.watchers.length; i < iLen; i++){!>
+                    <!var watcher = userMap[data.watchers[i]];!>
+                    <dl class="pr wf-detail-userInfo fl">
+                        <dt class="wf-detail-userPic"><img
+                                src="<!=watcher.userpic!>"
+                                class="wf-person-pic">
+                        </dt>
+                        <dd class="pa wf-detail-userName ellipsis" title="<!=watcher.userfullname!> <!=watcher.useremail!>"><!=watcher.userfullname!></dd>
+                    </dl>
+                    <!}!>
+                </div>
+            <!}!>
+        </div>
+    </form>
+</script>
+
+<script type="text/html" id="tpl_spare_part_edit">
+    <div class="tabPanelToolBox">
+        <span id="btnBackSpareParts" class="btnTool glyphicon glyphicon-remove-circle" title="取消"></span>
+        <span id="btnDeleteSpareParts" class="btnTool glyphicon glyphicon-trash" title="删除"></span>
+        <span id="btnExportDb" class="btnTool glyphicon glyphicon-export" title="出库"></span>
+        <span id="btnImportDb" class="btnTool glyphicon glyphicon-import" title="入库"></span>
+        <span id="btnConfirmSpareParts" class="btnTool glyphicon glyphicon-send" title="提交"></span>
+    </div>
+    <form id="sparePartsForm" class="editable-form mt10 form">
+        <div class="form-group">
+            <span class="param-name">设备照片</span>
+            <input type="file" class="form-control" id="iptAssetPhoto" accept="image/*"/>
+            <div id="divAssetImg" class="mt10"></div>
+        </div>
+        <label class="form-group">
+            <span class="param-name">名称</span>
+            <input type="text" class="param-value" value="<!=data.name!>" name="name" id="sparePartsName" />
+        </label>
+        <label class="form-group">
+            <span class="param-name">型号</span>
+            <input type="text" class="param-value" value="<!=data.model!>" name="model" />
+        </label>
+        <label class="form-group">
+            <span class="param-name">规格</span>
+            <input type="text" class="param-value" value="<!=data.spec!>" name="spec" />
+        </label>
+        <label class="form-group">
+            <span class="param-name">品牌</span>
+            <input type="text" class="param-value" value="<!=data.brand!>" name="brand" />
+        </label>
+        <label class="form-group">
+            <span class="param-name">供应商</span>
+            <input type="text" class="param-value" value="<!=data.supplier!>" name="supplier" />
+        </label>
+        <label class="form-group">
+            <span class="param-name">单位</span>
+            <input type="text" class="param-value" value="<!=data.unit!>" name="unit" />
+        </label>
+        <label class="form-group">
+            <span class="param-name">数量</span>
+            <input type="number" id="spare_part_edit_qty" class="param-value" value="<!=data.qty!>" name="qty" />
+        </label>
+        <label class="form-group">
+            <span class="param-name">单价</span>
+            <input type="number" class="param-value" value="<!=data.price!>" name="price" />
+        </label>
+        <label class="form-group">
+            <span class="param-name">库存警戒值</span>
+            <input type="number" class="param-value" value="<!=data.alarmValue!>" name="alarmValue" />
+        </label>
+        <label class="form-group">
+            <span class="title-line mv10 db">备注</span>
+            <textarea class="fl param-value spare-parts-detail" name="remark" style="width: 100%;"><!=data.remark!></textarea>
+        </label>
+
+        <div class="form-group oh">
+            <label class="col-md-1 control-label pr0">附件</label>
+
+            <div class="row taskEditSection wf-task-split col-md-9" id="taskAttachments">
+                <div>
+                    <div id="wf-attachment-labelWrapper" class="mr10 fl">
+                        <ul class="wf-attachment-nav" id="wf-attachment-list-container"></ul>
+                        <div class="files file-add-btn">
+                            <section class="file-type">
+                                        <span id="wf-attachment-input-btn">
+                                            +
+                                        </span>
+                            </section>
+                            <section class="file-info">
+                                <p class="file-time" i18n="workflow.task.ATTACHMENT_INFO"
+                                   style="line-height: 40px;"></p>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group oh">
+            <label>执行人</label>
+            <div class="wf-detail-userInfoWrapper fl" data-type="executor">
+                <!if(data.executor && data.executor.length && data.executor[0]){!>
+                    <!var executor = userMap[data.executor[0]];!>
+                    <dl class="pr wf-detail-userInfo">
+                        <dt class="wf-detail-userPic">
+                            <img src="<!=executor.userpic!>"
+                                 class="wf-person-pic">
+                        </dt>
+                        <dd class="pa wf-detail-userName ellipsis" title="<!=executor.userfullname!> <!=executor.useremail!>"><!=executor.userfullname!></dd>
+                        <input type="hidden" name="executor[]" value="<!=executor.id!>">
+                    </dl>
+                <!}!>
+            </div>
+            <span class="glyphicon glyphicon-edit wf-people-add cp" data-type="executor"></span>
+        </div>
+        <div class="form-group oh">
+            <label>审核人</label>
+            <span class="wf-detail-userInfoWrapper" data-type="verifiers">
+            <!if(data.verifiers && data.verifiers.length && data.verifiers[0]){!>
+                <!for(var i=0, iLen = data.verifiers.length; i < iLen; i++){!>
+                    <!var verifier = userMap[data.verifiers[i]];!>
+                    <dl class="pr wf-detail-userInfo fl">
+                        <dt class="wf-detail-userPic"><img
+                                src="<!=verifier.userpic!>"
+                                class="wf-person-pic">
+                        </dt>
+                        <dd class="pa wf-detail-userName ellipsis" title="<!=verifier.userfullname!> <!=verifier.useremail!>"><!=verifier.userfullname!></dd>
+                        <input type="hidden" name="verifiers[]" value="<!=verifier.id!>">
+                    </dl>
+                <!}!>
+            <!}!>
+            </span>
+            <span class="glyphicon glyphicon-edit wf-people-add cp" data-type="verifiers"></span>
+        </div>
+        <div class="form-group oh">
+            <label>相关人员</label>
+            <span class="wf-detail-userInfoWrapper" data-type="watchers">
+            <!if(data.watchers && data.watchers.length && data.watchers[0]){!>
+                <!for(var i=0, iLen = data.watchers.length; i < iLen; i++){!>
+                    <!var watcher = userMap[data.watchers[i]];!>
+                    <dl class="pr wf-detail-userInfo fl">
+                        <dt class="wf-detail-userPic"><img
+                                src="<!=watcher.userpic!>"
+                                class="wf-person-pic">
+                        </dt>
+                        <dd class="pa wf-detail-userName ellipsis" title="<!=watcher.userfullname!> <!=watcher.useremail!>"><!=watcher.userfullname!></dd>
+                        <input type="hidden" name="watchers[]" value="<!=watcher.id!>">
+                    </dl>
+                <!}!>
+            <!}!>
+            </span>
+            <span class="glyphicon glyphicon-edit wf-people-add cp" data-type="watchers"></span>
+        </div>
+    </form>
+</script>
+
+<script type="text/html" id="tpl_storage_table">
+    <div id="outOfStorageRecordsList" class="">
+        <div class="tabPanelToolBox clearfix">
+            <span id="btnExportDb" class="btnTool glyphicon glyphicon-export" title="出库"></span>
+            <span id="btnImportDb" class="btnTool glyphicon glyphicon-import" title="入库"></span>
+        </div>
+        <div class="form-group">
+            <input style="width:135px;" type="text" class="form-control cp fl datePicker divValue" id="outOfStorageBeginTime"
+                   data-date-format="yyyy-mm-dd">
+            <input style="width:135px;" type="text" class="form-control cp fl datePicker divValue" id="outOfStorageEndTime"
+                   data-date-format="yyyy-mm-dd">
+            <span class="glyphicon glyphicon-search fl time-search" id="outOfStorageSearch" title="查询"></span>
+        </div>
+        <table class="table table-bordered" id="outOfStorageTable">
+            <thead>
+            <tr>
+                <th>时间</th>
+                <th>用户</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="outOfStorageTBody"></tbody>
+        </table>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_storage_table_list">
+    <!for(var i=0;i < list.length;i++){!>
+        <!var item = list[i];!>
+        <tr itemId="<!=item._id!>">
+            <td><!=item.time!></td>
+            <td><!=item.username!></td>
+            <td><!=item.type == 1 ? '入库' : '出库'!></td>
+        </tr>
+    <!}!>
+</script>
+
+<script type="text/html" id="tpl_storage_detail">
+    <div id="outOfStorageRecordsDetail" class="mt10" itemid="<!=data._id!>">
+        <div class="tabPanelToolBox">
+            <span id="outOfStorageReturn" class="btnTool glyphicon glyphicon-arrow-left" title="返回"></span>
+        </div>
+        <div class="form-group">
+            <span class="fl">时间</span>
+            <span class="fr mr10"><!=data.time!></span>
+        </div>
+        <div class="form-group">
+            <span class="fl">用户</span>
+            <span class="fr mr10"><!=data.user!></span>
+        </div>
+        <div class="form-group">
+            <div class="mb5">入库明细</div>
+            <table class="table table-bordered">
+                <!for(var i=0;i < data.parts.length;i++){!>
+                    <!var item = data.parts[i];!>
+                    <tr itemId="<!=item._id!>">
+                        <td class="tl" width="80%"><!=item.part_name!></td>
+                        <td class="tr" width="20%"><!=item.qty!></td>
+                    </tr>
+                <!}!>
+            </table>
+        </div>
+        <div class="form-group">
+            <div class="title-line mv10">备注</div>
+            <div><!=data.remark!></div>
+        </div>
+        <div class="form-group min-attachment">
+            <div>附件</div>
+            <ul class="wf-attachment-nav ul"></ul>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_storage">
+    <div class="tabPanelToolBox">
+        <!if(type == "importDb"){!>
+            <! var typeName = '入库'; !>
+        <!}else{!>
+            <! var typeName = '出库'; !>
+        <!}!>
+        <span id="bound_title" class="fl"><!=typeName!></span>
+        <span id="bound_cancel" class="btnTool glyphicon glyphicon-remove-circle" title="取消"></span>
+        <span id="bound_confirm" class="btnTool glyphicon glyphicon-ok-circle" title="确定"></span>
+    </div>
+    <form id="storage_form" class="form mt10">
+        <ul id="item_list_ul" class="ul">
+            <!for(var i=0;i < list.length;i++){!>
+                <!var item = list[i];!>
+                <li class="item-list-li">
+                    <div class="oh">
+                        <span class="fl"><!=item.name!></span>
+                        <span class="btnTool glyphicon glyphicon-remove cp fr item-delete" title="删除"></span>
+                    </div>
+                    <input type="number" name="number" class="item-number" placeholder="数量" itemId='<!=item.id!>'/>
+                </li>
+            <!}!>
+        </ul>
+        <label class="form-group">
+            <div class="title-line mv10">备注</div>
+            <textarea id="storageDetail" class="param-value spare-parts-detail"><!=item.remark!></textarea>
+        </label>
+
+        <div class="form-group oh">
+            <label class="col-md-1 control-label pr0">附件</label>
+            <div class="row taskEditSection wf-task-split col-md-9" id="taskAttachments">
+                <div>
+                    <div id="wf-attachment-labelWrapper" class="mr10 fl">
+                        <ul class="wf-attachment-nav" id="wf-attachment-list-container">
+
+                        </ul>
+                        <div class="files file-add-btn">
+                            <section class="file-type">
+                                    <span id="wf-attachment-input-btn">
+                                        +
+                                    </span>
+                            </section>
+                            <section class="file-info">
+                                <p class="file-time" i18n="workflow.task.ATTACHMENT_INFO"
+                                   style="line-height: 40px;"></p>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>
+
+<script type="text/html" id="attachment_item_templ">
+    <li>
+        <div class="files" data-file-uid="<!=file.uid!>" data-file-name="<!=file.name!>">
+            <! if (file.userId == AppConfig.userId ) { !>
+                <button type="button" title="delete" class="pull-right glyphicon glyphicon-remove wf-attachment-delete"></button>
+            <!}!>
+            <!if (file.icon == 'icon-file-pic'){!>
+                <section class="file-type" style="background:url('<!=file.url!>') center no-repeat;background-size: cover;">
+                    <a href="<!=file.url!>" style="color: #fff;width: 100%;display: inline-block;" title="Download"></a>
+                </section>
+            <!}else{!>
+                <section class="file-type <!=file.icon!>">
+                    <a href="<!=file.url!>" target="_blank" style="color: #fff;" title="Download"></a>
+                </section>
+            <!}!>
+            <section class="file-info">
+                <p class="file-name" title="<!=file.name!>"><!=file.name!></p>
+                <p class="file-time"><!=file.time!></p>
+            </section>
+        </div>
+    </li>
+</script>
+
+<script type="text/html" id="tpl_storage_list">
+
+</script>
+
+<script type="text/html" id="tpl_diagnosis_detail">
+    <div class="oh">
+        <div>
+            <div class="col-md-6">
+                <span class="diagnosis-title">故障名：</span>
+                <span class="diagnosis-text"><!=info.name!></span>
+            </div>
+            <div class="col-md-6">
+                <span class="diagnosis-title">开始时间：</span>
+                <span class="diagnosis-text"><!=info.time!></span>
+            </div>
+        </div>
+        <div class="col-md-12 mt10">
+            <span class="diagnosis-title">工单详情：</span>
+            <span style="width: calc(100% - 90px);display: inline-block;"><!=info.description!></span>
+        </div>
+    </div>
+
+    <div id="diagnosis_detail_canvas" class="mt30 col-md-12" style="height: 380px; width: 580px;" ></div>
+</script>
+<!--@formatter:on-->
+<!--/Template-->
+
+{% assets "asset_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+
+</body>
+</html>
+
+<!--<p class="filt-user" title="<!=file.userInfo.useremail!>"><!=file.userInfo.userfullname!></p>-->

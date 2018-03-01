@@ -1,0 +1,67 @@
+﻿<div class="col-xs-12 vertical-roll">
+    <div class="col-xs-offset-1 col-xs-10 workflow-container mb20" id="week-report">
+        <div class="row filter-row">
+
+            <div class="col-xs-2 col-xs-offset-1">
+                <h4 class="filter-title"><span i18n="workflow.report.WORKFLOW_SEL"></span></h4>
+
+                <div class="filter-body">
+                    <div class="filter-result"></div>
+                    <div class="filter-dialog">
+                        <span class="icon-chevron-down filter-dialog-icon group-filter-dialog-icon"
+                              aria-hidden="true"></span>
+
+                        <div class="mini-dialog">
+                            <div class="groups">
+                                <div>
+                                    <h5 class="title"><span i18n="admin.navAdmin.LINK_WORKFLOW"></span></h5>
+                                </div>
+                                <div class="content">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row report-summary-row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-4 summary-date">
+                        <span class="last-week"><i class="icon-chevron-left  icon-3x"></i></span>
+
+                        <h3 class="sd-first-date"></h3>
+                        <h5 class="sd-second-date"></h5>
+                        <span class="next-week"><i class="icon-chevron-right  icon-3x"></i></span>
+                    </div>
+                </div>
+
+                <div class="row workflow-report-table">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3"><span i18n="workflow.report.PROJ_NAME"></span></div>
+                                    <div class="col-xs-2"><span i18n="workflow.report.ALL_TASK_NUM"></span></div>
+                                    <div class="col-xs-2"><span i18n="workflow.report.UNFINISH_NUM"></span></div>
+                                    <div class="col-xs-2"><span i18n="workflow.report.FINISH_SCALE"></span></div>
+                                    <div class="col-xs-3"><span i18n="workflow.report.MAJOR_PEOPLE"></span></div>
+                                </div>
+                            </div>
+                            <div class="panel-body workflow-efficiency-table-body"></div>
+                            <div class="panel-footer workflow-efficiency-table-footer dn">
+                                <span class="glyphicon glyphicon-circle-arrow-down" style="margin-right: 8px;"></span>
+                                <span i18n="workflow.report.LOAD_MORE"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row workflow-report-memeber"></div>
+        <div class="row notice-loading dn">
+            <div class="col-xs-4 col-xs-offset-4"><span class="loading-more"><span
+                    i18n="workflow.report.LOAD_MORE"></span></span></div>
+        </div>
+    </div>
+</div>

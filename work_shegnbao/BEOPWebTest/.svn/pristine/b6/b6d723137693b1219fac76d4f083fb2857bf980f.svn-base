@@ -1,0 +1,160 @@
+<style>
+    #tagContainer {
+        color: #666;
+    }
+
+    #tagSearchBox {
+        padding: 10px;
+        width: 100%;
+        border-bottom: 1px solid #eae8ea;
+    }
+
+    #tagSearchBox .tagTitle {
+        display: inline-block;
+        float: left;
+        padding-top: 8px;
+        color: black;
+        font-weight: bold;
+    }
+
+    #tagSearchBox input {
+        display: inline-block;
+        float: left;
+        margin-left: 10px;
+        width: calc(100% - 40px);
+    }
+
+    #tagGroup button {
+        width: 130px;
+        background: #efefef;
+    }
+
+    #tagGroup button.active {
+        color: #1e78e6;
+        background: #fff;
+    }
+
+    #tagContent {
+        height: 70vh;
+        overflow-y: auto;
+    }
+
+    #tagContent ul {
+        list-style: none;
+        padding-left: 24px;
+    }
+
+    #tagContent ul li {
+        float: left;
+        width: 69px;
+        height: 25px;
+        display: block;
+        background: #dedfe0;
+        margin: 6px 8px;
+        text-align: center;
+        padding-top: 3px;
+    }
+
+    #tagGroup {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #eae8ea;
+    }
+
+    #tagContent .common {
+        padding: 10px;
+    }
+
+    #tagContent .tagType {
+        padding: 10px;
+        border-bottom: 1px solid #eae8ea;
+    }
+
+    #tagContent .tagType span:nth-child(1) {
+        display: inline-block;
+        float: left;
+    }
+
+    #tagContent .tagType .tagOpen {
+        float: right;
+        width: 13px;
+        height: 13px;
+        border-right: 2px solid #666;
+        border-bottom: 2px solid #666;
+        transform: rotate(-45deg);
+    }
+
+    #tagContent .tagTypeBox.active .tagType .tagOpen {
+        transform: rotate(45deg);
+
+    }
+
+    #tagContent .tagTypeBox .tagTypeContent {
+        display: none;
+    }
+
+    #tagContent .tagTypeBox.active .tagTypeContent {
+        display: block;
+    }
+
+    #tagContent .tagTypeContent {
+        border-bottom: 1px solid #eae8ea;
+    }
+
+    #tagContent .tag-item {
+        cursor: pointer;
+    }
+
+    #tagContent .tag-item i {
+        margin-right: 5px;
+    }
+
+    #tagContent .tagCommon {
+        padding: 10px;
+    }
+</style>
+<div id="tagContainer">
+    <div id="tagSearchBox" class="clearfix">
+        <span class="tagTitle">TAG</span>
+        <input type="text" class="form-control" id="tagSearchValue" placeholder=""/>
+    </div>
+    <div id="tagGroup">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default active" id="tagByType">分类</button>
+            <button type="button" class="btn btn-default" id="tagByCommon">常用</button>
+        </div>
+    </div>
+    <div id="tagContent" class="clearfix gray-scrollbar">
+
+    </div>
+</div>
+<!--@formatter:off-->
+<script type="text/html" id="tpl_show_Tag_by_type">
+    <!for(var i = 0,iLen = list.length;i < iLen;i++){!>
+        <!var groupTag = list[i];!>
+        <div class="tagTypeBox">
+            <div class="tagType clearfix">
+                <span><!=groupTag.groupNm!></span>
+                <div class="tagOpen"></div>
+            </div>
+            <div class="tagTypeContent clearfix">
+                <ul class="clearfix">
+                    <!for(var j = 0,jLen = groupTag.tags.length;j < jLen;j++){!>
+                        <li class="tag-item" tag="<!=groupTag.tags[j].name!>"><i class="icon iconfont <!=groupTag.tags[j].icon!>"></i><!=groupTag.tags[j].name!></li>
+                    <!}!>
+                </ul>
+            </div>
+        </div>
+    <!}!>
+</script>
+<script type="text/html" id="tpl_show_Tag_by_Common">
+    <div class="tagCommon">
+        <span>我常用的tag</span>
+    </div>
+    <ul>
+        <!for(var i = 0,iLen = list.length;i < iLen;i++){!>
+            <li class="tag-item" tag="<!=list[i].name!>"><i class="icon iconfont <!=list[i].icon!>"></i><!=list[i].name!></li>
+        <!}!>
+    </ul>
+</script>
+<!--@formatter:on-->

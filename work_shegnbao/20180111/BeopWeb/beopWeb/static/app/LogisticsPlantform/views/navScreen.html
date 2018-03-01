@@ -1,0 +1,272 @@
+﻿<style>
+    #divNavContainer .navLeft {
+        width: 100%;
+        height: 100%;
+        padding: 0 10px;
+    }
+    
+    #divNavContainer .searchPointBox {
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+    
+    #pointTitleIpt {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border: 1px solid #637079;
+        border-right: 0;
+        background: transparent;
+        color: #999;
+    }
+    
+    #pointSearch {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        background: #144685;
+        border: 1px solid #3477be;
+        color: #fff;
+        padding: 5px 12px;
+        cursor: pointer;
+    }
+    
+    #divNavContainer .pointComen {
+        border: 1px solid #637079;
+        position: relative;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #999;
+        cursor: pointer;
+        width: 80px;
+    }
+    #fixedPointBtn,
+    #movePointBtn {
+        margin-right:20px;
+    }
+    
+    #divNavContainer .hideHorn {
+        position: absolute;
+        top: 21px;
+        left: -6px;
+        transform: rotate(-45deg);
+        color: rgb(25, 34, 52);
+    }
+    
+    #divNavContainer .showLine {
+        width: 11px;
+        position: absolute;
+        height: 1.4px;
+        background: #637079;
+        transform: rotate(-135deg);
+        top: 24px;
+        left: -2px;
+        z-index: 1;
+    }
+    
+    #divNavContainer .pointSelect {
+        border: 1px solid #3477be;
+        background: #144685;
+        color: #fff;
+    }
+    
+    #divNavContainer .pointSelect .showLine {
+        background: #3477be;
+    }
+    
+    #divNavContainer .pointListBox {
+        margin-top: 20px;
+        height: calc(100% - 124px);
+        overflow-y: auto;
+    }
+    
+    #divNavContainer .fixedPList {
+        height: 100%;
+        overflow-y: auto;
+    }
+    
+    #divNavContainer .pointStyle {
+        width: 98%;
+        height: 36px;
+        line-height: 36px;
+        cursor: pointer;
+        margin:0 1%;
+    }
+    
+    #divNavContainer .pointStyle.active .checkBoxBor {
+        display: none
+    }
+    
+    #divNavContainer .pointStyle.active .checkBoxBorCopy {
+        display: block
+    }
+    
+    #divNavContainer .checkBoxBor {
+        width: 12px;
+        height: 12px;
+        border: 1px solid #637079;
+        background: transparent;
+        display: block;
+        margin-left:2.5px;
+    }
+    
+    #divNavContainer .checkBoxBorCopy {
+        width: 12px;
+        height: 12px;
+        border: 1px solid #fff;
+        background: transparent;
+        display: none;
+        position: relative;
+        margin-left:2.5px;
+    }
+    
+    #divNavContainer .checkBoxBorCopy span {
+        position: absolute;
+        top: -2px;
+        transform: scale(0.7);
+        left: -2px;
+        color: #fff;
+    }
+    
+    #divNavContainer .pointSin {
+        margin-left: 5px;
+        border-bottom: 1px solid #637079;
+        height: 36px;
+        line-height: 36px;
+        background: transparent;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    #divNavContainer .pointStyle.active .checkBoxBor {
+        border: 1px solid #3477be;
+    }
+    
+    #divNavContainer .pointStyle.active .pointSin {
+        background: #144685;
+    }
+    
+    #divNavContainer .pointStyle.active .checkBoxBorCopy {
+        display: block !important;
+    }
+    
+    #divNavContainer .pointStyle.active .checkBoxBor {
+        display: none !important;
+    }
+    
+    #divNavContainer .pointName {
+        padding-left: 7px;
+        width: 170px;
+        max-width: 170px;
+        padding-right:13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    #divNavContainer .pointTemp {
+        width: 70px;
+        text-align: center;
+        float: right;
+        height: 20px;
+        line-height: 18px;
+    }
+    #divNavContainer .pointTemp:hover{
+        border: 1px solid #24b14e;
+        background: #055621;
+    }
+    
+    #divNavContainer .dangerTemp {
+        border: 1px solid #dd3834;
+        background: #7F2D18;
+    }
+    #divNavContainer .overtimeTemp {
+        border: 1px solid #ddd;
+        background: #7b7b7b;
+    }
+    #divNavContainer .lowerTemp{
+        border: 1px solid #6996f7;
+        background: #004ede;
+    }
+    
+    #divNavContainer .successTemp {
+        border: 1px solid #26bb53;
+        background: #1c743a;
+    }
+    #divNavContainer .HWALTemp{
+        /*border: 1px solid rgba(241, 208, 83, 0.65);
+        background: rgba(239, 189, 0,0.65);*/
+        background: rgba(239, 189, 0, 0.64);
+        border: 1px solid rgb(239, 189, 0);
+    }
+    
+    #divNavContainer .pointName {
+        /*shift多选时禁止选中文字*/
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        user-select: none;
+    }
+    #pointTime .modalDiv{
+        height:40px;
+        line-height:40px;
+    }
+    #pointTime .modalSpan{
+        display: inline-block;
+        width:80px;
+        text-align: right;
+    }
+    #pointTime .modalinput{
+        display: inline-block;
+        width: 300px;
+        height: 25px;
+        border: 1px solid #d0d0d0;
+        background: transparent;
+        border-radius: 3px;
+        line-height: 25px;
+        padding: 0 5px;
+    }
+    .tempInfo{
+        background:rgba(0,0,0,0.9);
+        width:100px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #717992;
+    }
+    
+     ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background-color: #717992;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+</style>
+<div class="navLeft">
+    <div class="input-group searchPointBox">
+        <input type="text" class="form-control" id="pointTitleIpt" placeholder="请输入名称...">
+        <span class="input-group-addon" id="pointSearch"><span class="glyphicon glyphicon-search"></span></span>
+    </div>
+    <div class="pointDiffBox clearfix">
+        <div class="col-xs-3 pointComen pointSelect" data-style="fixed" id="fixedPointBtn">
+            <span class="showLine"></span>
+            <span class="glyphicon glyphicon-triangle-left hideHorn"></span> 固定点
+        </div>
+        <div class="col-xs-3 pointComen" data-style="move" id="movePointBtn">
+            <span class="showLine"></span>
+            <span class="glyphicon glyphicon-triangle-left hideHorn"></span> 移动点
+        </div>
+        <div class="col-xs-3 pointComen" data-style="coolStorage" id="coolStoragePointBtn">
+            <span class="showLine"></span>
+            <span class="glyphicon glyphicon-triangle-left hideHorn"></span> 冷柜点            
+        </div>
+    </div>
+    <div class="pointListBox">
+        <div class="pointList" data-group="fixed"></div>
+        <div class="pointList hide" data-group="move"></div>
+        <div class="pointList hide" data-group="coolStorage"></div>
+    </div>
+</div>

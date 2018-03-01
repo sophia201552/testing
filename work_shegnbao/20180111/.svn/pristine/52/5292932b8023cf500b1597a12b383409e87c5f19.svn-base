@@ -1,0 +1,234 @@
+<style class="FMdetailCnt">
+    .MFrghDetail {
+        margin: 0;
+        padding: 20px 30px;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .FMdetailCnt {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        color: #eaf0f9;
+        background: #192435;
+    }
+    
+    .FMdetailNav {
+        width: 100%;
+        height: 70px;
+    }
+    
+    .FMContent {
+        display: none;
+        height: calc(100% - 70px);
+        justify-content: space-between;
+        padding: 20px;
+    }
+    
+    .divQueryTool {
+        margin-bottom: 30px;
+    }
+    
+    .divQueryTool .divTimeTool {
+        display: inline-block;
+    }
+    
+    .divQueryTool .iptField {
+        width: 270px;
+        float: left;
+        height: 30px;
+        border: 1px solid #3477be;
+        background: #144685;
+        padding: 0 10px;
+        margin-right: 15px;
+        border-radius: 4px;
+    }
+    
+    .divQueryTool .iptLabel {
+        line-height: 30px;
+        display: inline-block;
+        width: 70px;
+    }
+    
+    .divQueryTool .iptContent {
+        background: transparent;
+        border: none;
+        display: inline-block;
+        box-shadow: none;
+        outline: none;
+        width: calc(100% - 90px);
+    }
+    
+    .divQueryTool .btnQueryTool {
+        display: inline-block;
+        height: 30px;
+        vertical-align: top;
+        line-height: 20px;
+        padding: 5px 15px;
+        color: white;
+        margin-left: 15px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    
+    .divQueryTool .btnQueryTool[data-action="map"] {
+        position: absolute;
+        right: 50px;
+    }
+    
+    .FMContent .FMechart {
+        width: 100%;
+        height: 50%;
+    }
+    
+    .FMContent .FMtable {
+        width: 96%;
+        height: 50%;
+        overflow: auto;
+        margin-right: 3%;
+        margin-left: 1%;
+    }
+    
+    .FMtable {
+        margin-top: 10px;
+        margin-right: 10px;
+        font-size: 16px!important;
+    }
+    
+    .tableDetail{
+        width: 100%;
+        color: #ccc;
+    }
+    .tableDetail thead{
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        position: relative;
+    }
+    .tableDetail tr {
+        border-top: 1px solid #192435;
+        border-bottom: 1px solid #192435;
+    }
+    .tableDetail tbody tr{
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+    .tableDetail tr td,
+    .tableDetail tr th{
+        padding: 0px 15px;
+        height: 33px;
+        text-align: center;
+    }
+    .tableDetail thead tr{background: #34425a;}
+    .tableDetail tbody tr:nth-of-type(odd) {
+        background: #384a69;
+    }
+    
+    .tableDetail tbody tr:nth-of-type(even) {
+        background: #34425a;
+    }
+
+    .btnCom {
+        padding: 0 5px;
+    }
+    
+    .btnCom:focus {
+        outline-width: 0;
+    }
+    
+    .divTimeStart,
+    .divTimeEnd,
+    .btnCom {
+        position: relative;
+        margin-right: 10px;
+        padding: 0 10px;
+        font-size: 14px;
+        border: 1px solid #666;
+        height: 30px;
+        line-height: 25px;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.1);
+        color: #ccc;
+    }
+    
+    .btnCom.btnQuery,
+    .btnCom.btnExport {
+        width: 90px;
+    }
+    
+    .btnCom.btnBackMap {
+        width: 120px;
+        position: absolute;
+        right: 10px;
+    }
+    
+    .hideHorn {
+        position: absolute;
+        top: 20px;
+        left: -6px;
+        transform: rotate(-45deg);
+        color: rgb(25, 34, 52);
+    }
+    
+    .showLine {
+        width: 11px;
+        position: absolute;
+        height: 1.4px;
+        background: #ccc;
+        transform: rotate(-135deg);
+        top: 24px;
+        left: -2px;
+        z-index: 1;
+    }
+    
+    .btnCom.btnQuery {
+        border: 1px solid #26b159;
+        background: #279e4a;
+        color: #fff;
+    }
+    
+    .btnCom.btnQuery .showLine {
+        background: #26b159;
+    }
+    
+    .chartDot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 6px;
+    }
+</style>
+<div class="FMdetailCnt">
+    <div class="FMdetailNav">
+        <div class="divQueryTool">
+            <div class="divTimeTool clearfix">
+                <div class="iptField">
+                    <span class="iptLabel">开始时间</span>
+                    <input type="text" class="iptContent" id="iptTimeStart" data-field="timeStart">
+                </div>
+                <div class="iptField">
+                    <span class="iptLabel">结束时间</span>
+                    <input type="text" class="iptContent" id="iptTimeEnd" data-field="timeEnd">
+                </div>
+            </div>
+            <div class="btnQueryTool btn-success btnQuery" data-action="query">查询</div>
+            <div class="btnQueryTool btn-primary btnExport" data-action="export">导出</div>
+            <div class="btnQueryTool btn-primary btnBackMap" data-action="map">回到地图</div>
+        </div>
+    </div>
+    <div class="FMContent">
+        <div class="FMechart"></div>
+        <div class="FMtable">
+            <table class="tableDetail">
+                <thead>
+                    <tr class="tableHeadRow"></tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

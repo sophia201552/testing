@@ -1,0 +1,311 @@
+<style>
+    #selectExportFormat {
+        margin-top: 200px;
+    }
+
+    #selectExportFormat .exportBoxFormat {
+        height: 200px;
+        line-height: 182px;
+        text-align: center;
+    }
+
+    #selectExportFormat .exportBoxFormat .btn.btn-default {
+        width: 150px;
+        padding: 8px 12px;
+    }
+
+    #excelTemplate {
+        color: #666666;
+        border: 1px solid #d6d6d6;
+        background-color: #EFEFEF;
+    }
+
+    #csvTemplate {
+        margin-left: 30px;
+        background-color: #0079dc;
+        color: #FFF;
+        border: 1px solid #0e72c3;
+    }
+
+    .dm-export-icon {
+        width: 1em;
+        height: 1em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+        font-size: 54px;
+    }
+
+    .imgExportFileDel {
+        cursor: pointer;
+        display: block;
+        font-size: 15px;
+        position: absolute;
+        right: 6px;
+        transform: rotate(45deg);
+        color: #FFffff;
+        z-index: 100;
+    }
+
+    .imgExportFileDelRadius {
+        content: " ";
+        border: 1px solid #666;
+        border-radius: 100%;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        -webkit-font-smoothing: subpixel-antialiased;
+        background-color: red;
+    }
+
+    #imgExportFile {
+        width: 80px;
+        height: 80px;
+        border-radius: 2px;
+        background: url("https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/workflow/FILE.png ") center center no-repeat;
+        background-size: contain;
+    }
+
+    #delExportFile {
+        cursor: pointer;
+    }
+</style>
+
+<article id="tagFormatBrushWin" class="modal fade gray-scrollbar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><span class="title" i18n="tag.inspect.TAG_BRUSH"></span></h4>
+            </div>
+            <div class="modal-body oh">
+                <div id="tagCopyAndPasteBox">
+                    <div id="tagFormatCopy" class="fl pr">
+                        <div class="tc" i18n="tag.inspect.TAG_SOURCE"></div>
+                        <ul id="tagTreeCopyUl" class="ul ztree ml10 gray-scrollbar"></ul>
+                    </div>
+                    <div id="tagFormatPaste" class="fr pr">
+                        <div class="tc" i18n="tag.inspect.TAG_TARGET"></div>
+                        <ul id="tagTreePasteUl" class="ul ztree ml10 gray-scrollbar"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="tagFormatBrushConfirm" class="btn btn-primary"
+                        i18n="tag.inspect.REPLICATE_TAG"></button>
+            </div>
+        </div>
+    </div>
+</article>
+
+<script id="export_file_panel" type="text/html">
+    <div id="imgExportFile">
+        <span id="delExportFile" title="delete">
+            <span class="imgExportFileDel">+</span>
+            <span class="imgExportFileDelRadius"></span>
+        </span>
+    </div>
+    <p data-name="nameExportFile"></p>
+    <p data-time="timeExportFile"></p>
+</script>
+
+<script id="init_export_file_panel" type="text/html">
+    <div id="initPanelExport"></div>
+    <p class="selectFileText" i18n="title=admin.projectCreator.PANE2_FORM_ITEM1_TIP1">
+        <span i18n="admin.projectCreator.PANE2_FORM_ITEM1_TIP1"></span>
+    </p>
+</script>
+
+<article id="selectExportFormat" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <span i18n="admin.projectCreator.SELECT_EXPORT_TEMPLET_FORMAT"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="exportBoxFormat">
+                    <a class="btn btn-default" id="excelTemplate" target="_blank"
+                       href="/static/scripts/dataManage/templates/export data list.xlsx" nothash>
+                        <span i18n="admin.projectCreator.EXPORT_TEMPLET_TYPE_EXCEL"></span>
+                    </a>
+                    <a class="btn btn-default" id="csvTemplate" target="_blank"
+                       href="/static/scripts/dataManage/templates/export data list.csv" nothash>
+                        <span i18n="admin.projectCreator.EXPORT_TEMPLET_TYPE_CSV"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<div class="pr dataManagerBox" id="dataManagerContainer">
+    <nav class="dataManagerNav">
+        <ul id="dataManagerCloudMenu">
+            <li permission="DataReadUser;DataManagementEngineer;DataManagementAdmin;RawDataView">
+                <div class='pointManagerCloudPoint'>
+                    <span class="nav-label" i18n="dataManage.UNION_TERMAINAL"></span>
+                    <span class="nav-line"></span>
+                </div>
+                <ul class="pointManagerCloudPointUl">
+                    <li permission="DataReadUser;DataManagementEngineer;DataManagementAdmin;RawDataView">
+                        <a class="page-link" id="PointManagerRealTimeData"
+                           href="#page=PointManagerRealTimeData&projectId=">
+                            <i class="iconfont icon-shujuguanli-5"></i>
+                            <span class="nav-label" i18n="dataManage.REAL_TIME_DATA"></span>
+                            <div class="nav_title_details" i18n="dataManage.REAL_TIME_DATA"></div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li permission="DataReadUser;DataManagementEngineer;DataManagementAdmin;SitePointView;VirtualView;CalcView">
+                <div class='pointManagerCloudPoint'>
+                    <span class="nav-label" i18n="dataManage.CLOUD_POINT_MANAGEMENT"></span>
+                    <span class="nav-line"></span>
+                </div>
+                <ul class="pointManagerCloudPointUl">
+                    <li permission="DataReadUser;DataManagementEngineer;DataManagementAdmin;SitePointView;">
+                        <a class="page-link" href="#page=PointManagerCloudPoint&pointType=0&projectId=">
+                            <i class="iconfont icon-shujuguanli-"></i>
+                            <span class="nav-label" i18n="dataManage.MAPPING_POINT"></span>
+                            <div class="nav_title_details" i18n="dataManage.MAPPING_POINT"></div>
+                        </a>
+                    </li>
+                    <li permission="DataReadUser;DataManagementEngineer;DataManagementAdmin;VirtualView">
+                        <a class="page-link" href="#page=PointManagerCloudPoint&pointType=1&projectId=">
+                            <i class="iconfont icon-shujuguanli-3"></i>
+                            <span class="nav-label" i18n="dataManage.VIRTUAL_POINT"></span>
+                            <div class="nav_title_details" i18n="dataManage.VIRTUAL_POINT">></div>
+                        </a>
+                    </li>
+                    <li permission="DataReadUser;DataManagementEngineer;DataManagementAdmin;CalcView">
+                        <a class="page-link" href="#page=PointManagerCloudPoint&pointType=2&projectId=">
+                            <i class="iconfont icon-shujuguanli-1"></i>
+                            <span class="nav-label" i18n="dataManage.CALCULATION_POINT"></span>
+                            <div class="nav_title_details" i18n="dataManage.CALCULATION_POINT"></div>
+                        </a>
+                    </li>
+                    <li permission="DataManagementAdmin">
+                        <a class="page-link" id="PointManagerImportTag" href="#page=DmTagMain&projectId=">
+                            <i class="iconfont icon-shujuguanli-2"></i>
+                            <span class="nav-label" i18n="dataManage.TAG_STRUCTURE"></span>
+                            <div class="nav_title_details" i18n="dataManage.TAG_STRUCTURE"></div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li permission="DataManagementAdmin;DataManagementEngineer;ExportData;ImportData">
+                <div class='pointManagerCloudPoint'>
+                    <span class="nav-label" i18n="dataManage.DATA_MAINTENANCE"></span>
+                    <span class="nav-line"></span>
+                </div>
+                <ul class="pointManagerCloudPointUl">
+                    <li permission="DataManagementAdmin;DataManagementEngineer">
+                        <a class="page-link" id='PointManagerImportData' href="#page=PointManagerImportData&projectId=">
+                            <span class="icon iconfont">&#xe700;</span>
+                            <span class="nav-label" i18n="dataManage.IMPORT_DATA"></span>
+                            <div class="nav_title_details" i18n="dataManage.IMPORT_DATA"></div>
+                        </a>
+                    </li>
+                    <li permission="DataManagementAdmin;DataManagementEngineer;ExportData">
+                        <a class="page-link" id="PointManagerExportData" href="#page=PointManagerExportData&projectId=">
+                            <span class="iconfont icon">&#xe701;</span>
+                            <span class="nav-label" i18n="dataManage.EXPORT_DATA"></span>
+                            <div class="nav_title_details" i18n="dataManage.EXPORT_DATA"></div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class='pointManagerCloudPoint'>
+                    <span class="nav-label" i18n="dataManage.DATA_MINING"></span>
+                    <span class="nav-line"></span>
+                </div>
+                <ul class="pointManagerCloudPointUl">
+                    <li permission="DataManagementEngineer;DataManagementAdmin;Danalysis">
+                        <a class="page-link" href="#page=AnalysisScreen&projectId=">
+                            <i class="iconfont icon-nav-104"></i>
+                            <span class="nav-label" i18n="dataManage.DATA_ANALYSIS"></span>
+                            <div class="nav_title_details" i18n="dataManage.DATA_ANALYSIS"></div>
+                        </a>
+                    </li>
+                    <li permission="DataManagementEngineer;DataManagementAdmin;DataAlarm">
+                        <a class="page-link" href="#page=PointManagerDataAlarm&projectId=">
+                            <i class="iconfont icon-baojingguanli"></i>
+                            <span class="nav-label" i18n="dataManage.DATA_ALARM"></span>
+                            <div class="nav_title_details" i18n="dataManage.DATA_ALARM"></div>
+                        </a>
+                    </li>
+                    <li permission="DataManagementAdmin;DataDiagnosis">
+                        <a class="page-link" href="#page=Diagnosis&projectId=">
+                            <span class="iconfont icon">&#xe704;</span>
+                            <span class="nav-label" i18n="dataManage.DIAGNOSIS"></span>
+                            <div class="nav_title_details" i18n="dataManage.DIAGNOSIS"></div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="pa dataManagerContent"></div>
+</div>
+<!--@formatter:off-->
+    <script type="text/html" id="tpl_test_progress">
+
+        <div class="tpl_text_box">
+            <div class="text_header">
+                <div class="text_header_prompt">
+                    <!if(opt.historyTestTime){!>
+                        H
+                    <!}else{!>
+                        R
+                    <!}!>
+                </div>
+                <div class="text_header_underline"></div>
+            </div>
+            <div class="text_content form-horizontal">
+                <!if(!opt.historyTestTime == ''){!>
+                <div class="form-group" style="width: 100%; margin-bottom: 0;">
+                    <div class="result_left col-sm-2 control-label"><!=I18n.resource.debugTools.sitePoint.TEST_TIMESET!> : </div>
+                    <div class="col-sm-10 result_right"><span><!=timeFormat(opt.historyTestTime, timeFormatChange('yyyy-mm-dd hh:ii'))!></span></div>
+                </div>
+                <!}!>
+                <div class="form-group" style="width: 100%; margin-bottom: 0;">
+                    <div class="result_left col-sm-2 control-label"><!=I18n.resource.debugTools.sitePoint.TESTED_AT!> : </div>
+                    <div class="col-sm-10 result_right"><span><!=timeFormat(opt.newDate, timeFormatChange(DateUtil.DATA_FORMAT.FULL_DATETIME_NO_SEC))!></span></div>
+                </div>
+                <!if(opt.errorResult){!>
+                    <div class="form-group" style="width: 100%; margin-bottom: 0;">
+                        <div class="result_left col-sm-2 control-label"><!=I18n.resource.debugTools.sitePoint.POINT_VALUE_IS!> : </div>
+                        <div class="col-sm-10 result_right"><span class="text-danger"><!=opt.errorResult!></span></div>
+                    </div>
+                <!}!>
+                <!if(opt.result){!>
+                <div class="form-group" style="width: 100%;margin-bottom: 0;">
+                    <div class="result_left col-sm-2 control-label"><!=I18n.resource.debugTools.sitePoint.POINT_VALUE_IS!> : </div>
+                    <div class="result_right col-sm-10 "><span><!=opt.result!></span></div>
+                </div>
+                <!}!>
+                <!if(opt.process){!>
+                    <div class="text_box form-group" style="width: 100%; margin-bottom: 0;">
+                        <div class="result_left col-sm-2 control-label"><!=I18n.resource.debugTools.sitePoint.TEST_PROCESS!> : </div>
+                        <div class="result_right col-sm-10">
+                            <!if(opt.process){!>
+                                <!for (var m = 0; m < opt.process.length; m++) {!>
+                                    <!=opt.process[m]!> <br/>
+                                <!}!>
+                            <!}!>
+                        </div>
+                    </div>
+                <!}!>
+            </div>
+        </div>
+    </script>
+<!--@formatter:on-->

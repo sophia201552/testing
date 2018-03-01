@@ -1,0 +1,136 @@
+<style>
+    #paneIotData span {
+        cursor: pointer;
+    }
+
+    .paneIot {
+        padding: 5px;
+    }
+    #filterWrapper .form-control{
+        width: auto;
+        display: inline-block;
+    }
+    #paneIot-projects,#paneIot-groups,#paneIot-things {
+        display: none;
+    }
+    #paneIot-projects.on,#paneIot-groups.on,#paneIot-things.on {
+        display: block;
+    }
+
+    .divSelect {
+        width: calc(33% - 4px);
+        margin-right: 6px;
+        float: left;
+    }
+    .divSelect:last-child {
+        margin-right: 0;
+    }
+
+    #paneIotSearch input, .selClass{
+        float: left;
+        margin-left: 6px;
+        width: calc(100% - 80px);
+        color: #555;
+        /*text-shadow: 1px 1px 1px rgba(50,50,50,0.5);*/
+        background: rgba(255, 255, 255, 0.85);
+        border: 0;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+    .selClass {
+        width: 100%;
+        margin: 0;
+        text-shadow: none;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    /*#paneIotData li span.button {
+        position: relative;
+        top: 1px;
+        display: inline-block !important;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: normal;
+        line-height: 0;
+        -webkit-font-smoothing: antialiased;
+    }
+    #paneIotData li span.button.edit:before {
+        content: "\e065";
+    }
+    #paneIotData li span.button.remove:before {
+        content: "\e083";
+    }*/
+    #paneIotData li:hover>.btnTreeNode {
+        display: inline-block;
+        width: 19px;
+    }
+    #paneIotData .btnTreeNode {
+        display: none;
+    }
+    #paneIotAdd .btnAddEle {
+        float: right;
+        margin: 8px 10px 0 2px;
+        cursor: pointer;
+    }
+    .modal-backdrop.in{
+        z-index: 0;
+    }
+    #templateModal
+    #templateModal iframe{
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+<div style="position: relative; width: 100%; height: 100%;" id="filterWrapper">
+    <div class="col-xs-12 paneIot" id="paneIotSearch">
+        <input placeholder="搜索关键字..." style="float: right;width: 100%;" class="form-control"/>
+    </div>
+
+    <div class="col-xs-12 paneIot" id="paneIot-projects">
+    </div>
+
+    <div class="col-xs-12 paneIot" id="paneIotType">
+    </div>
+
+
+    <div class="col-xs-12 paneIot" id="paneIot-groups">
+    </div>
+
+    <div class="col-xs-12 paneIot" id="paneIot-things"></div>
+
+    <!--<div class="col-xs-12 paneIot" id="paneIotButton">
+        <button>检索</button>
+    </div>-->
+
+    <div class="col-xs-12 paneIot gray-scrollbar" id="paneIotData" style="height: calc(100% - 100px); overflow-x: hidden; overflow-y: auto;">
+
+    </div>
+    <!--<div class="col-xs-12 paneIot" id="paneIotAdd">
+        <button id="btnAddThing" class="btnAddEle" typeAdd="things">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"> 添加thing</span>
+        </button>
+        <button id="btnAddGroup" class="btnAddEle" typeAdd="groups">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"> 添加Group</span>
+        </button>
+    </div>-->
+
+    <div id="paneIotAdd" style="position: absolute; width: 100%; height: 30px; bottom: 0; background-color: #333;">
+        <span id="btnAddThing" class="btnAddEle grow glyphicon glyphicon-file" typeadd="things" title="添加thing"></span>
+        <span id="btnAddGroup" class="btnAddEle grow glyphicon glyphicon-folder-open" typeadd="groups" title="添加Group"></span>
+    </div>
+</div>
+<div id="dialogModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialogModal">
+  <div class="modal-dialog modal-lg">
+    <div id="dialogContent" class="modal-content">
+    </div>
+  </div>
+</div>
+<div id="templateModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="templateModal">
+  <div class="modal-dialog modal-lg" style="height: 90%;">
+    <div id="templateContent" class="modal-content" style="height: 100%;">
+    </div>
+  </div>
+</div>

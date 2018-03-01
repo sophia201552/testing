@@ -1,0 +1,925 @@
+<style>
+    #userRule {
+        margin: 20px 27px 0 0;
+        overflow: hidden;
+    }
+
+    #userRule .userRule {
+        float: left;
+        margin-left: 22px;
+        cursor: pointer;
+    }
+
+    #directUserInfos,
+    #managementUserInfos {
+        min-height: 210px;
+        max-height: 300px;
+        width: 842px;
+        padding-left: 5px;
+        margin: 20px auto 0 auto;
+        overflow-y: auto;
+    }
+
+    #directUserInfos li,
+    #managementUserInfos li {
+        margin: 0 6px 10px 6px;
+        position: relative;
+    }
+
+    #directUserInfos li input[type=text] {
+        width: 143px;
+        display: inline-block;
+    }
+
+    #directUserInfos .input-text-required-icon,
+    #managementUserInfos .input-text-required-icon {
+        position: relative;
+        width: 6px;
+        display: inline-block;
+        color: red;
+    }
+
+    #addPersonErr {
+        color: #f0ad4e;
+    }
+
+    #directUserInfos li .errorUserInfoBox,
+    #managementUserInfos li .errorUserInfoBox {
+        display: none;
+        width: 100%;
+        height: auto;
+        color: #f0ad4e;
+        padding: 5px 20px 0 10px;
+        text-align: left;
+    }
+
+    #managementUserInfos li input[type=text],
+    #managementUserInfos li select {
+        width: 116px;
+        display: inline-block;
+    }
+
+    #directUserInfos li span.deleteTheUserInfo,
+    #managementUserInfos li span.deleteTheUserInfo {
+        display: inline-block;
+        width: auto;
+        font-size: 16px;
+        position: absolute;
+        right: -13px;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    #addUserTable {
+        display: block;
+        cursor: pointer;
+    }
+
+    #addUserTable span {
+        display: inline-block;
+        font-size: 16px;
+    }
+
+</style>
+
+<div id="memberManage">
+    <div class="oh p20">
+        <section class="bg1 p15 mb20" style="height:60px;">
+            <div id="searchUserCon" class="pr">
+                <input type="text" id="searchUser" class="form-control" placeholder="" maxlength="25"
+                       i18n="placeholder=admin.panelManagement.ENTER_A_QUERY;title=admin.panelManagement.ENTER_A_QUERY"/>
+                <ul id="userListUl" class="dn"></ul>
+            </div>
+            <div id="addPerson" class="fr cp" permission="InviteUser">
+                <em class="ic1">+</em><span class="addPersonTxt" i18n="admin.panelManagement.ADD_STAFF"></span>
+            </div>
+        </section>
+        <section class="bg1 p15 oh mb20">
+            <div id="userTreeCon" class="userTree gray-scrollbar">
+                <ul id="treeUl"></ul>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!--添加人员浮动窗口开始-->
+<div class="modal fade" id="addPersonWin" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg" style="top: 75px; width: 900px;">
+        <div class="modal-content" style="background-color: #ffffff;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" i18n="admin.panelManagement.ADD_STAFF"></h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer tc">
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                        i18n="admin.panelManagement.CANCEL"></button>
+                <button type="button" class="btn btn-primary ml20" id="addPersonOK" data-loading-text=""
+                        i18n="admin.panelManagement.INVITATION_TO_SEND;"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--添加人员浮动窗口结束-->
+
+<!--员工管理页面设置浮动窗口开始-->
+<article id="userSettingWin" class="modal fade gray-scrollbar" userId="">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</article>
+<!--员工管理页面设置浮动窗口结束-->
+
+<!--员工管理页面确认是否删除用户开始-->
+<article id="isUserDelWin" class="modal fade confirmWin">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" i18n="admin.panelManagement.PROMPT">：</h4>
+            </div>
+            <div class="modal-body">
+                <p class="infoPrompt" i18n="admin.panelManagement.DELETE_IT">?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                        i18n="admin.panelManagement.CANCEL"></button>
+                <button type="button" class="btn btn-primary" id="deleteUser"
+                        i18n="admin.panelManagement.CONFIRM"></button>
+            </div>
+        </div>
+    </div>
+</article>
+<!--员工管理页面确认是否删除用户结束-->
+
+<!--模版开始-->
+<script type="text/html" id="userTreeItemTmpl">
+    <li userId="<!=obj.id!>">
+        <!if( obj.isManager == 1){!>
+        <span style="border:1px solid #f0ad4e;" isManager="<!=obj.isManager!>">
+        <!}else{!>
+            <span isManager="<!=obj.isManager!>">
+        <!}!>
+            <dl>
+                <dt class="setting">
+                    <img src="<!=obj.userpic!>" class="personImg"/>
+                </dt>
+                <dd>
+                    <h4 class="userfullname" title="<!=obj.userfullname || obj.username!>"
+                        user_email="<!=obj.username!>"><!=obj.userfullname ||
+                        obj.username!></h4>
+
+                    <div>
+                        <!if(obj.sub && obj.sub.length){!>
+                        <span class="userInfo bg-info"><i class="glyphicon glyphicon-minus-sign"></i></span>
+                        <!}!>
+                        <!if(obj.userstatus !== 'registered'){!>
+                        <!if(obj.userstatus == 'expired'){!>
+                        <span class="userInfo bg-danger" i18n="admin.panelManagement.EXPIRED"></span>
+                        <!}else{!>
+                        <span class="userInfo bg-warning" i18n="admin.panelManagement.NOT_ACTIVATED"></span>
+                        <!}!>
+                        <span class="re-invite bg-info cp" i18n="admin.panelManagement.RE_INVITE"></span>
+                        <!}!>
+                    </div>
+                </dd>
+            </dl>
+        </span>
+    </li>
+</script>
+<script type="text/html" id="userSettingTmpl">
+    <div class="box1">
+        <div class="media pr">
+            <div class="media-left">
+                <div class="thumbnail">
+                    <img class="media-object userPic" src="<!=user.userpic!>"
+                         alt="<!=user.userfullname || user.username!>">
+                </div>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading nameEditor"><span
+                        class="userName"><!=user.userfullname || user.username!></span></h4>
+
+                <div class="email userEmail"><!=user.username || ''!></div>
+                <div class="user mt10 clearfix">
+                    <input type="hidden" value="<!=supervisor.id!>" id="oldSupervisor">
+                    <input type="hidden" value="<!=user.isManager!>" id="oldIsManager">
+                    <!if(supervisor.id){!>
+                        <!if(localStorage.getItem('language') == 'zh'){!>
+                            <span class="userSupervisor mr15 pr fl" style="width:230px">
+                        <!}else{!>
+                            <span class="userSupervisor mr15 pr fl" style="width:205px">
+                        <!}!>
+                            <span i18n="admin.panelManagement.INVITER">：</span>
+                            <!if(user.id == AppConfig.userId){!>
+                                <span><!=supervisor.userfullname || supervisor.username !></span>
+                            <!}else{!>
+                                <!if(localStorage.getItem('language') == 'zh'){!>
+                                    <select id="supervisor" class="form-control w150">
+                                <!}else{!>
+                                    <select id="supervisor" class="form-control w150" style="left:50px">
+                                <!}!>
+                                <option value="<!=supervisor.id!>" selected disabled style="display: none;">
+                                    <!=supervisor.userfullname || supervisor.username !>
+                                </option>
+                                <!for(var m=0; m < managers.length; m++){!>
+                                <!if(managers[m].id === user.id || managers[m].id === supervisor.id){ continue; }!>
+                                <!if(managers[m].isSub){!>
+                                <option value="<!=managers[m].id!>" disabled><!=managers[m].userfullname ||
+                                    managers[m].username !>
+                                </option>
+                                <!}else{!>
+                                <option value="<!=managers[m].id!>"><!=managers[m].userfullname ||
+                                    managers[m].username !>
+                                </option>
+                                <!}!>
+                            <!}!>
+                                </select>
+                            <!}!>
+                        </span>
+                    <!}!>
+                    <span class="userLevel mr15 pr fl" style="width:213px">
+                        <span i18n="admin.panelManagement.MANAGEMENT_AUTHORITY">：</span>
+                        <!if(user.id == AppConfig.userId){!>
+                            <!if(user.isManager){!>
+                                <span i18n="admin.panelManagement.YES"></span>
+                            <!}else{!>
+                                <span i18n="admin.panelManagement.NO"></span>
+                            <!}!>
+                        <!}else{!>
+                            <!if(localStorage.getItem('language') == 'zh'){!>
+                                <select id="isManager" class="form-control w100">
+                            <!}else{!>
+                                <select id="isManager" class="form-control w100" style="left:110px;">
+                            <!}!>
+                            <!if(user.isManager){!>
+                            <option value="1" selected i18n="admin.panelManagement.YES"></option>
+                            <option value="0" i18n="admin.panelManagement.NO"></option>
+                            <!}else{!>
+                            <option value="1" i18n="admin.panelManagement.YES"></option>
+                            <option value="0" selected i18n="admin.panelManagement.NO"></option>
+                            <!}!>
+                        </select>
+                        <!}!>
+                    </span>
+
+                    <span id="showCountry" class="userLevel mr15 pr fl w250">
+                            <span i18n="admin.panelManagement.MANAGEMENT_COUNTRY">：</span>
+                            <!if(user.id == AppConfig.userId){!>
+                                <!if(user.country && user.country != 'WW'){!>
+                                    <span><!=user.country!></span>
+                                <!}else{!>
+                                    <span i18n="admin.panelManagement.NO"></span>
+                                <!}!>
+                            <!}else{!>
+                                <!if(localStorage.getItem('language') == 'zh'){!>
+                                    <select id="select_country" class="form-control"></select>
+                                <!}else{!>
+                                    <select id="select_country" class="form-control" style="left:64px"></select>
+                                <!}!>
+                            <!}!>
+                        </span>
+                    
+                </div>
+                <!if(!user.company){!>
+                <!}else{!>
+                <div style="position: absolute; right: 0; margin-top: 5px">
+                    <span i18n="admin.panelManagement.COMPANYNAME"></span>
+                    <span style="display:inline-block;width: 190px;"><!=user.company!></span>
+                </div>
+                <!}!>
+                <div class="mt15 pr fl">
+                    <span id="expiryDisplay">
+                        <!if(user.expiryDate){!>
+                            <span class="expiryText">
+                        <!}else{!>
+                            <span class="expiryText dn">
+                        <!}!>
+                                <span i18n="admin.panelManagement.VALIDITY_PERIOD"></span>
+                                <span class="expiryDate"><!=user.expiryDate!></span>
+                            </span>
+                        <button class="btn btn-default" id="setAccountExpiry"
+                                i18n="admin.panelManagement.SET_VALIDITY_PERIOD"></button>
+                    </span>
+
+                    <span id="expiryEditor" class="dn">
+                        <span i18n="admin.panelManagement.VALIDITY_PERIOD"></span>
+                        <input size="16" type="text" value="" readonly id="expiryDatePicker">
+                        <button class="btn btn-default" id="setAccountExpiryCancel"
+                                i18n="admin.panelManagement.CANCEL"></button>
+                        <button class="btn btn-success" id="setAccountExpirySave"
+                                i18n="admin.panelManagement.SAVE"></button>
+                    </span>
+                </div>
+            </div>
+            <!if(user.id != AppConfig.userId){!>
+            <div class="media-right fr">
+                <button type="button" class="btn btn-danger pa" id="userDel"
+                        i18n="admin.panelManagement.DELETE"></button>
+                <button type="button" class="btn btn-primary pa" id="userEditConfrim"
+                        i18n="admin.panelManagement.CONFIRM"></button>
+                <button type="button" class="btn btn-default pa" data-dismiss="modal"
+                        i18n="admin.panelManagement.CANCEL" style="top: 10px;right: 0;"></button>
+            </div>
+            <!}!>
+        </div>
+    </div>
+    <div id="user-role" class="col-xs-12">
+        <dl class="row" permission="PGrant">
+            <dt>系统用户</dt>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="1">
+                    <input type="checkbox"><span>后台组</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="2">
+                    <input type="checkbox"><span>数据接入组</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="3">
+                    <input type="checkbox"><span>文档管理员</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="4">
+                    <input type="checkbox"><span>算法组</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="5">
+                    <input type="checkbox"><span>前端开发</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="6">
+                    <input type="checkbox"><span>测试与产品组</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="7">
+                    <input type="checkbox"><span>技术支持主管</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="8">
+                    <input type="checkbox"><span>技术支持</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="9">
+                    <input type="checkbox"><span>工程部</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="10">
+                    <input type="checkbox"><span>其他所有系统用户</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="21">
+                    <input type="checkbox"><span>人员管理</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="22">
+                    <input type="checkbox"><span>root</span>
+                </label>
+            </dd>
+        </dl>
+
+        <dl class="row" permission="DCGrant">
+            <dt>直接用户</dt>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="11">
+                    <input type="checkbox"><span>只读用户</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="12">
+                    <input type="checkbox"><span>数据分析员</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="13">
+                    <input type="checkbox"><span>工程师</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="14">
+                    <input type="checkbox"><span>管理员</span>
+                </label>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt>平台权限</dt>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="30">
+                    <input type="checkbox"><span>集团用户</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="31">
+                    <input type="checkbox"><span>平台用户</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="32">
+                    <input type="checkbox"><span>演示权限</span>
+                </label>
+            </dd>
+        </dl>
+        <dl class="row" permission="SCGrant">
+            <dt>平台用户</dt>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="15">
+                    <input type="checkbox" disabled checked><span>只读用户</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="16">
+                    <input type="checkbox"><span>数据分析员</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="17">
+                    <input type="checkbox"><span>webFactory工程师</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="18">
+                    <input type="checkbox"><span>调试工程师</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="19">
+                    <input type="checkbox"><span>管理人</span>
+                </label>
+            </dd>
+            <dd class="col-xs-6 col-md-3">
+                <label data-role-id="20">
+                    <input type="checkbox"><span>admin</span>
+                </label>
+            </dd>
+        </dl>
+    </div>
+    <div id="userOperationRecords">
+        <div class="p20" style="padding: 20px 20px 15px 20px;">
+            <div class="clearfix">
+                <div id="account_operation_record" class="cl2 fl tableStyle cp"
+                     i18n="admin.panelManagement.ACCOUNT_RECORD_OPERATION"></div>
+                <div id="distribution_project" class="fl cl2 tableStyle cp"
+                     i18n="admin.panelManagement.PROJECT_LIST">
+                </div>
+            </div>
+            <div class="userOperationContent" style="width: 808px; height: 354px;position: relative;">
+                <div class="userOperationRecords">
+                    <div class="bg1 p15 oh">
+                        <div class="fl ml20">
+                            <div class="input-group date form_datetime fl" data-date=""
+                                 data-link-field="dtp_inputStart">
+                                <input class="form-control" size="16" type="text" value="" id="recordLogDateStart"
+                                       style="border-radius:5px 0 0 5px;">
+                            </div>
+                            <div class="dib obj1" i18n="admin.panelManagement.TO"></div>
+                            <div class="input-group date form_datetime fl" data-date=""
+                                 data-link-field="dtp_inputStart">
+                                <input class="form-control" size="16" type="text" value="" id="recordLogDateEnd"
+                                       style="border-radius:0 5px 5px 0;">
+                            </div>
+                            <button type="button" id="btnRecord" class="btn btn-primary ml30 fl"
+                                    i18n="admin.panelManagement.DETERMINE"></button>
+                            <span id="recordInfoDate" class="infoPrompt dn pr fl"
+                                  i18n="admin.panelManagement.DATE_CANNOT_EMPTY"></span>
+                        </div>
+                    </div>
+                    <div id="userAllRecordTableWrapper" class="bg1 gray-scrollbar">
+                        <table id="userAllRecordTable">
+                            <thead>
+                            <tr>
+                                <th width="20%" i18n="admin.panelManagement.TIME"></th>
+                                <th width="15%">IP</th>
+                                <th width="15%" i18n="admin.panelManagement.OPERATING_SYSTEM"></th>
+                                <th width="15%" i18n="admin.panelManagement.RATIO"></th>
+                                <th width="20%" i18n="admin.panelManagement.BROWSER"></th>
+                                <!if (AppConfig.language == "zh") {!>
+                                <th width="15%" i18n="admin.panelManagement.ATTRIBUTION"></th>   
+                                <!}!>                             
+                            </tr>
+                            </thead>
+                            <tbody id="userAllRecord"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="selectInitProjectTmpl">
+    <select class="form-control w260 fl" id="selectInitProject">
+        <option value="0" disabled selected style="display:none;"
+                i18n="admin.panelManagement.SET_INITIAL_PROJECT"></option>
+        <!for(var projectId in obj){!>
+        <!if (localStorage.getItem('language') == 'en'){!>
+        <option value="<!=projectId!>" class="projects"><!=obj[projectId].projectName_en!></option>
+        <!}else {!>
+        <option value="<!=projectId!>" class="projects"><!=obj[projectId].projectName!></option>
+        <!}!>
+        <!}!>
+    </select>
+</script>
+<script type="text/html" id="selectInitRoleTmpl">
+    <select class="form-control w260 fl" id="selectInitRole">
+        <option value="0" disabled selected style="display:none;"
+                i18n="admin.panelManagement.SET_INITIAL_GROUP"></option>
+        <!for(var m =0; m < obj.length; m++){!>
+        <option value="<!=obj[m].roleId!>" class="roles"><!=obj[m].roleName!></option>
+        <!}!>
+    </select>
+</script>
+
+<script type="text/html" id="new_user_info_table">
+    <span class="input-text-required-icon">*</span>
+    <input type="text" class="form-control mr10 userName" minlength="6"
+           i18n="placeholder=admin.panelManagement.USER_NAME" required/>
+    <span class="input-text-required-icon">*</span>
+    <input type="text" class="form-control mr10 loginName" minlength="6"
+           i18n="placeholder=admin.panelManagement.LOGIN_NAME" required/>
+    <span class="input-text-required-icon">*</span>
+    <input type="text" class="form-control mr10 userPassword"
+           i18n="placeholder=admin.panelManagement.USER_PASSWORD" required/>
+    <input type="text" class="form-control mr10 userEmail" maxlength="35"
+           i18n="placeholder=admin.panelManagement.MAILBOX"/>
+    <input type="text" class="form-control mr10 userPhone" maxlength="11"
+           i18n="placeholder=admin.panelManagement.USER_PHONE"/>
+    <!if (!isDirectUser) {!>
+    <select class="form-control userManagement"></select>
+    <! } !>
+    <span class="fl mr10 deleteTheUserInfo icon iconfont icon-cuowu1"
+          i18n="title=admin.panelManagement.DELETE_USER"></span>
+    <div class="errorUserInfoBox"></div>
+</script>
+
+<script type="text/html" id="addUserTmpl">
+    <div class="winCon">
+        <div id="selectInfos">
+            <div class="selectInfosContent">
+            <select class="form-control w260 fl" id="selectSupervisor">
+                <option value="0" disabled selected style="display:none;"
+                        i18n="admin.panelManagement.SET_INVITER"></option>
+                <!for(var m=0; m < managers.length; m++){!>
+                <option value="<!=managers[m].id!>"><!=managers[m].userfullname || managers[m].username!></option>
+                <!}!>
+            </select>
+            <select class="form-control w260 fl" id="selectInitProject">
+                <option value="0" disabled selected style="display:none;"
+                        i18n="admin.panelManagement.SET_INITIAL_PROJECT"></option>
+            </select>
+            <select class="form-control w260 fl" id="selectInitRole">
+                <option value="0" disabled selected style="display:none;"
+                        i18n="admin.panelManagement.SET_INITIAL_GROUP"></option>
+            </select>
+
+            <select class="form-control w260 fl" id="selectCountry"></select>
+
+            <select class="form-control w260 fl" id="selectLanguage">
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+            </select>
+            </div>
+            <div>
+                <label style="margin:5px 0 0 1px;"><input type="checkbox" id="givenMR"/><span
+                        i18n="admin.panelManagement.GIVEN_AUTHORITY"></span></label>
+            </div>
+        </div>
+
+        <div id="userRule">
+            <div id="directUser" class="userRule">
+                <input type="radio" name="user" checked/>
+                <span class="direct" i18n="admin.panelManagement.DIRECT_USER"></span>
+            </div>
+            <div id="managementUser" class="userRule">
+                <input type="radio" name="user"/>
+                <span class="special" i18n="admin.panelManagement.MANAGEMENT_USER"></span>
+            </div>
+            <div id="addUserTable" class="fr" i18n="title=admin.panelManagement.ADD_NEW_USER">
+                <span class="icon iconfont icon-tianjia"></span>
+                <span class="addUserBtnText" i18n="admin.panelManagement.ADD_NEW_USER"></span>
+            </div>
+        </div>
+
+        <ul id="directUserInfos" class="gray-scrollbar">
+            <! for (var i = 0; i < addCount; i++) { !>
+            <li class="userInfoLi">
+                <span class="input-text-required-icon">*</span>
+                <input type="text" class="form-control mr10 userName" minlength="6"
+                       i18n="placeholder=admin.panelManagement.USER_NAME" required/>
+                <span class="input-text-required-icon">*</span>
+                <input type="text" class="form-control mr10 loginName" minlength="6"
+                       i18n="placeholder=admin.panelManagement.LOGIN_NAME" required/>
+                <span class="input-text-required-icon">*</span>
+                <input type="text" class="form-control mr10 userPassword"
+                       i18n="placeholder=admin.panelManagement.USER_PASSWORD" required/>
+                <input type="text" class="form-control mr10 userEmail" maxlength="35"
+                       i18n="placeholder=admin.panelManagement.MAILBOX"/>
+                <input type="text" class="form-control mr10 userPhone" maxlength="11"
+                       i18n="placeholder=admin.panelManagement.USER_PHONE">
+                <span class="fl mr10 deleteTheUserInfo icon iconfont icon-cuowu1"
+                      i18n="title=admin.panelManagement.DELETE_USER"></span>
+                <div class="errorUserInfoBox"></div>
+            </li>
+            <! } !>
+        </ul>
+
+        <ul id="managementUserInfos" class="gray-scrollbar" style="display: none;">
+            <!for(var n=0; n < addCount; n++){!>
+            <li class="userInfoLi">
+                <span class="input-text-required-icon">*</span>
+                <input type="text" class="form-control mr10 userName" minlength="6"
+                       i18n="placeholder=admin.panelManagement.USER_NAME" required/>
+                <span class="input-text-required-icon">*</span>
+                <input type="text" class="form-control mr10 loginName" minlength="6"
+                       i18n="placeholder=admin.panelManagement.LOGIN_NAME" required/>
+                <span class="input-text-required-icon">*</span>
+                <input type="text" class="form-control mr10 userPassword"
+                       i18n="placeholder=admin.panelManagement.USER_PASSWORD" required/>
+                <input type="text" class="form-control mr10 userEmail" maxlength="35"
+                       i18n="placeholder=admin.panelManagement.MAILBOX"/>
+                <input type="text" class="form-control mr10 userPhone" maxlength="11"
+                       i18n="placeholder=admin.panelManagement.USER_PHONE">
+                <select class="form-control userManagement"></select>
+                <span class="fl mr10 deleteTheUserInfo icon iconfont icon-cuowu1"
+                      i18n="title=admin.panelManagement.DELETE_USER"></span>
+                <div class="errorUserInfoBox"></div>
+            </li>
+            <!}!>
+        </ul>
+        <div id="addPersonErr" class="infoPrompt ml20 dn" style="text-indent: 32px;">！
+        </div>
+        <ul id="inviteMsg"></ul>
+        <ul id="inviteMsgManager"></ul>
+    </div>
+</script>
+
+<script type="text/html" id="init_error_user_info">
+    <! for (var i = 0; i < errorUserInfo.length; i++) {!>
+    <li class="userInfoLi">
+        <span class="input-text-required-icon">*</span>
+        <input type="text" class="form-control mr10 userName" minlength="6"
+               i18n="placeholder=admin.panelManagement.USER_NAME" value="<!=errorUserInfo[i].userfullname!>" required/>
+        <span class="input-text-required-icon">*</span>
+        <input type="text" class="form-control mr10 loginName" minlength="6"
+               i18n="placeholder=admin.panelManagement.LOGIN_NAME" value="<!=errorUserInfo[i].username!>" required/>
+        <span class="input-text-required-icon">*</span>
+        <input type="text" class="form-control mr10 userPassword"
+               i18n="placeholder=admin.panelManagement.USER_PASSWORD" value="<!=errorUserInfo[i].password!>" required/>
+        <input type="text" class="form-control mr10 userEmail" maxlength="35"
+               i18n="placeholder=admin.panelManagement.MAILBOX" value="<!=errorUserInfo[i].useremail!>"/>
+        <input type="text" class="form-control mr10 userPhone" maxlength="11"
+               i18n="placeholder=admin.panelManagement.USER_PHONE" value="<!=errorUserInfo[i].usermobile!>">
+        <!if (isManager) {!>
+        <select class="form-control userManagement"></select>
+        <! } !>
+        <span class="fl mr10 deleteTheUserInfo icon iconfont icon-cuowu1"
+              i18n="title=admin.panelManagement.DELETE_USER"></span>
+        <!if (errorUserInfo[i] && errorUserInfo[i].errorText) {!>
+            <div class="errorUserInfoBox">
+                    <!=I18n.resource.admin.panelManagement.ERROR_OCCURRED!>&lt;<!=errorUserInfo[i].errorText!>&gt;
+            </div>
+        <!} else if (errorUserInfo[i] && errorUserInfo[i].error) {!>
+            <div class="errorUserInfoBox">
+                <!=I18n.resource.admin.panelManagement.ERROR_OCCURRED!>&lt;<!=I18n.resource.admin.panelManagement.REGISTERED_ERROR[errorUserInfo[i].error]!>&gt;
+            </div>
+        <!}!>
+        
+    </li>
+    <! } !>
+</script>
+
+<script type="text/html" id="init_result_user_box">
+    <! for (var i = 0; i < addUserLen; i++) {!>
+    <li class="userInfoLi">
+        <span class="input-text-required-icon">*</span>
+        <input type="text" class="form-control mr10 userName" minlength="6"
+               i18n="placeholder=admin.panelManagement.USER_NAME" required/>
+        <span class="input-text-required-icon">*</span>
+        <input type="text" class="form-control mr10 loginName" minlength="6"
+               i18n="placeholder=admin.panelManagement.LOGIN_NAME" required/>
+        <span class="input-text-required-icon">*</span>
+        <input type="text" class="form-control mr10 userPassword"
+               i18n="placeholder=admin.panelManagement.USER_PASSWORD" required/>
+        <input type="text" class="form-control mr10 userEmail" maxlength="35"
+               i18n="placeholder=admin.panelManagement.MAILBOX"/>
+        <input type="text" class="form-control mr10 userPhone" maxlength="11"
+               i18n="placeholder=admin.panelManagement.USER_PHONE">
+        <!if (isManager) {!>
+        <select class="form-control userManagement"></select>
+        <! } !>
+        <span class="fl mr10 deleteTheUserInfo icon iconfont icon-cuowu1"
+              i18n="title=admin.panelManagement.DELETE_USER"></span>
+        <div class="errorUserInfoBox"></div>
+    </li>
+    <! } !>
+</script>
+
+<script type="text/html" id="inviteMsgTmpl">
+    <! for(var prop in failed){!>
+    <! for(var i=0; i < failed[prop].length; i++){!>
+    <li class="<!=prop!>"><!=failed[prop][i].useremail!> <!=info[prop]!></li>
+    <!}!>
+    <!}!>
+    <! for(var i=0; i < succeed.length; i++){!>
+    <li class="succeed"><!=succeed[i].useremail!> <!=info.succeed!></li>
+    <!}!>
+</script>
+
+<script type="text/html" id="accountOperationRecord">
+    <div class="userOperationRecords">
+        <div class="bg1 p15 oh">
+            <div class="fl ml20">
+                <div class="input-group date form_datetime fl" data-date=""
+                     data-link-field="dtp_inputStart">
+                    <input class="form-control" size="16" type="text" value="" id="recordLogDateStart"
+                           style="border-radius:5px 0 0 5px;">
+                </div>
+                <div class="dib obj1" i18n="admin.panelManagement.TO"></div>
+                <div class="input-group date form_datetime fl" data-date=""
+                     data-link-field="dtp_inputStart">
+                    <input class="form-control" size="16" type="text" value="" id="recordLogDateEnd"
+                           style="border-radius:0 5px 5px 0;">
+                </div>
+                <button type="button" id="btnRecord" class="btn btn-primary ml30 fl"
+                        i18n="admin.panelManagement.DETERMINE"></button>
+                <span id="recordInfoDate" class="infoPrompt dn pr fl"
+                      i18n="admin.panelManagement.DATE_CANNOT_EMPTY"></span>
+            </div>
+        </div>
+        <div id="userAllRecordTableWrapper" class="bg1 mt10 gray-scrollbar">
+            <table id="userAllRecordTable">
+                <thead>
+                <tr>
+                    <th width="20%" i18n="admin.panelManagement.TIME"></th>
+                    <th width="15%">IP</th>
+                    <th width="15%" i18n="admin.panelManagement.OPERATING_SYSTEM"></th>
+                    <th width="15%" i18n="admin.panelManagement.RATIO"></th>
+                    <th width="20%" i18n="admin.panelManagement.BROWSER"></th>
+                    <!if(AppConfig.language=='zh'){!>
+                    <th width="15%" i18n="admin.panelManagement.ATTRIBUTION"></th>
+                    <!}!>                 
+                </tr>
+                </thead>
+                <tbody id="userAllRecord">
+                <! for(var i=0;i < obj.length; i++){!>
+                <!var item = obj[i]; !>
+                <tr>
+                    <td>
+                        <div class="ellipsis w150"
+                             title="<!=item.time.replace('GMT', '').toDate().format('yyyy-MM-dd HH:mm:ss')!>">
+                            <!=item.time.replace('GMT', '').toDate().format('yyyy-MM-dd HH:mm:ss')!>
+                        </div>
+                    </td>
+                    <td><!=item.ip!></td>
+                    <td>
+                        <!if(item.agent){!>
+                        <!=item.agent.os!> <!=item.agent.osVersion!>
+                        <!}!>
+                    </td>
+                    <td>
+                        <!if(item.agent){!>
+                        <!=item.agent.screen!>
+                        <!}!>
+                    </td>
+                    <td>
+                        <!if(item.agent){!>
+                        <div class="ellipsis w150" title="<!=item.agent.browser!> <!=item.agent.browserVersion!>">
+                            <!=item.agent.browser!> <!=item.agent.browserVersion!>
+                        </div>
+                        <!}!>
+                    </td>
+                    <!if(AppConfig.language=='zh'){!>
+                    <td>
+                        <!if(item.location) {!>
+                            <div class="ellipsis w110" title="<!=item.location.country!> <!=item.location.region!> <!=item.location.city!>">
+                                <!=item.location.country!> <!=item.location.region!> <!=item.location.city!> 
+                            </div>
+                        <!}!>
+                    </td>
+                    <!}!>
+                </tr>
+                <!}!>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+
+
+<script type="text/html" id="distributionProject">
+    <div style="background: #ffffff;">
+        <div class="searchBox clearfix">
+            <input id="projectInput" class="form-control" type="text">
+            <span class="input-group-addon" style="border-left: 1px solid rgb(178, 178, 178);">
+                    <button type="button" id="btnSearch" class="glyphicon glyphicon-search"></button>
+                </span>
+        </div>
+    </div>
+    <div id="userAllRecordTableWrapper" class="bg1 gray-scrollbar">
+        <table id="userAllRecordTable">
+            <thead>
+            <tr>
+                <th width="20%" i18n="admin.panelManagement.PROJECT_NAME"></th>
+                <th width="15%" i18n="admin.panelManagement.GROUP"></th>
+                <th width="15%" i18n="admin.panelManagement.DISTRIBUTION_TIME"></th>
+                <th width="15%" i18n="admin.panelManagement.ASSIGNER"></th>
+            </tr>
+            </thead>
+            <tbody id="userAllRecord">
+            <! for(var i=0;i < obj.length; i++){!>
+            <! var data = obj[i]; !>
+            <tr>
+                <td><!=data.projectName!></td>
+                <td><!=data.group!></td>
+                <td><!=data.assignTime!></td>
+                <td><!=data.assignBy!></td>
+            </tr>
+            <!}!>
+            </tbody>
+        </table>
+    </div>
+</script>
+
+
+<script type="text/html" id="selectProjectName">
+    <! for(var i=0;i < obj.length; i++){!>
+    <! var data = obj[i]; !>
+    <tr>
+        <td><!=data.projectName!></td>
+        <td><!=data.group!></td>
+        <td><!=data.assignTime!></td>
+        <td><!=data.assignBy!></td>
+    </tr>
+    <!}!>
+</script>
+
+<script type="text/html" id="rcsUserRole">
+    <dl id="rcsLevels" class="row" permission="TeamSet">
+        <dt>凯德集团用户</dt>
+        <dd class="col-xs-6 col-md-3" id="rcsLevelsSuperManagerBox">
+            <label data-role-id="23">
+                <input type="checkbox"><span>超级管理员</span>
+            </label>
+        </dd>
+        <dd class="col-xs-6 col-md-3">
+            <label data-role-id="24">
+                <input type="checkbox"><span>数据分析师</span>
+            </label>
+        </dd>
+        <dd class="col-xs-6 col-md-3">
+            <label data-role-id="25">
+                <input type="checkbox"><span>区域工程师</span>
+            </label>
+        </dd>
+        <dd class="col-xs-6 col-md-3">
+            <label data-role-id="26">
+                <input type="checkbox"><span>区域物业总</span>
+            </label>
+        </dd>
+        <dd class="col-xs-6 col-md-3">
+            <label data-role-id="27">
+                <input type="checkbox"><span>单体项目物业负责人</span>
+            </label>
+        </dd>
+        <dd class="col-xs-6 col-md-3">
+            <label data-role-id="28">
+                <input type="checkbox"><span>单体项目工程经理</span>
+            </label>
+        </dd>
+        <dd class="col-xs-6 col-md-3">
+            <label data-role-id="29">
+                <input type="checkbox"><span>单体项目工程主管</span>
+            </label>
+        </dd>
+    </dl>
+</script>
+
+<script type="text/html" id="tpl_show_country">
+    <!if(type =="add"){!>
+        <option value="WW" selected i18n="admin.panelManagement.PLEASE_SELECT_COUNTRY"></option>
+    <!}else if(type =="details"){!>
+        <option value="WW" selected i18n="admin.panelManagement.NO"></option>
+    <!}!>
+    
+    <!for(var key in data){!>
+        <option value="<!=key!>"><!=data[key]!></option>
+    <!}!>
+</script>
+
+<!--模版结束-->

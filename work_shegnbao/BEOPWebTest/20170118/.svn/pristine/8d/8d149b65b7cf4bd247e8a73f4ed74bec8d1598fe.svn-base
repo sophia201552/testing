@@ -1,0 +1,422 @@
+.keywords-text {
+    color: orange;
+}
+
+.tag-box {
+    width: 100%;
+    height: 100%;
+    padding-left: 5px;
+}
+
+#tagEditBox, #tagModelsBox, #tagEditContent {
+    height: 100%;
+    background: #fff;
+}
+
+.tag-left-box, .tag-right-box {
+    height: 100%;
+    background: #F3F3F3;
+}
+
+.tag-center-box {
+    height: 100%;
+}
+
+.rightCtOpen {
+    right: -21px;
+}
+
+.leftCtOpen {
+    left: -21px;
+}
+
+.leftCtClose {
+    left: 2px;
+}
+
+.rightCtClose {
+    right: 4px;
+}
+
+/* 初始创建, loading */
+#tagCreateBox, #tagLoadingBox {
+    margin-top: 17%;
+    text-align: center;
+}
+
+/* 规则编辑 */
+#ruleUl {
+    min-height: 100px;
+}
+
+#tagEditContent {
+    margin: 0 8px;
+    background: #F3F3F3;
+}
+
+.rule-title, .keyword-title {
+    font-size: 16px;
+    padding: 12px 30px 11px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.rule-basic-info {
+    margin-left: 40px;
+}
+
+.rule-basic-info input, .rule-basic-info select {
+    width: 120px;
+    margin-left: 10px;
+}
+
+#keywordInfo .tag-list-box .widget-sdt-container .table-body {
+    height: 60vh;
+}
+
+#ruleForm + #ruleTableBox .widget-sdt-container .table-body,
+#ruleTableBox + #keywordInfo .widget-sdt-container .table-body {
+    height: 39vh !important;
+}
+
+#keywordTableBox, #ruleTableBox {
+    padding: 0 10px;
+}
+
+/*tag style start*/
+.tag-list-box {
+    position: relative;
+    background: #F3F3F3;
+}
+
+.keywordName {
+    padding: 12px 10px 11px;
+    font-size: 16px;
+    color: #333;
+}
+
+.tag-list-box button[type="button"] {
+    -webkit-appearance: button;
+    outline: none;
+    background: none;
+    border: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.keyword-list-header {
+    width: 458px;
+    margin: 16px auto;
+}
+
+.tag-btn-select {
+    height: 33px;
+}
+
+.modeType {
+    padding: 8px 0 0 8px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.modeStyle {
+    color: #000;
+    padding: 8px 18px;
+    position: relative;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.tag-list-box .widget-sdt-container .table-body {
+    height: 72vh;
+}
+
+.tag-list-box .tabMode {
+    color: #0077ee;
+    border: 1px solid #e3e3e3;
+    border-bottom: none;
+    background: #ffffff;
+}
+
+#mode-data-Search {
+    width: 248px;
+    padding-right: 27px;
+}
+
+.modeDataSearchIcon {
+    position: absolute;
+    left: 224px;
+    top: 7px;
+    font-size: 14px;
+    color: #666666;
+}
+
+.list-operating-box .icon {
+    position: relative;
+    top: 1px;
+}
+
+#modeType-content {
+    padding: 16px 10px 10px;
+}
+
+.mode-list-header {
+    margin-bottom: 16px;
+}
+
+.list-operating-box {
+    border: 1px solid #ccc;
+    background: #ffffff;
+    color: #666666;
+    font-size: 14px;
+    border-radius: 4px;
+    padding: 5px 16px;
+}
+
+.list-operating-box .exportType:not(:last-child):after {
+    content: '';
+    background: #eae9ea;
+    width: 1px;
+    height: 13px;
+    display: inline-block;
+    position: relative;
+    right: 0;
+    margin: 0 15px;
+    top: 2px;
+}
+
+.tag-item-box {
+    display: inline-block;
+    border-right: 1px solid #ddd;
+    padding: 0 6px;
+    margin: 3px 0;
+    height: 18px;
+    line-height: 18px;
+    vertical-align: middle;
+}
+
+.tag-item {
+    background: rgba(0, 119, 238, 0.7);
+    text-align: center;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 0 5px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-size: 13px;
+    height: 18px;
+    line-height: 18px;
+}
+
+.active .tag-item {
+    background: #ffffff;
+    color: #333333;
+}
+
+#tag-markMode-edit .modal-content {
+    top: 80px;
+}
+
+#tag-markMode-edit .editType {
+    padding: 6px 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+#tag-markMode-edit .selectType {
+    border: 1px solid #e1e1e3;
+    border-bottom: none;
+    color: #58bc58;
+    background: #ffffff;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+#mode-edit-content {
+    background: #ffffff;
+    min-height: 300px;
+    padding: 20px 0 10px;
+    max-height: 520px;
+    overflow: auto;
+}
+
+#tag-markMode-edit .editName {
+    text-align: right;
+    position: relative;
+    top: 7px;
+}
+
+#tag-markMode-edit .editContent {
+    padding-left: 0;
+}
+
+.editContentType {
+    margin-bottom: 10px;
+}
+
+#mode-edit-content .editContentBox {
+    width: 100%;
+}
+
+.markMode-select {
+    width: 180px;
+}
+
+.tagTreeInfoHeader {
+    height: 46px;
+    line-height: 46px;
+    color: #252525;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+}
+
+.tagTreeBtnBox {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.tagZtreeBox {
+    height: calc(100% - 55px);
+}
+
+#tagTreeUl, #apiTreeSearchUl {
+    overflow: auto;
+    height: calc(100% - 80px);
+}
+
+#tagTreeUl .ml5 {
+    margin-left: 5px;
+}
+
+#tagTreeUl li {
+    line-height: 24px;
+}
+
+#tagTreeUl li a, #apiTreeSearchUl li a {
+    color: #666;
+    height: 24px;
+    padding: 0 4px;
+    border-radius: 4px
+}
+
+#tagTreeUl li a:hover {
+    text-decoration: none;
+    background-color: #0077ee;
+    color: #fff;
+}
+
+.tagTreeInfo .ztree li a.curSelectedNode {
+    border: none;
+    background-color: #0077ee !important;
+    color: #fff !important;
+}
+
+#tagTreeUl a .button:not(.ico_close):not(.ico_open) {
+    margin: 0 15px 0 0;
+    text-decoration: none;
+}
+
+#tagTreeUl li span {
+    margin-right: 5px;
+}
+
+#tagTreeUl a .button:not(.ico_close):not(.ico_open):hover {
+    color: #5cb85c;
+}
+
+#tagTreeUl li span.button.ico_open, #tagTreeUl li span.button.ico_close,
+#tagTreeUl li span.button.edit, #tagTreeUl li span.remove,
+#tagTreeUl .treeCustomIcon {
+    background: none;
+    font-family: 'Glyphicons Halflings';
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+}
+
+#tagTreeUl li span.button.ico_open, #tagTreeUl li span.button.ico_close {
+    margin: 0 22px 0 0;
+}
+
+#tagTreeUl li span.button.ico_close:before, #tagTreeUl li span.button.ico_open:before {
+    font-size: 15px;
+}
+
+#tagTreeUl li span.button.ico_close:before {
+    content: "\e117";
+}
+
+#tagTreeUl li span.button.ico_open:before {
+    content: "\e118";
+}
+
+#tagTreeUl li span.button.edit:before {
+    content: "\270f";
+}
+
+#tagTreeUl li span.button.remove:before {
+    content: "\e014";
+}
+
+#tagTreeUl li .removeNode:before {
+    content: "\e014";
+}
+
+#tagTreeUl li .addNode:before {
+    content: "\2b";
+}
+
+#tagTreeUl li .editRule:before {
+    content: "\e019";
+}
+
+#tagTreeUl li .autoMatch:before {
+    content: "\e105";
+}
+
+#tagTreeUl li .rename:before {
+    content: "\270f";
+}
+
+.tmpzTreeMove_arrow {
+    z-index: 1000;
+}
+
+.tagTypeBox {
+    cursor: pointer;
+}
+
+#tagContent [type='Equipment'] .tag-text {
+    padding: 0 10px;
+    background: #038fe8;
+    color: #fff;
+    border-radius: 10px;
+}
+
+/*tag style end*/
+
+@media (max-width: 1366px) {
+    .markMode-select {
+        width: 90px;
+    }
+
+    .list-operating-box .exportTypeWords {
+        display: none;
+    }
+
+    .tagTreeBtnBox {
+        padding: 8px 0;
+    }
+
+    #tagEditContent {
+        margin: 0 6px;
+    }
+
+    #ruleForm + #ruleTableBox .widget-sdt-container .table-body,
+    #ruleTableBox + #keywordInfo .widget-sdt-container .table-body {
+        height: 20vh !important;
+    }
+
+}

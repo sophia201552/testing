@@ -1,0 +1,1031 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2 i18n="debugTools.servers.PROJECT_LIST"></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/point_tool" i18n="debugTools.servers.HOME_PAGE"></a>
+            </li>
+            <li>
+                <a href="#server" i18n="debugTools.servers.PROJECT_LIST"></a>
+            </li>
+            <li class="active">
+                <strong id="currentProject" i18n="debugTools.servers.PROJECT_LIST"></strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div id="ct_op_server_manage_form" class="form-horizontal p20 form1 col-md-12">
+    <div class="col-md-5">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5 i18n="debugTools.servers.SERVER"></h5>
+            </div>
+            <div class="ibox-content">
+                <table class="tb1">
+                    <tr>
+                        <td width="50%" i18n="debugTools.servers.DISK"></td>
+                        <td width="50%" id="status-disk"></td>
+                    </tr>
+                    <tr>
+                        <td>CPU</td>
+                        <td id="status-cpu"></td>
+                    </tr>
+                    <tr>
+                        <td i18n="debugTools.servers.MEMORY"></td>
+                        <td id="status-memory"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5 col-md-offset-1">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Core <span i18n="debugTools.servers.MANAGEMENT"></span></h5>
+            </div>
+            <div class="ibox-content">
+                <table class="tb1">
+                    <tr>
+                        <td i18n="debugTools.servers.VERSION"></td>
+                        <td id="coreVersion"></td>
+                    </tr>
+                    <tr>
+                        <td i18n="debugTools.servers.UPDATE_TIME"></td>
+                        <td id="coreUpdateTime"></td>
+                    </tr>
+                    <tr>
+                        <td width="40%" i18n="debugTools.servers.ACTION"></td>
+                        <td width="60%">
+                            <button id="serverRestartBtn" class="btn btn-primary btn-sm"
+                                    i18n="debugTools.servers.RESTART"></button>
+                            <button id="serverManageUpdateCoreBtn" type="button" class="btn btn-primary btn-sm">
+                                <span i18n="debugTools.servers.UPDATE_CORE"></span>
+                                <input type="file" id="uploadCore" accept=".zip">
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-11" permission="CoreManagement;RWSonsite">
+        <div class="ibox-title">
+            <h5>Unit01 <span i18n="debugTools.servers.MANAGE"></span></h5>
+        </div>
+        <div class="ibox-content" id="unitTable">
+            <table class="tb1 dn">
+            </table>
+            <div id="formBox" class="oh m20">
+                <article class="mb20">
+                    <fieldset>
+                        <legend i18n="debugTools.servers.SERVER_PARAMETERS"></legend>
+                        <form class="form-inline" id="serverParameterForm">
+                            <div class="parameterBox oh">
+                                <div class="text-group-box">
+                                    <div class="text-group">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.CORE_FILE_PATH"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <span class="form-value" name="corefilepath"></span>
+                                    </div>
+                                    <div class="text-group">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.VERSION_CORE"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <span class="form-value" name="version"></span>
+                                    </div>
+                                    <div class="text-group">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.SERVER_TIME"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <span class="form-value" name="servertime"></span>
+                                    </div>
+                                    <div class="text-group">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.CORE_STATUS"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <span class="form-value" name="corestatus"></span>
+                                    </div>
+                                    <div class="text-group">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.ACTIVE_IP"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <span class="form-value" name="activeip"></span>
+                                    </div>
+                                    <div class="text-group">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.WATCH_VERSION"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <span class="form-value" name="watchversion"></span>
+                                    </div>
+                                    <div class="text-group">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.WATCH_TIME;title=debugTools.servers.WATCH_TIME"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <span class="form-value" name="watchtime"></span>
+                                    </div>
+                                    <div class="text-group">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.LAST_OPERATION_TIME"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <span class="form-value" name="lastoperationtime"></span>
+                                    </div>
+                                    <div class="text-group">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.S7_UPDATE_UIME"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <span class="form-value" name="s7updateuime"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.REDUNDENCY_IP"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <input type="text" class="form-control form-value" name="redundencyip">
+                                        <input type="hidden" name="redundencyip_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.SITE_MODE"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <select name="sitemode" class="form-control">
+                                            <option value="0" i18n="debugTools.servers.SIMULATION"></option>
+                                            <option value="1" i18n="debugTools.servers.SITE"></option>
+                                        </select>
+                                        <input type="hidden" name="sitemode_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value" name="runs7"
+                                                       value="0">
+                                                <input type="hidden" name="runs7_old" value="0">
+                                            </span>
+                                        <span class="form-txt fr tl ml5"
+                                              i18n="debugTools.servers.RUNS7;title=debugTools.servers.RUNS7"></span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value" name="reset"
+                                                       value="0">
+                                                <input type="hidden" name="reset_old" value="0">
+                                            </span>
+                                        <span class="form-txt fr tl ml5" i18n="debugTools.servers.RESET"></span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value" name="alwayslog"
+                                                       value="0">
+                                                <input type="hidden" name="alwayslog_old" value="0">
+                                            </span>
+                                        <span class="form-txt fr tl ml5" i18n="debugTools.servers.ALWAYS_LOG"></span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value"
+                                                       name="restartwatch"
+                                                       value="0">
+                                                <input type="hidden" name="restartwatch_old" value="0">
+                                            </span>
+                                        <span class="form-txt fr tl ml5" i18n="debugTools.servers.RESTART_WATCH"></span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value"
+                                                       name="outputerrcode" value="0">
+                                                <input type="hidden" name="outputerrcode_old" value="0">
+                                            </span>
+                                            <span class="form-txt fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.DEFAULT_DISABLE_TIP"></span>
+                                                <span i18n="debugTools.servers.OUTPUT_ERR_CODE"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value"
+                                                       name="outputerrpoint" value="0">
+                                                <input type="hidden" name="outputerrpoint_old" value="0">
+                                            </span>
+                                            <span class="form-txt fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.DEFAULT_DISABLE_TIP"></span>
+                                                <span i18n="debugTools.servers.OUTPUT_ERR_POINT;title=debugTools.servers.OUTPUT_ERR_POINT"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value"
+                                                       name="outputerrminute"
+                                                       value="0">
+                                                <input type="hidden" name="outputerrminute_old" value="0">
+                                            </span>
+                                            <span class="form-txt fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.DEFAULT_DISABLE_TIP"></span>
+                                                <span i18n="debugTools.servers.OUTPUT_ERR_MINUTE;title=debugTools.servers.OUTPUT_ERR_MINUTE"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tr">
+                                <input type="button" class="btn btn-primary modify-settings"
+                                       i18n="value=debugTools.servers.SETTING">
+                            </div>
+                        </form>
+                    </fieldset>
+                </article>
+                <article class="mb20">
+                    <fieldset>
+                        <legend i18n="debugTools.servers.DTU_PARAMETERS"></legend>
+                        <form class="form-inline" id="dtuParameterForm">
+                            <div class="parameterBox oh">
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.DTU_SEND_TIME"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <span class="form-value textColor" name="dtusendtime"></span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span class="form-txt">
+                                                    <span i18n="debugTools.servers.DTU_COM_PORT"></span>
+                                                    <span>：</span>
+                                                </span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top" title="0-255"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="DTUComPort">
+                                        <input type="hidden" name="DTUComPort_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span class="form-txt">
+                                                    <span i18n="debugTools.servers.TCP_SENDER_PORT"></span>
+                                                    <span>：</span>
+                                                </span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.TCP_SENDER_PORT_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="TcpSenderPort">
+                                        <input type="hidden" name="TcpSenderPort_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span class="form-txt">
+                                                    <span i18n="debugTools.servers.TCP_SENDER_IP"></span>
+                                                    <span>：</span>
+                                                </span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.TCP_SENDER_IP_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="TcpSenderIP">
+                                        <input type="hidden" name="TcpSenderIP_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span class="form-txt">
+                                                    <span i18n="debugTools.servers.TCP_SENDER_NAME"></span>
+                                                    <span>：</span>
+                                                </span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.TCP_SENDER_NAME_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="TcpSenderName">
+                                        <input type="hidden" name="TcpSenderName_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span class="form-txt">
+                                                    <span i18n="debugTools.servers.TCP_SENDFILEPACKAGE_SIZE"></span>
+                                                    <span>：</span>
+                                                </span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.TCP_SENDFILEPACKAGE_SIZE_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value"
+                                               name="TCPSendFilePackageSize">
+                                        <input type="hidden" name="TCPSendFilePackageSize_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span class="form-txt">
+                                                    <span i18n="debugTools.servers.TCP_SENDFILEPACKAGE_INTERVAL"></span>
+                                                    <span>：</span>
+                                                </span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.TCP_SENDFILEPACKAGE_INTERVAL_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value"
+                                               name="TCPSendFilePackageInterval">
+                                        <input type="hidden" name="TCPSendFilePackageInterval_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span class="form-txt">
+                                                    <span i18n="debugTools.servers.DTU_MIN_TYPE"></span>
+                                                    <span>：</span>
+                                                </span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.DTU_MIN_TYPE_TIP"></span>
+                                            </span>
+                                        <select name="DTUMinType" class="form-control form-value">
+                                            <option value="0" i18n="debugTools.servers.DTUMinType_param0"></option>
+                                            <option value="1" i18n="debugTools.servers.DTUMinType_param1"></option>
+                                            <option value="2" i18n="debugTools.servers.DTUMinType_param2"></option>
+                                            <option value="3" i18n="debugTools.servers.DTUMinType_param3"></option>
+                                            <option value="4" i18n="debugTools.servers.DTUMinType_param4"></option>
+                                            <option value="5" i18n="debugTools.servers.DTUMinType_param5"></option>
+                                            <option value="6" i18n="debugTools.servers.DTUMinType_param6"></option>
+                                            <option value="7" i18n="debugTools.servers.DTUMinType_param7"></option>
+                                            <option value="8" i18n="debugTools.servers.DTUMinType_param8"></option>
+                                        </select>
+                                        <input type="hidden" name="DTUMinType_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                        <span class="form-txt">
+                                            <span i18n="debugTools.servers.DTU_TYPE"></span>
+                                            <span>：</span>
+                                        </span>
+                                        <select name="DTUType" class="form-control form-value">
+                                            <option value="0" i18n="debugTools.servers.DTUType_param0"></option>
+                                            <option value="1" i18n="debugTools.servers.DTUType_param1"></option>
+                                            <option value="2" i18n="debugTools.servers.DTUType_param2"></option>
+                                            <option value="3" i18n="debugTools.servers.DTUType_param3"></option>
+                                        </select>
+                                        <input type="hidden" name="DTUType_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                        <span class="fl checkboxWidth">
+                                            <input type="checkbox" class="form-control form-value"
+                                                   name="DTUDisableSendAll" value="0">
+                                            <input type="hidden" name="DTUDisableSendAll_old" value="0">
+                                        </span>
+                                        <span class="form-txt fr tl ml5"
+                                              i18n="debugTools.servers.DTU_DISABLE_SENDALL;title=debugTools.servers.DTU_DISABLE_SENDALL"></span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                        <span class="fl checkboxWidth">
+                                            <input type="checkbox" class="form-control form-value" name="sendall"
+                                                   value="0">
+                                            <input type="hidden" name="sendall_old" value="0">
+                                        </span>
+                                        <span class="form-txt fr tl ml5"
+                                              i18n="debugTools.servers.SEND_ALL;title=debugTools.servers.SEND_ALL"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tr">
+                                <input type="button" class="btn btn-primary modify-settings"
+                                       i18n="value=debugTools.servers.SETTING">
+                            </div>
+                        </form>
+                    </fieldset>
+                </article>
+                <article class="mb20">
+                    <fieldset>
+                        <legend>modbus</legend>
+                        <form class="form-inline" id="modbusForm">
+                            <div class="parameterBox oh">
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span class="form-txt">
+                                                    <span i18n="debugTools.servers.MODBUS_READINTERVAL_MS"></span>
+                                                    <span>：</span>
+                                                </span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.MODBUS_READINTERVAL_MS_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value"
+                                               name="ModbusReadIntervalMS">
+                                        <input type="hidden" name="ModbusReadIntervalMS_old">
+                                        <span class="unit">ms</span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span class="form-txt">
+                                                    <span i18n="debugTools.servers.MODBUS_MUTIL_COUNT;title=debugTools.servers.MODBUS_MUTIL_COUNT"></span>
+                                                    <span>：</span>
+                                                </span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.MODBUS_MUTIL_COUNT_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="modbusmutilcount">
+                                        <input type="hidden" name="modbusmutilcount_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span class="form-txt">
+                                                    <span i18n="debugTools.servers.MODBUS_IDINTERVAL"></span>
+                                                    <span>：</span>
+                                                </span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.MODBUS_IDINTERVAL_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="modbusidinterval">
+                                        <input type="hidden" name="modbusidinterval_old">
+                                        <span class="unit">ms</span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value"
+                                                       name="modbusreadonebyone"
+                                                       value="0">
+                                                <input type="hidden" name="modbusreadonebyone_old" value="0">
+                                            </span>
+                                        <span class="form-txt fr tl ml5"
+                                              i18n="debugTools.servers.MODBUS_READONE_BYONE;title=debugTools.servers.MODBUS_READONE_BYONE"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tr">
+                                <input type="button" class="btn btn-primary modify-settings"
+                                       i18n="value=debugTools.servers.SETTING">
+                            </div>
+                        </form>
+                    </fieldset>
+                </article>
+                <article class="mb20">
+                    <fieldset>
+                        <legend>bacnet</legend>
+                        <form class="form-inline" id="bacnetForm">
+                            <div class="parameterBox oh">
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.READ_INTERVAL"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.READ_INTERVAL_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="readinterval">
+                                        <input type="hidden" name="readinterval_old">
+                                        <span class="unit">s</span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.READ_TYPE_INTERVAL;title=debugTools.servers.READ_TYPE_INTERVAL"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.READ_TYPE_INTERVAL_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="readtypeinterval">
+                                        <input type="hidden" name="readtypeinterval_old">
+                                        <span class="unit">ms</span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.READ_CMD_INTERVAL"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      title="100ms"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="readcmdinterval">
+                                        <input type="hidden" name="readcmdinterval_old">
+                                        <span class="unit">ms</span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                        <span class="form-txt" i18n="debugTools.servers.READ_BACNET_MODE"></span>
+                                        <select class="form-control form-value" name="readbacnetmode">
+                                            <option value="0"
+                                                    i18n="debugTools.servers.READ_BACNET_MODE_PARAM0"></option>
+                                            <option value="1"
+                                                    i18n="debugTools.servers.READ_BACNET_MODE_PARAM1"></option>
+                                        </select>
+                                        <input type="hidden" name="readbacnetmode_old">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tr">
+                                <input type="button" class="btn btn-primary modify-settings"
+                                       i18n="value=debugTools.servers.SETTING">
+                            </div>
+                        </form>
+                    </fieldset>
+                </article>
+                <article class="mb20 txtGroupBox">
+                    <fieldset>
+                        <legend>opc</legend>
+                        <form class="form-inline" id="opcForm">
+                            <div class="parameterBox oh">
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.OPCCLIENT_MAX_POINT"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      title="10000"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="opcclientmaxpoint">
+                                        <input type="hidden" name="opcclientmaxpoint_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.OPCCLIENT_TH_READ;title=debugTools.servers.OPCCLIENT_TH_READ"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.OPCCLIENT_TH_READ_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="opcmutilcount">
+                                        <input type="hidden" name="opcmutilcount_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                        <span class="form-txt" i18n="debugTools.servers.OPC_SERVER_IP"></span>
+                                        <input type="text" class="form-control form-value" name="OPCServerIP">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.OPCCMD_SLEEP;title=debugTools.servers.OPCCMD_SLEEP"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      i18n="title=debugTools.servers.OPCCMD_SLEEP_TIP"
+                                                      data-toggle="tooltip" data-placement="top"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="opccmdsleep">
+                                        <input type="hidden" name="opccmdsleep_old">
+                                        <span class="unit">ms</span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.OPCCMD_SLEEP_FROMDEVICE;title=debugTools.servers.OPCCMD_SLEEP_FROMDEVICE"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.OPCCMD_SLEEP_FROMDEVICE_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value"
+                                               name="opccmdsleepfromdevice">
+                                        <input type="hidden" name="opccmdsleepfromdevice_old">
+                                        <span class="unit">ms</span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.OPCPOLL_SLEEP;title=debugTools.servers.OPCPOLL_SLEEP"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.OPCPOLL_SLEEP_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="opcpollsleep">
+                                        <input type="hidden" name="opcpollsleep_old">
+                                        <span class="unit">s</span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.OPCCMD_SLEEP_FROMDEVICE;title=debugTools.servers.OPCCMD_SLEEP_FROMDEVICE"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.OPCCMD_SLEEP_FROMDEVICE_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value"
+                                               name="opcpollsleepfromdevice">
+                                        <input type="hidden" name="opcpollsleepfromdevice_old">
+                                        <span class="unit">s</span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.OPC_RECONNECT;title=debugTools.servers.OPC_RECONNECT"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.OPC_RECONNECT_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="opcreconnect">
+                                        <input type="hidden" name="opcreconnect_old">
+                                        <span class="unit">min</span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.OPC_CHECK_RECONNECT"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.OPC_CHECK_RECONNECT_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="opccheckreconnect">
+                                        <input type="hidden" name="opccheckreconnect_old">
+                                        <span class="unit">min</span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.OPC_RECONNECT_IGNORE;title=debugTools.servers.OPC_RECONNECT_IGNORE"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.OPC_RECONNECT_IGNORE_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value"
+                                               name="opcreconnectignore">
+                                        <input type="hidden" name="opcreconnectignore_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                        <span class="fl checkboxWidth">
+                                            <input type="checkbox" class="form-control form-value"
+                                                   name="opcclientthread"
+                                                   value="0">
+                                            <input type="hidden" name="opcclientthread_old" value="0">
+                                        </span>
+                                        <span class="form-txt fr tl ml5"
+                                              i18n="debugTools.servers.OPCCLIENT_TH_READ;title=debugTools.servers.OPCCLIENT_TH_READ"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tr">
+                                <input type="button" class="btn btn-primary modify-settings"
+                                       i18n="value=debugTools.servers.SETTING">
+                            </div>
+                        </form>
+                    </fieldset>
+                </article>
+                <article class="mb20">
+                    <fieldset>
+                        <legend>Simense300</legend>
+                        <form class="form-inline" id="Simense300Form">
+                            <div class="parameterBox oh">
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.ERRR_CONNECT_COUNT;title=debugTools.servers.ERRR_CONNECT_COUNT"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.ERRR_CONNECT_COUNT_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="errrconnectcount">
+                                        <input type="hidden" name="errrconnectcount_old">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tr">
+                                <input type="button" class="btn btn-primary modify-settings"
+                                       i18n="value=debugTools.servers.SETTING">
+                            </div>
+                        </form>
+                    </fieldset>
+                </article>
+                <article class="mb20 txtGroupBox">
+                    <fieldset>
+                        <legend i18n="value=debugTools.servers.DATA_BASE"></legend>
+                        <form class="form-inline" id="dataBaseForm">
+                            <div class="parameterBox oh">
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.BACKUP_DAY_TIP"></span>
+                                                <span i18n="debugTools.servers.BACKUP_DAY;title=debugTools.servers.BACKUP_DAY"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="backupday">
+                                        <input type="hidden" name="backupday_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                    <span class="fl checkboxWidth">
+                                        <input type="checkbox" class="form-control form-value" name="storehistory"
+                                               value="0">
+                                        <input type="hidden" name="storehistory_old" value="0">
+                                    </span>
+                                            <span class="form-txt fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.STORE_HISTORY_TIP"></span>
+                                                <span i18n="debugTools.servers.STORE_HISTORY"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tr">
+                                <input type="button" class="btn btn-primary modify-settings"
+                                       i18n="value=debugTools.servers.SETTING">
+                            </div>
+                        </form>
+                    </fieldset>
+                </article>
+                <article class="mb20 txtGroupBox">
+                    <fieldset>
+                        <legend i18n="value=debugTools.servers.REMOTE_PERMISSION"></legend>
+                        <form class="form-inline" id="remotePermissionForm">
+                            <div class="parameterBox oh">
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="form-txt">
+                                                <span i18n="debugTools.servers.REMOTE_SET_INTERVAL;title=debugTools.servers.REMOTE_SET_INTERVAL"></span>
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.REMOTE_SET_INTERVAL_TIP"></span>
+                                            </span>
+                                        <input type="text" class="form-control form-value" name="remotesetinterval">
+                                        <input type="hidden" name="remotesetinterval_old">
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                    <span class="fl checkboxWidth">
+                                        <input type="checkbox" class="form-control form-value" name="remotesetopc"
+                                               value="0">
+                                        <input type="hidden" name="remotesetopc_old" value="0">
+                                        </span>
+                                            <span class="form-txt fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.DEFAULT_DISABLE_USE_TIP"></span>
+                                                <span i18n="debugTools.servers.REMOTE_SET_OPC;title=debugTools.servers.REMOTE_SET_OPC"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                    <span class="fl checkboxWidth">
+                                        <input type="checkbox" class="form-control form-value" name="remotesetmodbus"
+                                               value="0">
+                                        <input type="hidden" name="remotesetmodbus_old" value="0">
+                                    </span>
+                                            <span class="form-txt txt-longer fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.DEFAULT_DISABLE_USE_TIP"></span>
+                                                <span i18n="debugTools.servers.REMOTE_SET_MODBUS;title=debugTools.servers.REMOTE_SET_MODBUS"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value"
+                                                       name="remotesetbacnet"
+                                                       value="0">
+                                                <input type="hidden" name="remotesetbacnet_old" value="0">
+                                            </span>
+                                            <span class="form-txt txt-longer fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.DEFAULT_DISABLE_USE_TIP"></span>
+                                                <span i18n="debugTools.servers.REMOTE_SET_BACNET;title=debugTools.servers.REMOTE_SET_BACNET"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value"
+                                                       name="remotesetsimens"
+                                                       value="0">
+                                                <input type="hidden" name="remotesetsimens_old" value="0">
+                                            </span>
+                                            <span class="form-txt txt-longer fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.DEFAULT_DISABLE_USE_TIP"></span>
+                                                <span i18n="debugTools.servers.REMOTE_SET_SIMENS;title=debugTools.servers.REMOTE_SET_SIMENS"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value"
+                                                       name="remotesetmysql"
+                                                       value="0">
+                                                <input type="hidden" name="remotesetmysql_old" value="0">
+                                            </span>
+                                            <span class="form-txt txt-longer fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.DEFAULT_DISABLE_USE_TIP"></span>
+                                                <span i18n="debugTools.servers.REMOTE_SET_MYSQL;title=debugTools.servers.REMOTE_SET_MYSQL"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tr">
+                                <input type="button" class="btn btn-primary modify-settings"
+                                       i18n="value=debugTools.servers.SETTING">
+                            </div>
+                        </form>
+                    </fieldset>
+                </article>
+                <article class="mb20 txtGroupBox">
+                    <fieldset>
+                        <legend i18n="value=debugTools.servers.WATCH"></legend>
+                        <form class="form-inline" id="watchForm">
+                            <div class="parameterBox oh">
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value"
+                                                       name="disablewatch"
+                                                       value="0">
+                                                <input type="hidden" name="disablewatch_old" value="0">
+                                            </span>
+                                            <span class="form-txt fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.DEFAULT_ENABLE_TIP"></span>
+                                                <span i18n="debugTools.servers.DISABLE_WATCH"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value"
+                                                       name="checkservertime"
+                                                       value="0">
+                                                <input type="hidden" name="checkservertime_old" value="0">
+                                            </span>
+                                            <span class="form-txt txt-longer fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.CHECK_SERVER_TIME_TIP"></span>
+                                                <span i18n="debugTools.servers.CHECK_SERVER_TIME;title=debugTools.servers.CHECK_SERVER_TIME"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value" name="checks7udp"
+                                                       value="0">
+                                                <input type="hidden" name="checks7udp_old" value="0">
+                                            </span>
+                                            <span class="form-txt txt-longer fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.CHECK_S7UDP_TIP"></span>
+                                                <span i18n="debugTools.servers.CHECK_S7UDP;title=debugTools.servers.CHECK_S7UDP"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                            <span class="fl checkboxWidth">
+                                                <input type="checkbox" class="form-control form-value" name="checkdtu"
+                                                       value="0">
+                                                <input type="hidden" name="checkdtu_old" value="0">
+                                            </span>
+                                            <span class="form-txt txt-longer fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.CHECK_DTU_TIP"></span>
+                                                <span i18n="debugTools.servers.CHECK_DTU;title=debugTools.servers.CHECK_DTU"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="form-group-type">
+                                    <label class="control-label">
+                                        <span class="fl checkboxWidth">
+                                            <input type="checkbox" class="form-control form-value" name="checkrestart"
+                                                   value="0">
+                                            <input type="hidden" name="checkrestart_old" value="0">
+                                        </span>
+                                            <span class="form-txt txt-longer fr tl ml5">
+                                                <span class="glyphicon glyphicon-question-sign tooltipTxt"
+                                                      data-toggle="tooltip" data-placement="top"
+                                                      i18n="title=debugTools.servers.DEFAULT_ENABLE_TIP"></span>
+                                                <span i18n="debugTools.servers.CHECK_SERVER_TIME;title=debugTools.servers.CHECK_SERVER_TIME"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tr">
+                                <input type="button" class="btn btn-primary modify-settings"
+                                       i18n="value=debugTools.servers.SETTING">
+                            </div>
+                        </form>
+                    </fieldset>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="tpl_unit">
+    <!var keys = Object.keys(units);!>
+    <!for(var m=0; m < keys.length; m=m+3){!>
+    <tr>
+        <td style="background-color: aliceblue;"><!=keys[m]!></td>
+        <td class="unit-value" data-key="<!=keys[m]!>">
+            <span class="unit-text"><!=units[keys[m]]!></span>
+            <span class="icons edit">
+                <span class="glyphicon glyphicon-pencil edit-icon" aria-hidden="true"></span>
+            </span>
+            <span class="icons action">
+                <span class="glyphicon glyphicon-ok-circle ok" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove-circle cancel" aria-hidden="true"></span>
+            </span>
+        </td>
+        <td style="background-color: aliceblue;"><!=keys[m+1]!></td>
+        <td class="unit-value" data-key="<!=keys[m+1]!>">
+            <span class="unit-text"><!=units[keys[m+1]]!></span>
+            <span class="icons edit">
+                <span class="glyphicon glyphicon-pencil edit-icon" aria-hidden="true"></span>
+            </span>
+            <span class="icons action">
+                <span class="glyphicon glyphicon-ok-circle ok" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove-circle cancel" aria-hidden="true"></span>
+            </span>
+        </td>
+        <td style="background-color: aliceblue;"><!=keys[m+2]!></td>
+        <td class="unit-value" data-key="<!=keys[m+2]!>">
+            <span class="unit-text"><!=units[keys[m+2]]!></span>
+            <span class="icons edit">
+                <span class="glyphicon glyphicon-pencil edit-icon" aria-hidden="true"></span>
+            </span>
+            <span class="icons action">
+                <span class="glyphicon glyphicon-ok-circle ok" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove-circle cancel" aria-hidden="true"></span>
+            </span>
+        </td>
+    </tr>
+    <!}!>
+</script>

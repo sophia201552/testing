@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html style="opacity:0">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>R&B</title>
+    <link href="./img/favicon.ico" rel="shortcut icon">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
+    <link href="./js/beopNotification/infoBox.css" rel="stylesheet"></link>
+    <link href="./fonts/iconfont.css" rel="stylesheet"></link>
+    <script src="./js/jquery-3.2.1.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/scrollReveal.min.js"></script>
+    <script src="./js/i18n/i18n.js"></script>
+    <script src="./js/beopNotification/infoBox.js"></script>
+</head>
+
+<body>
+    <div class="navbar navbar-fixed-top scrollclass" id="menu">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="./img/logo.png" alt="" style="height:100%"></a>
+            </div>
+            <div class="forMobile btnNavExpand icon iconfont icon-xiayiji"></div>
+            <div class="forMobile navbar-backdrop"></div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right lan-select" id="language">
+                    <li class="langItem"><a href="#"   lang='zh'><img src='./img/flag_cn.jpg'></a></li>
+                    <li class="langItemSpline"><i class="lan-spline"></i></li>
+                    <li class="langItem"><a href="#"   lang='en'><img src='./img/flag_us.jpg'></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right nav-mid">
+                    <li class="navTag navItem"><span class="icon iconfont icon-shouye1"></span><a href="#homepage" i18n="home.HOME"></a></li>
+                    <li class="navTag navItem">
+                        <span class="icon iconfont icon-chanpin"></span>
+                        <a i18n="product.PRODUCT"></a>
+                        <span class="forMobile btnSubExpand glyphicon glyphicon-menu-down"></span>
+                        <ul class="subMenu dropdown">
+                            <li class="navTag level1"><a href="#productTerminal" i18n="home.TERMINAL_USER"></a></li>
+                            <li class="navTag level2"><span class="icon glyphicon glyphicon-menu-right"></span><a href="#productTerminal.elec" i18n="product.ELECTRONIC_WORKFLOW"></a></li>
+                            <li class="navTag level2"><span class="icon glyphicon glyphicon-menu-right"></span><a href="#productTerminal.kpi-management" i18n="product.KPI_MANAGE"></a></li>
+                            <li class="navTag level2"><span class="icon glyphicon glyphicon-menu-right"></span><a href="#productTerminal.auto-report" i18n="product.AUTO_REPORT"></a></li>
+                            <li class="navTag level2"><span class="icon glyphicon glyphicon-menu-right"></span><a href="#productTerminal.energy-management" i18n="product.ENERGY_MANAGE"></a></li>
+                            <li class="navTag level2"><span class="icon glyphicon glyphicon-menu-right"></span><a href="#productTerminal.auto-diagnosise" i18n="product.AUTO_DIAGNOSIS"></a></li>
+                            <li class="navTag level2"><span class="icon glyphicon glyphicon-menu-right"></span><a href="#productTerminal.auto-analy" i18n="product.AUTO_ENERGY_ANALYSIS"></a></li>
+                            <li class="navTag level1"><a href="#productPlatform" i18n="home.PLATFORM_USER"></a></li>
+                            <li class="navTag level2"><span class="icon glyphicon glyphicon-menu-right"></span><a href="#productPlatform.observer" i18n="home.OBSERVER"></a></li>
+                            <li class="navTag level2"><span class="icon glyphicon glyphicon-menu-right"></span><a href="#productPlatform.dataImport" i18n="home.FACTORY"></a></li>
+                            <li class="navTag level2"><span class="icon glyphicon glyphicon-menu-right"></span><a href="#productPlatform.strategy" i18n="home.STRATEGY"></a></li>
+                            <li class="navTag level2"><span class="icon glyphicon glyphicon-menu-right"></span><a href="#productPlatform.dataManagement" i18n="home.DATA_MANAGEMENT"></a></li>
+                        </ul>
+                    </li>
+                    <li class="navTag navItem">
+                        <span class="icon iconfont icon-jiejuefangan"></span>
+                        <a href="#solution" i18n="Solution.SOLUTION"></a>
+                        <!--<span class="forMobile btnSubExpand glyphicon glyphicon-menu-down"></span>
+                        <ul class="subMenu dropdown">
+                            <li><a href="#buildingMaintenance" i18n="home.BUILDING_MAINTENANCE"></a></li>
+                            <li><a href="#coldChain" i18n="home.COLD_CHAIN_LOGISTICS"></a></li>
+                            <li><a href="#iot" i18n="home.IOT_DATA_MANAGMENT"></a></li>
+                            <li><a href="#energy" i18n="home.ENERGY_OPTIMIZATION"></a></li>
+                            <li><a href="#platform" i18n="home.PLATFORM_URSERS"></a></li>
+                        </ul>-->
+                    </li>
+                    <!--<li class="navTag navItem"><span class="icon iconfont icon-xiazai3"></span><a href="#support" i18n="Support.SUPPORT"></a></li>-->
+                    <li class="navTag navItem"><span class="icon iconfont icon-tuandui"></span><a href="#aboutUs" i18n="About.ABOUT_US"></a></li>
+                    <li class="navTag navItem"><span class="icon iconfont icon-lianxiwomen"></span><a href="#contactUsNew" i18n="Contact.CONTACT"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<iframe  id="pageCtn" src="" style="width:100%;height:100%;"></iframe>-->
+    <div  id="pageCtn" style="width:100%;"></div>
+    <!-- Footer -->
+    <footer class='forPc'>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5ths col-md-5ths col-sm-5ths col-xs-12 footer-sec-wrap">
+                    <div class="footer-sec-col5 ">
+                        <p class="head-title" i18n="title=home.HOME"><a href="#homepage" i18n="home.HOME"></a></p>
+                        <ul class="conText">
+                            <li i18n="title=home.PRODUCT_FEATURE"><a href="#homepage.about" i18n="home.PRODUCT_FEATURE"></a></li>
+                            <li i18n="title=home.WHY_RB"><a href="#homepage.services" i18n="home.WHY_RB"></a></li>
+                            <li i18n="title=home.PARTNER"><a href="#homepage.Partner" i18n="home.PARTNER"></a></li>
+                        </ul>
+                    </div>
+                    <i class="spline"></i>
+                </div>
+                <div class="col-lg-5ths col-md-5ths col-sm-5ths col-xs-12 footer-sec-wrap">
+                    <div class="footer-sec-col5">
+                        <p class="head-title" i18n="title=product.PRODUCT_TERMINAL"><a href="#productTerminal" i18n="product.PRODUCT_TERMINAL"></a></p>
+                        <ul class="conText">
+                            <li i18n="title=product.ELECTRONIC_WORKFLOW"><a href="#productTerminal.elec" i18n="product.ELECTRONIC_WORKFLOW"></a></li>
+                            <li i18n="title=product.KPI_MANAGE"><a href="#productTerminal.kpi-management" i18n="product.KPI_MANAGE"></a></li>
+                            <li i18n="title=product.AUTO_REPORT"><a href="#productTerminal.auto-report" i18n="product.AUTO_REPORT"></a></li>
+                            <li i18n="title=product.ENERGY_MANAGE"><a href="#productTerminal.energy-management" i18n="product.ENERGY_MANAGE"></a></li>
+                            <li i18n="title=product.AUTO_DIAGNOSIS"><a href="#productTerminal.auto-diagnosise" i18n="product.AUTO_DIAGNOSIS"></a></li>
+                            <li i18n="title=product.AUTO_ENERGY_ANALYSIS"><a href="#productTerminal.auto-analy" i18n="product.AUTO_ENERGY_ANALYSIS"></a></li>
+                        </ul>
+                    </div>
+                    <i class="spline"></i>
+                </div>
+                <div class="col-lg-5ths col-md-5ths col-sm-5ths col-xs-12 footer-sec-wrap">
+                    <div class="footer-sec-col5">
+                        <p class="head-title" i18n="title=product.PRODUCT_PLATFORM"><a href="#productPlatform" i18n="product.PRODUCT_PLATFORM"></a></p>
+                        <ul class="conText">
+                            <!--<li i18n="title=home.OBSERVER"><a href="#observer" i18n="home.OBSERVER"></a></li>
+                            <li i18n="title=home.FACTORY"><a href="#factory" i18n="home.FACTORY"></a></li>
+                            <li i18n="title=home.STRATEGY"><a href="#strategy" i18n="home.STRATEGY"></a></li>
+                            <li i18n="title=home.DATA_MANAGEMENT"><a href="#dataManagement" i18n="home.DATA_MANAGEMENT"></a></li>-->
+                            <li i18n="title=home.OBSERVER"><a href="#productPlatform.observer" i18n="home.OBSERVER"></a></li>
+                            <li i18n="title=home.FACTORY"><a href="#productPlatform.dataImport" i18n="home.FACTORY"></a></li>
+                            <li i18n="title=home.STRATEGY"><a href="#productPlatform.strategy" i18n="home.STRATEGY"></a></li>
+                            <li i18n="title=home.DATA_MANAGEMENT"><a href="#productPlatform.dataManagement" i18n="home.DATA_MANAGEMENT"></a></li>
+                        </ul>
+                    </div>
+                    <i class="spline"></i>
+                </div>
+                <div class="col-lg-5ths col-md-5ths col-sm-5ths col-xs-12 footer-sec-wrap">
+                    <div class="footer-sec-col5">
+                        <p class="head-title" i18n="title=Solution.SOLUTION"><a href="#solution" i18n="Solution.SOLUTION"></a></p>
+                        <ul class="conText">
+                            <!--<li i18n="title=home.BUILDING_MAINTENANCE"><a href="#buildingMaintenance" i18n="home.BUILDING_MAINTENANCE"></a></li>
+                            <li i18n="title=home.COLD_CHAIN_LOGISTICS"><a href="#coldChain" i18n="home.COLD_CHAIN_LOGISTICS"></a></li>
+                            <li i18n="title=home.IOT_DATA_MANAGMENT"><a href="#iot" i18n="home.IOT_DATA_MANAGMENT"></a></li>
+                            <li i18n="title=home.ENERGY_OPTIMIZATION"><a href="#energy" i18n="home.ENERGY_OPTIMIZATION"></a></li>
+                            <li i18n="title=home.PLATFORM_URSERS"><a href="#platform" i18n="home.PLATFORM_URSERS"></a></li>-->
+                            <li i18n="title=home.BUILDING_MAINTENANCE"><a href="#solution.building" i18n="home.BUILDING_MAINTENANCE"></a></li>
+                            <li i18n="title=home.COLD_CHAIN_LOGISTICS"><a href="#solution.chain" i18n="home.COLD_CHAIN_LOGISTICS"></a></li>
+                            <li i18n="title=home.IOT_DATA_MANAGMENT"><a href="#solution.iot" i18n="home.IOT_DATA_MANAGMENT"></a></li>
+                            <li i18n="title=home.ENERGY_OPTIMIZATION"><a href="#solution.energy" i18n="home.ENERGY_OPTIMIZATION"></a></li>
+                            <!-- <li i18n="title=home.PLATFORM_URSERS"><a href="#solution" i18n="home.PLATFORM_URSERS"></a></li> -->
+                        </ul>
+                    </div>
+                    <i class="spline"></i>
+                </div>
+                <div class="col-lg-5ths col-md-5ths col-sm-5ths col-xs-12 footer-sec-wrap">
+                    <div class="footer-sec-col5">
+                        <p style="margin-bottom:2rem" class="head-title" i18n="title=Contact.CONTACT"><a href="#contactUsNew" i18n="Contact.CONTACT"></a></p>
+                        <!--<p class="head-title" i18n="title=Support.SUPPORT"><a href="#support" i18n="Support.SUPPORT"></a></p>-->
+                        <!--<ul class="conText">
+                            <li><a href="#" i18n="home.RELATED_DOWNLOAD"></a></li>
+                            <li><a href="#" i18n="home.TECHNICAL_SUPPORT"></a></li>
+                        </ul>-->
+                    </div>
+                    <i class="spline"></i>
+                </div>
+                <div class="col-lg-5ths col-md-5ths col-sm-5ths col-xs-12 footer-sec-wrap">
+                    <div class="footer-sec-col5">
+                        <p class="head-title" i18n="title=About.ABOUT_US"><a href="#aboutUs" i18n="About.ABOUT_US"></a></p>
+                        <ul class="conText">
+                            <li i18n="title=home.ENTERPRISE_INFO"><a href="#aboutUs.companyInfo" i18n="home.ENTERPRISE_INFO"></a></li>
+                            <li i18n="title=home.TEAM_INFO"><a href="#aboutUs.teamManagement" i18n="home.TEAM_INFO"></a></li>
+                            <li i18n="title=home.INVESTMENT_PROGRAM"><a href="#aboutUs.instituInverst"href="#" i18n="home.INVESTMENT_PROGRAM"></a></li>
+                            <li i18n="title=home.NEWS"><a href="#aboutUs.ourNews" i18n="home.NEWS"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <footer class="forMobile">
+        
+        <div class="mobileNavRow">
+            <div class="mobileNav weixinModal" data-toggle="modal" data-target="#weixinModal"><span i18n="home.FOLLOW_US">关注我们</span> <span  class="iconfont  icon-weixin navIconMobile"></span></div>
+
+            <div class="mobileNav "> <span class="mobileToPC" i18n="home.DESKTOP_VERSION">电脑版 </span>  <span class="iconfont  icon-diannao1 navIconMobile"></span></div>
+        </div>
+        <div class="mobileNavRow">
+             <div class="mobileNav weixinModal" ><a href="#contactUsNew" class="mobileContact" > <div class="mobileContactBtn" i18n="home.CONTACT">我们</div> </a></div>
+            <div class="mobileNav ">  <div class="iconfont icon-ding mobileToTop"> </div></div>
+        </div>
+        <!--<div class="mobileFooter" i18n="home.COPYRIGHT">
+            @2009-2017 Aliyun.com版权所有ICP证：沪B2-20080101
+        </div>-->
+        <div class="modal fade" id="weixinModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document" style="top: 20%;     margin-top: 20%; ">
+                <div class="modal-content" style="background-color: #1A2534;">
+                    <div class="modal-header" style="border-bottom:0px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: #fff;">&times;</span></button>
+                    </div>
+                    <div class="modal-body" style="color:#C5D8F0;font-size:10px;">
+                        <div class="weixinModalRow" i18n="home.MODAL_TITLE">可通过以下3种方式关注我们</div>
+                        <div class="weixinModalRow" i18n="home.MODAL_ROW_ONE">一.微信直接搜索公众号:智慧能源服务</div>
+                        <div class="weixinModalRow" i18n="home.MODAL_ROW_TWO">二.复制公众号链接到微信打开</div>
+                        <div class="weixinModalRowDiv"><a  style="word-break: break-all;"href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI3MTA0MDM1OQ==&scene=124#wechat_redirect">https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI3MTA0MDM1OQ==&scene=124#wechat_redirect</a></div>
+                        <div class="weixinModalRow" i18n="home.MODAL_ROW_THREE">三.扫描二维码</div>
+                        <div class="weixinModalRowDiv"> <img class="img-responsive" src="./img/beop.png" alt="" style="width:100px;height:100px"> </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="./js/index.js"></script>
+</html>

@@ -1,0 +1,56 @@
+<div class="oh col-md-8 col-md-offset-2">
+    <div class="ibox-title">
+        <h5 i18n="debugTools.pointMapping.MATCHING_PARAMETER_SETTING"></h5>
+
+        <div class="col-md-4 pull-right" style="position: relative;top:-10px;text-align:right;">
+            <button id="saveFields" class="btn btn-primary btn-sm">Save</button>
+            <button id="autoMapping" class="btn btn-primary btn-sm">Auto Mapping</button>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <div id="mappingFieldsContainer"></div>
+    </div>
+</div>
+<div class="tr oh col-md-8 col-md-offset-2" id="mappingPaginationWrapper">
+    <ul id="mappingPagination" class="pagination"></ul>
+</div>
+
+<div id="mappingResultWrapper">
+    <span class="glyphicon glyphicon-remove" aria-hidden="true" id="closeMappingResult"></span>
+
+    <div id="mappingResult">
+
+    </div>
+</div>
+<script type="text/html" id="tpl_fields_table">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Field<span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+                           style="margin-left: 3px;" data-toggle="tooltip" data-placement="right"
+                           title="The Fields is extracted from all engine points, the basic components"></span></th>
+            <th>Example<span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+                             style="margin-left: 3px;" data-toggle="tooltip" data-placement="right"
+                             title="One of engine points contains this field."></span></th>
+            <th>Frequency<span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+                               style="margin-left: 3px;" data-toggle="tooltip" data-placement="right"
+                               title="Total number of the field in all engine points."></span></th>
+            <th>Value<span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+                           style="margin-left: 3px;" data-toggle="tooltip" data-placement="right"
+                           title="what is the meaning of this field in engine points, used for matching the cloud points."></span>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <!for(var m=0;m < fields.length; m++ ){!>
+        <tr>
+            <td><!=fields[m].word!></td>
+            <td><!=fields[m].example!></td>
+            <td><!=fields[m].frequency!></td>
+            <td><input class="fields form-control" value="<!=fields[m].value!>" data-field="<!=fields[m].word!>"
+                       data-example="<!=fields[m].example!>" data-frequency="<!=fields[m].frequency!>"/></td>
+        </tr>
+        <!}!>
+        </tbody>
+    </table>
+</script>

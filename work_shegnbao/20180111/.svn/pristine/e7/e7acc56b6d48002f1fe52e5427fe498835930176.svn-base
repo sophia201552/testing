@@ -1,0 +1,410 @@
+.container {
+  width: 100%;
+  height: 100%;
+  min-width: 600px;
+  float: right;
+}
+i {
+  font-style: normal;
+}
+.slider {
+  float: left;
+  width: 160px;
+  height: 100%;
+  background-color: #fbfcfd;
+  box-shadow: 0px 2px 6px 0 rgba(187, 194, 203, 0.3);
+}
+
+.diagnosis-panel-container {
+  width: calc(100% - 160px);
+  height: 100%;
+  float: right;
+  background-color: #e8ebed;
+}
+
+.diagnosis-details-header {
+  width: 100%;
+  height: 40px;
+  font-size: 10px;
+  color: #6d92db;
+  background-color: rgb(35, 45, 71);
+  color: rgb(152, 166, 183);
+}
+.diagnosis-details-header .nav-list:first-child {
+  margin-left: 15px;
+}
+
+/* 导航条工具栏 */
+.navTool {
+  height: 40px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  float: left;
+}
+.navTool > div {
+  width: 32px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 14px;
+}
+.navTool:hover > div {
+  background-color: rgba(23, 29, 52, 0.4);
+  border: solid 1px rgba(58, 62, 76, 0.4);
+}
+.icon-line {
+  float: left;
+  width: 1px;
+  height: 24px;
+  border-radius: 0.5px;
+  background-color: rgb(23, 29, 52);
+  margin: 8px 4px 0;
+}
+
+/* 搜索框样式 */
+/* 搜索框样式 */
+.search > div:first-child {
+  width: 220px;
+  height: 26px;
+  line-height: 24px;
+  position: relative;
+  top: 9px;
+  left: -34px;
+  font-size: 12px;
+  border-radius: 4px;
+  float: right;
+  border: none;
+  background-color: rgba(25, 31, 55, 0.5);
+  border: solid 1px rgba(58, 62, 76, 0.5);
+}
+.search:hover > div:first-child {
+  border-color: rgba(58, 62, 76, 0.5);
+}
+.search > div:first-child div:first-child {
+  font-size: 14px;
+  width: 22px;
+  color: #687296;
+  border-color: #a6a6a6;
+}
+.search > div:global(.is-active) div:first-child {
+  width: 4px;
+}
+.search > div:first-child > div:first-child i {
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+}
+
+.search > :global(.can-clear) > :global(.ms-SearchBox-clearButton) {
+  display: -webkit-box;
+}
+.search > div:first-child > :global(.ms-SearchBox-clearButton) i {
+  font-size: 10px;
+  line-height: 16px;
+  color: #687296;
+}
+.search > div:first-child > input {
+  padding-top: 3px;
+  font-size: 12px;
+  color: #687296;
+  border: none;
+}
+
+.search > div:first-child > input::-webkit-input-placeholder {
+  color: #687296;
+  vertical-align: bottom;
+}
+.search > div:last-child {
+  float: right;
+  line-height: 40px;
+}
+.search > div:last-child > span {
+  padding: 0 8px;
+}
+
+/* 内容部分 */
+.diagnosis-detials-content {
+  width: 100%;
+  padding: 31px 16px;
+  height: calc(100% - 40px);
+  overflow-y: auto;
+}
+.diagnosis-template,
+.diagnosis-template > ul {
+  width: 100%;
+}
+.diagnosis-template .filelist {
+  width: calc(50% - 12px);
+  height: 100px;
+  float: left;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fbfcfd;
+  box-shadow: 0px 2px 8px 0 rgba(187, 194, 203, 0.48);
+}
+.diagnosis-template .filelist:nth-child(odd) {
+  margin-right: 22px;
+}
+
+.diagnosis-template .filelist:hover {
+  transform: translateY(-6px);
+  -webkit-transform: translateY(-6px);
+  box-shadow: 0 26px 40px -24px rgba(0, 36, 100, 0.3);
+  -webkit-box-shadow: 0 26px 40px -24px rgba(0, 36, 100, 0.3);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.template-Image {
+  float: left;
+  width: 128px;
+  height: 100%;
+  text-align: center;
+  background-color: #95a4b4;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  overflow: hidden;
+}
+.template-Image:global(.image) {
+  box-shadow: 0px 2px 8px 0 rgba(187, 194, 203, 0.48);
+}
+.template-Image:global(.image) + div {
+  background-color: #fff;
+}
+.template-Image > img {
+  width: 100%;
+  height: 100%;
+  background-color: #95a3b4;
+}
+.folder-icon-container {
+  display: inline-block;
+  width: 41px;
+  height: 41px;
+  line-height: 41px;
+  margin-top: 31px;
+}
+.folder-icon-container i {
+  width: 41px;
+  font-size: 41px;
+  color: #2f3a54;
+}
+
+.template-content {
+  float: left;
+  width: calc(100% - 128px);
+  height: 100%;
+  padding-left: 15px;
+  padding-right: 11px;
+  position: relative;
+}
+.template-nav {
+  height: 32px;
+  line-height: 32px;
+}
+.template-nav > h3 {
+  float: left;
+  font-size: 14px;
+}
+.template-nav h3.file-title {
+  color: rgb(91, 138, 247);
+  width: calc(100% - 170px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.template-nav > ul {
+  width: 170px;
+  height: 32px;
+  float: right;
+}
+.template-list {
+  float: left;
+  margin-left: 16px;
+}
+.template-list i {
+  color: rgb(104, 114, 150);
+}
+.template-list span {
+  padding: 0 4px;
+  vertical-align: top;
+}
+.more-vertical {
+  width: 18px;
+  height: 32px;
+  margin-top: 1px;
+  margin-right: 5px;
+  /* overflow: hidden; */
+  position: relative;
+}
+.more-vertical i {
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 50%;
+  background-color: rgba(91, 138, 247, 0.2);
+  text-align: center;
+}
+.more-vertical:global(.showMore) {
+  border: 1px solid rgb(16, 184, 249);
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  margin-top: 6px;
+  border-radius: 50%;
+  padding: 1px;
+  padding-left: 2px;
+}
+.more-vertical:global(.showMore) i {
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  color: rgb(16, 184, 249);
+}
+.callout-visible {
+  position: absolute;
+  top: 25px;
+  left: -25px;
+  width: 80px;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 4px 14px 0 rgba(23, 28, 53, 0.4);
+  z-index: 9999;
+}
+.callout-list {
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  padding-left: 20px;
+  border-bottom: 1px solid rgba(224, 230, 239, 0.5);
+}
+.callout-list:hover {
+  color: rgb(16, 184, 249);
+  background-color: rgb(222, 232, 253);
+}
+
+.template-text {
+  width: 100%;
+  height: 36px;
+  overflow: hidden;
+}
+.template-text p {
+  margin: 0;
+  font-size: 12px;
+  vertical-align: top;
+  line-height: 18px;
+  color: rgb(51, 51, 51);
+}
+
+.template-user {
+  color: rgb(104, 114, 150);
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+}
+/* addModal start */
+.addModal {
+  width: 430px;
+  border-radius: 6px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 6px 20px 0 rgba(23, 28, 53, 0.5);
+}
+.addModal .modal-title {
+  line-height: 40px;
+  font-size: 16px;
+  height: 40px;
+  background-image: linear-gradient(
+    93deg,
+    rgb(91, 136, 247),
+    rgb(91, 183, 247)
+  );
+  color: rgb(255, 255, 255);
+  padding: 0 24px;
+}
+.modal-body {
+  margin-top: 32px;
+  padding: 0 40px;
+}
+.modal-body > div {
+  margin-top: 16px;
+}
+.addModal .modal-body label {
+  display: block;
+  height: 18px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  color: rgb(153, 153, 153);
+}
+.addModal .modal-body input {
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  padding-left: 8px;
+  height: 30px;
+  line-height: 28px;
+  background-color: #f6f8f9;
+  outline: none;
+  font-size: 12px;
+}
+.addModal .modal-body input:hover,
+.addModal .modal-body input:focus,
+.addModal
+  .modal-body
+  .tagsDropdown
+  > div
+  > div
+  > span:first-child:hover {
+  border-color: rgba(91, 136, 247, 0.6);
+}
+.addModal .modal-body .tagsDropdown {
+  margin-bottom: 12px
+}
+.addModal .modal-body .tagsDropdown > div {
+  width: 100%;
+}
+.addModal .modal-body .tagsDropdown > div > div > span:first-child {
+  padding-left: 8px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid transparent;
+  background-color: #f6f8f9;
+  border-radius: 2px;
+  font-size: 12px
+}
+.addModal .modal-footer {
+  height: 50px;
+  overflow: hidden;
+  margin-top: 40px;
+  padding-right: 40px;
+}
+.addModal .modal-footer > div {
+  float: right;
+}
+.addModal .modal-footer > div button {
+  float: right;
+  width: 81px;
+  margin-left: 12px;
+  height: 31px;
+  line-height: 31px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: solid 1px #d3d3d3;
+  cursor: pointer;
+  padding: 0 16px;
+  color: #999999;
+}
+
+.addModal .modal-footer > div button:first-child {
+  border-color: #5182f1;
+  background-color: #5182f1;
+  color: #ffffff;
+}
+/* addModal end */

@@ -1,0 +1,15 @@
+{
+  "name": "rnbtech-optimizer",
+  "version": "1.0.0",
+  "description": "use uglifyJS2 to optimize js",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RNBTech",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^0.18.0",
+    "uglify-js": "^2.4.20"
+  }
+}

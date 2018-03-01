@@ -1,0 +1,288 @@
+div {
+  box-sizing: border-box;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 12px 10px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  background: #f5f8f9;
+}
+.modal-chart-view {
+  width: 100%;
+  padding: 24px 24px 0 4px;
+  overflow-x: hidden;
+}
+.chart-label {
+  width: 100%;
+  overflow: hidden;
+  height: 22px;
+  margin-bottom: 12px;
+}
+.chart-label > label {
+  width: 60px;
+  line-height: 22px;
+  display: inline-block;
+  font-size: 14px;
+}
+.chart-label .slider-formula {
+  width: calc(100% - 60px);
+  height: 100%;
+  float: right;
+  text-align: right;
+  overflow-x: auto;
+  font-size: 10px;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+.chart-view {
+  width: 100%;
+  height: 88px;
+  margin-left: 4px;
+  background: rgba(0, 0, 0, 0.58);
+}
+.codeView-container {
+  margin-left: -12px;
+}
+
+/* slider 样式 */
+.slider-bar > :global(.ms-Slider) button {
+  padding: 0 0 0 4px;
+  height: 14px;
+}
+.slider-bar > :global(.ms-Slider) button:active :global(.ms-Slider-thumb),
+.slider-bar > :global(.ms-Slider) button:hover :global(.ms-Slider-thumb) {
+  border-color: #fff;
+}
+.slider-bar :global(.ms-Slider-active),
+.slider-bar > :global(.ms-Slider) button:active :global(.ms-Slider-active),
+.slider-bar > :global(.ms-Slider) button:hover :global(.ms-Slider-active) {
+  background-color: #10b8f9 !important;
+}
+.slider-bar > :global(.ms-Slider) button:active :global(.ms-Slider-inactive),
+.slider-bar > :global(.ms-Slider) button:hover :global(.ms-Slider-inactive) {
+  background: rgba(153, 153, 153, 0.5);
+}
+.slider-bar > :global(.ms-Slider) :global(.ms-Slider-thumb) {
+  width: 10px;
+  height: 10px;
+  top: -4px !important;
+  background-color: #10b8f9;
+  box-shadow: 0px 2px 6px 0 rgba(187, 194, 203, 0.6);
+  border: solid 2px #fff;
+}
+.slider-bar :global(.ms-Slider) :global(.ms-Slider-active),
+.slider-bar :global(.ms-Slider) :global(.ms-Slider-inactive) {
+  height: 2px !important;
+}
+.slider-input {
+  padding: 4px 0;
+}
+.slider-input > div {
+  float: left;
+  color: #999;
+  line-height: 22px;
+}
+.slider-input > div > label {
+  display: block;
+}
+.slider-input > div > input {
+  width: 80px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 25px;
+  padding-left: 8px;
+}
+.slider-input > div:nth-child(2) {
+  margin: 0 calc((100% - 240px)/2);
+}
+.slider-input > div:nth-child(3) {
+  float: right;
+}
+.modal-body {
+  padding-bottom: 60px;
+}
+
+/* 配置框样式 */
+.modal-footer {
+  width: 100%;
+  height: 40px;
+  overflow: hidden;
+}
+.settings {
+  margin-top: 15px;
+}
+.settings > h3 {
+  width: 88px;
+  text-align: center;
+  font-size: 16px;
+  float: left;
+  margin-left: 16px;
+}
+.settingsInput {
+  width: 100%;
+  margin: 12px 0;
+}
+
+/* 按钮样式 */
+.toolBtn {
+  width: 88px;
+  height: 25px;
+  line-height: 25px;
+  margin-left: 16px;
+  border-radius: 4px;
+  float: right;
+  color: #fff;
+  background-color: #5b8af7;
+  text-align: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+/* canvas 图形 x 轴输入框样式 */
+.row {
+  line-height: 25px;
+  margin-bottom: 12px;
+  padding-right: 12px;
+  padding-left: 4px;
+}
+.row-container {
+  float: left;
+  height: calc(100% - 25px);
+}
+.row-label {
+  height: 25px;
+  line-height: 25px;
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+.row-label > label {
+  position: absolute;
+  padding-right: 12px;
+  background-color: #f5f8f9;
+}
+.row-label > span {
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  display: inline-block;
+  margin-bottom: 3px;
+}
+.row > div > input {
+  height: 24px;
+  line-height: 24px;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  padding-left: 4px;
+  outline: none;
+}
+.row > div.name input {
+  float: left;
+  margin: 0 0 6px 3px;
+  width: calc(100% - 97px);
+  border-right: 0;
+}
+.row > div.name div {
+  float: left;
+  margin: 0 0 6px 0;
+}
+.row > div.type input {
+  width: calc((100% - 24px) /4);
+}
+.row :global(.ms-Dropdown-container),
+.row-cell {
+  float: left;
+  margin: 0 3px 6px;
+}
+.row-cell[data-show='show'] {
+  display: inline-block;
+}
+.row-cell[data-show='hide'] {
+  display: none;
+}
+.row > div.rowHeader {
+  width: 100%;
+  height: 18px;
+  line-height: 18px;
+  position: relative;
+  margin-bottom: 12px;
+  color: #999;
+  padding-right: 2px
+}
+.row > div.rowHeader > span {
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  margin-top: 3px;
+  float: right;
+  color: #fff;
+  background: rgba(153, 153, 153, 0.5);
+  border: none;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  font-size: 5px;
+}
+.row > .addRow > span.addButton {
+  width: 14px;
+  height: 14px;
+  line-height: 12px;
+  margin-top: 4px;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  border: 1px solid #5b8af7;
+  margin-right: 6px;
+  font-size: 9px;
+  vertical-align: top;
+}
+.row > .addRow {
+  color: #5b8af7;
+  cursor: pointer;
+  padding-left: 4px;
+}
+.row > .addRow > span > i {
+  font-size: 10px;
+}
+.addButton > i {
+  font-size: 8px;
+}
+
+/* 下拉框样式 */
+.row-cell :global(ms-Dropdown-container) {
+  display: inline-block;
+}
+.Dropdown {
+  width: 94px;
+  border-radius: 2px;
+}
+.Dropdown:global(.is-open) {
+  border-radius: 2px;
+  height: 24px;
+}
+.Dropdown > span:first-child {
+  height: 24px;
+  line-height: 20px;
+  font-size: 12px;
+  letter-spacing: 0;
+}
+.Dropdown > span:first-child {
+  border-radius: 2px;
+  border-color: #eee;
+}
+.Dropdown:global(.isOpen) > span:first-child,
+.Dropdown:hover > span:first-child,
+.Dropdown:focus > span:first-child,
+.formWrap .listWrap .listName:focus input,
+.formWrap .listWrap .listName:hover input {
+  border-color: #eee;
+}
+.Dropdown > span:last-child {
+  height: 24px;
+  line-height: 20px;
+  right: 4px;
+}

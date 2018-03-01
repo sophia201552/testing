@@ -1,0 +1,65 @@
+<div id="ct_op_server_manage_form" class="form-horizontal p20 form1 col-md-offset-3 col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Server Manager
+            </h3>
+        </div>
+        <div class="panel-body">
+            <table class="tb1">
+                <tr>
+                    <td width="50%">Disk Space</td>
+                    <td width="50%" id="status-disk"></td>
+                </tr>
+                <tr>
+                    <td>CPU</td>
+                    <td id="status-cpu"></td>
+                </tr>
+                <tr>
+                    <td>Memory</td>
+                    <td id="status-memory"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Core Manager
+            </h3>
+        </div>
+        <div class="panel-body">
+            <table class="tb1">
+                <tr>
+                    <td>Version</td>
+                    <td id="coreVersion"></td>
+                </tr>
+                <tr>
+                    <td>Update Time</td>
+                    <td id="coreUpdateTime"></td>
+                </tr>
+                <tr>
+                    <td width="50%">Status</td>
+                    <td width="50%">
+                        <span></span>
+                        <button id="serverRestartBtn" class="btn btn-primary">Restart</button>
+                    </td>
+                </tr>
+                <!--
+                <tr>
+                    <td>Core Update Time</td>
+                    <td>
+                        <span></span>
+
+                        <div>
+                            <button id="serverManageUpdateCoreBtn" class="btn btn-warning">Update Core</button>
+                        </div>
+                    </td>
+                </tr>
+                -->
+            </table>
+        </div>
+    </div>
+
+</div>

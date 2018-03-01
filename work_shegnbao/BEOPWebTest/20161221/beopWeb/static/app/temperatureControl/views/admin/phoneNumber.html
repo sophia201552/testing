@@ -1,0 +1,45 @@
+<style>
+    #phoneNumber{
+        padding-top: 5rem;
+    }
+    .listBorder{
+        border: none;
+        padding: 1rem 3rem;
+    }
+    .spanClear{
+        position: absolute;
+        right: 11.8rem;
+        color: #aaa;
+        top: 1.5rem;
+        width: 3rem;
+        text-align: center;
+    }
+    #iptCode{
+        display: inline-block;
+        width: calc(100% - 9rem);
+    }
+    #btnCheckCode{
+        width: 5rem;
+    }
+    .divPhoneNum input{
+        width: calc(100% - 9rem);
+        display: inline-block;
+    }
+</style>
+<div id="phoneNumber">
+    <div class="list-group">
+        <div class="listBorder divPhoneNum">
+            <input type="number" class="form-control" id="iptPhoneNum"/>
+            <span class="spanClear">&times;</span>
+            <button class="btn btn-primary hidden" id="btnGetCode">重发<span id="timeCount"></span></button>
+        </div>
+        <div class="listBorder">
+            <button class="btn btn-primary" id="btnBind">绑定手机号</button>
+        </div>
+        <div class="listBorder hidden" id="divCheckCode">
+            <input type="number" class="form-control" id="iptCode" placeholder="验证码"/>
+            <button class="btn btn-primary" id="btnCheckCode">发送</button>
+        </div>
+    </div>
+
+</div>

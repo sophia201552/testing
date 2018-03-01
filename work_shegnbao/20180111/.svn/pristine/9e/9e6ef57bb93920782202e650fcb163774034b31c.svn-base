@@ -1,0 +1,36 @@
+html{
+
+}
+body {
+
+}
+.ios-1 #navTop{
+    height:44px;
+}
+.ios-1 #navBottom{
+    height:49px;
+}
+.ios-2 #navTop{
+    height:88px;
+}
+.ios-2 #navBottom{
+    height:98px;
+}
+.ios-3 #navTop{
+    height:132px;
+}
+.ios-3 #navBottom{
+    height:146px;
+}
+.android-1 #navTop{
+    height:96px;
+}
+.android-1 #navBottom{
+    height:96px;
+}
+.default-1 #navTop{
+    height:48px;
+}
+.default-1 #navBottom{
+    height:48px;
+}

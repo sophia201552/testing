@@ -1,0 +1,35 @@
+<style>
+    #editorWrap{
+        height: 100%;
+    }
+    #dCodeEditor{
+        height: calc(100% - 100px);
+    }
+    .CodeMirror{
+        height: 100%;
+    }
+    .btnCtn .btn{
+        float: right;
+        margin-left: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    #crtDevice{
+        margin-left: 20px;
+        op;
+    }
+</style>
+<!--<link href="/static/scripts/lib/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">-->
+<div id="editorWrap">
+    <div class="panel-heading">
+        <span>编辑</span>
+        <span id="crtDevice"></span>
+    </div>
+    <div class="panel-body" id="dCodeEditor">
+
+    </div>
+    <div class="panel-heading btnCtn">
+        <button class="btn btn-primary" id="btnSaveAlgorithm">保存</button>
+        <button class="btn btn-default">取消</button>
+    </div>
+</div>

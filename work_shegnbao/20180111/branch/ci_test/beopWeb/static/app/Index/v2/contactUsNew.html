@@ -1,0 +1,337 @@
+<link rel="stylesheet" href="../../../fonts/beopIconFont/iconfont.css">
+<style>
+    .contactUsHeader {
+        display: table;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(./img/contactUs/contactUs.jpg) no-repeat center center scroll;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    .contactUsHeader .row {
+        margin: 0
+    }
+
+    .contactTitle {
+        font-size: 3rem;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 5.1rem;
+        text-align: right;
+        letter-spacing: 0.8rem;
+    }
+
+    .contactLine {
+        margin-top: 3rem;
+        width: 4.5rem;
+        height: 1rem;
+        background-color: #6fb7ff;
+        text-align: right;
+        position: relative;
+        margin-bottom: 1rem;
+        left: calc(100% - 6.5rem)
+    }
+
+    .contactContent {
+        line-height: 1.5;
+        text-align: right;
+        color: #ffffff;
+        letter-spacing: 0.15rem;
+    }
+
+
+
+
+    .contactForm {
+        opacity: 0.9;
+        border-radius: 6px;
+        background-color: #1c2532;
+        padding: 5rem 4rem;
+    }
+
+
+
+    .input {
+        -webkit-transition: 0.5s ease all;
+        transition: 0.5s ease all;
+        background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        border-radius: 0;
+        margin: 0 0 5px;
+        padding: 5px;
+        font-size: 1.5rem;
+        text-align: left;
+        color: #88a5cb;
+        border: none;
+        border-bottom: 1px solid #88a5cb;
+        outline: none;
+        line-height: 4rem;
+    }
+
+    .input:focus {
+        color: #6fb7ff;
+        border-bottom: 1px solid #6fb7ff;
+    }
+
+    .inputName {
+        width: 100%;
+    }
+
+    .inputEmail {
+        width: 40%;
+    }
+
+    .inputPhone {
+        width: 40%;
+        margin-right: 20%;
+    }
+
+    .contactForm .row {
+        margin: 1rem 0 1rem 0;
+        padding: 0;
+    }
+
+    .inputMessage {
+        width: 100%;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    .btnSendForm {
+        border-radius: 100px;
+        background-color: #6fb7ff;
+        font-size: 2rem;
+        font-weight: 600;
+        text-align: left;
+        color: #ffffff;
+        width: 15rem;
+        line-height: 4.8rem;
+        height: 4.8rem;
+        text-align: center;
+        letter-spacing: 0.2rem;
+    }
+
+    .addressContaier {
+        background-color: #f3f3f3;
+        width: 100%;
+        padding-top: 5rem;
+        padding: 5rem 20%;
+    }
+
+    .addressTitleLine {
+        width: 3.75rem;
+        height: 0.5rem;
+        background: #6fb7ff;
+    }
+
+    .addressTitle {
+        margin-bottom: 7rem;
+    }
+
+    .addressTitlePanel {
+        color: #333333;
+        font-size: 2rem;
+        font-weight: 600;
+        display: inline-block;
+    }
+
+    .addressPanel {
+        margin: 1rem 0rem 0 0;
+        padding: 3rem 2rem 0.5rem 2rem;
+        border-radius: 6px;
+        background-color: #ffffff;
+        box-shadow: 4px 8px 30px 10px rgba(211, 211, 211, 0.5);
+        box-sizing: border-box;
+    }
+
+    .addressPanelTitle {
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 1.61;
+        text-align: left;
+        color: #333333;
+        height: 7rem;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .addressPanelCompany {
+        font-size: 1.1rem;
+        text-align: left;
+        color: #333333;
+        height: 5rem;
+    }
+
+    .addressDetail {
+        font-size: 1.3rem;
+        font-weight: 600;
+        line-height: 1.61;
+        text-align: left;
+        color: #333333;
+        margin-bottom: 1rem;
+    }
+
+    .addressCode,
+    .addressPhone {
+        font-size: 1.1rem;
+        height: 2.2rem;
+        text-align: left;
+        color: #333333;
+    }
+
+    .addressPhoneNum {
+        color: #6fb7ff
+    }
+
+    .contactUsHeader .text-vertical-center {
+        transform: translateY(8%);
+    }
+
+    .contactUsRow {
+        padding-right: 5rem;
+        padding-top: 3.5rem;
+    }
+
+    @media ( max-width: 760px) {
+        .addressContaier {
+            padding: 3rem 2rem;
+        }
+        .contactTitle {
+            font-size: 3rem;
+        }
+        .contactForm {
+            padding: 0.5rem 3rem 1rem;
+        }
+        .contactLine {
+            margin-top: 2rem;
+        }
+        .contactUsRow {
+            padding-top: 0rem;
+        }
+        .contactUsHeader .text-vertical-center {
+            transform: translateY(0%);
+        }
+    }
+
+    .addressIcon {
+        color: #6fb7ff;
+        font-size: 2.5rem;
+        position: relative;
+        left: -0.5rem;
+        z-index: 11111;
+    }
+
+    .placeTitle {
+        display: inline-block;
+        font-size: 1.5rem;
+        vertical-align: middle;
+        text-indent: 5px;
+    }
+</style>
+
+<header id="top" class="contactUsHeader">
+    <div class="text-vertical-center">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 contactUsRow">
+                <h3 class="contactTitle" i18n="Contact.CONTACT">联系我们</h3>
+
+                <h4 class="contactContent" i18n="Contact.CONTACTCONTENT">R&B邀您进入人工智能平台</h4>
+                <h4 class="contactContent" i18n="Contact.CONTACTCONTENT_ONE">共同迎接美好未来！</h4>
+
+                <div class="contactLine"></div>
+            </div>
+            <div id="contactUs" class="col-lg-7 col-md-7 col-sm-7" style="height:70vh;opacity: 0.9;">
+                <iframe style="width:100%;height:100%;" src="/contact/v2" frameborder="0"></iframe>
+            </div>
+        </div>
+
+    </div>
+</header>
+<section class="addressContaier">
+    <div class="addressTitle">
+        <div class="addressTitleLine"></div>
+        <div style="margin-top:5rem;">
+            <div class="addressTitlePanel" i18n="Contact.ADDRESSTITILE">联系地址</div>
+            <div style="width:12rem;height: 0.2rem;background-color: #dbd9d9; display: inline-block; padding-top:-50%;margin:0 0 0.5rem 3rem;"></div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div data-scroll-reveal="enter bottom over 1s and move 100px" class="col-md-4  col-sm-4" style="    padding: 0 5% 0 0px;">
+            <div class="addressPanel">
+                <div class="iconfont icon-dingwei addressIcon">
+                    <div class="placeTitle" i18n="Contact.SHANGHAI">上海</div>
+                </div>
+                <div class="addressPanelTitle" i18n="Contact.TITLE_TWO">中国上海祖冲之路2290弄1号楼103室</div>
+                <div class="addressDetail" i18n="Contact.DETAIL">联系方式<span>info@rnbgroup.com</span></div>
+                <div class="addressCode"> <span style="margin-right:2rem" i18n="Contact.EMAIL">邮箱 </span> <span>info@rnbgroup.com</span></div>
+            </div>
+
+        </div>
+        <div data-scroll-reveal="enter bottom over 1s and move 150px" class="col-md-4  col-sm-4" style="    padding: 0 5% 0 0px;">
+            <div class="addressPanel">
+                <div class="iconfont icon-dingwei addressIcon">
+                    <div class="placeTitle" i18n="Contact.HONGKONG">香港</div>
+                </div>
+                <div class="addressPanelTitle" i18n="Contact.TITLE_THREE">香港威菲道路18号万国宝通中心19楼</div>
+                <div class="addressDetail" i18n="Contact.DETAIL">联系方式</div>
+                <div class="addressCode"> <span style="margin-right:2rem" i18n="Contact.EMAIL">邮箱 </span> <span>info@rnbgroup.com</span></div>
+            </div>
+
+        </div>
+        <div data-scroll-reveal="enter bottom over 0.5s and move 130px" class="col-md-4  col-sm-4" style="    padding: 0 5% 0 0px;">
+            <div class="addressPanel">
+                <div class="iconfont icon-dingwei addressIcon">
+                    <div class="placeTitle" i18n="Contact.AMERICA">美国</div>
+                </div>
+                <div class="addressPanelTitle" i18n="Contact.TITLE_ONE">75 Executive Drive, Suite 106, Aurora, IL 60504</div>
+                <div class="addressDetail" i18n="Contact.DETAIL">联系方式</div>
+                <div class="addressCode"> <span style="margin-right:2rem" i18n="Contact.EMAIL">邮箱 </span> <span>info@rnbgroup.com</span></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    function onLanguageChange() {
+        $('iframe')[0].contentWindow.setLanguage(localStorage.language ? localStorage.language : navigator.language.split('-')[0])
+        $('iframe')[0].contentWindow.translate()
+    }
+
+
+    $('.addressPanelTitle').off('mousemove').on('mousemove', function () {
+        var height = $(this).parent().innerHeight();
+        var width = $(this).parent().innerWidth();
+        var text = $(this).text();
+        var dom = `<div class="addressPanelTitle addressPanelTitle-1" style="position: absolute;z-index:111;background:#fff;height:calc(${height}px - 4rem);width:${width}px;top:3.5rem;left:0   ; margin: 1rem 0rem 0 0;
+    padding: 3rem 2rem 0.5rem 2rem;">${text}</div>`
+        $(this).parent().append(dom)
+    })
+    $('.addressPanel').off('mouseleave').on('mouseleave', function () {
+        $(this).find('.addressPanelTitle-1').remove();
+
+    })
+    $('.addressPanelTitle').off('touchstart').on('touchstart', function () {
+        var height = $(this).parent().innerHeight();
+        var width = $(this).parent().innerWidth();
+        var text = $(this).text();
+        var dom = `<div class="addressPanelTitle addressPanelTitle-1" style="position: absolute;z-index:111;background:#fff;height:calc(${height}px - 4rem);width:${width}px;top:3.5rem;left:0   ; margin: 1rem 0rem 0 0;
+    padding: 3rem 2rem 0.5rem 2rem;">${text}</div>`
+        $(this).parent().append(dom)
+    })
+    $('.addressPanel').off('touchend').on('touchend', function () {
+        $(this).find('.addressPanelTitle-1').remove();
+
+    })
+
+</script>

@@ -1,0 +1,7 @@
+export default {
+    EXPORT_AS_TEMPLATE: 'Export as template',
+    ENTER_TEMPLATE_NAME: 'Please enter template name',
+    ENTER_TEMPLATE_DESC: 'Please enter template description',
+    EXPORT: 'Export',
+    CLOSE: 'Close'
+  };

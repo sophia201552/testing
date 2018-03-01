@@ -1,0 +1,344 @@
+<style>
+    .panelBenchmarkConfig {
+        margin: 0;
+        height: 100%;
+        background-color: transparent;
+        padding: 2%;
+        position: relative;
+    }
+    .panelBenchmarkConfig .navConfig{
+        height: 28px;
+        margin-bottom: 30px;
+    }
+    .panelBenchmarkConfig .navItem{
+        display: inline-block;
+        width: 33.33%;
+        float: left;
+        text-align: center;
+        cursor: pointer;
+        font-size: 20px;
+        padding: 10px 0;
+        border-top: 1px solid transparent;
+        opacity: 0.5;
+        transition: all 0.2s;
+        -webkit-transition: all 0.2s;
+    }
+    .panelBenchmarkConfig .navItem:hover{
+        color: #323232;
+        background-color: #fff;
+        opacity: 1;
+    }
+    .panelBenchmarkConfig .navItem.selected:hover{
+        color: #323232;
+        background-color: rgba(255, 255, 255, 0.77);
+        opacity: 1;
+        border-radius: 10px;
+    }
+    .panelBenchmarkConfig .navItem.selected{
+        color: white;
+        opacity: 1;
+        border-top: 1px solid white;
+    }
+    .ctnPointConfig>div {
+        margin-bottom: 10px;
+    }
+    .ctnPointConfig>div.divPowerPt,.ctnPointConfig>div.divConsumePt,.ctnPointConfig>div.divSummaryPt{
+        margin-top:40px;
+        padding:20px;
+        border-radius:3px;
+    }
+    .ctnPointConfig>div.divPowerPt{
+        border:1px solid rgba(100,151,249,0.7);/*#6497f9*/
+        color:#6497f9;
+    }
+    .ctnPointConfig>div.divConsumePt,.ctnPointConfig>div.divSummaryPt{
+        border:1px solid rgba(243,153,0,0.7);/*#f39900*/
+        color:#f39900;
+    }
+    .ctnPointConfig>div.divSummaryPt{
+        display:none;
+        margin-top:20px;
+    }
+    .ctnPointConfig .divPointName {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    .ctnPointConfig .labelPtCfg {
+        height:44px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+        font-size: 16px;
+        vertical-align: text-bottom;
+        margin-left: calc(50% - 43px);
+    }
+    .ctnBenchmarkCfg {
+        display: none;
+        height: calc(100% - 50px);
+    }
+    .ctnBenchmarkCfg.focus {
+        display: block;
+    }
+    .panelBenchmarkConfig .btnCostAdd {
+        /*position: relative;
+        left: 90%;*/
+        position: absolute;
+        bottom: 20px;
+        left: 25px;
+    }
+    .panelBenchmarkConfig .divCost {
+        height: 40px;
+        /*margin-bottom: 5px;*/
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        -webkit-align-items: center;
+    }
+    .panelBenchmarkConfig .divCost:nth-of-type(odd){
+        background:rgba(68,132,186,0.4) ;/*#428BCA*/
+        border-radius:3px;
+    }
+    .panelBenchmarkConfig .divCost:nth-of-type(even){
+        background:rgba(68,132,186,0.1) ;/*#428BCA*/
+        border-radius:3px;
+    }
+    /*.divCtnCostConfig .divCost:eq(3){
+        margin-top:40px;
+    }*/
+    .panelBenchmarkConfig  .divCostTtl {
+        font-size: 20px;
+        /*margin-bottom: 20px;*/
+        background: rgba(68,132,186,0.9);
+        height: 40px;
+        line-height: 40px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        /*width:300px;
+        position:absolute;*/
+    }
+    .panelBenchmarkConfig  .spCostTtl {
+        display: inline-block;
+        width: 40%;
+        text-align: center;
+    }
+    .panelBenchmarkConfig  .spCost {
+        display: inline-block;
+        width: 40%;
+        vertical-align: middle;
+        text-align: center;
+    }
+    .panelBenchmarkConfig  .iptCost {
+        display: inline-block;
+        width: 20%;
+        margin: 0 10%;
+    }
+    .panelBenchmarkConfig  .divCost .btnCost {
+        margin-left: 2%;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .panelBenchmarkConfig .showIpt .spLinkTtl {
+        display: none;
+    }
+    .panelBenchmarkConfig .showIpt .iptLinkTtl {
+        display: inline-block;
+    }
+    .panelBenchmarkConfig .showIpt .btnLinkEdit {
+        display: none;
+    }
+    .panelBenchmarkConfig  .spLinkTtl {
+        display: inline-block;
+        padding: 7px 0;
+    }
+    .panelBenchmarkConfig  .iptLinkTtl  {
+        display: none;
+        width: 80%;
+    }
+    .panelBenchmarkConfig  .btnLink  {
+        margin-left: 2%;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .panelBenchmarkConfig .divDsBox> div {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 4px 15px;
+        border-radius: 5px;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 1%;
+    }
+    .panelBenchmarkConfig .divDsBox.hasDs>.divDsContent {
+        display: inline-block;
+        margin-left:10%;
+    }
+    .panelBenchmarkConfig .divDsBox.hasDs>.divDsTip{
+        display: none;
+    }
+    .panelBenchmarkConfig .divDsContent {
+        background-color: #efeeee;
+        border: 1px solid transparent;
+        color: #4c9f42;
+        cursor: pointer;
+        font-size: 14px;
+        height: 30px;
+        display: none;
+        transition: tranform 0.2s;
+        -webkit-transition: -webkit-transform 0.2s;
+    }
+    .panelBenchmarkConfig .divDsContent:hover {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    .panelBenchmarkConfig .divDsTip {
+        text-align: center;
+        color: #ccc;
+        border: 1px dashed #ccc;
+        height: 30px;
+        display: inline-block;
+    }
+    .panelBenchmarkConfig .divDsTip:hover {
+        border-color: #66afe9;
+        cursor: pointer;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    }
+    .panelBenchmarkConfig .spDsTipText {
+        display: none;
+    }
+    .panelBenchmarkConfig .divDsTip:hover .spDsTipText{
+        display: inline-block;
+    }
+    .panelBenchmarkConfig .divDsTip:hover .glyphicon{
+        display: none;
+    }
+    .panelBenchmarkConfig .divDsContent:hover .glyphicon{
+        color: darkorange;
+    }
+    .panelBenchmarkConfig .spDsDel.glyphicon {
+        top: 2px;
+        color: #ccc;
+        float: right;
+    }
+    .panelBenchmarkConfig .spDsVal {
+        display: inline-block;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 84%;
+        white-space: nowrap;
+    }
+    .panelBenchmarkConfig .divConfigBtnGrp{
+        position: absolute;
+        /*right: 2%;
+        bottom: 2%;*/
+        left:195px;
+        bottom:20px;
+    }
+    .panelBenchmarkConfig .btnLinkAdd {
+        position: relative;
+        left: 90%;
+    }
+    .panelBenchmarkConfig .divLink {
+        height: 40px;
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: center;
+        -webkit-justify-content: center;
+    }
+    .panelBenchmarkConfig .divLinkTtl {
+        width: 30%;
+        display: inline-flex;
+        display: -webkit-inline-flex;
+        align-items: center;
+        -webkit-align-items: center;
+    }
+    .panelBenchmarkConfig .divLinkContent {
+        width: 30%
+    }
+    .panelBenchmarkConfig .divLinkContent>div {
+        width: 100%
+    }
+    .panelBenchmarkConfig .glyphicon {
+        top: 0;
+    }
+    #paneIotData li>a:hover>.btnTreeNode.btnEdit {
+        display: inline-block;
+    }
+    #paneIotData li>a:hover>.btnTreeNode.btnDelete {
+        display: inline-block;
+    }
+    @media screen and (max-width: 1368px){
+        .ctnPointConfig .labelPtCfg{
+            height:66px;
+        }
+        .panelBenchmarkConfig .divConfigBtnGrp{
+            left: 190px;
+            bottom: 13px;
+        }
+        .panelBenchmarkConfig .btnCostAdd{
+            bottom: 10px;
+            left: 15px;
+        }
+    }
+</style>
+<div class="panel panelBenchmarkConfig">
+    <div class="navConfig">
+        <div class="navItem" data-type="point" i18n="benchmark.paramsConfig.POINT_CONFIG">点位配置</div>
+        <div class="navItem" data-type="cost" i18n="benchmark.paramsConfig.ENERGY_CONFIG">电价配置</div>
+        <!--<div class="navItem" data-type="link">关联参数</div>-->
+    </div>
+    <div class="ctnPointConfig ctnBenchmarkCfg clearfix">
+        <!--<div class="divPointTree"></div>-->
+        <div class="divPointName col-xs-12"></div>
+        <div class="divPowerPt divPtCfg divDsBox col-xs-4 col-xs-offset-1" data-type="power">
+            <label class="labelPtCfg" i18n="benchmark.paramsConfig.POWER_POINT">功率点位</label>
+            <div class="divDsTip"><span class="glyphicon glyphicon-plus"></span><span class="spDsTipText" i18n="benchmark.paramsConfig.DRAGE_THERE">请拖拽至此</span></div>
+            <div class="divPtVal divDsContent">
+                <span class="spPtVal spDsVal"></span>
+                <span class="btnPtDel spDsDel glyphicon glyphicon-remove"></span>
+            </div>
+        </div>
+        <div class="divConsumePt divPtCfg divDsBox col-xs-4 col-xs-offset-2" data-type="energy">
+            <label class="labelPtCfg" i18n="benchmark.paramsConfig.ENERGY_POINT">用电量点位</label>
+            <div class="divDsTip"><span class="glyphicon glyphicon-plus"></span><span class="spDsTipText" i18n="benchmark.paramsConfig.DRAGE_THERE">请拖拽至此</span></div>
+            <div class="divPtVal divDsContent divDsBox">
+                <span class="spPtVal spDsVal"></span>
+                <span class="btnPtDel spDsDel glyphicon glyphicon-remove"></span>
+            </div>
+        </div>
+        <div class="divSummaryPt divPtCfg divDsBox col-xs-4 col-xs-offset-1" data-type="summary">
+            <label class="labelPtCfg">summary</label>
+            <div class="divDsTip"><span class="glyphicon glyphicon-plus"></span><span class="spDsTipText" i18n="benchmark.paramsConfig.DRAGE_THERE">请拖拽至此</span></div>
+            <div class="divPtVal divDsContent divDsBox">
+                <span class="spPtVal spDsVal"></span>
+                <span class="btnPtDel spDsDel glyphicon glyphicon-remove"></span>
+            </div>
+        </div>
+    </div>
+    <div class="ctnCostConfig ctnBenchmarkCfg">
+        <div class="divCtnCostConfig gray-scrollbar" style="float: left; width: 300px; height:calc(100% - 40px); overflow-y: auto; overflow-x: hidden;">
+            <button class="btn btn-primary btnCost btnCostAdd" i18n="benchmark.paramsConfig.ADD">添加</button>
+            <div class="divCostTtl">
+                <span class="spCostTtl" i18n="benchmark.energyForecast.TIME">时间</span>
+                <span class="spCostTtl" i18n="benchmark.paramsConfig.COST">价格</span>
+            </div>
+        </div>
+        <div id="divCostChart" style="float: left; width: calc(100% - 300px); height: 100%; overflow-y: auto; overflow-x: hidden;">
+
+        </div>
+    </div>
+
+    <!--<div class="ctnLinkConfig ctnBenchmarkCfg">
+        <button class="btn btn-primary btnLinkAdd">添加</button>
+    </div>-->
+    <div class="divConfigBtnGrp">
+        <button class="btn btn-primary btnBmCfgCancel" i18n="benchmark.energyForecast.CANCEL">取消</button>
+        <button class="btn btn-primary btnBmCfgConfirm" i18n="benchmark.paramsConfig.SAVE">保存</button>
+    </div>
+</div>
+<div class="panelDataSource">
+
+</div>

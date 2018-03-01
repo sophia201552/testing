@@ -1,0 +1,60 @@
+#indexNav {
+    height: 56px;
+    font: 20px "Microsoft YaHei";
+    line-height: 36px;
+    border-bottom: 1px solid #e7e7e7;
+}
+#divNavWrap {width:90%; margin:0 auto;}
+.left-nav>div {
+    display: inline-block;
+}
+#divNavWrap>a {
+    margin-left: 30px;
+    vertical-align: top;
+}
+#indexMain {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 56px;
+    bottom: 5px;
+    padding: 0 8px 0 8px;
+    margin: 0;
+}
+#indexMain > .divLoading {
+    font-size: large;
+    font-weight: bold;
+}
+
+.left-nav { padding: 9px 0; float: left; }
+.right-nav { float: right; font-size: 15px;}
+.right-nav>li>a { line-height: 25px; transition: background-color .15s linear, color .15s linear;}
+#indexNav .right-nav>li>a:hover {  background-color: #337ab7; color: #fff; }
+.show-detail>a { vertical-align: bottom; margin-left: 15px; }
+
+#modalSendEmail .modal-dialog { width: 800px; font-family: "Microsoft YaHei";}
+#mailList { max-height: 500px;overflow-y: scroll; }
+#mailTo {
+    width: 100%;
+    min-height: 42px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 5px 8px;
+    font-size: 15px;
+}
+.list-group-item:hover, .list-group-item.on { background-color: #337ab7; color: #fff;}
+.item-loading { text-align: center; }
+.list-group-item.item-loading:hover { cursor: default; background-color: none; }
+.list-group-item { border-color: #ddd; }
+.item-mail>.user-name { font-weight: bold;margin-right: 5px; }
+.item-mail>.mail-addr { color: #a0a0a0; }
+.item-mail.on>.mail-addr { color: #ddd; }
+.item-mail>.item-status {  float: right; line-height: 20px; font-size: 16px; display: none;}
+.item-mail.on>.item-status { display: block; }
+
+.inner-mail-wrap {cursor: default; -webkit-user-select: none;}
+.inner-mail:hover { background-color: #dfdfdf; }
+.inner-mail-wrap,.inner-mail { display: inline-block; }
+.inner-mail>.user-name { font-weight: bold; }
+.inner-mail>.mail-addr { color: #a0a0a0; }

@@ -1,0 +1,354 @@
+/*faultManager start*/
+.faultManagerCtn {
+  width: 100%;
+  height: 100%;
+}
+.leftSlider {
+  width: 230px;
+  float: left;
+  height: 100%;
+  float: left;
+  color: #666;
+  margin-top: 20px;
+  border-right: 1px solid rgba(153, 153, 153, 0.3);
+}
+.leftSlider .panelTitle {
+  text-align: left;
+  color: #1d1d1d;
+  padding-left: 16px;
+}
+.leftSlider .panelTitle span {
+  font-size: 16px;
+  font-weight: 550;
+  line-height: 26px;
+}
+.leftSlider .faultsClassification {
+  height: calc(100% - 26px);
+}
+.faultsInfo {
+  width: calc(100% - 230px);
+  float: left;
+  height: 100%;
+  padding: 20px;
+}
+.toolCtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+.toolCtn .buttonCtn {
+  display: flex;
+  align-items: center;
+}
+.toolCtn .buttonCtn > div {
+  width: 80px;
+  height: 28px;
+  border-radius: 4px;
+  color: rgba(91, 136, 247, 1);
+  border: solid 1px rgba(91, 136, 247, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+  cursor: pointer;
+}
+.toolCtn .buttonCtn > div i {
+  margin-right: 4px;
+}
+.toolCtn li {
+  float: left;
+  width: 110px;
+  height: 28px;
+  color: #999999;
+  box-shadow: 0px 2px 18px 0 rgba(216, 224, 237, 0.6);
+  text-align: center;
+  line-height: 28px;
+  cursor: pointer;
+}
+.toolCtn li:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.toolCtn li:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.toolCtn li.active {
+  background-color: #5b8af7;
+  box-shadow: none;
+  color: #ffffff;
+}
+.faultsClassification .modelName {
+  height: 33px;
+  font-size: 14px;
+  border-bottom: 1px solid #e8e9eb;
+  padding-left: 15px;
+  line-height: 33px;
+}
+.faultsClassification .listCtn {
+  height: calc(100% - 33px);
+}
+.category {
+  height: 50%;
+  padding: 16px 0 16px 16px;
+}
+.consequence,
+.grade {
+  height: 25%;
+  border-top: 1px solid rgba(153, 153, 153, 0.1);
+  padding: 16px 0 16px 16px;
+}
+.faultsClassification .titleName {
+  margin-bottom: 8px;
+  width: 100%;
+  height: 16px;
+  line-height: 16px;
+  font-size: 14px;
+  color: #1d1d1d;
+  padding: 0 0 0 8px;
+  border-left: 4px solid #1d1d1d;
+}
+.faultsClassification .detail {
+  height: calc(100% - 26px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.faultsClassification .detail > div {
+  line-height: 26px;
+  cursor: pointer;
+}
+.faultsClassification .detail > div.selectedName {
+  background: #e1e5e6;
+}
+.typeName {
+  width: calc(100% - 46px);
+  display: inline-block;
+  color: #333333;
+  padding-left: 4px;
+}
+.countNum {
+  width: 36px;
+  height: 16px;
+  line-height: 16px;
+  color: #f39a00;
+  font-size: 12px;
+  text-align: right;
+  display: inline-block;
+  margin-right: 10px;
+}
+.backgroundCtn {
+  padding: 20px;
+  height: calc(100% - 33px);
+}
+.faultsDetail {
+  background: #ffffff;
+  height: 100%;
+}
+.searchCtn {
+  height: 40px;
+  padding: 7px;
+}
+.searchCtn > div {
+  width: 200px;
+  height: 26px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+.searchCtn > div > div {
+  width: 20px;
+  font-size: 14px;
+}
+.faultsInfoCtn {
+  height: calc(100% - 60px);
+  background: #ffffff;
+  box-shadow: 0px 4px 8px 0 rgba(216, 224, 237, 0.6);
+}
+.faultsCtn {
+  height: calc(100% - 60px);
+  border-bottom: 1px solid #e8e9eb;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+/* DetailsList 样式 */
+.faultsCtn :global(.ms-DetailsHeader) {
+  height: 38px;
+  line-height: 38px;
+  border-bottom: 1px solid rgba(153, 153, 153, 0.1);
+}
+.faultsCtn :global(.ms-DetailsList) > div {
+  overflow: hidden;
+}
+.faultsCtn :global(.ms-DetailsHeader) > div {
+  height: 38px;
+  color: #999999;
+  border-left: 2px solid #ffffff;
+}
+.faultsCtn :global(.ms-DetailsHeader) > div > span > button,
+.faultsCtn :global(.ms-List-page) button {
+  opacity: 1;
+}
+.faultsCtn :global(.ms-DetailsHeader:hover) > div {
+  background: #ffffff;
+}
+.faultsCtn :global(.ms-DetailsHeader) > div > span > span {
+  padding: 0;
+}
+.faultsCtn :global(.ms-DetailsHeader) > div:active {
+  background-color: #f5f8f9 !important;
+}
+.faultsCtn :global(.ms-List-page) > div > div,
+.faultsCtn :global(.ms-List-page) > div > div:before {
+  border-bottom: 1px solid rgba(153, 153, 153, 0.1);
+  min-height: 38px;
+  height: 38px;
+  color: #333333;
+  border-left: 2px solid #ffffff;
+}
+.faultsCtn :global(.ms-List-page) > div > div:before {
+  display: none;
+}
+.faultsCtn :global(.ms-List-page) > div > div:global(.is-selected) {
+  border-left: 2px solid #10b8f9;
+  box-shadow: 0px 4px 8px 0 rgba(16, 184, 249, 0.38);
+  background-color: #ebeef7;
+}
+.faultsCtn :global(.ms-List-page) > div > div:global(.is-selected:hover) {
+  background-color: #ebeef7;
+}
+.faultsCtn :global(.ms-List-page) > div > div > div > div {
+  padding: 0;
+  line-height: 38px;
+  height: 38px;
+  min-height: 38px;
+}
+.faultsCtn :global(.ms-DetailsList) i:global(.ms-Check-circle) {
+  opacity: 0;
+}
+.faultsCtn :global(.ms-DetailsList) div:global(.ms-Check::before) {
+  border-radius: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: solid 1px rgba(130, 144, 179, 0.4);
+}
+.faultsCtn :global(.ms-DetailsList) div:global(.ms-Check.is-checked::before) {
+  background-color: #4c84ff;
+}
+.faultsCtn :global(.ms-DetailsList) i:global(.ms-Check-check) {
+  left: -0.8px;
+  font-size: 18px;
+  line-height: 14px;
+}
+.faultsCtn :global(.ms-DetailsHeader) button:focus i,
+.faultsCtn :global(.ms-DetailsRow) button:focus i {
+  color: #fff !important;
+}
+/* DetailsList end*/
+.configButton.showConfigBtn {
+  background: linear-gradient(to right, #5b88f7, #4d74d2);
+  cursor: pointer;
+}
+.configButton {
+  width: 80px;
+  background: #cccccc;
+  height: 24px;
+  color: #ffffff;
+  border-radius: 4px;
+  line-height: 24px;
+  text-align: center;
+  margin-top: 7px;
+  cursor: no-drop;
+}
+.tableHeader {
+  padding: 0 15px;
+}
+.tableHeader > span {
+  width: 16.66667%;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 30px;
+}
+.singleFault {
+  display: flex;
+  align-items: center;
+  line-height: 30px;
+  padding: 0 15px;
+  cursor: pointer;
+}
+.singleFault > span {
+  width: 16.66667%;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.singleFault > div > span {
+  padding-right: 4px;
+}
+.pageNumCtn {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+.singlePage {
+  min-width: 20px;
+  height: 20px;
+  background: #f3f3f3;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  line-height: 16px;
+  text-align: center;
+  margin-left: 4px;
+  float: left;
+}
+.singlePage span {
+  padding: 0 4px;
+}
+.singlePage.selectedPage {
+  background: #0fb8f9;
+  color: #ffffff;
+}
+.prevPage,
+.nextPage {
+  cursor: pointer;
+}
+/*新增故障模态框 start*/
+.addNewFaultModal {
+  width: 40%;
+  height: 600px;
+  padding: 15px;
+}
+.modalTitle {
+  height: 30px;
+}
+.closeModal {
+  float: right;
+  margin-right: 15px;
+}
+.modalBody {
+  height: calc(100% - 90px);
+}
+.modalBody > div {
+  line-height: 30px;
+}
+.modalBody > div * {
+  display: inline-block;
+}
+.modalBody > div label {
+  width: 100px;
+}
+.modalBody > div input {
+  width: calc(100% - 100px);
+}
+.modalFooter {
+  height: 60px;
+}
+.modalFooter > div {
+  float: right;
+}
+.modalFooter > div button {
+  margin-left: 8px;
+}
+/*新增故障模态框 end*/
+/*faultManager end*/

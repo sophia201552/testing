@@ -1,0 +1,310 @@
+<style>
+    #modalIconSel #divColorSel{
+        display: inline-block;
+        position: absolute;
+        left: 20px;
+        bottom: 25px;
+        color: black;
+    }
+    #modalIconSel #iptColorSel{
+        display: inline-block;
+        padding: initial;
+        height: 20px;
+        width: 40px;
+    }
+    #modalIconSel .bs-glyphicons-list {
+        height: 600px;
+        overflow-x: hidden;
+        padding-left: 0;
+    }
+    #modalIconSel .bs-glyphicons-list .glyphicon{
+        margin-top: 5px;
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+    #modalIconSel .bs-glyphicons-list li{
+        float: left;
+        width: 10%;
+        padding: 10px;
+        line-height: 1.4;
+        text-align: center;
+        background-color: #f9f9f9;
+        border: 1px solid #fff;
+        cursor: pointer;
+        max-height:61px;
+    }
+    #modalIconSel .bs-glyphicons-list li img,#modalIconSel .bs-glyphicons-list li svg{
+        width:24px;
+        height:24px;
+        margin-top:9px;
+        margin-bottom: 6px;
+    }
+    #modalIconSel .bs-glyphicons-list li:hover{
+        color: #fff;
+        background-color: #563d7c;
+    }
+    #modalIconSel .bs-glyphicons-list li.selected{
+        color: #fff;
+        background-color: #563d7c;
+    }
+    #modalIconSel .glyphicon-class{
+        display: none;
+    }
+    #modalIconSel .svgModalOne svg{
+        margin-top:6px;
+    }
+    #modalIconSel  .iconfont{
+        font-size:28px;
+    }
+</style>
+<div id="modalIconSel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ttlIconTool">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ttlIconTool">Icon Select</h4>
+            </div>
+            <div class="modal-body bs-glyphicons">
+    <ul class="bs-glyphicons-list">
+        <li>
+          <span class="imgModalOne" aria-hidden="true">
+              <img src="static/images/factory/icon/overview.png"/>
+          </span>
+          <span class="glyphicon-class" type="image"><img src="static/images/factory/icon/overview.png"/></span>
+        </li>
+
+        <li>
+          <span class="imgModalTwo" aria-hidden="true">
+              <img src="static/images/factory/icon/operat.png"/>
+          </span>
+          <span class="glyphicon-class" type="image"><img src="static/images/factory/icon/operat.png"/></span>
+        </li>
+
+        <li>
+          <span class="imgModalThree" aria-hidden="true">
+              <img src="static/images/factory/icon/assessment.png"/>
+          </span>
+          <span class="glyphicon-class" type="image"><img src="static/images/factory/icon/assessment.png"/></span>
+        </li>
+
+        <li>
+          <span class="imgModalFour" aria-hidden="true">
+              <img src="static/images/factory/icon/energy.png"/>
+          </span>
+          <span class="glyphicon-class" type="image"><img src="static/images/factory/icon/energy.png"/></span>
+        </li>
+
+        <li>
+          <span class="imgModalFive" aria-hidden="true">
+              <img src="static/images/factory/icon/check.png"/>
+          </span>
+          <span class="glyphicon-class" type="image"><img src="static/images/factory/icon/check.png"/></span>
+        </li>
+
+        <li>
+          <span class="imgModalSix" aria-hidden="true">
+              <img src="static/images/factory/icon/diagnosis.png"/>
+          </span>
+          <span class="glyphicon-class" type="image"><img src="static/images/factory/icon/diagnosis.png"/></span>
+        </li>
+
+        <li>
+          <i class="iconfont icon-shui" aria-hidden="true"></i>
+          <span class="glyphicon-class" type="bootIcon">iconfont icon-shui</span>
+        </li>
+
+        <li>
+          <i class="iconfont icon-dian1" aria-hidden="true"></i>
+          <span class="glyphicon-class" type="bootIcon">iconfont icon-dian1</span>
+        </li>
+
+        <li>
+          <i class="iconfont icon-ranqi" aria-hidden="true"></i>
+          <span class="glyphicon-class" type="bootIcon">iconfont icon-ranqi</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-th-list</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-th-large</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-th</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-signal</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-off</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-cog</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-list-alt</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-tags</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-book</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-align-justify</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-list</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-adjust" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-adjust</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-tint" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-tint</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-check</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-share</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-edit</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-gift</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-random</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-retweet</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-magnet" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-magnet</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-leaf</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-fire</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-dashboard</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-usd</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-compressed" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-compressed</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-tower</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-stats</span>
+        </li>
+
+        <li>
+          <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+          <span class="glyphicon-class" type="bootIcon">glyphicon glyphicon-send</span>
+        </li>
+        <li>
+          <i class="iconfont industryTech3" aria-hidden="true"></i>
+          <span class="glyphicon-class" type="bootIcon">iconfont industryTech3</span>
+        </li>
+        <li>
+          <i class="iconfont industryTech7" aria-hidden="true"></i>
+          <span class="glyphicon-class" type="bootIcon">iconfont industryTech7</span>
+        </li>
+        <li>
+          <i class="iconfont industryTech2" aria-hidden="true"></i>
+          <span class="glyphicon-class" type="bootIcon">iconfont industryTech2</span>
+        </li>
+        <li>
+          <i class="iconfont industryTech6" aria-hidden="true"></i>
+          <span class="glyphicon-class" type="bootIcon">iconfont industryTech6</span>
+        </li>
+        <li>
+          <i class="iconfont industryTech1" aria-hidden="true"></i>
+          <span class="glyphicon-class" type="bootIcon">iconfont industryTech1</span>
+        </li>
+        <li>
+          <i class="iconfont industryTech5" aria-hidden="true"></i>
+          <span class="glyphicon-class" type="bootIcon">iconfont industryTech5</span>
+        </li>
+        <li>
+          <i class="iconfont industryTech4" aria-hidden="true"></i>
+          <span class="glyphicon-class" type="bootIcon">iconfont industryTech4</span>
+        </li>
+        <li>
+          <i class="iconfont industryTech8" aria-hidden="true"></i>
+          <span class="glyphicon-class" type="bootIcon">iconfont industryTech8</span>
+        </li>
+
+    </ul>
+            </div>
+            <div class="modal-footer">
+                <div id="divColorSel">
+                    <label for="iptColorSel">Color Select</label>
+                    <input type="color" id="iptColorSel" class="form-control">
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btnSure btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

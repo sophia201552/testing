@@ -1,0 +1,271 @@
+<style>
+    *{
+        font-family: "Microsoft YaHei";
+    }
+    #divContent {
+        position: relative;
+        height: calc(100% - 4rem);
+        overflow: auto;
+        color: white;
+    }
+    .wkPart:not(:last-child){
+        border-bottom: 1px solid #ccc;
+    }
+    .wkPart {
+        padding: 1rem;
+        position: relative;
+    }
+    #wkBase {
+    }
+    #wkEmergency {
+        color: white;
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.5rem;
+    }
+    #wkDetail{
+        border-bottom: 1px solid #eee;
+    }
+    #wkDetail .partTitle{
+        display: none;
+        border-bottom: 1px solid #ccc;
+    }
+    #detailTitle {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    #detailContent {
+        color: #8E8E93;
+    }
+    #additionSel {
+        border-bottom: 1px solid #dddddd;
+        padding: 0rem 1rem 1rem;
+    }
+    #additionSel span.selected{
+        color:#428BCA
+    }
+    .divProgress {
+        padding: 1rem 0;
+        border-bottom: 1px solid #ccc;
+    }
+    .progressPic img{
+        height: 3rem;
+    }
+    #wkAddition{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .divReply, .divProgress{
+        position: relative;
+        padding: 1rem;
+        border-bottom: 1px solid #ddd;
+    }
+    .replyPic, .progressPic{
+        width: 4rem;
+        height: 4rem;
+        float: left;
+    }
+    .replyPic img, .progressPic img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: none;
+    }
+    .replyUser, .progressUser{
+        height: 2rem;
+        line-height: 2rem;
+        margin-left: 5rem;
+    }
+    .replyTime, .progressTime{
+        margin-left: 5rem;
+        color: #8e8e93;
+        font-size: 1rem;
+    }
+    .replyDetail, .progressStatus{
+        width: calc(100% - 4rem);
+        margin-left: 5rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        padding-right: .6rem;
+    }
+    .replyDetail img, .progressStatus img{
+        max-width: 100%;
+    }
+    @media (max-device-height:667px) and (-webkit-min-device-pixel-ratio:2) {  /* 兼容iphone4/4s */
+        .divReply, .divProgress{
+            padding: .6rem;
+        }
+        .replyPic, .progressPic {
+            width: 3.6rem;
+            height: 3.6rem;
+        }
+        .replyUser, .progressUser{
+            margin-left: 4.2rem;
+        }
+        .replyTime, .progressTime{
+            margin-left: 4.2rem;
+        }
+        .replyDetail, .progressStatus {
+            margin-left: 4.2rem;
+        }
+    }
+    #wkEdit {
+        width: 100%;
+        text-align: center;
+        padding: 0.6rem;
+        position: relative;
+        bottom: 0;
+        height: 4rem;
+    }
+    #btnWkComplete {
+        background-color: #38C663;
+        border-color: #86CA6F;
+        margin-right: 1.5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    #btnWkTransmit {
+        margin-left: 1.5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    .divWkMem {
+        width: 29%;
+        height: 7rem;
+        display: inline-block;
+        position: relative;
+        margin: 2%;
+    }
+    .imgWkMem{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .imgWkMem img {
+        width: 100%;
+        height: 100%;
+    }
+    .nameWkMem {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 0;
+        z-index: 2;
+        background: rgba(153,154,153,0.7);
+        color: white;
+    }
+    .checkWkMem {
+        visibility: hidden;
+        z-index: 1;
+        position: relative;
+        text-align: right;
+        right: 0.4rem;
+        color: darkorange;
+    }
+    .divWkMem.selected .checkWkMem {
+        visibility: visible;
+    }
+    #wkUserDialog {
+        position: absolute;
+        height: 100%;
+    }
+    #wkUserDialog .modal-backdrop {
+        position: absolute;
+        height: 100%;
+    }
+    #wkUserDialog .modal-dialog {
+        height: calc(100% - 20px);
+    }
+    #wkUserDialog .modal-content{
+        height: 100%;
+    }
+    #divWkUserDialog {
+        height: calc(100% - 121px);
+        overflow: auto;
+    }
+    #spanUserSel {
+        display: none;
+    }
+    #spanUserSel.tipShow{
+        display: inline-block;
+        float: left;
+        line-height: 34px;
+        background-color: #ccc;
+        padding: 0 1rem;
+        border-radius: 0.5rem;
+    }
+    #divInsertComment {
+        padding: 1rem;
+        position: relative;
+        border-bottom: 1px solid #ccc;
+    }
+    #btnCommentSure {
+        position: absolute;
+        right: 1rem;
+        top: 0.3rem;
+        padding: 0.2rem;
+    }
+</style>
+<div id="divContent">
+    <div id="wkBase" class="wkPart">
+        <div id="wkId"><span class="partTitle" i18n="appDashboard.workflow.WORKFLOW_NUM">Workflow Num</span>:<span class="partContent"></span></div>
+        <div id="wkEmergency"></div>
+        <div id="wkCreateDate"><span class="partTitle" i18n="appDashboard.workflow.CREATE_BY">Create By</span>:<span class="partContent"></span></div>
+        <div id="wkExecutor"><span class="partTitle" i18n="appDashboard.workflow.EXECUTOR">Executor</span>:<span class="partContent"></span></div>
+    </div>
+    <div id="wkDetail" class="wkPart">
+        <div class="partTitle" i18n="appDashboard.workflow.WORKFLOW_CONTENT">Workflow Context</div>
+        <div id="detailTitle"></div>
+        <div id="detailContent"></div>
+    </div>
+    <div id="wkDeadline" class="wkPart">
+        <span class="partTitle" i18n="appDashboard.workflow.DEADLINE">Deadline</span>:
+        <span class="partContent"></span>
+    </div>
+    <div id="wkAddition" class="wkPart">
+        <div id="additionSel">
+            <span id="btnComment zepto-ev" class="partTitle" i18n="appDashboard.workflow.REMARKS">Remarks</span>
+            <span id="btnProgress zepto-ev" class="partTitle" i18n="appDashboard.workflow.WORKFLOW_PROGRESS">Workflow Progress</span>
+        </div>
+        <div id="wkComment" class="divAddition">
+            <div id="divInsertComment" class="form-group">
+                <label for="inputInsertComment" i18n="appDashboard.workflow.DETAIL">Detail</label>
+                <textarea class="form-control" id="inputInsertComment" placeholder=""></textarea>
+                <button type="button" id="btnCommentSure" class="btn btn-primary" i18n="appDashboard.workflow.MAKE_REMARKS">Make Remarks</button>
+            </div>
+            <div id="divWkComment"></div>
+        </div>
+        <div id="wkProgress" class="divAddition">
+
+        </div>
+    </div>
+</div>
+<div id="wkEdit">
+    <div id="btnWkComplete" class="btn btn-primary zepto-ev" i18n="appDashboard.workflow.FINISH">Finish</div>
+    <div id="btnWkTransmit" class="btn btn-primary zepto-ev" i18n="appDashboard.workflow.FORWARD">Forward</div>
+</div>
+<!--<div class="modal fade" id="wkUserDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" i18n="appDashboard.workflow.PLZ_CHOICE_PEOPLE">Please Choose People</h4>
+            </div>
+            <div class="modal-body" id="divWkUserDialog">
+            </div>
+            <div class="modal-footer">
+                <span id="spanUserSel">
+                    <span id="userSel"></span>
+                    <span id="tipRemove" class="glyphicon glyphicon-remove"></span>
+                </span>
+                <button type="button" id="btnWkTransmitSure" class="btn btn-primary" i18n="appDashboard.workflow.SURE">Sure</button>
+            </div>
+        </div>
+    </div>
+</div>-->

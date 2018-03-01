@@ -1,0 +1,330 @@
+{
+  "title": "数据机房",
+  "description": "展讯大楼11楼03室",
+  "width": 6000,
+  "height": 6000,
+  "units": [
+    {
+      "name": "machine #1",
+      "type": "threeData.unitType.Machine",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "points": [
+        {
+          "name": "数据点#1_1",
+          "key": "key_point1",
+          "value": 200.0,
+          "position": {
+            "x": 0,
+            "y": 50,
+            "z": -50
+          }
+        },
+        {
+          "name": "数据点#1_2",
+          "key": "key_point2",
+          "value": 1,
+          "position": {
+            "x": 0,
+            "y": 50,
+            "z": -30
+          }
+        },
+        {
+          "name": "数据点#1_3",
+          "key": "key_point3",
+          "value": 2,
+          "position": {
+            "x": 30,
+            "y": 10,
+            "z": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "machine#2",
+      "type": "threeData.unitType.Machine",
+      "position": {
+        "x": 0,
+        "y": -750,
+        "z": 0
+      },
+      "points": [
+        {
+          "name": "数据点1",
+          "key": "key_point1",
+          "value": 200.0,
+          "position": {
+            "x": 20,
+            "y": 10,
+            "z": -40
+          }
+        }
+      ]
+    },
+    {
+      "name": "machine#3",
+      "type": "threeData.unitType.Machine",
+      "position": {
+        "x": 0,
+        "y": 250,
+        "z": 0
+      },
+      "points": [
+        {
+          "name": "数据点1",
+          "key": "key_point1",
+          "value": 200.0,
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": -100
+          }
+        }
+      ]
+    },
+    {
+      "name": "machine#4",
+      "type": "threeData.unitType.Machine",
+      "position": {
+        "x": 0,
+        "y": -250,
+        "z": 0
+      },
+      "points": [
+        {
+          "name": "数据点1",
+          "key": "key_point1",
+          "value": 200.0,
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 100
+          }
+        }
+      ]
+    },
+    {
+      "name": "machine#5",
+      "type": "threeData.unitType.Machine",
+      "position": {
+        "x": 0,
+        "y": -500,
+        "z": 0
+      },
+      "points": [
+        {
+          "name": "数据点1",
+          "key": "key_point1",
+          "value": 200.0,
+          "position": {
+            "x": 20,
+            "y": 30,
+            "z": 100
+          }
+        }
+      ]
+    },
+    {
+      "name": "machine #1_1",
+      "type": "threeData.unitType.Machine",
+      "position": {
+        "x": -1000,
+        "y": 0,
+        "z": 0
+      },
+      "points": [
+        {
+          "name": "数据点#1_1",
+          "key": "key_point1",
+          "value": 200.0,
+          "position": {
+            "x": 10,
+            "y": 10,
+            "z": -100
+          }
+        },
+        {
+          "name": "数据点#1_2",
+          "key": "key_point2",
+          "value": 1,
+          "position": {
+            "x": 40,
+            "y": 40,
+            "z": 10
+          }
+        },
+        {
+          "name": "数据点#1_3",
+          "key": "key_point3",
+          "value": 2,
+          "position": {
+            "x": 60,
+            "y": 10,
+            "z": 80
+          }
+        }
+      ]
+    },
+    {
+      "name": "machine#1_3",
+      "type": "threeData.unitType.Machine",
+      "position": {
+        "x": -1000,
+        "y": 250,
+        "z": 0
+      },
+      "points": [
+        {
+          "name": "数据点1",
+          "key": "key_point1",
+          "value": 200.0,
+          "position": {
+            "x": 70,
+            "y": 70,
+            "z": -30
+          }
+        }
+      ]
+    },
+    {
+      "name": "machine #1_4",
+      "type": "threeData.unitType.Machine",
+      "position": {
+        "x": -1000,
+        "y": -500,
+        "z": 0
+      },
+      "points": [
+        {
+          "name": "数据点#1_1",
+          "key": "key_point1",
+          "value": 200.0,
+          "position": {
+            "x": 20,
+            "y": 20,
+            "z": 20
+          }
+        },
+        {
+          "name": "数据点#1_2",
+          "key": "key_point2",
+          "value": 1,
+          "position": {
+            "x": 70,
+            "y": 2,
+            "z": 3
+          }
+        },
+        {
+          "name": "数据点#1_3",
+          "key": "key_point3",
+          "value": 2,
+          "position": {
+            "x": 66,
+            "y": 22,
+            "z": 11
+          }
+        }
+      ]
+    },
+    {
+      "name": "machine#1_5",
+      "type": "threeData.unitType.Machine",
+      "position": {
+        "x": -1000,
+        "y": -750,
+        "z": 0
+      },
+      "points": [
+        {
+          "name": "数据点1",
+          "key": "key_point1",
+          "value": 200.0,
+          "position": {
+            "x": 41,
+            "y": 12,
+            "z": 33
+          }
+        }
+      ]
+    },
+    {
+      "name": "machine#3_1",
+      "type": "threeData.unitType.Machine",
+      "position": {
+        "x": -1000,
+        "y": -250,
+        "z": 0
+      },
+      "points": [
+        {
+          "name": "数据点1",
+          "key": "key_point1",
+          "value": 200.0,
+          "position": {
+            "x": 22,
+            "y": 33,
+            "z": -11
+          }
+        }
+      ]
+    },
+    {
+      "name": "machine#3_2",
+      "type": "threeData.unitType.Machine",
+      "position": {
+        "x": 1000,
+        "y": -2500,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0.5
+      },
+      "points": [
+        {
+          "name": "数据点1",
+          "key": "key_point1",
+          "value": 200.0,
+          "position": {
+            "x": 11,
+            "y": 1,
+            "z": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "machine#1_6",
+      "type": "threeData.unitType.Machine",
+      "position": {
+        "x": 750,
+        "y": -2500,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0.5
+      },
+      "points": [
+        {
+          "name": "数据点1",
+          "key": "key_point1",
+          "value": 200.0,
+          "position": {
+            "x": 11,
+            "y": 11,
+            "z": 66
+          }
+        }
+      ]
+    }
+  ]
+}

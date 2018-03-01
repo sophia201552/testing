@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Data management</title>
+    {% assets "css_index" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+    <link rel="stylesheet" type="text/css" href="/static/content/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/content/index-black.css">
+</head>
+<body>
+<style>
+body{
+    margin: 0;
+    padding:0;
+    overflow: hidden;
+}
+#indexMain {
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+</style>
+<div id="indexMain">
+</div>
+<script type="text/javascript">
+    void (function (login_result, window) {
+        if(!(login_result && Object.keys(login_result).length > 0)){
+            var AppConfig = window.parent.AppConfig;
+            window.AppConfig = AppConfig;
+            return;
+        }
+        var AppConfig = {};
+        login_result.config = login_result.config || {};
+        var systemSkin = login_result.config.skin;
+        if(!systemSkin){//兼容
+            systemSkin = window.localStorage.getItem('systemSkin_' + login_result.id)||'dark';
+            login_result.config.skin = systemSkin;
+        }
+
+        AppConfig.userProfile = {};
+        AppConfig.userId = +login_result.id;
+        AppConfig.userProfile.userfullname = login_result.userinfo.fullname;
+        AppConfig.account = login_result.userinfo.fullname;
+        AppConfig.projectList = login_result.projects;
+        AppConfig.userProfile = login_result.userProfile;
+        AppConfig.userOfRole = login_result.userProfile.userOfRole;
+        AppConfig.debugTool = login_result.debugTool;
+        AppConfig.afterLogin = true;
+        AppConfig.isFactory = 0;
+        AppConfig.permission = login_result.permission;
+        AppConfig.userConfig = login_result.config;
+        AppConfig.projectId = parseInt(location.href.split('projectId=')[1].split('&')[0]);
+        window.AppConfig = AppConfig;
+    })({{ AppConfig | safe }}, window);
+    if (typeof AppConfig == 'undefined'){
+    var AppConfig = {};
+}
+
+</script>
+{% assets "lib_js_bundle" %}
+<script type="text/javascript" src="{{ ASSET_URL }}"></script> 
+{% endassets %}
+{% assets "common_js_bundle" %}
+<script type="text/javascript" src="{{ ASSET_URL }}"></script> 
+{% endassets %}
+{% assets "data_manage_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+
+<script>
+var I18n = I18n || undefined;
+var I18N_PATH = '/static/views/js/i18n/';
+$(document).ready(function(){
+    ElScreenContainer = document.getElementById('indexMain')
+    var language = navigator.language.split('-')[0];
+    if (localStorage.language)language = localStorage.language
+    if (!language )language = 'en';
+    InitI18nResource(language, true, I18N_PATH).always(function (rs) {
+        I18n = new Internationalization(null, rs);
+        new IndexScreen();
+    });
+}) 
+var Spinner = new LoadingSpinner({color: '#00FFFF'});
+var IndexScreen = (function(){
+    function IndexScreen(){
+        this.init();
+    }
+    IndexScreen.prototype = {
+        init:function(){
+            window.AppDriver = new PointManagerRealTimeData(AppConfig.projectId)
+            AppDriver.show();
+        },
+    }
+    return IndexScreen
+})()
+</script>
+</body>
+</html>

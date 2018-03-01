@@ -1,0 +1,44 @@
+﻿<style>
+    #paneIotData span {
+        cursor: pointer;
+    }
+
+    .paneIot {
+        padding: 10px;
+    }
+    #filterWrapper .form-control{
+        width: auto;
+        display: inline-block;
+    }
+</style>
+
+<div style="width: 100%; height: 100%;" id="filterWrapper">
+    <div class="col-xs-12 paneIot" id="paneIotSearch">
+        <input placeholder="请输入关键字进行搜索..." style="float: right;width: 60%;" class="form-control"/>
+    </div>
+
+    <div class="col-xs-12 paneIot" id="paneIot-projects">
+    </div>
+
+    <div class="col-xs-12 paneIot" id="paneIotType">
+        <ul class="list-inline">
+            <li id="projectsSel"></li>
+            <li id="groupsSel"></li>
+            <li id="thingsSel"></li>
+        </ul>
+    </div>
+
+
+    <div class="col-xs-12 paneIot" id="paneIot-groups">
+    </div>
+
+    <div class="col-xs-12 paneIot" id="paneIot-things"></div>
+
+    <div class="col-xs-12 paneIot" id="paneIotButton">
+        <button>检索</button>
+    </div>
+
+    <div class="col-xs-12 paneIot" id="paneIotData">
+
+    </div>
+</div>

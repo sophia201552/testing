@@ -1,0 +1,618 @@
+<style>
+    #energyOverview {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
+
+    #energyOverview .energyOverviewH {
+        width: 100%;
+        height: 50%;
+        margin-bottom: 10px;
+    }
+
+    #energyOverview .energyOverviewReal {
+        width: 100%;
+        height: calc(50% - 10px);
+    }
+
+    #energyOverview .energyList {
+        width: calc(33.33% - 5px);
+        height: 100%;
+        margin-right: 10px;
+        float: left;
+    }
+
+    #energyOverview .energyStatistic {
+        width: calc(66.66% - 5px);
+        height: 100%;
+        float: left;
+        background: #fff;
+        padding: 0 10px;
+        box-shadow: 0 4px 6px 0 rgba(191, 193, 201, 0.50);
+        position: relative;
+    }
+
+    #energyOverview .fixedEnergy {
+        width: 100%;
+        padding: 10px;
+        height: calc(33.33% - 6.667px);
+        background: #fff;
+        margin-bottom: 10px;
+        box-shadow: 0 4px 6px 0 rgba(191, 193, 201, 0.50);
+    }
+
+    #energyOverview .fixedEnergy.fixedEnergy .energyText {
+        color: #808fa3;
+        font-size: 12px;
+        /*padding-left:5px;*/
+    }
+
+    #energyOverview .lastFixedEnergy {
+        margin-bottom: 0;
+    }
+
+    #energyOverview .fixedTitle {
+        height: 16px;
+        line-height: 16px;
+        padding: 0 5px;
+        color: #354052;
+    }
+
+    #energyOverview .fixedContent {
+        width: 100%;
+        padding: 15px;
+        height: calc(100% - 16px);
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    #energyOverview .todayEnergy {
+        border-left: 3px solid #11a4ab;
+    }
+
+    #energyOverview .monthEnergy {
+        border-left: 3px solid #1fb345;
+    }
+
+    #energyOverview .yearEnergy {
+        border-left: 3px solid #0078dc;
+    }
+
+    #energyOverview .todayEnerStyle {
+        font-size: 26px;
+        color: #11a4ab;
+        /*text-shadow:2px 3px 10px #BEE0EB*/
+    }
+
+    #energyOverview .monthEnerStyle {
+        font-size: 26px;
+        color: #1fb345;
+        /*text-shadow:2px 3px 10px #BEEFB6*/
+    }
+
+    #energyOverview .yearEnerStyle {
+        font-size: 26px;
+        color: #0078dc;
+        /* text-shadow:2px 3px 10px #C1D9EF*/
+    }
+
+    #energyOverview .arrorDisplyTody {
+        color: #00bbc3;
+        font-size: 12px;
+        transform: scale(0.7, 0.8);
+    }
+
+    #energyOverview .arrorDisplyMonth,
+    .arrorOnDisplyMonth {
+        color: #29bb4f;
+        font-size: 12px;
+        transform: scale(0.7, 0.8);
+    }
+
+    #energyOverview .arrorDisplyYear {
+        color: #0078dc;
+        font-size: 12px;
+        transform: scale(0.7, 0.8);
+    }
+    /*.energyTimeBox{
+        float:right;
+    }*/
+
+    .energyStatisTitle {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #e0e3e6;
+    }
+
+    .energyStatisTitle .titleText {
+        white-space: nowrap;
+    }
+
+    .statisTime>input {
+        font-size: 12px;
+        color: #5C6777
+    }
+
+    .statisTime .btnQuery {
+        outline: none;
+        box-shadow: none;
+        border: none;
+        padding: 3px;
+        font-size: 12px;
+        color: #5C6777;
+        padding: 2px 10px;
+        border: 1px solid rgba(0, 0, 0, 0.13);
+    }
+
+    .statisTime {
+        /* margin-left:calc(100% - 240px); */
+        /*position: absolute;
+        right:0px*/
+    }
+
+    .energyLine {
+        width: calc(33.33% - 6.667px);
+        margin-right: 10px;
+        float: left;
+        padding: 0 10px;
+        height: 100%;
+        box-shadow: 0 4px 6px 0 rgba(191, 193, 201, 0.50);
+        background: white;
+        position: relative;
+    }
+
+    .energyLine .titleText {
+        color: #354052;
+    }
+
+    .energyLineLast {
+        margin-right: 0;
+    }
+
+    #queryTimIpt,
+    #hourlyTimIpt,
+    #dailyTimIpt,
+    #monthlyTimIpt {
+        display: inline-block;
+        border: none;
+        padding: 3px;
+        border: none;
+        box-shadow: none;
+        position: relative;
+        top: 1px;
+        width: 120px;
+        text-align: right;
+    }
+    /*#queryTimIpt,#monthlyTimIpt{
+        width: 40px;
+    }
+    #hourlyTimIpt{
+        width: 80px;
+    }
+    #dailyTimIpt{
+        width: 60px;
+    }*/
+
+    .hourlyEnergy .statisTime {
+        /* margin-left:calc(100% - 180px); */
+    }
+
+    .dailyEnergy .statisTime {
+        /* margin-left: calc(100% - 158px); */
+    }
+
+    .energyLineLast .statisTime {
+        /* margin-left: calc(100% - 158px); */
+    }
+
+    .energyStatisContent {
+        height: calc(100% - 61px);
+        position: relative;
+    }
+
+    .energyStatisContent .wrapEnergyChart {
+        height: 100%;
+        position: relative;
+    }
+
+    .energyStatisContent .textTitle {
+        position: absolute;
+        color: #5c6777;
+        left: 31px;
+        top: 21px;
+    }
+
+    .energyItemize,
+    .energyContrast {
+        height: 100%;
+    }
+
+    #hourlyPower,
+    #dailyPower,
+    #monthlyPower {
+        height: calc(100% - 61px);
+        position: relative;
+    }
+
+    .energyStatistic .statisTime {
+        margin-left: calc(100% - 320px);
+        /*display: none;*/
+    }
+
+    .fixedContent .col-xs-4 {
+        padding: 0
+    }
+    /*.arrorDisplyMonthOn{
+        margin-left:7px;
+    }*/
+
+    .fixedEnergy .tooltipContent {
+        border-top-width: 1px;
+        border-radius: 3px;
+        background: rgba(245, 245, 246, 0.9);
+        border: 1px solid #DFE2E5;
+        width: 180px;
+    }
+
+    .fixedEnergy .tooltip-inner {
+        background: rgba(245, 245, 246, 0.9);
+        border: 1px solid #DFE2E5;
+        color: #808fa3;
+        white-space: nowrap;
+    }
+
+    .fixedEnergy .tooltipModal {
+        display: flex;
+        height: 26px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .fixedEnergy .tooltipModals {
+        width: 108px;
+        height: 26px;
+        margin: 0 auto;
+        line-height: 26px;
+    }
+
+    .compareAllStyleMoM,
+    .compareAllStyleYoY {
+        display: inline-block;
+        width: 27px;
+        text-align: right
+    }
+
+    .fixedEnergy .tooltip.top .tooltip-arrow {
+        border-top-color: #DFE2E5;
+    }
+
+    .fixedEnergy .tooltip.bottom .tooltip-arrow {
+        border-bottom-color: #DFE2E5;
+    }
+
+    .fixedEnergy .tooltip.left .tooltip-arrow {
+        border-left-color: #DFE2E5;
+    }
+
+    .fixedEnergy .tooltip.right .tooltip-arrow {
+        border-right-color: #DFE2E5;
+    }
+
+    .fixedContent .col-xs-5,
+    .fixedContent .col-xs-2 {
+        padding: 0
+    }
+
+    .compareBox {
+        position: relative;
+        display: inline-block;
+        float: right;
+        /*width: 65px;*/
+        text-align: right;
+    }
+    /*.compareBox .glyphicon{
+        position:absolute;
+        top: 2.2px;
+        left: -12px;
+    }*/
+
+    @media screen and (max-width:1650px) {
+        #energyOverview .energyCostStyle {
+            font-size: 18px;
+        }
+        #energyOverview .compareAllStyle {
+            font-size: 12px;
+        }
+        .energyLineLast .statisTime {
+            /* margin-left: calc(80% - 90px); */
+        }
+        .hourlyEnergy .statisTime {
+            /* margin-left: calc(80% - 115px); */
+        }
+        .dailyEnergy .statisTime {
+            /* margin-left: calc(80% - 90px); */
+        }
+        /*.arrorDisplyMonthOn{
+            margin-left:5px;
+        }*/
+    }
+
+    #energyOverview .statisticBtnActive {
+        color: #45abff
+    }
+
+    .statisTime input {
+        opacity: 0 !important;
+        width: 0!important;
+        height: 0!important;
+        padding: 0!important;
+    }
+  
+</style>
+<div id="energyOverview">
+    <div class="energyOverviewH clearfix">
+        <div class="energyList">
+            <!--<div class="energyTimeSel clearfix">
+                <div class="energyTimeBox">
+                    <input>
+                </div>
+            </div>-->
+            <div class="fixedEnergy">
+                <div class="fixedTitle todayEnergy clearfix"><span class="todayType">今日能耗</span> <!-- i18n="energyManagement.overview.TODAY_ENERGY_NEW" -->
+                    <div class="compareBox"> <span class="arrorDisplyTody glyphicon glyphicon-arrow-down"></span><span id="compareToYest" data-toggle="tooltip"
+                            data-placement="auto" i18n="title=energyManagement.overview.COMPARISON_YESTERDAY"></span></div>
+                    
+                </div>
+                <div class="fixedContent clearfix todayEnergyTool">
+                    <div class="col-xs-6">
+                        <div id="todayEnergyChat" class="todayEnerStyle energyCostStyle">--</div>
+                        <!--<div class="energyText" i18n="energyManagement.overview.ACCUMULATIVE_ENERGY">累计能耗量</div>-->
+                    </div>
+                    <div class="col-xs-6">
+                        <div id="todayEnergyCost" class="todayEnerStyle energyCostStyle">--</div>
+                        <!--<div class="energyText" i18n="energyManagement.overview.ACCUMULATIVE_COST">累计电价</div>-->
+                    </div>
+                    <!--<span i18n="energyManagement.overview.COMPARISON_YESTERDAY" class="compareAllStyle">相比昨日</span> -->
+                    <!--<div class="col-xs-2">
+                        <div class="compareBox"> <span class="arrorDisplyTody glyphicon glyphicon-arrow-down"></span><span id="compareToYest" data-toggle="tooltip" data-placement="auto" i18n="title=energyManagement.overview.COMPARISON_YESTERDAY"></span></div>
+                    </div>-->
+                </div>
+            </div>
+            <div class="fixedEnergy">
+                <div class="fixedTitle monthEnergy">
+                    <span class="monthType">本月能耗</span><!-- i18n="energyManagement.overview.MONTH_ENERGY_NEW"-->
+                    <div class="compareBox">
+                        <span class="arrorDisplyMonth glyphicon glyphicon-arrow-up"></span><span id="compareMom" data-toggle="tooltip"
+                            data-placement="auto" i18n="title=energyManagement.overview.COMPARISON_LAST_MONTH"></span>
+                    </div>
+                </div>
+                <div class="fixedContent clearfix monthEnergyTool">
+                    <div class="col-xs-6">
+                        <div id="MonthEnergyChat" class="monthEnerStyle energyCostStyle">--</div>
+                        <!--<div class="energyText" i18n="energyManagement.overview.ACCUMULATIVE_ENERGY">累计能耗量</div>-->
+                    </div>
+                    <div class="col-xs-6">
+                        <div id="MonthEnergyCost" class="monthEnerStyle energyCostStyle">--</div>
+                        <!--<div class="energyText" i18n="energyManagement.overview.ACCUMULATIVE_COST">累计电价</div>-->
+                    </div>
+                    <!--<span i18n="energyManagement.overview.MOM" class="compareAllStyle">环比</span>  -->
+                    <!--<span i18n="energyManagement.overview.YOY" class="compareAllStyle">同比</span>  -->
+                    <!--<div class="col-xs-2">
+                        <div class="compareBox">
+                            <span class="arrorDisplyMonth glyphicon glyphicon-arrow-up"></span><span id="compareMom"  data-toggle="tooltip" data-placement="auto" i18n="title=energyManagement.overview.MOM"></span>
+                        </div>
+                        <div class="compareBox">
+                            <span class="arrorOnDisplyMonth arrorDisplyMonthOn glyphicon glyphicon-arrow-up"></span><span id="compareAn"  data-toggle="tooltip" data-placement="auto" i18n="title=energyManagement.overview.YOY"></span>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+            <div class="fixedEnergy lastFixedEnergy">
+                <div class="fixedTitle yearEnergy">
+                    <span class="yearType">今年能耗</span><!-- i18n="energyManagement.overview.YEAR_ENERGY_NEW"-->
+                    <div class="compareBox"><span class="arrorDisplyYear glyphicon glyphicon-arrow-down"></span><span id="compareAnYear" data-toggle="tooltip"
+                            data-placement="auto" i18n="title=energyManagement.overview.COMPARISON_LAST_YEAR"></span></div>
+                </div>
+                <div class="fixedContent clearfix yearEnergyTool">
+                    <div class="col-xs-6">
+                        <div id="yearEnergyChat" class="yearEnerStyle energyCostStyle">--</div>
+                        <!--<div class="energyText" i18n="energyManagement.overview.ACCUMULATIVE_ENERGY">累计能耗量</div>-->
+                    </div>
+                    <div class="col-xs-6">
+                        <div id="yearEnergyCost" class="yearEnerStyle energyCostStyle">--</div>
+                        <!--<div class="energyText" i18n="energyManagement.overview.ACCUMULATIVE_COST">累计电价</div>-->
+                    </div>
+                    <!--<span i18n="energyManagement.overview.COMPARISON_LAST_YEAR" class="compareAllStyle">相比去年</span>  -->
+                    <!--<div class="col-xs-2">
+                        <div class="compareBox"><span class="arrorDisplyYear glyphicon glyphicon-arrow-down"></span><span id="compareAnYear"  data-toggle="tooltip" data-placement="auto" i18n="title=energyManagement.overview.COMPARISON_LAST_YEAR"></span></div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div class="energyStatistic">
+            <div class="energyStatisTitle">
+                <div class="titleText" i18n="energyManagement.overview.TOTAL_STATISTICS">能耗统计</div>
+                <div class="statisTime" style="display:flex">
+                    <div class="btn" data-time="month" i18n="energyManagement.overview.MONTH"> 月</div>
+                    <div class="btn" data-time="week" i18n="energyManagement.overview.WEEK"> 周</div>
+                    <div class="btn statisticBtnActive" data-time="day" i18n="energyManagement.overview.DAY"> 日</div>
+                    <!--<input type="text" id="queryTimIpt" class="form-control"/>
+                    <div class="btn btnQuery"  i18n="energyManagement.overview.QUERY">查询</div>-->
+                </div>
+            </div>
+            <div class="energyStatisContent clearfix">
+                <div class="wrapEnergyChart col-xs-5 ">
+                    <div class='textTitle' i18n="energyManagement.overview.SUB_ENERGY" style="display: none">能耗分项</div>
+                    <div class="energyItemize"></div>
+                </div>
+                <div class="wrapEnergyChart col-xs-7">
+                    <div class='textTitle' i18n="energyManagement.overview.SUB_ITEM_CONPARSION" style="display: none">分项对比</div>
+                    <div class="energyContrast"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="energyOverviewReal clearfix">
+        <div class="energyLine hourlyEnergy">
+            <div class="energyStatisTitle">
+                <div class="titleText hourlyType">逐时用电</div><!-- i18n="energyManagement.overview.HOURLY_ENERGY"-->
+                <div class="statisTime">
+                    <input type="text" id="hourlyTimIpt" class="form-control" />
+                    <div class="btn btnQuery" data-target="hourly" i18n="energyManagement.overview.MORE">More</div>
+                </div>
+            </div>
+            <div id="hourlyPower"></div>
+        </div>
+        <div class="energyLine dailyEnergy">
+            <div class="energyStatisTitle">
+                <div class="titleText dailyType">逐日用电</div><!-- i18n="energyManagement.overview.DAILY_ENERGY"-->
+                <div class="statisTime">
+                    <input type="text" id="dailyTimIpt" class="form-control" />
+                    <div class="btn btnQuery" data-target="daily" i18n="energyManagement.overview.MORE">More</div>
+                </div>
+            </div>
+            <div id="dailyPower"></div>
+        </div>
+        <div class="energyLine energyLineLast">
+            <div class="energyStatisTitle">
+                <div class="titleText monthlyType">逐月用电</div><!-- i18n="energyManagement.overview.MONTH_ENERGY"-->
+                <div class="statisTime">
+                    <input type="text" id="monthlyTimIpt" class="form-control" /></span>
+                    <div class="btn btnQuery" data-target="monthly" i18n="energyManagement.overview.MORE">More</div>
+                </div>
+            </div>
+            <div id="monthlyPower"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .historyChartBigModel {
+        width: 75%;
+        background: #fff;
+    }
+
+    .modal-content .btn-default,
+    .modal-content .form-control {
+        background: #fafafa;
+        color: #999;
+    }
+
+    .modal-content .form-control {
+        width: 148px;
+        background: none;
+        box-shadow: none;
+    }
+    #loginUserName.form-control{
+        width: 100%;
+    }
+    #loginUserPass.form-control{
+        width: 100%;
+    }
+    #loginContent .textBefore{
+        padding: 6px 12px !important;
+    }
+    .modal-content .time {
+        border: none;
+    }
+
+    .dib {
+        display: inline-block;
+    }
+
+    .modal-content .time-box {
+        padding: 0 10px;
+        border: 1px solid #ebebeb;
+        border-radius: 2px;
+        background: #fafafa;
+    }
+
+    .modal-content .to {
+        padding: 0 15px;
+        margin: 0 20px;
+        border-left: 1px solid #ebebeb;
+        border-right: 1px solid #ebebeb;
+        position: relative;
+        top: 2px;
+    }
+    #dialogModal{
+        z-index: 11111111;
+    }
+    #curveSelectBox {
+        line-height: 30px;
+    }
+    #dialogModal input{
+        cursor: pointer;
+    }
+    #infoBoxModal{
+        z-index: 99111111;
+    }
+    .infoBox{
+        z-index: 99222111;
+    }
+</style>
+<div class="modal fade gray-scrollbar" id="dialogModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-lg historyChartBigModel" id="dialogContent" style="height: calc(100vh - 60px);">
+
+        <div class="modal-content" style="height: 100%;" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" style="opacity: 0.3;">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+                <h4 class="modal-title" id="myModalLabel" ></h4>
+            </div>
+            <div class="modal-body" style="    height: calc(100% - 56px);">
+                <div id="curveSelectBox" class="mb20 clearfix" >
+                    <div class="clearfix min-screen fl" style="margin-right: 20px;">
+                        <span class="mr10 fl" i18n="energyManagement.overview.TIME_RANGE"></span>
+                        <div class="fl time-box">
+                            <div class="fl cp time-group">
+                                <span class="glyphicon glyphicon-time"></span>
+                                <input class="form-control dib time" size="16" type="text" value="" id="curveDateStart" i18n="placeholder=energyManagement.overview.SELECT_START_TIME">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </div>
+                            <span class="fl to" i18n="energyManagement.overview.TO"></span>
+
+                            <div class="fl cp time-group">
+                                <span class="glyphicon glyphicon-time"></span>
+                                <input class="form-control dib time" size="16" type="text" value="" id="curveDateEnd" i18n="placeholder=energyManagement.overview.SELECT_CLOSING_TIME">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="min-screen fl">
+                        <!-- <span class="mr10" i18n="energyManagement.overview.TIME_INTERVAL"></span>
+                        <select id="intervalType" class="mr10 form-control w150" style="display: inline-block">
+                        <option value="m1">1min</option>
+                        <option value="m5">5min</option>
+                        <option value="h1">1h</option>
+                        <option value="d1">1d</option>
+                    </select> -->
+
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default searchCurveOfTime" dateType="hour" i18n="energyManagement.overview.HOUR"></button>
+                            <button type="button" class="btn btn-default searchCurveOfTime" dateType="today" i18n="energyManagement.overview.TODAY"></button>
+                            <button type="button" class="btn btn-default searchCurveOfTime" dateType="week" i18n="energyManagement.overview.THIS_WEEK"></button>
+                            <button type="button" class="btn btn-default searchCurveOfTime" dateType="month" i18n="energyManagement.overview.THIS_MONTH"></button>
+                        </div>
+                        <button type="button" class="btn btn-primary mr10" id="filterCurveConfirm" i18n="energyManagement.overview.CONFIRM"></button>
+                    </div>
+                </div>
+                <div id="hcPointTreeWrapper" class="oh" style="   height: calc(100% - 70px);">
+
+                    <div id="tableOperatingRecord" class="tableOperatingRecord fr" style="height:100%; width:100%;"></div>
+                </div>
+            </div>
+            <div class="modal-bottom-content"></div>
+        </div>
+
+
+    </div>
+</div>

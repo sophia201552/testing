@@ -1,0 +1,319 @@
+{
+  "id": 0,
+  "type": "Equipment",
+  "attrInputs": [
+    {
+      "unit": "",
+      "name": {
+        "zh": "设备编号",
+        "en": "Equipment Number"
+      },
+      "tag": {
+        "zh": "设备,编号",
+        "en": "Equipment,Number"
+      },
+      "description": {
+        "zh": "设备编号",
+        "en": "Equipment Number"
+      }
+    },
+    {
+      "unit": [
+        "W",
+        "kW"
+      ],
+      "name": {
+        "zh": "额定功率",
+        "en": "Rated Power"
+      },
+      "tag": {
+        "zh": "额定,功率",
+        "en": "Rated,Power"
+      },
+      "description": {
+        "zh": "额定功率",
+        "en": "Rated Power"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "额定出口水温",
+        "en": "Rated Outlet Water Temperature"
+      },
+      "tag": {
+        "zh": "额定,出口,水,温度",
+        "en": "Rated,Outlet,Water,Temperature"
+      },
+      "description": {
+        "zh": "额定出口水温",
+        "en": "Rated Outlet Water Temperature"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "额定进口水温",
+        "en": "Rated Inlet Water Temperature"
+      },
+      "tag": {
+        "zh": "额定,进口,水,温度",
+        "en": "Rated,Inlet,Water,Temperature"
+      },
+      "description": {
+        "zh": "额定进口水温",
+        "en": "Rated Inlet Water Temperature"
+      }
+    }
+  ],
+  "name": {
+    "zh": "锅炉",
+    "en": "Boiler"
+  },
+  "tag": {
+    "zh": "锅炉",
+    "en": "Boiler"
+  },
+  "attrPoints": [
+    {
+      "unit": "",
+      "name": {
+        "zh": "炉水温度高报警",
+        "en": "Boiler High Water Temperature Error"
+      },
+      "tag": {
+        "zh": "锅炉,高值,水,温度,报警",
+        "en": "Boiler,High,Water,Temperature, Error"
+      },
+      "description": {
+        "zh": "炉水温度高报警",
+        "en": "Boiler High Water Temperature Error"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "极限低水位报警",
+        "en": "Boiler Low Level Error"
+      },
+      "tag": {
+        "zh": "锅炉,低值,位置,报警",
+        "en": "Boiler,Low,Level,Error"
+      },
+      "description": {
+        "zh": "极限低水位报警",
+        "en": "Boiler Low Level Error"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "炉水温度传感器短路",
+        "en": "Boiler Water Temperature Short Circuit Error"
+      },
+      "tag": {
+        "zh": "锅炉,水,温度,短路,报警",
+        "en": "Boiler，Water,Temperature,Short,Circuit,Error"
+      },
+      "description": {
+        "zh": "炉水温度传感器短路",
+        "en": "Boiler Water Temperature Short Circuit Error"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "炉水温度传感器断路",
+        "en": "Boiler Water Temperature Open Circuit Error"
+      },
+      "tag": {
+        "zh": "锅炉,水,温度,断路,报警",
+        "en": "Boiler,Water,Temperature,Open Circuit,Error"
+      },
+      "description": {
+        "zh": "炉水温度传感器断路",
+        "en": "Boiler Water Temperature Open Circuit Error"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "回水温度传感器断路",
+        "en": "Boiler Return Water Temperature Open Circuit Error"
+      },
+      "tag": {
+        "zh": "锅炉,回路,水,温度,断路,报警",
+        "en": "Boiler,Return,Water,Temperature,Open Circuit,Error"
+      },
+      "description": {
+        "zh": "回水温度传感器断路",
+        "en": "Boiler Return Water Temperature Open Circuit Error"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "超压报警",
+        "en": "Boiler High Pressure Error"
+      },
+      "tag": {
+        "zh": "锅炉,高,压力,报警",
+        "en": "Boiler,High,Pressure,Error"
+      },
+      "description": {
+        "zh": "超压报警",
+        "en": "Boiler High Pressure Error"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "低压报警",
+        "en": "Boiler Low Pressure Error"
+      },
+      "tag": {
+        "zh": "锅炉,低,压力,报警",
+        "en": "Boiler,Low,Pressure,Error"
+      },
+      "description": {
+        "zh": "低压报警",
+        "en": "Boiler Low Pressure Error"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "外接超温报警",
+        "en": "Boiler High External Temperature Error"
+      },
+      "tag": {
+        "zh": "锅炉,高,外部,温度,报警",
+        "en": "Boiler,High,External,Temperature,Error"
+      },
+      "description": {
+        "zh": "外接超温报警",
+        "en": "Boiler High External Temperature Error"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "运行状态",
+        "en": "Boiler Onoff"
+      },
+      "tag": {
+        "zh": "锅炉,启停",
+        "en": "Boiler,Onoff"
+      },
+      "description": {
+        "zh": "运行状态",
+        "en": "Boiler Onoff"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "启停",
+        "en": "Boiler Onoff Set"
+      },
+      "tag": {
+        "zh": "锅炉,启停,设置",
+        "en": "Boiler,Onoff,Set"
+      },
+      "description": {
+        "zh": "启停",
+        "en": "Boiler Onoff Set"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "远程本地模式",
+        "en": "Boiler Remote Mode"
+      },
+      "tag": {
+        "zh": "锅炉,远程,模式",
+        "en": "Boiler,Remote,Mode"
+      },
+      "description": {
+        "zh": "远程本地模式",
+        "en": "Boiler Remote Mode"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "群控系统复位",
+        "en": "Boiler BA System Reset"
+      },
+      "tag": {
+        "zh": "锅炉,楼宇自控,系统,复位",
+        "en": "Boiler,BA,System,Reset"
+      },
+      "description": {
+        "zh": "群控系统复位",
+        "en": "Boiler BA System Reset"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "供水温度",
+        "en": "Boiler Supply Temperature"
+      },
+      "tag": {
+        "zh": "锅炉,供水,温度",
+        "en": "Boiler,Supply,Temperature"
+      },
+      "description": {
+        "zh": "供水温度",
+        "en": "Boiler Supply Temperature"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "回水温度",
+        "en": "Boiler Return Temperature"
+      },
+      "tag": {
+        "zh": "锅炉,回水,温度",
+        "en": "Boiler,Return,Temperature"
+      },
+      "description": {
+        "zh": "回水温度",
+        "en": "Boiler Return Temperature"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "炉水温度",
+        "en": "Boiler Water Temperature"
+      },
+      "tag": {
+        "zh": "锅炉,水,温度",
+        "en": "Boiler,Water,Temperature"
+      },
+      "description": {
+        "zh": "炉水温度",
+        "en": "Boiler Water Temperature"
+      }
+    }
+  ]
+}

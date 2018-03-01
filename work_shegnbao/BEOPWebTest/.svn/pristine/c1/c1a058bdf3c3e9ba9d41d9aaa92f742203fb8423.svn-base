@@ -1,0 +1,318 @@
+﻿<link rel="stylesheet" type="text/css" href="/static/scripts/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/content/index.css">
+<link rel="stylesheet" type="text/css" href="/static/content/index-black.css">
+<link rel="stylesheet" type="text/css" href="/static/content/index-black.css">
+<link rel="stylesheet" type="text/css" href="/static/app/Benz/env.css">
+<script src="/static/scripts/lib/jquery-2.1.4.min.js"></script>
+<script src="/static/scripts/lib/bootstrap/js/bootstrap.min.js"></script>
+
+
+<body>
+
+    <style>
+        .xungeng {
+            margin: 10px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-info {
+            height: 22px;
+            padding-top: 1px;
+        }
+    </style>
+
+    <div class="xungeng container">
+
+        <div class="btn-toolbar" role="toolbar">
+            <button id="btnAddWf" type="button" data-toggle="modal" data-target="#dialogModalJclcsz" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 发起采购
+            </button>
+        </div>
+
+        <div style=" height: calc(100% - 100px); overflow-x: hidden; overflow-y: auto;">
+
+            <div class="table-responsive">
+                <table class="table  table-hover">
+                    <caption></caption>
+                    <thead>
+                        <tr>
+                            <th>申请采购单号</th>
+                            <th>描述</th>
+                            <th>审核状态</th>
+                            <th>仓库</th>
+                            <th>申请人</th>
+                            <th>管理部门</th>
+                            <th>申请流程</th>
+                            <th>附件</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyWf">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <nav>
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a>1</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" id="dialogModalJclcsz" tabindex="-1" role="dialog" aria-labelledby="dialogModalJclcsz" style="top: 50px;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">新增工作流</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="assetName">描述</label>
+                        <input type="text" name="描述" class="form-control divValue" placeholder="请输入...">
+                        <label>仓库</label>
+                        <select name="仓库" class="form-control divValue">
+                            <option value='SH-A-01'>SH-A-01</option>
+                            <option value='SH-A-02'>SH-A-02</option>
+                            <option value='SH-A-03'>SH-A-03</option>
+                        </select>
+                        <label>申请人</label>
+                        <select name="申请人" class="form-control divValue">
+                            <option value='窦天鹏'>窦天鹏</option>
+                            <option value='朱杰  '>朱杰   </option>
+                            <option value='宋怀安'>宋怀安 </option>
+                            <option value='阮小倩'>阮小倩 </option>
+                            <option value='宋佳佳'>宋佳佳 </option>
+                            <option value='顾峰  '>顾峰   </option>
+                            <option value='徐林  '>徐林   </option>
+                            <option value='沈春华'>沈春华 </option>
+                            <option value='林倩茹'>林倩茹 </option>
+                            <option value='贾远  '>贾远   </option>
+                            <option value='白杜  '>白杜   </option>
+                            <option value='袁晓磊'>袁晓磊 </option>
+                            <option value='范东  '>范东   </option>
+                            <option value='祝胜春'>祝胜春 </option>
+                            <option value='李林峰'>李林峰 </option>
+                            <option value='钱睿斌'>钱睿斌 </option>
+                            <option value='邓悠悠'>邓悠悠 </option>
+                            <option value='彭兵  '>彭兵   </option>
+                            <option value='何山  '>何山   </option>
+                            <option value='田嘉怡'>田嘉怡 </option>
+                            <option value='刘人仁'>刘人仁 </option>
+                            <option value='苏小强'>苏小强 </option>
+                            <option value='金林  '>金林   </option>
+                            <option value='孔德玉'>孔德玉 </option>
+                            <option value='何春发'>何春发 </option>
+                            <option value='于叶军'>于叶军 </option>
+                            <option value='沈兰花'>沈兰花 </option>
+                            <option value='褚丽琴'>褚丽琴 </option>
+                            <option value='岳森  '>岳森   </option>
+                            <option value='任石峰'>任石峰 </option>
+                        </select>
+                        <label>管理部门</label>
+                        <select name="管理部门" class="form-control divValue">
+                            <option value='工程部'>工程部</option>
+                            <option value='仓管部'>仓管部</option>
+                            <option value='维修部'>维修部</option>
+                        </select>
+                        <label>申请分类</label>
+                        <select name="申请流程" class="form-control divValue">
+                            <option value='普通材料审批流程'>普通材料审批流程</option>
+                            <option value='贵重物料审批流程'>贵重物料审批流程</option>
+                        </select>
+                        <label>附件</label>
+                        <div name="附件" class="form-control divValue" style="height:100px; font-size: 40px; color: rgba(30,30,30,0.4); text-align: center; padding-top: 16px;">
+                            拖拽文件到这里
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button id="btnSave" type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" id="dialogModalFJ" tabindex="-1" role="dialog" aria-labelledby="dialogModalFJ" style="top: 50px;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">附件</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="assetName">合同</label>
+                        <a href="http:\\images.rnbtech.com.hk/static/images/采购合同.pdf" target="_blank" class="form-control divValue">采购合同.pdf</a>
+                    </div>
+                    <div class="form-group">
+                        <label for="assetName">报价</label>
+                        <a href="http:\\images.rnbtech.com.hk/static/images/采购报价1.pdf" target="_blank" class="form-control divValue">采购报价1.pdf</a>
+                        <a href="http:\\images.rnbtech.com.hk/static/images/采购报价2.pdf" target="_blank" class="form-control divValue">采购报价2.pdf</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        var data = [{
+            "_id": 1,
+            "申请采购单号": "2877",
+            "描述": "2016年1月包干采购",
+            "审核状态": "工程部经理: 审核",
+            "仓库": "SH-A-03", "申请人": "王赖川",
+            "管理部门": "仓管部",
+            "申请分类名称": "普通材料审批流程"
+        },
+            {
+                "_id": 2,
+                "申请采购单号": "2875",
+                "描述": "空气处理剂滤网采购",
+                "审核状态": "工程师: 处理",
+                "仓库": "SH-A-01",
+                "申请人": "马程峰",
+                "管理部门": "仓管部",
+                "申请分类名称": "普通材料审批流程"
+            },
+            {
+                "_id": 3,
+                "申请采购单号": "2873",
+                "描述": "紧急维修:C区2号变压器抵押测电流互感器故障",
+                "审核状态": "工程部经理: 审核",
+                "仓库": "SH-B-01",
+                "申请人": "宋玉成",
+                "管理部门": "维修部",
+                "申请分类名称": "普通材料审批流程"
+            },
+            {
+                "_id": 4,
+                "申请采购单号": "2870",
+                "描述": "基地消防管爆管维修",
+                "审核状态": "工程部经理: 审核",
+                "仓库": "SH-B-02",
+                "申请人": "唐道发",
+                "管理部门": "维修部",
+                "申请分类名称": "普通材料审批流程"
+            },
+            {
+                "_id": 5,
+                "申请采购单号": "2869",
+                "描述": "C区活体轿厢内立柱维修",
+                "审核状态": "工程部经理: 审核",
+                "仓库": "SH-B-01",
+                "申请人": "冯清风",
+                "管理部门": "维修部",
+                "申请分类名称": "普通材料审批流程"
+            },
+            {
+                "_id": 6,
+                "申请采购单号": "2865",
+                "描述": "采购申请ABB空气开关做备件",
+                "审核状态": "工程师: 处理",
+                "仓库": "SH-B-02",
+                "申请人": "许倩",
+                "管理部门": "仓管部",
+                "申请分类名称": "普通材料审批流程"
+            },
+            {
+                "_id": 7,
+                "申请采购单号": "2850",
+                "描述": "采购防爆用品做备件",
+                "审核状态": "工程部经理: 审核",
+                "仓库": "SH-A-01",
+                "申请人": "卢国强",
+                "管理部门": "仓管部",
+                "申请分类名称": "普通材料审批流程"
+            },
+            {
+                "_id": 8,
+                "申请采购单号": "2847",
+                "描述": "变频器旧件修理",
+                "审核状态": "项目经理: 验收",
+                "仓库": "SH-A-01",
+                "申请人": "苏秦",
+                "管理部门": "维修部",
+                "申请分类名称": "普通材料审批流程"
+            },
+            {
+                "_id": 9,
+                "申请采购单号": "2845",
+                "描述": "采购多工能工具车",
+                "审核状态": "项目经理: 验收",
+                "仓库": "SH-B-02",
+                "申请人": "闫海",
+                "管理部门": "工程部",
+                "申请分类名称": "普通材料审批流程"
+            },
+            {
+                "_id": 10,
+                "申请采购单号": "2843",
+                "描述": "电源时序器故障",
+                "审核状态": "项目经理: 验收",
+                "仓库": "SH-A-03",
+                "申请人": "杜江",
+                "管理部门": "行政部",
+                "申请分类名称": "普通材料审批流程"
+            },
+            {
+                "_id": 11,
+                "申请采购单号": "2842",
+                "描述": "H区雨水污水管疏通探测物品采购",
+                "审核状态": "项目经理: 验收",
+                "仓库": "SH-A-03",
+                "申请人": "戴纯林",
+                "管理部门": "工程部",
+                "申请分类名称": "普通材料审批流程"
+            }
+        ];
+        var str = '';
+        for (var i = 0; i < data.length; i++) {
+            str += '<tr><td>' + data[i]['申请采购单号'] + '</td>';
+            str += '<td>' + data[i]['描述'] + '</td>';
+            str += '<td>' + data[i]['审核状态'] + '</td>';
+            str += '<td>' + data[i]['仓库'] + '</td>';
+            str += '<td>' + data[i]['申请人'] + '</td>';
+            str += '<td>' + data[i]['管理部门'] + '</td>';
+            str += '<td>' + data[i]['申请分类名称'] + '</td>';
+            str += '<td><button class="btn btn-info" data-toggle="modal" data-target="#dialogModalFJ">' + '查看' + '</button></td>';
+            str += '</tr>';
+        }
+
+        $('#tbodyWf').html(str);
+
+        $('#btnSave').off().on('click', function () {
+            var str = '<tr><td>2878</td>';
+            $('#dialogModalJclcsz .divValue').each(function (item) {
+                if ($(this).attr('name') != '附件') {
+                    str += '<td>' + $(this).val() + '</td>';
+
+                    if ($(this).attr('name') == '描述') {
+                        str += '<td>工程部经理: 审核</td>';
+                    }
+                }
+            });
+            str += '<td><button class="btn btn-info" data-toggle="modal" data-target="#dialogModalFJ">' + '查看' + '</button></td></tr>';
+            $('#tbodyWf').append(str);
+            $('#dialogModalJclcsz').modal('hide');
+        });
+    </script>
+
+
+</body>

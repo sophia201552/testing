@@ -1,0 +1,514 @@
+<div id="workflow-task" class="scrollbar wf-manager-change-work-group">
+    <ol class="breadcrumb" style="margin-bottom: 0;">
+        <li i18n="workflow.mine.TASK_GROUP"></li>
+        <li class="active" i18n="workflow.mine.MY_TASK"></li>
+    </ol>
+    <div class="mb10 ml20">
+        <span id="taskBack" class="icon iconfont cp" i18n="title=common.BACK">&#xe7ec;</span>
+        <span id="taskModify" class="icon iconfont cp dn" i18n="title=common.EDIT">&#xe710;</span>
+        <span id="taskReSave" class="icon iconfont cp dn" i18n="title=common.SAVE">&#xe7e3;</span>
+        <span id="taskDelete" class="icon iconfont cp dn" taskId="" i18n="title=common.DELETE">&#xe6b4;</span>
+    </div>
+    <div id="wfOperateBtnBox" class="mb10 ml20 dn"></div>
+    <form class="form-horizontal container-fluid" id="taskContent" action="javascript:void(0);" method="post"></form>
+    <div id="wf-detail-funWrapper" style="padding: 0 10px;"></div>
+</div>
+
+<!--@formatter:off-->
+<script type="text/html" id="tpl_operate_btn">
+    <!if(type === "show"){!>
+        <span id="taskEdit" class="icon iconfont cp">&#xe710;</span>
+    <!}else if(type === "edit"){!>
+        <span id="taskReturn" class="icon iconfont cp">&#xe7ec;</span>
+    <!}!>
+</script>
+<script type="text/html" id="tpl_detail_edit">
+    <div class="row" id="taskGroupProcess"></div>
+    <div class="row wf-task-split taskEditSection" id="taskBasic">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-3 control-label" i18n="workflow.mine.WORK_ORDER_NAME"></label>
+
+                <div class="col-md-7">
+                    <input type="text" id="taskTitle" i18n="placeholder=workflow.mine.WORK_ORDER_NAME" class="form-control"
+                           name="title">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-3 control-label" i18n="workflow.notice.DEADLINE"></label>
+
+                <div class="col-md-7">
+                    <input type="text" id="taskDueTime" name="dueDate" class="form-control"
+                           autocomplete="off" i18n="placeholder=workflow.task.SELECTED_DUE_DATE_INFO"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-3 control-label" i18n="workflow.urgencyLevel.URGENCY_LEVEL"></label>
+
+                <div class="col-md-7">
+                    <select id="taskCritical" class="form-control" name="critical">
+                        <option value="0" i18n="workflow.urgencyLevel.0"></option>
+                        <option value="1" i18n="workflow.urgencyLevel.1"></option>
+                        <option value="2" i18n="workflow.urgencyLevel.2"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row taskEditSection wf-task-split dn" id="taskTemplateFields"></div>
+    <div class="row taskEditSection wf-task-split" id="taskDetail">
+        <div class="col-md-12">
+            <label class="col-md-1 control-label" i18n="workflow.main.WORKFLOW_DETAIL"></label>
+
+            <div class="col-md-10">
+                <textarea class="form-control" id="wfDetail" name="detail" maxlength="1500"
+                          style="resize: vertical;height: 200px;"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row taskEditSection wf-task-split" id="taskTags">
+        <div class="col-md-12">
+            <label class="col-md-1 control-label" i18n="workflow.main.TAGS_NAME"></label>
+
+            <div class="col-md-10">
+                <div id="wf-labelWrapper" class="fl" style="padding-top: 8px"></div>
+                <label>
+                    <select class="form-control mr10" id="wf-labelNames"></select>
+                </label>
+                <span id="wf-labelName-error-message" class="dn" i18n="workflow.task.ADD_TAGS_INFO"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row taskEditSection wf-task-split" id="taskAttachments">
+        <label class="col-md-1 control-label pr0" i18n="workflow.task.ATTACHMENT"></label>
+
+        <div class="col-md-11">
+            <div id="wf-attachment-labelWrapper" class="mr10 fl" style="padding-left: 10px;">
+                <ul class="wf-attachment-nav" id="wf-attachment-list-container"></ul>
+                <div class="files file-add-btn">
+                    <section class="file-type">
+                        <span id="wf-attachment-input-btn">
+                            +
+                        </span>
+                    </section>
+                    <section class="file-info">
+                        <p class="file-time" i18n="workflow.task.ATTACHMENT_INFO"
+                           style="line-height: 40px;"></p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group dn" id="fault-curve"
+         style="background-color: #fafafa; margin-top: 25px; margin-bottom: 0; height:300px">
+        <div class="fault-feedback-curve" style="height: 100%"></div>
+    </div>
+    <div class="row wf-task-split taskEditSection">
+        <label class="col-md-1 tr pr0">相关人员</label>
+
+            <div class="col-md-11" id="taskWatchers" style="padding-left: 15px;">
+                <div class="wf-manager-people">
+                    <div class="wf-added-user-list" id="wf-watchers-add"></div>
+                    <span id="wfWatchersAdd" class="glyphicon glyphicon-edit wf-people-add"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row wf-task-split taskEditSection">
+        <label class="col-md-1 tr pr0" i18n="workflow.team.TEAM_PROCESS"></label>
+        <div class="col-md-11" id="taskProcess"></div>
+    </div>
+    <div class="row wf-task-split taskEditSection tc" id="operation">
+        <button type="submit" id="taskSave" class="btn btn-primary"
+                i18n="workflow.insert.CONFIRM;value=workflow.insert.CONFIRM;title=workflow.insert.CONFIRM">
+        </button>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_detail_progress">
+    <span id="wf-detail-verticalLine" class="pa"></span>
+    <!for(var i=0;i < data.length; i++){!>
+    <!var progress = data[i],senderInfo=progress.sender && progress.sender.senderInfo; !>
+    <li>
+        <div class="recordTime pr">
+            <img src="<!=senderInfo.userpic!>"
+                 title="<!=senderInfo.userfullname +'\n' +( progress.useremail && senderInfo.useremail !='undefined' ? progress.useremail : '')!>"
+                 class="glyphicon glyphicon-record mr10 timeLineIcon"/>
+            <span class="pa horizontalLine"></span>
+            <span title="<!=progress.opTime!>" style="margin: 0 5px;top: 3px;position: relative;height: 25px;">
+                <!var opTimeMoment = moment(progress.task.optime);!>
+                <!if(opTimeMoment.diff(new Date, 'days') > -5){!>
+                    <!=opTimeMoment.fromNow()!>
+                <!}else{!>
+                    <!=progress.opTime!>
+                <!}!>
+            </span>
+        </div>
+        <div class="recordContent">
+            <span class="contentTitle"><!=WorkflowTool.translate(progress.task.op)!></span>
+            <!if(progress.task.op==='edit' || progress.task.op==='forward'){!>
+            <span class="content"><!=WorkflowTool.translate(progress.detail)!></span>
+            <!}!>
+        </div>
+    </li>
+    <!}!>
+</script>
+<script type="text/html" id="tpl_task_comment_progress">
+    <ul id="wf-detail-funUl" class="wf-ul">
+        <li id="wf-detail-comment-nav" class="active hasEvent mr5" data-param="comment"><span
+                class="glyphicon glyphicon-comment" aria-hidden="true"></span><span
+                i18n="workflow.activities.REVIEW"></span>
+        </li>
+        <li id="wf-detail-progress-nav" class="hasEvent" data-param="progress">
+            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+            <span i18n="workflow.task.TASK_PROGRESS"></span></li>
+    </ul>
+    <div id="task-reply-list"></div>
+    <ul id="wf-detail-progress" class="dn timeLine"></ul>
+</script>
+<script type="text/html" id="tpl_operation_2">
+    <div class="col-md-12 tc">
+        <button type="submit" id="taskComplete" class="btn btn-primary" i18n="workflow.main.COMPLETE_TASK"></button>
+    </div>
+</script>
+<script type="text/html" id="tpl_operation_1">
+    <div class="col-md-12 tc">
+        <button type="submit" id="taskNoPass" class="btn btn-danger">不通过</button>
+        <button type="submit" id="taskPass" class="btn btn-success">  通过</button>
+    </div>
+</script>
+
+
+<script type="text/html" id="tpl_wf_task_detail">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="col-md-1 control-label" i18n="workflow.main.WORKFLOW_DETAIL"></label>
+
+            <div class="col-md-10">
+                <pre class="wf-task-detail"><!=fields.detail!></pre>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<script type="text/html" id="tpl_wf_task_process">
+    <div class="wf_add_process_people fl">
+        <div class="disabled wf-manager-people">
+            <div class="item-peoples-box">
+                <div class="teamPeople oh mAuto">
+                    <img src="<!=creator.userpic!>"/>
+                    <div class="people-name ellipsis" title="<!=creator.userfullname!>"><!=creator.userfullname!></div>
+                </div>
+                <div style="margin-top: 10px;">
+                    <span class="chevron-content peopleName" style="background: #5cb95c; color: #ffffff;">发起人</span>
+                </div>
+                <span class="fuLineBox">
+                    <span class="fuLine"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!for(var m=0; m < nodes.length; m++){!>
+
+        <!
+            var node = nodes[m];
+            var nodeStatusKey = 'ADD_PROCESS_BEHAVIOR_TYPE_';
+            var nodeStatus = '';
+            if(status != 2 && node_index == m){
+                var cls = 'info';
+                nodeStatusKey = 'ADD_PROCESSING_BEHAVIOR_TYPE_'
+            }else{
+                if(node.action && (node.action == 'complete' || node.action == 'pass')){
+                    var cls = 'success';
+                }else if(node.action && (node.action == 'noPass')){
+                    var cls = 'danger';
+                    nodeStatus = I18n.resource.workflow.task.VERIFIERS_NOT_PASS;
+                }else{
+                    var cls = 'default';
+                }
+            }
+            if(!nodeStatus){
+                nodeStatus = I18n.resource.workflow.team[nodeStatusKey + node.behaviour];
+            }
+        !>
+
+        <div class="color-<!=cls!> wf_add_process_people fl"  data-id="<!=node._id!>">
+            <div class="disabled wf-manager-people">
+                <!if(m > node_index){!>
+                    <div class="item-peoples-box noImplement">
+                <!}else{!>
+                    <div class="item-peoples-box">
+                <!}!>
+                    <!if(node.archType == beop.constants.archType.ALL_MEMBERS && node.members.length !== 1){!>
+                        <div class="teamPeople oh mAuto">
+                            <img  class="imgColor" src="/static/images/avatar/user/default_group.png"/>
+                            <div class="people-name ellipsis" title="<!=node.archName!>"><!=I18n.resource.workflow.process.ALL_MEMBERS!></div>
+                        </div>
+                        <span class="glyphicon glyphicon-play ionPosition process-people-show cp" data-index="<!=m!>"></span>
+                    <!}else{!>
+                        <!if(node.members.length){!>
+                            <!if(node.members.length == 1){!>
+                                <div class="teamPeople oh mAuto" >
+                                    <img  class="imgColor" src="<!=node.members[0].userpic!>"/>
+                                    <div class="people-name ellipsis" title="<!=node.members[0].userfullname!>"><!=node.members[0].userfullname!></div>
+                                </div>
+                                <!stateMap.processMember[node._id] = node.members;!>
+                            <!}else{!>
+                                <div class="teamPeople oh mAuto">
+                                    <img  class="imgColor" src="/static/images/avatar/user/default_group.png"/>
+                                    <div class="people-name ellipsis" title="<!=node.archName!>"><!=node.archName!></div>
+                                </div>
+                                <!if(m >= node_index){!>
+                                    <span class="glyphicon glyphicon-play ionPosition process-people-show cp" data-index="<!=m!>"></span>
+                                <!}!>
+                            <!}!>
+                        <!}else{!>
+                            <div class="teamPeople oh mAuto">
+                                <img  class="imgColor" src="/static/images/avatar/user/default_group.png"/>
+                                <div class="people-name ellipsis" title="<!=node.archName!>"><!=node.archName!></div>
+                            </div>
+                        <!}!>
+                    <!}!>
+
+                    <span class="fuLineBox">
+                        <!if(m > node_index){!>
+                            <span style="background: #737373;" class="fuLine"></span>
+                        <!}else{!>
+                            <span class="fuLine"></span>
+                        <!}!>
+                    </span>
+                    <div style="margin-top: 10px;">
+                        <!if(node.behaviour){!>
+                            <span class="chevron-content peopleName"><!=nodeStatus!></span>
+                        <!}!>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!}!>
+
+    <!if(status == 2){!>
+        <!var complete_color = 'success'; !>
+    <!}else{!>
+        <!var complete_color = 'default'; !>
+    <!}!>
+    <div class="color-<!=complete_color!> wf_add_process_people fl">
+         <div class="disabled wf-manager-people">
+            <div class="item-peoples-box">
+                <div class="teamPeople oh mAuto completed">
+                    <div i18n="workflow.main.FINISH"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_wf_task_basic">
+    <div class="col-md-4">
+        <label class="col-md-3 control-label" i18n="workflow.mine.WORK_ORDER_NAME"></label>
+        <div class="col-md-7"><!=fields['title']!></div>
+    </div>
+    <div class="col-md-4">
+        <label class="col-md-3 control-label" i18n="workflow.notice.CREATE_TIME"></label>
+        <div class="col-md-7"><!=createTime!></div>
+    </div>
+    <div class="col-md-4">
+        <label class="col-md-3 control-label" i18n="workflow.notice.DEADLINE"></label>
+        <div class="col-md-7"><!=fields['dueDate']!></div>
+    </div>
+    <div class="col-md-4">
+        <label class="col-md-3 control-label" i18n="workflow.urgencyLevel.URGENCY_LEVEL"></label>
+        <div class="col-md-7"><!=I18n.resource.workflow.urgencyLevel[fields['critical']]!></div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_wf_task_group_process">
+    <div class="oh">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-3 control-label" i18n="workflow.mine.TASK_GROUP"></label>
+                <div class="col-md-7">
+                    <!try{if(taskGroup){}}catch(e){taskGroup={}}!>
+                    <!if(taskGroup && !$.isArray(taskGroup)){!>
+                        <!if(taskGroup.type == beop.constants.fieldType.DEFAULT){!>
+                            <!=I18n.resource.workflow.main.DEFAULT_GROUP!>
+                        <!}else{!>
+                            <!=taskGroup.name!>
+                        <!}!>
+                        <input type="hidden" name="taskGroup" value="<!=beop.model.stateMap.currentGroupId!>">
+                    <!}else{!>
+                        <!var taskGroupName='';!>
+                        <!if(beop.model.stateMap.selectedGroupId){!>
+                            <!
+                                if(taskGroup){
+                                    for(var m = 0; m < taskGroup.length; m++){
+                                        if(beop.model.stateMap.currentGroupId == taskGroup[m]._id){
+                                            if(taskGroup[m].type == beop.constants.fieldType.DEFAULT){
+                                                taskGroupName = I18n.resource.workflow.main.DEFAULT_GROUP;
+                                            }else{
+                                                taskGroupName = taskGroup[m].name;
+                                            }
+                                            break;
+                                        }
+                                    }
+                                }
+                                beop.model.stateMap.selectedGroupId = null;
+                            !>
+                            <!=taskGroupName!>
+                            <input type="hidden" name="taskGroup" value="<!=beop.model.stateMap.currentGroupId!>">
+                        <!}else{!>
+                            <!if(taskGroup){!>
+                                <select class="form-control" name="taskGroup" id="taskGroupSelector">
+                                    <option disabled i18n="workflow.mine.TASK_GROUP_CHANGE"></option>
+                                    <!for(var m = 0; m < taskGroup.length; m++){!>
+                                        <! var groupName = taskGroup[m].name;
+                                            if(taskGroup[m].type == beop.constants.fieldType.DEFAULT){
+                                                groupName = I18n.resource.workflow.main.DEFAULT_GROUP;
+                                            }
+                                        !>
+                                        <!if(beop.model.stateMap.currentGroupId == taskGroup[m]._id){!>
+                                            <option value="<!=taskGroup[m]._id!>" selected><!=groupName!></option>
+                                        <!}else{!>
+                                            <option value="<!=taskGroup[m]._id!>"><!=groupName!></option>
+                                        <!}!>
+                                    <!}!>
+                                </select>
+                            <!}!>
+                        <!}!>
+                    <!}!>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="oh">
+       <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-3 control-label" i18n="workflow.mine.WORKFLOW_WATER"></label>
+                <div class="col-md-7">
+                    <!if(process && $.isArray(process)){!>
+                        <select class="form-control" name="process" id="taskProcessSelector">
+                            <!for(var m = 0; m < process.length; m++){!>
+                                <!var processName = process[m].type == beop.constants.fieldType.DEFAULT ? I18n.resource.workflow.process.DEFAULT_PROCESS : process[m].name;!>
+                                <option value="<!=process[m]._id!>"><!=processName!></option>
+                            <!}!>
+                        </select>
+                    <!}else{!>
+                        <!=process.type == beop.constants.fieldType.DEFAULT ? I18n.resource.workflow.process.DEFAULT_PROCESS : process.name!>
+                    <!}!>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_wf_task_process_option">
+    <!for(var m = 0; m < process.length; m++){!>
+        <option value="<!=process[m]._id!>"><!=process[m].type == beop.constants.fieldType.DEFAULT ? I18n.resource.workflow.process.DEFAULT_PROCESS : process[m].name!></option>
+    <!}!>
+</script>
+<script type="text/html" id="tpl_wf_labels">
+    <!for(var t=0; t < tags.length;t++){!>
+        <!var tag = tags[t];!>
+        <span class="pr wf-tag-wrapper">
+            <! if (enableEdit){!>
+                <i class="pa wf-detail-tag-delete glyphicon glyphicon-remove" style="right:0;" data-id="<!=tag.id!>"></i>
+            <!};!>
+            <span class="glyphicon glyphicon-tag"></span>
+            <span class="wf-task-label"><!=tag.name!></span>
+            <input type="hidden" value="<!=tag.id!>" name="tags[]"/>
+        </span>
+    <!}!>
+</script>
+<script type="text/html" id="tpl_wf_labels_select">
+        <option value="-1">请选择标签</option>
+        <! for(var t=0; t < tags.length;t++){ !>
+            <option value=<!=tags[t].id!>><!=tags[t].name!></option>
+        <! }; !>
+</script>
+<script type="text/html" id="tpl_wf_task_template">
+    <input type="hidden" value="<!=template._id!>" name="template_id">
+    <!if(template.fields){!>
+        <!for(var m=0, n = template.fields.length; m < n; m++){!>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-3 control-label"><!=template.fields[m].name!></label>
+                    <!if(fields){!>
+                        <! var value = fields[template.fields[m].name] || 'N/A'; !>
+                    <!}else{!>
+                        <! var value = ''; !>
+                    <!}!>
+
+                    <div class="col-md-7">
+                        <!if(value){!>
+                            <!if(fields[template.fields[m].style]){!>
+                                <span style="<!=fields[template.fields[m].style]!>"><!=value!></span>
+                            <!}else{!>
+                                <span><!=value!></span>
+                            <!}!>
+                        <!}else{!>
+                            <!if(template.fields[m].type == 'text'){!>
+                                <input type="text" class="form-control" name="<!=template.fields[m].name!>" placeholder="<!=template.fields[m].name!>">
+                            <!}else if(template.fields[m].type == 'checkbox'){!>
+                                <!for(var i=0, j=template.fields[m].values.length;i < j; i++){!>
+                                    <div class="col-md-6">
+                                        <label>
+                                            <input type="checkbox" name="<!=template.fields[m].name!>" value="<!=template.fields[m].values[i]!>">
+                                            <!=template.fields[m].values[i]!>
+                                        </label>
+                                    </div>
+                                <!}!>
+                            <!}else if(template.fields[m].type == 'radio'){!>
+                                <!for(var i=0, j=template.fields[m].values.length;i < j; i++){!>
+                                    <div class="col-md-6">
+                                        <label>
+                                            <input type="radio" name="<!=template.fields[m].name!>" value="<!=template.fields[m].values[i]!>">
+                                            <!=template.fields[m].values[i]!>
+                                        </label>
+                                    </div>
+                                <!}!>
+                            <!}else if(template.fields[m].type == 'select'){!>
+                                <select class="form-control" name="<!=template.fields[m].name!>">
+                                    <!for(var i=0, j=template.fields[m].values.length;i < j; i++){!>
+                                        <option value="<!=template.fields[m].values[i]!>"><!=template.fields[m].values[i]!></option>
+                                    <!}!>
+                                </select>
+                            <!}else if(template.fields[m].type == 'date'){!>
+                                <input class="form-control template-date" name="<!=template.fields[m].name!>" placeholder="<!=template.fields[m].name!>">
+                            <!}!>
+                        <!}!>
+
+                        <!if(template.fields[m].note){!>
+                            <span class="help-block"><!=template.fields[m].note!></span>
+                        <!}!>
+                    </div>
+                </div>
+            </div>
+        <!}!>
+    <!}!>
+</script>
+
+<script type="text/html" id="tpl_wf_added_member">
+    <!for(var m=0; m < members.length; m++){!>
+    <!var member = members[m];!>
+    <div class="people" title="<!=member.userfullname!>" data-user-id="<!=member.id!>">
+        <img src="<!=member.userpic!>">
+        <div class="people-name ellipsis"><!=member.userfullname!></div>
+        <input type="hidden" name="watchers[]" value="<!=member.id!>">
+    </div>
+    <!}!>
+</script>
+
+<script type="text/html" id="tpl_wf_change_user">
+    <div class="teamPeople oh mAuto" title="<!=member.username ? member.username: member.userfullname!>" data-user-id="<!=member.id!>">
+        <img class="imgColor" src="<!=member.userpic!>"/>
+        <div class="people-name ellipsis" title="<!=member.userfullname!>"><!=member.userfullname!></div>
+        <input type="hidden" name="addedUsers[]" value="<!=member.id!>">
+    </div>
+</script>
+
+<!--@formatter:on-->

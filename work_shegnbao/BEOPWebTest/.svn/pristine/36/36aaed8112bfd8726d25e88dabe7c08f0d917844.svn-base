@@ -1,0 +1,387 @@
+<style type="text/css">
+    .reg-wizard {
+        border: 1px solid #d4d4d4;
+        min-height: 48px;
+        position: relative;
+        overflow: hidden;
+        padding:0;
+        margin-top: 25px;
+        background-color: #fff;
+    }
+    .reg-wizard > ul {
+        list-style: none outside none;
+        margin: 0;
+        padding: 0;
+        width: 1000px;
+    }
+    .reg-wizard > .actions {
+        float: right;
+        line-height: 46px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: #e5e5e5;
+        border-left: 1px solid #d4d4d4;
+    }
+    .reg-wizard > ul li {
+        float: left;
+        height: 46px;
+        line-height: 46px;
+        margin: 0;
+        color: #999;
+        background-color: #ededed;
+        padding: 0 20px 0 30px;
+        position: relative;
+        font-size: 16px;
+    }
+    .reg-wizard > ul li.active {
+        background-color: #f1f6fc;
+        color: #3a87ad;
+        cursor: default;
+    }
+    .reg-wizard > ul li.complete {
+        background-color: #f3f4f5;
+        color: #468847;
+        cursor: default;
+    }
+    .reg-wizard .badge {
+        margin-right: 10px;
+    }
+    .badge {
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: 700;
+        min-width: 10px;
+        display: inline-block;
+        line-height: 1em;
+        padding: 3px 7px;
+        color: #fff;
+        background-color: #777;
+        text-align: center;
+    }
+    .active .badge {
+        background-color: #3a87ad;
+    }
+    .complete .badge {
+        background-color: #468847;
+    }
+    .chevron {
+        border: 24px solid transparent;
+        border-right: 0;
+        border-left: 14px solid #d4d4d4;
+        position: absolute;
+        top: 0;
+        right: -14px;
+        z-index: 1;
+    }
+    .reg-wizard li.active .chevron:before {
+        border-left: 14px solid #f1f6fc;
+    }
+    .reg-wizard li.complete .chevron:before {
+        border-left: 14px solid #f3f4f5;
+    }
+    .chevron:before {
+        border: 24px solid transparent;
+        border-right: 0;
+        border-left: 14px solid #ededed;
+        position: absolute;
+        top: -24px;
+        right: 1px;
+        z-index: 1;
+        content: "";
+    }
+    .reg-close {
+        float: right;
+        padding: 0 15px;
+        font-size: 20px;
+        line-height: 46px;
+        cursor: pointer;
+    }
+    .reg-close:hover {
+        color:#fff;
+        background-color:#428bca;
+    }
+    .reg-step-ct {
+        border-top: 1px solid #d4d4d4;
+        padding: 10px 30px;
+        float: left;
+        width: 100%;
+        min-height: 20px;
+    }
+    .reg-step-ct > .step-pane {
+        display: none;
+    }
+    .reg-step-ct > .step-pane.active {
+        display: block;
+    }
+    .reg-step-ct > .step-pane > h3 {
+        text-indent: 2em;
+        margin-bottom: 20px;
+    }
+    .clearfix:after {
+        clear: both;
+        content: " ";
+        display: table;
+    }
+    .pi_left_ct {
+        border-right: 1px solid #d4d4d4;
+        padding-right: 30px;
+        padding-left: 10px;
+    }
+    .pi_right_ct {
+        padding-top: 10px;
+        padding-left: 30px;
+        text-align: center;
+    }
+    .pi_right_ct > h5 {
+        font-weight: 700;
+        margin-top: 0;
+        text-align: left;
+    }
+    .pi_right_ct > img {
+        margin-top: 20px;
+        cursor: pointer;
+        width: 256px;
+        height: 180px;
+    }
+    .reg-step-ct .map_ct {
+        margin: 10px auto;
+        min-height: 300px;
+        height: 372px;
+    }
+    .map_wrap {
+        position: relative;
+    }
+    .map-sch-wrap {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+    .map_sch, .map-sch-wrap > ul {
+        box-shadow:0 2px 6px rgba(0,0,0,0.3),0 4px 15px -5px rgba(0,0,0,0.0);
+    }
+    .map-sch-wrap > .map_sch {
+        position: absolute;
+        z-index: 1;
+        margin:0;
+    }
+    .map-sch-wrap > ul {
+        margin: 0;
+        position: absolute;
+        top: 35px;
+        width: 350px;
+        border-radius: 2px 0 0 2px;
+        padding:0;
+    }
+    .map-sch-pane > li > a, .map-sch-pane > li > a:hover {
+        color: #c1c1c1;
+        font-size: 13px;
+    }
+    .map-sch-pane > li.on, .map-sch-pane > li > a:hover {
+        background-color: #f0f0f0;
+    }
+    .map-sch-pane > li * {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .map-sch-pane li .rs-name {
+        color: #333;
+        font-size: 14px;
+    }
+    .map-sch-pane li .rs-district {
+        margin-left: 10px;
+    }
+    .map-sch-pane li .keywords {
+        font-weight: 700;
+    }
+    #btnMapSch {
+        width: 350px;
+        border-radius: 2px 0 0 2px;
+    }
+    #btnGoogleSch {
+        width: 350px;
+        margin: 10px 20px;
+    }
+    #spUploadInfo {
+        font-size: 15px;
+        font-weight: 700;
+        margin-left: 15px;
+    }
+    .upload-wrap {position: relative; padding: 5px;}
+    .drop-handler {
+        position: absolute; 
+        left: 0; 
+        top: 0;
+        z-index: 2;
+        color:#92AAB0;
+        background: #000;
+        opacity: .6;
+        text-align:center;
+        vertical-align:middle;
+        font-size:3em;
+        width: 100%;
+        height: 100%;
+    }
+    .drop-handler>p {
+      opacity: 1;
+      color: #fff;
+      height: 100%;
+      margin: 0;
+      line-height: 100px;
+    }
+    .div-actions { text-align: center; }
+    #uploadMask {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background: transparent;
+    }
+</style>
+
+<div class="reg-wizard container" id="reg-wizard">
+    <ul>
+        <li class="active" data-step="1">
+            <span class="badge badge-info">1</span>
+            <span i18n="admin.projectCreator.REGIST_STEP1_TITLE"></span>
+            <span class="chevron"></span>
+        </li>
+        <li data-step="2">
+            <span class="badge">2</span>
+            <span i18n="admin.projectCreator.REGIST_STEP2_TITLE"></span>
+            <span class="chevron"></span>
+        </li>
+    </ul>
+    <div class="reg-close" id="cancelRegist" title="go back">
+        <span class="glyphicon glyphicon-remove"></span>
+    </div>
+    <div class="actions">
+        <button type="button" class="btn btn-default btn-prev" id="btnPrev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span i18n="admin.projectCreator.REGIST_PREV_STEP_TITLE"></span>
+        </button>
+        <button type="button" class="btn btn-default btn-next" id="btnNext">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span i18n="admin.projectCreator.REGIST_NEXT_STEP_TITLE"></span>
+        </button>
+    </div>
+    <div class="reg-step-ct">
+        <div class="step-pane" data-prograss="1">
+            <h3 i18n="admin.projectCreator.PANE1_TITLE"></h3>
+            <div class="pi_ct row clearfix">
+                <div class="pi_left_ct col-sm-8">
+                    <div class="form-group has-feedback">
+                        <label class="control-label" for="iptPjName" i18n="admin.projectCreator.PANE1_FORM_ITEM1_LABEL"></label>
+                        <input type="text" class="form-control" id="iptPjName" i18n="admin.projectCreator.PANE1_FORM_ITEM1_PLACEHOLDER" placeholder="" aria-describedby="pjNameHB">
+                        <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+                        <span class="help-block" id="pjNameHB" i18n="admin.projectCreator.PANE1_FORM_ITEM1_TIP"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label" for="iptPjAddr" i18n="admin.projectCreator.PANE1_FORM_ITEM2_LABEL"></label>
+                        <input type="text" class="form-control" id="iptPjAddr" i18n="admin.projectCreator.PANE1_FORM_ITEM2_PLACEHOLDER" placeholder="" aria-describedby="pjAddrHB" readonly="readonly">
+                        <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+                        <span class="help-block" id="pjAddrHB" i18n="admin.projectCreator.PANE1_FORM_ITEM2_TIP"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label" for="iptPjCity" i18n="admin.projectCreator.PANE1_FORM_ITEM3_LABEL"></label>
+                        <input type="text" class="form-control" id="iptPjCity" i18n="admin.projectCreator.PANE1_FORM_ITEM3_PLACEHOLDER" placeholder="" aria-describedby="pjCityHB" readonly="readonly">
+                        <input type="hidden" id="iptPjLnglat" />
+                        <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+                        <span class="help-block" id="pjCityHB" i18n="admin.projectCreator.PANE1_FORM_ITEM3_TIP"></span>
+                    </div>
+                </div>
+                <div class="pi_right_ct col-sm-4">
+                    <h5 i18n="admin.projectCreator.PANE1_FORM_ITEM4_LABEL"></h5>
+                    <input id="iptPjFile" type="file" accept=".jpg" style="display:none;" />
+                    <img id="imgPreview" src="/static/images/project_img/default_150407.png" alt="loading" />
+                </div>
+            </div>
+            <div class="map_wrap">
+                <div class="map-sch-wrap">
+                    <div class="map_sch form-group has-feedback" style="display:none;">
+                        <input type="text" class="form-control" id="btnMapSch" placeholder="Search Box"/>
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                    <ul class="dropdown-menu map-sch-pane" id="mapSchPane" style="display:none;"></ul>
+                </div>
+                <input type="text" class="form-control" id="btnGoogleSch" style="display:none;" placeholder="Search Box" />
+                <div class="map_ct" id="mapContainer"></div>
+            </div>
+        </div>
+        <div class="step-pane" data-prograss="2">
+            <h3 i18n="admin.projectCreator.PANE2_TITLE"></h3>
+            <div class="upload-wrap">
+                <div class="form-group has-feedback">
+                    <label class="control-label" for="iptPjData" i18n="admin.projectCreator.PANE2_FORM_ITEM1_LABEL"></label>
+                    <input type="file" accept=".csv,.xls,.xlsx" id="iptPjData" style="display:none;">
+                    <div>
+                        <button type="button" class="btn btn-primary" id="btnUploadCSV">
+                            <span i18n="admin.projectCreator.PANE2_FORM_ITEM1_TITLE"></span>
+                            <span class="glyphicon glyphicon-upload"></span>
+                        </button>
+                        <span class="text-muted" id="spUploadInfo" i18n="PANE2_FORM_ITEM1_TIP1"></span>
+                    </div>
+                    <span class="help-block" i18n="admin.projectCreator.PANE2_FORM_ITEM1_TIP2"></span>
+                </div>
+                <div class="drop-handler" id="divPjDataDropHandler" style="display:none;">
+                    <p>Drag File On This Area</p>
+                </div>
+            </div>
+            <div class="tb-wrap">
+                <div class="tb-head clearfix">
+                    <h3 i18n="admin.projectCreator.PANE2_TABLE_TITLE"></h3>
+                </div>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Date</th>
+                        <th>PointName1</th>
+                        <th>PointName2</th>
+                        <th>PointName3</th>
+                    </tr>
+                    <tr>
+                        <td>2014-05-01 1:00</td>
+                        <td>0.544533</td>
+                        <td>0.412343</td>
+                        <td>0.112314</td>
+                    </tr>
+                    <tr>
+                        <td>2014-05-01 2:00</td>
+                        <td>0.987917</td>
+                        <td>0.312334</td>
+                        <td>0.534956</td>
+                    </tr>
+                    <tr>
+                        <td>2014-05-01 3:00</td>
+                        <td>0.124133</td>
+                        <td>0.132311</td>
+                        <td>0.543534</td>
+                    </tr>
+                    <tr>
+                        <td>2014-05-01 4:00</td>
+                        <td>0.987978</td>
+                        <td>0.543534</td>
+                        <td>0.867867</td>
+                    </tr>
+                    <tr>
+                        <td>2014-05-01 5:00</td>
+                        <td>0.123432</td>
+                        <td>0.321543</td>
+                        <td>0.645645</td>
+                    </tr>
+                    <tr>
+                        <td>2014-05-01 6:00</td>
+                        <td>0.757531</td>
+                        <td>0.414752</td>
+                        <td>0.555123</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="div-actions">
+                <button type="button" class="btn btn-primary" id="btnSubmit">Register</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="uploadMask" style="display:none;"></div>

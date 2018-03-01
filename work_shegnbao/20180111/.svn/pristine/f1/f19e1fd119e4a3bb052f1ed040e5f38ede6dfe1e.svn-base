@@ -1,0 +1,28 @@
+/* 删除模态框样式 */
+.modal-container {
+  width: 30%;
+  height: 200px;
+  border-radius: 4px;
+}
+
+.modal-container h3 {
+  padding-left: 40px;
+  line-height: 80px;
+}
+
+.button-container {
+  margin-right: 20px;
+  margin-top: 50px;
+}
+.modal-button {
+  width: 46px;
+  height: 26px;
+  margin: 8px 14px 0 0;
+  border-radius: 4px;
+  font-size: 12px;
+  float: right;
+  border: none;
+}
+.button-container > button {
+  border-radius: 4px;
+}

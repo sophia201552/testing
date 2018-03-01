@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Algorithm Developer</title>
+    <link rel="shortcut icon" type="image/ico" href="/static/images/favicon.ico">
+    <script>
+        var _hmt = _hmt || [];
+    </script>
+    {% assets "strategy_css_bundle" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+</head>
+
+<body class="strategy-builder">
+    <div id="mainframe"></div>
+
+    <div style="display:none;">
+        <image id="imgIcon" src="/static/app/Strategy/themes/default/images/icon.png" />
+        <image id="imgIcon2" src="/static/app/Strategy/themes/default/images/iconSelect.png" />
+    </div>
+    <span id="textWidth" style="white-space: nowrap;display: none;"></span>
+    <input type="hidden" value="{{token if token else ''}}" id="hidToken">
+    <script type="text/javascript">
+        AppConfig = window.AppConfig || {};
+        AppConfig.projectId = {{projId if projId else 'null'}};
+    </script>
+    {% assets "strategy_thirdparty_lib_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% assets "strategy_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+</body>
+
+</html>

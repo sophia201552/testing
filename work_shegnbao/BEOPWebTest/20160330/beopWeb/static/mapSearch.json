@@ -1,0 +1,356 @@
+{
+  "success": true,
+  "data": {
+    "type": {
+      "equipment": {
+        "orderNumber": "订单号",
+        "unitSerialNumber": "机组序列号",
+        "projectBelongs": "所属项目",
+        "runningTimeHours": "运行小时",
+        "startRunningTime": "开始运营时间",
+        "equipmentModel": "设备型号",
+        "projectId": "所属项目ID",
+        "electricityPower": "发电功率",
+        "radiationPower": "发热功率",
+        "loadFactor": "负载率",
+        "powerFactor": "功率因数",
+        "status": {
+          "1": "正常"
+        }
+      },
+      "components": {
+        "name": "零件(配件)名称",
+        "componentsType": "零件(配件)类型",
+        "suitableType": "适用机型",
+        "replaceTimes": "更换次数",
+        "inventory": "库存",
+        "dutyPerson": "责任人",
+        "lastChangedTime": "下次维修时间",
+        "frequency": "频率"
+      }
+    },
+    "result": {
+      "equipment": [
+        {
+          "orderNumber": "PL4000",
+          "unitSerialNumber": "PL4000/1",
+          "projectBelongs": "AA制药厂",
+          "runningTimeHours": "6275",
+          "startRunningTime": "2010-1-20",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 95,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4000",
+          "unitSerialNumber": "PL4000/2",
+          "projectBelongs": "AA制药厂",
+          "runningTimeHours": "6000",
+          "startRunningTime": "2010-1-20",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 95,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4000",
+          "unitSerialNumber": "PL4000/3",
+          "projectBelongs": "AA制药厂",
+          "runningTimeHours": "6000",
+          "startRunningTime": "2010-1-20",
+          "equipmentModel": "GXE160/S-6NG",
+          "projectID": 95,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4001",
+          "unitSerialNumber": "PL4001/1",
+          "projectBelongs": "BB造纸厂",
+          "runningTimeHours": "5780",
+          "startRunningTime": "2010-4-21",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 93,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4003",
+          "unitSerialNumber": "PL4001/3",
+          "projectBelongs": "BB造纸厂",
+          "runningTimeHours": "5280",
+          "startRunningTime": "2010-5-21",
+          "equipmentModel": "GXE160/S-6NG",
+          "projectID": 93,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4004",
+          "unitSerialNumber": "PL4001/4",
+          "projectBelongs": "BB造纸厂",
+          "runningTimeHours": "5380",
+          "startRunningTime": "2010-9-03",
+          "equipmentModel": "GXE160/S-6NG",
+          "projectID": 93,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4001",
+          "unitSerialNumber": "PL4001/1",
+          "projectBelongs": "BB造纸厂",
+          "runningTimeHours": "5780",
+          "startRunningTime": "2010-4-21",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 93,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4002",
+          "unitSerialNumber": "PL4002/1",
+          "projectBelongs": "CC汽车厂",
+          "runningTimeHours": "5285",
+          "startRunningTime": "2010-6-22",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 88,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4003",
+          "unitSerialNumber": "PL4003/1",
+          "projectBelongs": "CC汽车厂",
+          "runningTimeHours": "5285",
+          "startRunningTime": "2010-6-25",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 88,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4023",
+          "unitSerialNumber": "PL4023/1",
+          "projectBelongs": "CC汽车厂",
+          "runningTimeHours": "3285",
+          "startRunningTime": "2010-12-25",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 88,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4023",
+          "unitSerialNumber": "PL4023/1",
+          "projectBelongs": "CC汽车厂",
+          "runningTimeHours": "3285",
+          "startRunningTime": "2010-12-25",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 88,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4023",
+          "unitSerialNumber": "PL4023/1",
+          "projectBelongs": "CC汽车厂",
+          "runningTimeHours": "3285",
+          "startRunningTime": "2010-12-25",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 88,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4002",
+          "unitSerialNumber": "PL4002/2",
+          "projectBelongs": "CC汽车厂",
+          "runningTimeHours": "5185",
+          "startRunningTime": "2010-6-22",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 88,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4003",
+          "unitSerialNumber": "PL4003/1",
+          "projectBelongs": "DD化工厂",
+          "runningTimeHours": "4790",
+          "startRunningTime": "2011-1-23",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 89,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4003",
+          "unitSerialNumber": "PL4003/2",
+          "projectBelongs": "DD化工厂",
+          "runningTimeHours": "4790",
+          "startRunningTime": "2011-1-23",
+          "equipmentModel": "GXE160/S-6NG",
+          "projectID": 89,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4013",
+          "unitSerialNumber": "PL4013/2",
+          "projectBelongs": "DD化工厂",
+          "runningTimeHours": "4590",
+          "startRunningTime": "2011-2-23",
+          "equipmentModel": "GXE160/S-6NG",
+          "projectID": 89,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4013",
+          "unitSerialNumber": "PL4013/2",
+          "projectBelongs": "DD化工厂",
+          "runningTimeHours": "4590",
+          "startRunningTime": "2011-2-23",
+          "equipmentModel": "GXE160/S-6NG",
+          "projectID": 89,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4013",
+          "unitSerialNumber": "PL4013/2",
+          "projectBelongs": "DD化工厂",
+          "runningTimeHours": "4590",
+          "startRunningTime": "2011-2-23",
+          "equipmentModel": "GXE160/S-6NG",
+          "projectID": 89,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4003",
+          "unitSerialNumber": "PL4003/1",
+          "projectBelongs": "DD化工厂",
+          "runningTimeHours": "4790",
+          "startRunningTime": "2011-1-23",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 89,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        },
+        {
+          "orderNumber": "PL4004",
+          "unitSerialNumber": "PL4004/1",
+          "projectBelongs": "DD化工厂",
+          "runningTimeHours": "4190",
+          "startRunningTime": "2011-1-28",
+          "equipmentModel": "CG200/S-NG",
+          "projectID": 89,
+          "electricityPower": 500,
+          "radiationPower": 1200,
+          "loadFactor": 85,
+          "powerFactor": 9,
+          "status": 1
+        }
+      ],
+      "components": [
+        {
+          "name": "火花塞",
+          "componentsType": "",
+          "suitableType": [
+            "cg100",
+            "cg200"
+          ],
+          "replaceTimes": 1,
+          "inventory": 10,
+          "dutyPerson": {},
+          "lastChangedTime": "",
+          "frequency": 25
+        },
+        {
+          "name": "打火机",
+          "suitableType": [
+            "cg100",
+            "cg300"
+          ],
+          "replaceTimes": 1,
+          "inventory": 10,
+          "dutyPerson": {},
+          "lastChangedTime": "",
+          "frequency": 30
+        },
+        {
+          "name": "液化器",
+          "suitableType": [
+            "cg100",
+            "cg400"
+          ],
+          "replaceTimes": 1,
+          "inventory": 10,
+          "dutyPerson": {},
+          "lastChangedTime": "",
+          "frequency": 28
+        }
+      ]
+    }
+  }
+}

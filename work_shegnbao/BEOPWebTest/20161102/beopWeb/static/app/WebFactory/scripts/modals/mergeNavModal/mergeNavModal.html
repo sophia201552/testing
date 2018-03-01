@@ -1,0 +1,90 @@
+﻿<style>
+    #mergeNavModalWrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+    }
+    #mergeNavModalWrap .ztree {
+        float: left;
+        width: 100%;
+        height: calc(100% - 30px);
+        overflow-y: auto;
+    }
+    #mergeNavModalWrap .ztree li a {
+        color: #666;
+    }
+
+    .paneTree {
+        float: left;
+        width: 33%;
+        height: 100%;
+    }
+
+    .paneTree .divTreeTitle {
+        float: left;
+        width: 100%;
+        height: 30px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    #panePublishForm > * {
+        float: left;
+        color: #444;
+        font-size: 14px;
+
+    }
+
+    #panePublishForm > label {
+        padding: 6px 6px 0 0;
+    }
+</style>
+
+<div class="modal fade" id="mergeNavModalWrap">
+
+    <div class="modal-dialog" style="width: 100%; height: 100%; margin: 0;">
+        <div class="modal-content" style="height: 100%; margin: 0;">
+            <div class="modal-header">
+                <button id="addCancel" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Merge Page ( <span id="titleResultType" style="font-weight: bold; color: #555;"></span> )</h4>
+            </div>
+            <div class="modal-body" style="height: calc(100% - 114px);">
+                <div class="paneTree">
+                    <div class="divTreeTitle">Online navigation</div>
+                    <div style="height:30px;float: left;">
+                        <input type="checkBox" class="allSelect" id="onlineAllSelect"><label for="onlineAllSelect">全选</label>
+                        <input type="checkBox" class="reverseSelect"  id="onlineReverseSelect"><label for="onlineReverseSelect">反选</label> 
+                    </div>
+                    <div id="treeNavOnline" class="ztree treeNavOnline">New Project</div>
+                </div>
+                <div class="paneTree">
+                    <div class="divTreeTitle">Factory navigation</div>
+                    <div style="height:30px;float: left;">
+                        <input type="checkBox" class="allSelect"  id="factoryAllSelect" checked><label for="factoryAllSelect">全选</label>
+                        <input type="checkBox" class="reverseSelect"  id="factoryReverseSelect"><label for="factoryReverseSelect">反选</label>  
+                    </div>
+                    <div id="treeNavOffline" class="ztree treeNavOffline">New Project</div>
+                </div>
+                <div class="paneTree">
+                    <div class="divTreeTitle">Merging result</div>
+                    <div id="treeNavResult" class="ztree "></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="panePublishForm" style="height: 100%; width: calc(100% - 200px); float: left; display: none;">
+                    <label for="inputPwd" style="width: 100px;">Password: </label>
+                    <!-- 防止 chrome 自动填充 -->
+                    <input style="display:none;" />
+                    <input id="inputPwd" type="password" class="form-control" style="width: 100px;" required/>
+                    <label for="inputMsg" style="width: 100px;">Log: </label>
+                    <input id="inputMsg" type="text" class="form-control" style="width: calc(100% - 350px);" required/>
+                </div>
+                <button type="button" class="btn btn-primary" id="btnSubmit">OK</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="addClose" i18n="admin.welcom.importProjectModal.CANCEL"></button>
+            </div>
+        </div>
+    </div>
+</div> 

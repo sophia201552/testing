@@ -1,0 +1,52 @@
+<style>
+    .divPath {
+        padding: 1.2rem 1rem;
+        border-bottom: 1px solid #ccc;
+    }
+    .divPath>label {
+        display: inline-block;
+        font-size: 1.6rem;
+    }
+    .spStatus{
+        padding: 0.2rem 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+    }
+    .divPlan:first-of-type {
+        margin-top: 1rem;
+        border-top: 1px solid #ccc;
+    }
+    .divPlan {
+        border-bottom: 1px solid #ccc;
+        padding: 0.5rem;
+    }
+    .divPlan.complete{
+        color:#337ab7
+    }
+    .divPlan.disabled{
+        color: black;
+        background-color: #f7f7f7;
+    }
+    .spStatusIcon {
+        padding-left: 3rem;
+    }
+    .misTypeTitle{
+        font-size: 1.8rem;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        display: inline-block;
+        width: 100%;
+        color: white;
+    }
+    #ctnPathRecList{
+        display: none;
+    }
+    #ctnPathRecList.active{
+        display: block;
+    }
+</style>
+<div id="ctnPathRecList">
+    <span class="misTypeTitle" style="background-color: #337ab7;">当前推荐任务：</span>
+</div>
+<div id="ctnPathList">
+    <span class="misTypeTitle" style="background-color: #91bef0;">其余时间任务：</span>
+</div>

@@ -1,0 +1,84 @@
+<style>
+#echartPlane{
+	width:100%;
+	height:calc(100% - 75px);
+    padding:25px 10px 0px 15px;
+    overflow-y:auto;
+    overflow-x:hidden; 
+}
+#TimeQuery{
+	width:100%;
+	height:75px;
+	border-bottom: 1px solid #414B5E;
+	padding-left:85px;
+	padding-top:20px;
+}
+#TimeQuery .divTimeRange{
+    display: block;
+    float:left;
+    width: 500px;
+    vertical-align: bottom;
+}
+#TimeQuery .timeText{
+	display:block;
+	float:left;
+	width:14%;
+	height:34px;
+	text-align: center;
+	line-height:34px;
+}
+#TimeQuery button{
+    display:block;
+    float:left;
+    margin-left:5px;
+    width:60px;
+    background: #18A525;
+    border-radius: 4px;
+}
+.echartPlane{
+	width:100%;
+	height:100%;
+}
+#echartPlane::-webkit-scrollbar{
+	width:8px;
+}
+#echartPlane::-webkit-scrollbar-track {
+	border:1px gray solid;
+	border-radius:10px;
+	-webkit-box-shadow:0 0 6px gray inset;
+	} 
+
+#echartPlane::-webkit-scrollbar-thumb {
+	border-radius:10px;
+	background-color:rgba(155,155,155,0.2);
+	-webkit-box-shadow:0 0 6px gray inset;
+	} 
+#echartPlane::-webkit-scrollbar-corner {
+		  background-color: black;
+	} 
+.timeStyle{
+	display:block;
+	float:left;
+	width:29%;
+	height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #C0C2C7;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+</style>
+<div id="TimeQuery">
+    <div class="divTimeRange">
+        <div class="input-group divIptGrpDateTime" style="width: 100%;">
+        	<span class="timeText">start time</span>
+            <input class="timeStyle" id="iptTimeStart" size="16" type="text" data-format="yyyy-mm-dd hh:ii" datetimepicker="">
+            <span class="timeText" i18n="modalConfig.option.TIP_RANGE_TO">end time</span>
+            <input class="timeStyle" id="iptTimeEnd" size="16" type="text" data-format="yyyy-mm-dd hh:ii" value="2016-10-25 00:00" datetimepicker="">
+            <button class="btn btn-primary">OK</button>
+        </div>
+    </div>
+</div>

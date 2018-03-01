@@ -1,0 +1,50 @@
+{
+    "_id": '586f2659ae440a47b42732bd',
+    "name": 'HVAC',
+    "type": 'group',
+    "children": [{
+        "_id": '586f2659ae440a47b42732be',
+        "name": 'AHU',
+        "type": 'group',
+        "prt": '586f2659ae440a47b42732bd',
+        "children": [{
+            "_id": '586f2659ae440a47b42732bg',
+            "prt": '586f2659ae440a47b42732be',
+            "name": 'VAV_A_11_01',
+            "type": 'group',
+            "children": [{
+                "_id": '586f2659ae440a47b42732bl',
+                "prt": '586f2659ae440a47b42732bg',
+                "name": 'VAV（变风量）诊断策略'
+            }, {
+                "_id": '586f2659ae440a47b42732bm',
+                "prt": '586f2659ae440a47b42732bg',
+                "name": '房间温度预处理策略'
+            }, {
+                "_id": '586f2659ae440a47b42732bn',
+                "prt": '586f2659ae440a47b42732bg',
+                "name": '房间温度自动设定策略'
+            }]
+        }, {
+            "_id": '586f2659ae440a47b42732bh',
+            "prt": '586f2659ae440a47b42732be',
+            "name": 'VAV_A_11_02',
+            "type": 'group'
+        }, {
+            "_id": '586f2659ae440a47b42732bi',
+            "prt": '586f2659ae440a47b42732be',
+            "name": 'VAV_A_11_03',
+            "type": 'group'
+        }, {
+            "_id": '586f2659ae440a47b42732bk',
+            "prt": '586f2659ae440a47b42732be',
+            "name": 'VAV_A_11_04',
+            "type": 'group'
+        }]
+    }, {
+        "_id": '586f2659ae440a47b42732bo',
+        "prt": '586f2659ae440a47b42732bf',
+        "type": 'group',
+        "name": 'Chilter'
+    }]
+}

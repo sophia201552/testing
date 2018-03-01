@@ -1,0 +1,92 @@
+<!-- 报表连页显示 -->
+<div style="width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden;" id="beopReport">
+    <link rel="stylesheet" href="/static/projectReports/report.css"/>
+    <div class="step-container col-xs-12 col-md-8 col-md-offset-2 report-block scrollbar">
+        <div class="step-play-container">
+            <div class="step-play-list">
+                {% for reportItem in report %}
+                    <div class="step-item-container" id="report-unit-{{ loop.index }}">
+                        <h1 class="page-header">{{ reportItem.name }}</h1>
+                        {% set outer_loop = loop %}
+                        {% for unit in reportItem.units %}
+                            <div class="report-unit" id="report-unit-{{ outer_loop.index }}-{{ loop.index }}">
+                                <div class = "well well-sm">
+                                    <h3>{{ unit.unitName }}</h3>
+                                </div>
+                                {% for subUnit in unit.subUnits %}
+                                    <div class="summary">{{ subUnit.summary|safe }}</div>
+                                    {% if subUnit.Options.x != "" %}
+                                        <div class="canvas-container" style="height: 550px;">
+											<div class="chart-param" style="display: none;">{{ subUnit }}</div>
+										</div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!--右边导航-->
+    <nav class="reportNavigation hidden-print hidden-xs hidden-sm">
+        <div class="input-append date form_datetime">
+            <span class="add-on"><i class="icon-calendar"></i></span>
+            <input type="text" value="" readonly>
+        </div>
+        <ul class="nav dn">
+            {% for reportItem in report %}
+                <li class="reportChapter">
+                    <a class="ellipsis" title="{{ reportItem.name }}" href="#report-unit-{{ loop.index }}">{{ reportItem.name }}</a>
+                    <ul class="nav">
+                        {% set outer_loop = loop %}
+                        {% for unit in reportItem.units %}
+                            <li class="reportChapterItem">
+                                <a class="ellipsis" report-unit="report-unit-{{ outer_loop.index }}-{{ loop.index }}"
+                                   title="{{ unit.unitName }}" href="#report-unit-{{ outer_loop.index }}-{{ loop.index }}">{{ unit.unitName }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</div>
+<!--table的模版-->
+<script type="template" id="tmpl_table">
+    <h5 style="width: 100%;text-align: center;"><!=title!></h5>
+    <table class="table table-bordered table-striped report-table">
+        <thead>
+        <tr>
+            <th><!=firstColumn!></th>
+            <!for(var m = 0, length = x.length; m < length; m++){!>
+            <th><!=x[m]!></th>
+            <!}!>
+        </tr>
+        </thead>
+        <!try{yOrder}catch(e){var yOrder = null;}!>
+        <!if(yOrder){!>
+            <!for(var i = 0; i < yOrder.length; i++){!>
+                <!for(var j = 0; j < y.length; j++){!>
+                    <!if(yOrder[i] === y[j].name){!>
+                        <tr>
+                            <td><!=y[j].name!></td>
+                            <!for(var k = 0; k < y[j].value.length; k++){!>
+                                <td><!=y[j].value[k]!></td>
+                            <!}!>
+                        </tr>
+                    <!}!>
+                <!}!>
+            <!}!>
+        <!}else{!>
+            <!for(var i = 0; i < y.length; i++){!>
+                <tr>
+                    <td><!=y[i].name!></td>
+                    <!for(var j = 0; j < y[i].value.length; j++){!>
+                    <td><!=y[i].value[j]!></td>
+                    <!}!>
+                </tr>
+            <!}!>
+        <!}!>
+    </table>
+</script>

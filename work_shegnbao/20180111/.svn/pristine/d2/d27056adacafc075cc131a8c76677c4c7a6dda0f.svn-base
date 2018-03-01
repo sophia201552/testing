@@ -1,0 +1,5 @@
+export default {
+  OK: '确定',
+  CANCEL: '取消',
+  CONFIRM_DELETE: '您确定要删除该策略吗?'
+};

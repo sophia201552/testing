@@ -1,0 +1,663 @@
+<style>
+    .header-set {
+        color: white;
+        display: table;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(img/productTerminal/bigbg.jpg) no-repeat center center scroll;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        overflow: hidden;
+    }
+
+    .head-sub-title {
+        font-size: 2.5rem;
+    }
+
+    .isMobile .img-align-center {
+        margin: auto
+    }
+
+    .isMobile .header-sub-title {
+        /* width: 350px;
+        font-size: 3rem;*/
+    }
+    /*    .isMobile .fac-text {
+        font-size: 4.5rem;
+    }
+    .isMobile .iot-text-content {
+        font-size: 2.5rem;
+    }*/
+
+    .isMobile .row-vertical {
+        left: 50%;
+        transform: translate(-45%, -50%);
+    }
+
+    .blue-blur-border {
+        position: relative;
+        width: 80%;
+        height: 40%;
+        width: 100%;
+        border: 10px solid rgba(111, 183, 255, 0.3);
+    }
+
+    .border-line {
+        position: absolute;
+        right: 0.5rem;
+        bottom: -0.6rem;
+        height: 0.4rem;
+        width: 7rem;
+        background: #6fb7ff;
+    }
+
+    .destination {
+        padding: 80px 0;
+    }
+
+    .iot-img-group {
+        position: relative;
+    }
+
+    .pre-data {
+        background: #f3f3f3;
+        padding: 5rem 0 7rem 0;
+    }
+
+    .pos-img2 {
+        position: absolute;
+        width: 30%;
+        right: 10%;
+        bottom: 0;
+    }
+
+    .pre-sub-title {
+        color: #6fb7ff;
+    }
+
+    .services {
+        background: #f3f3f3;
+    }
+
+    .fac-text {
+        color: #ffffff;
+        font-size: 3.1rem!important;
+        white-space: nowrap;
+        padding-left: 0!important;
+        text-align: left;
+        padding-left: 1.5rem;
+    }
+
+
+    .hor-line {
+        width: 50px;
+        height: 0.3rem;
+        background: #6fb7ff;
+    }
+
+    .section-heading {
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+
+    .section-text-content {
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+    }
+
+    .iot-text-content {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    /*    .col-lg-6,
+    .col-md-6,
+    .col-sm-6,
+    .col-xs-12 {
+        padding: 2rem 2.5rem;
+    }*/
+
+    .align-right {
+        display: flex;
+        /* text-align: right; */
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    .operation-title {
+        color: #333;
+    }
+
+    .operation-text-content {
+        padding-top: 2.5rem;
+        height: 28rem;
+    }
+
+    .operation-text-content p:first-child {
+        margin-bottom: 0.25rem;
+        color: #6fb7ff
+    }
+
+    .operation-text-content p {
+        padding: 0.25rem 0;
+        font-size: 1.6rem;
+        color: #666;
+    }
+
+    .container-table {
+        height: 100%;
+    }
+
+    .row-vertical {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+    }
+
+    .pad-space {
+        padding: 0 2rem;
+    }
+
+    .mar-top {
+        margin-top: 3rem;
+    }
+
+    .kpi-management {
+        display: table;
+        position: relative;
+        padding: 100px 0;
+        width: 100%;
+        color: #fff;
+        background-color: #233346;
+        background-image: url(img/productTerminal/bg.png);
+        background-size: 60%;
+        background-repeat: no-repeat;
+    }
+
+    .ciricle-text {
+        margin-top: 2rem;
+        display: flex;
+        color: #6fb7ff;
+        font-size: 1.3rem;
+    }
+
+    .sub-title {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem
+    }
+
+    .circle {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        margin-top: 2px;
+    }
+
+    .circle span {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .circle1 {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #6fb7ff;
+        opacity: 1;
+        z-index: 3;
+    }
+
+    .circle2 {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #6fb7ff;
+        opacity: 0.4;
+        z-index: 2;
+    }
+
+    .circle3 {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #6fb7ff;
+        opacity: 0.2;
+        z-index: 1;
+    }
+
+    .ciricle-text {
+        margin-top: 2rem;
+        display: flex;
+        color: #6fb7ff;
+        font-size: 1.3rem;
+    }
+
+    .tag-sub-title {
+        color: #6fb7ff;
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .maintain {
+        padding: 80px 0;
+    }
+
+    .maintain-sub-title {
+        font-size: 1.3rem;
+        padding: 1.3rem 0;
+        color: #6fb7ff;
+    }
+
+    .maintain-sub-text {
+        color: #666666;
+    }
+
+    .tag-section-heading {
+        padding: 2.5rem 3rem 3rem 0;
+        font-size: 1.1rem;
+    }
+
+    .tran-half {
+        margin-top: 8rem;
+    }
+
+    .maintain-title {
+        padding: 0 0 2.5rem 2rem;
+    }
+
+    @media (max-width: 1366px) {
+        .operation-text-content {
+            height: 21rem;
+        }
+        .ciricle-text,
+        .tag-sub-title {
+            font-size: 1.5rem
+        }
+        .section-text-content {
+            font-size: 1.2rem;
+        }
+        .tag-section-heading {
+            font-size: 1.3rem;
+        }
+        .iot-text-content {
+            font-size: 1.3rem;
+        }
+        .maintain-sub-text {
+            font-size: 1.3rem;
+        }
+        .maintain-sub-title {
+            font-size: 1.5rem;
+        }
+    }
+
+    .title-wrapper {
+        height: 10rem;
+        width: 35rem;
+        position: relative;
+    }
+
+    .spec-border {
+        position: absolute;
+        height: 8rem;
+        width: 20rem;
+        top: -2.5rem;
+        left: 5rem;
+        border-right: 0.4rem solid rgba(111, 183, 255, 0.8);
+        border-top: 0.4rem solid rgba(111, 183, 255, 0.8);
+        border-bottom: 0.4rem solid rgba(111, 183, 255, 0.8);
+    }
+
+    .vertical-line {
+        position: absolute;
+        width: 0.4rem;
+        height: 2rem;
+        top: -2.5rem;
+        left: 5rem;
+        background: rgba(111, 183, 255, 0.8);
+        border: none;
+    }
+
+    .learn-more {
+        width: 8rem;
+        height: 3rem;
+        border: 0.11rem solid rgba(111, 183, 255, 0.8);
+        border-radius: 4px;
+        background: none;
+        margin-top: 2rem;
+        color: #6fb7ff;
+    }
+
+    .mask-border {
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        height: 100%;
+        width: 80%;
+        border: 6px solid #6fb7ff;
+        z-index: -1;
+    }
+
+    .gray-line {
+        display: inline-block;
+        width: 8rem;
+        height: 2px;
+        background-color: #dbd9d9;
+        margin-left: 30px;
+        margin-bottom: 8px;
+    }
+
+    .head-big-text {
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .productTitle {
+        color: #fff;
+        text-align: left;
+        line-height: 1.6rem;
+        white-space: nowrap;
+        padding-right: 2rem;
+    }
+
+    .font-color6 {
+        color: #666;
+    }
+
+    @media (max-width: 768px) {
+        .productTitle {
+            white-space: initial;
+        }
+    }
+
+    canvas {
+        display: block;
+        vertical-align: bottom;
+        display: block;
+        vertical-align: bottom;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    #particles-js {}
+</style>
+
+<body>
+    <!--    <header id="top" class="header-set">
+        <div class="container container-table">
+            <div class="row row-vertical">
+                <div class="col-lg-10 col-md-10 col-lg-offset-1" data-scroll-reveal="enter bottom">
+                    <div class="title-wrapper">
+                        <h1 class="fac-text" i18n="product.TERMINAL.TITLE">终端用户</h1>
+                        <div class="spec-border"></div>
+                        <div class="vertical-line"></div>
+                        <div class="vertical-line" style="bottom:4.5rem;top: initial;"></div>
+                    </div>
+                    <h4 class="header-sub-title" i18n="product.TERMINAL.CONTENT">在平台用户上我们提供个性化的原创内容，让用户享有更好、便捷的内容和服务。 </h4>
+
+                </div>
+
+            </div>
+        </div>
+    </header>-->
+    <header class="header-set" id="particles-js">
+        <div class="text-vertical-center">
+            <div class="col-lg-3 col-md-1 col-sm-1"></div>
+            <div class="head-big-text col-lg-9 col-md-9 col-sm-9 col-lg-offset-1" data-scroll-reveal="enter bottom">
+                <div class="title-wrapper">
+                    <h1 class="fac-text" i18n="product.TERMINAL.TITLE">终端用户</h1>
+                    <div class="spec-border"></div>
+                    <div class="vertical-line"></div>
+                    <div class="vertical-line" style="top:3.5rem;"></div>
+                </div>
+                <h4 class="productTitle" i18n="product.TERMINAL.CONTENT">在平台用户上我们提供个性化的原创内容，让用户享有更好、便捷的内容和服务。 </h4>
+            </div>
+
+        </div>
+    </header>
+    <section id="elec" class="pre-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-lg-push-8 col-md-push-8 col-sm-4 col-sm-push-8 col-xs-12" data-scroll-reveal="enter bottom">
+                    <img class="img-responsive" style="width:80%;" src="img/productTerminal/1.jpg" alt="">
+                    <div class="mask-border"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-lg-pull-4 col-md-pull-4 col-sm-6 col-sm-pull-4 col-xs-12 tran-half" data-scroll-reveal="enter bottom">
+                    <p class="hor-line"></p>
+                    <h3 class="sub-title"><span i18n="product.TERMINAL.ELE_TITLE">电子工作流</span><span class="gray-line"></span></h3>
+                    <p class="iot-text-content font-color6" i18n="product.TERMINAL.ELE_CONTENT">实现从实时数据到行动的自动化和信息化，追踪故障从发生到处 理的过程、状态及效率，实现全过程的可视化。
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="kpi-management" class="kpi-management">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 " data-scroll-reveal="enter bottom">
+                    <img class="img-responsive img-align-center" style="width:75%;" src="img/productTerminal/2.png" alt="">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 iot-img-group tran-half" data-scroll-reveal="enter bottom">
+                    <p class="hor-line"></p>
+                    <h3 class="sub-title"><span i18n="product.TERMINAL.KPI_TITLE"></span><span class="gray-line" style=" background:#6fb7ff;opacity:0.2;"></span></h3>
+                    <p class="iot-text-content" i18n="product.TERMINAL.KPI_CONTENT">通过定制用户运行的KPI管理目标，显示实时关键运行指标趋势，自动完成未达标原因 分析，并且自动形成KPI报表。
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--自动化报表-->
+    <section id="auto-report" class="pre-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-lg-push-8 col-md-push-8 col-sm-4 col-sm-push-8 col-xs-12" data-scroll-reveal="enter bottom">
+                    <img class="img-responsive" style="width:80%;" src="img/productTerminal/3.jpg" alt="">
+                    <div class="mask-border"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-lg-pull-4 col-md-pull-4 col-sm-6 col-sm-pull-4 col-xs-12 tran-half" data-scroll-reveal="enter bottom">
+                    <p class="hor-line"></p>
+                    <h3 class="sub-title"><span i18n="product.TERMINAL.AUTO_REPORT">自动化报表 </span><span class="gray-line"></span></h3>
+                    <p class="iot-text-content font-color6" i18n="product.TERMINAL.AUTO_REPORT_TEXT">报表可根据用户需求定制，自动生成，支持多种格式下载，极大的降低了人工制表的时间投入。
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--能源管理-->
+    <section id="energy-management" class="kpi-management">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 " data-scroll-reveal="enter bottom">
+                    <img class="img-responsive img-align-center" style="width:75%;" src="img/productTerminal/4.png" alt="">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 iot-img-group tran-half" data-scroll-reveal="enter bottom">
+                    <p class="hor-line"></p>
+                    <h3 class="sub-title"><span i18n="product.TERMINAL.ENERGY_TITLE">能源管理 </span><span class="gray-line" style=" background:#6fb7ff;opacity:0.2;"></span></h3>
+                    <p class="iot-text-content" i18n="product.TERMINAL.ENERGY_TEXT">提供完整的在线能源管理服务，包括能效审计，能效对标与诊断，测量与验证，投资回报，自动报表等一些列能源的管理云服务，极大提高了能源管理业务的工作效率。
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--自动故障诊断-->
+    <section id="auto-diagnosise" class="pre-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-lg-push-8 col-md-push-8 col-sm-4 col-sm-push-8 col-xs-12" data-scroll-reveal="enter bottom">
+                    <img class="img-responsive" style="width:80%;" src="img/productTerminal/5.jpg" alt="">
+                    <div class="mask-border"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-lg-pull-4 col-md-pull-4 col-sm-6 col-sm-pull-4 col-xs-12 tran-half" data-scroll-reveal="enter bottom">
+                    <p class="hor-line"></p>
+                    <h3 class="sub-title"><span i18n="product.TERMINAL.AUTO_DIA_TITLE">自动故障诊断 </span> <span class="gray-line"></span></h3>
+                    <p class="iot-text-content font-color6" i18n="product.TERMINAL.AUTO_DIA_TEXT">通过对历史和实时数据的分析，BeOP可实时探测到设备与系统存 在的故障和不合理的运行，并诊断其原因。
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--自动能效分析-->
+    <section id="auto-analy" class="kpi-management">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 " data-scroll-reveal="enter bottom">
+                    <img class="img-responsive img-align-center" style="width:75%;" src="img/productTerminal/6.png" alt="">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 iot-img-group tran-half" data-scroll-reveal="enter bottom">
+                    <p class="hor-line"></p>
+                    <h3 class="sub-title"><span i18n="product.TERMINAL.AUTO_ANALY_TITLE">自动能效分析 </span><span class="gray-line" style=" background:#6fb7ff;opacity:0.2;"></span></h3>
+                    <p class="iot-text-content" i18n="product.TERMINAL.AUTO_ANALY_TEXT">基于强大的行业算法库，自动生成能效异常的原因分析及报表。不仅可以为单提客户分 析能效，更可以为集团客户进行多项目分析比较。
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src='./js/particles.min.js'></script>
+    <script src='./js/stats.min.js'></script>
+    <script>
+        $('.solutionBtn').off('click').on('click', function () {
+            var hash = location.hash;
+            location.hash = $(this).attr('href');
+        });
+
+        /* ---- particles.js config ---- */
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 40,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.2,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+
+        /* ---- stats.js config ---- */
+
+        var count_particles, stats, update;
+        stats = new Stats;
+        stats.setMode(0);
+        stats.domElement.style.position = 'absolute';
+        stats.domElement.style.left = '0px';
+        stats.domElement.style.top = '0px';
+    </script>

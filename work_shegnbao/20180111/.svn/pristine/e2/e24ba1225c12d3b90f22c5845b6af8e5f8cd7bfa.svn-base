@@ -1,0 +1,386 @@
+<style>
+    #energyHistory{
+        width:100%;
+        height:100%;
+    }
+    #energyHistory .energyNav{
+        width:100%;
+        height:52px;
+        line-height: 52px;
+        background:#fff;
+        box-shadow: 1px 0 10px #ccc;
+    }
+    #energyHistory .echartsOnQuery{
+        width:calc(100% - 20px);
+        height:calc(100% - 82px);
+        border-top: 1px solid #eee;
+        position:relative;
+        margin:10px;
+        background:#fff;
+        box-shadow: 0 0 10px #ccc;
+    }
+    #energyHistory .energyEcharts{
+        width:100%;
+        height:100%
+    }
+    .energyPover{
+        float:left;
+        width:200px;
+    }
+    #powerHistoryBtn,#energyHistoryBtn{
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+        padding:0;
+        position:relative;
+    }
+    .timeSelsect{
+        border:none;
+        background:transparent;
+        cursor: pointer;
+        outline: none;
+    }
+    .timeFormatBox .input-group{
+        position:relative;
+    }
+    .yearHistoryBtn,.monthHistoryBtn,.dayHistoryBtn{
+        display: inline-block;
+        width: auto;
+        cursor: pointer;
+        border: none;
+        border: 1px solid #DFE2E5;
+        box-shadow: none;
+        margin-right: 5px;
+    }
+    #historyQuery{
+        float: right;
+        margin-top: 10px;
+        border: 1px solid #DFE2E5;
+        box-shadow: none;
+        padding: 6px 12px;
+        background: none;
+        position: relative;
+        color: white;
+        background: #4c8be4;
+    }
+    #historyQuery::before{
+        content: '';
+        position: absolute;
+        height: 44px;
+        width: 1px;
+        right: -8px;
+        top: -5px;
+        background: #ccc;
+        display:none;
+    }
+    .energyPover .selected{
+        color:#006adb;
+        background:#f1f3f7;
+    }
+    .energyPover .selected::before{
+        content: '';
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        left: 0;
+        top: 0;
+        background: #4c8be4;
+    }
+    .onQuery{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        height: 300px;
+        overflow: auto;
+        margin-top: 50px;
+        width: 360px;
+        padding: 0;
+        border-radius: 3px;
+    }
+    .conYoYActive .onQuery{
+        width: 480px;
+    }
+    .addOnqueryTime{
+        position: absolute;
+        cursor: pointer;
+        z-index: 2;
+        width: 360px;
+        transition:all 0.3s;
+     }
+     .conYoYActive .addOnqueryTime{
+         display: inline-block;
+         width:120px;
+     }
+     .conYoYActive .listTotal:hover {
+        background: #4c8be4;
+     }
+    /*.addOnqueryTime:hover{
+        color:#4c8be4;
+    }*/
+    .conYoYActive .onTimeGroup{
+        padding-left: 10px;
+        width: calc(100% - 190px);     
+    }
+    .onTimeGroup{
+        width: calc(100% - 30px);
+        display: inline-block;
+    }    
+    .removeOnTime{
+        cursor:pointer;
+        top:-10px;
+        font-size: 12px;
+        transform: scale(0.8);
+    }
+    .onTimeGroup .form-control{
+        border-radius:3px;
+    }
+    .queryTimeBox{
+        height:calc(100% - 64px);
+        overflow-y: auto;
+    }
+    .shortcutBtnBox {
+        width:300px;
+        float:right;
+    }
+    .conYoYActive .timeFormatBox{
+        width:480px;
+    }
+    .timeFormatBox{
+        float:right;
+        width:480px;
+    }
+    #iptStartTime,.onTimeGroup .onTimeStart{        
+        padding:6px 0;
+        cursor: pointer;
+        height:34px;
+        line-height:34px;
+        margin-right:10px;
+        width:110px;
+        text-align:center;
+    }
+    #iptStartTime,#endTime {
+        width:180px;
+    }
+    .onTimeGroup .onTimeStart{
+        text-align:left;
+    }
+    .addTo,.addonOn{
+        margin-right:10px;
+    }
+    #endTime,.onTimeGroup .onTimeEnd{
+        padding:6px 0;
+        cursor: pointer;
+        height:34px;
+        line-height:34px;
+        width:110px;
+        text-align:center;
+    }
+    #iptStartTime,.addTo,#endTime,.addCycle,.cycleBox,.onTimeGroup .onTimeStart,.onTimeGroup .onTimeEnd,.onTimeGroup .input-group-addon{
+        border:none;
+        box-shadow:none;
+        outline: none;
+        background:transparent;
+    }
+    .totalNumBox {
+        display: none;
+        width: 160px;
+        height: 20px;
+        line-height: 20px;
+        border-right: 2px solid #C0C2C5;          
+    }
+    .onTimeBox:hover .totalNumBox{
+        border-color:#62A7F1;
+    }
+    .conYoYActive .totalNumBox{
+        display: block;
+    }
+    .totalConsumption {
+        font-size:14px;
+        padding:0 3px;        
+    }
+    .addCycle{
+        display:none;
+    }
+    .cycleBox{
+        position: absolute;
+        width: 100px;
+        right: 0;
+        top: 11px;
+        z-index: 2;
+        text-align:center;
+    }
+    .splitLine{
+        width:1px;
+        background: #ccc;
+        height: 84%;
+        margin: 8% 0 1% 0;
+        float:left;
+    }
+    .energyPover>div:hover{
+        color:#4c8be4
+    }
+    .shortcutBtnBox >div:hover{
+        color:#4c8be4;
+    }
+    #historyQuery:hover{
+        /*color:#4c8be4;*/
+    }
+    .avtive{
+        color:#006adb;
+    }
+    .slideBtn{
+        float:right;
+        margin-right:20px;
+        font-size:15px;
+        transition:all 0.3s
+    }
+    .onTimeBox {
+        margin: 0 5px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #BFC6D2;
+    }
+    .onTimeBox:hover{
+        color:#fff;
+        background:#006adb;
+    }
+    .onTimeBox:last-child {
+        border-bottom: none;
+    }
+    .addOnqueryTimeBtn{
+        padding-left: 10px;
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        position:relative;
+    }
+    .addOnqueryTimeBtn::after{
+        font-family: "iconfont" !important;
+        font-size: 16px;
+        line-height: 42px;
+        margin-left: 5px;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /*content: "\e663";*/
+        position: absolute;
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    .wrapQuery{
+        position: absolute;
+        cursor: pointer;
+        z-index: 2;
+        width: 360px;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid #DFE2E5;
+        background: rgba(245, 245, 246, 0.9);
+        border-radius: 3px;
+        left: 5px;
+        top: 5px;
+        transition: all 0.3s;
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+    
+    .wrapQuery:hover{
+        width:360px;   
+    }
+    .wrapQuery.conYoYActive{
+        width:480px;        
+    }
+    .wrapQuery:hover .addOnqueryTime{
+   
+        background:#4c8be4;/*#1e232b     #c6d5f3*/
+        color: #fff;
+    }
+    .wrapQuery.conYoYActive .addOnqueryTime{
+        width:480px;
+    }
+/*    .wrapQuery .slideBtn:hover{
+        transform:rotate(180deg)
+    }*/
+    .wrapQuery .slideBtn.rot{
+        transform:rotate(180deg)
+    }
+    .wrapQuery:hover .addOnqueryTimeBtn:after{
+        opacity:1;
+    }
+    .addOnqueryTime {
+        padding-left: 5px;
+    }
+    .listTotal{
+        display: none;
+        
+    }
+    .listTotalNum{
+        font-size:14px;
+        padding:0 10px 0 3px;
+    }
+    .conYoYActive .listTotal {
+        display: inline-block;
+        width:160px;
+        color:#00C9DD;
+        height: 20px;
+        line-height: 20px;
+        border-right: 2px solid #62A7F1;  
+    }
+    .wrapQuery.conYoYActive:hover .listTotal{
+        color:#fff;
+    }
+    .wrapQuery.conYoYActive .slideBtn{
+        margin-right:20px;
+    }
+    @media screen and (max-width:1367px){
+
+    }
+</style>
+<div id="energyHistory">
+    <div class="energyNav clearfix">
+        <div class="energyPover clearfix">
+            <div id="energyHistoryBtn" data-type="energy" class="selected col-xs-6">能耗</div>
+            <div id="powerHistoryBtn" data-type="power" class="col-xs-6">功率</div>
+        </div>
+        <div class="shortcutBtnBox col-xs-4">
+            <div class="form-control yearHistoryBtn" i18n="energyManagement.history.THIS_YEAR">本年</div>
+            <div class="form-control monthHistoryBtn" i18n="energyManagement.history.THIS_MONTH">本月</div>
+            <div class="form-control dayHistoryBtn" i18n="energyManagement.history.THIS_DAY">本日</div>
+        </div>
+        <div id="historyQuery" class="btn btn-default avtive" i18n="energyManagement.overview.QUERY">查询</div>
+        <div class="timeFormatBox col-xs-5">
+            <div class="input-group">
+                <input type="text" id="iptStartTime">
+                <span class="addTo">To</span>
+                <input type="text" id="endTime">
+                <!--<span class="input-group-addon">间隔</span>
+                <div class="form-control">
+                    <select class="timeSelsect intervalHistory">
+                        <option value="h1">时</option>
+                        <option value="d1">天</option>
+                    </select>
+                </div>-->
+                <span class="input-group-addon addCycle" i18n="energyManagement.history.CYCLE">周期</span>
+            </div>
+
+            <div class="form-control cycleBox">
+                <select class="timeSelsect periodHistory">
+                    <option value="m5" i18n="energyManagement.history.FIVE_MIMUTES">5分</option>
+                    <option value="h1" i18n="energyManagement.history.HOUR">时</option>
+                    <option value="d1" selected i18n="energyManagement.history.DAY">日</option>
+                    <option value="M1" i18n="energyManagement.history.MONTH">月</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="echartsOnQuery clearfix">
+        <div class="wrapQuery">
+            <div class="addOnqueryTime clearfix"><div class="listTotal"><span class="" i18n="energyManagement.history.TOTAL">total</span><span class="listTotalNum"></span></div><span class="addOnqueryTimeBtn" i18n="energyManagement.history.ADD_YOY">增加同比</span><span class="iconfont icon-unfold slideBtn" style="margin-left:5px;"></span></div><!--packup-->
+            <div class="onQuery col-xs-5 gray-scrollbar">
+                <div class="queryTimeBox gray-scrollbar"></div>
+            </div>
+        </div>
+        <div class="energyEcharts"></div>
+    </div>
+</div>

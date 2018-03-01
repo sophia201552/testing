@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Logistics</title>
+    {% assets "logistics_css_bundle" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+    <link rel="stylesheet" type="text/css" href="/static/content/index-black.css">
+    <link rel="stylesheet" type="text/css" href="/static/fonts/beopIconFont/iconfont.css">
+    <style>
+        body {
+            background-color: rgb(25, 34, 52) !important;
+            padding: 10px;
+            font-family: 'Microsoft YaHei', 'Helvetica';
+            color: #eee !important;
+            font-size: 10px !important;
+        }
+        
+        table {
+            font-size: 14px !important;
+        }
+        
+        td {
+            background-color: transparent;
+        }
+        
+        html,
+        body,
+        #divMap {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .MFrghList {
+            position: absolute;
+            z-index: 0;
+        }
+        
+        .echartContainer {
+            width: 100%;
+            height: 260px;
+        }
+        /*全景地图按钮*/
+        
+        .BMap_noprint.anchorTR {
+            left: 10px !important;
+            zoom: 0.9;
+        }
+        /* 去掉百度地图logo*/
+        
+        .anchorBL {
+            display: none;
+        }
+        
+        .echartDisplay {
+            float: left;
+            margin: 10px 0px 5px 13px;
+            height: 100%;
+            width: calc(50% - 15px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9)!important;
+            box-shadow: 0px 0px 5px #ccc;
+        }
+        
+        .BMap_mask+div>div {
+            background: transparent!important;
+        }
+        
+        .amap-marker {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .amap-marker .iconfont {
+            text-shadow: 4px 3px 3px #333;
+        }
+        
+        .warehouse .iconfont {
+            line-height: 30px;
+        }
+        
+        .warehouse p,
+        .transporter p {
+            margin: 0px;
+            width: 200px;
+            text-align: center;
+        }
+        
+        .markerWarehouse {
+            color: #ff6a00;
+        }
+        
+        .markerTransporter {
+            color: red;
+        }
+        
+        .dataContainer {
+            display: none;
+            position: absolute;
+            top: -35px;
+            left: -10px;
+            white-space: nowrap;
+        }
+        
+        .pointName {
+            margin: 0 0 0 5px;
+        }
+        
+        .btnQueryTrack {
+            color: #cecece;
+            margin-left: 5px;
+            padding: 0px 3px !important;
+            background: rgba(239, 189, 0, 0.64);
+            border: 1px solid rgb(239, 189, 0);
+        }
+        
+        .dataContainer ul,
+        .dataContainer li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .dataContainer ul {
+            padding: 15px;
+        }
+        
+        .dataDetail {
+            display: block;
+            width: 250px;
+            min-height: 100px;
+            color: #221231;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 0px 5px #ddd;
+        }
+        
+        .dataDetail li {
+            min-width: 100px;
+            height: 30px;
+            line-height: 30px;
+        }
+        
+        .btnTool {
+            margin-bottom: 5px;
+        }
+        
+        .dataDetail li span {
+            padding-left: 5px;
+        }
+        
+        .active .warehouse,
+        .active .transporter,
+        .active .dataContainer {
+            color: rgb(239, 189, 0);
+        }
+        
+        .active .dataContainer {
+            display: block;
+        }
+        
+        .markerDot {
+            text-shadow: 0px 5px 5px #292828;
+        }
+        
+        .btnHisReview {
+            display: block;
+            margin: auto;
+            width: 100px;
+            height: 30px;
+            background: #2e72df;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+        }
+        
+        .animated .transporter,
+        .animated .warehouse {
+            animation: flash 2s infinite linear;
+        }
+        
+        @keyframes flash {
+            from,
+            50%,
+            to {
+                opacity: 1;
+            }
+            25%,
+            75% {
+                opacity: 0.4;
+            }
+        }
+        
+        #divMap.fadeInUp {
+            height: calc(100% - 275px);
+            transition: all 0.8s linear;
+        }
+        
+        #closeWarehouseDetail,
+        #closeTranDetail,
+        .toolHisReview {
+            position: absolute;
+        }
+        
+        #closeWarehouseDetail {
+            top: 2px;
+            right: 4px;
+            font-size: 14px;
+            width: 15px;
+            height: 15px;
+            color: #ccc;
+            cursor: pointer;
+            z-index: 151;
+        }
+        
+        #closeTranDetail {
+            top: 10px;
+            right: 5px;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            color: #aba6a6;
+            line-height: 26px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        
+        .toolHisReview {
+            top: 10px;
+            right: 0;
+            height: 30px;
+            width: 100px;
+            z-index: 200;
+        }
+        
+        .toolHisReview div {
+            float: left;
+            margin-right: 2px;
+            width: 30px;
+            height: 30px;
+            border: 1px solid rgb(12, 12, 12);
+            border-radius: 5px;
+            font-size: 25px;
+            text-align: center;
+            line-height: 26px;
+            cursor: pointer;
+        }
+        
+        .toolHisReview div span {
+            font-size: 20px;
+            color: #0e0e0e;
+        }
+        
+        .cycleMarker {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: red;
+        }
+        
+        #btnRemoveIframe {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 10px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        #conAdmin {
+            position: absolute;
+            top: 20px;
+            left: 70px;
+            width: 49px;
+            height: 51px;
+            color:rgb(86, 86, 86);
+            background: #eee;
+            text-align: center;
+            border: 1px solid #ccc;
+            zoom: 0.9;
+            box-shadow: rgba(0, 0, 0, 0.298039) 0px 0px 3px;
+        }
+        #conAdmin .iconfont {
+            font-size: 21px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="divNavContainer" style="position:relative;float:left; height: 100%; width: 300px;">
+    </div>
+    <div id="divScreenContainer" style="float:left; height: 100%; width: calc(100% - 300px);position:relative;">
+        <div id="divMap"></div>
+        <div class="echartContainer" id="echartContainer"></div>
+        <div class="MFrghDetail"></div>
+    </div>
+
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=VNzhKjCMIdfr8FrHP4ys2jha"></script>
+    {% assets "logistics_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+</body>
+
+</html>

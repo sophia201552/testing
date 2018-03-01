@@ -1,0 +1,30 @@
+{
+  "id": 0,
+  "attrInputs": [
+    {
+      "name": {
+        "zh": "层数",
+        "en": "Number"
+      },
+      "unit": "",
+      "description": {
+        "zh": "编号",
+        "en": "Number"
+      },
+      "tag": {
+        "zh": "编号",
+        "en": "Number"
+      }
+    }
+  ],
+  "tag": {
+    "zh": "楼层",
+    "en": "Floor"
+  },
+  "type": "equipment",
+  "name": {
+    "zh": "楼层",
+    "en": "Floor"
+  },
+  "attrPoints": []
+}

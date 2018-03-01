@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Factory</title>
+    <link rel="shortcut icon" type="image/ico" href="/static/images/favicon.ico">
+    <script>
+        var _hmt = _hmt || [];
+    </script>
+    {% assets "web_factory_css_bundle" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+    {% assets "code_editor_css_bundle" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+</head>
+<body>
+    <div id="mainframe" style="display: none;">
+        <div class="frame">
+            <!-- start of header -->
+            <nav id="header" class="navbar navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header" id="divLogoWrap">
+                        <a class="navbar-brand" href="javascript:;" id="lkProjectLogo">WebFactory</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <!-- 右侧菜单 -->
+                        <ul class="nav navbar-nav navbar-right" style="margin-left: 100px;">
+                            <li class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle" id="userAccount" data-toggle="dropdown" role="button"></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:;" id="lkSwitchProject" i18n="mainPanel.ueserOpera.CHANGE_PROJECT"><!--切换项目--></a></li>
+                                    <li><a href="javascript:;" id="lkRelease" i18n="mainPanel.ueserOpera.RELEASE_PROJECT"><!--发布项目--></a></li>
+                                    <li><a href="javascript:;" id="lkLogOut" i18n="mainPanel.ueserOpera.CANCELLATION"><!--注销--></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" id="pageNav" style="display: none;">
+                            <li>
+                                <a href="javascript:;" id="lkName"></a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-left" id="pageTopTools" style="display: none;">
+                            <li>
+                                <a href="javascript:;" id="lkSync" data-toggle="tooltip" data-placement="bottom" title="Ctrl+S">
+                                    <span class="glyphicon glyphicon-saved"></span>
+                                    <span class="" i18n="mainPanel.navbar.SAVE_PAGE"><!--保存--></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="javascript:;" id="lkPreview" data-toggle="tooltip" data-placement="bottom" >
+                                    <span class="glyphicon glyphicon-new-window"></span>
+                                    <span class="" i18n="mainPanel.navbar.PREVIEW_PAGE"><!--预览--></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" id="lkQuit" data-toggle="tooltip" data-placement="bottom" title="Ctrl+S">
+                                    <span class="glyphicon glyphicon-saved"></span>
+                                    <span class="">退出编辑</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="javascript:;" id="lkUndo" data-toggle="tooltip" data-placement="bottom" title="Ctrl+Z">
+                                    <span class="glyphicon glyphicon-arrow-left"></span>
+                                    <span class="" i18n="mainPanel.navbar.UNDO"><!--撤销--></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="javascript:;" id="lkRedo" data-toggle="tooltip" data-placement="bottom" title="Ctrl+Y">
+                                    <span class="glyphicon glyphicon-arrow-right"></span>
+                                    <span class="" i18n="mainPanel.navbar.REDO"><!--重做--></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" id="lkReleasePage" data-toggle="tooltip" data-placement="bottom">
+                                    <span class="glyphicon glyphicon-export"></span>
+                                    <span class="" i18n="mainPanel.navbar.RELEASE_PAGE"><!--发布页面--></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- end of header -->
+            <div id="panelframe">
+                <div id="panels"></div>
+            </div>
+            <div id="materialPanel" caption="素材库"></div>
+        </div>
+    </div>
+
+    <!--欢迎页面-->
+    <div id="modalframe" style="display: none;">
+        <div class="frame-header">
+            <div class="frame-title">Web Factory</div>
+        </div>
+        <div class="frame-container">
+            <div class="col-sm-2" style="height:100%;">
+                <div class="containerStart">
+                    <div class="startText" i18n="admin.welcom.start.TITLE"><!--开始--></div>
+                    <div class="createPro divHover" id="addPro" i18n="admin.welcom.start.NEW_PROJECT"><!--新建项目...--></div>
+                    <div class="importPro divHover" id="btnImportProject" i18n="admin.welcom.start.IMPORT_PROJECT"><!--导入项目...--></div>
+                </div>
+                <div class="containerPro">
+                    <div class="projectSelf" i18n="admin.welcom.yourProj.TITLE"><!--您的项目--></div>
+                    <div id="projectList" class="gray-scrollbar"></div>
+                </div>
+            </div>
+            <div class="col-sm-10" id="tplContainer">
+
+            </div>
+        </div>
+    </div>
+
+    <!--登录页面-->
+    <div id="modalLogin">
+        <div id="factoryLogin" class="factoryLogin">
+            <div class="titleBrand">Web Factory</div>
+            <div class="loginBox">
+                <input type="text" id="userName" autofocus required i18n="placeholder=admin.login.PANE_PLACEHOLDER_ACCOUNT" />
+                <div class="passWord">
+                    <input type="password" id="userPass" i18n="placeholder=admin.login.PANE_PLACEHOLDER_PWD" /><input type="checkbox" id="rememberPass" checked />
+                    <label i18n="admin.login.PANE_CHECKBOX_REMEMBER"></label>
+                </div>
+                <button id="login" i18n="admin.login.PANE_TITLE"></button>
+            </div>
+        </div>
+        <div id="divFactoryLanguage" class="divLanguage">
+            <a>
+                <span i18n="admin.navIndex.LINK_LANGUAGE"></span>
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" id="selectLanguage">
+                <li><a value="zh"><span class="vMiddle">中文</span></a></li>
+                <li><a value="en"><span class="vMiddle">English</span></a></li>
+            </ul>
+        </div>
+    </div>
+        
+    <input type="hidden" value="{{token if token else ''}}" id="hidToken">
+    
+    {% assets "web_factory_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+    {% assets "web_factory_dashboard_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+    {% assets "web_factory_report_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+    {% assets "code_editor_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+</body>
+</html>

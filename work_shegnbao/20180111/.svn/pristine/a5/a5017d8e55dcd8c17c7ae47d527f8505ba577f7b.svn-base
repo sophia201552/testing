@@ -1,0 +1,45 @@
+{
+  "tag": {
+    "en": "elevator",
+    "zh": "升降电梯"
+  },
+  "name": {
+    "en": "elevator",
+    "zh": "升降电梯"
+  },
+  "type": "equipment",
+  "attrPoints": [],
+  "id": 0,
+  "attrInputs": [
+    {
+      "description": {
+        "en": "Number",
+        "zh": "编号"
+      },
+      "unit": "",
+      "name": {
+        "en": "Number",
+        "zh": "编号"
+      },
+      "tag": {
+        "en": "Number",
+        "zh": "编号"
+      }
+    },
+    {
+      "description": {
+        "en": "Power",
+        "zh": "功率"
+      },
+      "unit": "",
+      "name": {
+        "en": "Power",
+        "zh": "功率"
+      },
+      "tag": {
+        "en": "Power",
+        "zh": "功率"
+      }
+    }
+  ]
+}

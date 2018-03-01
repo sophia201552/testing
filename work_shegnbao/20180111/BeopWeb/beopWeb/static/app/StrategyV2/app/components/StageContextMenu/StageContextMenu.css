@@ -1,0 +1,89 @@
+.stageContextMenuWrap {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 1000001;
+}
+.stageContextMenu {
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  width: 200px;
+  min-height: 32px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 1px 1px #888,1px 0 1px #ccc;
+}
+.stageContextMenu .item {
+  background: transparent;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 32px;
+  line-height: 20px;
+  padding: 4px 16px;
+  position: relative;
+  border: 1px solid transparent;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: left;
+}
+.stageContextMenu .item:focus{
+  outline: none;
+}
+.stageContextMenu .item.disabled{
+  color: #a6a6a6;
+  cursor: default;
+}
+.stageContextMenu .item.parent{
+  padding-right: 20px; 
+}
+.stageContextMenu .item.parent .icon{
+  line-height: 30px;
+  height: 30px;
+  position: absolute;
+  top: 0;
+  right: 8px;
+  color: #666;
+}
+.stageContextMenu .item.hover:not(.disabled),
+.stageContextMenu .item:not(.disabled):hover{
+  background-color: #dadada;
+  color: #000000;
+}
+.stageContextMenu .header {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0078d7;
+  background: none;
+  border: none;
+  height: 32px;
+  line-height: 32px;
+  cursor: default;
+  padding: 0px 16px;
+
+  user-select: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0px;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 1px;
+}
+.stageContextMenu .separator {
+  height: 1px;
+  background-color: #eaeaea;
+}

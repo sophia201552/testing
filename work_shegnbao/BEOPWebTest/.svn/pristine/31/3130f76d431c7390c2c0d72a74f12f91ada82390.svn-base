@@ -1,0 +1,376 @@
+<style>
+    #dataSouceConfigure{background-color: #f5f5f5;}
+    #dataSouceConfigure>li.active>a, #dataSouceConfigure>li.active>a:hover, #dataSouceConfigure>li.active>a:focus {
+        border-bottom-color: rgba(255,255,255,0.7);
+        background-color: rgba(255,255,255,0.7);
+    }
+    .config-footer{
+        padding: 8px 15px 15px 15px;
+        text-align: right;
+        border-top: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    #formulaConfig sup{
+        top: 0;
+    }
+    #formulaConfig {
+        margin-left: 5%;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+    #formulaInput {
+        margin-top: 20px;
+    }
+    #formulaDesc {
+        margin-left: 5%;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: 400;
+    }
+    #inputFormulaDesc {
+        width: 358px;
+        height: 24px;
+    }
+    .mathquill-editable{
+        min-width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .mathquill-editable:hover{
+        box-shadow: #68b4df 0 0 3px 2px;
+    }
+    #varConfig {
+        padding: 15px;
+        margin: 0 5% 0 5%;
+        height: 70%;
+        overflow-y: auto;
+    }
+    #varConfig .row{
+        margin-left: -40px;
+        padding-left: 25px;
+    }
+    #varConfig .row:hover {
+        background-color: cornsilk;
+    }
+    #varConfig .row:first-child:hover {
+        background-color: transparent;
+    }
+    #varConfig .row:hover .varRemove{
+        display: block;
+    }
+    #varConfig .col-xs-12 {
+        border-top:1px solid #eee;
+        position: relative;
+    }
+    #varConfig .varTableTitle{
+        border-top:1px solid transparent;
+    }
+    .formulaVarName{
+        font-size: 16px;
+        margin: 10px 0 10px 0;
+        cursor: pointer;
+    }
+    .formulaVarName input{
+        width: 50%;
+        display: none;
+        position: absolute;
+        top: -3px;
+    }
+    .varRow>.col-xs-4,.varTableTitle>.col-xs-4{
+        padding-left: 0;
+    }
+    .varTableTitle h4{
+        display:inline-block;
+    }
+    .varTableTitle span{
+        color: #777;
+        position: relative;
+        left: 20px;
+        top: 3px;
+        font-size:20px;
+        cursor: pointer;
+    }
+    .varTableTitle span:hover {
+        color: #428bca;
+    }
+    #varConfig .col-xs-6{
+        border-left:1px solid #eee;
+        min-height: 40px;
+    }
+    .varRemove{
+        color: #777;
+        width: 5%;
+        font-size: 18px;
+        position: absolute;
+        top: 10px;
+        left: -20px;
+        display: none;
+        cursor: pointer;
+    }
+    .varRemove:hover {
+        color: darkred;
+    }
+    .formulaVarValue {
+        cursor: pointer;
+        font-size: 16px;
+        padding: 4px 0 0 3%;
+        border-bottom: 1px solid #aaa;
+        margin-bottom: 4px;
+        margin-top: 4px;
+        border-bottom-left-radius: 5px;
+    }
+    .formulaVarValue>span {
+        cursor: pointer;
+    }
+    .formulaVarValue:hover .glyphicon-remove-sign{
+            display: inline;
+            border-radius: 5px;
+    }
+    .formulaVarValue span:first-child{
+        display: inline-block;
+        height: 15px;
+        border-left: 1px solid #ddd;
+        border-bottom-left-radius: 5px;
+        position: absolute;
+        left: 0;
+        bottom: 2px;
+    }
+        .formulaVarValue:hover span:first-child{
+            display: none;
+        }
+        .formulaVarValue div{
+            position: relative;
+            bottom: -5px;
+            display: inline-block;
+            overflow:hidden;
+            width: 4em;
+            text-overflow: ellipsis;
+        }
+        .formulaVarValue:hover{
+            background-color:#60aedb;
+            border-radius: 5px;
+            border-color: transparent;
+        }
+        .formulaVarValue .glyphicon-remove-sign{
+            color: orangered;
+            display: none;
+            font-size: 20px;
+            position: absolute;
+            top: 6px;
+            right: 8px;
+        }
+        .formulaVarValue .glyphicon-remove-sign:hover {
+            color:red;
+        }
+    .varSel {
+        background-color: cornsilk;
+    }
+    /*@keyframes varLackLight {
+        0% {background-color:rgba(255,0,0,1)}
+        100% {background-color:transparent}
+    }
+    @-moz-keyframes varLackLight {
+        0% {background-color:rgba(255,0,0,1)}
+        100% {background-color:transparent}
+    }
+    @-webkit-keyframes varLackLight {
+        0% {background-color:rgba(255,0,0,1)}
+        100% {background-color:transparent}
+    }
+    @-o-keyframes varLackLight {
+        0% {background-color:rgba(255,0,0,1)}
+        100% {background-color:transparent}
+    }*/
+    .varLack{
+        color: darkorange;
+        position: relative;
+        left: 20px;
+        /*animation:varLackLight 1.5s 1;
+        -webkit-animation:varLackLight 1.5s 1;
+        -moz-animation:varLackLight 1.5s 1;
+        -o-animation:varLackLight 1.5s 1;*/
+    }
+    #formulaCustomName sup{
+        top: 0;
+    }
+    #formulaCustomName {
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 16px;
+        width: 135px;
+        text-align: center;
+        cursor: pointer;
+    }
+    #inputCustName {
+        width:120px;
+        height:24px;
+        display: block;
+        position: absolute;
+    }
+
+</style>
+<ul class="nav nav-tabs" role="tablist" id="dataSouceConfigure">
+  <li role="presentation" class="active"><a href="#divDataSourceAddPage" aria-controls="home" role="tab" data-toggle="tab">Original</a></li>
+  <li role="presentation"><a href="#divDataSourceFormula" aria-controls="profile" role="tab" data-toggle="tab">Formula</a></li>
+</ul>
+<div class="tab-content" style="height:100%;">
+    <div role="tabpanel" class=" tab-pane active" id="divDataSourceAddPage" style="height:100%;">
+
+        <div style="padding: 15px;height: calc(100% - 120px);">
+
+            <div class="form-horizontal">
+                <div class="form-group" id="dsConfig" style="display: block">
+                    <label class="col-sm-1 control-label" i18n="dataSource.CUSTOM_NAME" style="min-width: 100px;"></label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="inputCustomName" placeholder="Customize name">
+                    </div>
+
+                    <label class="col-sm-1 control-label" i18n="dataSource.POINT_DESC" style="min-width: 100px;"></label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="inputPointDesc" placeholder="Notes">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" i18n="dataSource.PROJECT_NAME" style="min-width: 100px;"></label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="dataSrcPrjName">
+                            <option></option>
+                        </select>
+                    </div>
+
+                    <div id="dsPtName" style="display: block">
+                        <label class="col-sm-1 control-label" i18n="dataSource.POINT_NAME" style="min-width: 100px;"></label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="inputPointName" placeholder="Point name" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" i18n="dataSource.PROJECT_SEARCH" style="min-width: 100px;"></label>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="dataSrcPtSearch" placeholder="搜索" disabled>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" id="btnSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="divPointsHead">
+                <nav>
+                    <ul class="pagination">
+                        <li id="li_nav_all"><a id="nav_all">All</a></li>
+                        <li><a id="nav_a">a</a></li>
+                        <li><a id="nav_b">b</a></li>
+                        <li><a id="nav_c">c</a></li>
+                        <li><a id="nav_d">d</a></li>
+                        <li><a id="nav_e">e</a></li>
+                        <li><a id="nav_f">f</a></li>
+                        <li><a id="nav_g">g</a></li>
+                        <li><a id="nav_h">h</a></li>
+                        <li><a id="nav_i">i</a></li>
+                        <li><a id="nav_j">j</a></li>
+                        <li><a id="nav_k">k</a></li>
+                        <li><a id="nav_l">l</a></li>
+                        <li><a id="nav_m">m</a></li>
+                        <li><a id="nav_n">n</a></li>
+                        <li><a id="nav_o">o</a></li>
+                        <li><a id="nav_p">p</a></li>
+                        <li><a id="nav_q">q</a></li>
+                        <li><a id="nav_r">r</a></li>
+                        <li><a id="nav_s">s</a></li>
+                        <li><a id="nav_t">t</a></li>
+                        <li><a id="nav_u">u</a></li>
+                        <li><a id="nav_v">v</a></li>
+                        <li><a id="nav_w">w</a></li>
+                        <li><a id="nav_x">x</a></li>
+                        <li><a id="nav_y">y</a></li>
+                        <li><a id="nav_z">z</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="indexContent" id="divPointsBody" style="height: calc(100% - 144px); padding:0 30px 0 30px;">
+                <table class="table table-condensed table-hover" id="tableWatch" style="cursor:pointer; overflow-y:auto">
+                    <thead>
+                        <tr>
+                            <th i18n="dataSource.NUMBER"></th>
+                            <th i18n="dataSource.POINT_NAME"></th>
+                            <th i18n="dataSource.POINT_DESC"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+        <div class="config-footer" style="height: 54px; position: absolute; width: 100%; bottom: 10px; right: 10px; z-index: 9;">
+            <button type="button" class="btn btn-primary" id = "btnAddDataSrc" i18n="dataSource.SURE"></button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" id = "btnCancelDataSrc" i18n="dataSource.CANCEL"></button>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="divDataSourceFormula" style="height: 100%">
+        <div style="padding: 15px;height: calc(100% - 120px);">
+            <div id="formulaConfig">
+                <span i18n="dataSource.FORMULA_TIPS"></span>
+                <div id="formulaInput">
+                    <div class="form-group" id="formulaCustomName">
+                        <input type="text" class="form-control" id="inputCustName" placeholder="Custom name">
+                        Formula
+                    </div>
+                    =
+                    <span id="editable-math" class="mathquill-editable"></span>
+                </div>
+            </div>
+            <div class="form-group" id="formulaDesc">
+                <label i18n="dataSource.POINT_DESC"></label>
+                <input type="text" class="form-control" id="inputFormulaDesc" placeholder="Description">
+            </div>
+            <div id="varConfig">
+                <div class="row">
+                    <div class="col-xs-12 varTableTitle">
+                        <div class="col-xs-4"><h4 i18n="dataSource.FORMULA_VARIABLE_NAME"></h4><span class="glyphicon glyphicon-plus-sign grow" aria-hidden="true"></span></div>
+                        <div class="col-xs-6"><h4 i18n="dataSource.FORMULA_VARIABLE_VALUE"></h4></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 varRow">
+                        <div class="varRemove glyphicon glyphicon-remove-sign grow" aria-hidden="true"></div>
+                        <div class="col-xs-4 formulaVarName"><input type="text" name="inputVarValue" class="varNameChange">a</div>
+                        <div class="col-xs-6 divVarValue"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 varRow">
+                        <div class="varRemove glyphicon glyphicon-remove-sign grow" aria-hidden="true"></div>
+                        <div class="col-xs-4 formulaVarName"><input type="text" name="inputVarValue" class="varNameChange">b</div>
+                        <div class="col-xs-6 divVarValue"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 varRow">
+                        <div class="varRemove glyphicon glyphicon-remove-sign grow" aria-hidden="true"></div>
+                        <div class="col-xs-4 formulaVarName"><input type="text" name="inputVarValue" class="varNameChange">c</div>
+                        <div class="col-xs-6 divVarValue"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="config-footer" style="height: 54px;">
+            <button type="button" class="btn btn-primary" id = "btnFormulaDataAdd" i18n="dataSource.SURE"></button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" id = "btnCancelFormulaData" i18n="dataSource.CANCEL"></button>
+        </div>
+    </div>
+</div>
+
+
+
+
+

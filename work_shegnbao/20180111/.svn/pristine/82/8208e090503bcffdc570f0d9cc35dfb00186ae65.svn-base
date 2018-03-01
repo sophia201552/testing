@@ -1,0 +1,48 @@
+/* Text Toggle */
+.toggle-root .toggle-text.toggle-text {
+  position: absolute;
+  color: #fff;
+  line-height: 19px;
+  margin: 0;
+}
+.toggle-root.toggle-root {
+  margin-bottom: 0;
+}
+.toggle-root .toggle-pill {
+  width: 56px;
+}
+.toggle-root .toggle-thumb {
+  width: 28px;
+  height: 16px;
+  border-radius: 4px;
+  background-color: #fff;
+  top: 0;
+}
+.toggle-root .toggle-thumb {
+  left: 0;
+}
+.toggle-root .toggle-text {
+  left: 30px;
+}
+.toggle-root:global(.is-checked) .toggle-thumb {
+  left: 26px;
+}
+.toggle-root:global(.is-checked) .toggle-text {
+  left: 4px;
+}
+
+.toggle-pill:global(.ms-Toggle-background) {
+  background-color: #fc8080;
+  border-color: #fc8080;
+  height: 18px;
+  border-radius: 4px;
+}
+.toggle-pill:global(.ms-Toggle-background:hover) {
+  border-color: #fc8080;
+}
+.toggle-root:global(.is-checked) .toggle-pill:global(.ms-Toggle-background),
+.toggle-root:global(.is-checked) .toggle-pill:global(.ms-Toggle-background:hover),
+.toggle-root:global(.is-checked) .toggle-pill:global(.ms-Toggle-background[data-simulate-hover]){
+  background-color: #5c8bf5;
+  border-color: #5c8bf5;
+}

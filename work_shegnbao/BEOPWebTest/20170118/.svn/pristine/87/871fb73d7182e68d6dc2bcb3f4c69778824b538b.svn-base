@@ -1,0 +1,825 @@
+:focus {
+    outline: none;
+}
+
+.strategy-builder .panel-titlebar-button-close {
+    display: none;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    -ms-content-zooming: none;
+    font-family: 'Microsoft YaHei', 'Helvetica';
+    font-size: 12px;
+    /*line-height: 20px;*/
+    vertical-align: middle;
+    overflow: hidden;
+    color: #c7c7c7;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.scrollable {
+    overflow: auto;
+}
+
+.scrollable-y {
+    overflow-y: auto;
+}
+
+.scrollable-x {
+    overflow-x: auto;
+}
+
+.gray-scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.gray-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+.gray-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#mainframe .btn:hover {
+    background-color: #383f42;
+    color: #f6a405;
+    border-color: #66696b!important;
+}
+
+#mainframe .btn:disabled:hover {
+    color: #cadee5;
+    background-color: transparent;
+    border: 1px solid #4b5255;
+}
+
+
+/* main frame */
+
+#mainframe {
+    width: 100%;
+    height: 100%;
+    font: 12px 'Microsoft YaHei', sans-serif;
+    color: #c7c7c7;
+}
+
+#mainframe .cursorDefault {
+    cursor: default;
+}
+
+
+/*自定义hover样式end*/
+
+#equipTreeCtn {
+    padding: 0;
+}
+
+#equipTree .equipTreeBox {
+    width: 100%;
+    height: 100%;
+}
+
+#equipTree .equipTreeContent {
+    height: calc(100% - 100px);
+    overflow: auto;
+}
+
+#equipTree .divSearch,
+#strategyTable .navSearch {
+    position: relative;
+    font-weight: normal;
+    font-size: 14px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+#equipTree .iptSearch,
+#strategyTable .iptSearch {
+    background: #313639;
+    border: 1px solid #495252;
+    border-radius: 14px;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+    color: #cadee5;
+    height: 28px;
+    font-size: 12px;
+    padding-left: 26px;
+}
+
+#equipTree .spanSearch,
+#strategyTable .spanSearch {
+    top: 15px;
+    left: 10px;
+    color: #98a3aa;
+    position: absolute;
+    z-index: 5;
+    border: none;
+}
+#equipTree .ztree li a span{
+    margin-left: 5px;
+}
+#equipTree .ztree li span.noline_close,#equipTree .ztree li span.noline_open {
+    background-image: url(/static/app/Strategy/themes/default/images/ztreeIcon.png);
+    background-position: -18px 0;
+    background-size: 300% 200%;
+}
+#equipTree .ztree li a.curSelectedNode span.noline_close,#equipTree .ztree li a.curSelectedNode span.noline_open {
+    background-image: url(/static/app/Strategy/themes/default/images/ztreeIcon.png);
+    background-position: -18px -18px;
+    background-size: 300% 200%;
+}
+#equipTree .ztree li span.noline_docu{
+    background-image: url(/static/app/Strategy/themes/default/images/ztreeIcon.png);
+    background-position: -36px 0;
+    background-size: 300% 200%;
+}
+#equipTree .ztree li a.curSelectedNode span.noline_docu{
+    background-image: url(/static/app/Strategy/themes/default/images/ztreeIcon.png);
+    background-position: -36px -18px;
+    background-size: 300% 200%;
+}
+#equipTree .ztree li.level0 {
+    background: #2d3235;
+    border-top: 1px solid #495252;
+}
+
+#equipTree .ztree li.level0 a.level0 {
+    border-bottom: 1px solid #495252;
+    position: relative;
+    top: 1px;
+    padding: 15px;
+    height: auto;
+    background: #34393c;
+}
+
+#equipTree .ztree li.level0 ul.level0 {
+    position: relative;
+    top: 1px;
+}
+
+#equipTree .ztree li.level0 a.curSelectedNode {
+    background: none;
+    padding-top: 1px;
+    border: none;
+    height: 30px;
+    color: #f5a607!important;
+}
+
+#equipTree .ztree li.level0 a.level0.curSelectedNode {
+    border-bottom: 1px solid #495252;
+    padding: 15px;
+    height: auto;
+    background-color: #393e42;
+}
+
+#equipTree .ztree li a span:first-child {
+    position: relative;
+    top: -2px;
+}
+
+#equipTree .ztree li a.level0 span:first-child {
+    top: 1px;
+}
+#equipTree .ztree li span.noline_open.level0,#equipTree .ztree li span.button.noline_close.level0 {
+    background-image: url(/static/app/Strategy/themes/default/images/ztreeIcon.png);
+    background-position: 0 0;
+    background-size: 300% 200%;
+}
+#equipTree .ztree li a.curSelectedNode span.noline_open.level0,#equipTree .ztree li a.curSelectedNode span.button.noline_close.level0 {
+    background-image: url(/static/app/Strategy/themes/default/images/ztreeIcon.png);
+    background-position: 0 -18px;
+    background-size: 300% 200%;
+}
+#equipTree .ztree li a.level0 span:last-child {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.ztree li a {
+    width: 100%;
+    height: 30px;
+    line-height: 25px;
+    text-decoration: none!important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.ztree li a span {
+    vertical-align: middle;
+    margin-left: 3px;
+    font-size: 14px;
+}
+
+.ztree li a span:first-child {
+    cursor: default;
+}
+
+
+/*策略概览页 左侧导航*/
+
+#equipTree,
+#strategyTable,
+#propPanel,
+#strategyTplTree,
+#painter,
+#dataSourcePanel,
+#variablePanel {
+    background: #34393c;
+    color: #cadee5;
+}
+
+#equipTree {
+    position: relative;
+}
+
+#equipTree .bottomBox {
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid #495252;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+#equipTree .bottomBox>div {
+    border: 1px solid #495252;
+    padding: 6px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#equipTree .bottomBox>div:hover {
+    background-color: #383f42;
+    color: #f6a405;
+    border-color: #66696b;
+}
+
+#equipTree .bottomBox>div.active {
+    background: #30a5fd;
+    color: #ffffff;
+    border: 1px solid #30a5fd;
+}
+
+#equipTree .bottomBox .showTreeStategy {
+    margin-left: -15%;
+}
+
+
+/*策略 概览页 table表格的*/
+
+#strategyTable .btn {
+    color: #cadee5;
+}
+
+#strategyTable div.toolBar {
+    position: relative;
+    height: 74px;
+    line-height: 74px;
+    border-bottom: 1px solid #495252;
+}
+
+#strategyTable div.toolBar .btn {
+    margin: auto 3px;
+    border: 1px solid #4b5255;
+    border-radius: 17px;
+    outline: none;
+}
+
+#strategyTable .navLeftBtn {
+    position: absolute;
+    left: 15px;
+}
+
+#strategyTable .navSearch {
+    position: absolute;
+    right: 16%;
+    top: 20%;
+    width: 200px;
+}
+
+#strategyTable .spanSearch {
+    top: -11px;
+}
+
+#strategyTable .navSearch input {
+    line-height: initial;
+}
+
+#strategyTable .navRightBtn {
+    position: absolute;
+    right: 15px;
+}
+
+#strategyTable table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#strategyTable table thead {
+    border-bottom: 1px solid #495252;
+}
+
+#strategyTable tbody tr {
+    border-bottom: 1px solid #495252;
+}
+
+#strategyTable tbody tr.selected {
+    background: #aeb8ca;
+    color: #222222;
+}
+
+#strategyTable table td,
+#strategyTable table th {
+    padding: 16px 4px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#strategyTable .modal-dialog {
+    z-index: 1050;
+}
+
+#toolBarWrap {
+    border-bottom: 1px solid #4a5154;
+    position: relative;
+}
+
+#toolBarWrap .btnGroup {
+    height: 100%;
+    padding-top: 10px;
+}
+
+#toolBarWrap .btnGroup button {
+    background: transparent;
+    border-color: #495252;
+    border-radius: 17px;
+    color: #cadee5;
+    outline: none;
+    margin-left: 10px;
+}
+
+#toolBarWrap .btnGroup .iconfont {
+    margin-right: 5px;
+}
+
+#toolBarWrap .btnGroup .offset {
+    position: relative;
+    top: 1px;
+}
+
+#toolBarWrap .btnGroup .dropdown {
+    float: left;
+}
+
+#toolBarWrap .btnGroup .dropdown>button {
+    padding: 7px 18px;
+}
+
+#toolBarWrap .btnGroup .caret {
+    margin-left: 10px;
+}
+
+#toolBarWrap .btnGroup .dropdown-menu {
+    border-radius: 8px;
+}
+
+#toolBarWrap .btnGroup .dropdown-menu a {
+    border-radius: 10px;
+    outline: none;
+}
+
+#toolBarWrap #saveAnimate {
+    display: none;
+}
+
+#toolBarWrap .spCss {
+    width: 40px;
+    height: 20px;
+    text-align: center;
+    display: block;
+    transform: scale(0.8);
+}
+
+#toolBarWrap .spCss>div {
+    background-color: #c7c7c7;
+    height: 100%;
+    width: 6px;
+    position: absolute;
+    left: 2%;
+    display: inline-block;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+#toolBarWrap .spCss .rect2 {
+    animation-delay: -1.1s;
+    left: 22%;
+}
+
+#toolBarWrap .spCss .rect3 {
+    animation-delay: -1.0s;
+    left: 42%;
+}
+
+#toolBarWrap .spCss .rect4 {
+    animation-delay: -0.9s;
+    left: 62%;
+}
+
+#toolBarWrap .spCss .rect5 {
+    animation-delay: -0.8s;
+    left: 82%;
+}
+
+@keyframes sk-stretchdelay {
+    0%,
+    40%,
+    100% {
+        transform: scaleY(0.4);
+    }
+    20% {
+        transform: scaleY(1.0);
+    }
+}
+
+#toolBarWrap .spinner>div {
+    background-color: #76787a;
+    height: 100%;
+    width: 6px;
+    position: absolute;
+    left: 2%;
+    display: inline-block;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+#painter .toolsItem {
+    float: left;
+}
+
+#painter .toolsItem:focus {
+    outline: none;
+}
+
+
+/*策略概览页 中间 py 变量面板*/
+
+#moduleConfig {
+    background: #2b3034;
+}
+
+#moduleConfig .pyVariable {
+    height: 100%;
+}
+
+.pyVariable .toolBar {
+    height: 50px;
+    position: relative;
+    line-height: 50px;
+    background: #34393c;
+    color: #cadee5;
+}
+
+.pyVariable .toolBar .btn {
+    color: #cadee5;
+    outline: none;
+    border-radius: 17px;
+    border-color: #4b5252;
+}
+
+.pyVariable .toolBar .title {
+    width: 300px;
+    float: left;
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+.pyVariable .toolBar .btns {
+    position: absolute;
+    right: 15px;
+}
+
+.pyVariable .btns .btn {
+    margin-left: 15px;
+}
+
+#configPanelContent {
+    height: calc(100% - 52px);
+}
+
+#configPanelContent>div {
+    height: 100%;
+    position: relative;
+}
+
+#variablePanel {
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#variablePanel>div {
+    width: 100%;
+    height: 100%;
+}
+
+#variablePanel .tabTitle {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    border-bottom: 1px solid #3292db;
+    cursor: pointer;
+}
+
+#variablePanel .variablesType {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#variablePanel .tabTitle li {
+    float: left;
+    padding: 4px;
+}
+
+#variablePanel .tabTitle li.active {
+    background: #3292db;
+    color: #ffffff;
+}
+
+#variablePanel .topBtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 14px;
+}
+
+#variablePanel .variables {
+    padding: 15px;
+    height: calc(100% - 70px);
+    position: absolute;
+    width: 100%;
+    top: 40px;
+    border-top: 1px solid #495252;
+}
+
+#variablePanel .singleVariable {
+    border: 1px solid #495252;
+    padding: 10px;
+    margin-top: 20px;
+    position: relative;
+    padding-top: 25px;
+}
+
+#variablePanel .singleVariable span.remove {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 14px;
+}
+
+#variablePanel .singleVariable span.warn {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    color: red;
+}
+
+#variablePanel .singleVariable:nth-child(1) {
+    margin-top: 0;
+}
+
+#variablePanel .singleVariable>div {
+    margin-bottom: 10px;
+}
+
+#variablePanel .singleVariable>div label {
+    width: 16%;
+    margin-right: 5px;
+}
+
+#variablePanel .singleVariable>div input,
+#variablePanel .singleVariable>div select,
+#variablePanel .singleVariable .dataSource {
+    background: #2d3235;
+    border: 1px solid #4b5255;
+    padding: 5px 3px;
+}
+
+#variablePanel .singleVariable>div input {
+    width: 80%;
+}
+
+#variablePanel .singleVariable>div select {
+    width: 50%;
+}
+
+#variablePanel .singleVariable .dataSource {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    border-style: dashed;
+}
+
+#variablePanel .singleVariable .dataSource:hover {
+    border: 1px dashed #66AFE9;
+    cursor: pointer;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+#variablePanel .singleVariable .dataSource:hover>span {
+    visibility: hidden;
+}
+
+#configContent {
+    width: calc(100% - 302px);
+    height: 100%;
+    background: rgb(243, 243, 243);
+}
+
+#codeMirrorBox {
+    height: 100%;
+    padding: 0;
+}
+
+#codeMirrorBox .CodeMirror {
+    height: 100%;
+    background: #2d3235;
+}
+
+#codeMirrorBox .CodeMirror-gutters {
+    background: rgb(78, 78, 78);
+}
+
+
+/*右边的属性面板*/
+
+#propPanel .propTopBtn {
+    padding-top: 4px;
+    padding-right: 15px;
+}
+
+.save {
+    margin-left: 60%;
+}
+
+.recover {
+    float: right;
+}
+
+#propPanel .btn {
+    color: #cadee5;
+    width: 18%;
+    border: 1px solid #4b5255;
+    border-radius: 17px;
+    outline: none;
+}
+
+#propPanel .form-inline {
+    padding: 15px;
+}
+
+#propPanel .form-group {
+    width: 100%;
+}
+
+#propPanel .form-group label {
+    font-size: 14px;
+    width: 28%;
+    padding: 6px;
+}
+
+#propPanel .form-group select,
+#propPanel .form-group input {
+    padding: 6px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    background: #2d3235;
+    border: 1px solid #4b5255;
+}
+
+#propPanel .form-group input {
+    width: calc(72% - 6px);
+}
+
+#propPanel .form-group select {
+    width: 26%;
+    border-radius: 6px;
+}
+
+
+/*右边的规则树属性面板*/
+
+.strategyTplTreeContent {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+#strategyTplTreeCtn {
+    padding: 0;
+}
+
+#strategyTplTreeCtn li a span.button.switch {
+    margin-right: 8px;
+}
+
+#strategyTplTreeCtn li span.button.noline_close,#strategyTplTreeCtn li span.button.noline_open{
+    background: url(/static/app/Strategy/themes/default/images/ztreeIcon.png);
+    background-position: -18px 0;
+    background-size: 300% 200%;
+}
+
+#strategyTplTreeCtn li a.curSelectedNode span.button.noline_close,#strategyTplTreeCtn li a.curSelectedNode span.button.noline_open{
+    background: url(/static/app/Strategy/themes/default/images/ztreeIcon.png);
+    background-position: -18px -18px;
+    background-size: 300% 200%;
+}
+
+#strategyTplTreeCtn li span.button.noline_docu{
+    background: url(/static/app/Strategy/themes/default/images/ztreeIcon.png);
+    background-position: -36px 0;
+    background-size: 300% 200%;
+}
+
+#strategyTplTreeCtn li a.curSelectedNode span.noline_docu{
+    background: url(/static/app/Strategy/themes/default/images/ztreeIcon.png);
+    background-position: -36px -18px;
+    background-size: 300% 200%;
+}
+
+#strategyTplTreeCtn li.level0 a.level0 {
+    padding: 5px 10px;
+    height: auto;
+}
+
+#strategyTplTreeCtn li.level0 ul.level0{
+    padding-left: 28px;
+}
+
+#strategyTplTreeCtn li.level0 a.level0>span {
+    font-size: 16px;
+}
+
+#strategyTplTreeCtn li.level0 a.curSelectedNode {
+    background: none;
+    padding-top: 1px;
+    border: none;
+    height: 30px;
+    color: #f5a607!important;
+}
+
+#strategyTplTreeCtn li.level0 a.level0.curSelectedNode {
+    padding: 5px 10px;
+    height: auto;
+}
+
+#strategyTplTreeCtn li span:nth-child(2) {
+    position: relative;
+    top: 6px;
+    left: -3px;
+}
+
+
+/*右边的属性数据源属性面板*/
+
+#dataSrcContain #dsNavContain .nav-tabs li.active a {
+    color: #fff;
+}
+
+#navPageNum {
+    text-align: center;
+}
+
+#navPageNum .pageFlag {
+    background-color: #424349;
+    color: #a3afb6;
+    border: 1px solid #53595d;
+    text-align: center;
+    cursor: pointer;
+}

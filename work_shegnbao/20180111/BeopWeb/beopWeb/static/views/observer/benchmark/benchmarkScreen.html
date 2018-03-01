@@ -1,0 +1,104 @@
+<style>
+    .ctnBenchmark {
+        height: 100%;
+        width: 100%;
+        background-color: #232d4e;
+    }
+    .ctnBenchmark>.divPanel {
+        display: inline-block;
+        height: 100%;
+        border-left: 3px solid #191919;
+        float: left;
+        position: relative;
+    }
+    .ctnBenchmark>.divPanel:first-child {
+        border-left: none;
+    }
+    .ctnBenchmark .panelModuleList{
+        width: 7%;
+    }
+    .ctnBenchmark .panelIotFilter{
+       width: 240px ;
+    }
+    .ctnBenchmark .panelBmModule{
+        width: calc(93% - 240px) ;
+    }
+    .ctnBenchmark .panelBmModule.onDataSource{
+        width: calc(78% - 240px) ;
+    }
+    .ctnBenchmark .panelDataSource{
+        width: 0 ;
+    }
+    .ctnBenchmark .panelDataSource.focus{
+        width: 15% ;
+        position: fixed;
+    }
+    .panelModuleList .btnBmModule {
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        border-right: 2px solid transparent;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        opacity: 0.5;
+    }
+    .panelModuleList .btnBmModule.selected {
+        border-right-color: white;
+        opacity: 1;
+    }
+    .panelModuleList .btnBmModule:hover {
+        background-color: white;
+        color: #323232;
+        opacity: 1;
+    }
+    .completeConfig>a>.node_name{
+        color: #52a5e2;
+    }
+    #paneIotType{
+        display:none;
+    }
+    #paneIotData li>a:hover>.btnTreeNode.btnShowModel{
+        display: none;
+    }
+    #paneIotData li.hasModel>a:hover>.btnTreeNode.btnShowModel{
+        display: inline-block;
+    }
+
+    #paneIotData li.hasModel>a>.btnTreeNode.btnShowModel{
+        display: inline-block;
+    }
+    .panelIotFilter #paneIotData li>a>span:nth-child(2) {
+        width: calc(100% - 105px);
+        display: inline-block;
+    }
+    #paneIotData li.focus>a {
+        border-radius: 10px;
+        border: 1px solid rgba(199, 199, 199, 0.48);
+    }
+    #paneIotData li>a:hover>.btnTreeNode.btnEdit {
+        display: none;
+    }
+    #paneIotData li>a:hover>.btnTreeNode.btnDelete {
+        display: none;
+    }
+    .ctnBenchmark #paneIotAdd {
+        background-color: transparent !important;
+    }
+    @media screen and (max-width: 1368px){
+        .ctnBenchmark .panelModuleList{
+            width: 8%;
+        }
+        .ctnBenchmark .panelBmModule {
+            width: calc(92% - 240px);
+        }
+    }
+
+</style>
+<div class="ctnBenchmark">
+    <div class="panelModuleList divPanel">
+
+    </div>
+    <div class="panelIotFilter divPanel"></div>
+    <div class="panelBmModule divPanel"></div>
+    <div id="dataSrcContain" class="panelDataSource divPanel"></div>
+</div>

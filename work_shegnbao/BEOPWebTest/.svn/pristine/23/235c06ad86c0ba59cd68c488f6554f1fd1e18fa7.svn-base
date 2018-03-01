@@ -1,0 +1,111 @@
+<form id="point_setting_form" class="pr">
+    <h1>点来源配置</h1>
+    <div id="point_set_btn_warpper" class="oh">
+        <div class="btn-group" role="group">
+            <div id="point_set_new" class="btnWrapper btn active">
+                <span class="glyphicon glyphicon-plus db" aria-hidden="true"></span>
+                <span>new</span>
+            </div>
+            <div id="point_set_edit" class="btnWrapper btn">
+                <span class="glyphicon glyphicon-edit db" aria-hidden="true"></span>
+                <span>edit</span>
+            </div>
+        </div>
+    </div>
+    <div class="mt30">
+        <div id="point_set_add_Wrapper">
+            <section id="point_setting_up_wrapper" class="mb15">
+                <span class="point_set_title">请输入点表类型名：</span>
+                <input type="text" placeholder="请输入点表类型名" class="form-control" value="" name=""/>
+            </section>
+            <section id="point_setting_down_wrapper">
+                <span class="point_set_title">请输入点表类型参数名：</span>
+                <ul id="point_setting_down_ul" class="oh">
+                    <li>
+                        <span class="title">param1:</span>
+                        <input type="text" placeholder="请输入点表类型参数名" class="form-control" value="" name="param1"/>
+                    </li>
+                    <li>
+                        <span class="title">param2:</span>
+                        <input type="text" placeholder="请输入点表类型参数名" class="form-control" value="" name="param2"/>
+                    </li>
+                    <li>
+                        <span class="title">param3:</span>
+                        <input type="text" placeholder="请输入点表类型参数名" class="form-control" value="" name="param3"/>
+                    </li>
+                    <li>
+                        <span class="title">param4:</span>
+                        <input type="text" placeholder="请输入点表类型参数名" class="form-control" value="" name="param4"/>
+                    </li>
+                    <li>
+                        <span class="title">param5:</span>
+                        <input type="text" placeholder="请输入点表类型参数名" class="form-control" value="" name="param5"/>
+                    </li>
+                    <li>
+                        <span class="title">param6:</span>
+                        <input type="text" placeholder="请输入点表类型参数名" class="form-control" value="" name="param6"/>
+                    </li>
+                    <li>
+                        <span class="title">param7:</span>
+                        <input type="text" placeholder="请输入点表类型参数名" class="form-control" value="" name="param7"/>
+                    </li>
+                    <li>
+                        <span class="title">param8:</span>
+                        <input type="text" placeholder="请输入点表类型参数名" class="form-control" value="" name="param8"/>
+                    </li>
+                    <li>
+                        <span class="title">param9:</span>
+                        <input type="text" placeholder="请输入点表类型参数名" class="form-control" value="" name="param9"/>
+                    </li>
+                    <li>
+                        <span class="title">param10:</span>
+                        <input type="text" placeholder="请输入点表类型参数名" class="form-control" value="" name="param10"/>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <div id="point_set_edit_Wrapper" class="dn">
+            <div id="point_set_source_wrapper">
+                <span class="point_set_title">点来源/类型：</span>
+                <select id="point_set_source" class="form-control w180" name="source">
+                    <option value="-1" disabled="disabled">请选择点来源/类型</option>
+                    <option value="phoenix370">phoenix370</option>
+                    <option value="simense1200">simense1200</option>
+                    <option value="simense300">simense300</option>
+                    <option value="simense1200TCP">simense1200TCP</option>
+                    <option value="simense300TCP">simense300TCP</option>
+                    <option value="ab500">ab500</option>
+                    <option value="honeywellebi">honeywellebi</option>
+                    <option value="modbus">modbus</option>
+                    <option value="vpoint">vpoint</option>
+                    <option value="bacnet">bacnet</option>
+                    <option value="protocol104">protocol104</option>
+                    <option value="lonworks">lonworks</option>
+                    <option value="DB-Access">DB-Access</option>
+                    <option value="DB-SQLServer">DB-SQLServer</option>
+                    <option value="DB-Oracle">DB-Oracle</option>
+                    <option value="DB-MySQL">DB-MySQL</option>
+                    <option value="custom1">custom1</option>
+                    <option value="custom2">custom2</option>
+                    <option value="custom3">custom3</option>
+                    <option value="custom4">custom4</option>
+                    <option value="custom5">custom5</option>
+                    <option value="DanfossFCProtocol">DanfossFCProtocol</option>
+                    <option value="Insight">Insight</option>
+                    <option value="WinCC1">WinCC1</option>
+                    <option value="KinCC1">KinCC1</option>
+                    <option value="KingView1">KingView1</option>
+                    <option value="ArchestrA3">ArchestrA3</option>
+                    <option value="KEPware4">KEPware4</option>
+                </select>
+            </div>
+            <section id="point_set_edit_name_param">
+                <span class="point_set_title dn">请编辑点表类型参数名：</span>
+                <ul id="point_setting_edit_ul" class="oh"></ul>
+            </section>
+        </div>
+    </div>
+    <div id="pointSetSubmitWrapper" class="pa">
+        <button type="button" id="pointSetSubmit" class="btn btn-primary">提交</button>
+    </div>
+</form>

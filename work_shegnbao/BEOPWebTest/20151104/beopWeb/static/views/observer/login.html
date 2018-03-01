@@ -1,0 +1,543 @@
+﻿<style type="text/css">
+    .lojin-nav-item-pane {
+        float: left;
+        width: 25%;
+        text-align: right;
+    }
+
+    .login-main-bg {
+        height: 400px;
+        background: -webkit-linear-gradient(left, #25111d, #0b1033 30%, #0b1033 70%, #25111d);
+    }
+
+    .login-main-title-color {
+        color: #bead80 !important;
+        float: left;
+    }
+
+    .login-main-context {
+        float: left;
+        width: 100%;
+        color: #ebebeb;
+    }
+
+    .tm {
+        font-size: 32px;
+        color: rgb(228, 173, 130);
+    }
+
+    .feature-main-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .feature-main-context {
+        font-size: 14px;
+    }
+
+    .login-feature-pane {
+        margin: 20px 0 20px 0;
+        padding: 20px 0 20px 0;
+        height: 93px;
+        border-top: 1px dotted #ccc;
+        border-bottom: 1px dotted #ccc;
+    }
+
+    .login-feature-pane > div {
+        float: left;
+        width: 20%;
+        cursor: pointer;
+        display: table;
+    }
+
+    .login-feature-pane > div:hover {
+        text-decoration: underline;
+    }
+
+    .login-feature-pane > div:hover .div-img-diagnosis {
+        display: block;
+    }
+
+    .login-feature-icon {
+        float: left;
+        margin-right: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 4px;
+    }
+
+    .login-feature-title {
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 16px;
+        font-family: 微软雅黑;
+        width: 100%;
+    }
+
+    .login-feature-text {
+        display: block;
+    }
+
+    .div-feature-display > div {
+        position: relative;
+        width: 100%;
+        margin: 120px 0 80px 0;
+    }
+
+    #btnRegister {
+        color: #ddd;
+        cursor: pointer;
+        float: right;
+    }
+
+    #btnForgetPwd {
+        color: #ddd;
+        cursor: pointer;
+        float: right;
+    }
+
+    #inputEmail {
+        width: 300px;
+    }
+
+    .mailbox-wrap {
+        margin: 0;
+    }
+
+    #mailAddrHB {
+        margin-bottom: 0;
+    }
+
+    .mail-loading, .mail-rst-wrap {
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .mail-loading > p {
+        margin: 10px;
+        padding-left: 15px;
+        font-size: 15px;
+    }
+
+    #mailLogOn {
+        margin-left: 20px;
+    }
+</style>
+
+<div style="width: 100%; position: absolute; top:0; right:0; bottom:0; left:0;">
+    <div id="rowLogin">
+        <div class="col-lg-offset-2 col-lg-8" style="height: 100%;" id="login_section">
+            <div class="panel-group col-sm-8 div-feature-display">
+                <div name="div-img-default">
+                    <div style="position:absolute; top: 3px; left: 82px;">
+                        <div>
+                            <h1 i18n="admin.featureDisplay.DEFAULT_1"
+                                class="login-main-context login-main-title-color"></h1>
+
+                            <h3 i18n="admin.featureDisplay.DEFAULT_2" class="login-main-context"
+                                style="margin: 8px 0 8px 0;"></h3>
+                        </div>
+                    </div>
+                </div>
+                <div name="div-img-optimization"
+                     style="display: none; width: 740px; height: 250px; background: url(/static/images/home/optimaiztion.png) no-repeat;">
+                    <div style="position: relative;top:20px;left:250px;width:330px;">
+                        <h1 class="tm">BEOP<sup>TM</sup></h1>
+
+                        <h1 i18n="admin.featureDisplay.OPTIMIZATION_1" class="feature-main-title"></h1>
+
+                        <h3 i18n="admin.featureDisplay.OPTIMIZATION_2" class="feature-main-context"
+                            style="margin: 8px 0 8px 0;"></h3>
+                    </div>
+                </div>
+                <div name="div-img-diagnostic"
+                     style="display: none; width: 740px; height: 250px; background: url(/static/images/home/diagnosis.png) no-repeat;">
+                    <div style="position: relative;top:20px;left:187px;width:380px;">
+                        <h1 class="tm">BEOP<sup>TM</sup></h1>
+
+                        <h1 i18n="admin.featureDisplay.DIAGNOSTIC_1" class="feature-main-title"></h1>
+
+                        <h3 i18n="admin.featureDisplay.DIAGNOSTIC_2" class="feature-main-context"
+                            style="margin: 8px 0 8px 0;"></h3>
+                    </div>
+                </div>
+                <div name="div-img-transaction"
+                     style="display: none; width: 740px; height: 250px; background: url(/static/images/home/transaction.png) no-repeat;">
+                    <div style="position: relative;top:10px;left:160px;width:410px;">
+                        <h1 class="tm">BEOP<sup>TM</sup></h1>
+
+                        <h1 i18n="admin.featureDisplay.TRANSACTION_1" class="feature-main-title"></h1>
+
+                        <h3 i18n="admin.featureDisplay.TRANSACTION_2" class="feature-main-context"
+                            style="margin: 8px 0 8px 0;"></h3>
+                    </div>
+                </div>
+                <div name="div-img-team"
+                     style="display: none; width: 740px; height: 250px; background: url(/static/images/home/team.png) no-repeat;">
+                    <div style="position: relative;top:40px;left:212px;width:370px;">
+                        <h1 class="tm" style="display: inline;">BEOP<sup>TM</sup></h1>
+
+                        <h1 i18n="admin.featureDisplay.TEAM_1" class="feature-main-title" style="display: inline;"></h1>
+
+                        <h3 class="feature-main-context" style="margin: 8px 0 8px 0;"><span
+                                class="glyphicon glyphicon-chevron-right"></span><span
+                                i18n="admin.featureDisplay.TEAM_2"></span></h3>
+
+                        <h3 class="feature-main-context" style="margin: 8px 0 8px 0;"><span
+                                class="glyphicon glyphicon-chevron-right"></span><span
+                                i18n="admin.featureDisplay.TEAM_3"></span></h3>
+
+                        <h3 class="feature-main-context" style="margin: 8px 0 8px 0;"><span
+                                class="glyphicon glyphicon-chevron-right"></span><span
+                                i18n="admin.featureDisplay.TEAM_4"></span></h3>
+                    </div>
+                </div>
+                <div name="div-img-mulitPlatform"
+                     style="display: none; width: 740px; height: 250px; background: url(/static/images/home/mulitPlatform.png) no-repeat;">
+                    <div style="position: relative;top:40px;left:260px;width:310px;">
+                        <h1 class="tm">BEOP<sup>TM</sup></h1>
+
+                        <h1 i18n="admin.featureDisplay.MULTIPALTFORM_1" class="feature-main-title"></h1>
+
+                        <h3 i18n="admin.featureDisplay.MULTIPALTFORM_2" class="feature-main-context"
+                            style="margin: 8px 0 8px 0;"></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-group col-sm-4" style="padding-top: 80px;" id="paneLogin">
+                <div class="panel panel-default" style="background-color: transparent;">
+                    <div class="panel-heading">
+                        <div class="panel-title" style="height: 38px;">
+                            <a data-parent="#accordion"
+                               style="text-decoration: none;-webkit-user-select: none;user-select: none;">
+                                <h1 style="float: left; margin: 0;">BEOP
+                                    <small style="margin-left:15px; font-family: 微软雅黑;"
+                                           i18n="admin.login.PANE_TITLE"></small>
+                                </h1>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="panel-body" style="position: relative; padding: 30px; color: #ddd;">
+                        <div class="row">
+                            <div class="form-group">
+                                <span class="glyphicon glyphicon-user" style="margin: 0 8px 0 2px;"></span><span
+                                    i18n="admin.login.PANE_LABEL_ACCOUNT"></span>
+                                <span id="btnRegister" i18n="admin.login.PANE_REGIST"></span>
+                                <input type="text" class="form-control" style="margin-top: 3px;" id="txtName" required
+                                       autofocus>
+                            </div>
+                        </div>
+                        <div class="row"></div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <span class="glyphicon glyphicon-lock" style="margin: 0 8px 0 2px;"></span><span
+                                    i18n="admin.login.PANE_LABEL_PWD"></span>
+                                <span id="btnForgetPwd" data-toggle="modal"
+                                      data-target="#resetPasswordModal" i18n="admin.login.PANE_FORGET"></span>
+
+                                <div class="input-group" style="margin-top: 3px;">
+                                    <input type="password" class="form-control" id="txtPwd" required>
+                                    <span class="input-group-addon" style="padding-top: 2px;">
+                                        <input type="checkbox" id="cbRememberPwd"
+                                               style="position: absolute; top: 10px;"
+                                               i18n="title=admin.login.PANE_CHECKBOX_REMEMBER">
+                                        <label for="cbRememberPwd"
+                                               style="margin: 2px 0 0 17px; font-size: 12px; font-weight:normal;"
+                                               i18n="admin.login.PANE_CHECKBOX_REMEMBER"></label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="form-group">
+                                <button id="btnLogin" class="col-xs-12 btn btn-primary btn-lg"
+                                        i18n="admin.login.PANE_BTN_LOGIN"></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-offset-2 col-lg-8" style="position: fixed; bottom: 10%;">
+            <div class="login-feature-pane">
+                <div class="grow login-optimization">
+                    <div class="login-feature-icon"
+                         style="background: url(/static/images/login_feature_icons.jpg) no-repeat 0 0;"></div>
+                    <div i18n="admin.featurePane.OPTIMIZATION" class="login-feature-title"></div>
+                </div>
+                <div class="grow login-diagnostic">
+                    <div class="login-feature-icon"
+                         style="background: url(/static/images/login_feature_icons.jpg) no-repeat -50px 0;"></div>
+                    <div i18n="admin.featurePane.DIAGNOSTIC" class="login-feature-title"></div>
+                </div>
+                <div class="grow login-transaction">
+                    <div class="login-feature-icon"
+                         style="background: url(/static/images/login_feature_icons.jpg) no-repeat -100px 0;"></div>
+                    <div i18n="admin.featurePane.TRANSACTION" class="login-feature-title"></div>
+                </div>
+                <div class="grow login-team">
+                    <div class="login-feature-icon"
+                         style="background: url(/static/images/login_feature_icons.jpg) no-repeat -150px 0;"></div>
+                    <div i18n="admin.featurePane.TEAM" class="login-feature-title"></div>
+                </div>
+                <div class="grow login-mulitPlatform">
+                    <div class="login-feature-icon"
+                         style="background: url(/static/images/login_feature_icons.jpg) no-repeat -200px 0;"></div>
+                    <div i18n="admin.featurePane.MULTIPALTFORM" class="login-feature-title"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="regContent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" style="top:200px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel" i18n="admin.register.CREATE_NEW_ACCOUNT"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group has-feedback mailbox-wrap">
+                                <label class="control-label col-sm-2" for="iptMailAddr"
+                                       i18n="admin.register.MAIL"></label>
+
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span
+                                                class="glyphicon glyphicon-envelope"></span></span>
+                                        <input type="text" class="form-control" id="iptMailAddr">
+                                    </div>
+                                    <span class="help-block" id="mailAddrHB" i18n="admin.register.MAIL_TIPS"></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-body mail-loading" style="display:none;">
+                        <img src="/static/images/ballsline.gif"/>
+
+                        <p>正在发送请求</p>
+                    </div>
+                    <div class="modal-body mail-rst-wrap" style="display:none;">
+                        <p id="mailTipWrap" class="text-success">
+                            <span class="glyphicon glyphicon-ok"></span>
+                            <span></span>
+                        </p>
+
+                        <div id="mailLinksWrap">
+                            <a id="mailReinput" href="javascript:;">重新输入邮箱</a>
+                            <a id="mailLogOn" href="javascript:;">登录到邮箱去验证</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"
+                                i18n="admin.register.CLOSE"></button>
+                        <button type="button" class="btn btn-primary" id="userSave" i18n="admin.register.OK"></button>
+                    </div>
+                </div>
+                <!-- /.注册页面 -->
+            </div>
+            <!-- /.注册页面-->
+        </div>
+        <div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog"
+             aria-hidden="true">
+            <div class="modal-dialog" style="top:200px;">
+                <div class="modal-content">
+                    <div class="modal-body clearfix">
+                        <h4 class="modal-title" id="myModalLabel" i18n="admin.resetPassword.RESET_PASSWORD"></h4>
+
+                        <div class="form-horizontal col-xs-11">
+                            <label for="inputEmail" class="control-label col-sm-3"
+                                   i18n="admin.resetPassword.ACCOUNT"></label>
+
+                            <div class="form-group input-group col-sm-9">
+                                <input type="text" class="form-control" id="inputEmail"
+                                       i18n="placeholder=admin.resetPassword.MAIL"
+                                       data-toggle="tooltip">
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"
+                                    i18n="admin.resetPassword.CLOSE"></button>
+                            <button type="button" class="btn btn-primary" id="passwordResetBtn"
+                                    i18n="admin.resetPassword.OK;data-complete-text=admin.resetPassword.MAIL_COMPLETE;data-loading-text=admin.resetPassword.MAIL_SENDING">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="position: fixed; bottom: 10px; width: 100%; text-align: center; font-size: 10px;">
+                Copyright © 2014 - 2024 by RNBTech. All Rights Reserved.
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="vs" type="x-shader/x-vertex">
+    varying vec2 vUv;
+
+    void main() {
+
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform sampler2D map;
+
+    uniform vec3 fogColor;
+    uniform float fogNear;
+    uniform float fogFar;
+
+    varying vec2 vUv;
+
+    void main() {
+
+    float depth = gl_FragCoord.z / gl_FragCoord.w;
+    float fogFactor = smoothstep( fogNear, fogFar, depth );
+
+    gl_FragColor = texture2D( map, vUv );
+    gl_FragColor.w *= pow( gl_FragCoord.z, 20.0 );
+    gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );
+    }
+</script>
+
+<script>
+    function indexCloud() {
+        this.container = null;
+        this.camera = null;
+        this.scene = null;
+        this.renderer = null;
+        this.mesh = null;
+        this.geometry = null;
+        this.material = null;
+        this.isRunningBG = true;
+
+        this.mouseX = 0;
+        this.mouseY = 0;
+        this.start_time = Date.now();
+    }
+
+    indexCloud.prototype = {
+        destroy: function () {
+            this.container = null;
+            this.camera = null;
+            this.scene = null;
+            this.renderer = null;
+            this.mesh = null;
+            this.geometry = null;
+            this.material = null;
+            this.isRunningBG = false;
+        },
+        onDocumentMouseMove: function (event) {
+            this.mouseX = (event.clientX - window.innerWidth / 2) * 0.25;
+            this.mouseY = (event.clientY - window.innerHeight / 2 + 40) * 0.15;
+        },
+        animate: function () {
+            if (!this.isRunningBG) {
+                return
+            }
+            requestAnimationFrame(this.animate.bind(this));
+            var position = ((Date.now() - this.start_time) * 0.03) % 8000;
+            this.camera.position.x += (this.mouseX - this.camera.position.x) * 0.01;
+            this.camera.position.y += (-this.mouseY - this.camera.position.y) * 0.01;
+            this.camera.position.z = -position + 8000;
+            this.renderer.render(this.scene, this.camera);
+        },
+        run: function () {
+            I18n.fillArea($("#rowLogin"));
+            this.container = document.createElement('div');
+            this.container.id = "containerBackground";
+            document.body.appendChild(this.container);
+
+            var canvas = document.createElement('canvas');
+            canvas.width = 32;
+            canvas.height = window.innerHeight;
+
+
+            var context = canvas.getContext('2d');
+
+            var gradient = context.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, "#1e4877");
+            gradient.addColorStop(0.5, "#4584b4");
+
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            this.container.style.background = 'url(' + canvas.toDataURL('image/png') + ')';
+            this.container.style.backgroundSize = '32px 100%';
+            this.container.style.height = window.innerHeight - 52 + 'px';
+
+
+            this.camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 3000);
+            this.camera.position.z = 6000;
+
+            this.scene = new THREE.Scene();
+
+            this.geometry = new THREE.Geometry();
+
+            var texture = THREE.ImageUtils.loadTexture('/static/scripts/lib/effects/cloud/cloud.png', null, this.animate.bind(this));
+            texture.magFilter = THREE.LinearMipMapLinearFilter;
+            texture.minFilter = THREE.LinearMipMapLinearFilter;
+
+            var fog = new THREE.Fog(0x4584b4, -100, 3000);
+
+            this.material = new THREE.ShaderMaterial({
+                uniforms: {
+                    "map": {type: "t", value: texture},
+                    "fogColor": {type: "c", value: fog.color},
+                    "fogNear": {type: "f", value: fog.near},
+                    "fogFar": {type: "f", value: fog.far}
+                },
+                vertexShader: document.getElementById('vs').textContent,
+                fragmentShader: document.getElementById('fs').textContent,
+                depthWrite: false,
+                depthTest: false,
+                transparent: true
+            });
+
+            var plane = new THREE.Mesh(new THREE.PlaneGeometry(64, 64));
+
+            for (var i = 0; i < 8000; i++) {
+                plane.position.x = Math.random() * 1000 - 500;
+                plane.position.y = -Math.random() * Math.random() * 200 - 15;
+                plane.position.z = i;
+                plane.rotation.z = Math.random() * Math.PI;
+                plane.scale.x = plane.scale.y = Math.random() * Math.random() * 1.5 + 0.5;
+
+                THREE.GeometryUtils.merge(this.geometry, plane);
+            }
+
+            this.mesh = new THREE.Mesh(this.geometry, this.material);
+            this.scene.add(this.mesh);
+
+            this.mesh = new THREE.Mesh(this.geometry, this.material);
+            this.mesh.position.z = -8000;
+            this.scene.add(this.mesh);
+
+            this.renderer = new THREE.WebGLRenderer({antialias: false});
+            this.renderer.setSize(window.innerWidth, window.innerHeight - document.getElementById("navPane").scrollHeight - 56);
+            this.container.appendChild(this.renderer.domElement);
+
+            document.addEventListener('mousemove', this.onDocumentMouseMove.bind(this), false);
+            I18n.fillArea($("#rowSelector .panel-title"));
+        }
+    };
+
+    var indexCloudInstance = null;
+
+    if (Detector.webgl) {
+        if (indexCloudInstance) {
+            indexCloudInstance.destroy && indexCloudInstance.destroy();
+        }
+        indexCloudInstance = new indexCloud();
+        indexCloudInstance.run();
+    } else {
+        //Detector.addGetWebGLMessage();
+        var login_section = document.getElementById("login_section");
+        login_section && (login_section.style.backgroundColor = "rgb(51, 51, 51)");
+    }
+</script>

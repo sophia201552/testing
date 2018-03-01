@@ -1,0 +1,98 @@
+<div id="exportDataBox">
+    <div id="exportDataContent">
+        <div class="exportDataHeader clearfix">
+            <select id="point_format" name="format" class="form-control fl mr10">
+                <option value="-1" disabled="disabled"
+                        i18n="debugTools.sitePoint.PLEASE_SELECT_TYPE"></option>
+                <option value="m5">m5</option>
+                <option value="h1">h1</option>
+                <option value="d1">d1</option>
+            </select>
+            <div class="input-group fl" style="margin-right: 8px;">
+                <input class="form-control" type="text" value="" id="batchHistoryTimeStart" val=""
+                       i18n="placeholder=debugTools.sitePoint.PLEASE_SELECT_THE_START_TIME">
+            </div>
+            <div id="batchHistoryTimeTo" class="fl" i18n="admin.panelManagement.TO"></div>
+            <div class="input-group fl mr10" id="batchHistoryTimeEndBox">
+                <input class="form-control" type="text" value="" id="batchHistoryTimeEnd"
+                       i18n="placeholder=debugTools.sitePoint.PLEASE_SELECT_THE_END_TIME">
+            </div>
+            <div id="allPoints" class="fl">
+                <label class="oh">
+                    <input type="checkbox" id="batchAllPoints">
+                    <span style="position: relative; top: -1px;" i18n="debugTools.exportData.ALL_POINTS"></span>
+                </label>
+            </div>
+
+            <div class="exportDataTextSearchBox fl">
+                <span class="icon iconfont icon_position exportDataSearchIcon cp dmPointHover">&#xe713;</span>
+                <input type="text" id="exportData_Search" class="form-control"
+                       i18n="placeholder=debugTools.sitePoint.SEARCH"/>
+            </div>
+
+            <div id="exportData" class="fl ml15 cp">
+                <span class="icon iconfont" i18n="title=debugTools.sitePoint.SAVE_TO_CODE_LIBRARY;">&#xe701;</span>
+                <span style="position:relative; left:5px ;" i18n="debugTools.exportData.EXPORT"></span>
+            </div>
+        </div>
+        <div id="exportData_list_table"></div>
+    </div>
+    <!-- 导出数据start-->
+    <article id="exportDataList" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">导出数据列表</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="exportDataListBox">
+                        <div id="DataList">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th width="80px;">id</th>
+                                    <th width="108px;">开始时间</th>
+                                    <th width="108px;">结束时间</th>
+                                    <th width="160px;">导出的点表</th>
+                                    <th width="60px;">时间间隔</th>
+                                    <th width="80px;">发起人</th>
+                                    <th width="246px;">文件</th>
+                                </tr>
+                                </thead>
+                                <tbody id="exportDataListTBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!--导出数据end-->
+</div>
+
+<script type="text/html" id="tpl_exportData_List">
+    <!for(var i=0; i < list.length; i++){!>
+    <!var data = list[i];!>
+    <tr>
+        <td width="80px;"><!=data.taskId!></td>
+        <td width="108px;"><!=data.startTime!></td>
+        <td width="108px;"><!=data.endTime!></td>
+        <!if(data.isAll){!>
+        <td width="160px;"><!=data.isAll!></td>
+        <!}else{!>
+        <td width="160px;"></td>
+        <!}!>
+        <td width="60px;"><!=data.format!></td>
+        <td width="80px;"><!=data.userName!></td>
+        <td width="246px;">
+            <div>
+                <!if(data.file){!>
+                    <a style="text-decoration: none;" href="<!=data.file.link!>"><!=data.file.name!></a>
+                <!}!>
+            </div>
+        </td>
+    </tr>
+    <!}!>
+</script>

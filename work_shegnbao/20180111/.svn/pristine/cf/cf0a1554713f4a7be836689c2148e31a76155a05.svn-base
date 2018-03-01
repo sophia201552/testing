@@ -1,0 +1,455 @@
+<style>
+    .header-set {
+        color: white;
+        display: table;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url(img/dataManagement/bg1.jpg) no-repeat center center scroll;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;             
+    }
+
+    .blue-blur-border {
+        position: relative;
+        height: 40%;
+        width: 100%;
+        border: 10px solid rgba(111, 183, 255, 0.3);
+    }
+
+    .border-line {
+        position: absolute;
+        right: 0.5rem;
+        bottom: -0.6rem;
+        height: 0.4rem;
+        width: 7rem;
+        background: #6fb7ff;
+    }
+
+    .destination {
+        padding: 80px 0;
+    }
+
+    .iot {
+        padding: 100px 0 160px 0;
+    }
+
+    .iot-img-group {
+        position: relative;
+    }
+
+    .pre-data {
+        background: #f3f3f3;
+        padding: 5rem 0;
+    }
+
+    .pos-img2 {
+        position: absolute;
+        width: 30%;
+        right: 15%;
+        bottom: -10%;
+    }
+
+    .pre-sub-title {
+        color: #6fb7ff;
+    }
+
+    .services {
+        background: #f3f3f3;
+    }
+
+    .fac-text {
+        color: #6fb7ff;
+        font-weight: bold;
+        font-size: 4rem;
+    }
+
+
+    .hor-line {
+        width: 60px;
+        height: 0.3rem;
+        background: #6fb7ff;
+        transform: translateX(-50%);
+    }
+
+    .section-heading {
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+
+    .section-text-content {
+        padding-left: 30px;
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+    }
+
+    .iot-text-content {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+    }
+
+/*    .col-lg-6,
+    .col-md-6,
+    .col-sm-6,
+    .col-xs-12 {
+        padding: 2rem 2.5rem;
+    }*/
+
+    .align-right {
+        display: flex;
+        /* text-align: right; */
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    .operation-title {
+        color: #333;
+    }
+
+    .operation-text-content {
+        padding-top: 2.5rem;
+        height: 28rem;
+    }
+
+    .operation-text-content p:first-child {
+        margin-bottom: 0.25rem;
+        color: #6fb7ff
+    }
+
+    .operation-text-content p {
+        padding: 0.25rem 0;
+        font-size: 1.6rem;
+        color: #666;
+    }
+
+    .container-table {
+        display: table;
+        height: 100%;
+    }
+
+    .row-vertical {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .pad-space {
+        padding: 0 2rem;
+    }
+
+    .mar-top {
+        margin-top: 3rem;
+    }
+
+    .tag {
+        display: table;
+        position: relative;
+        padding: 150px 0;
+        width: 100%;
+        color: #fff;
+        background: url(img/dataManagement/bg.jpg) no-repeat center center scroll;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    .ciricle-text {
+        margin-top: 2rem;
+        display: flex;
+        color: #6fb7ff;
+        font-size: 1.3rem;
+    }
+
+    .sub-title {
+        margin-bottom: 1.5rem
+    }
+
+    .circle {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        margin-top: 2px;
+    }
+
+    .circle span {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .circle1 {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #6fb7ff;
+        opacity: 1;
+        z-index: 3;
+    }
+
+    .circle2 {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #6fb7ff;
+        opacity: 0.4;
+        z-index: 2;
+    }
+
+    .circle3 {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #6fb7ff;
+        opacity: 0.2;
+        z-index: 1;
+    }
+
+    .ciricle-text {
+        margin-top: 2rem;
+        display: flex;
+        color: #6fb7ff;
+        font-size: 1.3rem;
+    }
+
+    .tag-sub-title {
+        color: #6fb7ff;
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .maintain {
+        padding: 80px 0;
+    }
+
+    .maintain-sub-title {
+        font-size: 1.3rem;
+        padding: 1.3rem 0;
+        color: #6fb7ff;
+    }
+
+    .maintain-sub-text {
+        color: #666666;
+    }
+
+    .tag-section-heading {
+        padding: 2.5rem 3rem 3rem 0;
+        font-size: 1.1rem;
+    }
+
+    .tran-half {
+        transform: translateY(50%);
+    }
+
+    .maintain-title {
+        padding: 0 0 2.5rem 2rem;
+    }
+
+    .align-center {
+        height: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 8rem;
+        padding-left: 5rem;
+    }
+
+    @media (max-width: 1366px) {
+        .operation-text-content {
+            height: 21rem;
+        }
+        .ciricle-text,
+        .tag-sub-title {
+            font-size: 1.5rem
+        }
+        .section-text-content {
+            font-size: 1.2rem;
+        }
+        .tag-section-heading {
+            font-size: 1.3rem;
+        }
+        .iot-text-content {
+            font-size: 1.2rem;
+        }
+        .maintain-sub-text {
+            font-size: 1.3rem;
+        }
+        .maintain-sub-title {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+<body>
+    <header id="top" class="header-set">
+        <div class="container container-table">
+            <div class="row row-vertical">
+                <div class="col-lg-10 col-md-10 col-lg-offset-1" data-scroll-reveal="enter left">
+                    <h1 class="fac-text" i18n="product.DATAMANAGEMENT.DATA_MANAGEMENT">数据管理</h1>
+                    <h1 style="font-size:3.5rem" i18n="product.DATAMANAGEMENT.BIG_TITLE">数据接入、处理等一站式解决方案 </h1>
+                    <h3 style="margin-top:3rem;" i18n="product.DATAMANAGEMENT.SUB_TITLE">Algorithm Developer 致力于发挥您的专业特长，让您无需任何编程基础，亦可实现数据分析 数据处理、算法逻辑，更好的掌握您的系统。
+                    </h3>
+                </div>
+                <div class="col-lg-8 col-md-8 col-lg-offset-3" style="position:absolute;height:100%;transform:translateY(-5%)">
+                    <div class="blue-blur-border" data-scroll-reveal="enter right">
+                        <i class="border-line"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="iot" class="iot">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 " data-scroll-reveal="enter left">
+                    <img class="img-responsive" style="width:75%;" src="img/dataManagement/p1.jpg" alt="">
+                    <img class="img-responsive pos-img2" src="img/dataManagement/p2.jpg" alt="">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 iot-img-group tran-half align-center" data-scroll-reveal="enter right">
+                    <h3 class="sub-title" i18n="product.DATAMANAGEMENT.LINK_IOT">便捷的物联网接入</h3>
+                    <div class="hor-line"></div>
+                    <p class="iot-text-content" i18n="product.DATAMANAGEMENT.LINK_IOT_CONTENT">数据接入不再是难题，“数据终端”提供人性化的方式，通 过简单明了的几步操作，把您的物联网数据接入系统。 支持各种复杂度的数据源，例如Modbus、Obix、 Excel等等。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="pre-data" class="pre-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-lg-push-8 col-md-push-4 col-sm-4 col-sm-push-4 col-xs-12" data-scroll-reveal="enter right">
+                    <img class="img-responsive" src="img/dataManagement/p3.jpg" style="transform:translateY(-25%)" alt="">
+                </div>
+                <div class="col-lg-6 col-md-6 col-lg-pull-4 col-md-pull-4 col-sm-6 col-sm-pull-6 col-xs-12" data-scroll-reveal="enter left">
+                    <h3 class="sub-title" i18n="product.DATAMANAGEMENT.PRE_DATA">高效的数据预处理</h3>
+                    <p class="hor-line"></p>
+                    <div class="ciricle-text">
+                        <div class="circle">
+                            <span class="circle1"></span>
+                            <span class="circle2"></span>
+                            <span class="circle3"></span>
+                        </div>
+                        <p i18n="product.DATAMANAGEMENT.PRE_DATA_SUB_TITLE1">数据筛选</p>
+                    </div>
+                    <p class="section-text-content" i18n="product.DATAMANAGEMENT.PRE_DATA_SUB_CONTENT1">原始数据绝大部分是冗余的，筛选功能可以识别、过滤无效数据。
+                    </p>
+                    <div class="ciricle-text">
+                        <div class="circle">
+                            <span class="circle1"></span>
+                            <span class="circle2"></span>
+                            <span class="circle3"></span>
+                        </div>
+                        <p i18n="product.DATAMANAGEMENT.PRE_DATA_SUB_TITLE2">数据清洗</p>
+                    </div>
+                    <p class="section-text-content" i18n="product.DATAMANAGEMENT.PRE_DATA_SUB_CONTENT2">外界环境因素复杂（例如设备断电），会导致时间维度上的数据 停更、数据异常等。清洗功能，可以智能平滑、补齐数据。
+                    </p>
+                    <div class="ciricle-text">
+                        <div class="circle">
+                            <span class="circle1"></span>
+                            <span class="circle2"></span>
+                            <span class="circle3"></span>
+                        </div>
+                        <p i18n="product.DATAMANAGEMENT.PRE_DATA_SUB_TITLE3">数据转换</p>
+                    </div>
+                    <p class="section-text-content" i18n="product.DATAMANAGEMENT.PRE_DATA_SUB_CONTENT3">可以任意替换数据，可以将任意数据导出为Word、 Excel、PDF。
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--destination-end-->
+    <section id="tag" class="tag">
+        <div class="container">
+            <div class="row">
+                <i class="line-bottom" style="bottom:60px;" data-scroll-reveal="enter bottom over 0.5s and move 100px"></i>
+                <div class="col-lg-3 col-md-3 col-sm-12" data-scroll-reveal="enter bottom over 0.5s and move 100px">
+                    <div class="clearfix"></div>
+                    <h3 class="section-heading">
+                        <span i18n="product.DATAMANAGEMENT.TAG_TITLE">用tag</span><br><span i18n="product.DATAMANAGEMENT.TAG_CONTENT">增加数据的可读性</span>
+                    </h3>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12">
+                    <div class="row" data-scroll-reveal="enter bottom over 0.5s and move 100px">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <p class="tag-sub-title" i18n="product.DATAMANAGEMENT.TAG_SUB_TITLE1">使人容易理解</p>
+                            <p class="hor-line"></p>
+                            <p class="tag-section-heading" i18n="product.DATAMANAGEMENT.TAG_SUB_CONTENT1">
+                                通过IoT接入数据点名会比较复杂冗余，可读性极低。 但是使用Tag之后，可以让您和他人轻松的掌握 与数据有关的所有信息。
+                            </p>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <p class="tag-sub-title" i18n="product.DATAMANAGEMENT.TAG_SUB_TITLE2">使机器更加智能</p>
+                            <p class="hor-line"></p>
+                            <p class="tag-section-heading" i18n="product.DATAMANAGEMENT.TAG_SUB_CONTENT2">
+                                通过人工智能，我们可以更加精准的定位所需要的数据， 可以为客户自动化的带来更多、精准的分析结果。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" data-scroll-reveal="enter bottom over 0.5s and move 100px">
+                        <div class="col-lg-6 col-md-6 col-sm-6 serPadding">
+                            <p class="tag-sub-title" i18n="product.DATAMANAGEMENT.TAG_SUB_TITLE3">简化数据使用流程</p>
+                            <p class="hor-line"></p>
+                            <p class="tag-section-heading" i18n="product.DATAMANAGEMENT.TAG_SUB_CONTENT3">
+                                通过技术，客户可以使用更多的辅助工具，简化繁琐的 操作流程，极大的减少了人工的工作量。
+                            </p>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 serPadding">
+                            <p class="tag-sub-title" i18n="product.DATAMANAGEMENT.TAG_SUB_TITLE4">简单的Tag标记</p>
+                            <p class="hor-line"></p>
+                            <p class="tag-section-heading" i18n="product.DATAMANAGEMENT.TAG_SUB_CONTENT4">
+                                我们会提供先进的技术手段，经过简单的操作， 即可完成Tag的标记工作。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="maintain" class="maintain">
+        <div class="container">
+            <div class="row">
+                <h3 class="maintain-title" i18n="product.DATAMANAGEMENT.MAINTAIN_TITLE">轻松的数据维护</h3>
+                <div class="col-lg-4 col-md-4 col-sm-12 pad-space" data-scroll-reveal="enter bottom over 0.5s and move 100px">
+                    <div class="clearfix"></div>
+                    <div class="">
+                        <img class="img-responsive operation-img" src="img/dataManagement/b1.jpg" alt="">
+                    </div>
+                    <h5 class="maintain-sub-title" i18n="product.DATAMANAGEMENT.MAINTAIN_SUB_TITLE1">数据分析</h5>
+                    <p class="maintain-sub-text" i18n="product.DATAMANAGEMENT.MAINTAIN_SUB_TEXT1">通过图表等展现形式，让用户一目了然的找出数据中存在 的风险，来进行预防、保证项目顺利进行，并且掌握数据 的规律，并进行总结，让用户更好的掌握系统。
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 pad-space" data-scroll-reveal="enter bottom over 0.5s and move 100px">
+                    <div class="clearfix"></div>
+                    <div class="">
+                        <img class="img-responsive" src="img/dataManagement/b2.jpg" alt="">
+                    </div>
+                    <h5 class="maintain-sub-title" i18n="product.DATAMANAGEMENT.MAINTAIN_SUB_TITLE2">数据报警</h5>
+                    <p class="maintain-sub-text" i18n="product.DATAMANAGEMENT.MAINTAIN_SUB_TEXT2">通过数据的分析和一定的前沿边界条件，智能提示报警， 让用户第一时间了解和采取措施，来减少不必要的损失。
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 pad-space" data-scroll-reveal="enter bottom over 0.5s and move 100px">
+                    <div class="clearfix"></div>
+                    <div class="">
+                        <img class="img-responsive" src="img/dataManagement/b3.jpg" alt="">
+                    </div>
+                    <h5 class="maintain-sub-title" i18n="product.DATAMANAGEMENT.MAINTAIN_SUB_TITLE3">数据诊断</h5>
+                    <p class="maintain-sub-text" i18n="product.DATAMANAGEMENT.MAINTAIN_SUB_TEXT3">这是一个更高级的数据管理工具，通过简单的编程实现复杂 多变的逻辑，让机器学会您的经验，让您从枯燥、复杂的 数据中解放出来。
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>

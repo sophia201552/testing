@@ -1,0 +1,5 @@
+export default {
+  CONFIRM_DELETE: 'Are you sure you want to delete this strategy?',
+  OK: 'OK',
+  CANCEL: 'Cancel'
+};

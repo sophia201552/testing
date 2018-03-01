@@ -1,0 +1,30 @@
+{
+  "tag": {
+    "zh": "线电压",
+    "en": "Linevoltage"
+  },
+  "name": {
+    "zh": "线电压",
+    "en": "Linevoltage"
+  },
+  "id": 0,
+  "type": "equipment",
+  "attrInputs": [
+    {
+      "tag": {
+        "zh": "类型",
+        "en": "Category"
+      },
+      "unit": "",
+      "description": {
+        "zh": "类型",
+        "en": "Category"
+      },
+      "name": {
+        "zh": "类型",
+        "en": "Category"
+      }
+    }
+  ],
+  "attrPoints": []
+}

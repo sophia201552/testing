@@ -1,0 +1,59 @@
+.modal-container {
+    width: 800px;
+    height: 538px;
+}
+.modal-header {
+    width: 100%;
+    height: 42px;
+    background-color: #2f3a54;
+}
+.modal-title {
+    height: 42px;
+    padding: 8px 0 0 12px;
+    float: left;
+    font: 500 18px PingFangSC;
+    color: #fff;
+}
+.modal-body{
+    margin: 30px 0 0 14px;
+}
+.list-header {
+    height: 30px;
+    line-height: 30px;
+    color: #5b8af7;
+}
+
+.list-content {
+    width: 768px;
+    border: 1px solid #eceff4;
+}
+.list-item {
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #eceff4;
+}
+span {
+    display: inline-block; 
+}
+.args {
+    width: 229px;
+    padding-left: 14px;
+}
+.fuzzy-views {
+    width: 398px;
+}
+.other-config {
+    width: 76px;
+    margin-left: -12px;       
+    text-align: center;
+}
+
+.list-item .other-config {
+    height: 25px;
+    line-height: 25px;
+    margin-top: 6px;
+    border-radius: 4px;
+    color: #fff;    
+    background-color: #5b8af7;
+}
+

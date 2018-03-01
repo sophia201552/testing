@@ -1,0 +1,78 @@
+<style type="text/css">
+.rows {
+    padding-left: 5px;
+}
+.colSeason {
+    text-align: center;
+    width: 225px;
+}
+.colMonth {
+    text-align: center;
+    width: 79px;
+}
+</style>
+
+<div class="modal fade" id="modalPtKpiGrid">
+    <div class="modal-dialog modal-lg" style="width:1100px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">KPI</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2" style="padding-right:0px">
+                    </div>
+                    <div class="col-md-10" style="padding-left:0px">
+                        <div class="input-group date form_datetime" data-date-format="yyyy-mm-dd">
+                            <span class="input-group-addon spanArrowDataPicker" id="btnYearPre"><span class="glyphicon glyphicon-chevron-left" /></span>
+                            <input class="form-control" size="16" type="text" id="timeSelect" style="cursor:pointer;text-align:center" readonly>
+                            <span class="input-group-addon spanArrowDataPicker" id="btnYearNext"><span class="glyphicon glyphicon-chevron-right" /></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2" style="padding-right:0px">
+                        <div id="treeCtl">
+                            <ul style="height:31px">aaa</ul>
+                        </div>
+                    </div>
+                    <div class="col-md-10" style="padding-left:0px">
+                        <table class="table table-bordered table-condensed table-hover kpiGridCtrl" id="tableCtl">
+                            <div style="cursor:pointer">
+                                <thead class="kpiGridHeader">
+                                    <tr>
+                                        <th></th>
+                                        <th>Season1</th>
+                                        <th>Season2</th>
+                                        <th>Season3</th>
+                                        <th>Season4</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="kpiGridBody">
+                                    <tr>
+                                        <th>KPI</th>
+                                        <td>Better</td>
+                                        <td>Good</td>
+                                        <td>Bad</td>
+                                        <td>Worse</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Animal</th>
+                                        <td>Dog</td>
+                                        <td>Pig</td>
+                                        <td>Cow</td>
+                                        <td>Fish</td>
+                                    </tr>
+                                </tbody>
+                            </div>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>诊断历史</title>
+    <link rel="shortcut icon" type="image/ico" href="/static/images/favicon.ico">
+    {% assets "diagnosis_css_bundle" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+</head>
+
+<body>
+    <div id="mainframe">
+        <!--Loader Start-->
+        <div id="loading">
+            <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object-four"></div>
+                <div class="object" id="object-three"></div>
+                <div class="object" id="object-two"></div>
+                <div class="object" id="object-one"></div>
+            </div>
+            </div>
+        </div>
+        <!--Loader End-->
+    </div>
+
+    <input type="hidden" value="{{token if token else ''}}" id="hidToken">
+    <script type="text/javascript">
+        window.AppConfig = window.AppConfig || {};
+        {% autoescape false %}
+        window.AppConfig.project = {{ project }};
+        {% endautoescape %}
+        window.AppConfig.projectId = window.AppConfig.project.id;
+    </script>
+    {% assets "polyfill_js_bundle" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+    {% assets "diagnosis_thirdparty_lib_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% assets "diagnosis_beop_lib_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% assets "diagnosis_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    <script type="text/javascript" src="/static/app/Diagnosis/scripts/index.js"></script>
+</body>
+
+</html>

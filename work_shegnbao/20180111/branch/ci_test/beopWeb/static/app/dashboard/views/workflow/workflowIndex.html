@@ -1,0 +1,723 @@
+<style>
+    #containerWorkFlowList {
+        height: calc(100% - 3rem);
+        height: -webkit-calc(100% - 3rem);
+        overflow: auto;
+        position: relative;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    #btnWorkflowSelect {
+        font-size: 2rem;
+        top: 0.6rem;
+    }
+    
+    #btnWorkFlowSort {
+        font-size: 2rem;
+        top: 0.6rem;
+        right: calc(6% + 2.4rem);
+        right: -webkit-calc(6% + 2.4rem);
+    }
+    
+    .btnWkDivide>.glyphicon,
+    .btnSort>.glyphicon {
+        display: none;
+    }
+    
+    #iconWorkFlowAdd {
+        background-position: -19.2rem 0;
+    }
+    
+    .liWkRecord {
+        position: relative;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .liWkRecord:last-child {
+        border-bottom: none;
+    }
+    
+    .divHead {
+        position: relative;
+        height: 3rem;
+        width: calc(100% - 1rem);
+        width: -webkit-calc(100% - 1rem);
+        margin-left: 1rem;
+        display: flex;
+        display: -webkit-inline-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+        padding: 0 1rem 0 0;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+    }
+    
+    .divDetail {
+        padding: 0.5rem 1rem;
+        position: relative;
+        height: 4.2rem;
+    }
+    
+    .wkEmergency {
+        display: inline-flex;
+        display: -webkit-inline-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: center;
+        -webkit-justify-content: center;
+        height: 2.4rem;
+        width: 2.4rem;
+        border-radius: 1.2rem;
+        position: relative;
+        top: 0.3rem;
+        margin-right: 1rem;
+        background-color: red;
+    }
+    
+    .wkEmergency svg {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+    
+    .wkEmergency path {
+        fill: white;
+        stroke: white;
+    }
+    
+    .wkEmergency_0 {
+        background-color: #63b962;
+    }
+    
+    .wkEmergency_1 {
+        background-color: #fead21;
+    }
+    
+    .wkEmergency_2 {
+        background-color: red;
+    }
+    
+    .wkTitle {
+        position: static;
+        left: 2.5rem;
+        font-size: 1.7rem;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: calc(100% - 10rem);
+        width: -webkit-calc(100% - 10rem);
+        display: inline-block;
+    }
+    
+    .wkInfo {
+        width: calc(100% - 12rem);
+        width: -webkit-calc(100% - 12rem);
+        position: relative;
+        top: -0.4rem;
+        height: 1.8rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        display: inline-block;
+    }
+    
+    .wkCreator {
+        display: inline-block;
+        position: absolute;
+        right: 1rem;
+        top: 0.5rem;
+        font-size: 1rem;
+        width: 8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .wkExecutor {
+        display: inline-block;
+        position: absolute;
+        right: 1rem;
+        top: 2.3rem;
+        font-size: 1rem;
+        width: 8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .spAssignArrow {
+        font-size: 1rem;
+        color: #949494;
+        position: absolute;
+        right: 2.5rem;
+        top: 1.7rem;
+    }
+    
+    .wkDate {
+        font-size: 1rem;
+        font-family: Helvetica;
+    }
+    
+    #divWorkflowTool {
+        height: 3rem;
+        width: 100%;
+        position: relative;
+        z-index: 3;
+        font-size: 1.4rem;
+        background: -webkit-gradient(linear, 0% 100%, 100% 100%, from(rgba(116, 97, 111, 0.5)), to(rgba(118, 109, 136, 0.5)));
+    }
+    
+    #divWorkflowTool .caret {
+        margin-left: 5px;
+        display: none;
+    }
+    
+    #divWorkflowTool .ulWkDropDown {
+        position: absolute;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        list-style-type: none;
+        display: none;
+        background-color: white;
+        border-top: 1px solid #eee;
+        top: 100%;
+    }
+    
+    ul.ulMenuFilter {
+        margin: 0;
+        padding: 0;
+    }
+    
+    ul.ulMenuFilter li {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        list-style-type: none;
+    }
+    
+    .ulMenuFilter .spanTag {
+        margin-left: 5px;
+        padding: 3px 5px;
+        background: #eee;
+        border: 1px solid #ddd;
+    }
+    
+    .spanTag.cur {
+        border: 1px solid #56d176;
+        background: #fff;
+    }
+    
+    .ulMenuFilter .divProject {
+        padding-left: 5px;
+        font-size: 1.3rem;
+        border: 1px solid #ccc;
+        margin-top: 4px;
+        background: #f1f1f1;
+        padding-top: 3px;
+    }
+    
+    .titleFilter {
+        padding: 5px 10px;
+        font-size: 1.6rem;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .tagList {
+        padding: 8px 10px;
+    }
+    
+    .projectList {
+        margin-bottom: 4px;
+        padding-left: 20px;
+        padding-right: 20px;
+        max-height: 220px;
+        overflow-y: auto;
+    }
+    
+    .rightArrow {
+        display: block;
+        float: right;
+        margin-right: 10px;
+        font-size: 12px;
+    }
+    
+    .projectList.hide,
+    .tagList.hide {
+        display: none;
+    }
+    
+    .rightArrowCur {
+        transform: rotateZ(-90deg);
+    }
+    
+    .btnClear,
+    .btnSure {
+        width: 40%;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        padding: 5px;
+        text-align: center;
+        font-size: 1.6rem;
+        border-radius: 0.1rem;
+    }
+    
+    .btnClear {
+        float: left;
+        margin-left: 1.5rem;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        color: #333;
+    }
+    
+    .btnSure {
+        float: right;
+        margin-right: 1.5rem;
+        color: #fff;
+        background-color: #56d176;
+        border: 1px solid #56d176;
+    }
+    
+    .ulWkDropDown li {
+        font-size: 1.4rem;
+        padding: 0.8rem 2.2rem;
+        border-bottom: 1px solid #eee;
+    }
+    
+    #workflowSelect {}
+    
+    #workflowSelect .dropdown-menu,
+    #workflowSort .dropdown-menu {
+        min-width: 96px;
+        background-color: rgba(53, 126, 236, 0.92);
+        color: #fff;
+    }
+    
+    #workflowSort .dropdown-menu {
+        left: initial;
+        right: 0;
+    }
+    
+    #workflowSort {}
+    
+    #workflowSelect .dropdown-menu li,
+    #workflowSort .dropdown-menu li {
+        padding: 1px 12px;
+    }
+    
+    #divWorkflowTool .dropdown .dropdown-toggle {
+        color: rgb(53, 126, 236);
+        background-color: transparent;
+        border: none;
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+    
+    #divWorkflowTool .dropdown.open .dropdown-toggle {
+        background-color: rgba(53, 126, 236, 0.92);
+        color: #fff;
+    }
+    
+    .wkGetStatus {
+        display: inline-block;
+        position: absolute;
+        left: 4.5rem;
+        bottom: 0.4rem;
+        font-size: 1rem;
+        color: #969696;
+    }
+    
+    .true {
+        background-color: white;
+    }
+    
+    .wkTool {
+        width: 50%;
+        height: 100%;
+        display: inline-flex;
+        display: -webkit-inline-flex;
+        justify-content: center;
+        -webkit-justify-content: center;
+        align-items: center;
+        -webkit-align-items: center;
+        color: #F3C952;
+        opacity: 0.8;
+        float: left;
+        top: 100%;
+    }
+    
+    .wkTool.on {
+        opacity: 1;
+    }
+    
+    .wkTool>div {
+        width: 100%;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        -webkit-justify-content: center;
+        align-items: center;
+        -webkit-align-items: center;
+    }
+    
+    .wkTool:last-of-type>div {
+        border: none;
+    }
+    
+    .ulWkDropDown .glyphicon {
+        position: relative;
+        top: 0.1rem;
+        height: 1.4rem;
+        display: inline-flex;
+        display: -webkit-inline-flex;
+        align-items: center;
+        display: none;
+    }
+    
+    .liVal {
+        margin-left: 0.6rem;
+    }
+    
+    .backDrop {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.25);
+        display: none;
+    }
+    
+    .btnWkDivide.btnSubWkSel {
+        padding: 0.8rem 4rem;
+    }
+    
+    .divWkItem {
+        width: 96%;
+        margin: 1.2rem auto;
+        padding-top: 1.5rem;
+        background: rgba(200, 199, 204, 0.08);
+        /* border: 1px solid rgba(200,199,204,0.13); */
+        border-radius: 4px;
+        box-shadow: 5px 5px 20px rgba(19, 16, 27, 0.4);
+    }
+    
+    .spUserFrom {
+        margin-left: 15px;
+        width: 55px;
+        height: 40px;
+    }
+    
+    .spUserFrom img {
+        margin-bottom: 5px;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        display: block;
+        box-shadow: 0 0 2px 0px #eee;
+    }
+    
+    .spUserFrom,
+    .divWkItem .spTitle,
+    .divWkItem .spContent,
+    .divWkItem .spUserGrp {
+        display: block;
+        float: left;
+    }
+    
+    .spCreator {
+        display: block;
+        font-size: 12px;
+        color: #e9e5e9;
+        width: 42px;
+        text-align: center;
+    }
+    
+    .divWkItem .spTitle {
+        width: calc(100% - 95px);
+        height: 22px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #ffffff;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .divWkItem .spContent {
+        margin: 0 15px 8px 15px;
+        padding: 2px 0 0 0;
+        width: calc(100% - 30px);
+        max-height: 70px;
+        color: #e9e5e9;
+        font-size: 1.4rem;
+        white-space: pre-wrap;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        background: transparent;
+        border: none;
+        font-family: inherit;
+        word-break: break-word;
+    }
+    
+    .divWkItem .spUserGrp {
+        padding-left: 5px;
+        width: calc(100% - 180px);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        word-break: normal;
+        word-wrap: break-word;
+        color: #c2bac5;
+    }
+    
+    .divWkItem .spUserGrp>span {
+        padding-right: 8px;
+    }
+    
+    .spUserGrp .spUserCreate img,
+    .spUserGrp .spUserRelate img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+    
+    .spUserGrp .spUserRelate img {
+        margin-right: 5px;
+    }
+    
+    .spUserCreate {
+        color: #c2bac5;
+    }
+    
+    .spUserRlt {
+        color: #c2bac5;
+        font-weight: normal;
+        margin-right: 5px;
+    }
+    
+    .spUserRlt:after {
+        content: "：";
+    }
+    
+    .divInfo {
+        display: flex;
+        justify-content: space-between;
+        clear: both;
+        margin: 0 auto;
+        padding: 0.7rem 0;
+        height: 3rem;
+        width: calc(100% - 30px);
+        color: #c8bac9;
+        line-height: 1.6rem;
+        border-top: 1px solid rgba(159, 145, 179, 0.18);
+    }
+    
+    .divCritical {
+        width: 30%;
+        text-align: right;
+    }
+    
+    .txtContent {
+        padding: 0;
+        font-family: Helvetica, "Microsoft Yahei";
+        color: inherit;
+        background-color: inherit;
+        border: none;
+        margin-bottom: 0;
+        font-size: inherit;
+        word-break: normal;
+        word-wrap: normal;
+        white-space: pre-wrap;
+    }
+    
+    .spDueDate {
+        display: block;
+        float: left;
+        height: 20px;
+        width: 85px;
+        color: #c8bac9;
+    }
+    
+    .divInfo .spReplyNum {
+        padding-left: 6px;
+        position: relative;
+        top: -1px;
+    }
+    
+    .divInfo .spStatus:not(:empty) {
+        position: relative;
+        margin-right: 10px;
+        padding-left: 0;
+        width: 30%;
+        top: -1px;
+        text-align: center;
+        /*       border-left: 1px solid rgba(200, 199, 204, 0.13);
+        border-right: 1px solid rgba(200, 199, 204, 0.13);*/
+    }
+    
+    .divInfo .spCritical {
+        padding: 0 10px;
+        color: #fff;
+        border-radius: 4px;
+        position: relative;
+    }
+    
+    .divInfo .spReply {
+        /*width: 33%;
+        text-align: left;*/
+    }
+    
+    .spCritical.critical-0 {
+        background: #309de2;
+        font-size: 12px;
+    }
+    
+    .spCritical.critical-1 {
+        background: #ec971f;
+        font-size: 12px;
+    }
+    
+    .spCritical.critical-2 {
+        background: #ef3d4a;
+        box-shadow: 0px 2px 10px rgba(247, 74, 74, 0.3);
+    }
+    
+    .divInfo.spCritical {
+        position: absolute;
+        transform: translateX(50%);
+    }
+    
+    .userRole {
+        padding: 0 10px;
+        color: white;
+        font-size: 12px;
+        font-weight: normal;
+        position: relative;
+        border-radius: 3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        vertical-align: top;
+        background-color: #309de2;
+    }
+    
+    .userRole.behavior-1.status-0,
+    .userRole.behavior-1.status-1 {
+        background: #ec971f;
+    }
+    
+    .userRole.status-2 {
+        background: #449d44;
+    }
+    
+    .userRole.status-3 {
+        background: #ef3d4a;
+    }
+
+
+</style>
+<div id="divWorkflowTool">
+    <div id="workflowDivide" class="wkTool zepto-ev">
+        <div id="btnWkDivide">
+            <span id="wkType" i18n="appDashboard.workflow.DIVIDE"></span>
+            <span class="caret"></span>
+        </div>
+    </div>
+    <ul id="ulWkDivide" class="ulWkDropDown">
+        <li id="btnProgress" class="btnWkDivide selected zepto-ev">
+            <span class="glyphicon glyphicon-play" aria-hidden="true" style="color:black"></span>
+            <span class="liVal" i18n="appDashboard.workflow.IN_PROGRESS"></span>
+        </li>
+        <li id="btnCreatedByMe" class="btnWkDivide zepto-ev">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="color:cornflowerblue"></span>
+            <span class="liVal" i18n="appDashboard.workflow.CREATED_BY_ME"></span>
+        </li>
+        <li id="btnFinishedByMe" class="btnWkDivide zepto-ev">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:mediumseagreen"></span>
+            <span class="liVal" i18n="appDashboard.workflow.COMPLETE_BY_ME"></span>
+        </li>
+        <li id="btnInvolvedByMe" class="btnWkDivide zepto-ev">
+            <span class="glyphicon glyphicon-random" aria-hidden="true" style="color:tomato"></span>
+            <span class="liVal" i18n="appDashboard.workflow.INVOLVED_BY_ME"></span>
+        </li>
+    </ul>
+    <div id="workflowSort" class="wkTool zepto-ev">
+        <div id="btnWkSort">
+            <span id="wkType" i18n="appDashboard.workflow.SORT"></span>
+            <span class="caret"></span>
+        </div>
+    </div>
+    <ul id="ulWkSort" class="ulWkDropDown">
+        <li id="idSort" class="btnSort zepto-ev" data-sort="_id">
+            <span class="glyphicon glyphicon-sort" aria-hidden="true" style="color:darkorange"></span>
+            <span class="liVal" i18n="appDashboard.workflow.PROJECT_NUM"></span>
+        </li>
+        <li id="createTimeSort" class="btnSort zepto-ev" data-sort="createTime">
+            <span class="glyphicon glyphicon-time" aria-hidden="true" style="color:turquoise"></span>
+            <span class="liVal" i18n="appDashboard.workflow.CREATE_TIME"></span>
+        </li>
+        <li id="deadlineSort" class="btnSort zepto-ev" data-sort="fields.dueDate">
+            <span class="glyphicon glyphicon-flag" aria-hidden="true" style="color:lightgreen"></span>
+            <span class="liVal" i18n="appDashboard.workflow.DEADLINE"></span>
+        </li>
+        <li id="emergencySort" class="btnSort zepto-ev" data-sort="fields.critical">
+            <span class="glyphicon glyphicon-fire" aria-hidden="true" style="color:darkred"></span>
+            <span class="liVal" i18n="appDashboard.workflow.EMERGENCY"></span>
+        </li>
+        <!--<li id="executorSort" class="btnSort zepto-ev" data-sort="executor">
+            <span class="glyphicon glyphicon-user" aria-hidden="true" style="color:deepskyblue"></span>
+            <span class="liVal" i18n="appDashboard.workflow.EXECUTOR"></span>
+        </li>-->
+        <!--<li id="teamSort" class="btnSort zepto-ev" data-sort="taskGroupId">
+            <span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color:darkblue"></span>
+            <span class="liVal" i18n="appDashboard.workflow.TASK_GROUP"></span>
+        </li>-->
+        <!--<li id="collectSort" class="btnSort zepto-ev" data-sort="star">
+            <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:orangered"></span>
+            <span class="liVal" i18n="appDashboard.workflow.FAVORITES"></span>
+        </li>-->
+    </ul>
+    <div id="workflowFilter" class="wkTool zepto-ev" style="display:none;">
+        <div id="btnWkFilter" style="border-right: none;">
+            <span id="wkType" i18n="appDashboard.workflow.FILTER"></span>
+            <span class="caret"></span>
+        </div>
+    </div>
+
+    <div id="ulWkFilter" class="ulWkDropDown form-group">
+        <label class="sr-only" for="iptSearById" i18n="appDashboard.workflow.WORKFLOW_NUM"></label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="iptSearById" i18n="placeholder=appDashboard.workflow.IPT_WK_CODE">
+            <div id="btnSearById" class="input-group-addon zepto-ev"><span class="iconfont icon-sousuo" aria-hidden="true"></span></div>
+        </div>
+        <!--        <ul class="ulMenuFilter zepto-ev">
+            <li id="idFilter" class="btnFilter zepto-ev"><div class="titleFilter zepto-ev"><span>项目</span><span class="iconfont icon-xiala rightArrow"></span></div></li>
+            <li id="tagFilter" class="btnFilter zepto-ev"><div class="titleFilter zepto-ev"><span i18n="appDashboard.workflow.TAG">标签</span><span class="iconfont icon-xiala rightArrow"></span></div></li>
+            <li id="emergencyFilter" class="btnFilter zepto-ev"><div class="titleFilter zepto-ev"><span i18n="appDashboard.workflow.EMERGENCY">紧急程度</span><span class="iconfont icon-xiala rightArrow"></span></div>
+                <div class="tagList">
+                    <span class="spanTag zepto-ev">一般</span>
+                    <span class="spanTag zepto-ev">紧急</span>
+                    <span class="spanTag zepto-ev">严重</span>
+                </div>
+            </li>
+            <li id="woIDFilter" class="btnFilter zepto-ev"><div class="titleFilter zepto-ev"><span i18n="appDashboard.workflow.WORKFLOW_NUM">工单编号</span><span class="iconfont icon-xiala rightArrow"></span></div>
+                <div class="input-group" style="padding: 5px;">
+                    <input type="text" class="form-control" id="iptSearById" i18n="placeholder=appDashboard.workflow.IPT_WK_CODE">
+                    <div id="btnSearById" class="input-group-addon zepto-ev"><span class="iconfont icon-sousuo" aria-hidden="true"></span></div>
+                </div>          
+            </li>
+            <li><button class="btnClear">清除</button><button class="btnSure zepto-ev">确定</button></li>
+        </ul>-->
+    </div>
+</div>
+<div id="containerWorkFlowList">
+    <div id="divWkList"></div>
+    <div class="backDrop zepto-ev"></div>
+</div>

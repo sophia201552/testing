@@ -1,0 +1,798 @@
+{
+  "id": 0,
+  "type": "Equipment",
+  "attrInputs": [
+    {
+      "unit": "",
+      "name": {
+        "zh": "设备编号",
+        "en": "Equipment Number"
+      },
+      "tag": {
+        "zh": "设备,编号",
+        "en": "Equipment,Number"
+      },
+      "description": {
+        "zh": "设备编号",
+        "en": "Equipment Number"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "品牌",
+        "en": "Brand"
+      },
+      "tag": {
+        "zh": "品牌",
+        "en": "brand"
+      },
+      "description": {
+        "zh": "品牌",
+        "en": "Brand"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "型号",
+        "en": "Type"
+      },
+      "tag": {
+        "zh": "型号",
+        "en": "type"
+      },
+      "description": {
+        "zh": "型号",
+        "en": "Type"
+      }
+    },
+    {
+      "unit": [
+        "kg/s",
+        "l/s",
+        "m3/h"
+      ],
+      "name": {
+        "zh": "额定风量",
+        "en": "Rated Air Flow Rate"
+      },
+      "tag": {
+        "zh": "额定,风,流量",
+        "en": "Rated,Air,FlowRate"
+      },
+      "description": {
+        "zh": "额定风量",
+        "en": "Rated Air Flow Rate"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "机外静压",
+        "en": "External Static Pressure"
+      },
+      "tag": {
+        "zh": "机外,静,压力",
+        "en": "External,Static,Pressure"
+      },
+      "description": {
+        "zh": "机外静压",
+        "en": "External Static Pressure"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "全静压",
+        "en": "Total Static Pressure"
+      },
+      "tag": {
+        "zh": "全,静,压力",
+        "en": "Total,Static,Pressure"
+      },
+      "description": {
+        "zh": "全静压",
+        "en": "Total Static Pressure"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "额定供冷量",
+        "en": "Rated Cooling Capacity"
+      },
+      "tag": {
+        "zh": "额定,供冷量",
+        "en": "Rated,CoolingCapacity"
+      },
+      "description": {
+        "zh": "额定供冷量",
+        "en": "Rated Cooling Capacity"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "额定供热量",
+        "en": "Rated Heating Capacity"
+      },
+      "tag": {
+        "zh": "额定,供热量",
+        "en": "Rated,HeatingCapacity"
+      },
+      "description": {
+        "zh": "额定供热量",
+        "en": "Rated Heating Capacity"
+      }
+    }
+  ],
+  "name": {
+    "zh": "新风空调箱",
+    "en": "Make Up Air Unit"
+  },
+  "tag": {
+    "zh": "新风空调箱",
+    "en": "MAU"
+  },
+  "attrPoints": [
+    {
+      "unit": "",
+      "name": {
+        "zh": "季节模式",
+        "en": "Season Mode"
+      },
+      "tag": {
+        "zh": "季节,模式",
+        "en": "Season,Mode"
+      },
+      "description": {
+        "zh": "季节模式",
+        "en": "Season Mode"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "系统启停",
+        "en": "System Onoff"
+      },
+      "tag": {
+        "zh": "系统,启停",
+        "en": "System,Onoff"
+      },
+      "description": {
+        "zh": "系统启停",
+        "en": "System Onoff"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风机启停",
+        "en": "Supply Fan Onoff"
+      },
+      "tag": {
+        "zh": "送,风机,启停",
+        "en": "Supply,Fan,Onoff"
+      },
+      "description": {
+        "zh": "送风机启停",
+        "en": "Supply Fan Onoff"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风机状态",
+        "en": "Supply Fan Status"
+      },
+      "tag": {
+        "zh": "送,风机,状态",
+        "en": "Supply,Fan,Status"
+      },
+      "description": {
+        "zh": "送风机状态",
+        "en": "Supply Fan Status"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风机手自动模式",
+        "en": "Supply Fan Automatic Mode"
+      },
+      "tag": {
+        "zh": "送,风机,手自动,模式",
+        "en": "Supply,Fan,Auto,Mode"
+      },
+      "description": {
+        "zh": "送风机手自动模式",
+        "en": "Supply Fan Automatic Mode"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风机故障报警",
+        "en": "Supply Fan Fault Alarm"
+      },
+      "tag": {
+        "zh": "送,风机,故障,报警",
+        "en": "Supply,Fan,Fault,Alarm"
+      },
+      "description": {
+        "zh": "送风机故障报警",
+        "en": "Supply Fan Fault Alarm"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风机频率",
+        "en": "Supply Fan Frequency"
+      },
+      "tag": {
+        "zh": "送,风机,频率",
+        "en": "Supply,Fan,Frequency"
+      },
+      "description": {
+        "zh": "送风机频率",
+        "en": "Supply Fan Frequency"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风机频率设定",
+        "en": "Supply Fan Frequency Setting"
+      },
+      "tag": {
+        "zh": "送,风机,频率,设定",
+        "en": "Supply,Fan,Frequency,Setting"
+      },
+      "description": {
+        "zh": "送风机频率设定",
+        "en": "Supply Fan Frequency Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风机最小频率设定",
+        "en": "Supply Fan Min Frequency Setting"
+      },
+      "tag": {
+        "zh": "送,风机,最小,频率,设定",
+        "en": "Supply,Fan,Min,Frequency,Setting"
+      },
+      "description": {
+        "zh": "送风机最小频率设定",
+        "en": "Supply Fan Min Frequency Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "新风阀开度设定",
+        "en": "Fresh Air Damper Position Setting"
+      },
+      "tag": {
+        "zh": "新,风,阀,开度,设定",
+        "en": "Fresh,Air,Damper,Position,Setting"
+      },
+      "description": {
+        "zh": "新风阀开度设定",
+        "en": "Fresh Air Damper Position Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "新风阀开度",
+        "en": "Fresh Air Damper Position"
+      },
+      "tag": {
+        "zh": "新,风,阀,开度",
+        "en": "Fresh,Air,Damper,Position"
+      },
+      "description": {
+        "zh": "新风阀开度",
+        "en": "Fresh Air Damper Position"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "新风阀最小开度设定",
+        "en": "Fresh Air Damper Min Position Setting"
+      },
+      "tag": {
+        "zh": "新,风,阀,最小,开度,设定",
+        "en": "Fresh,Air,Damper,Min,Position,Setting"
+      },
+      "description": {
+        "zh": "新风阀最小开度设定",
+        "en": "Fresh Air Damper Min Position Setting"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "新风温度",
+        "en": "Fresh Air Temperature"
+      },
+      "tag": {
+        "zh": "新,风,温度",
+        "en": "Fresh,Air,Temperature"
+      },
+      "description": {
+        "zh": "新风温度",
+        "en": "Fresh Air Temperature"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "新风焓值",
+        "en": "Fresh Air Enthalpy"
+      },
+      "tag": {
+        "zh": "新,风,焓值",
+        "en": "Fresh,Air,Enthalpy"
+      },
+      "description": {
+        "zh": "新风焓值",
+        "en": "Fresh Air Enthalpy"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "新风二氧化碳",
+        "en": "Fresh Air CO2"
+      },
+      "tag": {
+        "zh": "新,风,二氧化碳",
+        "en": "Fresh,Air,CO2"
+      },
+      "description": {
+        "zh": "新风二氧化碳",
+        "en": "Fresh Air CO2"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风机压差状态",
+        "en": "Supply Fan Pressure Differential Status"
+      },
+      "tag": {
+        "zh": "送,风机,压,差,状态",
+        "en": "Supply,Fan,Pressure,Differential,Status"
+      },
+      "description": {
+        "zh": "送风机压差状态",
+        "en": "Supply Fan Pressure Differential Status"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "滤网压差报警",
+        "en": "Filter Pressure Differential Alarm"
+      },
+      "tag": {
+        "zh": "滤网,压,差,报警",
+        "en": "Filter,Pressure,Differential,Alarm"
+      },
+      "description": {
+        "zh": "滤网压差报警",
+        "en": "Filter Pressure Differential Alarm"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "初效滤网状态",
+        "en": "Primary Filter Status"
+      },
+      "tag": {
+        "zh": "初效,滤网,状态",
+        "en": "Primary,Filter,Status"
+      },
+      "description": {
+        "zh": "初效滤网状态",
+        "en": "Primary Filter Status"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "中效滤网状态",
+        "en": "Main Filter Status"
+      },
+      "tag": {
+        "zh": "中效,滤网,状态",
+        "en": "Main,Filter,Status"
+      },
+      "description": {
+        "zh": "中效滤网状态",
+        "en": "Main Filter Status"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "烟雾报警",
+        "en": "Smoke Alarm"
+      },
+      "tag": {
+        "zh": "烟雾,报警",
+        "en": "Smoke,Alarm"
+      },
+      "description": {
+        "zh": "烟雾报警",
+        "en": "Smoke Alarm"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风静压",
+        "en": "Supply Air Static Pressure"
+      },
+      "tag": {
+        "zh": "送,风,静,压力",
+        "en": "Supply,Air,Static,Pressure"
+      },
+      "description": {
+        "zh": "送风静压",
+        "en": "Supply Air Static Pressure"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风压力设定",
+        "en": "Supply Air Pressure Setting"
+      },
+      "tag": {
+        "zh": "送,风,压力,设定",
+        "en": "Supply,Air,Pressure,Setting"
+      },
+      "description": {
+        "zh": "送风压力设定",
+        "en": "Supply Air Pressure Setting"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "送风温度",
+        "en": "Supply Air Temperature"
+      },
+      "tag": {
+        "zh": "送,风,温度",
+        "en": "Supply,Air,Temperature"
+      },
+      "description": {
+        "zh": "送风温度",
+        "en": "Supply Air Temperature"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "送风温度设定",
+        "en": "Supply Air Temperature Setting"
+      },
+      "tag": {
+        "zh": "送,风,温度,设定",
+        "en": "Supply,Air,Temperature,Setting"
+      },
+      "description": {
+        "zh": "送风温度设定",
+        "en": "Supply Air Temperature Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风相对湿度",
+        "en": "Supply Air Relative Humidity"
+      },
+      "tag": {
+        "zh": "送,风,相对,湿度",
+        "en": "Supply,Air,Relative,Humidity"
+      },
+      "description": {
+        "zh": "送风相对湿度",
+        "en": "Supply Air Relative Humidity"
+      }
+    },
+    {
+      "unit": [
+        "kg/s",
+        "l/s",
+        "m3/h"
+      ],
+      "name": {
+        "zh": "送风流量",
+        "en": "Supply Air Flow Rate"
+      },
+      "tag": {
+        "zh": "送,风,流量",
+        "en": "Supply,Air,FlowRate"
+      },
+      "description": {
+        "zh": "送风流量",
+        "en": "Supply Air Flow Rate"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风流量状态",
+        "en": "Supply Air Flow Rate Status"
+      },
+      "tag": {
+        "zh": "送,风,流量,状态",
+        "en": "Supply,Air,FlowRate,Status"
+      },
+      "description": {
+        "zh": "送风流量状态",
+        "en": "Supply Air Flow Rate Status"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风阀开度",
+        "en": "Supply Air Damper Position"
+      },
+      "tag": {
+        "zh": "送,风,阀,开度",
+        "en": "Supply,Air,Damper,Position"
+      },
+      "description": {
+        "zh": "送风阀开度",
+        "en": "Supply Air Damper Position"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "送风阀开度设定",
+        "en": "Supply Air Damper Position Setting"
+      },
+      "tag": {
+        "zh": "送,风,阀,开度,设定",
+        "en": "Supply,Air,Damper,Position,Setting"
+      },
+      "description": {
+        "zh": "送风阀开度设定",
+        "en": "Supply Air Damper Position Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "水阀模式",
+        "en": "Valve Mode"
+      },
+      "tag": {
+        "zh": "水阀,模式",
+        "en": "Valve,Mode"
+      },
+      "description": {
+        "zh": "水阀模式",
+        "en": "Valve Mode"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷水阀开度",
+        "en": "Cooling Water Valve Position"
+      },
+      "tag": {
+        "zh": "冷,水,阀,开度",
+        "en": "Cooling,Water,Valve,Position"
+      },
+      "description": {
+        "zh": "冷水阀开度",
+        "en": "Cooling Water Valve Position"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷水阀开度设定",
+        "en": "Cooling Water Valve Position Setting"
+      },
+      "tag": {
+        "zh": "冷,水,阀,开度,设定",
+        "en": "Cooling,Water,Valve,Position,Setting"
+      },
+      "description": {
+        "zh": "冷水阀开度设定",
+        "en": "Cooling Water Valve Position Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷水阀最小开度设定",
+        "en": "Cooling Water Valve Min Position Setting"
+      },
+      "tag": {
+        "zh": "冷,水,阀,最小,开度,设定",
+        "en": "Cooling,Water,Valve,Min,Position,Setting"
+      },
+      "description": {
+        "zh": "冷水阀最小开度设定",
+        "en": "Cooling Water Valve Min Position Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "热水阀开度",
+        "en": "Hot Water Valve Position"
+      },
+      "tag": {
+        "zh": "热,水,阀,开度",
+        "en": "Hot,Water,Valve,Position"
+      },
+      "description": {
+        "zh": "热水阀开度",
+        "en": "Hot Water Valve Position"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "热水阀开度设定",
+        "en": "Hot Water Valve Position Setting"
+      },
+      "tag": {
+        "zh": "热,水,阀,开度,设定",
+        "en": "Hot,Water,Valve,Position,Setting"
+      },
+      "description": {
+        "zh": "热水阀开度设定",
+        "en": "Hot Water Valve Position Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "热水阀最小开度设定",
+        "en": "Hot Water Valve Min Position Setting"
+      },
+      "tag": {
+        "zh": "热,水,阀,最小,开度,设定",
+        "en": "Hot,Water,Valve,Min,Position,Setting"
+      },
+      "description": {
+        "zh": "热水阀最小开度设定",
+        "en": "Hot Water Valve Min Position Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "加湿阀开度",
+        "en": "Humidifying Valve Position"
+      },
+      "tag": {
+        "zh": "加湿,阀,开度",
+        "en": "Humidifying,Valve,Position"
+      },
+      "description": {
+        "zh": "加湿阀开度",
+        "en": "Humidifying Valve Position"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "湿度设定",
+        "en": "Humidity Setting"
+      },
+      "tag": {
+        "zh": "湿度,设定",
+        "en": "Humidity,Setting"
+      },
+      "description": {
+        "zh": "湿度设定",
+        "en": "Humidity Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "湿度设定上限",
+        "en": "Humidity High Limit Setting"
+      },
+      "tag": {
+        "zh": "湿度,设定,上,限",
+        "en": "Humidity,High,Limit,Setting"
+      },
+      "description": {
+        "zh": "湿度设定上限",
+        "en": "Humidity High Limit Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "湿度设定下限",
+        "en": "Humidity Low Limit Setting"
+      },
+      "tag": {
+        "zh": "湿度,设定,下,限",
+        "en": "Humidity,Low,Limit,Setting"
+      },
+      "description": {
+        "zh": "湿度设定下限",
+        "en": "Humidity Low Limit Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "电加热开关",
+        "en": "Electric Heating Onoff"
+      },
+      "tag": {
+        "zh": "电,加热,开关",
+        "en": "Electric,Heating,Onoff"
+      },
+      "description": {
+        "zh": "电加热开关",
+        "en": "Electric Heating Onoff"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "电加热状态",
+        "en": "Electric Heating Status"
+      },
+      "tag": {
+        "zh": "电,加热,状态",
+        "en": "Electric,Heating,Status"
+      },
+      "description": {
+        "zh": "电加热状态",
+        "en": "Electric Heating Status"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "电加热故障报警",
+        "en": "Electric Heating Fault Alarm"
+      },
+      "tag": {
+        "zh": "电,加热,故障,报警",
+        "en": "Electric,Heating,Fault,Alarm"
+      },
+      "description": {
+        "zh": "电加热故障报警",
+        "en": "Electric Heating Fault Alarm"
+      }
+    }
+  ]
+}

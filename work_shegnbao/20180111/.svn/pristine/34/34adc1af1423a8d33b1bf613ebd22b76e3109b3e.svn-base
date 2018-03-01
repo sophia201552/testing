@@ -1,0 +1,10 @@
+export default {
+  MODULE_NAME: 'Python',
+  CALCULATION_RESULTS: 'Calculation Results',
+  CALCULATION_PEOCESS: 'Calculation Process',
+  NONE: 'None',
+  COMMENT: 'Comment',
+  TEST: 'Test',
+  SEARCH: 'Search',
+  RESULT: 'Result'
+};

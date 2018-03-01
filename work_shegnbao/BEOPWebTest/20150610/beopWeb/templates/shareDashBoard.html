@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <link href="/static/content/common.min.css" rel="stylesheet"/>
+    <link href="/static/content/index.css" rel="stylesheet"/>
+
+    <style type="text/css">
+        #indexNav {
+            height: 55px;
+            padding: 9.5px 0;
+            font: 20px "Microsoft YaHei";
+            line-height: 36px;
+            border-bottom: 1px solid #e7e7e7;
+        }
+        #divNavWrap {width:90%; margin:0 auto;}
+        #divNavWrap>div {
+            display: inline-block;
+        }
+        #divNavWrap>a {
+            margin-left: 30px;
+            vertical-align: top;
+        }
+        #indexMain {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 56px;
+            bottom: 5px;
+            padding: 0 5px 0 15px;
+            margin: 0;
+        }
+
+        #indexMain > .divLoading {
+            font-size: large;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="container-fluid" style="overflow-x:hidden; background-color: #edf0f5;background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nNicgaGVpZ2h0PSc2Jz4KICA8bGluZSB4MT0nMTAlJyB5MT0nMTAlJyB4Mj0nOTAlJyB5Mj0nOTAlJyBzdHJva2Utd2lkdGg9JzEnIHN0cm9rZT0nI2U4ZThlOCcvPgogIDxsaW5lIHgxPSc5MCUnIHkxPScxMCUnIHgyPScxMCUnIHkyPSc5MCUnIHN0cm9rZS13aWR0aD0nMScgc3Ryb2tlPScjZThmMGZmJy8+ICAKPC9zdmc+');">
+    <div class="row">
+        <nav class="col-xs-12 navbar-default" id="indexNav">
+            <div id="divNavWrap">
+                <div>本报告由<strong>beop</strong>数据分析生成</div>
+                <a href="http://beop.rnbtech.com.hk" class="btn btn-primary">了解详情 ></a>
+            </div>
+        </nav>
+        <div class="col-xs-12" id="indexMain"><div class="divLoading">Loading...</div></div>
+    </div>
+
+    <script type="text/json" id="hidData">{"menuId": "{{menuId}}", "userId": {{userId}}}</script>
+
+    <script src="/static/views/share/dashboard/app.min.js"></script>
+    <!-- <script src="/static/scripts/lib/jquery-1.11.1.min.js"></script>
+    <script src="/static/scripts/lib/asynloader.js"></script>
+    <script src="/static/views/share/dashboard/entry.js"></script> -->
+</body>
+</html>

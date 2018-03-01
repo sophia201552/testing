@@ -1,0 +1,160 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { Label } from 'office-ui-fabric-react/lib/Label';
+
+import DropdownList from '../../../components/DropdownList';
+import { updateStrategyItem } from '../../../redux/epics/painter.js';
+
+import css from './ConfigTabPane.css';
+
+class ConfigTabPane extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      type: undefined,
+      status: undefined,
+      step: undefined,
+      time: undefined
+    };
+  }
+  componentDidMount() {
+    this.componentWillReceiveProps(this.props);
+  }
+  componentWillReceiveProps(nextProps) {
+    const { strategyItem } = nextProps;
+    if (!strategyItem) {
+      return;
+    }
+    let status = strategyItem.strategy.status,
+      trigger = strategyItem.strategy.trigger[0] || {},
+      options = trigger.options || {},
+      type = trigger.type,
+      step = options.step || '',
+      time = options.time || '';
+    this.setState({
+      type,
+      status,
+      step,
+      time
+    });
+  }
+  render() {
+    const { i18n } = this.props;
+    const { type, status, step = '', time = '' } = this.state;
+    return (
+      <div className={css['configTabPane'] + ' ms-slideRightIn20'}>
+        <div className={css['group']}>
+          <Label title={i18n.STATE}>{i18n.STATE}</Label>
+          <div className={css['dropdownlistWrap']}>
+            <DropdownList
+              options={[
+                { key: 0, text: i18n.NOT_ENABLED },
+                { key: 1, text: i18n.ENABLED }
+              ]}
+              selectedKey={status}
+              onChanged={this._onchangeStatus.bind(this)}
+            />
+          </div>
+        </div>
+        <div className={css['group']}>
+          <Label title={i18n.RUNNING_CYCLE}>{i18n.RUNNING_CYCLE}</Label>
+          <div className={css['dropdownlistWrap']}>
+            <DropdownList
+              options={[
+                { key: 'one', text: i18n.ONLY_ONCE },
+                { key: 'day', text: i18n.DAY_EXECUTION },
+                { key: 'week', text: i18n.WEEK_EXECUTION },
+                { key: 'month', text: i18n.MONTH_EXECUTION }
+              ]}
+              selectedKey={type}
+              onChanged={this._onchangeType.bind(this)}
+            />
+          </div>
+        </div>
+        <div className={css['group']}>
+          <Label title={i18n.CYCLE_INTERVALS}>{i18n.CYCLE_INTERVALS}</Label>
+          <div className={css['dropdownlistWrap']}>
+            <input onChange={this._onchangeStep.bind(this)} value={step} />
+          </div>
+        </div>
+        <div className={css['group']}>
+          <Label title={i18n.PRELIMINARY_TIME}>{i18n.PRELIMINARY_TIME}</Label>
+          <div className={css['dropdownlistWrap']}>
+            <input onChange={this._onchangeTime.bind(this)} value={time} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+  _onchangeType(it, id) {
+    let trigger = this.props.strategyItem.strategy.trigger;
+    if (!trigger[0]) {
+      trigger = trigger.set(0, { type: id });
+    } else {
+      trigger = trigger.set(0, trigger[0].set('type', id));
+    }
+    this.props.updateStrategyItem(
+      this.props.strategyItem.strategy.set('trigger', trigger)
+    );
+  }
+  _onchangeStatus(it, id) {
+    id = Number(id);
+    this.props.updateStrategyItem(
+      this.props.strategyItem.strategy.set('status', id)
+    );
+  }
+  _onchangeTime(e) {
+    let trigger = this.props.strategyItem.strategy.trigger;
+    if (!trigger[0]) {
+      trigger = trigger.set(0, { options: { time: e.target.value } });
+    } else {
+      if (!trigger[0].options) {
+        trigger = trigger.set(
+          0,
+          trigger[0].set('options', { time: e.target.value })
+        );
+      } else {
+        trigger = trigger.set(
+          0,
+          trigger[0].set(
+            'options',
+            trigger[0].options.set('time', e.target.value)
+          )
+        );
+      }
+    }
+    this.props.updateStrategyItem(
+      this.props.strategyItem.strategy.set('trigger', trigger)
+    );
+  }
+  _onchangeStep(e) {
+    let value = Number(e.target.value);
+    let trigger = this.props.strategyItem.strategy.trigger;
+    if (!trigger[0]) {
+      trigger = trigger.set(0, { options: { step: value } });
+    } else {
+      if (!trigger[0].options) {
+        trigger = trigger.set(0, trigger[0].set('options', { step: value }));
+      } else {
+        trigger = trigger.set(
+          0,
+          trigger[0].set('options', trigger[0].options.set('step', value))
+        );
+      }
+    }
+    this.props.updateStrategyItem(
+      this.props.strategyItem.strategy.set('trigger', trigger)
+    );
+  }
+}
+let mapDispatchToProps = {
+  updateStrategyItem
+};
+
+let mapStateToProps = function(state) {
+  return {
+    strategyItem: state.painter.strategyItem
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConfigTabPane);

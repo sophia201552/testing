@@ -1,0 +1,589 @@
+﻿<style>
+    .wr1 {
+        width: 10%;
+        min-height: 1px;
+    }
+
+    .wr2 {
+        width: 70%;
+    }
+
+    .wr3 {
+        width: 60%;
+    }
+
+    .dropdown-menu{
+        text-indent: 10px;
+    }
+
+    #workflow-title, #workflow-title-mine {
+        height: 35px;
+        font-size: 15px;
+        color: #7777a1;
+    }
+
+    #workflow-title-mine {
+        display: none;
+    }
+
+    .operator .glyphicon {
+        cursor: pointer;
+    }
+
+    .operator .glyphicon-share {
+        cursor: default;
+    }
+
+    .operator .glyphicon-share:hover {
+        color: #666;
+    }
+
+    #workflow-mine .dropdown-toggle {
+        cursor: pointer;
+        display: block;
+    }
+
+    .dropdown-menu li {
+        cursor: pointer;
+    }
+
+    .workflow-container .dropdown-menu li:hover {
+        background: #e7e7e7;
+    }
+
+    .glyphiconWrapper {
+        width: 75px;
+        display: inline-block;
+    }
+
+    .glyphicon-pause {
+        color: #b7d5b3;
+    }
+
+    .glyphicon-pause + .status {
+        color: #b7d5b3;
+    }
+
+    .task-item[status-id='2'] .status {
+        color: #b7d5b3;
+    }
+
+    .selectWorkflowName {
+        width: 160px;
+    }
+
+    .selectWorkflowName li {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+</style>
+<div class="col-xs-12 vertical-roll">
+    <div class="col-xs-offset-1 col-xs-10 workflow-container" id="workflow-mine">
+        <div class="row">
+            <div class="workflow-content top-section">
+                <div class="col-xs-6">
+                    <div class="media">
+                        <span class="media-left" href="#">
+                            <img src="" class="avatar-icon"/>
+                        </span>
+
+                        <div class="media-body">
+                            <span class="media-heading mine-avatar-name"></span>
+                            <div class="mine-avatar-desc"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 pull-right list-complete">
+                    <a class="linkage" href="#/mine" id="check_completed">
+                        <span class="glyphicon glyphicon-check"></span>
+                        <span style="padding-left: 10px;">
+                            <span i18n="workflow.mine.CHECK_COMPLETED"></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row mine-buttons">
+            <div class="workflow-content">
+                <div class="member-nav clearfix">
+                    <ul>
+                        <li class="active">
+                            <a class="btn-tasks"><span i18n="workflow.navigation.TASK"></span></a>
+                        </li>
+                        <li>
+                            <a class="btn-starreds">
+                                <span i18n="workflow.mine.STARRED"></span>
+                                <span class="star icon-star"
+                                      style="color: yellowgreen;position: absolute;top: 14px;right: 0;"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn-cates"><span i18n="workflow.mine.CATEGORY"></span></a>
+                        </li>
+                        <li>
+                            <a class="btn-mine"><span i18n="workflow.mine.ASSIGN_ORDER"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row tasks screen-row wf-records">
+            <div class="col-xs-12">
+                <div class="row task-row new-task-row">
+                    <div class="workflow-content task-items" data-priority="5">
+                        <span i18n="workflow.mine.TASK_TYPE_NEW_TASK" class="task-type"></span>
+                        <div class="empty-message" i18n="workflow.mine.TASK_EMPTY_MESSAGE_NEW_TASK"></div>
+                        <div class="clearfix workflow-title" id="workflow-title">
+                            <div class="wr2 fl">
+                                <div class="col-xs-1 p0" i18n="workflow.common.NUMBER"></div>
+                                <div class="col-xs-11">
+                                    <div class="col-sm-8 col-md-8">
+                                        <div class="dropdown">
+                                          <span class="dropdown-toggle" type="button" id="dropdownUrgencyTask" data-toggle="dropdown" aria-expanded="true">
+                                              <span class="dropdownName" i18n="workflow.main.PROJECT"></span>
+                                              <span class="caret"></span>
+                                          </span>
+                                          <ul class="dropdown-menu selectUrgency" role="menu" aria-labelledby="dropdownUrgencyTask">
+                                              <li urgencyClass="" class="selectAll" i18n="workflow.mine.ALL_ORDER"></li>
+                                              <li urgencyClass="ic0" i18n="workflow.urgencyLevel.0"></li>
+                                              <li urgencyClass="ic1" i18n="workflow.urgencyLevel.1"></li>
+                                              <li urgencyClass="ic2" i18n="workflow.urgencyLevel.2"></li>
+                                          </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="dropdown">
+                                          <span class="dropdown-toggle" type="button" id="dropdownStatusTask" data-toggle="dropdown" aria-expanded="true">
+                                              <span class="dropdownName" i18n="workflow.mine.STATUS"></span>
+                                              <span class="caret"></span>
+                                          </span>
+                                          <ul class="dropdown-menu selectStatus" role="menu" aria-labelledby="dropdownStatusTask">
+                                              <li class="selectAll" i18n="workflow.mine.ALL_ORDER"></li>
+                                              <li i18n="workflow.common.NEW"></li>
+                                              <li i18n="workflow.common.DEALING"></li>
+                                              <li i18n="workflow.common.PAUSED"></li>
+                                          </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wr1 fl">
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle" type="button" id="dropdownDueDateTask" data-toggle="dropdown" aria-expanded="true">
+                                        <span class="dropdownName" i18n="workflow.mine.DEADLINE"></span>
+                                        <span class="caret"></span>
+                                    </span>
+                                    <ul class="dropdown-menu selectDueDate" role="menu" aria-labelledby="dropdownDueDateTask"></ul>
+                                </div>
+                            </div>
+                            <span class="wr1 fl">
+                                <div class="dropdown">
+                                  <span class="dropdown-toggle" type="button" id="dropdownCreator" data-toggle="dropdown" aria-expanded="true">
+                                      <span class="dropdownName" i18n="workflow.common.CREATOR"></span>
+                                      <span class="caret"></span>
+                                  </span>
+                                  <ul class="dropdown-menu selectCreator" role="menu" aria-labelledby="dropdownCreator"></ul>
+                                </div>
+                            </span>
+                            <div class="wr1 fl">
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle" type="button" id="dropdownWorkflowNameTask" data-toggle="dropdown" aria-expanded="true">
+                                        <span class="dropdownName" i18n="workflow.main.PROJECT_TEAM"></span>
+                                        <span class="caret"></span>
+                                    </span>
+                                    <ul class="dropdown-menu selectWorkflowName" role="menu" aria-labelledby="dropdownWorkflowNameTask"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="wf-task-content" class="wf-content"></div>
+                    </div>
+                </div>
+                <div class="row task-row urgent-task-row droppable-row dn" data-priority="6">
+                    <div class="col-xs-10 col-xs-offset-1 task-items">
+                        <span i18n="workflow.mine.TASK_TYPE_URGENT_TASK" class="task-type"></span>
+                        <div class="empty-message" i18n="workflow.mine.TASK_EMPTY_MESSAGE_URGENT_TASK"></div>
+                    </div>
+                </div>
+                <div class="row task-row pend-task-row droppable-row dn" data-priority="4">
+                    <div class="col-xs-10 col-xs-offset-1 task-items">
+                        <span i18n="workflow.mine.TASK_TYPE_PEND_TASK" class="task-type"></span>
+                        <div class="empty-message" i18n="workflow.mine.TASK_EMPTY_MESSAGE_PEND_TASK"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="newPaginationWrapper" class="paginationWrapper">
+                <ul id="new-pagination" class="pagination fr"></ul>
+            </div>
+        </div>
+
+        <div class="row starreds screen-row">
+            <div class="col-xs-12 starreds-container">
+                <div id="wf-starreds-content"></div>
+            </div>
+        </div>
+
+        <div class="row categories screen-row">
+            <div class="col-xs-12 categories-container">
+                <div id="wf-categories-content"></div>
+            </div>
+        </div>
+
+        <div class="row mine screen-row wf-records">
+            <div class="col-xs-12">
+                <div class="row task-row new-task-row">
+                    <div class="workflow-content task-items" data-priority="5">
+                        <div class="clearfix workflow-title" id="workflow-title-mine">
+                            <div class="wr3 fl">
+                                <div class="wd-no" i18n="workflow.common.NUMBER"></div>
+                                <div class="wd-task">
+                                    <div class="dropdown">
+                                      <span class="dropdown-toggle" type="button" id="dropdownUrgency" data-toggle="dropdown" aria-expanded="true">
+                                          <span class="dropdownName" i18n="workflow.main.PROJECT"></span>
+                                          <span class="caret"></span>
+                                      </span>
+                                      <ul class="dropdown-menu selectUrgency" role="menu" aria-labelledby="dropdownUrgency">
+                                          <li urgencyClass="" class="selectAll" i18n="workflow.mine.ALL_ORDER"></li>
+                                          <li urgencyClass="ic0" i18n="workflow.urgencyLevel.0"></li>
+                                          <li urgencyClass="ic1" i18n="workflow.urgencyLevel.1"></li>
+                                          <li urgencyClass="ic2" i18n="workflow.urgencyLevel.2"></li>
+                                      </ul>
+                                    </div>
+                                </div>
+                                <div class="wd-status">
+                                    <div class="dropdown">
+                                          <span class="dropdown-toggle" type="button" id="dropdownStatus"
+                                                data-toggle="dropdown" aria-expanded="true">
+                                              <span class="dropdownName" i18n="workflow.mine.STATUS"></span>
+                                              <span class="caret"></span>
+                                          </span>
+                                        <ul class="dropdown-menu selectStatus" role="menu"
+                                            aria-labelledby="dropdownStatus">
+                                            <li class="selectAll" i18n="workflow.mine.ALL_ORDER"></li>
+                                            <li i18n="workflow.common.NEW"></li>
+                                            <li i18n="workflow.common.DEALING"></li>
+                                            <li i18n="workflow.common.PAUSED"></li>
+                                            <li i18n="workflow.common.FINISHED"></li>
+                                            <li i18n="workflow.common.VERIFIED"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wr1 fl">
+                                <div class="dropdown">
+                                  <span class="dropdown-toggle" type="button" id="dropdownExecutor" data-toggle="dropdown" aria-expanded="true">
+                                      <span class="dropdownName" i18n="workflow.mine.EXECUTOR"></span>
+                                      <span class="caret"></span>
+                                  </span>
+                                  <ul class="dropdown-menu selectExecutor" role="menu" aria-labelledby="dropdownExecutor"></ul>
+                                </div>
+                            </div>
+                            <div class="wr1 fl">
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle" type="button" id="dropdownCreateDate" data-toggle="dropdown" aria-expanded="true">
+                                        <span class="dropdownName" i18n="workflow.mine.CREATE_DATE"></span>
+                                        <span class="caret"></span>
+                                    </span>
+                                    <ul class="dropdown-menu selectCreateDate" role="menu" aria-labelledby="dropdownCreateDate"></ul>
+                                </div>
+                            </div>
+                            <div class="wr1 fl">
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle" type="button" id="dropdownDueDate" data-toggle="dropdown" aria-expanded="true">
+                                        <span class="dropdownName" i18n="workflow.mine.DEADLINE"></span>
+                                        <span class="caret"></span>
+                                    </span>
+                                    <ul class="dropdown-menu selectDueDate" role="menu" aria-labelledby="dropdownDueDate"></ul>
+                                </div>
+                            </div>
+                            <div class="wr1 fl">
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle" type="button" id="dropdownWorkflowName" data-toggle="dropdown" aria-expanded="true">
+                                        <span class="dropdownName" i18n="workflow.main.PROJECT_TEAM"></span>
+                                        <span class="caret"></span>
+                                    </span>
+                                    <ul class="dropdown-menu selectWorkflowName" role="menu" aria-labelledby="dropdownWorkflowName"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="wf-mine-content" class="wf-content"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="minePaginationWrapper" class="paginationWrapper">
+                <ul id="mine-pagination" class="pagination fr"></ul>
+            </div>
+        </div>
+
+        <div class="row completed screen-row">
+            <div class="col-xs-12 completed-container">
+                <div id="wf-completed-content"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-------------------- 模板区域开始 -------------------->
+<!-- 工单修改 -->
+<script type="text/html" id="wfEditTmpl">
+    <div class="editContent">
+        <button type="button" class="pull-right btn btn-success edit-btn edit-btn-save" i18n="workflow.main.SAVE"></button>
+        <button type="button" class="pull-right btn btn-default edit-btn edit-btn-cancel" i18n="workflow.main.CANCEL"></button>
+        <select class="pull-right" style="width:120px;height:30px;position:relative;top:6px;left:-2px;">
+            <! for(var i=0;i < obj.length; i++){!>
+                <!if(obj[i].id != AppConfig.userId){!>
+                    <option value="<!=obj[i].id!>"><!=obj[i].name!></option>
+                <!}else{!>
+                    <option value="<!=obj[i].id!>" selected><!=obj[i].name!></option>
+                <!}!>
+            <!}!>
+        </select>
+    </div>
+</script>
+<!-- 任务面板 -->
+<script type="text/html" id="wfTaskTmpl">
+    <! for(var i=0;i < obj.length; i++){!>
+        <div class="task-item clearfix" status-id="<!=obj[i].statusId!>">
+            <div class="wr2 fl">
+                <div class="col-xs-1 taskNo p0"><!=obj[i].id!></div>
+                <div class="col-xs-11 task-body">
+                    <div class="col-sm-8 col-md-8">
+                        <span class="glyphicon timer fl ic<!=obj[i].critical!>"
+                              i18n="title=workflow.urgencyLevel.<!=obj[i].critical!>"></span>
+                        <div class="task-title">
+                            <span class="taskTxt"><!=obj[i].title!></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4 operator">
+                        <!if(obj[i].statusId == 0){!>
+                            <span class="glyphiconWrapper">
+                                <span class="glyphicon glyphicon-ok-sign"
+                                      i18n="title=workflow.main.FINISH"></span>
+                                <span class="glyphicon glyphicon-edit"
+                                      i18n="title=workflow.main.EDIT"></span>
+                                <span class="glyphicon glyphicon-play"
+                                      i18n="title=workflow.main.START"></span>
+                            </span>
+                            <span class="opteration-msg status" i18n="workflow.main.NEW"></span>
+                        <!}else if(obj[i].statusId == 2){!>
+                            <span class="glyphiconWrapper">
+                                <span class="glyphicon glyphicon-ok-sign"
+                                      i18n="title=workflow.main.FINISH"></span>
+                                <span class="glyphicon glyphicon-edit"
+                                      i18n="title=workflow.main.EDIT"></span>
+                                <span class="glyphicon glyphicon-pause"
+                                      i18n="title=workflow.main.PAUSE"></span>
+                            </span>
+                            <span class="opteration-msg status" i18n="workflow.main.DEALING"></span>
+                        <!}else if(obj[i].statusId == 3){!>
+                            <span class="glyphiconWrapper">
+                                <span class="glyphicon glyphicon-ok-sign"
+                                      i18n="title=workflow.main.FINISH"></span>
+                                <span class="glyphicon glyphicon-edit"
+                                      i18n="title=workflow.main.EDIT"></span>
+                                <span class="glyphicon glyphicon-play"
+                                      i18n="title=workflow.main.START"></span>
+                            </span>
+                            <span class="opteration-msg status" i18n="workflow.main.PAUSED"></span>
+                        <!}!>
+                    </div>
+                </div>
+            </div>
+            <div class="wr1 fl">
+                <span class="date"><!=obj[i].dueDate.replace('GMT', '').toDate().format('yyyy-MM-dd')!></span>
+            </div>
+            <div class="wr1 fl ellipsis">
+                <span class="creator"><!=obj[i].creator!></span>
+            </div>
+            <div class="wr1 fl">
+                <span class="alert-type"><!=obj[i].groupNm!></span>
+            </div>
+        </div>
+    <!}!>
+</script>
+<!-- 我创建的面板 -->
+<script type="text/html" id="wfMineTmpl">
+    <! for(var i=0;i < obj.length; i++){!>
+        <div class="task-item clearfix" executor-id="<!=obj[i].executorID!>" status-id="<!=obj[i].statusId!>">
+            <div class="wr3 fl">
+                <div class="wd-no taskNo"><!=obj[i].id!></div>
+                <div class="task-body">
+                    <div class="wd-task fl">
+                        <span class="glyphicon timer fl ic<!=obj[i].critical!>"  i18n="title=workflow.urgencyLevel.<!=obj[i].critical!>"></span>
+                        <div class="task-title">
+                            <span class="taskTxt"><!=obj[i].title!></span>
+                        </div>
+                    </div>
+                    <div class="wd-status operator fr">
+                        <!if(obj[i].statusId == 0){!>
+                            <span class="glyphiconWrapper">
+                                <!if(obj[i].executorID == AppConfig.userId){!>
+                                    <span class="glyphicon glyphicon-ok-sign"
+                                          i18n="title=workflow.main.FINISH"></span>
+                                    <span class="glyphicon glyphicon-edit"
+                                          i18n="title=workflow.main.EDIT"></span>
+                                    <span class="glyphicon glyphicon-play"
+                                          i18n="title=workflow.main.START"></span>
+                                <!}else{!>
+                                    <span class="glyphicon glyphicon-share"
+                                          i18n="title=workflow.main.ASSIGNED"></span>
+                                <!}!>
+                            </span>
+                            <span class="status" i18n="workflow.main.NEW"></span>
+                        <!}else if(obj[i].statusId == 2){!>
+                            <span class="glyphiconWrapper">
+                                <!if(obj[i].executorID == AppConfig.userId){!>
+                                    <span class="glyphicon glyphicon-ok-sign"
+                                      i18n="title=workflow.main.FINISH"></span>
+                                    <span class="glyphicon glyphicon-edit"
+                                          i18n="title=workflow.main.EDIT"></span>
+                                    <span class="glyphicon glyphicon-pause"
+                                          i18n="title=workflow.main.PAUSE"></span>
+                                <!}else{!>
+                                    <span class="glyphicon glyphicon-share"
+                                          i18n="title=workflow.main.ASSIGNED"></span>
+                                <!}!>
+                            </span>
+                            <span class="status" i18n="workflow.main.DEALING"></span>
+                        <!}else if(obj[i].statusId == 3){!>
+                            <span class="glyphiconWrapper">
+                                <!if(obj[i].executorID == AppConfig.userId){!>
+                                    <span class="glyphicon glyphicon-ok-sign"
+                                          i18n="title=workflow.main.FINISH"></span>
+                                    <span class="glyphicon glyphicon-edit"
+                                          i18n="title=workflow.main.EDIT"></span>
+                                    <span class="glyphicon glyphicon-play"
+                                          i18n="title=workflow.main.START"></span>
+                                <!}else{!>
+                                    <span class="glyphicon glyphicon-share"
+                                          i18n="title=workflow.main.ASSIGNED"></span>
+                                <!}!>
+                            </span>
+                            <span class="status" i18n="workflow.main.PAUSED"></span>
+                        <!}else if(obj[i].statusId == 4){!>
+                            <span class="glyphiconWrapper">
+                                <span class="glyphicon glyphicon-eye-open glyphicon-notVerified"
+                                      i18n="title=workflow.common.CONFIRMATION"></span>
+                                <span class="glyphicon glyphicon-repeat"
+                                      i18n="title=workflow.main.RESTART"></span>
+                                <!if(obj[i].executorID != AppConfig.userId){!>
+                                    <span class="glyphicon glyphicon-share"
+                                      i18n="title=workflow.main.ASSIGNED"></span>
+                                <!}!>
+                            </span>
+                            <span class="status" i18n="workflow.main.FINISHED"></span>
+                        <!}else if(obj[i].statusId == 5){!>
+                            <span class="glyphiconWrapper">
+                                <span class="glyphicon glyphicon-eye-open glyphicon-verified"
+                                      i18n="title=workflow.common.VERIFIED"></span>
+                            </span>
+                            <span class="status" i18n="workflow.common.VERIFIED"></span>
+                        <!}!>
+                    </div>
+                </div>
+            </div>
+            <div class="wr1 fl ellipsis">
+                <span class="executor-person"><!=obj[i].executorName!></span>
+            </div>
+            <div class="wr1 fl">
+                <span class="create-date"><!=obj[i].createTime.replace('GMT', '').toDate().format('yyyy-MM-dd')!></span>
+            </div>
+            <div class="wr1 fl">
+                <span class="date"><!=obj[i].dueDate.replace('GMT', '').toDate().format('yyyy-MM-dd')!></span>
+            </div>
+            <div class="wr1 fl">
+                <span class="alert-type"><!=obj[i].groupName!></span>
+            </div>
+        </div>
+    <!}!>
+</script>
+<!-- 星标,分类,已完成的面板 -->
+<script type="text/html" id="wfCommonTmpl">
+    <!for(var prop in obj){!>
+        <div class="row task-row">
+            <div class="col-xs-12 col-xs-offset-1 task-items">
+                <span class="task-type"><!=[prop]!></span>
+                <! for(var i=0;i < obj[prop].length; i++){!>
+                    <div class="task-item clearfix" task-id="<!=obj[prop][i].id!>" status-id="<!=obj[prop][i].statusId!>">
+                        <div class="col-xs-9">
+                            <div class="col-xs-1 taskNo p0"><!=obj[prop][i].id!></div>
+                            <div class="col-xs-11 task-body">
+                                <div class="col-sm-9 col-md-9">
+                                    <!if(obj[prop][i].statusId != 4){!>
+                                        <span class="glyphicon timer fl ic<!=obj[prop][i].critical!>"  i18n="title=workflow.urgencyLevel.<!=obj[prop][i].critical!>"></span>
+                                    <!}else{!>
+                                        <span class="glyphicon glyphicon-ok icon-status fl" i18n="title=workflow.main.FINISHED"></span>
+                                    <!}!>
+                                    <div class="task-title">
+                                        <span class="taskTxt"><!=obj[prop][i].title!></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3 operator">
+                                    <!if(obj[prop][i].statusId == 0){!>
+                                    <span class="glyphiconWrapper">
+                                        <span class="glyphicon glyphicon-ok-sign"
+                                              i18n="title=workflow.main.FINISH"></span>
+                                        <span class="glyphicon glyphicon-edit"
+                                              i18n="title=workflow.main.EDIT"></span>
+                                        <span class="glyphicon glyphicon-play"
+                                              i18n="title=workflow.main.START"></span>
+                                    </span>
+                                    <span class="status" i18n="workflow.main.NEW"></span>
+                                    <!}else if(obj[prop][i].statusId == 2){!>
+                                    <span class="glyphiconWrapper">
+                                        <span class="glyphicon glyphicon-ok-sign"
+                                              i18n="title=workflow.main.FINISH"></span>
+                                        <span class="glyphicon glyphicon-edit"
+                                              i18n="title=workflow.main.EDIT"></span>
+                                        <span class="glyphicon glyphicon-pause"
+                                              i18n="title=workflow.main.PAUSE"></span>
+                                    </span>
+                                    <span class="status" i18n="workflow.main.DEALING"></span>
+                                    <!}else if(obj[prop][i].statusId == 3){!>
+                                    <span class="glyphiconWrapper">
+                                        <span class="glyphicon glyphicon-ok-sign"
+                                              i18n="title=workflow.main.FINISH"></span>
+                                        <span class="glyphicon glyphicon-edit"
+                                              i18n="title=workflow.main.EDIT"></span>
+                                        <span class="glyphicon glyphicon-play"
+                                              i18n="title=workflow.main.START"></span>
+                                    </span>
+                                    <span class="status" i18n="workflow.main.PAUSED"></span>
+                                    <!}else if(obj[prop][i].statusId == 4){!>
+                                        <span class="glyphiconWrapper">
+                                            <span class="glyphicon glyphicon-repeat"
+                                                  i18n="title=workflow.main.RESTART"></span>
+                                        </span>
+                                    <span class="status" i18n="workflow.mine.TASK_STATUS_COMPLETED"></span>
+                                    <!}else if(obj[prop][i].statusId == 5){!>
+                                        <span class="glyphiconWrapper">
+                                            <span class="glyphicon glyphicon-eye-open glyphicon-verified"
+                                                  i18n="title=workflow.common.VERIFIED"></span>
+                                        </span>
+                                    <span class="status" i18n="workflow.common.VERIFIED"></span>
+                                    <!}!>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <!if(obj[prop][i].statusId != 4){!>
+                                <span class="date"><!=obj[prop][i].dueDate.replace('GMT', '').toDate().format('yyyy-MM-dd')!></span>
+                            <!}else{!>
+                                <span class="date"><!=obj[prop][i].completeTime.replace('GMT', '').toDate().format('yyyy-MM-dd')!></span>
+                            <!}!>
+                        </div>
+                    </div>
+                <!}!>
+            </div>
+        </div>
+    <!}!>
+</script>
+<!-- 验证通过 -->
+<script type="text/html" id="verifiedTmpl">
+    <span class="glyphiconWrapper">
+        <span class="glyphicon glyphicon-eye-open glyphicon-verified"
+          i18n="title=workflow.common.VERIFIED"></span>
+    </span>
+    <span class="status" i18n="workflow.common.VERIFIED"></span>
+</script>

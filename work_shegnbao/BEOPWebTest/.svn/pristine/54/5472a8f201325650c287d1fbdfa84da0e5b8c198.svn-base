@@ -1,0 +1,1065 @@
+:not(input):not(select):not(textarea) {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+:focus {
+    outline: none;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    -ms-content-zooming: none;
+    font: 12px SourceSansPro,sans-serif;
+    line-height: 20px;
+    vertical-align: middle;
+    overflow: hidden;
+    background-color: #2b3034;
+    color: #c7c7c7;
+}
+
+/* main frame */
+#mainframe {
+    width: 100%;
+    height: 100%;
+    font: 12px 'Microsoft YaHei',sans-serif;
+    color: #c7c7c7;
+    display:none;
+}
+
+#mainframe .frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#header, #mainframe {
+    background: #384043;
+}
+
+/* header */
+#header {
+    width: 100%;
+    height: 40px;
+    min-height: 40px;
+}
+.navbar-brand {
+    font-weight: bold;
+    height: 40px;
+    padding: 10px 15px;
+}
+.dropdown-menu {
+    font: 12px 'Microsoft YaHei';
+}
+.dropdown-menu .divider {
+    height: 2px;
+    padding: 0!important;
+    margin: 5px 0;
+}
+#lkSync {
+    padding-right: 10px;
+}
+#lkPreview {
+    padding-left: 10px;
+}
+
+/* panel */
+#panelframe {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding-top: 45px;
+    background-color: #2b3034;
+}
+#panels {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* windows */
+#windows {
+    background: #2a2b2d;
+    position: relative;
+}
+#windows > .window {
+    position: absolute;
+    left: 36px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/* layer panel */
+#layerPanel {
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* toolbar */
+#toolbar {
+    width: 36px;
+    height: 100%;
+    vertical-align: middle;
+    padding: 0 5px;
+    background: #313639;
+    border-top: 1px solid #2b3034;
+    border-bottom: 1px solid #2b3034;
+}
+
+#toolbar > .tools-ctn {
+    display: inline-block;
+    width: 36px;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#toolbar > .tools-ctn.option {
+    float: right;
+}
+
+.tools-ctn button {
+    position: relative;
+    padding: 0;
+    margin: 0 1px;
+    width: 28px;
+    border: none;
+    height: 28px;
+    line-height: 28px;
+    box-shadow: none;
+    background-color: transparent;
+    vertical-align: middle;
+    font: 13px SourceSansPro,sans-serif;
+}
+.tools-ctn > button.t-active {
+    background-color: #565d5f;
+}
+
+.tools-ctn > button > svg {
+    fill: #c7c7c7;
+    stroke: #c7c7c7;
+    vertical-align: middle;
+    text-align: center;
+}
+.tools-ctn > button.t-active > svg {
+    fill: #fff;
+    stroke: #fff;
+}
+
+.dropdown .caret {
+    margin-left: 15px;
+}
+
+/* layer start */
+.glyphicon{
+    font-family: 'Glyphicons Halflings' !important;
+    color: #eee;
+    cursor: pointer;
+}
+.glyphicon.glyphicon-eye-open, .glyphicon.glyphicon-eye-close{
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.glyphicon.glyphicon-lock{
+    margin-left: 10px !important;
+}
+#parentTree, #recordList{
+    height: calc(100% - 26px);
+    overflow: auto;
+}
+#parentTree input, #recordList input{
+    color: #333 !important;
+    height: 22px !important;
+    border-radius: 2px !important;
+    padding: 2px !important;
+    border-style: solid !important;
+    border-color: transparent;
+}
+.toolWrap{
+    height: 26px;
+    line-height: 26px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.toolWrap li{
+    cursor: pointer;
+    float: right;
+}
+#treeControl{
+    height: calc(100% - 26px);
+    overflow-y: auto;
+}
+.treeToolWrap{
+    height: 26px;
+    line-height: 26px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.treeToolWrap li{
+    cursor: pointer;
+    float: right;
+}
+.treeCfg {
+    margin-right: 5px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.ztree li{
+    position: relative;
+    line-height: 24px !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #666;
+}
+.ztree li a{
+    width: 70%;
+    height: 24px !important;
+}
+.ztree li a.curSelectedNode{
+    background-color: rgba(0,0,0,0.48) !important;
+    border-color: transparent !important;
+}
+.ztree li a.curOpenedNode {
+    background-color: rgba(216, 149, 23, 0.8) !important;
+}
+/*.ztree li a:hover {
+    text-decoration: none !important;
+    background-color: rgba(0,0,0,0.18) !important;
+}*/
+#layerPanel li span.button.edit{
+    display: none !important;/* 隐藏编辑按钮 */
+}
+.ztree li span.button.ico_docu {
+    vertical-align: middle !important;
+    margin-top: -1px !important;
+}
+/* layer end */
+
+/* property start */
+#propertyList{
+    height: 100%;
+    overflow: auto;
+}
+#propPanel input, #propPanel select, #propPanel textarea, #propPanel option{
+    background-color: transparent;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+}
+#propertyList > li{
+    padding: 5px 15px;
+    border-bottom: 1px solid #666;
+}
+#propertyList li .property-name{
+    width: 20px;display: inline-block;
+}
+#propertyList li .property-value{
+    display: inline-block;
+    border: 1px solid transparent;
+    padding: 2px;
+}
+#propertyList li .property-value.p_input{
+    border-color: #aaa;
+    border-radius: 2px;
+    width: 40px;
+    display: none;
+}
+.txtShow .p_input{
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    display: none;
+    width: 80px;
+}
+.txtShow.showInput .p_input{
+    display: inline-block;
+}
+#propertyList li .property-value.p_span{
+    cursor: pointer;
+    margin-right: 5px;
+}
+.txtShow.showInput .p_span{
+    display: none;
+}
+
+#propertyList .glyphicon{
+    cursor: pointer;
+}
+#propertyList .dropdown-menu{
+    min-width: auto;
+}
+.style1{
+    color: #333;
+    font-size: 12px;
+}
+.style2{
+    color: #333;
+    font-size: 14px;
+}
+.style3{
+    color: #333;
+    font-size: 16px;
+}
+.style4{
+    color: #333;
+    font-size: 18px;
+}
+
+.btnStyle1{
+    color: #333;
+    font-size: 12px;
+}
+.btnStyle2{
+    color: #333;
+    font-size: 14px;
+}
+.btnStyle3{
+    color: #333;
+    font-size: 16px;
+}
+.btnStyle4{
+    color: #333;
+    font-size: 18px;
+}
+.dividingLine{
+    width: 100%;
+    border-bottom: 1px solid #666;
+}
+.property-base {
+    position: relative;
+    width: 100%;
+}
+.property-base>div {
+    display: inline-block;
+}
+.property-base .btnTool{
+    display: inline-block;
+    font-size: 16px;
+    position: absolute;
+    right: 0;
+    top: 1px;
+}
+#dataSrcWrap{
+    width: 100%;
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+.dataSource{
+    margin-right: 40px;
+}
+.dataSource .dropArea{
+    border: 1px dashed #666;
+    display: inline-block;
+}
+.dataSource .dropArea:hover,.dataSource .dropArea.dragover{
+    border-color: rgb(66,139,202);
+    box-shadow: 0 0 3px 2px rgba(66,139,202,0.7);
+}
+.dataSource .spanDs{
+    padding: 3px 10px 4px 10px;
+}
+.dataSource .spanDs:hover{
+    cursor: pointer;
+    box-shadow: 0 0 3px 2px #c7c7c7;
+}
+.dataSource .spanDs .glyphicon-remove{
+    display: none;
+    margin-left: 10px;
+}
+.dataSource .spanDs:hover .glyphicon-remove{
+    display: inline-block;
+}
+.dataSource .dropArea .glyphicon-plus{
+    margin: 3px 20px 6px;
+    cursor: inherit !important;
+}
+#enumerateWrap{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 6px 12px;
+    box-shadow: 0 0 2px 1px #fff;
+    margin-top: 8px;
+    display: none;
+    color: #666
+}
+.enumeratePart{
+    display: inline-block;
+}
+.enumeratePart:not(:last-child){
+    margin-bottom: 3px;
+}
+#enumerateWrap .enumerateItem{
+    position: relative;
+}
+.enumerateKey{
+    width: 52px;
+    margin-right: 10px;
+}
+.divEnumerateVal {
+    margin-right: 30px;
+}
+.enumerateVal, .enumerateKey{
+    padding: 2px 4px;
+}
+.enumerateVal:focus, .enumerateKey:focus{
+    box-shadow: 0 0 3px 2px #c7c7c7;
+}
+.enumerateLabel{
+    margin-right: 5px;
+}
+#enumerateWrap .btnEnumerate{
+    font-size: 16px;
+    color: #888;
+}
+#enumerateWrap .btnRemove{
+    margin-left: 5px;
+    position: absolute;
+    top: 3px;
+    right: 0;
+}
+#enumerateWrap .btnChoosePic{
+    margin-left: 8px;
+}
+.enumerateCtn {
+    display: inline-block;
+    position: relative;
+    bottom: 2px;
+    margin-right: 10px;
+    font-size: 12px;
+}
+.enumerateCtn.disabled{
+    opacity: 0.5;
+}
+#btnAddEnumerate {
+    margin-right: 10px;
+}
+#liTempltConfigWrap {
+    padding: 3px 5px;
+}
+#templtConfigWrap {
+    display: none;
+}
+#templtConfigWrap textarea {
+    color: #c7c7c7;
+    height: 160px;
+    box-shadow: 0 0 2px 1px #fff;
+    border: none;
+}
+#templtConfigWrap textarea:focus {
+    box-shadow: 0 0 3px 2px #c7c7c7;
+}
+#templtConfigWrap .btnTool {
+    font-size: 16px;
+    text-align: right;
+    padding: 5px 0 0 0;
+}
+#templtConfigWrap .tplStyle {
+    margin-top: 5px;
+}
+#btnPropTempltApply {
+    margin-right: 10px;
+}
+#btnPropTempltExport {
+    margin-right: 10px;
+}
+/* property end */
+
+/** html layer start */
+.html-layer {
+    background: transparent;
+    transform-origin: 0 0;
+    color: #333;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.html-group {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.konvajs-content { overflow: hidden; }
+.html-widget {
+    overflow: hidden;
+}
+.html-screen{
+    overflow: hidden;
+    background-color: #eee;
+}
+/* widget preset style start */
+#btnTxtStyle .btn{
+    width: 84px;
+    text-align: center;
+}
+.html-btn{
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+}
+.html-btn.default{
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.html-btn.primary{
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.html-btn.success{
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.html-btn.info{
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+.html-btn.warning{
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+.html-btn.danger{
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+.html-btn.link{
+    font-weight: 400;
+    color: #337ab7;
+}
+.html-btn.default:hover{
+    color: #666;
+}
+.html-btn.link:hover{
+    color: #115895;
+}
+/* widget preset style end */
+
+/* history panel start */
+#historyPanel ul .historyItem{
+    padding: 4px 8px;
+    border-bottom: 1px solid #666;
+    cursor: pointer;
+}
+#historyPanel ul .historyItem.selected{
+    background-color: rgba(0,0,0,0.25);
+}
+#historyList .historyItem.shallow {
+    opacity: 0.5;
+}
+#snapList li:last-of-type{
+    border-bottom-width: 2px;
+    margin-bottom: 2px;
+}
+/* history panel end */
+/*登录样式*/
+#modalLogin {
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:#313639;
+    /*z-index:1031;*/
+}
+.factoryLogin {
+    width:400px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-85px;
+    margin-left:-200px;
+}
+.titleBrand {
+    font-size:32px;
+    text-align:center;
+    color:#fff;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+.loginBox {
+    text-align:center;
+}
+#userName, #userPass {
+    width:228px;
+    padding:0 5px;
+    border-radius:5px;
+    display:block;
+    font-size:14px;
+    height:35px;
+    line-height:35px;
+    border:1px solid #808080;
+    margin:10px auto 0;
+    color:#333;
+}
+.passWord {
+    width:100%;
+    height:35px;
+    line-height:35px;
+}
+#userPass {
+display:inline-block;
+margin-left:42px;
+}
+#rememberPass {
+    margin-top:-1px;
+    vertical-align:middle;
+    margin-left:5px;
+}
+#login {
+    font-size:14px;
+    color:#333;
+    width:60px;
+    height:35px;
+    line-height:35px;
+    text-align:center;
+    margin-top:10px;
+    border-radius:5px;
+    border:1px solid transparent;
+    margin-top:15px;
+}
+/*登录样式end*/
+/*欢迎页样式*/
+#modalframe {
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1031;
+    background:#313639;
+}
+.frame-container{
+    height:100%;
+}
+/*.frame-title {
+    line-height: 60px;
+    font-size: 30px;
+    padding-left: 30px;
+}*/
+.container-title {
+    font-size:24px;
+    margin-top:30px;
+}
+.startText,.projectSelf {
+    font-size:16px;
+    font-weight:600;
+    margin-bottom:10px;
+}
+.containerStart, .containerPro {
+    margin-top:50px;
+}
+.containerPro {
+    height: calc(100% - 260px);
+}
+.divHover {
+    font-size:14px;
+    color:#007ed3;
+    cursor:pointer;
+    line-height:24px;
+    padding-left:10px;
+    list-style:none;
+}
+.divHover:hover {
+    color:#77aaff;
+}
+#projectList {
+    max-height:calc(100% - 30px);
+    overflow-y:auto;
+}
+.gray-scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.gray-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+.gray-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.btnHandBox {
+    height:30px;
+    line-height:30px;
+}
+.btnHandBox span {
+    font-size:18px;
+    margin-left:calc(50% - 10px);
+}
+.proTop ,#deletePro{
+    display:none;
+    font-size: 20px;
+    vertical-align: middle;
+    float:right;
+    margin-right:5px;
+    margin-top:1px;
+}
+/*欢迎页样式end*/
+
+/*数据源配置样式Start*/
+#dataSourcePanel {
+    overflow-y: hidden;
+    position: relative;
+}
+#dataSrcPanel {
+    font-weight: bold;
+}
+#dataSrcPanel li.rows{
+    background-color: #253046;
+}
+.tree-group {
+    margin-bottom: 1px;
+    border-radius: 4px;
+}
+
+.nav-header {
+    cursor: pointer;
+    padding: 3px 0;
+    height: 32px;
+}
+
+.treeRow {
+    padding: 7px 0 2px 1.2em;
+    margin: 1px 0 1px 0.5em;
+    cursor: move;
+    border: 1px solid #2A364E;
+    border-radius: 2px;
+    height: 34px;
+    position: relative;
+    background-color: transparent;
+}
+
+.treeRow:hover {
+    background-color: rgb(56, 73, 106) !important;
+    border: none;
+    box-shadow: none;
+}
+
+.treeRow>input{
+    width: calc(90% - 70px)!important;
+    left: 25px;
+    top: 5px!important;
+}
+.dsTreeHeader {
+    height: 40px;
+    padding-top: 11px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    background-color: rgba(25, 34, 52, 0.8) !important;
+    border-bottom-color: #2A3E50;
+}
+
+.dsTreeHeaderIcon {
+    top: -1px;
+    display: inline-block;
+    margin: -10px 12px 0px 12px;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    background-image: url('/static/images/dataSource/group_head_normal_white.png');
+}
+.dsTreeHeaderIcon.open{
+    background-image: url('/static/images/dataSource/group_head_sel_white.png');
+}
+
+.dsGroupName {
+    font-weight: 400;
+    display: inline-block;
+    width: 30%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dsGroupName.selected{
+    font-weight: 700;
+}
+
+.dsTreeBtnCfg {
+    display: none;
+    float: right;
+    margin-top: 2px;
+    margin-right: 10px;
+    color: #ffab5b;
+    background-color: transparent;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.dsTreeBtnRemove {
+    display: none;
+    float: right;
+    margin-right: 10px;
+    background-color: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    color: #777;
+}
+
+.dsTreeBtnRemove:hover {
+    color: #ffab5b;
+}
+
+.dsTreeBtnFormula {
+    display: none!important;
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+    width: 21px;
+    height: 19px;
+}
+
+.dsTreeBtnAdd {
+    display: none!important;
+    font-size: 18px;
+}
+
+.dsTreeBtnDel {
+    display: inline;
+    font-size: 18px;
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+    color: #777;
+}
+
+.dsMark {
+    float: left;
+    width: 3px;
+    height: 22px;
+}
+#dataSrcAddGroup {
+    height: 60px;
+    background-color: rgba(25, 34, 52, 0.8)
+}
+
+#inputAddGroup {
+    margin-top: 12px;
+    margin-left: 12px;
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #428BCA;
+    padding-left: 10px;
+    background-color: transparent;
+}
+
+.showName {
+    display: inline-block;
+    margin-left: 10px;
+    width: 15em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dsEditGroupName {
+    float: right;
+    cursor: pointer;
+    font-size: 18px;
+    color: #777;
+    margin-right: 10px;
+}
+
+.inputEditGroup {
+    width: 30%;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 2px;
+    margin-right: 4px;
+    position: relative;
+    top: -2px;
+}
+.dsTreeHeader .btn-sm{
+    position: relative;
+    top: -5px;
+    line-height: 1.22;
+}
+#dataSrcPanel .tooltip,#dataSrcPanel .toolContent,#dataSrcPanel .tooltipTitle{
+    background-color: rgba(47, 55, 71, 1) !important;
+    border: none !important;
+    font-weight: bold;
+}
+#dataSrcPanel .tooltipContent {
+    padding: 0 5px 5px 5px;
+    border-radius: 0 0 3px 3px;
+}
+#dataSrcPanel .tooltipContent p{
+    padding: 1px;
+}
+#dataSrcPanel .tooltipTitle{
+    width: 100%;
+    max-width: none !important;
+    border-radius: 3px 3px 0 0 !important;
+}
+/*数据源配置样式*/
+
+/* EnergyScreen 样式 */
+.st-container,
+.st-pusher,
+.st-content {
+    height: 100%;
+}
+.st-container {
+    position: relative;
+    overflow: visible;
+}
+.accordion-group {
+    margin-bottom: 1px;
+    border-radius: 4px;
+    border-style: none;
+    border-color: #ffab5b;
+}
+.lyrow {
+    padding: 2px 0 2px 1.2em;
+    margin: 1px 0 1px 0.5em;
+    cursor: move;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+.lyrow:hover {
+    border: 1px solid #87cefa;
+    box-shadow: inset 0 0 1px 1px #95D3FA;
+}
+.springContainer {
+    position: relative;
+    float: left;
+}
+
+.springContainer > .panel {
+    top: 10px;
+    bottom: 0;
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    margin-bottom: 0;
+    background-color: rgb(25, 34, 52);
+}
+
+.springHead {
+    width: 100%;
+    height: 38px;
+    background-color: #e5f3ff !important;
+    color: #2b7bbf !important;
+}
+
+.springContent {
+    width: 100%;
+    height: calc(100% - 38px);
+    padding: 0;
+}
+
+.springConfigMask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(139, 174, 203, 0.80);
+    cursor: move;
+    z-index: 150;
+}
+
+.springConfigMask:hover {
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+.springConfigBtn {
+    position: absolute !important;
+    font-size: 32px;
+    cursor: pointer;
+    top: 10px !important;
+
+    right: 50px !important;
+}
+.springConfigInstallBtn {
+    position: absolute !important;
+    font-size: 32px;
+    cursor: pointer;
+    top: 10px !important;
+    right: 90px !important;
+}
+
+.springConfigBtn.glyphicon-plus-sign {
+    position: absolute !important;
+    font-size: 80px;
+    cursor: pointer;
+    top: 100px !important;
+
+    right: calc(50% - 40px) !important;
+}
+
+.springConfigBtn:hover {
+    color: #333;
+}
+
+.springConfigRemoveBtn {
+    position: absolute !important;
+    font-size: 32px;
+    cursor: pointer;
+    color: 'darkred';
+    top: 10px !important;
+    right: 10px !important;
+}
+
+.springConfigAddBtn {
+    position: absolute !important;
+    font-size: 30px;
+    cursor: pointer;
+    top: 10px !important;
+    right: 50px !important;
+}
+
+.springConfigTips {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -114px;
+    margin-top: -20px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+}
+
+.springConfigTips:hover {
+    border-color: #66afe9;
+    cursor: pointer;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.gray-scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.gray-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+.gray-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-backdrop {
+    z-index: 0 !important;
+}

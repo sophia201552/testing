@@ -1,0 +1,9 @@
+export default {
+  ADD: 'Add',
+  COPY: 'Copy',
+  DELETE: 'Delete',
+  PASTE: 'Paste',
+  ENLARGE: 'Amplifier',
+  NARROW: 'Narrow',
+  ZOOM: 'Zoon'
+};

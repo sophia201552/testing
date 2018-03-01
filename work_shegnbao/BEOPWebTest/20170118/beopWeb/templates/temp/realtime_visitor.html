@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style type="text/css">
+
+    .content{
+    	width: 700px;
+    	margin: auto;
+    }
+	</style>
+</head>
+<body>
+	<div class='content'>
+		<table>
+			<tr>
+				<td>序号</td>
+				<td>访问时间</td>
+				<td>访问项目</td>
+				<td>访问类型</td>
+				<td>访问页面</td>
+				<td>访客位置</td>
+				<td>访客ID</td>
+			</tr>
+			{% for r in rv %}
+			<tr>
+				<td>{{ loop.index }} </td>
+				<td>{{ r.time }}</td>
+				<td>{{ r.remarks.projId }}</td>
+				<td>{{ r.pageType }}</td>
+				<td>{{ r.remarks.pageid }}</td>
+				<td>{{ r.clientAddr }}</td>
+				<td>{{ r.userId }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+</body>
+</html>
+
+
+
+
+

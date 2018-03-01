@@ -1,0 +1,25 @@
+{
+  "name": "@beopcloud/StrategyV2-Engine",
+  "version": "0.4.30",
+  "description": "策略组态第二版数据层处理引擎",
+  "main": "index.js",
+  "author": "Peter",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "node --trace-warnings ./node_modules/webpack/bin/webpack --config webpack.config.js --progress --profile --colors"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "@beopcloud/diff": "^0.2.2",
+    "@beopcloud/logger": "^0.1.1",
+    "seamless-immutable": "^7.1.2"
+  }
+}

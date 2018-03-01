@@ -1,0 +1,138 @@
+<style>
+    #divObserverMap {
+        height:68%;
+        width:100%;
+        position: relative;
+        border-bottom: 0.1rem solid #bbb;
+        overflow: hidden;
+    }
+    #containerMap {
+        position: relative;
+    }
+    #imgMap {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .divEquipment {
+        width: 100px;
+        height: 50px;
+        position: absolute;
+    }
+    .divEquipment>div {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+    .spanEquipVal {
+        color: #fff;
+    }
+    .divSensor {
+        display: block;
+        background-color: red;
+    }
+    .divController {
+        display: none;
+        background-color: blue;
+    }
+    #btnToggle {
+        font-size: 2rem;
+        border: 0.1rem solid black;
+        position: absolute;
+        left: 5%;
+        top: 5%;
+        z-index: 1;
+    }
+    #divMapTool {
+        position: absolute;
+        left: 1%;
+        bottom: 2%;
+    }
+    #btnRelocate {
+        font-size: 2rem;
+        z-index: 1;
+    }
+    #btnSizeUp {
+        font-size: 2rem;
+        z-index: 1;
+    }
+    #btnSizeDown {
+        font-size: 2rem;
+        z-index: 1;
+    }
+    #btnLocate {
+        font-size: 4rem;
+        position: absolute;
+        left: calc(50% - 2rem);
+        top: 50%;
+        cursor: move;
+        z-index: 1;
+    }
+    /*#btnTempSet {
+        font-size: 1.5rem;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+    }
+    #btnTempSet input {
+        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        width:12rem;
+    }
+    #btnTempSet label {
+        position: relative;
+        left: 3.5rem;
+        top: -3rem;
+    }*/
+    #divTemperature {
+        height: 32%;
+        width:100%;
+        position: relative;
+        background: #EFF3F6;
+    }
+    #btnTempSet {
+        font-size:2rem;
+        color:white;
+        background-color: #666;
+        border-radius: 0.5rem;
+        padding: 0.2rem 0.5rem;
+        position: absolute;
+        left: 4rem;
+        top: -4rem;
+        width: 2.8rem;
+    }
+
+    #divTemperatureShow {
+        font-size:8rem;
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+        top:24%
+    }
+</style>
+<div id="divObserverMap">
+    <div id="containerMap">
+        <div id="btnLocate">
+            <span id="spanLocateIcon" class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+            <div id="btnTempSet">
+                <span id="tempSetSure" class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                <span id="tempSetValue">27</span>
+                <span id="tempRaise" class="glyphicon glyphicon-plus tempChange" aria-hidden="true"></span>
+                <span id="tempReduce" class="glyphicon glyphicon-minus tempChange" aria-hidden="true"></span>
+            </div>
+        <div id="locateTempShow" aria-hidden="true"></div>
+    </div>
+    </div>
+    <div id="btnToggle">切换</div>
+    <div id="divMapTool" class="btn-group" role="group">
+        <button id="btnRelocate" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span></button>
+        <button id="btnSizeUp" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+        <button id="btnSizeDown" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+    </div>
+</div>
+<div id="divTemperature">
+    <div id="divTemperatureShow">
+        27℃
+    </div>
+</div>

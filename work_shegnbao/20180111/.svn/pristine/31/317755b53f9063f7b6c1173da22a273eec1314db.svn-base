@@ -1,0 +1,138 @@
+<style>
+    .form-control{
+        border-radius: 4px;
+    }
+    .droparea{
+        text-align: center;
+        padding: 6px 12px;
+        display: block;
+        border: 1px dashed #888;
+        margin: auto;
+        border-radius: 4px;
+        height: 32px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .dpInlineBlock{
+        display: inline-block;
+        width: 181px;
+    }
+    #modalTableConfig .glyphicon{
+        font-size: 18px;
+        cursor: pointer;
+    }
+    #modalTableConfig .glyphicon-plus-sign, #modalTableConfig .glyphicon-remove-circle{
+        line-height: 34px;
+    }
+    #modalTableConfig, #modalTableConfig .modal-backdrop {
+        position: absolute;
+    }
+    #formModal > .form-group{
+        border-bottom: 1px solid #eee;
+    }
+    #formModal > .form-group:last-of-type{
+        border-bottom: none;
+    }
+    .marginTop{
+        margin-top: 10px;
+    }
+    .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+        padding-right: 0;
+    }
+</style>
+<div class="modal" id="modalTableConfig">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" i18n="report.tableConfig.TITLE">Table Config</h4>
+        </div>
+        <div class="modal-body form-wrap">
+            <form class="form-horizontal" id="formModal">
+                <!-- Base Options -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="" i18n="report.tableConfig.TYPE">Type</label>
+                    <div class="col-md-8">
+                        <select class="form-control selTable" id="selRow">
+                            <!--<option value="dataSource">Data Source</option>-->
+                            <option value="default">Default</option>
+                            <option value="history">History</option>
+                            <!--<option value="realtime">Real time</option>-->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="" i18n="report.tableConfig.DATASOURCE">Data source</label>
+                    <div class="col-md-8">
+                        <div class="form-group divAppend" id="divOptDs">
+                            <div class="col-md-8">
+                                <span class="glyphicon glyphicon-plus-sign" id="btnAddDs" title="Add"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-4">
+                        <div class="btn-group dropdown-wrap">
+                            <button class="btn btn-default btn-sm clearfix" id="btnDataId" type="button" data-toggle="dropdown" data-value="line">
+                            <span>请选择</span>
+                            <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="ulDataList" role="menu">
+                                <li><a href="javascript:;" data-value="-1">请选择</a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="" i18n="report.tableConfig.ISCHANGE">Swap rows and columns</label>
+                    <div class="col-md-8">
+                        <input class="" type="checkbox" id="chbxSwapRC" style="height: 23px;" checked/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="btnSubmit" i18n="report.reportConfig.SURE">Sure</button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- 数据源 -->
+    <div class="dsWrap hidden dsTemplate">
+        <div class="col-md-6 marginTop">
+            <span class="droparea">Drag Data Source</span>
+        </div>
+        <div class="col-md-4 marginTop">
+            <input type="text" class="form-control dsTitle" placeholder="Input Header"/>
+        </div>
+        <div class="col-md-2 marginTop">
+            <span class="glyphicon glyphicon-remove-circle btnRemove"></span>
+        </div>
+    </div>
+
+<!-- 历史 -->
+<div class="form-group hidden divAppend" id="divOptHist">
+    <div class="col-md-12 marginTop timeRange">
+        <input class="form-control dpInlineBlock" size="16" type="text" value="" id="dateStart" style="border-radius:5px 0 0 5px;" i18n="" placeholder="Start time">
+        <span class="" i18n="common.TO">To</span>
+        <input class="form-control dpInlineBlock" size="16" type="text" value="" id="dateEnd" style="border-radius:0 5px 5px 0;" i18n="" placeholder="End time">
+    </div>
+    <div class="col-md-12 marginTop interval">
+        <label class="control-label">Time Interval</label>
+        <select class="form-control selTable dpInlineBlock" id="selInterval" style="width: 290px;margin-left: 12px;">
+            <option value="m5">5 mins</option>
+            <option value="h1" selected>1 hour</option>
+            <option value="d1">1 day</option>
+            <option value="M1">1 month</option>
+            <!--<option value="d7">1 week</option>-->
+        </select>
+    </div>
+</div>
+
+<!-- 实时 -->
+<div class="form-group hidden divAppend" id="divOptRT">
+    <div class="col-md-8">
+        <input type="text" class="form-control" placeholder=""/>
+    </div>
+</div>

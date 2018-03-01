@@ -1,0 +1,51 @@
+<style type="text/css">
+    td{
+        color:black;
+    }
+    #btn_write_pt{
+        color:#000000;
+        position:relative;
+        left:680px;
+        width:100px;
+        font-size:16px;
+        font-weight:bold;
+    }
+    #txt_select_all{
+        position:relative;
+        left:8px;
+    }
+    #chk_all_sel{
+        position:relative;
+        left:8px;
+    }
+</style>
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">CSV文件内容列表</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div id="txt_select_all">全选</div>
+            <input type="checkbox" id="chk_all_sel" />
+            <button type="button" class="btn_normal" id="btn_write_pt">写入点值</button>
+        </div>
+        <div class="row">
+            <table class="table table-striped table-hover" id="tableOperatingRecord">
+                <thead>
+                    <tr>
+                        <th>选择</th>
+                        <th>点名</th>
+                        <th>点值</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>

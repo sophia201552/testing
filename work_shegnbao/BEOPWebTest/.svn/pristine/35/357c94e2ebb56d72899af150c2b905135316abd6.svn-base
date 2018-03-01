@@ -1,0 +1,71 @@
+<style>
+    #ctnPoint {
+        border-bottom: 1px solid #ccc;
+        font-size: 3rem;
+        height: 60%;
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: center;
+        -webkit-justify-content: center;
+    }
+    #boxPoint {
+        text-align: center;
+    }
+    #ctnScan {
+        text-align: center;
+        padding: 5rem;
+    }
+    #btnBarCode {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.8rem;
+    }
+    #btnSkip {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.8rem;
+        margin-top: 1rem;
+    }
+    #ctnJudge {
+        display: none;
+        text-align: center;
+        padding-top: 20%;
+    }
+    #btnPtRight{
+        margin-right: 1.5rem;
+    }
+    .divContent{
+        font-size: 1.6rem;
+        color: #aaa;
+    }
+    .divPtTip {
+        font-size: 1.6rem;
+        color: #aaa;
+    }
+    .divPrePt.statusErr{
+        color: #a94442;
+    }
+    .divPrePt.statusOk{
+        color: #3c763d;
+    }
+    .spGuideLine{
+        height: 2rem;
+        width: 1px;
+        display: inline-block;
+        background: #aaa;
+    }
+</style>
+<div id="ctnPoint">
+    <div id="boxPoint">
+
+    </div>
+</div>
+<div id="ctnScan">
+    <button id="btnBarCode"class="btn btn-default zepto-ev">扫描二维码</button>
+    </br>
+    <button id="btnSkip"class="btn btn-default zepto-ev">跳过该设备</button>
+</div>
+<div id="ctnJudge">
+    <button id="btnPtRight" class="btn btn-default zepto-ev btnJudge">设备正常</button>
+    <button id="btnPtError" class="btn btn-default zepto-ev btnJudge">设备异常</button>
+</div>

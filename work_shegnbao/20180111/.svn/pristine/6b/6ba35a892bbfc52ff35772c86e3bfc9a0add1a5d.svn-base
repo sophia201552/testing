@@ -1,0 +1,83 @@
+﻿[ProjConfig]
+DBName = xxxx
+
+# Multiple sections using [[[...]]]
+# Multiple line value using """
+#		[[[Unit-21]]]
+#		Description = 冷冻机房冷负荷最高负荷为%max(AverAMPS+AverAMPS01)%实际机房能效比为%'较大' if 2<3 else '较小'%
+#		ChartTitle = 2
+#		ChartType = bar
+#		ChartXAxisName = x
+#		ChartYAxisName = y
+#		ChartPoints = AverAMPS|AverAMPS01
+#		ChartPointsName = 平均电流百分比|1号平均电流百分比
+#		ChartAlgorithm = Histogram|daily|scatter|LastValue|LastFirstValueDiff|OnCount
+
+[Report]
+	[[Chapter-1]]
+	ChapterName = 第一章 机房运行概况
+		[[[Unit-11]]]
+		Description = "冷冻机房冷负荷最高负荷为%max(RealtimeLoad)%"
+		ChartTitle = 机房功率和冷负荷变化
+		ChartXAxisName = 日期
+		ChartYAxisName = 功率:kW(负荷:RT)
+		ChartPoints = RealtimePower|RealtimeLoad
+		ChartPointsName = 机房总功率|机房总负荷
+		[[[Unit-12]]]
+		Description = "冷冻机房冷负荷最高负荷为%max(RealtimeLoad)%，实际机房平均能效比为%mean(RealtimeEff)%,其效率%'较差' if mean(RealtimeEff)>0.9 else '较好'%"
+		ChartTitle = 机房能效比分布
+		ChartType = scatter
+		ChartXAxisName = 机房总负荷
+		ChartYAxisName = 机房能效比
+		ChartPoints = RealtimeLoad|RealtimeEff
+		ChartPointsName = 机房总负荷|机房能效比
+		ChartAlgorithm = scatter
+	[[Chapter-2]]
+	ChapterName = 第二章 系统运行参数分布
+	Type = data
+		[[[Unit-21]]]
+		Description = "冷冻机房最高电流百分比为%max(AverAMPS)%"
+		ChartTitle = 冷机平均电流百分比分布
+		ChartType = bar
+		ChartXAxisName = 电流分布
+		ChartYAxisName = 电流百分比
+		ChartPoints = AverAMPS
+		ChartPointsName = 平均电流百分比
+		ChartAlgorithm = Histogram
+		[[[Unit-22]]]
+		Description = "冷冻机房最高冷冻水温度为%max(PriChWSupplyTemp01)%"
+		ChartTitle = 2
+		ChartType = bar
+		ChartXAxisName = x
+		ChartYAxisName = y
+		ChartPoints = PriChWSupplyTemp01
+		ChartPointsName = 一次侧供水温度
+		ChartAlgorithm = Histogram
+		[[[Unit-23]]]
+		Description = "冷冻机房%max(PriChWSupplyTemp01)%"
+		ChartTitle = 2
+		ChartXAxisName = 时间
+		ChartYAxisName = 温度
+		ChartPoints = PriChWSupplyTemp01|SecChWSupplyTemp01|SecChWReturnTemp01
+		ChartPointsName = 一次侧供水温度|二次供水温度|二次回水温度
+	[[Chapter-3]]
+	ChapterName = 第三章 设备运行信息
+	Type = data
+		[[[Unit-31]]]
+		Description = "冷冻机房最高电流百分比为%max(ChCWValveOnOff03)%"
+		ChartTitle = 冷机阀门开关频数
+		ChartType = bar
+		ChartXAxisName = 时间
+		ChartYAxisName = 阀门开启次数
+		ChartPoints = ChCWValveOnOff03|ChCWValveOnOff06|ChCWValveOnOff08
+		ChartPointsName = 3号阀门|6号阀门|8号阀门
+		ChartAlgorithm = OnCount
+		[[[Unit-32]]]
+		Description = "冷冻机房最高电流百分比为%max(ChGroupPowerTotal)%"
+		ChartTitle = 周用电量分布
+		ChartType = pie
+		ChartXAxisName = 设备名称
+		ChartYAxisName = 用电量
+		ChartPoints = ChGroupPowerTotal|PriChWPGroupPowerTotal|SecChWPGroupPowerTotal|CWPGroupPowerTotal|CTGroupPowerTotal
+		ChartPointsName = 冷机|一次泵|二次泵|冷却泵|冷却塔
+		ChartAlgorithm = LastFirstValueDiff

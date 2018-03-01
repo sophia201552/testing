@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style type="text/css">
+        body {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin: 0 !important;
+            width: 100% !important;
+            -webkit-text-size-adjust: 100% !important;
+            -ms-text-size-adjust: 100% !important;
+            -webkit-font-smoothing: antialiased !important;
+            font-family: "Microsoft YaHei", "微软雅黑", "arial", "sans-serif";
+            background-color: #e7e7e7;
+            overflow-x: scroll;
+        }
+
+        img {
+            border: 0 !important;
+            display: block !important;
+            outline: none !important;
+            height: 100%;
+        }
+
+        a {
+            color: #382F2E;
+        }
+
+        p, h1 {
+            color: #382F2E;
+            margin: 0;
+        }
+
+        p {
+            text-align: left;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 19px;
+        }
+
+        a.link1 {
+            color: #382F2E;
+        }
+
+        a.link2 {
+            font-size: 16px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        h2 {
+            font-weight: bold;
+        }
+
+        h3 {
+            font-weight: normal;
+        }
+
+        div, p, ul, h1 {
+            margin: 0;
+        }
+
+        .bgBody {
+            /*background-color: #e7e7e7;*/
+        }
+
+        .bgItem {
+            background-color: #ffffff;
+            margin: 10px auto;
+        }
+
+        pre {
+            font-family: inherit;
+        }
+
+        .report-table {
+            text-align: center;
+        }
+
+        .table-bordered {
+            border: 1px solid #ddd;
+        }
+
+        .table {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        table {
+            background-color: transparent;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        /*.table-striped tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }*/
+
+        .table-bordered thead tr th, .table-bordered tbody tr th, .table-bordered tfoot tr th, .table-bordered thead tr td, .table-bordered tbody tr td, .table-bordered tfoot tr td {
+            border: 1px solid #ddd;
+        }
+
+        .table thead tr th, .table tbody tr th, .table tfoot tr th, .table thead tr td, .table tbody tr td, .table tfoot tr td {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+
+        td, th {
+            padding: 0;
+        }
+
+        .reportItemName {
+            border-bottom: 1px solid #B1B1B1;
+        }
+
+        .well-sm {
+            padding: 9px;
+            border-radius: 3px;
+        }
+
+        .well {
+            min-height: 20px;
+            padding: 19px;
+            margin-bottom: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #e3e3e3;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+        }
+
+        .logo-text {
+            font-size: 14px;
+            color: #FFFFFF;
+        }
+
+        .logo-header {
+            padding: 0 25px;
+            color: #FFF;
+            height: 58px;
+        }
+
+        .copyright {
+            text-align: center;
+            background-color: lightgray;
+            padding: 10px 0;
+        }
+
+        .copyrightInfo {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .decoration-none {
+            text-decoration: none;
+        }
+
+        .fz10 {
+            font-size: 10px;
+        }
+
+        .fz12 {
+            font-size: 12px;
+        }
+
+        .pr {
+            position: relative;
+        }
+
+        .pa {
+            position: absolute;
+        }
+
+        .mt20 {
+            margin-top: 20px;
+        }
+
+        .bgBody .trDarkBg {
+            background-color: #e9e9e9;
+        }
+
+        .bgBody .trOrdinaryBg {
+            background-color: #f9f9f9;
+        }
+
+        .contentEditableContainer {
+            width: 420px;
+            margin: 0 auto;
+            background-color: #fff;
+            color: #272727;
+            z-index: 333;
+            position: relative;
+        }
+
+        .sectionWrapper {
+            padding: 10px;
+        }
+
+        .summary {
+            line-height: 22px;
+            font-size: 15px;
+        }
+
+        .contentEditableContainer table td, .contentEditableContainer table th {
+            vertical-align: middle;
+        }
+
+        .sectionDarkBg {
+            background-color: #D4D4D4;
+        }
+
+        .sectionDarkBg .summary {
+            color: #272727;
+        }
+
+        .sectionOrdinaryBg {
+            background-color: #fff;
+        }
+
+        .sectionOrdinaryBg .summary {
+            color: #272727;
+        }
+
+        .aym_table_wrap {
+            margin: 0 auto;
+        }
+
+        #mailContentContainer {
+            background-color: #e7e7e7;
+        }
+
+        .qm_con_body_content {
+            background-color: #e7e7e7;
+        }
+    </style>
+</head>
+<body paddingwidth="0" paddingheight="0"
+      style="padding-top: 0; padding-bottom: 0; background-repeat: repeat; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-font-smoothing: antialiased;"
+      offset="0" toppadding="0" leftpadding="0" style="background-color: #aaa;font-size: 14px;">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableContent bgBody" align="center"
+       style="background-color: #e7e7e7">
+    <tr>
+        <td>
+            <table width="900" border="0" cellspacing="0" cellpadding="0" align="center" class='bgItem'>
+                <tr>
+                    <td width='900'>
+                        <table width="900" border="0" cellspacing="0" cellpadding="0" align="center">
+
+                            <!-- =============================== Body ====================================== -->
+                            <tr>
+                                <td style="color: #333;padding: 40px;font-size:14px;">
+                                    <div style="margin-bottom: 10px;">
+                                        <span style="color:#000;">尊敬的 {{ name }} {{sex}}：</span>
+                                    </div>
+                                    <div style="text-indent: 32px;color: #272727;">
+                                        <div>上午好!</div>
+                                        <div>以下报告是{{ version }}贵公司的{{ report_title }}概况,烦请您查收！</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='movableContentContainer logo-header' valign='top'
+                                    style="padding:0 25px;position: relative;">
+                                    <div style="border-bottom: 2px solid #529541;padding: 3px 0;position: relative;">
+                                        <img src="https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/logo_beop.png" alt="beop"
+                                             style="height: 30px;">
+                                        {% if report_type %}
+                                            <span style="font-size: 14px;color: #999;float: right;top: 13px;position: absolute;right: 5px;">类型 {{ report_type }}</span>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="text-align: center;padding: 15px 0;font-size: 30px;color: #529541;margin: 0;">
+                                        {{ version }} {{ company }}{{ report_title }}概况报告
+                                    </h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 25px;">
+                                    {% for reportItem in data %}
+                                        {% if loop.index %2==0 %}
+                                            <div class="sectionWrapper sectionDarkBg">
+                                                <h2 class="reportItemName"
+                                                    style="color: #3d3d3d;font-size: 18px;">{{ reportItem.name }}</h2>
+                                                {% for unit in reportItem.units %}
+                                                    <h3>{{ unit.unitName }}</h3>
+                                                    {% for subUnit in unit.subUnits %}
+                                                        {% if subUnit.summary != None %}
+                                                            <div class="summary">{{ subUnit.summary|safe }}</div>
+                                                        {% endif %}
+                                                        {% if  subUnit.chartItems.x|length > 0 %}
+                                                            <table class="table table-bordered table-striped report-table"
+                                                                   border="1"
+                                                                   style="border: 1px solid #ddd;width: 100%;margin-top: 10px;font-size: 14px;text-align: center;">
+                                                                <tr class="trDarkBg">
+                                                                    <th></th>
+                                                                    {% for x in  subUnit.chartItems.x %}
+                                                                        <th>{{ x }}</th>
+                                                                    {% endfor %}
+                                                                </tr>
+                                                                {% for y in  subUnit.chartItems.y %}
+                                                                    <tr class="trOrdinaryBg">
+                                                                        <td>{{ y.name }}</td>
+                                                                        {% for x in  subUnit.chartItems.x %}
+                                                                            <td>{{ y.value[loop.index - 1] }}</td>
+                                                                        {% endfor %}
+                                                                    </tr>
+                                                                {% endfor %}
+                                                            </table>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endfor %}
+                                                <div style="text-align: center;padding: 5px;background-color: #EEE;margin-top: 20px;">
+                                                    <a href="http://{{ domain }}/report_detail/{{ reportItem.id }}/{{ reportItem.reportName }}/{{ reportItem.version }}"
+                                                       class="decoration-none"
+                                                       style="color: #529541;font-size: larger;text-decoration: none;">点击查看详细报表</a>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if loop.index %2==1 %}
+                                            <div class="sectionWrapper sectionOrdinaryBg">
+                                                <h2 class="reportItemName"
+                                                    style="color: #3d3d3d;font-size: 18px;">{{ reportItem.name }}</h2>
+                                                {% for unit in reportItem.units %}
+                                                    <h3>{{ unit.unitName }}</h3>
+                                                    {% for subUnit in unit.subUnits %}
+                                                        {% if subUnit.summary != None %}
+                                                            <div class="summary">{{ subUnit.summary|safe }}</div>
+                                                        {% endif %}
+                                                        {% if  subUnit.chartItems.x|length > 0 %}
+                                                            <table class="table table-bordered table-striped report-table"
+                                                                   border="1"
+                                                                   style="border: 1px solid #ddd;width: 100%;margin-top: 10px;font-size: 14px;text-align: center;">
+                                                                <tr class="trDarkBg">
+                                                                    <th></th>
+                                                                    {% for x in  subUnit.chartItems.x %}
+                                                                        <th>{{ x }}</th>
+                                                                    {% endfor %}
+                                                                </tr>
+                                                                {% for y in  subUnit.chartItems.y %}
+                                                                    <tr class="trOrdinaryBg">
+                                                                        <td>{{ y.name }}</td>
+                                                                        {% for x in  subUnit.chartItems.x %}
+                                                                            <td>{{ y.value[loop.index - 1] }}</td>
+                                                                        {% endfor %}
+                                                                    </tr>
+                                                                {% endfor %}
+                                                            </table>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endfor %}
+                                                <div style="text-align: center;padding: 5px;background-color: #EEE;margin-top: 20px;">
+                                                    <a href="http://{{ domain }}/report_detail/{{ reportItem.id }}/{{ reportItem.reportName }}/{{ reportItem.version }}"
+                                                       class="decoration-none"
+                                                       style="color: #529541;font-size: larger;text-decoration: none;">点击查看详细报表</a>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height='15'></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td width='900' class="copyrightInfo pr">
+                        <div class="contentEditableContainer contentTextEditable">
+                            <div class="contentEditable">
+                                <div>BeOP<sup>TM</sup>专注于楼宇自动优化、诊断、数据服务的专业平台</div>
+                            </div>
+                            <div class="contentEditable">
+                                <div class="fz12">Copyright&copy;by RNB Tech. All Rights Reserved.</div>
+                            </div>
+                        </div>
+                        <div class="pa"
+                             style="border-bottom: 2px solid #529541;padding: 4px 0;position: relative;top:-27px;z-index: 22">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+

@@ -1,0 +1,407 @@
+<style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden
+    }
+
+    .rightContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 15px;
+        background: #f6f9f9;
+        overflow: hidden;
+    }
+
+    .topSection {
+        width: 100%;
+        height: calc(43% - 15px);
+        display: flex;
+    }
+
+    .bSection {
+        margin-top: 15px;
+        width: 100%;
+        height: calc(57% - 30px);
+        display: flex;
+    }
+
+    .connection-section,
+    .cloud-section,
+    .ai-section,
+    .visual-section {
+        width: calc(50% - 8px);
+        height: 100%;
+        box-shadow: 0px 0px 10px #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .cloud-section,
+    .visual-section {
+        margin-left: 15px;
+    }
+
+    .section-title {
+        height: 40px;
+        width: 100%;
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+        line-height: 40px;
+        color: #fff;
+        background: linear-gradient(to right, #4382e4, #5d52b6);
+    }
+
+    .title-box {
+        width: 10px;
+        height: 10px;
+        background: #fff;
+        border-radius: 2px;
+        margin-right: 5px;
+    }
+
+    .connection-content,
+    .cloud-content {
+        display: flex;
+    }
+
+    .connect-circle,
+    .cloud-circle {
+        width: 40%;
+        height: 100%;
+    }
+
+    .connect-density,
+    .cloud-pretreatment {
+        padding-top: 20px;
+        padding-right: 30px;
+        width: 60%;
+        height: 100%;
+    }
+
+    .density-row {
+        display: flex;
+        margin: 15px 0;
+    }
+
+    .hline {
+        height: 12px;
+        border: 2px solid #a8bffe;
+        margin-right: 5px;
+        transform: translateY(20%);
+    }
+
+    .density-style {
+        font-size: 16px;
+        color: #949ab3;;
+        padding: 0 5px;
+    }
+
+    .spValue {
+        font-size: 18px;
+        color:#566ea3;
+        padding: 0 10px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .tag-converage {
+        padding: 20px 0;
+        width: 100%;
+        height: 50px;
+    }
+
+    .factorsMainBar {
+        width: 100%;
+        height: 15px;
+        line-height: 15px;
+        padding: 10px 0;
+    }
+
+    .progress1 {
+        height: 9px;
+        background: #ebeef7;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        border-radius: 50px;
+    }
+
+    .progress1>span {
+        position: relative;
+        float: left;
+        margin: 0 -1px;
+        height: 9px;
+        line-height: 9px;
+        text-align: right;
+        border-radius: 50px;
+    }
+
+    .cloud-row {
+        justify-content: space-between;
+    }
+
+    .tag-converage-color {
+        background: linear-gradient(to right, #ec9f66, #fa6653);
+    }
+
+    .storage-color {
+        background: linear-gradient(to right, #65c9e6, #70a6d5);
+    }
+
+    .related-param {
+        width: 100%;
+        height: 25%;
+        display: flex;
+    }
+
+    .algorithmChart {
+        width: 40%;
+        height: 100%;
+    }
+
+    .related-col {
+        padding: 0 10px;
+        flex: 1;
+    }
+    .related-col p:first-child{
+        font-size: 16px
+    }
+    .made-content {
+        padding: 10px;
+        height: 192px;
+        width: 100%;
+        background-color: rgba(235,238,247,0.15);
+    }
+
+    .made-param {
+        width: 60%;
+        display: flex;
+    }
+
+    .made-param-col {
+        padding-top: 20px;
+        flex: 1;
+    }
+
+    .visual-content,
+    .algorithm-content {
+        padding-top: 20px;
+    }
+
+    .visual-content {
+        width: 100%;
+        height: calc(100% - 40px);
+    }
+
+    .visual-content-top {
+        padding: 0 10px;
+        display: flex;
+        justify-content: space-between;
+        height: 120px;
+        width: 100%;
+    }
+
+    .user-chart {
+        height: 100%;
+        width: 60%;
+    }
+    /*文字样式*/
+
+    .sub-text {
+        font-size: 16px;
+        padding-bottom: 30px;
+        color: #23283f;
+    }
+
+    .info-text {
+        color: #949ab3;
+        font-size: 17px;
+    }
+
+    .data-pool-value {
+        color: #6699ff;
+        font-size: 16px;
+        padding: 0 10px;
+    }
+    .small-text {
+        padding: 0 5px;
+        font-size: 12px;
+        color: #949ab3;
+    }
+    .dark-small-text{
+        padding: 0 5px;
+        font-size: 12px;
+        color: #23283f;        
+    }
+    .treatmentValue{
+        color:#f16c5a;
+        font-size: 16px;
+        padding: 0 5px;
+    }
+    .coverage-text {
+        font-size: 14px;
+        text-align: left;
+        color: #a1c4fd;        
+    }
+    .algorithm {
+        padding-left: 10px;
+        padding-bottom: 10px;
+    }
+    .related-content{
+        padding-left: 10px;
+    }
+    .visual-content-bottom {
+        height: calc(100% - 140px);
+        width: 100%;
+    }
+    .made-param .glyphicon,.related-param .glyphicon{
+        font-size:2px;
+    }
+</style>
+</head>
+
+
+<div class="rightContainer">
+    <div class="topSection">
+        <div class="connection-section">
+            <div class="section-title"><i class="title-box"></i>Connection</div>
+            <div class="connection-content">
+                <div class="connect-circle"></div>
+                <div class="connect-density">
+                    <p class="sub-text"><span class="iconfont icon-xiangmuduibiao"></span>Density</p>
+                    <div class="density-row">
+                        <span class="hline"></span>
+                        <span class="spValue">201700</span>
+                        <span class="density-style">points / </span>
+                        <span class="spValue">5</span>
+                        <span class="density-style">mins</span>
+                    </div>
+                    <div class="density-row">
+                        <span class="hline"></span>
+                        <span class="spValue">500</span>
+                        <span class="density-style">points / </span>
+                        <span class="spValue">100</span>
+                        <span class="density-style">m²</span>
+                    </div>
+                    <div class="density-row">
+                        <span class="hline"></span>
+                        <span class="spValue">5</span>
+                        <span class="density-style">points / </span>
+                        <span class="spValue">1</span>
+                        <span class="density-style">device</span>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <div class="cloud-section">
+            <div class="section-title"><i class="title-box"></i>Pre-handling</div>
+            <div class="cloud-content">
+                <div class="cloud-circle"></div>
+                <div class="cloud-pretreatment">
+                    <div class="flex" style="margin-bottom:20px;">
+                        <span class="info-text">Pre-treatment:</span>
+                        <span class="treatmentValue">800</span>
+                        <span class="density-style">/mins</span>
+                    </div>
+                    <div class="tag-converage">
+                        <div class="cloud-row flex">
+                            <div class="coverage-text">Tag coverage</div>
+                            <div class="dark-small-text">12000/2000k</div>
+                        </div>
+                        <div class="factorsMainBar">
+                            <div class="progress1" style="width: 100%">
+                                <span class="progressBar tag-converage-color" style="width:80%;"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tag-converage">
+                        <div class="cloud-row flex">
+                            <div class="coverage-text">Storage</div>
+                            <div class="dark-small-text">7G/10G</div>
+                        </div>
+                        <div class="factorsMainBar">
+                            <div class="progress1" style="width: 100%">
+                                <span class="progressBar storage-color" style="width:60%;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bSection">
+        <div class="ai-section">
+            <div class="section-title"><i class="title-box"></i>Algorithm</div>
+            <div class="algorithm-content">
+                <div class="algorithm">
+                    <span class="hline"></span>
+                    <span class="info-text">Data pool:</span>
+                    <span class="data-pool-value">17,000,000,528·5T</span>
+                </div>
+                <div class="made-content">
+                    <p><span class="hline"></span><span class="info-text">Made</span></p>
+                    <div style="display:flex;height:150px;">
+                        <div class="made-param">
+                            <div class="made-param-col">
+                                <p><span class="glyphicon glyphicon-arrow-up" style="color: #afd97f;"></span><span class="small-text">40%</span></p>
+                                <p style="color:#90c059"><span class="madeSpValue">51,332</span><span class="madeSpUnit">kWh</span></p>
+                                <p class="dark-small-text">Report</p>
+                            </div>
+                            <div class="made-param-col">
+                                <p><span class="glyphicon glyphicon-arrow-down" style="color: #afd97f;"></span><span class="small-text">10%</span></p>
+                                <p style="color:#e5b88a"><span class="madeSpValue">15,136</span><span class="madeSpUnit">kWh</span></p>
+                                <p class="dark-small-text">Suggestion</p>
+                            </div>
+                            <div class="made-param-col">
+                                <p><span class="glyphicon glyphicon-arrow-up" style="color: #afd97f;"></span><span class="small-text">6%</span></p>
+                                <p style="color:#cb93b3"><span class="madeSpValue">5,883</span><span class="madeSpUnit">kWh</span></p>
+                                <p class="dark-small-text">Actived fault</p>
+                            </div>
+                        </div>
+                        <div class="algorithmChart" id="algorithmChart"></div>
+                    </div>
+                </div>
+                <div class="related-content">
+                    <p><span class="hline"></span><span class="info-text">Related</span></p>
+                    <div class="related-param">
+                        <div class="related-col">
+                            <p>20,000kWh</p>
+                            <p><span>Energy</span><span class="glyphicon glyphicon-arrow-up" style="color: #afd97f;"></span></p>
+                        </div>
+                        <div class="related-col">
+                            <p>$50,000</p>
+                            <p><span>Cost</span><span class="glyphicon glyphicon-arrow-down" style="color: #e5b88a;"></span></p>
+                        </div>
+                        <div class="related-col">
+                            <p><span>20</span><span>Ton</span></p>
+                            <p><span>CO2</span><span class="glyphicon glyphicon-arrow-up" style="color: #afd97f;"></span></p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="visual-section">
+            <div class="section-title"><i class="title-box"></i>Visualization</div>
+            <div class="visual-content">
+                <div class="visual-content-top">
+                    <div class="user-content">
+                        <p><span class="density-style info-text">Web user:</span><span>77/800</span></p>
+                        <p><span class="density-style info-text">App user:</span><span>5</span></p>
+                        <p><span class="density-style info-text">Time on site:</span><span>5 mins</span></p>
+                    </div>
+                    <div class="user-chart" id="user-chart"></div>
+                </div>
+                <div class="visual-content-bottom" id="pv-web-chart"></div>
+            </div>
+        </div>
+    </div>
+</div>

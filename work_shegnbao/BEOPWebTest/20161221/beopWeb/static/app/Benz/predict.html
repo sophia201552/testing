@@ -1,0 +1,196 @@
+<style>
+    #ctnPredictCfg{
+
+    }
+    #divPredictChart {
+        height: 100%;
+        width: 100%;
+    }
+    #divReturn{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+        z-index:1;
+    }
+    #ctnPredictChart{
+        height: 100%;
+        width: 100%;
+    }
+    #divPeriodBtnSet {
+        margin: 20px;
+    }
+    #divPeriodLabel {
+        display: inline-block;
+    }
+    .divOptBtn {
+        display: inline-block;
+    }
+    #divDataSureBtn {
+        display: inline-block;
+        position: absolute;
+        right: 20px;
+    }
+    #divDataCfg {
+        max-height: 400px;
+        overflow: auto;
+    }
+    .divRow {
+        height: 60px;
+        width: 100%;
+        white-space: nowrap;
+    }
+    .divUnit{
+        display: inline-block;
+        height: 100%;
+        width: 7.69%;
+        min-width: 100px;
+        vertical-align: bottom;
+        text-align: center;
+        border-right: 1px solid #969696;
+        border-bottom: 1px solid #969696;
+    }
+    .divUnit:first-child {
+        border-left: 1px solid #969696;
+    }
+    .divRow:first-of-type>.divUnit{
+        border-top: 1px solid #969696;
+    }
+    .divTitle {
+    }
+    .divData.divUnit{
+        padding: 0;
+    }
+    .divVar {
+        height: calc(50% - 1px);
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+    }
+    .divVar:last-child{
+        border: none;
+    }
+    .iptData {
+        display: none;
+        color: #323232;
+        width: 80%;
+    }
+    .spTitle {
+        display: inline-block;
+        width: 50%;
+    }
+    .divVarTtl{
+        display: inline-block;
+        width: 50%;
+        height: 100%;
+        white-space: initial;
+        float: right;
+        border-left: 1px solid #ccc;
+    }
+    .spVarTtl {
+        display: inline-block;
+        width: 100%;
+        height: calc(50% - 1px);
+        border-bottom: 1px solid #ccc;
+    }
+    .spVarTtl:last-child{
+        border: none;
+    }
+    .inlineCenter {
+        display: inline-flex;
+        display: -webkit-inline-flex;
+        justify-content: center;
+        -webkit-justify-content: center;
+        align-items: center;
+        -webkit-align-items: center;
+    }
+    .flexCenter {
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        -webkit-justify-content: center;
+        align-items: center;
+        -webkit-align-items: center;
+    }
+    #modalVarSet .modal-dialog{
+        position: relative;
+        top: 200px;
+    }
+    .divVarSetUnit {
+        height: 30px;
+        text-align: center;
+    }
+    #modalPredictCfg {
+        position: absolute;
+    }
+    .btnDataRangeDel {
+        display: none;
+    }
+    .divRow:last-of-type>.divUnit:first-child:hover .spTitle{
+        display: none;
+    }
+    .divRow:last-of-type>.divUnit:first-child:hover .btnDataRangeDel{
+        display: inline-block;
+        width: 50%;
+    }
+</style>
+<div id="ctnPredictChart">
+    <div id="divReturn">
+        <button id="btnReturn" type="button" class="btn btn-default" data-period="day">
+            配置
+        </button>
+    </div>
+    <div id="divPredictChart"></div>
+</div>
+<!--<div class="modal fade" id="modalVarSet" tabindex="-1" role="dialog" aria-labelledby="modalVarSetTtl">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalVarSetTtl">变量编辑</h4>
+            </div>
+            <div id="divModalVarSet" class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="btnVarSave" type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+<div class="modal fade" id="modalPredictCfg" tabindex="-1" role="dialog" aria-labelledby="modalPredictCfgTtl">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalPredictCfgTtl">数据配置</h4>
+            </div>
+            <div id="divPredictCfg" class="modal-body">
+                <div id="ctnPredictCfg">
+                    <div id="divPeriodBtnSet">
+                        <div id="divPeriodLabel">周期选择：</div>
+                        <div id="divPeriodBtnGrp" class="btn-group">
+                            <button type="button" class="btn btn-default btnPeriod" data-period="day">日</button>
+                            <button type="button" class="btn btn-default btnPeriod" data-period="month">月</button>
+                        </div>
+                        <div id="divVarBtn" class="divOptBtn">
+                            <button type="button" class="btn btn-default">变量编辑</button>
+                        </div>
+                        <div id="divDataNumBtn" class="divOptBtn">
+                            <button type="button" class="btn btn-default">增加数据个数 <span class="glyphicon glyphicon-plus"></span></button>
+                        </div>
+                        <!--<div id="divDataSureBtn">
+                            <button type="button" class="btn btn-default">确认</button>
+                        </div>-->
+                    </div>
+                    <div id="divDataCfg">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="btnDataSure" type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

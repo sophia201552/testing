@@ -1,0 +1,1327 @@
+/* index page layout start */
+html, body {
+    height: 100%;
+    overflow: hidden;
+    color: #d7d7d7;
+    font-family: 'Microsoft YaHei', 'Helvetica';
+}
+
+input[readonly] {
+    background: #aaa;
+}
+
+.ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.cp {
+    cursor: pointer;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.dn {
+    display: none;
+}
+
+.db {
+    display: block;
+}
+
+.tl {
+    text-align: left;
+}
+
+.tc {
+    text-align: center;
+}
+
+.tr {
+    text-align: right;
+}
+
+.oh {
+    overflow: hidden;
+}
+
+.fb {
+    font-weight: bolder;
+}
+
+.mv10 {
+    margin: 10px 0;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt30 {
+    margin-top: 30px;
+}
+
+.mt100 {
+    margin-top: 100px;
+}
+
+.mb5 {
+    margin-bottom: 5px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.mr5 {
+    margin-right: 5px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.table {
+    width: 100%;
+}
+
+.table tr {
+    height: 30px;
+    line-height: 30px;
+}
+
+.form input[type='file'] {
+    text-indent: 0;
+}
+
+.title-line {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.gray-scrollbar {
+    position: relative;
+}
+
+.gray-scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.gray-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+.gray-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.tab-pane {
+    padding: 20px 10px 10px 20px;
+}
+
+.tab_marginLeft {
+    margin-left: -3px;
+}
+
+#wrapper {
+    height: 100%;
+}
+
+#wrapper > div {
+    float: left;
+    height: 100%;
+}
+
+.panel-titlebar-button-close .glyphicon-remove {
+    display: none;
+}
+
+#paneAssetList {
+    position: relative;
+}
+
+#paneAssetList .panel-titlebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#paneProjectConfig {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #192234;
+    display: none;
+}
+
+#paneProjectConfig .divConfigPart > label {
+    vertical-align: top;
+}
+
+#paneProjectConfig .divConfigPart > div {
+    display: inline-block;
+}
+
+#divProjectAttrTotal, #divProjectAttrRs, #divProjectDeviceTotal, #divProjectDeviceRs {
+    float: left;
+    width: 50%;
+    height: 100%;
+    padding: 10px 0 10px 20px;
+    overflow-y: auto;
+    background-color: #29364f;
+    cursor: pointer;
+}
+
+#paneProjectConfig .divFooterGrp .btn {
+    float: right;
+    margin-right: 10px;
+}
+
+#paneProjectConfig .btnModal {
+    margin-left: 10px;
+}
+
+#paneAssetList .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #29364f;
+}
+
+#paneAssetList .table-striped > tbody > tr {
+    background-color: #38496a;
+}
+
+#paneAssetList tbody > tr:hover {
+    background-color: #3171a4 !important;
+    cursor: pointer;
+}
+
+.panel-content {
+    background-color: #192234;
+}
+
+.tab-content {
+    background-color: #192234; /* 覆盖dockspawn的样式 */
+}
+
+/*   添加*/
+.tabPreventiveheader::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.tabPreventiveheader {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.tabPreventiveheader_select {
+    width: 80%;
+    float: left;
+}
+
+.form-control {
+    color: inherit;
+}
+
+.addPreventive {
+    cursor: pointer;
+    width: 13%;
+    float: right;
+    margin-top: 8px;
+}
+
+.prevententOverflow {
+    width: 96px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: absolute;
+    padding-left: 5px;
+}
+
+.pagination .active a {
+    color: #EBC124 !important;
+}
+
+/* index page layout end */
+
+/* assetPanel start */
+#tbAsset {
+    margin-top: 25px;
+}
+
+#tbAsset tr {
+    cursor: pointer;
+}
+
+#tbAsset tr.selected {
+    background-color: #3171a4 !important;
+}
+
+#tbAsset td {
+    height: 36px;
+}
+
+.modal-content {
+    color: #555;
+}
+
+.modal-content .btn {
+    color: #555;
+}
+
+@media screen and (max-width: 1366px) {
+    #tbAsset .tdDes {
+        max-width: 220px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@media screen and (min-width: 1367px) {
+    #tbAsset .tdDes {
+        max-width: 572px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 768px) {
+    .form-inline .form-group.mb10 {
+        margin-bottom: 10px;
+    }
+}
+
+/* assetPanel end */
+
+/* detail info start */
+#myTabs {
+    width: 100%;
+}
+
+#myTabs.nav > li > a {
+    position: relative;
+    display: block;
+}
+
+@media screen and (max-width: 1366px) {
+    #myTabs.nav > li > a {
+        position: relative;
+        display: block;
+        padding: 10px 2px;
+    }
+}
+
+.imgAsset {
+    max-width: 200px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* detail info end */
+.panel-base {
+    /*TODO: docker无法响应*/
+    position: relative;
+}
+
+.tabPanelToolBox {
+    text-align: right;
+    margin: -13px 0px 5px 0;
+}
+
+.tabPanelToolBox .btnTool {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.tabPanelToolBox .btnTool:hover {
+    color: #eee;
+}
+
+.paneInfo {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.paneInfo .form-group {
+    width: 330px;
+    position: relative;
+}
+
+.paneInfo .form-group > label {
+    float: left;
+    width: 60px;
+    padding: 6px 0;
+
+}
+
+.paneInfo .form-group .divValue {
+    float: left;
+    margin-left: 6px;
+    width: calc(100% - 80px);
+    color: #bbb;
+    text-shadow: 1px 1px 1px black;
+    background: rgba(0, 0, 0, 0.16);
+    border: 0;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.paneInfo .form-group .divValue[disabled] {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    cursor: default;
+    -webkit-appearance: none;
+}
+
+#tabPreventiveMaintain .tab-workflow-content .wf-people-add {
+    margin: 7px 0 0 8px;
+}
+
+#tabPreventiveMaintain.paneInfo .form-group .divValue {
+    width: calc(100% - 95px);
+}
+
+#tabPreventiveMaintain.paneInfo .form-group #divWorkOrderMaintenanceDetail {
+    width: calc(100% - 77px);
+}
+
+.maintainUnit {
+    position: relative;
+    top: 7px;
+    left: 6px;
+}
+
+.maintainRecord_table {
+    width: 330px;
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.pagination > .disabled > a {
+    background-color: #1b263a;
+    border-color: #22314c;
+    color: #a2a8ab;
+}
+
+.pagination > li > a {
+    background-color: #1b263a;
+    border-color: #22314c;
+    color: #a2a8ab;
+}
+
+.pagination .active a {
+    background-color: #3594df;
+    color: #fff;
+    border-color: #3594df;
+}
+
+.pagination li a {
+    background-color: #1b263a;
+    color: #3594df !important;
+}
+
+.maintainRecordPaging {
+    text-align: right;
+}
+
+#maintainRecordPagination {
+    margin: 10px 0 0 0;
+}
+
+.paneWfItem {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #666;
+    padding: 2px 10px 4px;
+}
+
+.table-bordered {
+    border: none;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td {
+    border-right: none;
+    border-left: none;
+}
+
+/* nameplate info start */
+#nameplateType label, #nameplateType input, #nameplateType select {
+    color: #f90;
+}
+
+#nameplateType label {
+    width: 30%;
+}
+
+#nameplateType input {
+    width: 65%;
+}
+
+#selectNameplatetype {
+    margin-bottom: 10px;
+}
+
+#selectNameplatetype label {
+    margin-right: 6px;
+}
+
+#nameplate .form-group {
+    clear: both;
+}
+
+#nameplate .form-group label {
+    clear: left;
+}
+
+#nameplate input {
+    display: inline-block;
+}
+
+#nameplateInfo {
+    margin-bottom: 10px;
+    display: table;
+}
+
+#nameplateInfo label {
+    width: 30%;
+}
+
+#btnAddNameplate {
+    color: #bbb;
+    text-shadow: 1px 1px 1px black;
+    background: rgba(0, 0, 0, 0.16);
+    border: 0;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* nameplate info end */
+
+/* realtime data start */
+.form-group .viewHisData {
+    display: none;
+}
+
+.form-group:hover .viewHisData {
+    display: inline-block;
+}
+
+.labelDs {
+    width: 46% !important; /*只有历史数据面板的label宽度*/
+    text-align: right;
+    border-bottom: rgba(200, 200, 200, .15) 1px solid;
+    padding-right: 5px;
+}
+
+/* realtime data end */
+
+/* asset 维保工单详情 start*/
+#listMaintenance .paneWfItem {
+    cursor: pointer;
+}
+
+#listMaintenance .paneWfItem:hover {
+    background-color: black;
+}
+
+#wfDetail .modal-backdrop {
+    background-color: transparent;
+}
+
+#workOrderDetailModal .table-bordered, #wfDetail .table-bordered {
+    border: 1px solid #ddd;
+}
+
+#wfDetail2 .modal-backdrop {
+    background-color: transparent;
+}
+
+#workflow-insert-container .modal-backdrop {
+    background-color: transparent;
+    display: none;
+}
+
+#wfDetail2 .table-bordered {
+    border: 1px solid #ddd;
+}
+
+#wfDetail3 .modal-backdrop {
+    background-color: transparent;
+}
+
+#wfDetail3 .table-bordered {
+    border: 1px solid #ddd;
+}
+
+.wf-detail-userInfo {
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin: 3px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.wf-person-pic {
+    width: 50px;
+    height: 50px;
+}
+
+.wf-detail-userName {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 13px;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.pa {
+    position: absolute;
+}
+
+.pr {
+    position: relative;
+}
+
+/* asset 维保工单详情 end*/
+
+/* asset 诊断记录 start*/
+#tabDiagnosticRecords .diagnosis-date-picker {
+    width: 135px;
+    height: 30px;
+    text-align: center;
+    margin-left: 0px;
+}
+
+#tabDiagnosticRecords .diagnosis_time {
+    text-decoration: underline;
+    font-weight: bold;
+    color: rgb(240, 173, 78);
+    text-shadow: rgba(50, 50, 50, 0.2) 2px 2px 1px;
+}
+
+.Triggering {
+    text-decoration: underline;
+    font-weight: bold;
+    color: rgb(240, 173, 78);
+    text-shadow: rgba(50, 50, 50, 0.2) 2px 2px 1px;
+}
+
+.div-pane-log {
+    margin-bottom: 15px;
+}
+
+.div-pane-log p {
+    margin: 0px;
+}
+
+/* asset 诊断记录 end*
+
+/* 历史数据面板 start */
+.divLegend {
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin-top: 6px;
+    color: #eee;
+}
+
+.divLegend > * {
+    display: inline-block;
+}
+
+.divLegend .btnShow {
+    margin-left: 10px;
+}
+
+/* 历史数据面板 end */
+/*查看大图*/
+.showImg {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+}
+
+.showImg img, #divAssetImg .imgItem img, #divQRCodeImg .imgItem img {
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.showImg .btnClose {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#divAssetImg .imgItem, #divQRCodeImg .imgItem {
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+
+/*摸态框*/
+#myModal .itemBox {
+    float: left;
+    width: 220px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 300px;
+    background: #ccc;
+    margin-left: 20px;
+    padding: 0 10px;
+}
+
+#myModal .itemBox.to {
+    float: right;
+    margin-right: 20px;
+}
+
+#myModal ul {
+    width: 100%;
+    min-height: 280px;
+    list-style: none;
+    padding: 0;
+}
+
+#myModal ul li {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#myModal ul li:hover {
+    background: #666;
+    color: #eee;
+}
+
+#myModal .inpBox {
+    width: 200px;
+    height: 24px;
+    border: 2px solid #ccc;
+    margin-left: 20px;
+    margin-bottom: 4px;
+}
+
+#myModal .inpBox input {
+    text-indent: 4px;
+    border: none;
+    outline: none;
+    height: 16px;
+    line-height: 16px;
+    font-size: 12px;
+    width: 100%;
+    padding: 0;
+}
+
+#myModal .inpBox input:focus {
+    outline: none;
+}
+
+.wf-attachment {
+    display: block;
+}
+
+.wf-attachment-body {
+    padding: 15px 10px;
+    background: #40485b;
+}
+
+.wf-attachment-body .wf-attachment-list {
+    width: 220px;
+}
+
+#tabPreventiveMaintain .wf-attachment-body .wf-attachment-list {
+    width: 214px;
+}
+
+.wf-attachment-body .wf-attachment-list .wf-attachment-add {
+    text-align: center;
+}
+
+.wf-attachment-body .wf-attachment-list .wf-attachment-add #wf-attachment-add-btn {
+    cursor: pointer;
+    display: block;
+    padding: 10px 0 0 29px;
+    font-size: 25px;
+}
+
+.wf-attachment-body .wf-attachment-list .wf-attachment-add .wf-attachment-add-btn-words {
+    padding-top: 45px;
+    margin-left: -35px;
+}
+
+#wf-attachment .wf-attachment-body .wf-attachment-list li {
+    display: inline-block;
+    margin: 5px 10px 15px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wf-attachment-body .wf-attachment-list li p {
+    color: #fff;
+    display: block;
+    margin: 0 10px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.wf-attachment-item {
+    display: block;
+    position: relative;
+    color: #fff;
+    border: 1px solid #fff;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+}
+
+.wf-attachment-item:hover .wf-attachment-modal {
+    display: flex;
+}
+
+.wf-attachment-item:hover .wf-attachment-content {
+    transform: scale(1.2, 1.2);
+}
+
+.wf-attachment-item .wf-attachment-modal {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    height: inherit;
+    background: rgba(97, 105, 116, 0.5);
+    transition: transform 300ms;
+    z-index: 10;
+    text-align: center;
+}
+
+.wf-attachment-item .wf-attachment-modal #wf-attachment-delete-btn {
+    cursor: pointer;
+    display: block;
+    font-size: 25px;
+    position: relative;
+}
+
+.wf-attachment-item .wf-attachment-modal #wf-attachment-delete-btn:after {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    left: -5px;
+    top: 5px;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.wf-attachment-item .wf-attachment-modal .glyphicon {
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.add {
+    background-color: #616974;
+}
+
+.wf-attachment-content {
+    width: inherit;
+    height: inherit;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 9;
+    transition: transform 300ms;
+}
+
+#tabWorkflowMaintain .wf-people-add, .form .wf-people-add {
+    margin: 8px 0 0 7px;
+}
+
+#tabWorkflow {
+    background-color: transparent;
+}
+
+#tabWorkflow .wf-people-add {
+    margin: 8px 0 0 8px;
+}
+
+#relatedEquipmentUl {
+    margin: 6px 0 0 5px;
+}
+
+#relatedEquipmentUl li {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 2px 5px;
+    float: left;
+    margin: 2px;
+}
+
+.detail .workflowToolBox #btnEdit, .detail .workflowToolBox #btnBack, .detail .workflowToolBox #btnDelete {
+    display: inline;
+}
+
+.edit .workflowToolBox #btnEdit, .edit .workflowToolBox #btnBack, .edit .workflowToolBox #btnDelete, .edit .workflowToolBox #btnSave {
+    display: inline;
+}
+
+.new .workflowToolBox #btnBack, .new .workflowToolBox #btnSend {
+    display: inline;
+}
+
+.add .workflowToolBox #btnSend {
+    display: inline;
+}
+
+.workflowToolBox .btnTool {
+    display: none;
+}
+
+#tabPreventiveMaintain.detail .member-box {
+    margin-left: 75px;
+}
+
+#tabPreventiveMaintain.edit .member-box {
+    margin-left: 67px;
+}
+
+#tabPreventiveMaintain.edit .member-box .wf-detail-userInfo {
+    margin-left: 0;
+}
+
+#tabPreventiveMaintain #taskAttachments {
+    margin: 7px 0 0 -8px;
+}
+
+#tabPreventiveMaintain tr:hover {
+    background-color: #3171a4 !important;
+    cursor: pointer;
+}
+
+#tabPreventiveMaintain.detail .delete-name {
+    display: none;
+}
+
+.selectStyle option {
+    background: #000;
+    color: #fff;
+}
+
+#relatedEquipment {
+    margin: 6px 0 0 7px;
+    background: none;
+    border: none;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+.wf-attachment-item .wf-attachment-delete-btn {
+    z-index: 2;
+}
+
+.param-name {
+    font-weight: bolder;
+}
+
+.param-value {
+    font-weight: lighter;
+}
+
+.editable-form .param-name {
+    display: inline-block;
+    width: 100px;
+    text-indent: 15px;
+}
+
+.wf-person-pic {
+    width: 50px;
+    height: 50px;
+}
+
+.wf_person_pic {
+    width: 50px;
+    height: 50px;
+}
+
+.editable-form input[disabled], .editable-form textarea[disabled] {
+    border: none;
+    background: transparent;
+    color: #fff;
+}
+
+.editable-form input, .editable-form textarea, .form input, .form textarea {
+    color: #666;
+    text-indent: 6px;
+}
+
+.time-search {
+    font-size: 18px;
+    margin: 7px 0 0 2px;
+    cursor: pointer;
+}
+
+.datePicker.form-control {
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.datePicker {
+    width: 135px;
+    margin-right: 8px;
+    color: #333;
+    background: #fff;
+}
+
+#outOfStorageTable tbody tr:hover {
+    background-color: #3171a4 !important;
+    cursor: pointer;
+}
+
+#outOfStorageRecordsDetail .form-group .tr {
+    margin-right: 10px;
+}
+
+#outOfStorageRecordsDetail .form-group {
+    overflow: hidden;
+}
+
+textarea.spare-parts-detail {
+    height: 100px;
+}
+
+#storage_form .ul {
+    padding: 10px;
+    border: 1px dashed #ccc;
+}
+
+#storage_form .ul li {
+    margin-bottom: 15px;
+}
+
+#storage_form .ul input, #storage_form textarea {
+    width: 100%;
+}
+
+.item-img {
+    width: 295px;
+    padding: 10px;
+}
+
+.wf-detail-userInfo {
+    margin-left: 10px;
+}
+
+.wf_detail_userInfo {
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin: 3px;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.wf_detail_userName {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 13px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+/*维修记录*/
+#tabMaintainRecord tbody tr:hover {
+    background-color: #3171a4 !important;
+    cursor: pointer;
+}
+
+#preventiveMaintainTBody td {
+    padding: 5px 0;
+}
+
+/*维修记录,预防性维护等上传附件显示*/
+.maintain-upload-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: -10px;
+}
+
+.maintain-upload-list ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.maintain-upload-list ul li .upload-list-content {
+    min-width: 85px;
+    min-height: 120px;
+    text-align: center;
+    position: relative;
+}
+
+.maintain-upload-list a {
+    display: inline-block;
+    width: 100%;
+    height: 80px;
+}
+
+.maintain-upload-list a div {
+    height: inherit;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.maintain-upload-list .content-msg {
+    display: block;
+    font-size: 12px;
+    height: 60px;
+}
+
+.maintain-upload-list .content-msg p {
+    max-width: 84px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.diagnosis-title {
+    width: 80px;
+    font-weight: bolder;
+    text-align: right;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/*icon font class for attachments of workflow*/
+.icon-file-doc, .icon-file-pdf, .icon-file-excel, .icon-file-exe, .icon-file-zip, .icon-file-ppt,
+.icon-file-file, .icon-file-text, .icon-file-rar {
+    background-size: contain;
+}
+
+.icon-file-doc {
+    background: url("/static/images/workflow/word.png") center center no-repeat;
+}
+
+.icon-file-pdf {
+    background: url("/static/images/workflow/PDF.png") center center no-repeat;
+}
+
+.icon-file-excel {
+    background: url("/static/images/workflow/EXCEL.png") center center no-repeat;
+}
+
+.icon-file-exe {
+    background: url("/static/images/workflow/FILE.png") center center no-repeat;
+}
+
+.icon-file-zip {
+    background: url("/static/images/workflow/ZIP.png") center center no-repeat;
+}
+
+.icon-file-ppt {
+    background: url("/static/images/workflow/PPT.png") center center no-repeat;
+}
+
+.icon-file-file {
+    background: url("/static/images/workflow/FILE.png") center center no-repeat;
+}
+
+.icon-file-text {
+    background: url("/static/images/workflow/TEXT.png") center center no-repeat;
+}
+
+.icon-file-rar {
+    background: url("/static/images/workflow/RAR.png") center center no-repeat;
+}
+
+.one_attachment_box .wf-attachment-nav li {
+    display: block;
+    margin: 10px 5px;
+}
+
+.wf-attachment-nav li {
+    display: inline-block;
+    margin: 10px 5px;
+}
+
+.wf-attachment-nav li .files {
+    min-width: 150px;
+    min-height: 120px;
+    text-align: center;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    position: relative;
+    color: #fff;
+}
+
+.wf-attachment-nav li:hover .files > button {
+    display: block;
+}
+
+.wf-attachment-nav .files .file-type {
+    border-bottom: 1px solid #ccc;
+    height: 80px;
+    line-height: 80px;
+    background-size: contain !important;
+}
+
+.wf-attachment-nav .files .file-type a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.wf-attachment-nav .files .file-info {
+    display: block;
+    font-size: 12px;
+    height: 60px;
+    top: 0px;
+    color: #333;
+}
+
+.wf-attachment-nav .files > button {
+    cursor: pointer;
+    color: #ccc;
+    font-size: 12px;
+    padding: 2px;
+    transition: .3s 0s all ease;
+    outline: none;
+    background: transparent;
+    border: none;
+    display: none;
+    position: absolute;
+    right: 0;
+}
+
+.wf-attachment-nav .files > button:nth-of-type(1):hover {
+    text-decoration: none;
+    color: #f00;
+    background: transparent;
+}
+
+.wf-attachment-nav .files .file-info p {
+    margin: 0;
+    line-height: 20px;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 150px;
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+}
+
+.wf-attachment-nav .files .file-info .file-name {
+    font-size: 12px;
+}
+
+.wf-attachment-nav .files .file-info .file-time {
+    font-size: 90%;
+}
+
+.wf-attachment-nav .files .file-type i {
+    font-size: 36px;
+}
+
+.min-attachment .wf-attachment-nav .files {
+    min-width: 85px;
+    border: none;
+}
+
+.min-attachment .wf-attachment-nav .files .file-type {
+    border-bottom: none;
+}
+
+.min-attachment li {
+    float: left;
+}
+
+.spinnerMask {
+    position: absolute;
+    z-index: 1000;
+    opacity: 0.4;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #808080;
+}
+
+#btnTabState {
+    position: absolute;
+    right: 0;
+    padding: 1.5px 10px;
+    top: 2px;
+    color: #aaa;
+    cursor: pointer;
+    background-color: rgba(25, 34, 51, .5);
+}
+
+#btnTabState:hover, #btnTabState.showPane {
+    color: #eee;
+    background-color: rgba(25, 34, 51, 1);
+}
+
+/********* 基本信息start************/
+#btnDelImg{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 20px;
+    text-shadow: 0 0px 4px;
+    cursor: pointer;
+    display: none;
+}
+#btnDelImg:hover{
+    background: rgba(255, 255, 255, 0.3)
+}
+/********* 基本信息end************/

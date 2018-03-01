@@ -1,0 +1,72 @@
+﻿<div id="editorModalWrap">
+<style>
+#editorModal {
+    display:none;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#editorModal .modal-dialog{
+    width: 960px;
+}
+#editorModal .modal-title{
+    color: #666;
+}
+#editorModal .ueditorWrap{
+    width: 930px;
+    margin: auto;
+}
+#ueditor {
+    min-height: 300px;
+}
+.textareaWrap {
+    width:100%;
+    display:none;
+}
+.textareaCon {
+    width:100%;
+    height:600px;
+    resize:none;
+    color:#333;
+}
+.modal-footer .btn-primary{
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.modal-footer .btn-default{
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+#editorModal .modal-backdrop.in{opacity: 0;}
+</style>
+
+<div class="modal fade" id="editorModal" style="z-index: 1051;" role="dialog" aria-labelledby="templateType" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title" id="templateType" i18n="mainPanel.exportModal.EDIT_CON">编辑内容</h4>
+            </div>
+            <div class="modal-body">
+                <div class="ueditorWrap">
+                    <script id="ueditor" type="text/plain"></script>
+                </div>
+                <div class="textareaWrap">
+                    <textarea class="textareaCon"></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div id="configAlert"></div>
+                <button id="btnSaveContent" type="button" class="btn btn-primary" i18n="mainPanel.exportModal.SURE">确认</button>
+                <button id="btnCancelEdit" type="button" class="btn btn-default" i18n="mainPanel.exportModal.CANCEL">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+</div>

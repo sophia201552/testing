@@ -1,0 +1,493 @@
+<div class="reg-wizard container gray-scrollbar" id="reg-wizard">
+    <style type="text/css">
+        .reg-wizard {
+            border: 1px solid #d4d4d4;
+            min-height: 48px;
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        .reg-wizard > ul {
+            list-style: none outside none;
+            margin: 0;
+            padding: 0;
+            width: 1000px;
+        }
+
+        .reg-wizard > .actions {
+            float: right;
+            line-height: 46px;
+            padding-left: 15px;
+            padding-right: 15px;
+            background-color: #e5e5e5;
+            border-left: 1px solid #d4d4d4;
+        }
+
+        .reg-wizard > ul li {
+            float: left;
+            height: 46px;
+            line-height: 46px;
+            margin: 0;
+            color: #999;
+            background-color: #ededed;
+            padding: 0 20px 0 20px;
+            position: relative;
+            font-size: 16px;
+        }
+
+        .reg-wizard > ul li.header {
+            color: #000;
+            background-color: #fff;
+        }
+
+        .reg-close {
+            float: right;
+            padding: 0 15px;
+            font-size: 20px;
+            line-height: 46px;
+            cursor: pointer;
+        }
+
+        .reg-close + .reg-close {
+            border-right: 1px solid #ccc;
+        }
+
+        .reg-close:hover {
+            color: #fff;
+            background-color: #428bca;
+        }
+
+        .reg-step-ct {
+            border-top: 1px solid #d4d4d4;
+            padding: 10px 30px;
+            float: left;
+            width: 100%;
+            height: 89vh;
+            overflow-y: auto;
+        }
+
+        .reg-step-ct > .step-pane {
+            display: none;
+        }
+
+        .reg-step-ct > .step-pane.active {
+            display: block;
+        }
+
+        .reg-step-ct > .step-pane > h3 {
+            text-indent: 2em;
+            margin-bottom: 20px;
+        }
+
+        .clearfix:after {
+            clear: both;
+            content: " ";
+            display: table;
+        }
+
+        .pi_left_ct {
+            border-right: 1px solid #d4d4d4;
+            padding-right: 30px;
+            padding-left: 10px;
+        }
+
+        .pi_right_ct {
+            padding-top: 10px;
+            padding-left: 30px;
+            text-align: center;
+        }
+
+        .pi_right_ct > h5 {
+            font-weight: 700;
+            margin-top: 0;
+            text-align: left;
+        }
+
+        .pi_right_ct > img {
+            margin-top: 20px;
+            cursor: pointer;
+            width: 256px;
+            height: 180px;
+        }
+
+        .reg-step-ct .map_ct {
+            margin: 10px auto;
+            min-height: 300px;
+        }
+
+        .map_wrap {
+            position: relative;
+        }
+
+        .map-sch-wrap {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        .map_sch, .map-sch-wrap > ul {
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 4px 15px -5px rgba(0, 0, 0, 0.0);
+        }
+
+        .map-sch-wrap > .map_sch {
+            position: absolute;
+            z-index: 1;
+            margin: 0;
+        }
+
+        .map-sch-wrap > ul {
+            margin: 0;
+            position: absolute;
+            top: 35px;
+            width: 350px;
+            border-radius: 2px 0 0 2px;
+            padding: 0;
+            border-color: #ccc;
+        }
+
+        .map-sch-pane > li > a, .map-sch-pane > li > a:hover {
+            color: #c1c1c1;
+            font-size: 13px;
+        }
+
+        .map-sch-pane > li.on, .map-sch-pane > li > a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .map-sch-pane > li * {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .map-sch-pane li .rs-name {
+            color: #333;
+            font-size: 14px;
+        }
+
+        .map-sch-pane li .rs-district {
+            margin-left: 10px;
+        }
+
+        .map-sch-pane li .keywords {
+            font-weight: 700;
+        }
+
+        #btnMapSch {
+            width: 350px;
+            border-radius: 2px 0 0 2px;
+        }
+
+        #btnGoogleSch {
+            width: 350px;
+            margin: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2),0 -1px 0px rgba(0,0,0,0.02);
+        }
+
+        .col-md-6 .form-control-feedback {
+            right: 15px;
+        }
+
+        .img-logo {
+            display: none;
+        }
+
+        .advance .img-logo {
+            display: block;
+        }
+
+        .img-project {
+            margin-top: 70px;
+        }
+
+        .advance .img-project {
+            margin-top: 10px;
+        }
+
+        .textPt {
+            position: relative;
+            top: -2px;
+        }
+
+        .oh {
+            overflow: hidden;
+        }
+
+        .pd0 {
+            padding: 0;
+        }
+
+        .dn {
+            display: none;
+        }
+
+        .has-success {
+            color: #006600;
+        }
+
+        .has-error {
+            color: #800080;
+        }
+
+        .colorValue {
+            color: #333333;
+        }
+
+        .pt12 {
+            padding-top: 12px;
+        }
+
+        .mt5 {
+            margin-top: 5px;
+        }
+
+        .mt10 {
+            margin-top: 10px;
+        }
+
+        .DSType {
+            outline: none;
+        }
+
+        .ellipsis {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /*factory样式变化*/
+        #modalframe .reg-wizard {
+            margin-top: 40px;
+        }
+
+        #modalframe .reg-wizard .header {
+            background: #fff;
+        }
+
+        #modalframe #btnMapSch, #modalframe #mapSchPane {
+            background: #fff;
+        }
+
+        .required-icon {
+            float: left;
+            color: #d9534f;
+            margin-right: 5px;
+            margin-top: 3px;
+        }
+
+        /*factory样式变化 end*/
+        @media screen and (max-width: 1368px) {
+            .reg-step-ct {
+                overflow-y: auto;
+                height: 520px;
+            }
+        }
+
+        a:hover {
+            color: #a2a8ab;
+        }
+
+        .form-ds-type.real #realProjectBox {
+            display: block;
+        }
+
+        .form-ds-type.real #virtualProjectBOX {
+            display: none;
+        }
+
+        .form-ds-type.virtual #realProjectBox {
+            display: none;
+        }
+
+        .form-ds-type.virtual #virtualProjectBOX {
+            display: block;
+        }
+
+        #iptPjFile{
+            display: none !important;
+        }
+    </style>
+
+
+    <ul>
+        <li class="header">
+            <span i18n="admin.projectCreator.REGIST_STEP1_TITLE"></span>
+            <span class="chevron"></span>
+        </li>
+    </ul>
+    <div class="reg-close" id="cancelRegist" title="go back">
+        <span class="glyphicon glyphicon-remove"></span>
+    </div>
+    <div class="reg-close" id="btnSubmit" title="Comfirm">
+        <span class="glyphicon glyphicon-ok"></span>
+    </div>
+    <div class="reg-step-ct gray-scrollbar">
+        <div class="step-pane active">
+            <div i18n="admin.projectCreator.PANE1_TITLE" style="margin-bottom: 10px;color: #777;"></div>
+            <div class="pi_ct row clearfix">
+                <div class="pi_left_ct col-md-8" id="formWrap">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label" for="iptPjCode"
+                                   i18n="admin.projectCreator.PANE1_FORM_ITEM1_LABEL"></label>
+                            <span class="required-icon">*</span>
+                            <input type="text" class="form-control" id="iptPjCode"
+                                   i18n="admin.projectCreator.PANE1_FORM_ITEM1_PLACEHOLDER" placeholder="">
+                            <span class="help-block" id="pjCodeHB"
+                                  i18n="admin.projectCreator.PANE1_FORM_ITEM1_TIP"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label></label>
+
+                            <div class="checkbox">
+                                <label style="-webkit-user-select: none;">
+                                    <input type="checkbox" id="isAdvance">
+                                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                                    Private Project
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label" for="iptPjNameZh"
+                                   i18n="admin.projectCreator.PANE1_FORM_ITEM2_LABEL"></label>
+                            <span class="required-icon">*</span>
+                            <input type="text" class="form-control" id="iptPjNameZh"
+                                   i18n="admin.projectCreator.PANE1_FORM_ITEM2_PLACEHOLDER" placeholder="">
+                            <span class="help-block" id="pjNameZhHB"
+                                  i18n="admin.projectCreator.PANE1_FORM_ITEM2_TIP"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label" for="iptPjNameEn"
+                                   i18n="admin.projectCreator.PANE1_FORM_ITEM3_LABEL"></label>
+                            <span class="required-icon">*</span>
+                            <input type="text" class="form-control" id="iptPjNameEn"
+                                   i18n="admin.projectCreator.PANE1_FORM_ITEM3_PLACEHOLDER" placeholder="">
+                            <span class="help-block" id="pjNameEnHB"
+                                  i18n="admin.projectCreator.PANE1_FORM_ITEM3_TIP"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6 pd0">
+                        <label class="control-label" for="iptPjDateFormat"
+                               i18n="admin.projectCreator.PJ_TIME_FORMAT"></label>
+                        <span class="required-icon">*</span>
+                        <select class="form-control" id="iptPjDateFormat">
+                            <option value="0">2016-09-08 (yyyy-mm-dd)</option>
+                            <option value="1">Sep 8, 2016 (M d, yyyy)</option>
+                            <option value="2">08/09/2016 (dd/mm/yyyy)</option>
+                        </select>
+                    </div>
+
+                    <div class="row form-ds-type">
+                        <div class="form-group col-md-12">
+                            <label class="control-label" for="iptPjRealityMarkValue"
+                                   i18n="admin.projectCreator.PJ_TYPE_IDENTIFICATION"></label>
+
+                            <div class="col-md-12 colorValue" style="margin: 10px 0;">
+                                <div class="col-md-3 pd0">
+                                    <label id="realProject" class="oh">
+                                        <input class="DSType" type="radio" value="real" name="DSType"
+                                               checked>
+                                        <span class="textPt" i18n="admin.projectCreator.REAL_PROJECT"></span>
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label id="virtualProject" class="oh">
+                                        <input class="DSType" type="radio" value="virtual" name="DSType">
+                                        <span class="textPt" i18n="admin.projectCreator.VIRTUAL_PROJECT"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- 真实项目 -->
+                            <div id="realProjectBox" class="col-md-12 colorValue">
+                                <div class="col-md-4 colorValue row">
+                                    <lable class="control-label pd0"
+                                           i18n="admin.projectCreator.PJ_REALITY_VALUE_TIPS_TITLE">
+                                    </lable>
+                                    <input id="dtuName" class="form-control mt5" type="text"
+                                           i18n="placeholder=admin.projectCreator.ENTER_PROJECT_DATA">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="col-md-6 pd0">
+                                        <lable class="colorValue" i18n="admin.projectCreator.REAL_DATA"></lable>
+                                        <div class="text-success realTimeDS oh pt12 ellipsis"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <lable class="colorValue"
+                                               i18n="admin.projectCreator.HISTORICAL_DATA"></lable>
+                                        <div class="text-success historyDS oh pt12 ellipsis"></div>
+                                    </div>
+                                </div>
+                                <div id="prompt_information" class="col-md-12 dn pd0 mt10"
+                                     style="color:#800080;">
+                                </div>
+                            </div>
+                            <!-- 虚拟项目 -->
+                            <div id="virtualProjectBOX" class="col-md-12 dn colorValue">
+                                <div class="col-md-6 pd0">
+                                    <lable i18n="admin.projectCreator.REAL_DATA"></lable>
+                                    <div class="realTimeDS pt12"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <lable class="control-label"
+                                           i18n="admin.projectCreator.HISTORICAL_DATA"></lable>
+                                    <input type="text" class="form-control historyDS mt5"
+                                           i18n="placeholder=admin.projectCreator.ENTER_PROJECT_HISTORY_DATA">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <a class="pull-right" href="javascript:void (0)" id="switch-map-btn"
+                           data-map-type="AMap"><span
+                                i18n="admin.projectCreator.CHANGE_MAP_TO_GOOGLE"></span></a>
+                        <label class="control-label" for="iptPjAddr"
+                               i18n="admin.projectCreator.PANE1_FORM_ITEM4_LABEL"></label>
+                        <span class="required-icon">*</span>
+                        <input type="text" class="form-control" id="iptPjAddr"
+                               i18n="admin.projectCreator.PANE1_FORM_ITEM4_PLACEHOLDER" placeholder=""
+                               aria-describedby="pjAddrHB" readonly="readonly">
+                        <!-- hidden area -->
+                        <input type="hidden" id="iptPjLnglat"/>
+                                <span class="help-block" id="pjAddrHB"
+                                      i18n="admin.projectCreator.PANE1_FORM_ITEM4_TIP"></span>
+                    </div>
+                </div>
+                <div class="pi_right_ct col-md-4">
+                    <div class="img-logo">
+                        <h5 style="text-align: left;">Logo</h5>
+                        <input id="iptPjLogo" class="dn" type="file" accept=".png" style="display: none;"/>
+                        <img id="imgLogoPreview" src="/static/images/logo_beop.png" alt="loading"
+                             style="width: 78px; height: 32px; margin: 10px 0 20px;"/>
+                    </div>
+                    <div class="img-project">
+                        <h5 i18n="admin.projectCreator.PANE1_FORM_ITEM5_LABEL"></h5>
+                        <input id="iptPjFile" class="dn" type="file" accept=".jpg"/>
+                        <img id="imgPreview" src="/static/images/project_img/default.jpg" alt="loading"
+                             style="height: 195px;"/>
+                    </div>
+                </div>
+            </div>
+            <div class="map_wrap">
+                <div class="map-sch-wrap">
+                    <div class="map_sch form-group has-feedback dn">
+                        <input type="text" class="form-control" id="btnMapSch" placeholder="Search Box"/>
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                    <ul class="dropdown-menu map-sch-pane dn" id="mapSchPane"></ul>
+                </div>
+                <input type="text" class="form-control dn" id="btnGoogleSch"
+                       placeholder="Search Box"/>
+
+                <div class="map_ct" id="mapContainer"></div>
+            </div>
+        </div>
+    </div>
+</div>

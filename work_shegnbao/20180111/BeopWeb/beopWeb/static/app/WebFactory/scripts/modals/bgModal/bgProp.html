@@ -1,0 +1,59 @@
+<style type="text/css">
+	.bgPreviewShow{
+		height: 200px;
+		border:1px solid #ccc;
+	}
+	.bgPreviewShow p{
+		text-align: center;
+		line-height: 200px;font-size: 18px;
+	}
+</style>
+<div class="modal fade" id="modalBgSel" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title" id="ttlIconTool" i18n="mainPanel.bgSelect.BG_TITLE"></h4>
+			</div>
+			<div class="modal-body bs-glyphicons">
+				<div>
+					<span style="vertical-align: middle;" i18n="mainPanel.bgSelect.BG_TYPE"></span>
+					<div class="btn-group">
+						<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span class="ulBgVal"></span>
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" id="ulBg">
+							<li><a href="#" data-view="default" class="aDefault" i18n="mainPanel.bgSelect.BG_DEFAULT">默认</a></li>
+							<li><a href="#" data-view="color" class="aColor" i18n="mainPanel.bgSelect.BG_COLOR"></a></li>
+							<li><a href="#" data-view="image" class="aImage" i18n="mainPanel.bgSelect.BG_IMAGE"></a></li>
+						</ul>
+						<input type="color" class="bgColor" style="margin-left: 20px;height: 22px;">
+					</div>
+				</div>
+				<div style="margin-top: 10px;" id="btnImg" style="display: none;">
+					<button type="button" class="btn btn-xs btn-default" id="btnBg" i18n="mainPanel.bgSelect.CHOOSE_IMAGE"></button>
+					<div class="btn-group" style="margin-left: 42px;">
+						<button type="button" style="width:65px;" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="showDisplay" data-view="stretch" i18n="mainPanel.bgSelect.IMAGE_STRETCH"></span><span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu selectItem" id="ulStyle">
+							<li><a href="#" id="bgStretch" data-view="stretch" i18n="mainPanel.bgSelect.IMAGE_STRETCH"></a></li>
+							<li><a href="#" id="bgCenter" data-view="tile" i18n="mainPanel.bgSelect.IMAGE_TILE"></a></li> 
+						</ul>
+					</div>
+				</div>
+				<ul class="list-inline bgPreview" style="margin-top:8px;">
+					<li style="display:block">
+						<div class="bgPreviewShow">
+							<p i18n="mainPanel.bgSelect.PREVIEW"></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btnClose btn-default"  data-dismiss="modal" i18n="mainPanel.pageEditModal.CLOSE"></button>
+				<button type="button" class="btn btnSure btn-primary" i18n="mainPanel.pageEditModal.SURE"></button>
+			</div>
+		</div>
+	</div>
+</div>

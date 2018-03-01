@@ -1,0 +1,44 @@
+[2017-04-26 15:23:52]---错误信息和黄药业Accum_zhijianyanfa_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_yushi_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_yeti_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_wushuichuli_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_wanji_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_tiqu_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_shitang_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_shengwujianyan_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_pianji_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_guolu_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_donglijixiu_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_cangku_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_bangonglou_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_PWCH_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_CHWP160_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_CHWP75_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_CHWP_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_AirPress_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_CoolingFan_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_guanqu_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_jishuzhongxin_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_zhijianyafa_er_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_changqulvhua_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_CHWP160and75_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_xiaofangPump_ElecUse点返回历史数据为no history data！
+错误信息和黄药业Accum_jixiufuzhu_ElecUse点返回历史数据为no history data！
+错误信息和黄药业TotalElecUseD点返回历史数据为no history data！
+错误信息和黄药业gas_23_accD点返回历史数据为no history data！
+错误信息和黄药业Accum_TotalElecUse点返回历史数据为no history data！
+错误信息和黄药业w_total_accD点返回历史数据为no history data！
+错误信息和黄药业Total01_ElecUseD点返回历史数据为no history data！
+错误信息和黄药业Total02_ElecUseD点返回历史数据为no history data！
+错误信息和黄药业Total03_ElecUseD点返回历史数据为no history data！
+错误信息和黄药业Total04_ElecUseD点返回历史数据为no history data！
+错误信息和黄药业Total01_ElecUseM点返回历史数据为no history data！
+错误信息和黄药业Total02_ElecUseW点返回历史数据为no history data！
+错误信息和黄药业Total03_ElecUseW点返回历史数据为no history data！
+错误信息和黄药业Total04_ElecUseW点返回历史数据为no history data！
+错误信息和黄药业Total01_ElecUseM点返回历史数据为no history data！
+错误信息和黄药业Total02_ElecUseM点返回历史数据为no history data！
+错误信息和黄药业Total03_ElecUseM点返回历史数据为no history data！
+错误信息和黄药业Total04_ElecUseM点返回历史数据为no history data！
+[2017-04-26 15:40:17]---错误个数为0!
+[2017-04-26 15:40:38]---错误个数为0!

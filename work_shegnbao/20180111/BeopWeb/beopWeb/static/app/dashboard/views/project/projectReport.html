@@ -1,0 +1,388 @@
+<style>
+    #reportSelect {
+        overflow: visible;
+    }
+    
+    #reportSelect button,
+    #reportSelect button:focus,
+    #reportSelect button:active {
+        background: none;
+        border: none;
+        color: #fff;
+        outline-color: transparent;
+        font-size: 1.8rem;
+        box-shadow: none;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    #reportSelect .dropdown-menu {
+        width:100%;
+        background: rgba(10, 22, 36, 0.9);
+        top: 95%;
+    }
+    #reportSelec.open>.dropdown-menu{
+        display: table;
+    }
+    #reportSelect .dropdown-menu li {
+        padding: .2rem .8rem;
+        line-height: 2rem;
+    }
+    
+    #divReportSelect {
+        width: 100%;
+        color: #323232;
+        position: relative;
+        background-color: transparent;
+    }
+    
+    #divReportTime {
+        padding-right: 2rem;
+        height: 100%;
+        display: inline-block;
+    }
+    
+    #reportYear {
+        color: #d8d6df;
+        display: block;
+        padding: 0.5rem 0 0 1.2rem;
+    }
+    
+    #reportMonth {
+        font-size: 2rem;
+        font-weight: 500;
+        padding-left: 1rem;
+        position: relative;
+        bottom: 0.5rem;
+        color: #d8d6df;
+    }
+    
+    #reportDay {
+        font-size: 2rem;
+        font-weight: 500;
+        position: relative;
+        bottom: 0.5rem;
+        color: #d8d6df;
+    }
+    
+    #reportMonth small {
+        font-size: 45%;
+        position: relative;
+    }
+    
+    #reportDay small {
+        font-size: 45%;
+        position: relative;
+    }
+    
+    #divReportSelect .caret {
+        position: relative;
+        bottom: 1.2rem;
+        border-top: 6px solid;
+        border-right: 6px solid transparent;
+        border-left: 6px solid transparent;
+        color: #a8a4a8;
+    }
+    
+    #containerReport {
+        width: 100%;
+        height: calc(100% - 6.5rem);
+        height: -webkit-calc(100% - 6.5rem);
+        position: relative;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .canvas-container img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .report-unit .summary {
+        color: #646464;
+        margin-bottom: .8rem;
+    }
+    
+    #beopReport {
+        overflow: auto!important;
+    }
+    
+    #beopReport .page-header {
+        padding-bottom: 9px;
+        border-bottom: none;
+        color: #323232;
+        font-size: 2rem;
+    }
+    
+    #beopReport .step-item-container:first-of-type>.page-header:first-of-type {
+        margin-top: 0;
+    }
+    
+    .step-container {
+        padding: 0;
+    }
+    
+    .report-unit {
+        padding: 0 20px;
+    }
+    
+    #beopReport .well {
+        padding: 0.5rem 0.5rem;
+        font-size: 1.8rem;
+        color: white;
+        background-color: transparent;
+        margin: 15px -10px;
+        border: none;
+        box-shadow: none;
+    }
+    
+    #beopReport .tableContainer {
+        width: 100%;
+        overflow-x: auto;
+        ;
+    }
+    
+    #beopReport .well h3 {
+        font-size: 1.8rem;
+        margin: 0;
+    }
+    
+    #btnWeChat {
+        visibility: hidden
+    }
+    
+    h1 {
+        font-size: 2rem;
+        padding: 0.5rem 1rem;
+        background: #60566a;
+        margin-top: 0;
+    }
+    
+    [data-deep="0"] h3 {
+        font-size: 1.8rem;
+        padding: 0 1rem;
+    }
+    
+    [data-deep="1"] h3 {
+        font-size: 1.4rem;
+        padding: 0 1rem;
+    }
+    
+    [data-deep="2"] h3 {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+    
+    h1.headline {
+        font-size: 2rem;
+        padding: 0.5rem 1rem;
+        background: #5d5369;
+    }
+    
+    h1.description {
+        font-size: 1.8rem;
+        padding: 0 1rem;
+    }
+    
+    h2.headline {
+        font-size: 1.6rem;
+        margin: 0px 1rem;
+        padding: 1rem 0 1rem 0;
+        border-bottom: 1px solid #5e5a76;
+        border-radius: 0;
+    }
+    
+    h2.description {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+    
+    h3.headline {
+        font-size: 1.4rem;
+        padding: 0 1rem;
+    }
+    
+    h3.description {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+    
+    p.description {
+        padding: 0 1rem;
+    }
+    
+    #containerReport * {
+        color: #d8d6df !important;
+    }
+    
+    #containerReport p,
+    #containerReport h2,
+    #containerReport table td {
+        color: #b1afbb !important
+    }
+    
+    .chapter-summary-wrap {
+        margin: 0 !important;
+    }
+    
+    #containerReport table th,
+    #containerReport table td {
+        border: 1px solid #5e5a76 !important;
+        vertical-align: text-top;
+    }
+    
+    #containerReport table thead {
+        background: #5d5369 !important;
+        vertical-align: text-top;
+    }
+    
+    #containerReport table tbody tr:nth-child(even) {
+        background: #5d5369 !important;
+    }
+    
+    #containerReport table tbody tr:nth-child(even) td {
+        color: #d8d6df !important;
+    }
+    
+    #containerReport .report-content.clearfix {
+        overflow: auto;
+    }
+    
+    .chapter-container {
+        margin-bottom: 2rem;
+    }
+    /* APP报表样式 */
+    
+    #containerReport.report-ob.isFactory {
+        background: transparent;
+        color: #d8d6df !important;
+    }
+    
+    .isFactory .report-container h1 {
+        border: none;
+        margin-bottom: 0;
+        font-size: 1.6rem;
+        padding: 0.8rem 0;
+    }
+    
+    #containerReport.isFactory h2.headline {
+        color: #d8d6df !important;
+        font-size: 1.4rem;
+    }
+    
+    #containerReport.isFactory p {
+        color: #d8d6df !important;
+        margin: 1rem 0;
+        text-indent: 1rem;
+        font-size: 1.4rem;
+    }
+    
+    .isFactory .chapter-2 {
+        border-bottom: 1px solid #5e5a76;
+    }
+    
+    .isFactory .chapter-container {
+        margin-bottom: 0;
+    }
+    
+    #wrapComponentDetail {
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+    }
+    
+    #wrapComponentDetail.focus {
+        display: block;
+    }
+    
+    #wrapComponentDetail .wrapDetailContent {
+        position: absolute;
+        background: #fff;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+    
+    #wrapComponentDetail .detailContent {
+        color: #666 !important;
+        position: relative;
+        display: table;
+        /*height: 100%;
+        width: 100%;*/
+        /*overflow: hidden;*/
+    }
+    
+    #wrapComponentDetail .detailContent table {
+        width: 1200px!important;
+    }
+    
+    #wrapComponentDetail .detailContent thead {
+        background: #ffbf00;
+    }
+    
+    #wrapComponentDetail .detailContent thead tr {
+        height: 50px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    #wrapComponentDetail .detailContent tbody tr:nth-child(odd) {
+        background: #fef0cc;
+    }
+    
+    #wrapComponentDetail .detailContent td {
+        padding: 2px 10px;
+        border: 1px solid #fad67d;
+    }
+    #wrapComponentDetail .theadInView{
+        top:0;
+        left:0 !important;
+        position: absolute;
+    }
+    #wrapComponentDetail .theadInView tbody{
+        visibility: hidden;
+    }
+    #wrapComponentDetail .btnBlur {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        height: 40px;
+        width: 40px;
+        color: white;
+        font-size: 20px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 25px;
+        border: 2px solid white;
+        background: black;
+    }
+    
+    #containerReport .report-content.clearfix {
+        overflow-x: hidden !important;
+    }
+    
+    #containerReport table {
+        width:100% !important;
+        margin: 10px 0;
+        border:none;
+    }
+</style>
+<div id="divReportSelect">
+    <div id="divReportTime" class="zepto-ev">
+        <span id="reportYear"></span>
+        <span id="reportMonth"></span>
+        <span id="reportDay"></span>
+    </div>
+    <div id="divReportList"></div>
+</div>
+<div id="containerReport">
+
+</div>

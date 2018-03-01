@@ -1,0 +1,342 @@
+{
+  "id": 0,
+  "type": "equipment",
+  "attrInputs": [
+    {
+      "unit": "",
+      "name": {
+        "zh": "设备编号",
+        "en": "Equipment Number"
+      },
+      "tag": {
+        "zh": "设备,编号",
+        "en": "Equipment,Number"
+      },
+      "description": {
+        "zh": "设备编号",
+        "en": "Equipment Number"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "品牌",
+        "en": "Brand"
+      },
+      "tag": {
+        "zh": "品牌",
+        "en": "Brand"
+      },
+      "description": {
+        "zh": "品牌",
+        "en": "Brand"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "型号",
+        "en": "Type"
+      },
+      "tag": {
+        "zh": "型号",
+        "en": "Type"
+      },
+      "description": {
+        "zh": "型号",
+        "en": "Type"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "额定供冷量",
+        "en": "Rated Cooling Capacity"
+      },
+      "tag": {
+        "zh": "额定,供冷量",
+        "en": "Rated,CoolingCapacity"
+      },
+      "description": {
+        "zh": "额定供冷量",
+        "en": "Rated Cooling Capacity"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "额定供热量",
+        "en": "Rated Heating Capacity"
+      },
+      "tag": {
+        "zh": "额定,供热量",
+        "en": "Rated,HeatingCapacity"
+      },
+      "description": {
+        "zh": "额定供热量",
+        "en": "Rated Heating Capacity"
+      }
+    },
+    {
+      "unit": [
+        "kg/s",
+        "l/s",
+        "m3/h"
+      ],
+      "name": {
+        "zh": "额定风量",
+        "en": "Rated Air Flow Rate "
+      },
+      "tag": {
+        "zh": "额定,风,流量",
+        "en": "Rated,Air,FlowRate"
+      },
+      "description": {
+        "zh": "额定风量",
+        "en": "Rated Air Flow Rate "
+      }
+    }
+  ],
+  "name": {
+    "zh": "变风量末端",
+    "en": "Variable Air Volume Box"
+  },
+  "tag": {
+    "zh": "变风量,末端",
+    "en": "VAV,Box"
+  },
+  "attrPoints": [
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "室内温度设定",
+        "en": "Room Temperature Setting"
+      },
+      "tag": {
+        "zh": "室内,温度,设定",
+        "en": "Room,Temperature,Setting"
+      },
+      "description": {
+        "zh": "室内温度设定",
+        "en": "Room Temperature Setting"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "室内温度",
+        "en": "Room Temperature"
+      },
+      "tag": {
+        "zh": "室内,温度",
+        "en": "Room,Temperature"
+      },
+      "description": {
+        "zh": "室内温度",
+        "en": "Room Temperature"
+      }
+    },
+    {
+      "unit": [
+        "kg/s",
+        "l/s",
+        "m3/h"
+      ],
+      "name": {
+        "zh": "风量",
+        "en": "Air  Flow Rate"
+      },
+      "tag": {
+        "zh": "风,流量",
+        "en": "Air,FlowRate"
+      },
+      "description": {
+        "zh": "风量",
+        "en": "Air  Flow Rate"
+      }
+    },
+    {
+      "unit": [
+        "kg/s",
+        "l/s",
+        "m3/h"
+      ],
+      "name": {
+        "zh": "最小风量设定",
+        "en": "Min Air Flow Rate Setting"
+      },
+      "tag": {
+        "zh": "最小,风,流量,设定",
+        "en": "Min,Air,FlowRate,Setting"
+      },
+      "description": {
+        "zh": "最小风量设定",
+        "en": "Min Air Flow Rate Setting"
+      }
+    },
+    {
+      "unit": [
+        "kg/s",
+        "l/s",
+        "m3/h"
+      ],
+      "name": {
+        "zh": "最大风量设定",
+        "en": "Max Air Flow Rate Setting"
+      },
+      "tag": {
+        "zh": "最大,风,流量,设定",
+        "en": "Max,Air,FlowRate,Setting"
+      },
+      "description": {
+        "zh": "最大风量设定",
+        "en": "Max Air Flow Rate Setting"
+      }
+    },
+    {
+      "unit": [
+        "kg/s",
+        "l/s",
+        "m3/h"
+      ],
+      "name": {
+        "zh": "需求风量",
+        "en": "Demand Air Flow Rate"
+      },
+      "tag": {
+        "zh": "需求,风,流量",
+        "en": "Demand,Air,FlowRate"
+      },
+      "description": {
+        "zh": "需求风量",
+        "en": "Demand Air Flow Rate"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "风阀开度",
+        "en": "Damper Position"
+      },
+      "tag": {
+        "zh": "风阀,开度",
+        "en": "Damper,Position"
+      },
+      "description": {
+        "zh": "风阀开度",
+        "en": "Damper Position"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "季节模式",
+        "en": "Season Mode"
+      },
+      "tag": {
+        "zh": "季节,模式",
+        "en": "Season,Mode"
+      },
+      "description": {
+        "zh": "季节模式",
+        "en": "Season Mode"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷热模式",
+        "en": "Cool Heat Mode"
+      },
+      "tag": {
+        "zh": "冷,热,模式",
+        "en": "Cool,Heat,Mode"
+      },
+      "description": {
+        "zh": "冷热模式",
+        "en": "Cool Heat Mode"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "日夜模式",
+        "en": "Day Night Mode"
+      },
+      "tag": {
+        "zh": "日,夜,模式",
+        "en": "Day,Night,Mode"
+      },
+      "description": {
+        "zh": "日夜模式",
+        "en": "Day Night Mode"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "压差",
+        "en": "Pressure Differential"
+      },
+      "tag": {
+        "zh": "压力,差",
+        "en": "Pressure,Differential"
+      },
+      "description": {
+        "zh": "压差",
+        "en": "Pressure Differential"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "风阀开度设定",
+        "en": "Damper Position Setting"
+      },
+      "tag": {
+        "zh": "风阀,开度,设定",
+        "en": "Damper,Position,Setting"
+      },
+      "description": {
+        "zh": "风阀开度设定",
+        "en": "Damper Position Setting"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "冷水阀开度",
+        "en": "Cooling Water Valve Position"
+      },
+      "tag": {
+        "zh": "冷,水,阀,开度",
+        "en": "Cooling,Water,Valve,Position"
+      },
+      "description": {
+        "zh": "冷水阀开度",
+        "en": "Cooling Water Valve Position"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "热水阀开度",
+        "en": "Hot Water Valve Position"
+      },
+      "tag": {
+        "zh": "热,水,阀,开度",
+        "en": "Hot,Water,Valve,Position"
+      },
+      "description": {
+        "zh": "热水阀开度",
+        "en": "Hot Water Valve Position"
+      }
+    }
+  ]
+}

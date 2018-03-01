@@ -1,0 +1,19 @@
+{
+  "name": "StrategyV2-AirFlow-Helper",
+  "version": "0.4.1",
+  "description": "策略组态 v2 提供给 AirFlow 使用的帮助库",
+  "main": "index.js",
+  "author": "Peter",
+  "license": "MIT",
+  "private": false,
+  "bin": {
+    "engine": "./cli.js"
+  },
+  "dependencies": {
+    "StrategyV2-Engine": "^0.4.8",
+    "commander": "^2.12.2"
+  },
+  "bundledDependencies": [
+    "StrategyV2-Engine"
+  ]
+}

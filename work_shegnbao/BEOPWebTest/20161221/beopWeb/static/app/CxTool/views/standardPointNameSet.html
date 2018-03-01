@@ -1,0 +1,302 @@
+<!--确认是否删除系统点名浮动窗口开始-->
+<article id="isDelSystemNameWin" class="modal fade confirmWin appWin">
+    <div class="modal-dialog w400">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><span i18n="common.PROMPT"></span>：</h4>
+            </div>
+            <div class="modal-body">
+                <p class="infoPrompt"><span i18n="debugTools.sitePoint.IS_DELETE_POINTS"></span>：</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" i18n="common.CANCEL"></button>
+                <button id="deleteSystemConfirm" type="button" class="btn btn-primary" i18n="common.CONFIRM"></button>
+            </div>
+        </div>
+    </div>
+</article>
+<!--确认是否删除系统点名浮动窗口结束-->
+
+<!--确认是否删除标准点名浮动窗口开始-->
+<article id="isDelStandardNameWin" class="modal fade confirmWin appWin">
+    <div class="modal-dialog w400">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><span i18n="common.PROMPT"></span>：</h4>
+            </div>
+            <div class="modal-body">
+                <p class="infoPrompt"><span i18n="debugTools.sitePoint.IS_DELETE_POINTS"></span>：</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" i18n="common.CANCEL"></button>
+                <button id="deleteStandardConfirm" type="button" class="btn btn-primary" i18n="common.CONFIRM"></button>
+            </div>
+        </div>
+    </div>
+</article>
+<!--确认是否删除标准点名浮动窗口结束-->
+
+<!--添加系统点名浮动窗口开始-->
+<article id="addSystemNameWin" class="modal fade confirmWin appWin">
+    <div class="modal-dialog w400">
+        <div class="modal-content">
+            <form id="systemNameForm">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><span i18n="debugTools.sitePoint.SYSTEM_NAME_ADDED"></span>：</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="systemNameContentWrapper">
+                        <p class="winP">
+                            <label>
+                                <span class="title"><span
+                                        i18n="debugTools.sitePoint.SYSTEM_OR_EQUIPMENT"></span>：</span><input
+                                    type="text" class="form-control fl w150"
+                                    id="systemNameInput" name="systemName"
+                                    maxlength="20"
+                                    i18n="placeholder=debugTools.sitePoint.FILL_DEVICE_NAME" value=""/>
+                            </label>
+                        </p>
+
+                        <p class="winP">
+                            <label>
+                                <span class="title"><span
+                                        i18n="debugTools.sitePoint.STANDARD_NAME"></span>：</span><input type="text"
+                                                                                                        class="form-control fl w150"
+                                                                                                        id="systemStandardNameInput"
+                                                                                                        name="systemStandardName"
+                                                                                                        maxlength="20"
+                                                                                                        i18n="placeholder=debugTools.sitePoint.FILL_DEVICE_NAME"
+                                                                                                        value=""/>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" i18n="common.CANCEL"></button>
+                    <button id="addSystemConfirm" type="button" class="btn btn-primary" i18n="common.CONFIRM"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</article>
+<!--添加系统点名浮动窗口结束-->
+
+<!--添加标准点名浮动窗口开始-->
+<article id="addPointNameWin" class="modal fade appWin">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><span i18n="debugTools.sitePoint.POINT_NAME_ADDED"></span>：</h4>
+            </div>
+            <div class="modal-body">
+                <div id="pointNameContentWrapper" class="mb10">
+                    <ul id="addStandardNameTab" class="nav nav-tabs">
+                        <li role="presentation" targetObj="addPointNameWrapper" class="active"><a
+                                href="#addPointNameWrapper" data-toggle="tab"
+                                aria-expanded="false" i18n="debugTools.sitePoint.PARAMETER"></a></li>
+                        <li role="presentation" targetObj="addSystemNameWrapper"><a href="#addSystemNameWrapper"
+                                                                                    data-toggle="tab"
+                                                                                    aria-expanded="true"
+                                                                                    i18n="debugTools.sitePoint.SYSTEM"></a>
+                        </li>
+                    </ul>
+                    <div class="p15">
+                        <div id="addPointNameWrapper" class="mt20 tab-pane active">
+                            <form id="addPointNameForm" class="form-inline">
+                                <div class="form-group">
+                                    <label class="mr10" i18n="debugTools.sitePoint.CHOOSE_SYSTEM_NAME"></label>
+                                    <select id="systemNameSelect" class="form-control w200"></select>
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <label class="mr10" i18n="debugTools.sitePoint.ADD_PARAMETER"></label>
+                                        <span id="paramAddInput" class="glyphicon glyphicon-plus-sign cp"></span>
+                                    </div>
+                                    <ul id="paramNameInputWrapper"></ul>
+                                </div>
+                                <div class="tc">
+                                    <button id="addPointParamConfirmBtn" type="button" class="btn btn-primary"
+                                            i18n="common.CONFIRM"></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="addSystemNameWrapper" class="mt20 tab-pane dn">
+                            <form id="addSystemNameForm" class="form-inline">
+                                <div class="form-group">
+                                    <label class="mr10" i18n="debugTools.sitePoint.ADD_SYSTEM_NAME"></label>
+                                    <input id="addSystemParamNameInput" type="text" name="addSystemParamNameInput"
+                                           class="form-control addSystemParamName"
+                                           i18n="placeholder=debugTools.sitePoint.ADD_SYSTEM_NAME">
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <label class="mr10" i18n="debugTools.sitePoint.ADD_PARAMETER"></label>
+                                        <span id="systemAddInput" class="glyphicon glyphicon-plus-sign cp"></span>
+                                    </div>
+                                    <ul id="paramSystemNameInputWrapper"></ul>
+                                </div>
+                                <div class="tc">
+                                    <button id="addPointSystemConfirmBtn" type="button" class="btn btn-primary"
+                                            i18n="common.CONFIRM"></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<!--添加系统点名浮动窗口结束-->
+
+<div id="nameSettingWrapper" class="pr point_setting">
+    <h1 i18n="debugTools.sitePoint.POINT_NAME_CONFIGURATION"></h1>
+    <nav class="oh mt30">
+        <ul id="standardNameTab" class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#systemNameWrapper" data-toggle='tab'
+                                                      i18n="debugTools.sitePoint.STANDARD_SYSTEM_NAME"></a></li>
+            <li role="presentation"><a href="#pointNameWrapper" data-toggle='tab'
+                                       i18n="debugTools.sitePoint.STANDARD_POINT_NAME"></a></li>
+        </ul>
+    </nav>
+    <section class="mt10 tab-content">
+        <div id="systemNameWrapper" class="mt30 tab-pane active">
+            <nav class="oh">
+                <div class="btn-group" role="group">
+                    <div id="system_name_add" class="btn">
+                        <span class="glyphicon glyphicon-plus db" aria-hidden="true"></span>
+                        <span>add</span>
+                    </div>
+                    <div id="system_name_edit" class="btn">
+                        <span class="glyphicon glyphicon-edit db" aria-hidden="true"></span>
+                        <span>edit</span>
+                    </div>
+                    <div id="system_name_delete" class="btn">
+                        <span class="glyphicon glyphicon-remove db" aria-hidden="true"></span>
+                        <span>delete</span>
+                    </div>
+                    <div id="system_name_save" class="btn">
+                        <span class="glyphicon glyphicon-save db" aria-hidden="true"></span>
+                        <span>save</span>
+                    </div>
+                </div>
+            </nav>
+            <table id="systemNameSheet" class="mt10">
+                <thead>
+                <th></th>
+                <th width="200" i18n="debugTools.sitePoint.SYSTEM_OR_EQUIPMENT"></th>
+                <th width="200" i18n="debugTools.sitePoint.STANDARD_NAME"></th>
+                </thead>
+                <tbody id="systemNameSheetTbody"></tbody>
+            </table>
+        </div>
+        <div id="pointNameWrapper" class="mt30 tab-pane">
+            <nav class="oh">
+                <div class="btn-group" role="group">
+                    <div id="standard_name_add" class="btn">
+                        <span class="glyphicon glyphicon-plus db" aria-hidden="true"></span>
+                        <span>add</span>
+                    </div>
+                    <div id="standard_name_edit" class="btn">
+                        <span class="glyphicon glyphicon-edit db" aria-hidden="true"></span>
+                        <span>edit</span>
+                    </div>
+                    <div id="standard_name_delete" class="btn">
+                        <span class="glyphicon glyphicon-remove db" aria-hidden="true"></span>
+                        <span>delete</span>
+                    </div>
+                    <div id="standard_name_save" class="btn">
+                        <span class="glyphicon glyphicon-save db" aria-hidden="true"></span>
+                        <span>save</span>
+                    </div>
+                </div>
+            </nav>
+            <table id="pointNameSheet" class="mt10">
+                <thead>
+                <tr>
+                    <th i18n="debugTools.sitePoint.SYSTEM"></th>
+                    <th i18n="debugTools.sitePoint.PARAMETER"></th>
+                    <th i18n="debugTools.sitePoint.STANDARD_POINT_NAME"></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="pointNameSheetTbody"></tbody>
+            </table>
+        </div>
+    </section>
+</div>
+<script type="text/html" id="tpl_system_name_list">
+    <!for(var i=0; i < systemNameList.length; i++){!>
+    <!var systemName=systemNameList[i];!>
+    <tr pointId="<!=systemNameList[i].id!>">
+        <td><input type="checkbox" class="systemName" name="systemName" value="" itemId="<!=systemName.id!>"/>
+        </td>
+        <td><span class="nameEdit systemNameEn"><!=systemName.en!></span></td>
+        <td><span class="nameEdit systemNameZh"><!=systemName.zh!></span></td>
+    </tr>
+    <!}!>
+</script>
+<script type="text/html" id="tpl_add_name_inputs">
+    <li>
+        <input type="text" name="addParamName"
+               class="form-control addParamName"
+               i18n="placeholder=debugTools.sitePoint.ADD_PARAMETER_NAME"/>
+        <input type="text" name="addStandardName"
+               class="form-control addStandardName"
+               i18n="placeholder=debugTools.sitePoint.ADD_STANDARD_NAME"/>
+    </li>
+    <li>
+        <input type="text" name="addParamName"
+               class="form-control addParamName"
+               i18n="placeholder=debugTools.sitePoint.ADD_PARAMETER_NAME"/>
+        <input type="text" name="addStandardName"
+               class="form-control addStandardName"
+               i18n="placeholder=debugTools.sitePoint.ADD_STANDARD_NAME"/>
+    </li>
+    <li>
+        <input type="text" name="addParamName"
+               class="form-control addParamName"
+               i18n="placeholder=debugTools.sitePoint.ADD_PARAMETER_NAME"/>
+        <input type="text" name="addStandardName"
+               class="form-control addStandardName"
+               i18n="placeholder=debugTools.sitePoint.ADD_STANDARD_NAME"/>
+    </li>
+</script>
+<script type="text/html" id="tpl_add_name_input">
+    <li>
+        <input type="text" name="addParamName"
+               class="form-control addParamName"
+               i18n="placeholder=debugTools.sitePoint.ADD_PARAMETER_NAME"/>
+        <input type="text" name="addStandardName"
+               class="form-control addStandardName"
+               i18n="placeholder=debugTools.sitePoint.ADD_STANDARD_NAME"/>
+    </li>
+</script>
+<script type="text/html" id="tpl_point_name_list">
+    <!for(var i=0; i < pointNameList.length; i++){!>
+    <!var pointName=pointNameList[i];!>
+    <!for(var j=0; j < pointName.child.length; j++){!>
+    <!var child=pointName.child[j];!>
+    <tr>
+        <!if (j == 0) { !>
+        <td rowspan="<!=pointName.child.length!>"><span class="nameEdit"><!=pointName.name!></span></td>
+        <!}!>
+        <td><span class="nameEdit systemNameZh"><!=child.zh!></span></td>
+        <td><span class="nameEdit systemNameEn"><!=child.en!></span></td>
+        <td><input type="checkbox" class="pointName" name="pointName" value="" itemId="<!=child.id!>"/></td>
+    </tr>
+    <!}!>
+    <!}!>
+</script>
+
+
+
+

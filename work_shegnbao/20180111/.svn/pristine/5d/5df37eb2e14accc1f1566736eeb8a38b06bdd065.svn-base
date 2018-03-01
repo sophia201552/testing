@@ -1,0 +1,60 @@
+/**
+ * 首页
+ * @author Peter
+ */
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import StrategyTree from '../containers/StrategyList/StrategyTree';
+import StrategyList from '../containers/StrategyList/StrategyList';
+import StrategyTemplate from '../containers/StrategyList/StrategyTemplate';
+import I18n from './HOC/I18n.js';
+import CreateStrategyModal from '../containers/modals/CreateStrategyModal/CreateStrategyModal';
+
+import s from './Home.css';
+
+class Home extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false,
+      TabId: 'catalog'
+    };
+  }
+
+  render() {
+    const { I18n } = this.props;
+    const { TabId } = this.state;
+    return (
+      <div className={s['container']}>
+        <div className={s['containerLeft']}>
+          <StrategyTree
+            changeTabId={this._changeTabId.bind(this)}
+            selecteddTabId={TabId}
+            I18n={I18n}
+          />
+        </div>
+        <div className={s['containerRight']}>
+          {TabId === 'catalog' && (
+            <StrategyList
+              changeTabId={this._changeTabId.bind(this)}
+              I18n={I18n}
+            />
+          )}
+          {TabId === 'modals' && (
+            <StrategyTemplate I18nStrategyTemplate={I18n.strategyTemplate} />
+          )}
+        </div>
+      </div>
+    );
+  }
+  _changeTabId(id) {
+    this.setState({
+      TabId: id
+    });
+  }
+}
+
+Home.propTypes = {};
+
+export default I18n(Home);

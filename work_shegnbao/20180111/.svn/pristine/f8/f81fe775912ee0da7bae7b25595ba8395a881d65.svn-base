@@ -1,0 +1,31 @@
+// task.js
+;(function (exports, FaultTable) {
+    class Task {
+        constructor(container, conditionModel, diagnosis) {
+            this.container = container;
+            this.conditionModel = conditionModel;
+            this.diagnosis = diagnosis;
+
+            this.faultTable = null;
+        }
+        show() {
+            $('#divWorkOrder').hide();
+            $('#divOpt').hide();
+            $('.taskButton').show();
+            $('#divDelete').hide();
+            this.faultTable = new FaultTable(this.container, this.conditionModel, this.diagnosis);
+            this.faultTable.show();
+        }
+        close() {
+            if (this.faultTable){
+                this.faultTable.close();
+                this.faultTable = null;
+            }
+            $('#divWorkOrder').show();
+            $('#divOpt').show();
+            $('.taskButton').hide();
+        }
+    }
+
+    exports.Task = Task;
+} ( namespace('diagnosis.Pages'), namespace('diagnosis.Task.FaultTable') ));

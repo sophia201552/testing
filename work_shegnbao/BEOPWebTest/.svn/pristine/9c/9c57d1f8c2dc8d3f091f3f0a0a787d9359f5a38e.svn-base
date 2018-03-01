@@ -1,0 +1,2145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/scripts/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/content/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/content/index-black.css">
+    <link rel="stylesheet" type="text/css" href="/static/content/index-black.css">
+    <link rel="stylesheet" type="text/css" href="/static/app/Benz/env.css">
+    <script src="/static/scripts/lib/jquery-2.1.4.min.js"></script>
+    <script src="/static/scripts/lib/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="t1455954412210" class="container-fluid">
+        <style>
+            #t1455954412210 {
+                width: 100%;
+                height: 100%;
+                overflow-y: auto;
+                position: relative;
+            }
+            #t1455954412210 .btn-toolbar .btn {
+                color: #eee;
+                background-color: transparent;
+                border-color: #eee;
+            }
+            #t1455954412210 .table { cursor: pointer;  }
+            #t1455954412210 .pagination {
+                margin: 0;
+            }
+            #t1455954412210 #tableGoods tbody tr {
+                display: none;
+            }
+            #t1455954412210 .pagination li.active .btn-page-no {
+                background-color: #444!important;
+            }
+            #t1455954412210 .pagin-wrap {
+                position: absolute;
+                bottom: 20px;
+            }
+        </style>
+        <div class="btn-toolbar" role="toolbar">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary">分类</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">办公</a></li>
+                    <li><a href="#">冷站房</a></li>
+                    <li><a href="#">电梯</a></li>
+                    <li><a href="#">变配电</a></li>
+                    <li><a href="#">照明</a></li>
+                    <li><a href="#">保洁</a></li>
+                </ul>
+            </div>
+            <button type="button" class="btn btn-default" id="btnInFlow"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增入库</button>
+            <button type="button" class="btn btn-default" id="btnEdit" disabled="disabled"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 修改</button>
+            <button type="button" class="btn btn-default" id="btnOutFlow" disabled="disabled"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 出库</button>
+            <button type="button" class="btn btn-default" id="btnCount"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 盘点</button>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table  table-hover" id="tableGoods">
+                <caption></caption>
+                <thead>
+                    <tr>
+                        <th>记录编号</th>
+                        <th>零配件设备编号</th>
+                        <th>品名</th>
+                        <th>类别</th>
+                        <th>型号规格</th>
+                        <th>单位</th>
+                        <th>数量</th>
+                        <th>生产日期</th>
+                        <th>有效日期</th>
+                        <th>供应商</th>
+                        <th>采购单号</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="">
+                        <td>001</td>
+                        <td>EQ-6201</td>
+                        <td>PP-R塑铝稳态管</td>
+                        <td>冷站房</td>
+                        <td>DN50</td>
+                        <td>m</td>
+                        <td>80</td>
+                        <td>2015年9月21日</td>
+                        <td>2020年9月21日</td>
+                        <td>神塑</td>
+                        <td>890-112-1001</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+
+                    <tr class="">
+                        <td>002</td>
+                        <td>EQ-6201</td>
+                        <td>PP-R塑铝稳态管</td>
+                        <td>冷站房</td>
+                        <td>DN40</td>
+                        <td>m</td>
+                        <td>100</td>
+                        <td>2015年9月21日</td>
+                        <td>2020年9月21日</td>
+                        <td>神塑</td>
+                        <td>890-112-1001</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>003</td>
+                        <td>EQ-6201</td>
+                        <td>PP-R塑铝稳态管</td>
+                        <td>冷站房</td>
+                        <td>DN65</td>
+                        <td>m</td>
+                        <td>50</td>
+                        <td>2015年9月21日</td>
+                        <td>2020年9月21日</td>
+                        <td>神塑</td>
+                        <td>890-112-1001</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>004</td>
+                        <td>EQ-6201</td>
+                        <td>铜管</td>
+                        <td>冷站房</td>
+                        <td>φ34.92</td>
+                        <td>kg</td>
+                        <td>500</td>
+                        <td>2015年9月28日</td>
+                        <td>2020年9月28日</td>
+                        <td>辽帆</td>
+                        <td>890-112-1002</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>005</td>
+                        <td>EQ-6201</td>
+                        <td>铜管</td>
+                        <td>冷站房</td>
+                        <td>φ28.6</td>
+                        <td>kg</td>
+                        <td>450</td>
+                        <td>2015年9月28日</td>
+                        <td>2020年9月28日</td>
+                        <td>辽帆</td>
+                        <td>890-112-1002</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>006</td>
+                        <td>EQ-6201</td>
+                        <td>铜管</td>
+                        <td>冷站房</td>
+                        <td>φ25.4</td>
+                        <td>kg</td>
+                        <td>430</td>
+                        <td>2015年9月28日</td>
+                        <td>2020年9月28日</td>
+                        <td>辽帆</td>
+                        <td>890-112-1002</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>007</td>
+                        <td>EQ-6201</td>
+                        <td>塑料给水管</td>
+                        <td>冷站房</td>
+                        <td>DN50</td>
+                        <td>m</td>
+                        <td>80</td>
+                        <td>2015年10月11日</td>
+                        <td>2020年10月11日</td>
+                        <td>武峰</td>
+                        <td>890-112-1003</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>008</td>
+                        <td>EQ-6201</td>
+                        <td>塑料给水管</td>
+                        <td>冷站房</td>
+                        <td>DN40</td>
+                        <td>m</td>
+                        <td>100</td>
+                        <td>2015年10月11日</td>
+                        <td>2020年10月11日</td>
+                        <td>武峰</td>
+                        <td>890-112-1003</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>009</td>
+                        <td>EQ-6201</td>
+                        <td>塑料给水管</td>
+                        <td>冷站房</td>
+                        <td>DN65</td>
+                        <td>m</td>
+                        <td>50</td>
+                        <td>2015年10月11日</td>
+                        <td>2020年10月11日</td>
+                        <td>武峰</td>
+                        <td>890-112-1003</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>010</td>
+                        <td>EQ-6202</td>
+                        <td>对开多叶调节阀</td>
+                        <td>冷站房</td>
+                        <td>500*200</td>
+                        <td>个</td>
+                        <td>5</td>
+                        <td>2015年10月11日</td>
+                        <td>2020年10月11日</td>
+                        <td>微格</td>
+                        <td>890-112-1004</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>011</td>
+                        <td>EQ-6202</td>
+                        <td>止回阀</td>
+                        <td>冷站房</td>
+                        <td>φ900</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月15日</td>
+                        <td>2020年10月15日</td>
+                        <td>Amico</td>
+                        <td>890-112-1005</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>012</td>
+                        <td>EQ-6202</td>
+                        <td>截止阀</td>
+                        <td>冷站房</td>
+                        <td>DN20</td>
+                        <td>个</td>
+                        <td>5</td>
+                        <td>2015年10月15日</td>
+                        <td>2020年10月15日</td>
+                        <td>Amico</td>
+                        <td>890-112-1005</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>013</td>
+                        <td>EQ-6202</td>
+                        <td>蝶阀</td>
+                        <td>冷站房</td>
+                        <td>DN100</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月15日</td>
+                        <td>2020年10月15日</td>
+                        <td>Amico</td>
+                        <td>890-112-1005</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>014</td>
+                        <td>EQ-6202</td>
+                        <td>螺纹阀</td>
+                        <td>冷站房</td>
+                        <td>DN40</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月15日</td>
+                        <td>2020年10月15日</td>
+                        <td>Amico</td>
+                        <td>890-112-1005</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>015</td>
+                        <td>EQ-6202</td>
+                        <td>静态平衡阀</td>
+                        <td>冷站房</td>
+                        <td>DN200</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月18日</td>
+                        <td>2020年10月18日</td>
+                        <td>宣一</td>
+                        <td>890-112-1006</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>016</td>
+                        <td>EQ-6202</td>
+                        <td>电动二通阀</td>
+                        <td>冷站房</td>
+                        <td>DN100</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月18日</td>
+                        <td>2020年10月18日</td>
+                        <td>宣一</td>
+                        <td>890-112-1006</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>017</td>
+                        <td>EQ-6202</td>
+                        <td>Y型过滤器</td>
+                        <td>冷站房</td>
+                        <td>DN32</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月18日</td>
+                        <td>2020年10月18日</td>
+                        <td>宣一</td>
+                        <td>890-112-1006</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>018</td>
+                        <td>EQ-6202</td>
+                        <td>70℃防火阀</td>
+                        <td>冷站房</td>
+                        <td>1000*400</td>
+                        <td>个</td>
+                        <td>2</td>
+                        <td>2015年10月18日</td>
+                        <td>2020年10月18日</td>
+                        <td>奇星</td>
+                        <td>890-112-1007</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>019</td>
+                        <td>EQ-6202</td>
+                        <td>70℃防火阀</td>
+                        <td>冷站房</td>
+                        <td>φ900</td>
+                        <td>个</td>
+                        <td>2</td>
+                        <td>2015年10月18日</td>
+                        <td>2020年10月18日</td>
+                        <td>奇星</td>
+                        <td>890-112-1007</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>020</td>
+                        <td>EQ-6204</td>
+                        <td>特灵机组油过滤器</td>
+                        <td>冷站房</td>
+                        <td>FLR01353</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月20日</td>
+                        <td>2018年10月20日</td>
+                        <td>特灵</td>
+                        <td>890-112-1008</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>021</td>
+                        <td>EQ-6205</td>
+                        <td>特灵冷冻机油</td>
+                        <td>冷站房</td>
+                        <td>0IL00031</td>
+                        <td>桶</td>
+                        <td>4</td>
+                        <td>2015年10月20日</td>
+                        <td>2018年10月20日</td>
+                        <td>特灵</td>
+                        <td>890-112-1008</td>
+                        <td><span class="label label-success">出库1件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>022</td>
+                        <td>EQ-6206</td>
+                        <td>特灵油加热器</td>
+                        <td>冷站房</td>
+                        <td>HTR02444</td>
+                        <td>个</td>
+                        <td>2</td>
+                        <td>2015年10月20日</td>
+                        <td>2018年10月20日</td>
+                        <td>特灵</td>
+                        <td>890-112-1008</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>023</td>
+                        <td>EQ-6206</td>
+                        <td>温控器</td>
+                        <td>冷站房</td>
+                        <td>RFD-101</td>
+                        <td>个</td>
+                        <td>2</td>
+                        <td>2015年10月20日</td>
+                        <td>2018年10月20日</td>
+                        <td>特灵</td>
+                        <td>890-112-1008</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>024</td>
+                        <td>EQ-6207</td>
+                        <td>保温棉</td>
+                        <td>冷站房</td>
+                        <td>1*50</td>
+                        <td>m</td>
+                        <td>100</td>
+                        <td>2015年10月23日</td>
+                        <td>2018年10月23日</td>
+                        <td>凯丰</td>
+                        <td>890-112-1009</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>025</td>
+                        <td>EQ-6208</td>
+                        <td>扳手</td>
+                        <td>冷站房</td>
+                        <td>8-32</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月25日</td>
+                        <td>2020年10月25日</td>
+                        <td>鑫诚</td>
+                        <td>890-112-1010</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>026</td>
+                        <td>EQ-6208</td>
+                        <td>扳手</td>
+                        <td>冷站房</td>
+                        <td>S27-S120</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月25日</td>
+                        <td>2020年10月25日</td>
+                        <td>鑫诚</td>
+                        <td>890-112-1010</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>027</td>
+                        <td>EQ-6208</td>
+                        <td>扳手</td>
+                        <td>冷站房</td>
+                        <td>CT-361</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月25日</td>
+                        <td>2020年10月25日</td>
+                        <td>鑫诚</td>
+                        <td>890-112-1010</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>028</td>
+                        <td>EQ-6208</td>
+                        <td>扳手</td>
+                        <td>冷站房</td>
+                        <td>CT-122</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月25日</td>
+                        <td>2020年10月25日</td>
+                        <td>鑫诚</td>
+                        <td>890-112-1010</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>029</td>
+                        <td>EQ-6208</td>
+                        <td>扳手</td>
+                        <td>冷站房</td>
+                        <td>CT-123</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月25日</td>
+                        <td>2020年10月25日</td>
+                        <td>鑫诚</td>
+                        <td>890-112-1010</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>030</td>
+                        <td>EQ-6208</td>
+                        <td>老虎钳</td>
+                        <td>冷站房</td>
+                        <td>037</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月28日</td>
+                        <td>2020年10月28日</td>
+                        <td>庞龙</td>
+                        <td>890-112-1011</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>031</td>
+                        <td>EQ-6208</td>
+                        <td>活动扳手</td>
+                        <td>冷站房</td>
+                        <td>MA-12</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月28日</td>
+                        <td>2020年10月28日</td>
+                        <td>庞龙</td>
+                        <td>890-112-1011</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>032</td>
+                        <td>EQ-6208</td>
+                        <td>活动扳手</td>
+                        <td>冷站房</td>
+                        <td>MA-10</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月28日</td>
+                        <td>2020年10月28日</td>
+                        <td>庞龙</td>
+                        <td>890-112-1011</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>033</td>
+                        <td>EQ-6208</td>
+                        <td>活动扳手</td>
+                        <td>冷站房</td>
+                        <td>MA-08</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月28日</td>
+                        <td>2020年10月28日</td>
+                        <td>庞龙</td>
+                        <td>890-112-1011</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>034</td>
+                        <td>EQ-6208</td>
+                        <td>尖嘴钳</td>
+                        <td>冷站房</td>
+                        <td>6352</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月28日</td>
+                        <td>2020年10月28日</td>
+                        <td>庞龙</td>
+                        <td>890-112-1011</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>035</td>
+                        <td>EQ-6208</td>
+                        <td>虎皮柄</td>
+                        <td>冷站房</td>
+                        <td>PL-7</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月28日</td>
+                        <td>2020年10月28日</td>
+                        <td>庞龙</td>
+                        <td>890-112-1011</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>036</td>
+                        <td>EQ-6208</td>
+                        <td>螺丝刀</td>
+                        <td>冷站房</td>
+                        <td>ZA2606</td>
+                        <td>个</td>
+                        <td>5</td>
+                        <td>2015年10月28日</td>
+                        <td>2020年10月28日</td>
+                        <td>泰丰</td>
+                        <td>890-112-1012</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>037</td>
+                        <td>EQ-6208</td>
+                        <td>电动螺丝刀</td>
+                        <td>冷站房</td>
+                        <td>TF-DG801</td>
+                        <td>个</td>
+                        <td>2</td>
+                        <td>2015年10月28日</td>
+                        <td>2020年10月28日</td>
+                        <td>泰丰</td>
+                        <td>890-112-1012</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>038</td>
+                        <td>EQ-6208</td>
+                        <td>电动螺丝起子</td>
+                        <td>冷站房</td>
+                        <td>IF-S801</td>
+                        <td>个</td>
+                        <td>2</td>
+                        <td>2015年10月28日</td>
+                        <td>2020年10月28日</td>
+                        <td>泰丰</td>
+                        <td>890-112-1012</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>039</td>
+                        <td>EQ-6209</td>
+                        <td>折叠梯</td>
+                        <td>冷站房</td>
+                        <td>QG-06</td>
+                        <td>个</td>
+                        <td>2</td>
+                        <td>2015年10月28日</td>
+                        <td>2020年10月28日</td>
+                        <td>泰丰</td>
+                        <td>890-112-1013</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>040</td>
+                        <td>EQ-6210</td>
+                        <td>VVVF步变频器</td>
+                        <td>电梯</td>
+                        <td>FRNIILMIS-4</td>
+                        <td>个</td>
+                        <td>2</td>
+                        <td>2015年10月12日</td>
+                        <td>2020年10月12日</td>
+                        <td>奥泰</td>
+                        <td>890-112-1014</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>041</td>
+                        <td>EQ-6211</td>
+                        <td>空气开关</td>
+                        <td>电梯</td>
+                        <td>EA53C</td>
+                        <td>个</td>
+                        <td>5</td>
+                        <td>2015年10月12日</td>
+                        <td>2020年10月12日</td>
+                        <td>安迈</td>
+                        <td>890-112-1015</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>042</td>
+                        <td>EQ-6212</td>
+                        <td>整流模块</td>
+                        <td>电梯</td>
+                        <td>KBPC3510</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月14日</td>
+                        <td>2020年10月14日</td>
+                        <td>贝特</td>
+                        <td>890-112-1016</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>043</td>
+                        <td>EQ-6213</td>
+                        <td>交流接触器</td>
+                        <td>电梯</td>
+                        <td>SC-N1</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月14日</td>
+                        <td>2020年10月14日</td>
+                        <td>博汇</td>
+                        <td>890-112-1016</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>044</td>
+                        <td>EQ-6214</td>
+                        <td>电屏抽气扇</td>
+                        <td>电梯</td>
+                        <td>12*12</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月14日</td>
+                        <td>2020年10月14日</td>
+                        <td>八达</td>
+                        <td>890-112-1017</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>045</td>
+                        <td>EQ-6213</td>
+                        <td>抱闸接触器</td>
+                        <td>电梯</td>
+                        <td>SC-03</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月14日</td>
+                        <td>2020年10月14日</td>
+                        <td>博汇</td>
+                        <td>890-112-1016</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>046</td>
+                        <td>EQ-6213</td>
+                        <td>电机接触器</td>
+                        <td>电梯</td>
+                        <td>SC-N7</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月14日</td>
+                        <td>2020年10月14日</td>
+                        <td>博汇</td>
+                        <td>890-112-1016</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>047</td>
+                        <td>EQ-6213</td>
+                        <td>旋转编码器</td>
+                        <td>电梯</td>
+                        <td>TS5217N569</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月14日</td>
+                        <td>2020年10月14日</td>
+                        <td>博汇</td>
+                        <td>890-112-1016</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>048</td>
+                        <td>EQ-6213</td>
+                        <td>计数器</td>
+                        <td>电梯</td>
+                        <td>SZ-J7</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月14日</td>
+                        <td>2020年10月14日</td>
+                        <td>博汇</td>
+                        <td>890-112-1016</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>049</td>
+                        <td>EQ-6213</td>
+                        <td>控制接触器</td>
+                        <td>电梯</td>
+                        <td>SC-07</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月14日</td>
+                        <td>2020年10月14日</td>
+                        <td>博汇</td>
+                        <td>890-112-1016</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>050</td>
+                        <td>EQ-6215</td>
+                        <td>开门机电机</td>
+                        <td>电梯</td>
+                        <td>YS63B-4</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月14日</td>
+                        <td>2020年10月14日</td>
+                        <td>成工</td>
+                        <td>890-112-1017</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>051</td>
+                        <td>EQ-6216</td>
+                        <td>不锈钢</td>
+                        <td>电梯</td>
+                        <td>304</td>
+                        <td>个</td>
+                        <td>3</td>
+                        <td>2015年10月14日</td>
+                        <td>2020年10月14日</td>
+                        <td>成工</td>
+                        <td>890-112-1017</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>052</td>
+                        <td>EQ-6217</td>
+                        <td>钢丝绳</td>
+                        <td>电梯</td>
+                        <td>φ10</td>
+                        <td>m</td>
+                        <td>40</td>
+                        <td>2015年10月14日</td>
+                        <td>2020年10月14日</td>
+                        <td>成工</td>
+                        <td>890-112-1017</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>053</td>
+                        <td>EQ-6218</td>
+                        <td>限速器</td>
+                        <td>电梯</td>
+                        <td>XS16</td>
+                        <td>个</td>
+                        <td>2</td>
+                        <td>2015年10月14日</td>
+                        <td>2020年10月14日</td>
+                        <td>成工</td>
+                        <td>890-112-1017</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>054</td>
+                        <td>EQ-6219</td>
+                        <td>安全钳</td>
+                        <td>电梯</td>
+                        <td>AQ10</td>
+                        <td>个</td>
+                        <td>5</td>
+                        <td>2015年10月15日</td>
+                        <td>2020年10月15日</td>
+                        <td>东迈</td>
+                        <td>890-112-1018</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>055</td>
+                        <td>EQ-6219</td>
+                        <td>主导靴</td>
+                        <td>电梯</td>
+                        <td>ZU-OA</td>
+                        <td>个</td>
+                        <td>5</td>
+                        <td>2015年10月15日</td>
+                        <td>2020年10月15日</td>
+                        <td>大华</td>
+                        <td>890-112-1019</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>056</td>
+                        <td>EQ-6220</td>
+                        <td>缓冲器</td>
+                        <td>电梯</td>
+                        <td>YH/175A</td>
+                        <td>个</td>
+                        <td>2</td>
+                        <td>2015年10月20日</td>
+                        <td>2020年10月20日</td>
+                        <td>鼎诚</td>
+                        <td>890-112-1020</td>
+                        <td><span class="label label-success">出库10件</span></td>
+                    </tr>
+                    <tr class="">
+                        <td>057</td>
+                        <td>EQ-6221</td>
+                        <td>开门机变频器</td>
+                        <td>电梯</td>
+                        <td>ES-0.4K</td>
+                        <td>个</td>
+                        <td>2</td>
+                        <td>2015年10月20日</td>
+                        <td>2020年10月20日</td>
+                        <td>鼎诚</td>
+                        <td>890-112-1020</td>
+                        <td><span class="label label-success">已入库</span></td>
+                    </tr>
+                    <tr class="">
+                        <td> 058 </td>
+                        <td> EQ-6222 </td>
+                        <td> 断路器 </td>
+                        <td> 变配电 </td>
+                        <td> C32ND06/3P </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 059 </td>
+                        <td> EQ-6222 </td>
+                        <td> 断路器 </td>
+                        <td> 变配电 </td>
+                        <td> C32ND03/3P </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 060 </td>
+                        <td> EQ-6222 </td>
+                        <td> 断路器 </td>
+                        <td> 变配电 </td>
+                        <td> C32ND03/2P </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 061 </td>
+                        <td> EQ-6222 </td>
+                        <td> 断路器 </td>
+                        <td> 变配电 </td>
+                        <td> C32ND03/1P </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 062 </td>
+                        <td> EQ-6223 </td>
+                        <td> 交流接触器 </td>
+                        <td> 变配电 </td>
+                        <td> LC1-D0910M5C </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 063 </td>
+                        <td> EQ-6224 </td>
+                        <td> 热继电器 </td>
+                        <td> 变配电 </td>
+                        <td> LR2-D1307C </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 064 </td>
+                        <td> EQ-6224 </td>
+                        <td> 热继电器 </td>
+                        <td> 变配电 </td>
+                        <td> LR2-D1308C </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 065 </td>
+                        <td> EQ-6225 </td>
+                        <td> 中间继电器 </td>
+                        <td> 变配电 </td>
+                        <td> RXL 2A12B2P7 </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 066 </td>
+                        <td> EQ-6225 </td>
+                        <td> 中间继电器 </td>
+                        <td> 变配电 </td>
+                        <td> RXL 2A12B2BD </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 067 </td>
+                        <td> EQ-6226 </td>
+                        <td> 继电器插座 </td>
+                        <td> 变配电 </td>
+                        <td> RXZE1S108M </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 068 </td>
+                        <td> EQ-6227 </td>
+                        <td> 平头带灯按钮 </td>
+                        <td> 变配电 </td>
+                        <td> XB2-BW33MIC </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 069 </td>
+                        <td> EQ-6228 </td>
+                        <td> 急停按钮 </td>
+                        <td> 变配电 </td>
+                        <td> XB2-BS542C </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 070 </td>
+                        <td> EQ-6229 </td>
+                        <td> 两位按钮 </td>
+                        <td> 变配电 </td>
+                        <td> XB2BD25C </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 071 </td>
+                        <td> EQ-6230 </td>
+                        <td> 平头按钮 </td>
+                        <td> 变配电 </td>
+                        <td> XB2-BA31C </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 072 </td>
+                        <td> EQ-6230 </td>
+                        <td> 平头按钮 </td>
+                        <td> 变配电 </td>
+                        <td> XB2-BA61C </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 073 </td>
+                        <td> EQ-6230 </td>
+                        <td> 平头按钮 </td>
+                        <td> 变配电 </td>
+                        <td> XB2-BA42C </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 074 </td>
+                        <td> EQ-6231 </td>
+                        <td> 指示灯 </td>
+                        <td> 变配电 </td>
+                        <td> XB2-BVB5C </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月22日 </td>
+                        <td> 2020年10月22日 </td>
+                        <td> 施耐德 </td>
+                        <td> 890-112-1021 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 075 </td>
+                        <td> EQ-6232 </td>
+                        <td> 电源切断开关 </td>
+                        <td> 变配电 </td>
+                        <td> HZ12-25 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月23日 </td>
+                        <td> 2020年10月23日 </td>
+                        <td> 乐清 </td>
+                        <td> 890-112-1022 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 076 </td>
+                        <td> EQ-6233 </td>
+                        <td> 断相显示熔断器 </td>
+                        <td> 变配电 </td>
+                        <td> RT18-32X </td>
+                        <td> 个 </td>
+                        <td> 2 </td>
+                        <td> 2015年10月24日 </td>
+                        <td> 2020年10月24日 </td>
+                        <td> 北京机床 </td>
+                        <td> 890-112-1023 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 077 </td>
+                        <td> EQ-6234 </td>
+                        <td> 流量脉冲隔离端子 </td>
+                        <td> 变配电 </td>
+                        <td> UDK-0 24VDC </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月25日 </td>
+                        <td> 2020年10月25日 </td>
+                        <td> 雷新 </td>
+                        <td> 890-112-1024 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 078 </td>
+                        <td> EQ-6235 </td>
+                        <td> 触摸屏 </td>
+                        <td> 变配电 </td>
+                        <td> 642-0BC01 </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月29日 </td>
+                        <td> 2020年10月29日 </td>
+                        <td> SIEMENS </td>
+                        <td> 890-112-1025 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 079 </td>
+                        <td> EQ-6236 </td>
+                        <td> CPU </td>
+                        <td> 变配电 </td>
+                        <td> 216-2BD23 </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月29日 </td>
+                        <td> 2020年10月29日 </td>
+                        <td> SIEMENS </td>
+                        <td> 890-112-1025 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 080 </td>
+                        <td> EQ-6237 </td>
+                        <td> 数字量输出模块 </td>
+                        <td> 变配电 </td>
+                        <td> 222-1HF22 </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月29日 </td>
+                        <td> 2020年10月29日 </td>
+                        <td> SIEMENS </td>
+                        <td> 890-112-1025 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 081 </td>
+                        <td> EQ-6238 </td>
+                        <td> 模拟量输入模块 </td>
+                        <td> 变配电 </td>
+                        <td> 231-0HC22 </td>
+                        <td> 个 </td>
+                        <td> 3 </td>
+                        <td> 2015年10月29日 </td>
+                        <td> 2020年10月29日 </td>
+                        <td> SIEMENS </td>
+                        <td> 890-112-1025 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 082 </td>
+                        <td> EQ-6239 </td>
+                        <td> 接线端子 </td>
+                        <td> 变配电 </td>
+                        <td> UKJ-4 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月30日 </td>
+                        <td> 2020年10月30日 </td>
+                        <td> 乐邦 </td>
+                        <td> 890-112-1026 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 083 </td>
+                        <td> EQ-6239 </td>
+                        <td> 接线端子 </td>
+                        <td> 变配电 </td>
+                        <td> UKJ-2.5 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月30日 </td>
+                        <td> 2020年10月30日 </td>
+                        <td> 乐邦 </td>
+                        <td> 890-112-1026 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 084 </td>
+                        <td> EQ-6240 </td>
+                        <td> 接地端子 </td>
+                        <td> 变配电 </td>
+                        <td> UKJ-4JD </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月30日 </td>
+                        <td> 2020年10月30日 </td>
+                        <td> 乐邦 </td>
+                        <td> 890-112-1026 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 085 </td>
+                        <td> EQ-6241 </td>
+                        <td> 端子中心式连接件 </td>
+                        <td> 变配电 </td>
+                        <td> UFBI10-5 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月30日 </td>
+                        <td> 2020年10月30日 </td>
+                        <td> 乐邦 </td>
+                        <td> 890-112-1026 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 086 </td>
+                        <td> EQ-6242 </td>
+                        <td> 终端隔板 </td>
+                        <td> 变配电 </td>
+                        <td> SAK-2.5/.5 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年10月30日 </td>
+                        <td> 2020年10月30日 </td>
+                        <td> 乐邦 </td>
+                        <td> 890-112-1026 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 087 </td>
+                        <td> EQ-6243 </td>
+                        <td> LED筒灯 </td>
+                        <td> 照明 </td>
+                        <td> DL1C1024 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月2日 </td>
+                        <td> 2020年11月2日 </td>
+                        <td> 勤上光电 </td>
+                        <td> 890-112-1027 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 088 </td>
+                        <td> EQ-6243 </td>
+                        <td> LED筒灯 </td>
+                        <td> 照明 </td>
+                        <td> DL1C1015 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月2日 </td>
+                        <td> 2020年11月2日 </td>
+                        <td> 勤上光电 </td>
+                        <td> 890-112-1027 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 089 </td>
+                        <td> EQ-6243 </td>
+                        <td> LED筒灯 </td>
+                        <td> 照明 </td>
+                        <td> DL1C1007 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月2日 </td>
+                        <td> 2020年11月2日 </td>
+                        <td> 勤上光电 </td>
+                        <td> 890-112-1027 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 090 </td>
+                        <td> EQ-6244 </td>
+                        <td> 反射型自镇流LED灯 </td>
+                        <td> 照明 </td>
+                        <td> PAR38 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月2日 </td>
+                        <td> 2020年11月2日 </td>
+                        <td> 勤上光电 </td>
+                        <td> 890-112-1027 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 091 </td>
+                        <td> EQ-6244 </td>
+                        <td> 反射型自镇流LED灯 </td>
+                        <td> 照明 </td>
+                        <td> PAR30 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月2日 </td>
+                        <td> 2020年11月2日 </td>
+                        <td> 勤上光电 </td>
+                        <td> 890-112-1027 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 092 </td>
+                        <td> EQ-6245 </td>
+                        <td> 灯泡 </td>
+                        <td> 照明 </td>
+                        <td> 220V 1000W </td>
+                        <td> 个 </td>
+                        <td> 4 </td>
+                        <td> 2015年11月3日 </td>
+                        <td> 2020年11月3日 </td>
+                        <td> 亚明 </td>
+                        <td> 890-112-1028 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 093 </td>
+                        <td> EQ-6245 </td>
+                        <td> 金属卤化物灯泡 </td>
+                        <td> 照明 </td>
+                        <td> 220V 250W </td>
+                        <td> 个 </td>
+                        <td> 4 </td>
+                        <td> 2015年11月3日 </td>
+                        <td> 2020年11月3日 </td>
+                        <td> 亚明 </td>
+                        <td> 890-112-1028 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 094 </td>
+                        <td> EQ-6245 </td>
+                        <td> 钠灯灯泡 </td>
+                        <td> 照明 </td>
+                        <td> 220V 150W </td>
+                        <td> 个 </td>
+                        <td> 4 </td>
+                        <td> 2015年11月3日 </td>
+                        <td> 2020年11月3日 </td>
+                        <td> 亚明 </td>
+                        <td> 890-112-1028 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 095 </td>
+                        <td> EQ-6246 </td>
+                        <td> 镇流器 </td>
+                        <td> 照明 </td>
+                        <td> 220V 1000W </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月3日 </td>
+                        <td> 2020年11月3日 </td>
+                        <td> 欧司朗 </td>
+                        <td> 890-112-1029 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 096 </td>
+                        <td> EQ-6246 </td>
+                        <td> 镇流器 </td>
+                        <td> 照明 </td>
+                        <td> 220V 400W </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月3日 </td>
+                        <td> 2020年11月3日 </td>
+                        <td> 欧司朗 </td>
+                        <td> 890-112-1029 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 097 </td>
+                        <td> EQ-6246 </td>
+                        <td> 镇流器 </td>
+                        <td> 照明 </td>
+                        <td> 220V 250W </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月3日 </td>
+                        <td> 2020年11月3日 </td>
+                        <td> 欧司朗 </td>
+                        <td> 890-112-1029 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 098 </td>
+                        <td> EQ-6246 </td>
+                        <td> 镇流器 </td>
+                        <td> 照明 </td>
+                        <td> 220V 150W </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月3日 </td>
+                        <td> 2020年11月3日 </td>
+                        <td> 欧司朗 </td>
+                        <td> 890-112-1029 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 099 </td>
+                        <td> EQ-6247 </td>
+                        <td> 办公桌 </td>
+                        <td> 办公 </td>
+                        <td> 09-13 </td>
+                        <td> 张 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月4日 </td>
+                        <td> 2020年11月4日 </td>
+                        <td> 祥意 </td>
+                        <td> 890-112-1030 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 100 </td>
+                        <td> EQ-6248 </td>
+                        <td> 办公椅 </td>
+                        <td> 办公 </td>
+                        <td> S-66 </td>
+                        <td> 把 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月5日 </td>
+                        <td> 2020年11月5日 </td>
+                        <td> 祥意 </td>
+                        <td> 890-112-1030 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 101 </td>
+                        <td> EQ-6249 </td>
+                        <td> 文件柜 </td>
+                        <td> 办公 </td>
+                        <td> Z189 </td>
+                        <td> 张 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月5日 </td>
+                        <td> 2020年11月5日 </td>
+                        <td> 祥意 </td>
+                        <td> 890-112-1030 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 102 </td>
+                        <td> EQ-6250 </td>
+                        <td> 电话机 </td>
+                        <td> 办公 </td>
+                        <td> HA3268P </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月5日 </td>
+                        <td> 2020年11月5日 </td>
+                        <td> 祥意 </td>
+                        <td> 890-112-1030 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 103 </td>
+                        <td> EQ-6251 </td>
+                        <td> 文件夹 </td>
+                        <td> 办公 </td>
+                        <td> W6208 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月5日 </td>
+                        <td> 2020年11月5日 </td>
+                        <td> 祥意 </td>
+                        <td> 890-112-1030 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 104 </td>
+                        <td> EQ-6252 </td>
+                        <td> 笔筒 </td>
+                        <td> 办公 </td>
+                        <td> C-21 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月5日 </td>
+                        <td> 2020年11月5日 </td>
+                        <td> 祥意 </td>
+                        <td> 890-112-1030 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 105 </td>
+                        <td> EQ-6253 </td>
+                        <td> 烟灰缸 </td>
+                        <td> 办公 </td>
+                        <td> HV-62 </td>
+                        <td> 个 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月5日 </td>
+                        <td> 2020年11月5日 </td>
+                        <td> 祥意 </td>
+                        <td> 890-112-1030 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 106 </td>
+                        <td> EQ-6254 </td>
+                        <td> A4打印纸 </td>
+                        <td> 办公 </td>
+                        <td> BD-04 </td>
+                        <td> 打 </td>
+                        <td> 20 </td>
+                        <td> 2015年11月5日 </td>
+                        <td> 2020年11月5日 </td>
+                        <td> KOKUYO </td>
+                        <td> 890-112-1031 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 107 </td>
+                        <td> EQ-6255 </td>
+                        <td> 笔记本 </td>
+                        <td> 办公 </td>
+                        <td> WCN-S5007 </td>
+                        <td> 本 </td>
+                        <td> 50 </td>
+                        <td> 2015年11月5日 </td>
+                        <td> 2020年11月5日 </td>
+                        <td> KOKUYO </td>
+                        <td> 890-112-1031 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 108 </td>
+                        <td> EQ-6256 </td>
+                        <td> 签字笔 </td>
+                        <td> 办公 </td>
+                        <td> Y-Z6334 </td>
+                        <td> 支 </td>
+                        <td> 100 </td>
+                        <td> 2015年11月5日 </td>
+                        <td> 2020年11月5日 </td>
+                        <td> KOKUYO </td>
+                        <td> 890-112-1031 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 109 </td>
+                        <td> EQ-6257 </td>
+                        <td> 百洁布 </td>
+                        <td> 保洁 </td>
+                        <td> SD10-02 </td>
+                        <td> 张 </td>
+                        <td> 20 </td>
+                        <td> 2015年11月6日 </td>
+                        <td> 2020年11月6日 </td>
+                        <td> Sunday </td>
+                        <td> 890-112-1032 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 110 </td>
+                        <td> EQ-6258 </td>
+                        <td> 抹布 </td>
+                        <td> 保洁 </td>
+                        <td> SD10-03 </td>
+                        <td> 张 </td>
+                        <td> 20 </td>
+                        <td> 2015年11月6日 </td>
+                        <td> 2020年11月6日 </td>
+                        <td> Sunday </td>
+                        <td> 890-112-1032 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 111 </td>
+                        <td> EQ-6259 </td>
+                        <td> 胶皮手套 </td>
+                        <td> 保洁 </td>
+                        <td> SQ10-02 </td>
+                        <td> 双 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月6日 </td>
+                        <td> 2020年11月6日 </td>
+                        <td> Sunday </td>
+                        <td> 890-112-1032 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 112 </td>
+                        <td> EQ-6260 </td>
+                        <td> 垃圾袋 </td>
+                        <td> 保洁 </td>
+                        <td> DQ08-01 </td>
+                        <td> 袋 </td>
+                        <td> 20 </td>
+                        <td> 2015年11月6日 </td>
+                        <td> 2020年11月6日 </td>
+                        <td> Sunday </td>
+                        <td> 890-112-1032 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 113 </td>
+                        <td> EQ-6261 </td>
+                        <td> 垃圾袋 </td>
+                        <td> 保洁 </td>
+                        <td> DQ08-02 </td>
+                        <td> 袋 </td>
+                        <td> 20 </td>
+                        <td> 2015年11月6日 </td>
+                        <td> 2020年11月6日 </td>
+                        <td> Sunday </td>
+                        <td> 890-112-1032 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 114 </td>
+                        <td> EQ-6262 </td>
+                        <td> 垃圾袋 </td>
+                        <td> 保洁 </td>
+                        <td> DQ08-03 </td>
+                        <td> 袋 </td>
+                        <td> 20 </td>
+                        <td> 2015年11月6日 </td>
+                        <td> 2020年11月6日 </td>
+                        <td> Sunday </td>
+                        <td> 890-112-1032 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 115 </td>
+                        <td> EQ-6263 </td>
+                        <td> 全能清洁剂 </td>
+                        <td> 保洁 </td>
+                        <td> QJ07-02 </td>
+                        <td> 瓶 </td>
+                        <td> 5 </td>
+                        <td> 2015年11月6日 </td>
+                        <td> 2020年11月6日 </td>
+                        <td> Sunday </td>
+                        <td> 890-112-1032 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 116 </td>
+                        <td> EQ-6264 </td>
+                        <td> 消毒液 </td>
+                        <td> 保洁 </td>
+                        <td> QJ07-03 </td>
+                        <td> 瓶 </td>
+                        <td> </td>
+                        <td> 2015年11月6日 </td>
+                        <td> 2020年11月6日 </td>
+                        <td> Sunday </td>
+                        <td> 890-112-1032 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 117 </td>
+                        <td> EQ-6265 </td>
+                        <td> 小心地滑警示牌 </td>
+                        <td> 保洁 </td>
+                        <td> JS06-01 </td>
+                        <td> 个 </td>
+                        <td> 2 </td>
+                        <td> 2015年11月6日 </td>
+                        <td> 2020年11月6日 </td>
+                        <td> Sunday </td>
+                        <td> 890-112-1032 </td>
+                        <td> <span class="label label-success">已入库</span> </td>
+                    </tr>
+                    <tr class="">
+                        <td> 118 </td>
+                        <td> EQ-6266 </td>
+                        <td> 防滑地毯 </td>
+                        <td> 保洁 </td>
+                        <td> JS06-02 </td>
+                        <td> 张 </td>
+                        <td> 3 </td>
+                        <td> 2015年11月6日 </td>
+                        <td> 2020年11月6日 </td>
+                        <td> Sunday </td>
+                        <td> 890-112-1032 </td>
+                        <td> <span class="label label-success">出库10件</span> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <nav class="pagin-wrap">
+            <ul class="pagination">
+                <li>
+                    <a href="javascript:;" class="btn-page-prev">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="javascript:;" class="btn-page-no" data-value="1">1</a></li>
+                <li><a href="javascript:;" class="btn-page-no" data-value="2">2</a></li>
+                <li><a href="javascript:;" class="btn-page-no" data-value="3">3</a></li>
+                <li><a href="javascript:;" class="btn-page-no" data-value="4">4</a></li>
+                <li><a href="javascript:;" class="btn-page-no" data-value="5">5</a></li>
+                <li><a href="javascript:;" class="btn-page-no" data-value="6">6</a></li>
+                <li><a href="javascript:;" class="btn-page-no" data-value="7">7</a></li>
+                <li><a href="javascript:;" class="btn-page-no" data-value="8">8</a></li>
+                <li><a href="javascript:;" class="btn-page-no" data-value="9">9</a></li>
+                <li><a href="javascript:;" class="btn-page-no" data-value="10">10</a></li>
+                <li><a href="javascript:;" class="btn-page-no" data-value="11">11</a></li>
+                <li><a href="javascript:;" class="btn-page-no" data-value="12">12</a></li>
+                <li>
+                    <a href="javascript:;" class="btn-page-next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <script>
+            var domWrap = document.querySelector('#t1455954412210');
+            var domBtnEdit = domWrap.querySelector('#btnEdit');
+            var domBtnInFlow = domWrap.querySelector('#btnInFlow');
+            var domBtnOutFlow = domWrap.querySelector('#btnOutFlow');
+            var domBtnCount = domWrap.querySelector('#btnCount');
+            var domBtnPageNo = domWrap.querySelectorAll('.btn-page-no');
+            var domBtnPagePrev = domWrap.querySelector('.btn-page-prev');
+            var domBtnPageNext = domWrap.querySelector('.btn-page-next');
+            var domTableGoods = domWrap.querySelector('#tableGoods');
+
+            var total = 118;
+
+            var pageIndex = 0;
+            var pageSize = 10;
+            var totalPage = Math.floor((total-1) / pageSize) + 1;
+
+            var domSelectedRow = null;
+
+            var goodsTable = {
+                addRow: function (data) {
+                    var $tbody = $('tbody', domTableGoods);
+                    var arrHtml = ['<tr>'];
+                    var goodsInfo;
+
+                    goodsInfo = data.goodsInfo.split(',');
+                    arrHtml.push('<td>'+(++total)+'</td>');
+                    arrHtml.push('<td>'+data.equipmentNo+'</td>');
+                    arrHtml.push('<td>'+goodsInfo[0]+'</td>');
+                    arrHtml.push('<td>'+data.goodsType+'</td>');
+                    arrHtml.push('<td>'+goodsInfo[1]+'</td>');
+                    arrHtml.push('<td>'+data.unit+'</td>');
+                    arrHtml.push('<td>'+data.quantity+'</td>');
+                    arrHtml.push('<td>'+data.productionDate+'</td>');
+                    arrHtml.push('<td>'+data.effectiveDate+'</td>');
+                    arrHtml.push('<td>'+data.supplier+'</td>');
+                    arrHtml.push('<td>'+data.purchaseOrderNo+'</td>');
+                    arrHtml.push('<td><span class="label label-warning">入库，待审核</span></td>');
+
+                    arrHtml.push('</tr>');
+
+                    $tbody.append(arrHtml.join(''));
+
+                    // 跳转到最后一页
+                    $(domBtnPageNo).last().trigger('click');
+                }
+            };
+
+            var equipmentSelect = {
+                data: [{
+                    "_id": "ccccccccccccf32fbc300001",
+                    "group": "冷却水系统",
+                    "prefix": "",
+                    "arrP": ["IceTankRatio_svr", "Pi3","Ti3","Ti4"],
+                    "path": "",
+                    "type": "IceTank",
+                    "name": "蓄冰槽",
+                    "no": 'EQ-850_000'
+                }],
+                $sel: null,
+                show: function (sel) {
+                    var arrHtml;
+
+                    this.$sel = $(sel);
+
+                    arrHtml = this.data.map(function (row) {
+                        return '<option value="'+row.no+'">'+row.name+(row.group ? (' - '+row.group) : '' )+'</option>';
+                    });
+
+                    this.$sel.empty().html(arrHtml.join(''));
+                }
+            };
+
+            // 新增设备弹出框
+            var inFlowModal = {
+                tpl: '\
+    <div class="modal fade" role="dialog">\
+        <div class="modal-dialog">\
+            <div class="modal-content">\
+                <div class="modal-header">\
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>\
+                    <h4 class="modal-title">添加零件入库</h4>\
+                </div>\
+                <div class="modal-body">\
+                    <form id="formInFlow">\
+                        <div class="form-group">\
+                            <label for="selEquipmentList">零配件所属设备</label>\
+                            <select name="equipmentNo" class="form-control" id="selEquipmentList"></select>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="selGoodsList">品名</label>\
+                            <select name="goodsInfo" class="form-control" id="selGoodsList">\
+                                <option value="PP-R塑铝稳态管,DN50">PP-R塑铝稳态管（DN50）</option>\
+                                <option value="铜管,φ34.92">铜管（φ34.92）</option>\
+                            </select>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="selGoodsType">类别</label>\
+                            <select name="goodsType" class="form-control" id="selGoodsType">\
+                                <option value="冷站房">冷站房</option>\
+                                <option value="电梯">电梯</option>\
+                            </select>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="selQuantity">数量</label>\
+                            <input class="form-control" name="quantity" type="text" value="100" />\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="selUnit">单位</label>\
+                            <select name="unit" class="form-control" id="selUnit">\
+                                <option value="m">m</option>\
+                                <option value="kg">kg</option>\
+                            </select>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="selProductionDate">生产日期</label>\
+                            <input class="form-control" name="productionDate" type="text" value="2015年9月21日" id="selProductionDate" />\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="selEffectiveDate">有效日期</label>\
+                            <input class="form-control" name="effectiveDate" type="text" value="2020年9月21日" id="selEffectiveDate"/>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="selSupplierList">供应商</label>\
+                            <select name="supplier" class="form-control" id="selSupplierList">\
+                                <option value="神塑">神塑</option>\
+                                <option value="辽帆">辽帆</option>\
+                                <option value="武峰">武峰</option>\
+                                <option value="微格">微格</option>\
+                                <option value="Amico">Amico</option>\
+                            </select>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="iptPurchaseOrderNo">采购单号</label>\
+                            <input class="form-control" name="purchaseOrderNo" type="text" value="890-112-1001" id="iptPurchaseOrderNo" />\
+                        </div>\
+                    </form>\
+                </div>\
+                <div class="modal-footer">\
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>\
+                    <button type="button" class="btn btn-primary" id="btnSubmit">确认提交</button>\
+                </div>\
+            </div>\
+        </div>\
+    </div>',
+                $modal: null,
+                show: function () {
+                    var $wrap = $('body');
+
+                    if (!this.$modal) {
+                        this.$modal = $(this.tpl);
+                        this.attachEvents();
+                    }
+                    this.$modal.appendTo($wrap);
+                    this.$modal.modal('show');
+                },
+                attachEvents: function () {
+                    var _this = this;
+
+                    this.$modal.off();
+                    this.$modal.on('shown.bs.modal', function () {
+                        // 初始化下拉框
+                        equipmentSelect.show(this.querySelector('#selEquipmentList'));
+                    });
+
+                    this.$modal.on('hidden.bs.modal', function () {
+                        $(this).detach();
+                    });
+
+                    $('#btnSubmit', this.$modal).off().click(function (e) {
+                        goodsTable.addRow(_this.getFormData());
+                        _this.$modal.modal('hide');
+                    });
+                },
+                getFormData: function () {
+                    var data = {};
+                    $('#formInFlow').serializeArray().forEach(function (row) {
+                        data[row.name] = row.value;
+                    });;
+                    return data;
+                },
+                close: function () {
+                    if (this.$modal) {
+                        this.$modal.remove();
+                        this.$modal = null;   
+                    }
+                }
+            };
+
+            var outFlowModal = {
+                tpl: '\
+    <div class="modal fade" role="dialog">\
+        <div class="modal-dialog">\
+            <div class="modal-content">\
+                <div class="modal-header">\
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>\
+                    <h4 class="modal-title">零件出库</h4>\
+                </div>\
+                <div class="modal-body">\
+                    <form id="formOutFlow">\
+                        <div class="form-group">\
+                            <label for="iptGoodsName">出库零件</label>\
+                            <input class="form-control" type="text" value="" id="iptGoodsName" disabled="disabled"/>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="selQuantity">出库数量</label>\
+                            <input class="form-control" name="quantity" type="text" value="10" />\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="selPeople">申请人</label>\
+                            <select class="form-control" id="selPeople">\
+                                <option value="窦天鹏">窦天鹏</option>\
+                                <option value="朱杰  ">朱杰   </option>\
+                                <option value="宋怀安">宋怀安 </option>\
+                                <option value="阮小倩">阮小倩 </option>\
+                                <option value="宋佳佳">宋佳佳 </option>\
+                                <option value="顾峰  ">顾峰   </option>\
+                                <option value="徐林  ">徐林   </option>\
+                                <option value="沈春华">沈春华 </option>\
+                                <option value="林倩茹">林倩茹 </option>\
+                                <option value="贾远  ">贾远   </option>\
+                                <option value="白杜  ">白杜   </option>\
+                                <option value="袁晓磊">袁晓磊 </option>\
+                                <option value="范东  ">范东   </option>\
+                                <option value="祝胜春">祝胜春 </option>\
+                                <option value="李林峰">李林峰 </option>\
+                                <option value="钱睿斌">钱睿斌 </option>\
+                                <option value="邓悠悠">邓悠悠 </option>\
+                                <option value="彭兵  ">彭兵   </option>\
+                                <option value="何山  ">何山   </option>\
+                                <option value="田嘉怡">田嘉怡 </option>\
+                                <option value="刘人仁">刘人仁 </option>\
+                                <option value="苏小强">苏小强 </option>\
+                                <option value="金林  ">金林   </option>\
+                                <option value="孔德玉">孔德玉 </option>\
+                                <option value="何春发">何春发 </option>\
+                                <option value="于叶军">于叶军 </option>\
+                                <option value="沈兰花">沈兰花 </option>\
+                                <option value="褚丽琴">褚丽琴 </option>\
+                                <option value="岳森  ">岳森   </option>\
+                                <option value="任石峰">任石峰 </option>\
+                            </select>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="iptPolicyNo">对应保单单号</label>\
+                            <input class="form-control" name="purchaseOrderNo" type="text" value="0ea358f62621455958620160" id="iptPolicyNo" />\
+                        </div>\
+                    </form>\
+                </div>\
+                <div class="modal-footer">\
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>\
+                    <button type="button" class="btn btn-primary" id="btnSubmit">确认提交</button>\
+                </div>\
+            </div>\
+        </div>\
+    </div>',
+                $modal: null,
+                show: function () {
+                    var $wrap = $('body');
+
+                    if (!this.$modal) {
+                        this.$modal = $(this.tpl);
+                        this.attachEvents();
+                    }
+                    this.$modal.appendTo($wrap);
+                    this.$modal.modal('show');
+                },
+                attachEvents: function () {
+                    var _this = this;
+
+                    this.$modal.off();
+                    this.$modal.on('shown.bs.modal', function () {
+                        // 初始化下拉框
+                        $('#iptGoodsName', this.$modal).val(domSelectedRow.querySelectorAll('td')[2].innerHTML);
+                    });
+
+                    this.$modal.on('hidden.bs.modal', function () {
+                        $(this).detach();
+                    });
+
+                    $('#btnSubmit', this.$modal).off().click(function (e) {
+                        var data = _this.getFormData();
+                        var domTds = domSelectedRow.querySelectorAll('td');
+
+                        domTds[11].querySelector('.label').innerHTML = '出库'+data.quantity+domTds[5].innerHTML+'，待审核';
+                        _this.$modal.modal('hide');
+                    });
+                },
+                getFormData: function () {
+                    var data = {};
+                    $('#formOutFlow').serializeArray().forEach(function (row) {
+                        data[row.name] = row.value;
+                    });;
+                    return data;
+                },
+                close: function () {
+                    if (this.$modal) {
+                        this.$modal.remove();
+                        this.$modal = null;   
+                    }
+                }
+            };
+
+            var refreshTable = function () {
+                var filterStr = (function (pageIndex) {
+                    if (pageIndex === 0) {
+                        return ':lt('+pageSize+')';
+                    } else {
+                        start = pageIndex * pageSize - 1;
+                        return ':gt('+start+'):lt('+pageSize+')';
+                    }
+                } (pageIndex))
+
+                $(domBtnPageNo).parent().removeClass('active').eq(pageIndex).addClass('active');
+                $(domTableGoods).find('tbody>tr').hide().filter(filterStr).show();
+            };
+
+            var refreshToolStatus = function () {
+                var $ele = $(domSelectedRow);
+                if (!domSelectedRow) {
+                    $(domBtnEdit).prop('disabled', true);
+                    $(domBtnOutFlow).prop('disabled', true);
+                } else {
+                    $(domBtnEdit).prop('disabled', false);
+                    $(domBtnOutFlow).prop('disabled', false);
+                }
+            };
+
+            domBtnInFlow.onclick = function (e) {
+                inFlowModal.show();
+                e.preventDefault();
+            };
+
+            domBtnOutFlow.onclick = function (e) {
+                if (domSelectedRow) {
+                    outFlowModal.show();
+                }
+                e.preventDefault()
+            };
+
+            $(domBtnPageNo).off().click(function (e) {
+                var pageNo = parseInt(this.dataset.value);
+                pageIndex = pageNo - 1;
+
+                refreshTable();
+
+                e.preventDefault();
+                e.stopPropagation();
+            });
+            domBtnPagePrev.onclick = function () {
+                pageIndex = Math.min(Math.max(pageIndex-1, 0), totalPage);
+                refreshTable();
+            };
+
+            domBtnPageNext.onclick = function () {
+                pageIndex = Math.min(Math.max(pageIndex+1, 0), totalPage);
+                refreshTable();
+            };
+
+            $(domTableGoods).off().on('click', 'tbody>tr', function () {
+                var $this = $(this);
+                var isActive = $this.hasClass('active');
+
+                if (!isActive) {
+                    $this.siblings().removeClass('active');
+                    $this.addClass('active');
+                    domSelectedRow = this;
+                } else {
+                    $this.removeClass('active');
+                    domSelectedRow = null;
+                }
+                refreshToolStatus();
+            });
+
+            refreshTable();
+
+        </script>
+    </div>
+</body>
+</html>

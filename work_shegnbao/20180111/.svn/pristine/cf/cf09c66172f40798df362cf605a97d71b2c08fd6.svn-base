@@ -1,0 +1,344 @@
+<style type="text/css">
+    #task_pool {
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        /* margin: 20px auto; */
+        /*background: #fff;*/
+        color: #333;
+        /*border: 1px solid #000;*/
+        border-radius: 4px;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    #task_pool .dropdown {
+        display: inline-block;
+        width:30%;
+    }
+    #task_pool .dropdown:first-child {
+        margin-left:7%;
+    }
+    #task_pool .dropdown > button {
+        width: 100px;
+    }
+
+    #task_pool .dropdown li {
+        margin: 3px 0;
+        transition: .3s 0s background ease-in-out;
+    }
+
+    #task_pool .dropdown li.active {
+        background: #000 !important;
+    }
+
+    #task_pool .dropdown li.active a {
+        color: #fff !important;
+    }
+
+    #task_pool .dropdown li:hover {
+        background: #ccc;
+    }
+
+    #task_pool .emergency_degree li:nth-of-type(1) {
+        border-left: 4px solid transparent;
+    }
+
+    #task_pool .emergency_degree li:nth-of-type(2) {
+        border-left: 4px solid #3a87ad;
+    }
+
+    #task_pool .emergency_degree li:nth-of-type(3) {
+        border-left: 4px solid #fdbb4a;
+    }
+
+    #task_pool .emergency_degree li:nth-of-type(4) {
+        border-left: 4px solid #ed7a3a;
+    }
+
+    .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+        background: none;
+    }
+
+    #task_pool_content .fault_grade_0 {
+        border-left: 4px solid #3a87ad;
+    }
+
+    #task_pool_content .fault_grade_2 {
+        border-left: 4px solid #ed7a3a;
+    }
+
+    #task_pool_content .fault_grade_1 {
+        border-left: 4px solid #fdbb4a
+    }
+
+    #task_pool_content .faults {
+        color: #333;
+        margin: 6px 0;
+        padding: 5px;
+        cursor: pointer;
+        opacity: 1;
+        transition: 0.3s all cubic-bezier(0.93, -0.52, 0.78, 0.57) 0s;
+        background: transparent;
+        -webkit-user-select: none;
+        position: relative;
+        display: block;
+        font-size: .85em;
+        line-height: 1.3;
+        border-radius: 3px;
+        font-weight: 400;
+    }
+
+    #task_pool_content .faults .zoneInfo {
+        display: block;
+        color: #333;
+    }
+
+    #task_pool_content .faults .itemTime {
+        margin: 3px 0;
+        display: block;
+    }
+
+    #task_pool_content .faults:hover {
+        border-left-width: 8px;
+    }
+
+    #task_pool .task_pool_container {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 580px;
+        margin-top: 10px;
+    }
+
+    #task_pool #taskPool_toolTip {
+        position: absolute;
+        z-index: 999;
+        border-radius: 10px;
+        width: 450px;
+        overflow: auto;
+        display: none;
+        opacity: 1;
+    }
+
+    #task_pool #taskPool_toolTip .panel-body p {
+        border-bottom: 1px solid #DCDCDC;
+        margin-bottom: 5px;
+        padding: 5px 0;
+        font-size: 13px;
+    }
+
+    #task_pool #taskPool_toolTip .panel-heading {
+        padding-bottom: 0;
+    }
+
+    .wf-bounceleft {
+        -webkit-animation: bounceInLeft .5s .1s ease-in-out both;
+        -moz-animation: bounceInLeft .5s .1s ease-in-out both;
+    }
+
+    @-webkit-keyframes bounceInLeft {
+        0% {
+            opacity: 0;
+            -webkit-transform: translateX(-50px)
+        }
+        60% {
+            opacity: 1;
+            -webkit-transform: translateX(20px)
+        }
+        80% {
+            -webkit-transform: translateX(-10px)
+        }
+        100% {
+            -webkit-transform: translateX(-10px)
+        }
+    }
+
+    @-moz-keyframes bounceInLeft {
+        0% {
+            opacity: 0;
+            -moz-transform: translateX(-100px)
+        }
+        60% {
+            opacity: 1;
+            -moz-transform: translateX(30px)
+        }
+        80% {
+            -moz-transform: translateX(-10px)
+        }
+        100% {
+            -moz-transform: translateX(0)
+        }
+    }
+
+    .task_pool_selectorInfo {
+        display: none;
+    }
+
+    .task_pool_selectorInfo section {
+        display: inline-block;
+        width: 100px;
+        height: 30px;
+        font-size: 13px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: normal;
+        padding: 0;
+    }
+
+    .task_pool_selectorInfo section span {
+        color: #fff;
+    }
+
+    #task_pool .taskPoolInfoEcharts {
+        position: relative;
+        width: 100%;
+        min-height: 200px;
+        border: 1px solid #ccc;
+        display: none;
+    }
+
+    #task_pool .task_pool_selectorInfo {
+        margin: 5px auto;
+    }
+
+    #task_pool .taskPoolInfoTxt {
+        display: none;
+        text-align: center;
+        line-height: 35px;
+    }
+</style>
+
+
+<div id="task_pool">
+    <div class="tooltip left" id="taskPool_toolTip" role="tooltip" style="display: none;">
+        <div class="tooltipTitle tooltip-inner">
+            <span id="taskPool_faults_Title"></span>
+        </div>
+        <div class="tooltipContent">
+            <p class="customName">
+                <span></span>
+            </p>
+
+            <p class="pointName">
+                <span></span>
+                <span id="taskPool_faults_Time"></span>
+            </p>
+
+            <p class="pointDesc">
+                <span></span>
+                <span id="taskPool_faults_Detail"></span>
+            </p>
+
+            <div class="taskPoolInfoEcharts"></div>
+        </div>
+        <div class="tooltip-arrow" style="top: 45px;"></div>
+    </div>
+    <div class="task_pool_control">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle ellipsis" type="button" data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="true"
+                    i18n="workflow.calendar.OVERDUE_TIME;value=workflow.calendar.OVERDUE_TIME;title=workflow.calendar.OVERDUE_TIME">
+            </button>
+            <ul class="dropdown-menu" data-param-type="overDueTime">
+                <li data-param="-1">
+                    <a href="javascript:void (0)" i18n="workflow.calendar.All;value=workflow.calendar.All"></a>
+                </li>
+                <li data-param="0">
+                    <a href="javascript:void (0)"
+                       i18n="workflow.calendar.ONE_MONTH;value=workflow.calendar.ONE_MONTH"></a>
+                </li>
+                <li data-param="1">
+                    <a href="javascript:void (0)"
+                       i18n="workflow.calendar.TWO_MONTH;value=workflow.calendar.TWO_MONTH"></a>
+                </li>
+                <li data-param="2">
+                    <a href="javascript:void (0)"
+                       i18n="workflow.calendar.THREE_MONTH;value=workflow.calendar.THREE_MONTH"></a>
+                </li>
+                <li data-param="3">
+                    <a href="javascript:void (0)"
+                       i18n="workflow.calendar.HALF_YEAR;value=workflow.calendar.HALF_YEAR"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle ellipsis" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="true"
+                    i18n="workflow.calendar.URGENCY_LEVEL;value=workflow.calendar.URGENCY_LEVEL;title=workflow.calendar.URGENCY_LEVEL">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu emergency_degree" data-param-type="emergencyLevel">
+                <li data-param="-1"><a href="javascript:void (0)"
+                                       i18n="workflow.calendar.All;value=workflow.calendar.All"></a></li>
+                <li data-param="0"><a href="javascript:void (0)"
+                                      i18n="workflow.calendar.GENERAL;value=workflow.calendar.GENERAL"></a></li>
+                <li data-param="1"><a href="javascript:void (0)"
+                                      i18n="workflow.calendar.EMERGENCY;value=workflow.calendar.EMERGENCY"></a></li>
+                <li data-param="2"><a href="javascript:void (0)"
+                                      i18n="workflow.calendar.SERIOUS;value=workflow.calendar.SERIOUS"></a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle ellipsis" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="true"
+                    i18n="workflow.calendar.FAULT_TIME;value=workflow.calendar.FAULT_TIME;title=workflow.calendar.FAULT_TIME">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" data-param-type="faultsTime">
+                <li data-param="-1"><a href="javascript:void (0)"
+                                       i18n="workflow.calendar.All;value=workflow.calendar.All"></a></li>
+                <li data-param="0"><a href="javascript:void (0)"
+                                      i18n="workflow.calendar.TODAY;value=workflow.calendar.TODAY"></a>
+                </li>
+                <li data-param="1"><a href="javascript:void (0)"
+                                      i18n="workflow.calendar.YESTERDAY;value=workflow.calendar.YESTERDAY"></a></li>
+                <li data-param="2"><a href="javascript:void (0)"
+                                      i18n="workflow.calendar.THIS_WEEK;value=workflow.calendar.THIS_WEEK"></a></li>
+                <li data-param="3"><a href="javascript:void (0)"
+                                      i18n="workflow.calendar.THIS_MONTH;value=workflow.calendar.THIS_MONTH"></a></li>
+                <li data-param="4"><a href="javascript:void (0)"
+                                      i18n="workflow.calendar.THIS_SEASON;value=workflow.calendar.THIS_SEASON"></a></li>
+                <li data-param="5"><a href="javascript:void (0)"
+                                      18n="workflow.calendar.THIS_YEAR;value=workflow.calendar.THIS_YEAR"></a></li>
+            </ul>
+        </div>
+        <div class="task_pool_selectorInfo">
+            <section data-param-type="overDueTime" class="label label-primary"><span></span></section>
+            <section data-param-type="emergencyLevel" class="label label-primary"><span></span></section>
+            <section data-param-type="faultsTime" class="label label-primary"><span></span></section>
+        </div>
+        <div class="taskPoolInfoTxt" i18n="workflow.calendar.NO_TASK"></div>
+    </div>
+    <div class="task_pool_container scrollbar">
+        <!-- <div id="task_pool_content">
+             <div class="ellipsis fault_grade_0 faults" data-today="true"
+                  data-week="true" data-season="true" data-month="true" data-year="true" data-dates="2015-10-26 09:55:11"
+                  userfaultgrade="2">
+                 <span class="zoneInfo"><em class="mr20">11F_VAV07</em></span>
+                 <span class="itemPoolTitle">High Air Damper Ratio</span>
+                 <span class="itemTime">2015-10-26 09:55:11</span>
+             </div>
+             <div class="ellipsis fault_grade_1 faults">
+                 <span class="zoneInfo"><em class="mr20">11F_VAV07</em></span>
+                 <span class="itemPoolTitle">High Air Damper Ratio</span>
+                 <span class="itemTime">2015-10-26 09:55:11</span>
+             </div>
+             <div class="ellipsis fault_grade_2 faults">
+                 <span class="zoneInfo"><em class="mr20">11F_VAV07</em></span>
+                 <span class="itemPoolTitle">High Air Damper Ratio</span>
+                 <span class="itemTime">2015-10-26 09:55:11</span>
+             </div>
+         </div>-->
+    </div>
+    <script type="template" id="task_pool_faults_list">
+        for (i; i < noticeList.length; i++) {
+        notice = noticeList[i];
+        <div class="ellipsis  faults">
+            <span class="zoneInfo"><em class="mr20"><!=notice.fault.equipment.name!></em></span>
+            <span class="itemPoolTitle"><!=notice.fault.name!></span>
+            <span class="itemTime"><!=notice.time!></span>
+        </div>
+        }
+    </script>
+</div>

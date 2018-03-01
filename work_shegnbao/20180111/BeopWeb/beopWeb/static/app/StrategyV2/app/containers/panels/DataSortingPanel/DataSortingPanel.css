@@ -1,0 +1,58 @@
+.clear::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 0;
+  clear: both;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.over {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dataSortingPanel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding-top: 16px;
+}
+.left-panel {
+  width: 18%;
+  height: 100%;
+  overflow-y: auto;
+  border-right: 1px solid rgba(153, 153, 153, 0.3);
+}
+.right-panel {
+  width: 82%;
+  height: 100%;
+}
+.left-panel > .title {
+  width: 100%;
+  line-height: 1;
+  font-size: 20px;
+  font-weight: 500;
+  color: #1d1d1d;
+  padding: 0 16px;
+}
+.left-panel > .content{
+  width: 100%;
+  height: calc(100% - 68px);
+}
+.left-panel > .foot{
+  width: 100%;
+  height: 48px;
+  padding: 8px;
+}
+.left-panel .exportBtn{
+  display: block;
+  margin: 0 auto;
+}
+.row{
+  line-height: 20px;
+}

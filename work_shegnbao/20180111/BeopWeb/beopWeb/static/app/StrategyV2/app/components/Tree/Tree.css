@@ -1,0 +1,246 @@
+/* Tree start */
+.clear::after {
+  display: block;
+  content: '';
+  width: 0;
+  height: 1px;
+  clear: both;
+}
+.overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tree {
+  list-style: none;
+}
+.tree .item {
+  position: relative;
+  cursor: pointer;
+}
+.tree .item .iconButton {
+  /* display: inline-block; */
+  float: left;
+  width: 24px;
+  line-height: 30px;
+  padding: 0 0 0 0;
+  border: none;
+  background-color: transparent;
+}
+.tree .item .iconButton i {
+  vertical-align: top;
+}
+.tree .item .iconButton:focus {
+  border: none;
+  outline: none;
+}
+.tree .item .itemContent {
+  display: inline-block;
+  height: 30px;
+  width: calc(100% - 24px);
+  padding-left: 0;
+  user-select: none;
+  color: #6c95ff;
+}
+.tree .item .itemContent > span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.tree .item > .itemContentWrap.itemContentTagWrap {
+  height: auto;
+}
+.tree .item > .itemContentWrap {
+  transition: all 0.3s;
+  height: 30px;
+  border-bottom: 1px solid #1f2540;
+  position: relative;
+}
+.tree .item > .itemContentWrap:hover {
+  background-color: #363f5d;
+}
+.tree .item .itemContentWrap i {
+  color: rgb(73, 98, 164);
+}
+.tree .item.selected > .itemContentWrap {
+  background-color: #363f5d;
+}
+.tree .item.selected > .itemContentWrap .itemContent {
+  color: #10b8f9;
+}
+.tree .item.selected > .itemContentWrap i {
+  color: #10b8f9;
+}
+.tree .item.selected > .itemContentWrap > .itemContent::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background-color: #10b8f9;
+  box-shadow: 6px 0px 20px 0 rgba(16, 184, 249, 0.5);
+}
+.tree .item .itemContent span {
+  line-height: 30px;
+}
+.tree .item .tagsWrap {
+  padding-left: 24px;
+}
+.tree .item .tagsWrap li {
+  float: left;
+  max-width: 99%;
+  line-height: 16px;
+  color: #fff;
+  font-size: 12px;
+  padding: 0 4px;
+  margin: 1px;
+  opacity: 0.8;
+  border-radius: 4px;
+  color: #2aad3e;
+  border: solid 1px rgba(42, 173, 62, 0.3);
+}
+/* Tree end */
+/*blue skin start*/
+.blueSkin .item .itemContentWrap {
+  border-bottom: 2px solid rgba(224, 230, 239, 0.5);
+}
+.blueSkin .item .itemContentWrap .itemContent {
+  color: #333333;
+}
+.blueSkin .item.firstGrade > .itemContentWrap {
+  background: #ebeef7;
+}
+.blueSkin .item.firstGrade > .itemContentWrap {
+  height: 40px;
+}
+.blueSkin .item.firstGrade > .itemContentWrap .iconButton {
+  line-height: 40px;
+}
+.blueSkin .item.firstGrade > .itemContentWrap .itemContent {
+  height: 40px;
+  color: #5b8af7;
+}
+.blueSkin .item.firstGrade > .itemContentWrap .itemContent span {
+  line-height: 40px;
+}
+.blueSkin .item.firstGrade > .itemContentWrap i {
+  color: #5b8af7;
+}
+.blueSkin .item > .itemContentWrap:hover {
+  background-color: #10b8f9;
+}
+.blueSkin .item > .itemContentWrap:hover .itemContent {
+  color: #ffffff;
+}
+.blueSkin .item > .itemContentWrap:hover i {
+  color: #ffffff;
+}
+.blueSkin .item.selected > .itemContentWrap {
+  background-color: #10b8f9;
+}
+.blueSkin .item.selected > .itemContentWrap .itemContent {
+  color: #ffffff;
+}
+.blueSkin .item.selected > .itemContentWrap i {
+  color: #ffffff;
+}
+/*blue skin end*/
+/*white skin start*/
+.whiteSkin .item .itemContentWrap {
+  border-bottom: none;
+}
+.whiteSkin .item .itemContentWrap .itemContent {
+  color: #666666;
+}
+.whiteSkin .item .itemContentWrap i {
+  color: #666666;
+}
+.whiteSkin .item > .itemContentWrap:hover {
+  background-color: rgba(77, 138, 208, 0.1);
+}
+.whiteSkin .item > .itemContentWrap:hover .itemContent {
+  color: #333;
+}
+.whiteSkin .item > .itemContentWrap:hover i {
+  color: #333;
+}
+.whiteSkin .item.selected > .itemContentWrap {
+  background-color: rgba(77, 138, 208, 0.1);
+}
+.whiteSkin .item.selected > .itemContentWrap .itemContent {
+  color: #333;
+}
+.whiteSkin .item.selected > .itemContentWrap i {
+  color: #333;
+}
+.whiteSkin .item.selected > .itemContentWrap > .itemContent::before {
+  right: 0;
+  left: unset;
+  background-color: #10b8f9;
+  box-shadow: -4px 0px 8px 0 rgba(16, 184, 249, 0.38);
+}
+/*white skin end*/
+/* h40 */
+.h40 .item .itemContentWrap {
+  height: 40px;
+  line-height: 40px;
+}
+.h40 .item .itemContentWrap .iconButton {
+  line-height: 40px;
+}
+.h40 .item .itemContentWrap .itemContent {
+  height: 40px;
+}
+.h40 .item .itemContentWrap .itemContent span {
+  line-height: 40px;
+}
+/* h40 end */
+/* h24 */
+.h24 .item .itemContentWrap {
+  height: 24px;
+  line-height: 24px;
+}
+.h24 .item .itemContentWrap .iconButton {
+  line-height: 24px;
+}
+.h24 .item .itemContentWrap .itemContent {
+  height: 24px;
+}
+.h24 .item .itemContentWrap .itemContent span {
+  line-height: 24px;
+}
+/* h40 end */
+/* color-white  */
+.color-white .item .itemContentWrap {
+  border-bottom: 1px solid rgba(21, 27, 50, 0.5);
+}
+.color-white .item .itemContentWrap .iconButton {
+}
+.color-white .item .itemContentWrap .itemContent {
+  color: #ffffff;
+}
+.color-white .item .itemContentWrap .itemContent span {
+}
+.color-white .item .itemContentWrap i {
+  color: #8e98bd;
+}
+.color-white .item > .itemContentWrap:hover {
+  background-color: #363f5d;
+}
+.color-white .item > .itemContentWrap:hover .itemContent {
+  color: #fff;
+}
+.color-white .item > .itemContentWrap:hover i {
+  color: #8e98bd;
+}
+.color-white .item.selected > .itemContentWrap {
+  background-color: #363f5d;
+}
+.color-white .item.selected > .itemContentWrap .itemContent {
+  color: #fff;
+}
+.color-white .item.selected > .itemContentWrap i {
+  color: #10b8f9;
+}
+/* color-end  */

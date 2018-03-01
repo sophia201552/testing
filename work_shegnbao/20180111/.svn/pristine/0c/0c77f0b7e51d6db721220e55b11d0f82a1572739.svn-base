@@ -1,0 +1,73 @@
+.container {
+  height: 40px;
+  line-height: 40px;
+  background-color: #2f3a54;
+  color: rgb(136, 172, 255);
+  padding: 0 20px;
+}
+.container:after {
+  clear: both;
+}
+.title {
+  float: left;
+}
+.toolbox {
+  float: right;
+}
+.container button {
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.container button:focus {
+  outline: none;
+}
+.title .btn-back {
+  height: 22px;
+  line-height: 22px;
+  font-weight: normal;
+  color: #5b8af7;
+  font-size: 14px;
+}
+.title .btn-back>span{
+  display: inline-block;
+}
+.title .btn-back span.backIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 100%;
+  background-color: rgba(91, 138, 247, 0.6);
+  vertical-align: bottom;
+  margin-right: 10px;
+}
+.title .btn-back span.backIcon i {
+  color: #2f3a54;
+}
+
+div.exportBtn,
+div.saveBtn{
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  float: left;
+}
+
+div.exportBtn:hover,
+div.saveBtn:hover{
+  background-color: #292e48;
+  color: #17a4df;
+}
+
+.iconExport,
+.iconSave,
+.iconRun {
+  font-size: 13px;
+  height: auto;
+  box-sizing: border-box;
+  margin-right: 6px;
+}

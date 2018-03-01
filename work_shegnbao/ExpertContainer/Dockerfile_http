@@ -1,0 +1,15 @@
+FROM python:3.4.7-jessie
+
+WORKDIR /project
+
+COPY ./requirements_http /requirements
+COPY ./requirements_http/additional/sources.list /etc/apt/sources.list
+
+ENV LANG C.UTF-8
+
+RUN pip install -r /requirements/requirements.txt --index http://pypi.doubanio.com/simple --trusted-host pypi.doubanio.com && \
+    rm -rf /requirements
+
+VOLUME /project
+
+EXPOSE 4000

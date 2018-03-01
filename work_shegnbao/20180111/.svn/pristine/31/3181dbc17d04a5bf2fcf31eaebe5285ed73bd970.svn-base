@@ -1,0 +1,147 @@
+<div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+            <div href="#debugDevice" role="tab" data-toggle="tab" i18n="modBus.debug.EQUIPMENT_DEBUG"></div>
+        </li>
+        <li role="presentation">
+            <div href="#debugCommand" role="tab" data-toggle="tab" i18n="modBus.debug.COMMAND_DEBUG"></div>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane debug-container active" id="debugDevice">
+            <div class="container-fluid">
+                <div class="row col-lg-12">
+                    <div class="col-lg-5">
+                        <form id="equipDebugForm" class="form-horizontal debugForm mt10">
+                            <div class="form-group">
+                                <label class="control-label col-lg-3" i18n="modBus.info.DTU_NAME"></label>
+                                <div id="mbNameInDebug" class="col-lg-9 mt5"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-3" i18n="modBus.pointHeader.SLAVE_ID"></label>
+                                <div class="col-lg-9">
+                                    <input id="equipmentSubAddress" type="text" class="form-control" name="subAddress"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-3" i18n="modBus.debug.FUNCTION_CODE"></label>
+                                <div class="col-lg-9">
+                                    <select class="form-control" name="codeType">
+                                        <option value="1">Input status</option>
+                                        <option value="2">Coil status</option>
+                                        <option value="3">Holding Register</option>
+                                        <option value="4">Input Register</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-3" i18n="modBus.pointHeader.ADDRESS"></label>
+                                <div class="col-lg-9">
+                                    <input id="equipmentAddress" type="text" class="form-control" name="address"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-3" i18n="modBus.pointHeader.DATA_LENGTH"></label>
+                                <div class="col-lg-9">
+                                    <input id="equipmentLength" type="text" class="form-control" name="length"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12 tc">
+                                    <button id="equipDebugSend" type="button" class="btn btn-success" i18n="common.SEND"></button>
+                                </div>
+                            </div>
+                        </form>
+                        <div>
+                            <div class="ml10 mb5">LOG</div>
+                            <ul id="equipmentDebugLog" class="debug-ul gray-scrollbar"></ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 mt10">
+                        <div class="col-lg-3">
+                            <span class="mt5 fl" i18n="modBus.debug.DATA_SHOW"></span>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="fr">
+                                <span class="fl mt5 mr10" i18n="modBus.debug.SHOW_TYPE"></span>
+                                <select id="equipShowType" class="form-control show-type fl">
+                                    <option value="0">Signed</option>
+                                    <option value="1">Unsigned</option>
+                                    <option value="2">Bite</option>
+                                    <option value="3">Long</option>
+                                    <option value="4">Long_inverse</option>
+                                    <option value="5">Float</option>
+                                    <option value="6">Float_inverse</option>
+                                    <option value="7">Double</option>
+                                    <option value="8">Double_inverse</option>
+                                    <option value="9">String</option>
+                                    <option value="10">String_inverse</option>
+                                    <option value="11">Powerlink</option>
+                                    <option value="12">Hex</option>
+                                </select>
+                            </div>
+                        </div>
+                        <ul id="equipmentDebugShowData" class="device-data-content col-lg-12 debug-ul gray-scrollbar"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane debug-container" id="debugCommand">
+            <div class="container-fluid">
+                <div class="row col-lg-12">
+                    <div class="col-lg-5">
+                        <form id="commandDebugForm" class="form-horizontal debugForm mt10">
+                            <div class="form-group">
+                                <label class="col-lg-12 control-label mt5">
+                                    <span class="fl mt5 mr10" i18n="modBus.debug.H_COMMAND"></span>
+                                    <input type="text" class="form-control fl mb10" id="hexCommandInput"/>
+                                </label>
+                                <div class="col-lg-12 text-warning">
+                                    <span i18n="modBus.debug.H_COMMAND_PROMPT"></span>
+                                    <span>【01 03 00 00 00 0a c5 cd】</span>
+                                </div>
+                            </div>
+                            <div class="mt20 tc">
+                                <button type="button" class="btn btn-success mr10" id="directSend" i18n="modBus.debug.DIRECT_SEND"></button>
+                                <button type="button" class="btn btn-default" id="checkSend" i18n="modBus.debug.CHECK_SEND"></button>
+                            </div>
+                            <div class="mt30">
+                                <div class="ml10 mb5" i18n="modBus.info.LOG"></div>
+                                <ul id="commandDebugLog" class="debug-ul gray-scrollbar"></ul>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-7 mt10">
+                        <div class="col-lg-3">
+                            <span class="mt5 fl" i18n="modBus.debug.DATA_SHOW"></span>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="fr">
+                                <span class="fl mt5 mr10" i18n="modBus.debug.SHOW_TYPE"></span>
+                                <select id="commandShowType" class="form-control show-type fl">
+                                    <option value="0">Signed</option>
+                                    <option value="1">Unsigned</option>
+                                    <option value="2">Bite</option>
+                                    <option value="3">Long</option>
+                                    <option value="4">Long_inverse</option>
+                                    <option value="5">Float</option>
+                                    <option value="6">Float_inverse</option>
+                                    <option value="7">Double</option>
+                                    <option value="8">Double_inverse</option>
+                                    <option value="9">String</option>
+                                    <option value="10">String_inverse</option>
+                                    <option value="11">Powerlink</option>
+                                    <option value="12">Hex</option>
+                                </select>
+                            </div>
+                        </div>
+                        <ul id="commandDebugShowData" class="device-data-content col-lg-12 debug-ul gray-scrollbar"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

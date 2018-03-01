@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Kaide Group</title>
+    {% assets "kaide_css_bundle" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"> {% endassets %}
+    <link rel="stylesheet" type="text/css" href="/static/content/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/content/index-black.css">
+    <link rel="stylesheet" type="text/css" href="/static/app/Benz/env.css">
+</head>
+<body>
+<style>
+body{
+    margin: 0;
+    padding:0;
+    overflow: hidden;
+}
+</style>
+<div id="containerKaide">
+    <div class="panelModules divPanel"></div>
+    <div class="panelFilter divPanel">
+        <div class="row"><input type="text" class="form-control iptSearch" placeholder="Search"/><i class="iconfont btnSearch">&#xe713;</i></div>
+        <div class="row divFilterSel">
+            <select class="form-control">
+                <option>中国</option>
+            </select>
+            <select class="form-control">
+                <option>业务类型</option>
+            </select>
+            <select class="form-control">
+                <option>城市</option>
+            </select>
+        </div>
+        <div class="row gray-scrollbar" style="height: calc(100% - 100px);overflow: auto;">
+            <ul class="list-unstyled" id="ulFilterResult">
+
+            </ul>
+        </div>
+    </div>
+    <div class="panelBmModule divPanel"></div>
+</div>
+
+{% assets "kaide_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+
+<script>
+    window.onload = function (){
+        new KaideScreen().show();
+    }
+</script>
+</body>
+</html>

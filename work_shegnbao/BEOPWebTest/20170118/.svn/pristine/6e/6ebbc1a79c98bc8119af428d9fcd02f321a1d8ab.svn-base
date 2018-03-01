@@ -1,0 +1,661 @@
+<style>
+    #tagCreateBox {
+        background-color: #ffffff;
+    }
+
+    #tagCreateBox h3 {
+        color: #333333;
+        font-size: 28px;
+        font-family: "Microsoft YaHei", "微软雅黑", "Helvetica", "arial", "sans-serif";
+    }
+
+    #dmNext {
+        background-color: #0077ee;
+        color: #ffffff;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    #tagLoadingBox .spinIcon {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 40px;
+        line-height: 90px;
+        background-color: #7fbbf6;
+        color: #ffffff;
+        border-radius: 8px;
+    }
+
+    #tagLoadingBox .spinIcon span {
+        font-size: 50px;
+        line-height: 90px;
+    }
+
+    #tagLoadingBox h3 {
+        color: #333333;
+        font-size: 28px;
+        font-family: "Microsoft YaHei", "微软雅黑", "Helvetica", "arial", "sans-serif";
+    }
+
+    #dmCancel {
+        font-size: 16px;
+        padding: 6px 35px;
+        background-color: #ffffff;
+        font-family: "Microsoft YaHei", "微软雅黑", "Helvetica", "arial", "sans-serif";
+        outline: none;
+    }
+
+    #ruleTextBox .control-label {
+        width: 9%;
+        padding: 0;
+    }
+
+    #ruleTextBox .ruleText {
+        color: #0077ee;
+        padding: 0;
+        width: 88%;
+    }
+
+    .rule-title .dragPromptText {
+        font-size: 14px;
+        padding: 1px 0;
+    }
+
+    .keyword-title .dragPromptText {
+        font-size: 14px;
+        padding: 1px 0;
+    }
+
+    #ruleForm .btn {
+        outline: none;
+    }
+
+    #dragIcon {
+        cursor: move;
+        color: #1e78e6;
+    }
+
+    .rule-title .dragNum {
+        color: #1e78e6;
+    }
+
+    #autoIdentifySave {
+        padding: 3px 5px;
+    }
+
+    #tagEditBox .tag-right-box {
+        width: 320px;
+    }
+
+    #tagEditBox #tagTreeBox {
+        width: 300px;
+    }
+
+    #tagEditBox #tagEditContent {
+        width: calc(100% - 636px);
+    }
+
+    #rule-content h4 {
+        font-size: 16px;
+        padding-left: 40px;
+    }
+
+    #ruleUl {
+        padding-left: 75px;
+        margin-top: 20px;
+    }
+
+    #tagEditBox .tagEditCenterBox {
+        overflow-y: auto;
+        max-height: 845px;
+    }
+
+    #ruleForm .rule-basic-info label {
+        font-weight: normal;
+        font-size: 16px;
+    }
+
+    #markMode-folder-table .widget-sdt-footer {
+        padding-bottom: 20px !important;
+    }
+
+    #markMode-folder-table table tr td:last-child .ellipsis,
+    #tagMode-table table tr td:last-child .ellipsis,
+    #ruleTable table tr td:last-child .ellipsis {
+        text-overflow: inherit;
+        overflow: visible;
+        white-space: normal;
+    }
+
+    #remove-tag {
+        color: red;
+        position: absolute;
+        right: -5px;
+        top: -5px;
+    }
+
+    #markMode-folder-table .tag-item-box:hover .removeTag {
+        display: inline-block;
+    }
+
+    #tagEditContent .table-body.gray-scrollbar {
+        height: 71vh !important;
+    }
+
+    #ruleTable .table-footer.widget-sdt-footer {
+        padding-top: 35px;
+    }
+
+    @media (max-width: 1366px) {
+        #tagEditBox #tagTreeBox {
+            width: 240px;
+        }
+
+        #tagEditBox #tagEditContent {
+            width: calc(100% - 522px);
+        }
+
+        #tagEditBox .tag-right-box {
+            width: 270px;
+        }
+
+        #rule-content h4 {
+            font-size: 14px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #ruleUl {
+            display: inline-block;
+            width: 90%;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+
+        #tagEditBox .tagEditCenterBox {
+            max-height: 570px;
+        }
+
+        #ruleForm .rule-basic-info label {
+            font-size: 14px;
+        }
+
+        #ruleTextBox .control-label {
+            width: 11%;
+        }
+
+        #tagEditContent .table-body.gray-scrollbar {
+            height: 60vh !important;
+        }
+
+        #ruleTable .widget-sdt-container {
+            font-size: 13px !important;
+        }
+    }
+</style>
+
+<div id="tagContainer" class="tag-box"></div>
+<!--@formatter:off-->
+<script type="text/html" id="tpl_tag_create">
+    <div id="tagCreateBox">
+        <h3 class="mb20">该项目首次进行tag标记,系统将为您筛选出关键字字符串。</h3>
+        <div>
+            <button type="button" class="btn btn-default mr30" id="dmEdit">手动分类</button>
+            <button type="button" class="btn btn-primary" id="dmNext">下一步</button>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="tpl_tag_loading">
+    <div id="tagLoadingBox">
+        <div class="spinIcon"><span class="glyphicon glyphicon-refresh"></span></div>
+        <h3 class="mb20">系统正在为您搜索关键字,共<span id="allPointCount"></span>个点,已经处理完<span id="currentProgress">0</span>个点。
+        </h3>
+        <button type="button" class="btn btn-default" id="dmCancel">取消</button>
+    </div>
+</script>
+<script type="text/html" id="tpl_tag_edit">
+    <div id="tagEditBox">
+        <div class="tag-left-box fl gray-scrollbar" id="tagTreeBox"></div>
+        <div id="tagEditContent" class="fl tag-center-box"></div>
+        <div class="tag-right-box fl">keywords</div>
+    </div>
+</script>
+<script type="text/html" id="tpl_tag_rule_edit">
+    <div class="rule-title clearfix">
+        <div class="fl">
+            <span id="catalogName" class="dn">目录:</span>
+            <span id="editTitle"></span>
+        </div>
+        <div class="fr">
+            <span class="btn btn-default" id="autoIdentifySave" title="保存">
+                <span class="icon iconfont">&#xe731;</span>
+                <span class="exportTypeWords">保存</span>
+            </span>
+        </div>
+        <div class="dragPromptText dn fr">
+            <span id="dragIcon" class="glyphicon glyphicon-move"></span>
+            <span>
+                <span>可拖拽以下选中 <span class="dragNum"></span> 个点</span>
+            </span>
+        </div>
+    </div>
+    <div class="tagEditCenterBox gray-scrollbar">
+        <form class="mt10" id="ruleForm">
+            <div class="oh rule-basic-info">
+                <label class="fl mr10">
+                    <span class="fl mt5">目录名称</span>
+                    <input type="text" name="ruleFolderName" id="ruleFolderName" class="form-control fl"/>
+                </label>
+                <label class="fl mr10">
+                    <span class="fl mt5">是否生成子目录</span>
+                    <select class="form-control fl" id="isCreateSubFolder">
+                        <option value="1">是</option>
+                        <option value="2" selected="selected">否</option>
+                    </select>
+                </label>
+                <div class="fl dn" id="ruleSubFolderNameBox">
+                    <label class="mr10">
+                        <span class="fl mt5">子目录名称</span>
+                        <input type="text" id="subFolderPrefix" class="form-control fl" placeholder="子目录名称{规则序号}"
+                               style="width: 168px;"/>
+                    </label>
+                </div>
+            </div>
+            <div id="ruleBox">
+                <div id="rule-content">
+                    <h4>规则</h4>
+                    <ul id="ruleUl" class="oh"></ul>
+                </div>
+            </div>
+            <div class="mt10 tc" id="ruleBtns">
+                <button type="button" class="btn btn-default" id="dmReset">重置</button>
+                <button type="button" class="btn btn-success" id="dmRuleTest">规则测试</button>
+                <button type="button" class="btn btn-success" id="dmRuleConfirm">新建</button>
+            </div>
+        </form>
+        <div id="ruleTableBox" class="pr mt20" style="padding: 0 10px;">
+            <div id="ruleTextBox" class="ml10 mb10 clearfix dn">
+                <lable class="control-label col-md-2">测试条件为:</lable>
+                <div id="testCondition" class="col-md-10 ruleText"></div>
+            </div>
+            <div id="ruleTable"></div>
+        </div>
+        <div id="keywordInfo"></div>
+    </div>
+</script>
+<script type="text/html" id="tpl_tag_view">
+    <div id="tagModelsBox">
+        <div id="st-container" class="st-container st-menu-open st-effect-1 st-effect-7">
+            <div class="st-pusher">
+                <div class="col-sm-2 fl st-effect-7 st-menu" style="padding: 0 8px 0 0;">
+                    <div id="tagTreeBox" class="tag-left-box"></div>
+                </div>
+                <div id="paneContent" class="col-sm-8 tag-center-box fl st-content"
+                     style="padding: 0; overflow: visible;z-index: 100;">
+                    <div id="leftCt" data-effect="st-effect-7" class="sideTrans leftCtOpen" style="opacity: 0.5;">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </div>
+                    <div id="rightCt" data-effect="st-effect-1" class="sideTrans rightCtOpen" style="opacity: 0.5;">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </div>
+                    <div class="tagCenterBox"></div>
+                </div>
+                <div class="col-sm-2  fl st-effect-1 st-menu" style="padding: 0 0 0 8px; position: relative;">
+                    <div class="tag-right-box"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<script type="text/html" id="tpl_tag_keyword_box">
+    <div class="tag-list-box">
+        <div class="keyword-title clearfix">
+            <div id="keywordName" class="keywordName fl" style="padding: 0;"></div>
+            <div class="dragPromptText dn fr">
+                <span id="dragIcon" class="glyphicon glyphicon-move"></span>
+                <span>
+                    <span>可拖拽以下选中 <span class="dragNum"></span> 个点</span>
+                </span>
+            </div>
+        </div>
+        <div id="keywordTableBox" class="mt20">
+            <div id="keyword-list-table"></div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_son_folder">
+    <div title="<!=name!>">
+        <span class="glyphicon glyphicon-folder-close"></span>
+        <span><!=name!></span>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_son_point">
+    <div title="<!=name!>">
+        <span><!=name!></span>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_folder_cell">
+    <div title="<!=name!>">
+        <span class="glyphicon glyphicon-folder-close"></span>
+        <span>
+            <span><!=name!></span>
+        </span>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_tag_mode_box">
+    <div class="tag-list-box">
+        <div class="modeType clearfix">
+            <div class="fl modeStyle tabMode cp" id="mark-mode">标记模式</div>
+            <div class="fl modeStyle cp" id="check-mode">TAG模式</div>
+        </div>
+        <div id="modeType-content">
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_tag_table_item">
+    <div class="tag-list-box">
+        <div class="modeType clearfix">
+            <div class="fl modeStyle tabMode cp" id="mark-mode">标记模式</div>
+            <div class="fl modeStyle cp" id="check-mode">TAG模式</div>
+        </div>
+        <div id="modeType-content">
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_markMode_point">
+    <div class="mode-list-header">
+        <div class="exportDataHeader clearfix">
+            <select id="point_format" name="format" class="form-control fl mr10 markMode-select">
+                <option value="all">全部</option>
+                <option value="0">未标记</option>
+                <option value="1">已标记</option>
+            </select>
+
+            <div class="exportDataTextSearchBox fl">
+                <span class="icon iconfont icon_position modeDataSearchIcon cp dmPointHover">&#xe713;</span>
+                <input type="text" id="mode-data-Search" class="form-control"
+                       i18n="placeholder=debugTools.sitePoint.SEARCH"/>
+            </div>
+
+            <div class="list-operating-box clearfix fl ml15">
+
+                <div class="fl cp exportType">
+                    <span id="last-stage" title="上一级">
+                        <span class="icon iconfont" style="display:inline-block;transform:rotate(180deg); top: -2px;">&#xe652;</span>
+                        <span class="exportTypeWords">上一级</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="all-select" title="全选">
+                        <span class="icon iconfont">&#xe661;</span>
+                        <span class="exportTypeWords">全选</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="reverse-select" title="反选">
+                        <span class="icon iconfont">&#xe6c8;</span>
+                        <span class="exportTypeWords">反选</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="markMode-backed" title="撤回">
+                        <span class="icon iconfont">&#xe66d;</span>
+                        <span class="exportTypeWords">撤回</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="markMode-return" title="返回">
+                        <span class="icon iconfont">&#xe652;</span>
+                        <span class="exportTypeWords">返回</span>
+                    </span>
+                </div>
+
+                <div class="fl exportType cp">
+                    <span id="markMode-format" title="格式化">
+                        <span class="icon iconfont">&#xe6d4;</span>
+                        <span class="exportTypeWords">格式化</span>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="markMode-point-table">
+
+    </div>
+</script>
+
+<script type="text/html" id="tpl_markMode_folder">
+    <div class="mode-list-header">
+        <div class="exportDataHeader clearfix">
+            <select name="format" class="form-control fl mr10 markMode-select">
+                <option value="all">全部</option>
+                <option value="0">未标记</option>
+                <option value="1">已标记</option>
+            </select>
+
+            <div class="exportDataTextSearchBox fl">
+                <span class="icon iconfont icon_position modeDataSearchIcon cp dmPointHover">&#xe713;</span>
+                <input type="text" id="mode-data-Search" class="form-control"
+                       i18n="placeholder=debugTools.sitePoint.SEARCH"/>
+            </div>
+
+            <div class="list-operating-box clearfix fl ml15">
+                <div class="fl cp exportType">
+                    <span id="root-stage" title="根目录">
+                        <span class="icon iconfont" style="display:inline-block;transform:rotate(180deg); top: -2px;">&#xe652;</span>
+                        <span class="exportTypeWords">根目录</span>
+                    </span>
+                </div>
+                <div class="fl cp exportType">
+                    <span id="all-select" title="全选">
+                        <span class="icon iconfont">&#xe661;</span>
+                        <span class="exportTypeWords">全选</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="reverse-select" title="反选">
+                        <span class="icon iconfont">&#xe6c8;</span>
+                        <span class="exportTypeWords">反选</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="markMode-backed" title="撤回">
+                        <span class="icon iconfont">&#xe66d;</span>
+                        <span class="exportTypeWords">撤回</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="markMode-return" title="返回">
+                        <span class="icon iconfont">&#xe652;</span>
+                        <span class="exportTypeWords">返回</span>
+                    </span>
+                </div>
+
+                <div class="fl cp exportType">
+                    <span id="markMode-save" title="保存">
+                        <span class="icon iconfont">&#xe731;</span>
+                        <span class="exportTypeWords">保存</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="markMode-folder-table">
+
+    </div>
+</script>
+
+<script type="text/html" id="tpl_tag_mode_list">
+     <div class="mode-list-header clearfix">
+         <div class="exportDataTextSearchBox fl">
+             <span class="icon iconfont icon_position modeDataSearchIcon cp dmPointHover">&#xe713;</span>
+             <input type="text" id="mode-data-Search" class="form-control"
+                    i18n="placeholder=debugTools.sitePoint.SEARCH"/>
+         </div>
+     </div>
+     <div id="tagMode-table">
+
+     </div>
+</script>
+
+<article id="tag-markMode-edit" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" id="modeEditContent">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                <button type="button" id="editConfirm" class="btn btn-success" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</article>
+
+<script type="text/html" id="tpl_tag_modeEdit">
+    <div class="clearfix">
+        <div class="fl editType selectType cp">设备参数</div>
+    </div>
+    <div id="modeEdit-content" class="gray-scrollbar">
+        <form id="equipmentFrom">
+            <div class="row editContentBox">
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">COP</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="COP">
+                    </div>
+                </div>
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">动力来源</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="Power source">
+                    </div>
+                </div>
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">冷媒充注量</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="Refrigerant charge quantity">
+                    </div>
+                </div>
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">冷凝器水量</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="Condenser water" value="">
+                    </div>
+                </div>
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">冷凝器型号</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="Condenser type" value="">
+                    </div>
+                </div>
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">外形尺寸</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="Outline dimension" value="">
+                    </div>
+                </div>
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">效率</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="efficiency" value="">
+                    </div>
+                </div>
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">型号</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="Model" value="">
+                    </div>
+                </div>
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">压缩机数量</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="Compressor quantity" value="">
+                    </div>
+                </div>
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">蒸发器水量</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="Evaporator water" value="">
+                    </div>
+                </div>
+
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">蒸发器型号</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="Evaporator model" value="">
+                    </div>
+                </div>
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">制冷剂</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="Cryogen" value="">
+                    </div>
+                </div>
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">制冷剂充注量</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="Refrigerant Charge" value="">
+                    </div>
+                </div>
+                <div class="editContentType clearfix">
+                    <label class="control-label col-md-3 editName">制冷量</label>
+                    <div class="col-md-9 editContent">
+                        <input type="text" class="form-control editInput" name="Refrigerating capacity" value="">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+
+<script type="text/html" id="tpl_tag_row">
+    <!if(tags){!>
+        <!try{if(editable){!>
+            <div class="tag-item-box"><span class="icon iconfont editTag cp">&#xe710;</span></div>
+        <!}}catch(e){}!>
+        <!for(var m=0; m < tags.length; m++){!>
+            <!var dict = beop.tag.panel.getTagMap();!>
+            <!
+                if(!tags[m]){
+                    continue;
+                }
+                var displayNm = '';
+                var tag = '';
+                var tagItem = tags[m].trim().toUpperCase();
+                if(tags[m] && dict[tagItem]){
+                    displayNm = dict[tagItem].name;
+                    tag = dict[tagItem].name;
+                }else{
+                    tag = displayNm = tags[m];
+                }
+            !>
+            <div class="tag-item-box" title="<!=tag!>" tag="<!=tag!>">
+                <span class="tag-item"><!=displayNm!>
+                    <!try{if(canDelete){}}catch(e){canDelete = false;}!>
+                    <!if(canDelete){!>
+                        <span class="glyphicon glyphicon-remove dn removeTag" id="remove-tag"></span>
+                    <!}!>
+                </span>
+            </div>
+        <!}!>
+    <!}!>
+</script>
+
+<!--@formatter:on-->

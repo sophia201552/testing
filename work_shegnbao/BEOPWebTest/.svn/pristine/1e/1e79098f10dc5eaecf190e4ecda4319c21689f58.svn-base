@@ -1,0 +1,187 @@
+<style>
+    *{
+        font-family: "Microsoft YaHei";
+    }
+    #wkAddInfo {
+        padding: 1rem;
+        font-family: "Microsoft Yahei";
+        overflow: auto;
+    }
+    #wkAddInfo label {
+        color: white;
+    }
+    .form-group {
+        margin-bottom: 0;
+        padding: 0.5rem 0;
+    }
+    .form-group:not(:last-child){
+        border-bottom: 1px solid #ccc;
+    }
+    .form-control{
+        display: inline-block;
+        max-width: calc(100% - 80px);
+        width: initial;
+    }
+    #inputWkImg {
+        display: none;
+    }
+    #workflowAddBtn {
+        width: 100%;
+        text-align: center;
+        padding: 0.6rem;
+        position: relative;
+        bottom: 0;
+        height: 4rem;
+     }
+#wkExecutor .userRemove{display:none}
+    .inputWkVerifier,.inputWkWatcher,.inputWkExecutor {
+        background-color: #428bca;
+        border-radius: 0.5rem;
+        padding: 0.2rem 1rem;
+        display: inline-block;
+        color: white;
+        width: 10rem;
+        position: relative;
+    }
+    .userRemove {
+        display: inline-block;
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+    }
+    .form-group label{
+        font-weight: 600;
+        width: 60px;
+        text-align: right;
+        margin-right: .5rem;
+    }
+    #btnAddWk{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+        .divWkMem {
+        width: 29%;
+        height: 7rem;
+        display: inline-block;
+        position: relative;
+        margin: 2%;
+    }
+    .imgWkMem{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .imgWkMem img {
+        width: 100%;
+        height: 100%;
+    }
+    .nameWkMem {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 0;
+        z-index: 2;
+        background: rgba(153,154,153,0.7);
+        color: white;
+    }
+    .checkWkMem {
+        visibility: hidden;
+        z-index: 1;
+        position: relative;
+        text-align: right;
+        right: 0.4rem;
+        color: darkorange;
+    }
+    .divWkMem.selected .checkWkMem {
+        visibility: visible;
+    }
+    #wkUserDialog {
+        position: absolute;
+        height: 100%;
+    }
+    #wkUserDialog .modal-backdrop {
+        position: absolute;
+        height: 100%;
+    }
+    #wkUserDialog .modal-dialog {
+        height: calc(100% - 20px);
+    }
+    #wkUserDialog .modal-content{
+        height: 100%;
+    }
+    #divWkUserDialog {
+        height: calc(100% - 121px);
+        overflow-x: auto;
+    }
+    #wkCollection {
+        color: white;
+    }
+.spanUserSel{
+    display: inline-block;
+    float: left;
+    line-height: 34px;
+    background-color: #ccc;
+    padding: 0 1rem;
+    margin: 0.1rem;
+    border-radius: 0.5rem;
+}
+
+</style>
+<div id="wkAddInfo">
+    <div id="wkTitle" class="form-group">
+        <label for="inputWkTitle" i18n="appDashboard.workflow.TITLE">Title</label>
+        <input type="text" class="form-control" id="inputWkTitle" placeholder="">
+    </div>
+    <div id="wkDetail" class="form-group">
+        <label for="inputWkDetail" i18n="appDashboard.workflow.DETAIL">Detail</label>
+        <textarea class="form-control" id="inputWkDetail" placeholder=""></textarea>
+    </div>
+    <div id="wkDeadline" class="form-group">
+        <label for="inputWkDeadline" i18n="appDashboard.workflow.DEADLINE">Deadline</label>
+        <input type="text" class="form-control" id="inputWkDeadline" placeholder="">
+    </div>
+    <div id="wkImportance" class="form-group">
+        <label for="inputWkImportance" i18n="appDashboard.workflow.EMERGENCY">Emergency</label>
+        <select class="form-control" id="inputWkImportance">
+            <option value="2" i18n="appDashboard.workflow.URGENT">Urgent</option>
+            <option value="1" i18n="appDashboard.workflow.SERIOUS">Serious</option>
+            <option value="0" i18n="appDashboard.workflow.NORMAL">Normal</option>
+        </select>
+    </div>
+    <!--<div id="wkImg" class="form-group">
+        <label for="inputWkImg">故障图片</label>
+        <input type="file" class="form-control" id="inputWkImg" placeholder="">
+        <span id="spanWkImg" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </div>-->
+    <div id="wkExecutor" class="form-group zepto-ev">
+        <label for="inputWkExecutor" i18n="appDashboard.workflow.EXECUTOR">Executor</label>
+        <span class="inputWkExecutor" i18n="appDashboard.workflow.NO_CHOICE">No Choice</span>
+    </div>
+    <div id="wkVerifier" class="form-group zepto-ev">
+        <label for="inputWkVerifier" i18n="appDashboard.workflow.REVIEWER">Reviewer</label>
+        <span id="verifierTip" class="inputWkVerifier" i18n="appDashboard.workflow.NO_CHOICE">No Choice</span>
+    </div>
+    <div id="wkWatcher" class="form-group zepto-ev">
+        <label for="inputWkWatcher" i18n="appDashboard.workflow.WATCHER">Watcher</label>
+        <span id="watcherTip" class="inputWkWatcher" i18n="appDashboard.workflow.NO_CHOICE">No Choice</span>
+    </div>
+    <div id="wkTeam" class="form-group">
+        <label for="inputWkTeam" i18n="appDashboard.workflow.PROJECT_TEAM">Project Team</label>
+        <select class="form-control" id="inputWkTeam">
+        </select>
+    </div>
+    <!--<div id="wkTag" class="form-group">
+        <label for="inputWkTag">标签</label>
+        <select class="form-control" id="inputWkTag">
+        </select>
+    </div>-->
+    <div id="wkCollection" class="form-group">
+        <label for="inputWkCollection" i18n="appDashboard.workflow.FAVORITES">Favorites</label>
+        <span id="inputWkCollection" class="glyphicon glyphicon-star-empty" collect="false"></span>
+    </div>
+</div>
+<div id="workflowAddBtn">
+    <button id="btnAddWk" type="button" class="btn btn-primary zepto-ev" i18n="appDashboard.workflow.CREATE">Create</button>
+</div>

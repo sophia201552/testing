@@ -1,0 +1,243 @@
+<style>
+    #importDataBox {
+        background-color: #f1f1f1;
+        font-family: 'Helvetica', 'Microsoft YaHei', '微软雅黑';
+    }
+
+    #divUploadWrap .upLoadContainer {
+        width: 70%;
+        margin: 0 auto;
+        padding-top: 40px;
+    }
+
+    #divUploadWrap .exportTitle {
+        text-align: center;
+        color: #333333;
+        font-size: 24px;
+        padding: 5px;
+    }
+
+    #divUploadWrap .upload-wrap {
+        text-align: center;
+    }
+
+    #divUploadWrap .importBox {
+        margin-top: 15px;
+        height: 400px;
+        background-color: #FFF;
+    }
+
+    #divUploadWrap .importBox .btn {
+        padding: 8px 12px;
+        width: 160px;
+    }
+
+    #exportTemplate {
+        margin-right: 50px;
+        background-color: #EFEFEF;
+        color: #666666;
+        border: 1px solid #d6d6d6;
+    }
+
+    #btnUploadCSV {
+        margin-right: 50px;
+        background-color: #0079dc;
+        color: #FFffff;
+        border: 1px solid #0e72c3;
+    }
+
+    .help-block {
+        margin-top: 30px;
+        color: #666666;
+
+    }
+
+    .exportFileBox {
+        min-height: 111px;
+        height: 242px;
+        padding: 10px;
+        padding-top: 80px;
+    }
+
+    #exportFileContent {
+        display: inline-block;
+        margin: 0 auto;
+        width: 80px;
+        height: 120px;
+    }
+
+    #exportFileContent p[data-name='nameExportFile'],
+    #exportFileContent p[data-time='timeExportFile'] {
+        width: 80px;
+        line-height: normal;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        margin: 3px 0;
+    }
+
+    .tb-wrap {
+        margin-top: 30px;
+        padding-bottom: 45px;
+    }
+
+    .tb-wrap h3,
+    .tb-wrap th {
+        color: #333;
+        font-size: 16px;
+    }
+
+    .tb-wrap th {
+        background-color: #dfdfe0;
+        border-color: #d0d0d0 !important;
+    }
+
+    .tb-wrap td {
+        color: #666666;
+        height: 40px;
+        border-color: #d0d0d0 !important;
+    }
+
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tbody > tr > td {
+        border: none !important;
+        border-top: 1px solid #d0d0d0 !important;
+    }
+
+    .dm-export-icon {
+        width: 1em;
+        height: 1em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+        font-size: 54px;
+    }
+
+    #exportFileContent {
+        position: relative;
+    }
+
+    #initPanelExport {
+        width: 80px;
+        height: 80px;
+        border-radius: 2px;
+        background: url("https://beopweb.oss-cn-hangzhou.aliyuncs.com/static/images/workflow/FILE.png ") center center no-repeat;
+        background-size: contain;
+    }
+
+    .selectFileText {
+        width: 80px;
+        line-height: normal;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        margin: 3px 0 0 0;
+    }
+
+    #btnConfirmUpload {
+        background-color: #f5f5f5;
+        color: #cccccc;
+        border: 1px solid #ebebeb;
+        outline: none;
+    }
+
+    #btnConfirmUpload.exportActive {
+        background-color: #EFEFEF;
+        color: #666666;
+        border: 1px solid #d6d6d6;
+        outline: none;
+    }
+
+    @media (max-width: 1366px) {
+        #divUploadWrap .upLoadContainer {
+            padding-top: 25px;
+        }
+    }
+</style>
+
+<div id="importDataBox">
+    <div id="divUploadWrap" class="gray-scrollbar">
+        <div class="upLoadContainer">
+            <div class="upload-wrap">
+                <div class="form-group has-feedback">
+                    <label class="control-label dn" for="iptPjData"
+                           i18n="admin.projectCreator.PANE2_FORM_ITEM1_LABEL"></label>
+                    <input type="file" accept=".csv,.xlsx" id="iptPjData"
+                           style="display:none;">
+                    <div class="exportTitle" i18n="admin.projectCreator.EXPORT_PROJECT_DATA"></div>
+                    <div class="importBox">
+                        <div class="exportFileBox">
+                            <div id="exportFileContent">
+                                <div id="initPanelExport"></div>
+                                <p class="selectFileText" i18n="title=admin.projectCreator.PANE2_FORM_ITEM1_TIP1">
+                                    <span i18n="admin.projectCreator.PANE2_FORM_ITEM1_TIP1"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="btn btn-default" id="btnUploadCSV">
+                            <span i18n="admin.projectCreator.PANE2_FORM_ITEM1_TITLE"></span>
+                        </div>
+                        <div class="btn btn-default" id="exportTemplate"
+                             i18n="admin.projectCreator.EXPORT_DATA_TEMPLET"></div>
+                        <button type="button" class="btn btn-default" id="btnConfirmUpload" disabled="disabled"
+                                i18n="dataManage.CONFIRM_UPLOAD"></button>
+                        <span class="help-block" i18n="admin.projectCreator.NOTE_SUPPORT_CHARACTERS"></span>
+                    </div>
+                </div>
+                <div class="drop-handler" id="divPjDataDropHandler" style="display:none;">
+                    <p i18n="dataManage.DRAG_TIP"></p>
+                </div>
+            </div>
+            <div class="tb-wrap">
+                <div class="tb-head clearfix">
+                    <h3 i18n="admin.projectCreator.PANE2_TABLE_TITLE"></h3>
+                </div>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Date</th>
+                        <th>PointName1</th>
+                        <th>PointName2</th>
+                        <th>PointName3</th>
+                    </tr>
+                    <tr>
+                        <td>2014-05-01 1:00</td>
+                        <td>0.544533</td>
+                        <td>0.412343</td>
+                        <td>0.112314</td>
+                    </tr>
+                    <tr>
+                        <td>2014-05-01 2:00</td>
+                        <td>0.987917</td>
+                        <td>0.312334</td>
+                        <td>0.534956</td>
+                    </tr>
+                    <tr>
+                        <td>2014-05-01 3:00</td>
+                        <td>0.124133</td>
+                        <td>0.132311</td>
+                        <td>0.543534</td>
+                    </tr>
+                    <tr>
+                        <td>2014-05-01 4:00</td>
+                        <td>0.987978</td>
+                        <td>0.543534</td>
+                        <td>0.867867</td>
+                    </tr>
+                    <tr>
+                        <td>2014-05-01 5:00</td>
+                        <td>0.123432</td>
+                        <td>0.321543</td>
+                        <td>0.645645</td>
+                    </tr>
+                    <tr>
+                        <td>2014-05-01 6:00</td>
+                        <td>0.757531</td>
+                        <td>0.414752</td>
+                        <td>0.555123</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="uploadMask" style="display:none;"></div>

@@ -1,0 +1,229 @@
+(function (beop) {
+        var configMap = {
+                htmlURL: '',
+                settable_map: {
+                    tagsModel: true,
+                    whereComeFrom: true
+                },
+                tagsModel: null,
+                whereComeFrom: null
+            },
+            stateMap = {
+                labelTagList: [],
+                tagDataList: {
+                    update: [],//更新的Tag
+                    new: []//新添加的Tag
+                }
+            },
+            jqueryMap = {},
+            setJqueryMap,
+            configModel,
+            init,
+            onToggleUl, onLabelEdit, onLabelPlus, onLabelDelete, progressData, resetTagDataList, sendDataToBack, restoreEditStatus;
+
+        setJqueryMap = function () {
+            var $container = stateMap.$container;
+
+            jqueryMap = {
+                $wrapper: $("#wf-outline"),
+                $wf_label_form: $("#wf-label-form"),
+                $wf_label_edit: $("#wf-label-edit"),
+                $wf_label_plus: $("#wf-label-plus"),
+                $wf_label_icon_wrapper: $("#wf-label-icon-wrapper"),
+                $container: $container
+            };
+        };
+
+        configModel = function (input_map) {
+            beop.util.setConfigMap({
+                input_map: input_map,
+                settable_map: configMap.settable_map,
+                config_map: configMap
+            });
+            return true;
+        };
+
+        init = function ($container) {
+            stateMap.$container = $container;
+            setJqueryMap();
+            restoreEditStatus();
+            configMap.tagsModel.getUserTags().done(function (result) {
+                if (result.data) {
+                    stateMap.labelTagList = result.data;
+                    stateMap.$container.html(beopTmpl('tpl_wf_tags_list_text', {
+                        labels: stateMap.labelTagList
+                    }));
+                }
+                $('#wf-label-toggle').removeClass('wf-tags-ul-hide').addClass('wf-tags-ul-show');
+                $('#wf-label-form').show().find('li').removeClass('active').end().find('li[data-tag-name="' + ScreenManager._getHashParamsMap().name + '"]').addClass('active');
+
+                jqueryMap.$wrapper.off('click.wf-label-toggle').on('click.wf-label-toggle', '#wf-label-toggle', onToggleUl);
+                jqueryMap.$wrapper.off('click.wf-label-edit').on('click.wf-label-edit', '#wf-label-edit', onLabelEdit);
+                jqueryMap.$wrapper.off('click.wf-label-plus').on('click.wf-label-plus', '#wf-label-plus', onLabelPlus);
+                jqueryMap.$wrapper.off('click.wf-label-delete').on('click.wf-label-delete', '.wf-label-delete', onLabelDelete);
+            }).fail(function (result) {
+
+            }).always(function () {
+                I18n.fillArea(jqueryMap.$container);
+            });
+        };
+
+        //---------DOM操作------
+
+        //---------方法---------
+        resetTagDataList = function () {
+            stateMap.tagDataList.new = [];
+            stateMap.tagDataList.update = [];
+        };
+        //---------事件---------
+        onToggleUl = function () {
+            var $this = $(this);
+            if ($this.hasClass("wf-tags-ul-hide")) {
+                jqueryMap.$container.show();
+                jqueryMap.$wf_label_icon_wrapper.show();
+                $this.removeClass("wf-tags-ul-hide").addClass("wf-tags-ul-show");
+            } else if ($this.hasClass("wf-tags-ul-show")) {
+                jqueryMap.$container.hide();
+                jqueryMap.$wf_label_icon_wrapper.hide();
+                $this.removeClass("wf-tags-ul-show").addClass("wf-tags-ul-hide");
+            }
+        };
+        restoreEditStatus = function () {
+            jqueryMap.$wrapper.find('#wf-label-edit').removeClass("glyphicon-ok-circle").addClass("glyphicon-edit");
+            jqueryMap.$wf_label_plus.hide();
+            jqueryMap.$wf_label_icon_wrapper.hide();
+            jqueryMap.$wrapper.find('#wf-label-toggle').removeClass("wf-tags-ul-hide").addClass("wf-tags-ul-show");
+        };
+        onLabelEdit = function () {
+            var $this = $(this);
+            if ($this.hasClass("glyphicon-edit")) { //编辑标签名
+                $this.removeClass("glyphicon-edit").addClass("glyphicon-ok-circle");
+                jqueryMap.$wf_label_plus.show();
+                stateMap.$container.html(beopTmpl('tpl_wf_tags_list_input', {
+                    labels: stateMap.labelTagList
+                }));
+                stateMap.$container.find('input').off().on('focus', function () {
+                    $(this).select();
+                })
+            } else { // 查看标签名
+                sendDataToBack().done(function () {
+                    configMap.tagsModel.getUserTags().done(function (result) {
+                        if (result.data) {
+                            stateMap.labelTagList = result.data;
+                            stateMap.$container.html(beopTmpl('tpl_wf_tags_list_text', {
+                                labels: stateMap.labelTagList
+                            }));
+                        }
+                    }).always(function () {
+                        jqueryMap.$wf_label_plus.hide();
+                        $this.removeClass("glyphicon-ok-circle").addClass("glyphicon-edit");
+                        Spinner.stop();
+                        I18n.fillArea(jqueryMap.$container);
+                    }).fail(function () {
+                        Alert.danger(ElScreenContainer, 'Edit Tags Failed').showAtTop(300);
+                    })
+                }).fail(function () {
+                    Alert.danger(ElScreenContainer, 'Edit Tags To DATABASE Failed').showAtTop(300);
+                }).always(function () {
+                    Spinner.stop();
+                })
+            }
+        };
+
+        onLabelPlus = function () {
+            jqueryMap.$container.append(beopTmpl('tpl_wf_tags_list_input_empty'));
+            jqueryMap.$wf_label_form.scrollTop(3000);
+            I18n.fillArea($(ElScreenContainer));
+        };
+
+        onLabelDelete = function () {
+            var $this = $(this);
+            if ($(this).closest(".wf-label-li").attr("labelId")) {//删除已有标签
+                Spinner.spin(jqueryMap.$container.get(0));
+                configMap.tagsModel.deleteTag({
+                    'user_id': AppConfig.userId,
+                    'tag_id': $(this).closest(".wf-label-li").attr("labelId")
+                }).done(function (result) {
+                    if (result.data) {
+                        stateMap.labelTagList = result.data;
+                    }
+                }).fail(function (result) {
+
+                }).always(function () {
+                    Spinner.stop();
+                });
+            }
+            $this.closest(".wf-label-li").remove();
+        };
+
+        progressData = function () {
+            Spinner.spin(jqueryMap.$container.get(0));
+            jqueryMap.$wf_lable_list = jqueryMap.$container.find('li');
+            var updateList = jqueryMap.$container.find("li[labeltype!='new']"),
+                newTagList = jqueryMap.$container.find("li[labeltype='new']");
+            resetTagDataList();
+            if (newTagList.length !== 0) {
+                newTagList.each(function () {
+                    var $this = $(this), value = $.trim($this.find('input').val());
+                    if (value !== '') {
+                        stateMap.tagDataList.new.push({
+                            name: value,
+                            color: "#fff"
+                        })
+                    }
+                })
+            }
+            updateList.each(function () {
+                var $this = $(this), value = $.trim($this.find('input').val()), id = $this.attr('labelid');
+                stateMap.labelTagList.forEach(function (item, index, array) {
+                    if (id == $.trim(item.id)) {
+                        if ($.trim(item.name) !== value) {
+                            stateMap.tagDataList.update.push({
+                                id: $.trim($this.attr('labelid')),
+                                name: value,
+                                color: "#fff"
+                            })
+                        }
+                    }
+                });
+            });
+        };
+        sendDataToBack = function () {
+            progressData();
+            var UserID = AppConfig.userId;
+            var updateTagsLength = stateMap.tagDataList.update.length,
+                newTagsLength = stateMap.tagDataList.new.length;
+            if (updateTagsLength == 0 && newTagsLength == 0) {
+                return $.Deferred().resolve();
+            }
+            function updateTag() {
+                if (updateTagsLength !== 0) {
+                    return configMap.tagsModel.editTag({user_id: UserID}, stateMap.tagDataList.update).fail(function () {
+                    })
+                } else {
+                    return true;
+                }
+            }
+
+            function addNewTag() {
+                if (newTagsLength !== 0) {
+                    return configMap.tagsModel.addTag({user_id: UserID}, stateMap.tagDataList.new).fail(function () {
+
+                    });
+                } else {
+                    return true;
+                }
+            }
+
+            return $.when(addNewTag(), updateTag()).then(function () {
+            })
+        };
+
+        //---------Exports---------
+        beop.view = beop.view || {};
+        beop.view.menu_tag_list = {
+            configModel: configModel,
+            init: init
+        };
+    }(beop || (beop = {}))
+);

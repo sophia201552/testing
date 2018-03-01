@@ -1,0 +1,1886 @@
+    *::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px #3C4450;
+        background-color: #353C47;
+    }
+    
+    *::-webkit-scrollbar-thumb {
+        background-color: #3C4450;
+    }
+    
+    *::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background-color: #353C47;
+    }
+    
+    #mainContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    
+    #sideNavComponent {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200px;
+        height: 100%;
+        background: #23283f;
+        color: white;
+        transition: all 0.3s;
+        z-index: 10000000;
+    }
+    
+    #sideNavComponent .wrapMainIndex {
+        height: calc(100% - 116px);
+    }
+    
+    #indexMain {
+        position: absolute;
+        left: 200px;
+        width: calc(100% - 200px);
+        height: 100%;
+        transition: all 0.3s;
+    }
+    
+    #indexMain[data-module="FacReportWrapScreen"] {
+        /*height:auto;*/
+    }
+    
+    .indexContent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    #sideNavComponent.navOff {
+        /*left:-200px;*/
+        width: 50px;
+    }
+    
+    #indexMain.navOff {
+        left: 50px;
+        width: calc(100% - 50px);
+    }
+    
+    #sideNavComponent .wrapBrand {
+        height: 50px;
+        position: relative;
+        background-color: #181d33;
+    }
+    
+    #sideNavComponent.isInProject .btnNavExpand {
+        display: block;
+    }
+    
+    #sideNavComponent .btnNavExpand {
+        font-size: 38px;
+        height: 50px;
+        cursor: pointer;
+        color: #a9c6ff;
+        top: 0.1px;
+        position: absolute;
+        right: 15px;
+        transition: all 0.3s;
+        display: none;
+    }
+    
+    #sideNavComponent.navOff .imgBrand {
+        display: none;
+    }
+    /*#sideNavComponent .wrapNavModule[data-block="base"] .navItem{
+        padding: 7px 10px 7px 16px;
+    }*/
+    
+    #sideNavComponent .wrapNavModule[data-block="project"] .navItem .content {
+        padding: 7px 10px 7px 12px;
+    }
+    /* #sideNavComponent.navOff .btnNavExpand::before {
+        content: "\e88f";
+    } */
+    
+    #sideNavComponent.navOff .btnNavExpand {
+        /*right: -34px;
+        top: 05px;
+        background: rgba(0,0,0,0.5);
+        padding: 5px;
+        color: white;*/
+        /* right: 0;
+        top: 0;
+        font-size: 54px;
+        text-align: center;
+        height: 100% */
+        /* right: 11px;
+        top: 19px;
+        font-size: 26px;
+        text-align: center; 
+        right: 15px;
+        top: 13px;*/
+        font-size: 38px;
+        text-align: center;
+        left: 6px;
+    }
+    
+    #sideNavComponent .imgBrand {
+        display: inline-block;
+        /* height: 70px; */
+        /*padding: 10px;*/
+        cursor: pointer;
+        /*padding-left: 17px;
+        padding-top: 13px;*/
+        height: 100%;
+    }
+    
+    #sideNavComponent .wrapNavModule {
+        /*border-top: 2px solid #4C63A7;*/
+        padding: 20px 15px;
+        /* overflow:hidden;*/
+        padding-bottom: 0;
+    }
+    
+    #sideNavComponent .wrapNavModule[data-block="project"]::before,
+    #sideNavComponent .wrapNavModule[data-block="base"]::before {
+        content: '';
+        width: 200px;
+        height: 1px;
+        background: rgb(24, 29, 51);
+        display: block;
+        position: relative;
+        left: -15px;
+        top: -3px;
+    }
+    
+    #sideNavComponent .wrapNavModule[data-block="base"]::before {
+        top: -12px;
+    }
+    
+    #sideNavComponent .navModule {
+        margin: 0 -15px;
+        /*        overflow-y: auto;
+        overflow-x: hidden;*/
+    }
+    
+    #sideNavComponent .navItem {
+        /* border-bottom: 1px solid rgba(24,29,51,0.3); */
+    }
+    
+    #sideNavComponent #navProjectConfig .navItem {
+        border-bottom: 0px!important;
+    }
+    
+    #sideNavComponent .navItem:last-child {
+        border-bottom: 0px;
+    }
+    
+    #sideNavComponent .navItem>.subNavList>.navItem {
+        border-bottom: 1px solid rgba(77, 86, 127, 0.1);
+    }
+    
+    #sideNavComponent .navItem>.subNavList>.navItem:last-child {
+        border-bottom: 0px;
+    }
+    
+    #sideNavComponent #navProject {
+        /*height: calc(100% - 69px);*/
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    
+    #sideNavComponent #navMenu {
+        height: calc(100% - 20px);
+        border-top: solid 1px #4d63a7;
+    }
+    
+    #sideNavComponent .navLabel label {
+        margin-bottom: 0;
+        /* font-weight: normal; */
+        margin-left: 3px;
+        color: #10b8f9;
+    }
+    
+    #sideNavComponent .navLabel .icon,
+    #sideNavComponent .navLabelHome .icon {
+        /*font-size: 13px;
+        top: -1px;
+        position: relative;
+        display:none;*/
+        font-size: 32px;
+        top: -10px;
+        left: -7px;
+        position: absolute;
+        display: none;
+    }
+    
+    #sideNavComponent.navOff .navLabel .icon {
+        display: block;
+    }
+    
+    #sideNavComponent.navOff .navLabel label {
+        display: none;
+    }
+    
+    #sideNavComponent.navOff .navLabel .project,
+    #sideNavComponent.navOff .navLabelHome .iconName,#sideNavComponent.navOff .wrapNavModule[data-block="menu"] .navLabel .icon.projectInfo {
+        display: none;
+    }
+    
+    #sideNavComponent.navOff #wrapFunction .navLabel label {
+        display: inline-block;
+    }
+    
+    #sideNavComponent .navLabel .navModuleExpandIcon {
+        transition: all 0.3s;
+        top: 3px;
+        float: right;
+        display: none;
+    }
+    
+    #sideNavComponent .navLabel {
+        margin-bottom: 10px;
+        font-size: 15px;
+        height: 21px;
+        position: relative;
+    }
+    
+    #sideNavComponent .navLabelHome {
+        margin-bottom: 5px;
+        position: relative;
+        height: 28px;
+    }
+    
+    #sideNavComponent .navItem {
+        color: #a9c6ff;
+        font-size: 12px;
+        /*padding: 7px 10px 7px 30px;*/
+        border-left: 3px solid transparent;
+        cursor: pointer;
+        position: relative;
+        border-left: 2px solid transparent;
+    }
+    
+    #sideNavComponent .navItem>.content:hover {
+        background: #333955!important;
+        color: #fff!important;
+    }
+    /* #sideNavComponent .navItem[data-level="0"].isParent:hover {
+        background: #333955;
+        color: #fff!important;
+    } */
+    /* #sideNavComponent .navItem.selected, */
+    
+    #sideNavComponent .navItem.active {
+        /*border-left: 3px solid #9DB8EF;*/
+        background: #333955;
+        color: #fedb5d;
+    }
+    
+    #sideNavComponent .navItem[data-level="0"].active {
+        border-left: 2px solid #fedb5d;
+    }
+    
+    #sideNavComponent .navItem>.subNavList {
+        display: none;
+    }
+    
+    #sideNavComponent .navItem.expand>.subNavList {
+        display: block;
+    }
+    
+    #sideNavComponent .navItem[data-level="0"]>.subNavList {
+        position: absolute;
+        left: 100%;
+        /*width: 100%;*/
+        width: 200px;
+        top: 0;
+        background: #23283f;
+        border-radius: 0!important;
+        /* max-height: 165px; */
+        overflow-y: auto;
+    }
+    
+    #sideNavComponent .navItem.sub .subNavList {
+        /* padding-left: 15px; */
+    }
+    
+    #sideNavComponent .navItem[data-level="2"] {
+        /* margin-left: -15px;
+        padding-left: 15px; */
+    }
+    
+    #sideNavComponent .navItem[data-level="3"] {
+        /* margin-left: -30px;
+        padding-left: 30px; */
+    }
+    
+    #sideNavComponent .navItem[data-level="1"]>.subNavList {
+        padding-left: 0px;
+        text-indent: 10px;
+        background: #181d33;
+    }
+    
+    #sideNavComponent .navItem[data-level="2"]>.subNavList {
+        padding-left: 0px;
+        text-indent: 20px;
+    }
+    
+    #sideNavComponent .subNavList .navItem {
+        border-left: 0px solid transparent;
+    }
+    
+    #sideNavComponent .navItem.isParent.expand>.subNavList>.navItem.sub.isParent.expand[data-level="1"]>.content {
+        background: #23283f;
+    }
+    
+    #sideNavComponent .navItem.isParent.expand>.subNavList>.navItem.sub.isParent.expand[data-level="2"]>.content {
+        background: #181d33;
+    }
+    
+    #sideNavComponent .navItem.isParent.expand[data-level="0"]>.content>.menu-arrow {
+        transform: rotate(270deg);
+    }
+    /* #sideNavComponent .navItem.selected::before{
+    #sideNavComponent .navItem.active::before {
+        content: '';
+        background: #fedb5d;
+        height: 5px;
+        width: 5px;
+        border-radius: 20px;
+        box-shadow: 0 0 3px 1px #fedb5d;
+        display: inline-block;
+        position: absolute;
+        left: 15px;
+        top: 13px;
+    } */
+    
+    #sideNavComponent .navItem.online::before {
+        content: '';
+        background: #a9c6ff;
+        height: 6px;
+        width: 6px;
+        border-radius: 20px;
+        box-shadow: 0 0 3px 1px #777;
+        display: inline-block;
+        position: absolute;
+        left: 15px;
+        top: 13px;
+        z-index: 11;
+    }
+    
+    #sideNavComponent .navItem.offline {
+        color: rgba(153, 153, 153, 0.5)
+    }
+    
+    #sideNavComponent .recentProjectSpan {
+        display: inline-block;
+        padding-left: 36px;
+        font-size: 12px;
+        /* color: #999; */
+    }
+    
+    #sideNavComponent .recentProjectDiv .iconfont {
+        position: absolute;
+        font-size: 20px;
+        line-height: 17px;
+        left: 10px;
+        top: -1px;
+    }
+    
+    #sideNavComponent .recentProjectDiv {
+        color: white;
+        font-size: 12px;
+        /* padding: 7px 10px 7px 35px; */
+        cursor: pointer;
+        position: relative;
+        border-left: 2px solid transparent;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    
+    #sideNavComponent #rencentContaier {
+        margin-bottom: 10px;
+    }
+    
+    #sideNavComponent .navItem.offline::before {
+        content: '';
+        background: rgba(153, 153, 153, 0.5);
+        height: 6px;
+        width: 6px;
+        border-radius: 20px;
+        box-shadow: 0 0 3px 1px rgba(153, 153, 153, 0.5);
+        display: inline-block;
+        position: absolute;
+        left: 15px;
+        top: 13px;
+        z-index: 11;
+    }
+    
+    #sideNavComponent .navItem .content {
+        position: relative;
+        padding: 7px 10px 7px 16px;
+        height: 32px;
+        /* border-bottom: 1px solid rgba(24,29,51,0.3); */
+    }
+    
+    #sideNavComponent .iconNational {
+        /* position: absolute;
+        right: 10px;        
+        top: 9px; */
+        top: -1px;
+        opacity: 0.4;
+        font-size: 12px;
+        transform: rotate(270deg);
+        transition: transform 0.2s;
+    }
+    
+    #sideNavComponent .iconNational.isShowed {
+        transform: rotate(180deg);
+    }
+    
+    #sideNavComponent .navItem .menu-arrow {
+        opacity: 0.4;
+        position: absolute;
+        right: 15px;
+        top: 9px;
+        transform: rotate(180deg);
+        transition: transform 0.2s;
+        font-size: 12px;
+    }
+    
+    #sideNavComponent .navItem.sub.expand>.content>.menu-arrow {
+        transform: rotate(270deg)!important;
+    }
+    
+    #sideNavComponent .navItem[data-level="2"]>.content>.menu-arrow {
+        right: 5px;
+    }
+    
+    #sideNavComponent .navItem.sub.expand>.subNavList>.content {
+        padding-left: 0px;
+    }
+    
+    #sideNavComponent .navItem.expand>.subNavList>.navItem[data-level="1"]>.content {
+        border-bottom: 1px solid rgba(24, 29, 51, 0.3);
+    }
+    
+    #sideNavComponent .navItem.expand>.subNavList>.navItem[data-level="2"].expand>.content {
+        border-bottom: 1px solid rgba(77, 86, 127, 0.1);
+        color: #10b8f9;
+    }
+    /* #sideNavComponent .navItem.expand>.content>.menu-arrow{
+        transform: rotate(90deg);
+    } */
+    
+    #sideNavComponent .navItem .subNavList .subNavList .expand .content>.menu-arrow {
+        transform: rotate(90deg);
+        width: 10px;
+        height: 10px;
+        top: 21px;
+        right: 17px;
+    }
+    
+    #sideNavComponent .navItem[needproject] {
+        display: none;
+    }
+    
+    #sideNavComponent.isInProject .navItem[needproject] {
+        display: block;
+    }
+    
+    #sideNavComponent .projectSearch {
+        position: relative;
+        margin-bottom: 10px;
+    }
+    
+    #sideNavComponent .projectSearch .iptProjectSearch {
+        background: transparent;
+        border: 1px solid #4d567f;
+        border-radius: 5px;
+        width: 100%;
+        outline: none;
+        padding: 3px 10px;
+        transition: all 0.3s;
+        height: 25px;
+        font-size: 12px;
+        border: none;
+        background: rgba(24, 29, 51, 0.45);
+    }
+    
+    #sideNavComponent .projectSearch .iptProjectSearch:focus {
+        border: 1px solid #4d63a7;
+    }
+    
+    #sideNavComponent .projectSearch .glyphicon-search {
+        position: absolute;
+        right: 10px;
+        top: 6px;
+        color: #4d567f;
+        font-size: 12px;
+        opacity: 0.5;
+    }
+    
+    #sideNavComponent .wrapUserProfile {
+        display: block;
+        height: 64px;
+        padding: 15px;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        color: #a9c6ff;
+        border-top: 1px solid #2a2f49;
+        transition: padding 0.3s;
+    }
+    
+    #sideNavComponent .wrapUserProfile .portrait {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 0 1px 2px #4d63a7;
+    }
+    
+    #sideNavComponent .wrapUserProfile .portrait img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    #sideNavComponent .wrapUserProfile .name {
+        position: relative;
+        margin-left: 6px;
+        top: -12px;
+        display: inline-block;
+        width: 90px;
+        font-size: 12px;
+    }
+    
+    #sideNavComponent .wrapUserProfile .projectStatus {
+        position: relative;
+        margin-left: 6px;
+        top: -32px;
+        display: inline-block;
+        left: 132px;
+        color: #ff8181;
+        font-size: 12px;
+        display: none;
+    }
+    
+    #sideNavComponent .navLabel .project,
+    #sideNavComponent .navLabelHome .iconName {
+        position: relative;
+        display: inline-block;
+        width: calc(100% - 25px);
+        margin-left: 25px;
+        color: #10b8f9;
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    #sideNavComponent .wrapUserProfile .project:before,
+    #sideNavComponent .wrapUserProfile .name:before {
+        /* content: '';
+        background: #5DC759;
+        height: 5px;
+        width: 5px;
+        border-radius: 20px;
+        box-shadow: 0 0 3px 1px #5DC759;
+        display: inline-block;
+        position: absolute;
+        top: 7px;
+        left: -12px; */
+    }
+    
+    #sideNavComponent .wrapUserProfile .project {
+        display: none;
+    }
+    
+    #sideNavComponent .wrapUserProfile .alarmCount {
+        display: none;
+        position: absolute;
+        background: #6699ff;
+        border-radius: 20px;
+        padding: 0 3px;
+        height: 16px;
+        min-width: 16px;
+        left: 160px;
+        top: 10px;
+        color: #ffffff;
+        cursor: pointer;
+        text-align: center;
+        font-size: 12px;
+    }
+    
+    #sideNavComponent .wrapUserProfile .alarmCount.showAlarm {
+        display: block;
+    }
+    
+    #sideNavComponent.isInProject .wrapUserProfile .alarmCount.showAlarm {
+        display: none;
+    }
+    
+    #sideNavComponent.isInProject .wrapUserProfile .icon {
+        display: none;
+    }
+    
+    #sideNavComponent.isInProject .wrapUserProfile .projectStatus {
+        display: none;
+    }
+    
+    #sideNavComponent.isInProject .wrapUserProfile .project {
+        display: inline;
+    }
+    
+    #sideNavComponent.isInProject .wrapUserProfile.showRed {
+        background: rgba(255, 129, 129, 0.05);
+    }
+    
+    #sideNavComponent.isInProject .projectStatus.showText {
+        display: inline-block;
+    }
+    
+    #sideNavComponent .wrapNavModule[data-block="menu"] {
+        /*height: calc(100% - 130px);*/
+        height: 100%;
+        display: none;
+        /* border-top: 1px solid #4d63a7; */
+    }
+    
+    #sideNavComponent .wrapNavModule[data-block="project"] {
+        /* border-top: 1px solid #4d63a7; */
+        /* border-top:1px solid rgba(24,29,51,0.3); */
+    }
+    
+    #sideNavComponent .wrapLine {
+        position: relative;
+        width: 100%;
+        height: 1px;
+        background: rgba(24, 29, 51, 0.3);
+    }
+    
+    #sideNavComponent .wrapNavModule[data-block="base"] {
+        /* border-top: 1px solid #4d63a7; */
+    }
+    
+    #sideNavComponent.isInProject .wrapNavModule[data-block="menu"] {
+        display: block;
+    }
+    
+    #sideNavComponent.isInProject .wrapNavModule[data-block="project"] {
+        display: none;
+    }
+    
+    #sideNavComponent.isInProject .wrapNavModule[data-block="base"] {
+        display: none;
+    }
+    
+    #sideNavComponent .wrapNavModule[data-block="project"] {
+        height: calc(100% - 273px);
+        padding-top: 10px;
+    }
+    
+    #sideNavComponent .wrapNavModule[data-block="project"] .navLabel {
+        margin-top: 10px;
+    }
+    
+    #sideNavComponent .navItem .icon {
+        /* display: none; */
+        padding-right: 10px;
+        height: 100%;
+        width: 22px;
+        display: inline-block;
+        top: 0;
+        font-size: 14px;
+        line-height: 32px;
+        position: absolute;
+    }
+    
+    #sideNavComponent .navItem .icon.fromFont.glyphicon {
+        font-size: 12px;
+        left: 17px;
+    }
+    
+    #sideNavComponent .navItem.sub .icon {
+        display: none;
+    }
+    
+    #sideNavComponent.navOff .navItem .icon {
+        float: none;
+        font-size: 14px;
+    }
+    /*#sideNavComponent.navOff .navItem {
+        padding: 7px 15px 7px 13px
+    }*/
+    
+    #sideNavComponent.navOff .navItem[data-level="0"]>.content .text,
+    #sideNavComponent.navOff .navItem[data-level="0"]>.content .menu-arrow {
+        display: none;
+    }
+    
+    #sideNavComponent.navOff #wrapFunction .navItem .text {
+        display: inline-block
+    }
+    
+    #sideNavComponent.navOff .wrapUserProfile .projectStatus,
+    #sideNavComponent.navOff .wrapUserProfile .name {
+        display: none;
+    }
+    
+    #sideNavComponent.navOff .wrapUserProfile {
+        padding: 15px 9px;
+    }
+    
+    #sideNavComponent.navOff .navItem::before {
+        display: none;
+    }
+    
+    #sideNavComponent .tooltip {
+        /* display: none !important; */
+    }
+    
+    #sideNavComponent.navOff .tooltip {
+        display: block !important;
+        white-space: nowrap;
+    }
+    
+    #sideNavComponent.navOff .subNavList .tooltip {
+        display: none !important;
+    }
+    
+    #sideNavComponent .wrapNavModule[data-block="menu"] .navLabel .icon,
+    #sideNavComponent .wrapNavModule[data-block="menu"] .navLabelHome .icon {
+        display: block;
+        font-size: 18px;
+        top: -2px;
+        cursor: pointer;
+        transition: all 0.3s;
+        left: 0px;
+        color: #a9c6ff;
+    }
+    
+    .navLabelHome .iconName {
+        font-size: 20px;
+        vertical-align: middle;
+        top: 0.5px;
+    }
+    
+    #sideNavComponent.navOff .wrapNavModule[data-block="menu"] .navLabel .icon {
+        font-size: 20px;
+        top: -4px;
+        left: 0px;
+        position: absolute;
+        display: block;
+        color: #a9c6ff;
+    }
+    /* #sideNavComponent.navOff .wrapNavModule[data-block="menu"] .navLabel .icon:before {
+        content: "\e894";
+    } */
+    
+    #sideNavComponent .wrapNavModule[data-block="project"] .navItem .text {
+        width: calc(100% - 24px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    /*wrapFunction Begin  */
+    
+    #wrapFunction {
+        position: absolute;
+        left: 0;
+        width: 200px;
+        height: 100%;
+        background: #23283E;
+        color: white;
+        transition: height 3s ease-out;
+        z-index: 13;
+        overflow: hidden;
+        display: none;
+    }
+    
+    #wrapFunction .navModule::before {
+        display: table;
+        content: '';
+    }
+    
+    #wrapFunction .navModule::after {
+        display: table;
+        content: '';
+        clear: both;
+    }
+    
+    #wrapFunction.focus {
+        display: block;
+    }
+    
+    .wrapFunction {
+        top: 100%;
+        animation: mymove 0s;
+        animation-fill-mode: forwards;
+    }
+    
+    .wrapFunctionNew {
+        top: 0% !important;
+        /* animation: mymoveNew 1s !important;
+        animation-fill-mode: forwards !important; */
+    }
+    
+    @keyframes mymoveNew {
+        /* from {top:0%;left: 0;opacity: 1}
+            to {top:100%;left: 0;opacity: 0.9;height: 0;} */
+        from {
+            top: 0%;
+            left: 0px;
+            opacity: 1
+        }
+        to {
+            top: 0%;
+            left: -200px;
+            opacity: 1;
+        }
+    }
+    
+    @keyframes mymove {
+        /* 0% {top:100%;left: 0px;opacity: 0;height: 0;}
+            100%{top:0;left: 0;opacity: 1;}  */
+        from {
+            top: 0%;
+            left: -200px;
+            opacity: 0.9;
+        }
+        to {
+            top: 0%;
+            left: 0;
+            opacity: 1;
+        }
+    }
+    
+    #wrapFunction .wrapuser {
+        height: 150px;
+        padding: 10px;
+        width: 100%;
+    }
+    
+    #wrapFunction .wrapuserImg {
+        width: 64px;
+        height: 64px;
+        overflow: hidden;
+        border-radius: 44px;
+        box-shadow: 0 0 1px 2px #4d63a7;
+        margin: 20px auto 10px
+    }
+    
+    #wrapFunction .wrapImg {
+        width: 100%;
+        height: 100%;
+    }
+    
+    #wrapFunction .wrapuserName {
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    #wrapFunction .wrapuserName .name {
+        color: #a9c6ff;
+    }
+    
+    #wrapFunction .wrapuserName .iconfont {
+        margin-left: 10px;
+        color: #7984b4;
+        font-size: 14px;
+        position: relative;
+        cursor: pointer;
+    }
+    
+    #exitFunction {
+        position: absolute;
+        top: 9px;
+        right: 11px;
+        font-size: 20px;
+        color: #7984b4;
+        cursor: pointer;
+    }
+    
+    #wrapFunction .wrapNavModule {
+        border-top: 0;
+        /* border-bottom: 1px solid rgb(73, 91, 154); */
+        /*padding-bottom: 10px;*/
+        width: 100%;
+    }
+    /*#wrapFunction .navItem {
+        color: #a9c6ff;
+        font-size: 12px;
+        padding: 7px 20px;
+        border-left: 3px solid transparent;
+        cursor: pointer;
+        position: relative;
+    }*/
+    /*#wrapFunction .navItem:hover {
+        background: #333955;
+        color: #a9c6ff
+    }*/
+    /* #wrapFunction .navItem.selected, */
+    /*#wrapFunction .navItem.active {
+        border-left: 3px solid #fedb5d;
+        background: #333955;
+        color: #fedb5d;
+    }*/
+    /* #wrapFunction .navItem.selected::before{
+    #wrapFunction .navItem.active::before {
+        content: '';
+        background: none;
+        height: 0px;
+        width: 0px;
+        border-radius: 20px;
+        box-shadow: none;
+        display: inline-block;
+        position: absolute;
+        left: 15px;
+        top: 13px;
+    } */
+    /*#wrapFunction .text {
+        margin-left: 10px;
+    }
+
+    #wrapFunction .navIcon {
+        font-size: 14px;
+        line-height: 14px;
+    }*/
+    
+    #wrapFunction .functionBottomWrap {
+        height: calc(100% - 530px);
+        overflow: hidden;
+        padding-top: 25px;
+    }
+    
+    #wrapFunction .toolsWrap {
+        margin: 15px 15px 5px;
+        /*width: 170px;*/
+        height: 30px;
+    }
+    
+    #wrapFunction .toolsWrap .toolBtnDisabled,
+    #wrapFunction .toolsWrap .toolBtnDisabled:hover {
+        background: rgb(57, 63, 95) !important;
+        color: #7984b4 !important;
+        cursor: not-allowed !important;
+    }
+    
+    #wrapFunction .toolsWrap .toolBtn {
+        width: 50%;
+        height: 24px;
+        line-height: 24px;
+        display: inline-block;
+        background: rgb(57, 63, 95);
+        text-align: center;
+        float: left;
+        color: #7984b4;
+        font-size: 12px;
+        cursor: pointer;
+        position: relative;
+    }
+    
+    #wrapFunction .toolsWrap .toolBtn.actived {
+        color: white;
+        background: rgb(73, 81, 117);
+    }
+    
+    #wrapFunction .toolsWrap .toolBtn:hover {
+        color: white;
+        background: rgb(73, 81, 117);
+    }
+    
+    #wrapFunction .toolsWrap .toolBtn:first-child {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+    
+    #wrapFunction .toolsWrap .toolBtn:last-child {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+    
+    #wrapFunction .messageTag {
+        display: inline-block;
+        padding: 4px 5px;
+        background: rgb(102, 155, 252);
+        line-height: 11px;
+        border-radius: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 17px;
+    }
+    
+    #wrapFunction .messageTag.red {
+        background: rgb(241, 108, 89);
+    }
+    
+    #wrapFunction .messageText {
+        color: #7984b4;
+        display: inline-block;
+        padding-left: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /*width: 135px;*/
+        width: calc(100% - 40px);
+    }
+    
+    #wrapFunction .messageText.red {
+        color: rgb(241, 108, 89)
+    }
+    
+    #wrapFunction .messageWrap {
+        height: calc(100% - 50px);
+        overflow-y: auto;
+        position: relative;
+    }
+    
+    #wrapFunction .messageRow {
+        font-size: 12px;
+        padding: 3px 0 3px 15px;
+        cursor: pointer;
+    }
+    
+    #wrapFunction .statusTitle {
+        background-color: rgba(51, 57, 85, 1);
+        height: 30px;
+        width: calc(100% - 20px);
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        padding: 0 10px;
+        margin: 0 10px;
+        color: #f16c5a;
+        text-align: left;
+        font-size: 10px;
+        line-height: 30px;
+        font-weight: lighter;
+    }
+    
+    #wrapFunction .projectTimeRow {
+        color: #ffffff;
+        font-size: 10px;
+        margin-left: 15px;
+        margin-left: 15px;
+        margin: 5px 0 10px 15px;
+    }
+    
+    #wrapFunction .statusRow {
+        background: rgba(51, 57, 85, 0.4);
+        margin: 0 10px;
+        padding: 0 5px;
+        width: calc(100% - 20px);
+        height: 30px;
+        line-height: 30px;
+        font-size: 10px;
+    }
+    
+    #wrapFunction .statusRow:last-child {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    
+    #wrapFunction .statusRowWrap {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 10px;
+        border-bottom: 1px solid rgba(35, 40, 63, 0.9);
+        padding-left: 10px;
+        color: #97abff;
+        cursor: default;
+    }
+    
+    #wrapFunction .statusRowTime {
+        display: inline-block;
+        width: 44%;
+        height: 30px;
+        line-height: 30px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* padding-left: 5px; */
+    }
+    /*#wrapFunction .navItem .text{
+        margin-left: 5px!important;
+    }*/
+    
+    #wrapFunction .statusRowName {
+        display: inline-block;
+        width: 50%;
+        height: 30px;
+        line-height: 30px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    #wrapFunction .statusRowWrap::before {
+        content: '';
+        background: #f16c5a;
+        height: 5px;
+        width: 5px;
+        border-radius: 20px;
+        box-shadow: 0 0 3px 1px #f16c5a;
+        display: inline-block;
+        position: relative;
+        left: -5px;
+        top: -13px;
+        /* top: 13px;  */
+    }
+    
+    #wrapFunction .spinnerMask {
+        background: transparent;
+    }
+    
+    #sideNavComponent .navItem .dropdown-menu {
+        padding: 0;
+        margin: 0;
+        background: #23283E;
+        border-radius: 0!important;
+    }
+    
+    #sideNavComponent .navItem .text {
+        display: inline-block;
+        width: calc(100% - 50px);
+        white-space: nowrap;
+        line-height: 18px;
+        /*margin-left: auto;*/
+        vertical-align: bottom;
+        height: auto;
+        padding-top: 0;
+        padding-left: 0;
+        background-color: transparent;
+        border: none;
+        margin-left: 24px;
+    }
+    
+    #sideNavComponent .navItem.sub .text {
+        margin-left: 0;
+    }
+    
+    #sideNavComponent .navItem .arrow.rot,
+    #sideNavComponent .navItem .menu-arrow.rot {
+        transform: rotate(90deg);
+    }
+    
+    #sideNavComponent .navItem .img-svg {
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+        vertical-align: middle;
+        border-radius: 4px;
+        position: relative;
+        top: -2px;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    #sideNavComponent .navItem .icon-size {
+        color: #eeeeee;
+    }
+    
+    #sideNavComponent .navItem .icon-wrap {
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+        font-size: 13px;
+        line-height: 1.4;
+        overflow: hidden;
+        display: inline-block;
+        position: relative;
+        top: 4px;
+    }
+    
+    #sideNavComponent .dropdown-menu-right {
+        left: 197px;
+        top: 0px;
+        min-width: 180px!important;
+    }
+    
+    #sideNavComponent.navOff .dropdown-menu-right {
+        left: 47px;
+        top: 0px;
+        min-width: 180px!important;
+    }
+    
+    #sideNavComponent.navOff .dropdown-menu-right .sub .text {
+        display: block;
+    }
+    
+    #sideNavComponent .navItem ul.dropdownBox {
+        list-style: none;
+        display: none;
+        padding-left: 0;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #sideNavComponent .navItem ul.dropdownBox .navItem {
+        padding-left: 10px;
+    }
+    
+    #sideNavComponent .navItem .dropdown-submenu {
+        padding: 7px 30px!important;
+    }
+    
+    #sideNavComponent.navOff .navItem .droplist {
+        /*        width: min-content;
+        height: max-content;*/
+        height: 21px;
+    }
+    
+    #sideNavComponent .navItem span.glyphicon.glyphicon-chevron-right.arrow {
+        right: 20px;
+        top: 11px;
+        /* display: inline-block; */
+        position: absolute;
+    }
+    
+    #sideNavComponent.navWide #wrapFunction {
+        width: 300px;
+    }
+    
+    #sideNavComponent.navWide #wrapFunction .navItem {
+        width: 50%;
+        float: left;
+        border-bottom: 0px;
+    }
+    /*wrapFunction End  */
+    
+    table,
+    caption {
+        font-size: inherit;
+        font-weight: inherit;
+        font-style: inherit;
+        font-variant: inherit;
+        color: inherit;
+    }
+    
+    .wrapNavModule[data-block="function"]::before {
+        content: '';
+        background: #181d33;
+        display: block;
+        width: 300px;
+        height: 1px;
+        position: relative;
+        left: -15px;
+        top: -10px;
+    }
+    
+    .wrapNavModule[data-block="project-function"]::before {
+        content: '';
+        background: #181d33;
+        display: block;
+        width: 300px;
+        height: 1px;
+        position: relative;
+        left: -15px;
+        top: -15px;
+    }
+    
+    #wrapFunction .functionBottomWrap::before {
+        content: '';
+        background: #181d33;
+        display: block;
+        width: 300px;
+        height: 1px;
+        position: relative;
+        left: 0px;
+        top: -2px;
+    }
+    /* 导航动画开始 */
+    
+    .ciycleDiv {
+        position: absolute;
+        bottom: 0px;
+        background: rgb(253, 253, 253);
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        /* top: 100% !important; */
+        animation: ciycle 0.6s !important;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards !important;
+    }
+    
+    @keyframes ciycle {
+        0% {
+            left: 100px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            opacity: 0.8;
+        }
+        100% {
+            bottom: -150px;
+            width: 1200px;
+            height: 1200px;
+            left: -500px;
+            border-radius: 1200px;
+            opacity: 0;
+            display: none;
+        }
+    }
+    
+    .wrapuser {
+        opacity: 0;
+        position: relative;
+        bottom: 0;
+        animation: wrapuser 0.4s;
+        animation-delay: 0.4s;
+        animation-fill-mode: forwards;
+    }
+    
+    @keyframes wrapuser {
+        0% {
+            transform: translateY(100px);
+            opacity: 0.5;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    .wrapNavModule[data-block="function"] {
+        opacity: 0;
+        position: relative;
+        /* bottom: 0; */
+        animation: wrapFunction 0.4s;
+        animation-delay: 0.5s;
+        animation-fill-mode: forwards;
+    }
+    
+    @keyframes wrapFunction {
+        0% {
+            transform: translateY(100px);
+            opacity: 0.5;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    .wrapNavModule[data-block="project-function"] {
+        opacity: 0;
+        position: relative;
+        /* bottom: 0; */
+        animation: wrapProjectFunction 0.4s;
+        animation-delay: 0.6s;
+        animation-fill-mode: forwards;
+        padding-top: 35px!important;
+    }
+    
+    @keyframes wrapProjectFunction {
+        0% {
+            transform: translateY(100px);
+            opacity: 0.5;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    .functionBottomWrap {
+        opacity: 0;
+        position: relative;
+        /* bottom: 0; */
+        animation: functionBottomWrap 0.4s;
+        animation-delay: 0.7s;
+        animation-fill-mode: forwards;
+    }
+    
+    @keyframes functionBottomWrap {
+        0% {
+            transform: translateY(100px);
+            opacity: 0.5;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    .ciycleDivNew {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background: rgb(253, 253, 253);
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        /* top: 100% !important; */
+        animation: ciycleDivNew 0.6s !important;
+        animation-fill-mode: forwards !important;
+    }
+    
+    @keyframes ciycleDivNew {
+        0% {
+            top: 0px;
+            right: 0px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            opacity: 0.8;
+        }
+        100% {
+            top: -150px;
+            width: 1000px;
+            height: 1000px;
+            right: -400px;
+            border-radius: 1000px;
+            opacity: 0;
+            display: none;
+        }
+    }
+    /* 导航动画结束 */
+    
+    #sideNavComponent .divNational {
+        margin-bottom: 5px;
+    }
+    
+    #sideNavComponent .divNational::before {
+        content: '';
+        width: 200px;
+        height: 1px;
+        background: rgba(24, 29, 51, 0.5);
+        display: block;
+        position: relative;
+        top: -3px;
+    }
+    
+    #sideNavComponent .nationalInfo {
+        color: white;
+        font-size: 12px;
+        padding: 7px 10px 7px 35px;
+        cursor: pointer;
+        position: relative;
+        border-left: 2px solid transparent;
+        margin-bottom: 5px;
+    }
+    
+    #sideNavComponent .nationalInfo .nationalDownBtn {
+        position: absolute;
+        top: 4px;
+        left: 135px;
+        padding: 2px 5px;
+        /* background: #171C30; */
+        border-radius: 8px;
+        min-width: 50px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    #sideNavComponent .flag {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        left: 10px;
+        top: 6px;
+    }
+    
+    #sideNavComponent .name {
+        line-height: 16px;
+        display: inline-block;
+    }
+    
+    #sideNavComponent .number {
+        /*         background: #171C30;
+        border-radius: 8px;         
+        display: inline-block;
+        position: absolute;
+        right: 30px;*/
+        line-height: 12px;
+        padding: 2px 5px;
+    }
+    
+    .map-marker {
+        width: 16px;
+        height: 16px;
+        background-color: #FE7727;
+        border-radius: 8px;
+        border: 0px solid #ebebeb;
+        border-width: 2px;
+        box-shadow: 1px 1px 2px #555;
+        cursor: pointer;
+    }
+    
+    .map-marker.Offline {
+        background-color: #555;
+    }
+    
+    .map-marker.Online {
+        background-color: #5cb85c;
+    }
+    
+    .map-marker:hover {
+        transform: scale(1.2);
+    }
+    
+    .gm-style .gm-style-iw {
+        color: #000 !important;
+    }
+    
+    .anchorBL {
+        display: none;
+    }
+    
+    .BMarker {
+        width: 150px;
+        height: 100px;
+        background-color: #fff;
+        position: relative;
+        border: 2px solid #000;
+    }
+    
+    #BMarker:before,
+    #BMarker:after {
+        border: solid transparent;
+        content: ' ';
+        height: 0px;
+        width: 0px;
+        left: 100%;
+        position: absolute;
+    }
+    
+    #BMarker:before {
+        border-width: 12px;
+        border-left-color: #000;
+        top: calc(50% - 9px);
+    }
+    
+    #BMarker:after {
+        top: calc(50% - 7px);
+        border-width: 10px;
+        border-left-color: #fff;
+    }
+    .mapMarker{
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+    }
+    .iconOnline {
+        width: 15px;
+        height: 15px;
+        background-color: #fa55c2;
+        box-shadow: 0px 1px 6px 0 rgba(44, 24, 57, 0.3);
+        border: solid 2px #ffffff;
+        border-radius: 100%;
+    }
+    
+    .iconOffline {
+        width: 15px;
+        height: 15px;
+        background-color: #999999;
+        box-shadow: 0px 1px 6px 0 rgba(44, 24, 57, 0.3);
+        border: solid 2px #ffffff;
+        border-radius: 100%;
+    }
+    
+    .iconOnline:hover .radianCycle1,
+    .isIconClick .radianCycle1,
+    .iconOffline:hover .radianCycle1 {
+        width: 20px;
+        height: 20px;
+        padding: 5px;
+        background-color: rgba(250, 85, 194, 0.4);
+        border-radius: 100%;
+    }
+    
+    .iconOffline:hover .radianCycle1,
+    .isIconClick .iconOffline .radianCycle1 {
+        background-color: rgba(99, 99, 99, 0.4);
+    }
+    
+    .iconOnline:hover .radianCycle2,
+    .isIconClick .radianCycle2,
+    .iconOffline:hover .radianCycle2 {
+        width: 10px;
+        height: 10px;
+        background-color: #fa55c2;
+        border-radius: 100%;
+    }
+    
+    .iconOffline:hover .radianCycle2,
+    .isIconClick .iconOffline .radianCycle2 {
+        background-color: #999999;
+    }
+    
+    .iconOnline:hover,
+    .iconOffline:hover,
+    .isIconClick .iconOnline,
+    .isIconClick .iconOffline {
+        width: 30px;
+        height: 30px;
+        padding: 5px;
+        background-color: rgba(250, 85, 194, 0.2);
+        border: none;
+        transform: translate(-7px, -7px);
+        transition: all 0.2s linear;
+    }
+    
+    .iconOffline:hover,
+    .isIconClick .iconOffline {
+        background-color: rgba(99, 99, 99, 0.2);
+    }
+    
+    .BaiduInfoBox {
+        display: none;
+        position: absolute;
+        width: 150px;
+        height: 160px;
+        padding: 5px;
+        border-radius: 2px;
+        background-color: #ffffff;
+        box-shadow: 0px 4px 13px 0 rgba(47, 89, 156, 0.25);
+        cursor:pointer;
+        /* z-index: 1000!important; */
+        left: -170px;
+        top: -80px;
+    }
+    .isIconClick .BaiduInfoBox{
+        display: block;
+    }
+    .mapMarker:hover .BaiduInfoBox{
+        display: block;
+    }
+    .mapInfoWindow {
+        width: 140px;
+        height: 150px;
+        cursor:pointer;
+    }
+    .mapInfoWindow .mapImg img{
+        width: 100%;
+        height: 70px;
+    }
+    .BaiduInfoBox.isHide {
+        display: none;
+    }
+    
+    .BaiduInfoBox::after {
+        border: solid transparent;
+        content: ' ';
+        left: calc(100% - 4px);
+        top: calc(50% - 5px);
+        position: absolute;
+        height: 0;
+        width: 0;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #ffffff;
+        border-left: 10px solid transparent;
+        transform: rotate(90deg);
+        z-index: -10;
+    }
+    
+    .BaiduInfoBox .mapImg img {
+        width: 100%;
+        height: 70px;
+    }
+    
+    .projectNameWindow,
+    .projectTypeWindow,
+    .projectAreaWindow,
+    .projectPowerWindow {
+        color: #8993c1;
+        padding: 2px 0px!important;
+        font-size: 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .projectNameWindow {
+        margin-top: 10px;
+    }
+    
+    .projectNameWindow span:first-child,
+    .projectTypeWindow span:first-child,
+    .projectAreaWindow span:first-child,
+    .projectPowerWindow span:first-child {
+        color: #333333;
+    }
+    
+    .BaiduInfoBox .projectNameWindow .media {
+        color: #8993c1!important;
+    }
+    /* 集团导航 */
+    
+    #sideNavComponent .wrapNavModule[data-block="group"] {
+        padding-top: 10px!important;
+    }
+    
+    #sideNavComponent.navOff [data-block="group"],
+    #sideNavComponent.isInProject [data-block="group"] {
+        display: none;
+    }
+    
+    #sideNavComponent .selectGroupProject {
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        vertical-align: middle;
+        padding: 0 10px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 4px;
+        border: solid 1px #4b5277;
+        color: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        border-radius: 4px;
+        background-color: rgba(24, 29, 51, 0.45);
+    }
+    
+    #sideNavComponent #divSelectBox {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: 26px;
+        padding: 2px 0;
+        line-height: 26px;
+        font-size: 12px;
+        padding: 0 16px
+    }
+    
+    #sideNavComponent #divSelectBox .selectGroupProject::after {
+        content: "\e714";
+        font-family: "iconfont"!important;
+        position: absolute;
+        top: 2px;
+        right: 20px;
+        bottom: 0;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+    }
+    
+    #sideNavComponent #divSelectBox .selectGroupProject.isFold {
+        border: none;
+    }
+    
+    #sideNavComponent #divSelectBox .selectGroupProject.isFold::after {
+        transform: rotate(-90deg);
+        top: -1px;
+        right: 20px;
+    }
+    
+    #sideNavComponent .selectGroupList {
+        width: calc(100% - 32px);
+        display: none;
+        position: absolute;
+        z-index: 3;
+        margin-top: 2px;
+        border-radius: 4px;
+        background-color: #2e334d;
+        box-shadow: 0px 10px 16px 0 rgba(12, 16, 30, 0.5);
+    }
+    
+    #sideNavComponent .selectGroupList .groupListItem {
+        position: relative;
+        height: 30px;
+        color: rgba(255, 255, 255, 0.4);
+        ;
+        padding: 2px 16px;
+        cursor: pointer;
+    }
+    
+    #sideNavComponent .selectGroupList .groupListItem.isSelected {
+        color: #ffffff;
+    }
+    
+    #sideNavComponent .selectGroupList .groupListItem.isSelected::after {
+        content: "\e73c";
+        font-family: "iconfont"!important;
+        position: absolute;
+        top: 8px;
+        right: 15px;
+        bottom: 0;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    
+    #sideNavComponent .selectGroupList .groupListItem:hover {
+        background-color: #333955;
+        color: #ffffff;
+    }
+    #sideNavComponent .wrapNavModule[data-block="menu"] .navLabel .icon.projectInfo{
+        left: inherit;
+        right: 0;
+    }
+    /*modal样式*/
+    #projectInfoModal{
+        z-index: 10000001;
+    }
+    #projectInfoModal .modal-header {
+        border-bottom: none;
+    }
+    #projectInfoModal .modal-header .close{
+        margin-top: -10px;
+    }
+    #projectInfoModal .modal-body {
+        padding-top: 5px;
+    }
+    .mapBody {
+        padding-left: 150px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+    }
+    .mapTitleTag {
+        display: inline-block;
+        width: 80px;
+        height: 28px;
+        background-color: rgb(240, 240, 240);
+        text-align: center;
+        border-radius: 24px;
+        color: rgb(93, 149, 229);
+        line-height: 28px;
+        border: 1px solid rgb(224, 224, 224);
+    }
+    .mapTitleLine {
+        display: inline-block;
+        width: 83%;
+        height: 1px;
+        background-color: rgb(224, 224, 224);
+        vertical-align: super;
+        position: relative;
+        left: -3px;
+    }
+    .img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img, .carousel-inner>.item>a>img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+    .mapRow {
+        width: calc(100% - 25px);
+        height: auto;
+    }
+    .mapRow.propertyHide {
+        display: none;
+    }
+    .mapRowLeft {
+        width: 75px;
+        display: inline-block;
+        vertical-align: top;
+        color: #777;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .mapRowRight {
+        width: calc(100% - 95px);
+        display: inline-block;
+        vertical-align: top;
+        color: #222;
+    }
+    /*modal样式end*/

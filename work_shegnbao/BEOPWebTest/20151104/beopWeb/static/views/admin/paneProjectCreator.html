@@ -1,0 +1,219 @@
+<style type="text/css">
+    .reg-wizard {
+        border: 1px solid #d4d4d4;
+        min-height: 48px;
+        position: relative;
+        overflow: hidden;
+        padding:0;
+        margin-top: 25px;
+        background-color: #fff;
+    }
+    .reg-wizard > ul {
+        list-style: none outside none;
+        margin: 0;
+        padding: 0;
+        width: 1000px;
+    }
+    .reg-wizard > .actions {
+        float: right;
+        line-height: 46px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: #e5e5e5;
+        border-left: 1px solid #d4d4d4;
+    }
+    .reg-wizard > ul li {
+        float: left;
+        height: 46px;
+        line-height: 46px;
+        margin: 0;
+        color: #999;
+        background-color: #ededed;
+        padding: 0 20px 0 20px;
+        position: relative;
+        font-size: 16px;
+    }
+    .reg-wizard > ul li.header {
+        color: #000;
+        background-color: #fff;
+    }
+    .reg-close {
+        float: right;
+        padding: 0 15px;
+        font-size: 20px;
+        line-height: 46px;
+        cursor: pointer;
+    }
+    .reg-close+.reg-close { border-right: 1px solid #ccc; }
+    .reg-close:hover {
+        color:#fff;
+        background-color:#428bca;
+    }
+    .reg-step-ct {
+        border-top: 1px solid #d4d4d4;
+        padding: 10px 30px;
+        float: left;
+        width: 100%;
+        min-height: 20px;
+    }
+    .reg-step-ct > .step-pane {
+        display: none;
+    }
+    .reg-step-ct > .step-pane.active {
+        display: block;
+    }
+    .reg-step-ct > .step-pane > h3 {
+        text-indent: 2em;
+        margin-bottom: 20px;
+    }
+    .clearfix:after {
+        clear: both;
+        content: " ";
+        display: table;
+    }
+    .pi_left_ct {
+        border-right: 1px solid #d4d4d4;
+        padding-right: 30px;
+        padding-left: 10px;
+    }
+    .pi_right_ct {
+        padding-top: 10px;
+        padding-left: 30px;
+        text-align: center;
+    }
+    .pi_right_ct > h5 {
+        font-weight: 700;
+        margin-top: 0;
+        text-align: left;
+    }
+    .pi_right_ct > img {
+        margin-top: 20px;
+        cursor: pointer;
+        width: 256px;
+        height: 180px;
+    }
+    .reg-step-ct .map_ct {
+        margin: 10px auto;
+        min-height: 300px;
+        height: 372px;
+    }
+    .map_wrap {
+        position: relative;
+    }
+    .map-sch-wrap {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+    .map_sch, .map-sch-wrap > ul {
+        box-shadow:0 2px 6px rgba(0,0,0,0.3),0 4px 15px -5px rgba(0,0,0,0.0);
+    }
+    .map-sch-wrap > .map_sch {
+        position: absolute;
+        z-index: 1;
+        margin:0;
+    }
+    .map-sch-wrap > ul {
+        margin: 0;
+        position: absolute;
+        top: 35px;
+        width: 350px;
+        border-radius: 2px 0 0 2px;
+        padding:0;
+    }
+    .map-sch-pane > li > a, .map-sch-pane > li > a:hover {
+        color: #c1c1c1;
+        font-size: 13px;
+    }
+    .map-sch-pane > li.on, .map-sch-pane > li > a:hover {
+        background-color: #f0f0f0;
+    }
+    .map-sch-pane > li * {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .map-sch-pane li .rs-name {
+        color: #333;
+        font-size: 14px;
+    }
+    .map-sch-pane li .rs-district {
+        margin-left: 10px;
+    }
+    .map-sch-pane li .keywords {
+        font-weight: 700;
+    }
+    #btnMapSch {
+        width: 350px;
+        border-radius: 2px 0 0 2px;
+    }
+    #btnGoogleSch {
+        width: 350px;
+        margin: 10px 20px;
+    }
+    .col-md-6 .form-control-feedback { right: 15px; }
+</style>
+
+<div class="reg-wizard container" id="reg-wizard">
+    <ul>
+        <li class="header">
+            <span i18n="admin.projectCreator.REGIST_STEP1_TITLE"></span>
+            <span class="chevron"></span>
+        </li>
+    </ul>
+    <div class="reg-close" id="cancelRegist" title="go back">
+        <span class="glyphicon glyphicon-remove"></span>
+    </div>
+    <div class="reg-close" id="btnSubmit" title="Comfirm">
+        <span class="glyphicon glyphicon-ok"></span>
+    </div>
+    <div class="reg-step-ct">
+        <div class="step-pane active">
+            <h3 i18n="admin.projectCreator.PANE1_TITLE"></h3>
+            <div class="pi_ct row clearfix">
+                <div class="pi_left_ct col-md-8" id="formWrap">
+                    <div class="form-group">
+                        <label class="control-label" for="iptPjCode" i18n="admin.projectCreator.PANE1_FORM_ITEM1_LABEL"></label>
+                        <input type="text" class="form-control" id="iptPjCode" i18n="admin.projectCreator.PANE1_FORM_ITEM1_PLACEHOLDER" placeholder="">
+                        <span class="help-block" id="pjCodeHB" i18n="admin.projectCreator.PANE1_FORM_ITEM1_TIP"></span>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label" for="iptPjNameZh" i18n="admin.projectCreator.PANE1_FORM_ITEM2_LABEL"></label>
+                            <input type="text" class="form-control" id="iptPjNameZh" i18n="admin.projectCreator.PANE1_FORM_ITEM2_PLACEHOLDER" placeholder="">
+                            <span class="help-block" id="pjNameZhHB" i18n="admin.projectCreator.PANE1_FORM_ITEM2_TIP"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label" for="iptPjNameEn" i18n="admin.projectCreator.PANE1_FORM_ITEM3_LABEL"></label>
+                            <input type="text" class="form-control" id="iptPjNameEn" i18n="admin.projectCreator.PANE1_FORM_ITEM3_PLACEHOLDER" placeholder="">
+                            <span class="help-block" id="pjNameEnHB" i18n="admin.projectCreator.PANE1_FORM_ITEM3_TIP"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="iptPjAddr" i18n="admin.projectCreator.PANE1_FORM_ITEM4_LABEL"></label>
+                        <input type="text" class="form-control" id="iptPjAddr" i18n="admin.projectCreator.PANE1_FORM_ITEM4_PLACEHOLDER" placeholder="" aria-describedby="pjAddrHB" readonly="readonly">
+                        <!-- hidden area -->
+                        <input type="hidden" id="iptPjLnglat" />
+                        <span class="help-block" id="pjAddrHB" i18n="admin.projectCreator.PANE1_FORM_ITEM4_TIP"></span>
+                    </div>
+                </div>
+                <div class="pi_right_ct col-md-4">
+                    <h5 i18n="admin.projectCreator.PANE1_FORM_ITEM5_LABEL"></h5>
+                    <input id="iptPjFile" type="file" accept=".jpg" style="display:none;" />
+                    <img id="imgPreview" src="/static/images/project_img/default.jpg" alt="loading" />
+                </div>
+            </div>
+            <div class="map_wrap">
+                <div class="map-sch-wrap">
+                    <div class="map_sch form-group has-feedback" style="display:none;">
+                        <input type="text" class="form-control" id="btnMapSch" placeholder="Search Box"/>
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                    <ul class="dropdown-menu map-sch-pane" id="mapSchPane" style="display:none;"></ul>
+                </div>
+                <input type="text" class="form-control" id="btnGoogleSch" style="display:none;" placeholder="Search Box" />
+                <div class="map_ct" id="mapContainer"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+export default {
+  MODULE_NAME: 'Deduplication',
+  TOLERANCE_LIMITS: 'Tolerance Limits',
+  ENTER_NAMBER: 'Please enter a number',
+  ANNOTATION_TOLERANCE_LIMITS:
+    'Eliminate continuous repetitive data records (usually indicating data transfer problems)',
+  DATA_SET: 'Data Set'
+};

@@ -1,0 +1,64 @@
+<form id="ct_op_record_form" class="form-horizontal p20 form1">
+    <div class="form-group oh">
+        <select id="op_record_record_type" class="form-control fl w200 ml20">
+            <option value="0">所有记录</option>
+            <option value="1">登录记录</option>
+            <option value="2">操作记录</option>
+        </select>
+        <select id="op_record_project_type" class="form-control fl w200"></select>
+        <label for="op_record_begin_time" class="control-label ml30 mr10 fl">时间</label>
+        <input type="text" class="form-control fl" id="op_record_begin_time" readonly="readonly" placeholder="开始时间"/>
+        <label for="op_record_end_time" class="control-label mr10 fl">到</label>
+        <input type="text" class="form-control fl" id="op_record_end_time" readonly="readonly" placeholder="结束时间"/>
+        </label>
+        <button type="submit" id="op_record_submit_btn" class="btn btn-primary fl ml30">查询</button>
+        <span id="op_record_error_info"></span>
+    </div>
+    <table id="op_record_table" class="tb1 mt30">
+        <thead>
+        <tr>
+            <th>时间</th>
+            <th>用户名</th>
+            <th>项目</th>
+            <th>设备</th>
+            <th>IP</th>
+            <th>归属地</th>
+            <th>执行操作</th>
+        </tr>
+        </thead>
+        <tbody id="op_record_tbody">
+        <tr>
+            <td>时间</td>
+            <td>用户名</td>
+            <td>项目</td>
+            <td>设备</td>
+            <td>IP</td>
+            <td>归属地</td>
+            <td>执行操作</td>
+        </tr>
+        </tbody>
+    </table>
+
+</form>
+
+<script type="text/html" id="tpl_op_record_project_list">
+    <option value="0">所有项目</option>
+    <!for(var m = 0; m < list.length; m++){!>
+    <!var item=list[m];!>
+    <option value="<!=item.id!>"><!=item.name!></option>
+    <!}!>
+</script>
+<script type="text/html" id="tpl_op_record_list">
+    <!for(var m = 0; m < list.length; m++){!>
+    <!var item=list[m];!>
+    <tr>
+        <td><!=item.time!></td>
+        <td><!=item.username!></td>
+        <td><!=item.project!></td>
+        <td><!=item.equipment!></td>
+        <td><!=item.ip!></td>
+        <td><!=item.attribution!></td>
+        <td><!=item.operation!></td>
+    </tr>
+    <!}!>
+</script>

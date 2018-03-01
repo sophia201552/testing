@@ -1,0 +1,128 @@
+<style>
+    .divAdminConfig {
+        padding: 1rem;
+        position: relative;
+        font-size: 1.6rem;
+        color: white;
+        font-family: "Microsoft YaHei";
+    }
+    .btnToggle {
+        height: 2rem;
+        width: 4rem;
+        display: inline-block;
+        border-radius: 2rem;
+        background-color: #bbb;
+        position: absolute;
+        right: 2rem;
+    }
+    .btnOn.btnToggle {
+        background-color: #428bca;
+    }
+    .spanToggle {
+        height: 1.8rem;
+        width: 1.8rem;
+        display: inline-block;
+        border-radius: 1.8rem;
+        background-color: white;
+        position: absolute;
+        top: 0.1rem;
+    }
+    .btnOff .spanToggle {
+        left: 0.1rem;
+    }
+    .btnOn .spanToggle {
+        right: 0.1rem;
+    }
+    #btnEvaluate {
+        color: #ccc;
+        position: absolute;
+        right: 2rem;
+        top: 1rem;
+    }
+    #spanVersion {
+        color: #ccc;
+        position: absolute;
+        right: 2rem;
+        top: 1rem;
+    }
+    #spanLangShow {
+        color: #ccc;
+        position: absolute;
+        right: 2rem;
+        top: 1rem;
+    }
+    #divAdmin {
+        height: 6rem;
+    }
+    .adminPhoto {
+        height: 4rem;
+        width: 4rem;
+        display: inline-block;
+    }
+    .adminPhoto img{
+        height: 100%;
+        width: 100%;
+        vertical-align: inherit;
+        border-radius: 6rem;
+    }
+    .adminInfo {
+        display: inline-block;
+        position: relative;
+        top: -0.8rem;
+        left: 1rem;
+    }
+    #btnPhoneAdmin {
+        position: relative;
+        font-size: 3.2rem;
+        left: 5%;
+    }
+    #btnMessageAdmin {
+        position: relative;
+        font-size: 3.2rem;
+        left: calc(5% + 3.2rem);
+    }
+    .adminName {
+        font-size: 1.6rem;
+    }
+    .adminDetail {
+        font-size: 1.4rem;
+        color: #ccc;
+    }
+    .adminConnect {
+        font-size: 2.8rem;
+        display: inline-block;
+        position: absolute;
+        right: 1rem;
+        top: 1.5rem;
+    }
+    .adminConnect>span{
+        padding: 0 1rem;
+    }
+</style>
+<div id="setNotice" class="divAdminConfig zepto-ev">
+    <span i18n="appDashboard.apply.OPEN_MESSAGE">Open Message</span>
+    <span id="btnNotice" class="btnOff btnToggle zepto-ev">
+        <span class="spanToggle"></span>
+    </span>
+</div>
+<div id="toEvaluate" class="divAdminConfig zepto-ev">
+    <span i18n="appDashboard.apply.DO_SCORE">Score</span>
+    <span id="btnEvaluate" class="glyphicon glyphicon-chevron-right"></span>
+</div>
+<div id="forHelp" class="divAdminConfig zepto-ev">
+    <span i18n="appDashboard.apply.HELP_FEEDBACK">Help&Feedback</span>
+</div>
+<div id="checkVersion" class="divAdminConfig zepto-ev">
+    <span i18n="appDashboard.apply.EDITION_CHECK">Check Edition</span>
+    <span id="spanVersion" i18n="appDashboard.apply.EDITION_NEW">Latest</span>
+</div>
+<div id="btnLang" class="divAdminConfig zepto-ev">
+    <span i18n="appDashboard.apply.LANG">Language</span>
+    <span id="spanLangShow">中文</span>
+</div>
+<div id="btnLogout" class="divAdminConfig zepto-ev">
+    <span i18n="appDashboard.apply.LOGOUT">Logout</span>
+</div>
+<div id="divAdmin" class="divAdminConfig zepto-ev">
+
+</div>

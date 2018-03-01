@@ -1,0 +1,4995 @@
+html.mobilePage {
+    font-size: 62.5% !important;
+    background: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.08, rgb(140, 109, 116)), color-stop(.45, #44425b), to(rgb(43, 39, 62)));
+    background: -moz-linear-gradient(140deg, rgb(140, 109, 116) 8%, #44425b 45%, rgb(43, 39, 62));
+    background: -o-linear-gradient(140deg, rgb(140, 109, 116) 8%, #44425b 45%, rgb(43, 39, 62));
+    background: linear-gradient(140deg, rgb(140, 109, 116) 8%, #44425b 45%, rgb(43, 39, 62));
+}
+
+html.mobilePage *::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+html.mobilePage *::-webkit-scrollbar {
+    display: none;
+    width: 8px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+html.mobilePage *::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.blackBg * {
+    color: #000000;
+}
+
+.blackBg svg {
+    fill: #000000;
+}
+.whiteBg *{
+    color: #ffffff;
+}
+
+.whiteBg svg {
+    fill: #ffffff;
+}
+.blackBg .dashboardTitle,
+.whiteBg .dashboardTitle,
+.coolBg .dashboardTitle{
+    width:100%;
+    height:40px;
+    font-size:25px;
+}
+.blackBg .dashboardCtn,
+.whiteBg .dashboardCtn,
+.coolBg .dashboardCtn{
+    width:100%;
+    height:calc(100% - 50px);
+}
+
+.whiteBg,
+.blackBg{
+    background:rgba(255,255,255,.7);
+    border-radius:5px;
+    padding:10px 14px;
+}
+
+.dashboardTitle, .dashboardCtn{
+    cursor: pointer;
+}
+.transparent {
+    background-color: transparent !important;
+}
+
+
+/*Dashboard渲染基础start*/
+
+.springContainer.noScroll>.panel {
+    position: relative;
+}
+
+.forMobile .springContainer .springSeHead {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    z-index: 1;
+    color: white !important;
+}
+
+
+/*Dashboard渲染基础end*/
+
+
+/*Dashboard移动端渲染基础start*/
+
+.forMobile {
+    background: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.08, rgb(140, 109, 116)), color-stop(.45, #44425b), to(rgb(43, 39, 62))) !important;
+    background: -moz-linear-gradient(140deg, rgb(140, 109, 116) 8%, #44425b 45%, rgb(43, 39, 62)) !important;
+    background: -o-linear-gradient(140deg, rgb(140, 109, 116) 8%, #44425b 45%, rgb(43, 39, 62)) !important;
+    background: linear-gradient(140deg, rgb(140, 109, 116) 8%, #44425b 45%, rgb(43, 39, 62)) !important;
+}
+
+.indexContent .forMobile .panel,
+.forMobile .panel-default>.panel-heading,
+.forMobile .panel-default>.panel-footer,
+.forMobile .sliders>div {
+    background: transparent !important
+}
+
+.forMobile .springContainer {
+    position: relative;
+    float: left;
+    overflow: hidden;
+}
+
+.forMobile .springContainer>.panel {
+    top: 0!important;
+    left: 0!important;
+    position: relative;
+    margin-bottom: 0;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+.forMobile .springHead {
+    width: 100%;
+    height: 38px;
+    background-color: rgba(96, 85, 107, 0.8) !important;
+    color: #e2dfe4 !important;
+    border: none;
+}
+
+.forMobile .springHead .panel-title {
+    font-weight: normal !important;
+}
+
+.forMobile .springContent {
+    width: 100%;
+    height: calc(100% - 38px);
+    height: -webkit-calc(100% - 38px);
+    padding: 0;
+    overflow: auto;
+}
+
+.forMobile .springConfigMask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(139, 174, 203, 0.80);
+    cursor: move;
+    z-index: 150;
+}
+
+.forMobile .springConfigMask:hover {
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+.forMobile .springConfigBtn {
+    position: absolute !important;
+    font-size: 32px;
+    cursor: pointer;
+    top: 10px !important;
+    right: 50px !important;
+}
+
+.forMobile .springConfigInstallBtn,
+.forMobile .springBlindConfigInstallBtn {
+    position: absolute !important;
+    font-size: 32px;
+    cursor: pointer;
+    top: 10px !important;
+    right: 90px !important;
+}
+
+.forMobile .springBlindConfigInstallBtn {
+    right: 60px !important;
+}
+
+.forMobile .springConfigBtn.glyphicon-plus-sign {
+    position: absolute !important;
+    font-size: 80px;
+    cursor: pointer;
+    top: 100px !important;
+    right: calc(50% - 40px) !important;
+    right: -webkit-calc(50% - 40px) !important;
+}
+
+.forMobile .springConfigBtn:hover {
+    color: #333;
+}
+
+.forMobile .springConfigRemoveBtn {
+    position: absolute !important;
+    font-size: 32px;
+    cursor: pointer;
+    color: darkred;
+    top: 10px !important;
+    right: 10px !important;
+}
+
+.forMobile .springConfigAddBtn {
+    position: absolute !important;
+    font-size: 30px;
+    cursor: pointer;
+    top: 10px !important;
+    right: 50px !important;
+}
+
+.forMobile .springConfigTips {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -114px;
+    margin-top: -20px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+}
+
+.forMobile .springConfigTips:hover {
+    border-color: #66afe9;
+    cursor: pointer;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.forMobile .springLinkBtnCtn>.springLinkBtn:first-of-type {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.forMobile .springLinkBtn {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 7px;
+    background-color: rgba(83, 155, 218, 0.7);
+    color: #fff;
+    z-index: 1;
+    float: left;
+    margin-left: 5px;
+    display: none;
+}
+
+.forMobile .springLinkBtnCtn {
+    display: none;
+}
+
+
+/*Dashboard移动端渲染基础start*/
+
+
+/*配置框基础start*/
+
+.cfgModal {
+    color: #323232;
+    font-size: 14px;
+}
+
+.cfgModal .grow:hover,
+.grow:focus,
+.grow:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: transform 0.2s;
+    -webkit-transition: -webkit-transform 0.2s;
+}
+
+.cfgModal .modal-backdrop {
+    position: absolute;
+}
+
+.cfgModal .form-control {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.cfgModal .inlineBlock .form-control {
+    display: inline-block;
+    width: auto;
+}
+
+.cfgModal .form-inline>label {
+    margin-right: 20px;
+}
+
+.cfgModal .flexCenter {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    width: 100%;
+}
+
+.modal-body .cfgArea {
+    border-bottom: 1px solid #ccc;
+    margin: 0 -15px;
+    padding: 10px 0;
+}
+
+.cfgModal .modal-content label {
+    font-weight: bold;
+}
+
+.modal-body .cfgArea:last-of-type {
+    border-bottom: none;
+}
+
+.modal-body .cfgWidget {
+    padding: 0 15px;
+    margin-bottom: 10px;
+}
+
+.cfgOptionWidget {
+    display: inline-block;
+}
+
+.cfgFooterWidget.divCancel,
+.cfgFooterWidget.divConfirm {
+    float: right;
+    margin-left: 20px;
+}
+
+
+/*配置框基础end*/
+
+
+/*数据拖拽区配置start*/
+
+.divDsWorkspace .divVar {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: relative;
+    margin: 10px 0;
+    padding-top: 10px;
+}
+
+.divDsWorkspace .spVarLabel {
+    position: absolute;
+    background-color: #eee;
+    padding: 0 12px;
+    top: -10px;
+    left: -10px;
+}
+
+.divDsWorkspace .divDs {
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    color: #4c9f42;
+    cursor: pointer;
+    font-size: 14px;
+    height: 30px;
+    display: inline-block;
+    margin: 5px 1%;
+    padding: 4px 15px;
+    border-radius: 5px;
+    width: 31%;
+}
+
+@media (min-width: 1200px) {
+    .divDsWorkspace .divDs {
+        width: 31%;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+}
+
+.divDsWorkspace .divDs:hover .btnDsDel {
+    color: darkorange;
+}
+
+.divDsWorkspace .spDs {
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 84%;
+    white-space: nowrap;
+}
+
+.divDsWorkspace .btnDsDel {
+    top: 2px;
+    color: #ccc;
+    float: right;
+}
+
+.divDsWorkspace .divDsTip {
+    text-align: center;
+    color: #ccc;
+    background-color: transparent;
+    border: 1px dashed #ccc;
+    height: 30px;
+}
+
+.divDsWorkspace .divDsTip:hover {
+    border-color: #66afe9;
+    cursor: pointer;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.divDsWorkspace .divDsTip:hover>span {
+    visibility: hidden;
+}
+
+.divDsWorkspace .divDsTip.dragover {
+    border-color: #66afe9;
+    cursor: pointer;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.divDsWorkspace .divDsTip.dragover>span {
+    visibility: hidden;
+}
+
+.divDsWorkspace .btnChartCog {
+    position: absolute;
+    font-size: 18px;
+    top: -9px;
+    right: -9px;
+    padding: 0;
+    background: #eee;
+}
+
+.divDsWorkspace .panelChartCog {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 #428bca;
+    z-index: 1400;
+    background-color: white;
+    display: none;
+    color: #333;
+}
+
+.divDsWorkspace .divBtnCogGrp {
+    position: relative;
+    float: right;
+    right: 10px;
+    font-size: 18px;
+}
+
+.divDsWorkspace .btnPanelCogHide {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #aaa;
+}
+
+
+/*数据拖拽区配置end*/
+
+
+/*历史数据拖拽控件*/
+
+.widgetHistoryAnalyze>div {
+    background-color: rgba(44, 58, 84, 0.9);
+    border: 1px solid #969696;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.widgetHistoryAnalyze.forDashboard>div {
+    border: none;
+}
+
+.widgetHistoryAnalyze .divChartTtl {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    background: linear-gradient(#eee, grey);
+    background: -webkit-linear-gradient(#eee, grey);
+    border-bottom: 1px solid #969696;
+}
+
+.widgetHistoryAnalyze .dragTip {
+    font-size: 18px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 40%;
+}
+
+.widgetHistoryAnalyze .ctnTimeConfig {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: flex-end;
+    -webkit-align-items: flex-end;
+    flex-wrap: wrap;
+    background-color: rgba(44, 58, 84, 0.9);
+    z-index: 1;
+    max-height: calc(100% - 30px);
+    overflow: auto;
+    padding: 5px;
+}
+
+.widgetHistoryAnalyze .divTimeConfig {
+    margin: 5px 0;
+    display: inline-block;
+}
+
+.widgetHistoryAnalyze .divTimeConfig>div {
+    display: inline-block;
+    margin: 0 4px;
+    float: left;
+}
+
+.widgetHistoryAnalyze .btnTimeConfigGrp {
+    margin-bottom: 5px;
+}
+
+#paneContent .widgetHistoryAnalyze .btnTimeConfigGrp .btn {
+    color: #fff;
+}
+
+.widgetHistoryAnalyze.forDashboard .divConfigCancel {
+    background-color: transparent;
+}
+
+.widgetHistoryAnalyze .divTimeConfig .label {
+    margin-bottom: 0;
+}
+
+.widgetHistoryAnalyze .divTimeConfig .form-control {
+    height: 20px;
+    padding: 1px 2px;
+    font-size: 12px;
+}
+
+.widgetHistoryAnalyze .divTimeConfig .input-group-addon {
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+.widgetHistoryAnalyze .divTimeConfig .btn {
+    padding: 1px 10px;
+    font-size: 12px;
+}
+
+.widgetHistoryAnalyze .form-control {
+    background-color: #fff
+}
+
+.widgetHistoryAnalyze .btn {
+    padding: 1px 10px;
+    font-size: 12px;
+}
+
+.widgetHistoryAnalyze .divTimeRange {
+    max-width: 300px;
+}
+
+.widgetHistoryAnalyze .divConfigConfirm {
+    color: white;
+    margin-left: 4px;
+    margin-right: 10px;
+}
+
+.widgetHistoryAnalyze .divConfigCancel {
+    color: #333;
+    margin-right: 10px;
+}
+
+.widgetHistoryAnalyze.forDashboard .btnShowTimeConfig {
+    top: 15px;
+}
+
+.widgetHistoryAnalyze .btnShowTimeConfig {
+    position: absolute;
+    font-size: 24px;
+    right: 15px;
+    top: 35px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.widgetHistoryAnalyze .divHistoryChart {
+    display: block;
+    position: relative;
+    height: calc(100% - 22px);
+    width: 100%;
+}
+
+.widgetHistoryAnalyze .labelDataRole {
+    background-color: transparent;
+}
+
+
+/*移动端kpi分项评估控件*/
+
+
+/*配置框样式start*/
+
+.divMultiDataWorkSpace .divDataBindList .glyphicon {
+    cursor: pointer;
+}
+
+.divMultiDataWorkSpace .divDataBindList {
+    overflow-y: auto;
+}
+
+.divMultiDataWorkSpace .divDataListTtl {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding-right: 5%;
+}
+
+.divMultiDataWorkSpace .spDataListTtl {
+    width: 39%;
+    text-align: center;
+}
+
+.divMultiDataWorkSpace .spDataListNameTtl {
+    width: 26%;
+}
+
+.divMultiDataWorkSpace .spDataListUnitTtl {
+    width: 20%;
+}
+
+.divMultiDataWorkSpace .spDataListScaleTtl {
+    width: 16%;
+}
+
+.divMultiDataWorkSpace .spDataListDsTtl {
+    width: 41%;
+}
+
+.cfgModal .flexCenter {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    width: 100%;
+}
+
+.divMultiDataWorkSpace .divDataParam {
+    margin-bottom: 1%;
+}
+
+.divMultiDataWorkSpace .divTitleLabel {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.divMultiDataWorkSpace .divDataTitleName {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.divMultiDataWorkSpace .iptParam {
+    margin: 0 0.5%;
+}
+
+.divMultiDataWorkSpace .iptName {
+    width: 25%;
+}
+
+.divMultiDataWorkSpace .iptUnit {
+    width: 15%;
+}
+
+.divMultiDataWorkSpace .iptScale {
+    width: 15%;
+}
+
+.divMultiDataWorkSpace .divDs {
+    margin: 0 0.5%;
+    width: 41%;
+    text-align: center;
+    color: #ccc;
+    border: 1px dashed #ccc;
+    height: 34px;
+    display: inline-block;
+    padding: 6px 15px;
+    border-radius: 5px;
+}
+
+.divMultiDataWorkSpace .divDs:hover {
+    border-color: #66afe9;
+    cursor: pointer;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.divMultiDataWorkSpace .divDs.hasDs {
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    color: #4c9f42;
+    border-radius: 5px;
+}
+
+.divMultiDataWorkSpace .divDs.hasDs:hover {
+    cursor: pointer;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.divMultiDataWorkSpace .divDs .spDs {
+    display: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 80%;
+}
+
+.divMultiDataWorkSpace .divDs .btnDsDel {
+    display: none;
+    top: 2px;
+    color: #ccc;
+    float: right;
+}
+
+.divMultiDataWorkSpace .divDs .spHoverTip {
+    display: none;
+}
+
+.divMultiDataWorkSpace .divDs:hover .spNormalTip {
+    display: none;
+}
+
+.divMultiDataWorkSpace .divDs:hover .spHoverTip {
+    display: inline-block;
+}
+
+.divMultiDataWorkSpace .divDs.hasDs .btnDsDel {
+    display: inline-block;
+}
+
+.divMultiDataWorkSpace .divDs.hasDs:hover .btnDsDel {
+    color: darkorange;
+}
+
+.divMultiDataWorkSpace .divDs.hasDs .spDsTip {
+    display: none;
+}
+
+.divMultiDataWorkSpace .divDs.hasDs .spDs {
+    display: inline-block;
+}
+
+.divMultiDataWorkSpace .btnParamDel {
+    width: 4%;
+}
+
+.divMultiDataWorkSpace .divRoleConfigTtl {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+.divMultiDataWorkSpace .divRoleConfigTtl>* {
+    display: inline-block;
+}
+
+.divMultiDataWorkSpace .divRoleConfigTtl .iptRoleTtl {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+.divMultiDataWorkSpace .divRoleConfigTtl .divDs {
+    width: 30%;
+}
+
+.divMultiDataWorkSpace .divRoleConfigTtl .iptRoleTtlUnit {
+    width: 15%;
+}
+
+.divMultiDataWorkSpace .divRoleConfigTtl .iptRoleTtlScale {
+    width: 15%;
+}
+
+.divMultiDataWorkSpace .divDiaTitle {
+    font-weight: bold;
+}
+
+.divMultiDataWorkSpace .col-xs-2 {
+    font-size: 16px;
+}
+
+.divMultiDataWorkSpace .divRoleTtl {
+    margin-top: 20px;
+}
+
+
+/*配置框样式end*/
+
+.widgetKPIItemEval {
+    background-color: #192234;
+    overflow: auto;
+}
+
+.widgetKPIItemEval .divKPIDetail {
+    display: none;
+}
+
+.widgetKPIItemEval.showSubContainer .divKPIIndex {
+    display: inline-block;
+    height: 100%;
+    width: 25%;
+    float: left;
+    overflow: auto;
+}
+
+.widgetKPIItemEval.showSubContainer .divKPIDetail {
+    display: inline-block;
+}
+
+.widgetKPIItemEval .divStructCtn {
+    position: relative;
+    background-color: #28364E;
+    cursor: pointer;
+    margin: 0.3rem;
+}
+
+.widgetKPIItemEval .divStructCtn.focus>.divStructTtl {
+    background-color: #38486A;
+}
+
+.widgetKPIItemEval .divStructTtl {
+    height: 5rem;
+    position: relative;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: white;
+    padding: 8px 8px 8px 8px;
+    line-height: 1.42857143;
+    /*border: 1px solid #ddd;*/
+    vertical-align: middle;
+}
+
+.widgetKPIItemEval .forSubIndex.divStructTtl {
+    height: auto;
+    padding-left: 1.5rem;
+}
+
+.diagnosisCtn .divStructTtl {
+    /*兼容诊断汇总*/
+    height: auto;
+    padding-left: 38px;
+}
+
+.widgetKPIItemEval .spStructIcon {
+    height: 100%;
+    width: 3.2rem;
+    position: absolute;
+    left: 1rem;
+    top: 0;
+}
+
+.diagnosisCtn .spStructIcon {
+    /*兼容诊断汇总*/
+    top: 1rem;
+}
+
+.widgetKPIItemEval .spStructIcon>svg {
+    height: 100%;
+    width: 100%
+}
+
+.widgetKPIItemEval .spStructIcon>svg>path {
+    fill: white;
+    stroke: white;
+}
+
+.widgetKPIItemEval .spStructName {
+    display: block;
+}
+
+.widgetKPIItemEval .forSubIndex .spStructIcon {
+    display: none;
+}
+
+.widgetKPIItemEval .forSubIndex .spStructName {
+    display: inline-block;
+}
+
+.widgetKPIItemEval .spStructValue {
+    display: block;
+}
+
+.widgetKPIItemEval .forSubIndex .spStructValue {
+    display: block;
+}
+
+.widgetKPIItemEval .rowPointDetail {
+    display: none;
+}
+
+.widgetKPIItemEval .rowPointDetail.focus {
+    display: table-row;
+}
+
+.widgetKPIItemEval .divPointDetail {
+    display: table-cell;
+}
+
+.widgetKPIItemEval .pointDetail {
+    display: none;
+    padding: 8px;
+    width: 100%;
+    /*-webkit-animation: fadeUp 0.5s;*/
+    /*-o-animation: fadeUp 0.5s;*/
+    /*animation: fadeUp 0.5s;*/
+    overflow: hidden;
+}
+
+.widgetKPIItemEval .divStructItem.focus .pointDetail {
+    height: auto;
+    display: block;
+    /*-webkit-animation: fadeDown 0.5s;*/
+    /*-o-animation: fadeDown 0.5s;*/
+    /*animation: fadeDown 0.5s;*/
+}
+
+
+/*@keyframes fadeDown {*/
+
+
+/*from {*/
+
+
+/*padding: 0 8px;*/
+
+
+/*height: 0;*/
+
+
+/*}*/
+
+
+/*to {*/
+
+
+/*padding: 8px;*/
+
+
+/*height: auto;*/
+
+
+/*}*/
+
+
+/*}*/
+
+
+/*@keyframes fadeUp {*/
+
+
+/*from {*/
+
+
+/*padding: 8px;*/
+
+
+/*height: auto;*/
+
+
+/*}*/
+
+
+/*to {*/
+
+
+/*padding: 0 8px;*/
+
+
+/*height: 0;*/
+
+
+/*}*/
+
+
+/*}*/
+
+.widgetKPIItemEval .divStructCtn.focus>.divStructBody {
+    display: block;
+}
+
+.widgetKPIItemEval .divStructBody {
+    /*border: 1px solid #ddd;*/
+    width: 100%;
+    display: none;
+    margin-top: 0.3rem;
+}
+
+.widgetKPIItemEval .divStructItemTtl {
+    display: block;
+}
+
+.widgetKPIItemEval .divStructItemTtl>span {
+    display: inline-block;
+    padding: 0.5rem;
+    color: #948266;
+    font-size: 1.4rem;
+    border-top: 1px solid #e6e6e6;
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+
+.widgetKPIItemEval .spStructItemTtl:nth-child(1) {
+    width: 35%;
+}
+
+.widgetKPIItemEval .spStructItemTtl:nth-child(2) {
+    width: 20%;
+}
+
+.widgetKPIItemEval .spStructItemTtl:nth-child(3) {
+    width: 20%;
+}
+
+.widgetKPIItemEval .spStructItemTtl:nth-child(4) {
+    width: 25%;
+}
+
+.widgetKPIItemEval .divStructItemTtl>span:first-of-type {
+    text-align: left;
+}
+
+.widgetKPIItemEval .divStructItem {
+    display: flex;
+    display: -webkit-flex;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    width: 100%;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.widgetKPIItemEval .spItemInfo {
+    display: inline-block;
+    padding: 0.5rem;
+    border-top: 1px solid #e6e6e6;
+    text-align: center;
+    width: 25%;
+}
+
+.widgetKPIItemEval .divStructItemTtl {
+    color: #333;
+}
+
+.forMobile .widgetKPIItemEval .divStuctBodyCover {
+    margin: 0;
+}
+
+.forMobile .widgetKPIItemEval .divStructCtnCover {
+    margin: 0;
+}
+
+.forMobile .widgetKPIItemEval .spStructName.spStructNameCover {
+    display: inline;
+}
+
+.forMobile .widgetKPIItemEval .spStructValue.spStructValueCover {
+    display: inline;
+    color: #666;
+    font-size: 1.4rem;
+    vertical-align: 8%;
+}
+
+.forMobile .widgetKPIItemEval .divStructCover {
+    height: 4.5rem;
+    padding-left: 1.2rem;
+    background: #f3f3f3 !important;
+    color: #333333;
+    font-size: 1.8rem;
+    line-height: 2.2;
+    border-top: 0.1rem solid #e6e6e6;
+}
+
+.forMobile .widgetKPIItemEval .divStructItemTtl.divStructItemTtlCover {
+    height: 3.5rem;
+    font-size: 2.5rem;
+    color: #333;
+    background: #ffffff;
+}
+
+.forMobile .widgetKPIItemEval .divStructItem.divStructItemCover {
+    height: 3.5rem;
+    color: #666;
+    line-height: 2.5;
+    background: #ffffff;
+}
+
+.forMobile .widgetKPIItemEval .spStructItemTtl.spStructItemTtlCover {
+    padding-left: 1.2rem;
+}
+
+.forMobile .widgetKPIItemEval .spItemInfo.spItemInfoCover {
+    padding-left: 1.2rem;
+}
+
+.widgetKPIItemEval .spItemInfo:nth-child(1) {
+    width: 35%;
+}
+
+.widgetKPIItemEval .spItemInfo:nth-child(2) {
+    width: 20%;
+}
+
+.widgetKPIItemEval .spItemInfo:nth-child(3) {
+    width: 20%;
+}
+
+.widgetKPIItemEval .spItemInfo:nth-child(4) {
+    width: 25%;
+}
+
+
+/*诊断汇总: 和KPI汇总小小的区别*/
+
+.diagnosisCtn .spItemInfo {
+    text-align: left;
+}
+
+.diagnosisCtn .spItemInfo:nth-of-type(1) {
+    width: 25%;
+}
+
+.diagnosisCtn .spItemInfo:nth-of-type(2) {
+    width: 15%;
+}
+
+.diagnosisCtn .spItemInfo:nth-of-type(3) {
+    width: 60%;
+}
+
+
+/*诊断汇总*/
+
+.diagnosisBg {
+    height: 100%;
+}
+
+.widgetKPIItemEval .spItemInfo:first-of-type {
+    text-align: left;
+}
+
+.widgetKPIItemEval .spItemKPIRs .label {
+    display: none;
+}
+
+.widgetKPIItemEval .spItemKPIRs.danger .label-danger {
+    display: inline-block;
+}
+
+.widgetKPIItemEval .spItemKPIRs.success .label-success {
+    display: inline-block;
+}
+
+.widgetKPIItemEval .spItemKPIRs.default .label-default {
+    display: inline-block;
+}
+
+
+/* 移动端KPI监视模块 */
+
+.appKpi {
+    width: 100%;
+    height: 100%;
+}
+
+.appKpi .divKPIList {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.forMobile .divSingleType {
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+    color: #cbc6cc;
+    width: 94%;
+    box-shadow: none;
+    background: rgba(84, 77, 103, 0.5);
+}
+
+.divSingleType {
+    padding: 1rem .02rem;
+    margin: 0 auto;
+    /*border-bottom:1px solid #eee;*/
+    width: 96%;
+    font-size: 1.25rem;
+    position: relative;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 5px 0 15px -3px rgba(0, 0, 0, 0.5), 0 5px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+.forMobile .divListTitle {
+    margin-top: 0;
+    padding-bottom: 0;
+    width: 96%;
+    background: transparent;
+    /* margin-bottom:1rem; */
+}
+
+.divListTitle {
+    color: #e9e2ea;
+    font-size: 1.6rem;
+    background: transparent;
+    margin-bottom: 0;
+    box-shadow: 0 0 0 transparent;
+}
+
+.divListTitle .divKPINow {
+    color: #fff;
+}
+
+.divListTitle .divTypeTitle {
+    padding-left: 0;
+}
+
+.forMobile .divListTitle .divTypeTitle {
+    font-size: 1.4rem;
+}
+
+.divTypeTitle {
+    display: inline-block;
+    color: #d7d5db;
+    padding-left: 1rem;
+}
+
+.divTypeVal {
+    display: inline-block;
+    float: left;
+    padding: 0.1rem;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.6rem;
+    color: #cbc6cc;
+}
+
+.divKPINow {
+    display: inline-block;
+    padding: 0.1rem;
+    font-size: 1.8rem;
+    border: none;
+    color: black;
+}
+
+.divTypeUnit {
+    float: left;
+    /*text-align:center;*/
+    color: #f7b946;
+    font-size: 1.2rem;
+    margin-top: 0.3rem;
+    top: 50%;
+    /*line-height:1.2rem;*/
+    margin-top: 0.417rem;
+    /* width: 32px; */
+    padding-left: 1px;
+}
+
+.divKPIListRight {
+    position: absolute;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+.divKPIUnit {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    display: inline-block;
+    color: #333;
+}
+
+.divListTitle .divKPIUnit {
+    color: #fff;
+    margin-top: 0.25rem;
+}
+
+.divSingleTypeCover {
+    width: 60%;
+}
+
+
+/* 历史拖拽面板 start */
+
+.historyDrag {
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    background-color: rgba(44, 58, 84, 0.9);
+    z-index: 5;
+    border-radius: 4px;
+    border: 1px solid rgb(55, 62, 76);
+}
+
+.historyDrag>div {
+    color: #fff;
+    cursor: default;
+}
+
+.historyDrag.forDashboard>div {
+    border: none;
+}
+
+.historyDrag .divChartTtl {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    background: linear-gradient(rgba(126, 134, 162, 0.79), rgba(29, 41, 64, 0.77));
+    background: -webkit-linear-gradient(rgba(126, 134, 162, 0.79), rgba(29, 41, 64, 0.77));
+    border-bottom: 1px solid rgba(68, 82, 109, 0.9);
+    cursor: move;
+    padding: 5px;
+}
+
+.historyDrag .dragTip {
+    font-size: 16px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 40%;
+}
+
+.historyDrag .ctnTimeConfig {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: flex-end;
+    -webkit-align-items: flex-end;
+    flex-wrap: wrap;
+    background-color: rgba(3, 13, 33, 0.7);
+    z-index: 1;
+    max-height: calc(100% - 30px);
+    overflow: auto;
+    padding: 5px;
+}
+
+.historyDrag .divTimeConfig {
+    margin: 5px 0;
+    display: inline-block;
+    width: 100%;
+}
+
+.historyDrag .divTimeConfig>div {
+    display: inline-block;
+    margin: 0 4px;
+    float: left;
+}
+
+.historyDrag .btnTimeConfigGrp {
+    position: absolute;
+    width: 160px;
+    right: 0;
+    top: 8px;
+}
+
+.historyDrag .input-group-addon {
+    padding: 0;
+}
+
+#paneContent .historyDrag .btnTimeConfigGrp .btn {
+    color: #fff;
+}
+
+.historyDrag.forDashboard .divConfigCancel {
+    background-color: transparent;
+}
+
+.historyDrag .divTimeConfig label {
+    margin-bottom: 0;
+}
+
+.historyDrag .divTimeConfig .form-control {
+    height: 20px;
+    padding: 1px 2px;
+    font-size: 12px;
+}
+
+.historyDrag .divTimeConfig .btn {
+    padding: 1px 10px;
+    font-size: 12px;
+}
+
+.historyDrag .form-control {
+    background-color: #fff
+}
+
+.historyDrag .btn {
+    padding: 1px 10px;
+    font-size: 12px;
+}
+
+.historyDrag .divTimeRange {
+    max-width: 280px;
+}
+
+.historyDrag .divConfigConfirm {
+    color: white;
+    margin-left: 4px;
+    margin-right: 10px;
+}
+
+.historyDrag .divConfigCancel {
+    color: white;
+    margin-right: 10px;
+}
+
+.historyDrag .btnShowTimeConfig {
+    position: absolute;
+    font-size: 20px;
+    right: 70px;
+    top: 5px;
+    z-index: 1;
+    cursor: pointer;
+    color: #A1A3AF;
+    padding: 0 8px;
+}
+
+.historyDrag .btnShowAddPanel {
+    position: absolute;
+    font-size: 20px;
+    right: 40px;
+    top: 5px;
+    z-index: 1;
+    cursor: pointer;
+    color: #A1A3AF;
+    padding: 0 8px;
+}
+
+.historyDrag .divHistoryChart {
+    display: block;
+    position: relative;
+    height: calc(100% - 36px);
+    width: calc(100% - 20px);
+    margin: auto;
+}
+
+.historyDrag .btnClosePanel {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    color: #A1A3AF;
+    padding: 0 8px;
+    font-size: 20px;
+}
+
+.historyDrag .divBackground {
+    width: 100%;
+    border-top: 1px solid;
+    padding: 5px 2px;
+}
+
+.historyDrag .divBackground .bg.selected {
+    border: none;
+    box-shadow: 0 0 3px 1px #ED9624;
+}
+
+.historyDrag .divBackground .bg {
+    margin: 0 0 0 15px;
+    border: 1px solid #888;
+    padding: 2px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.historyDrag .divBackground .bg.dark {
+    background-color: rgba(44, 58, 84, 1);
+    color: #fff;
+}
+
+.historyDrag .divBackground .bg.light {
+    background-color: #fff;
+    color: #333;
+    text-shadow: none;
+}
+
+.historyDrag .divBackground .bg.transparent {
+    background-color: transparent;
+    color: #fff;
+    text-shadow: 0 0 1px #000;
+}
+
+
+/*light*/
+
+.historyDrag.light {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.historyDrag.light>div {
+    color: #333;
+}
+
+.historyDrag.light .divBackground {
+    border-top-color: #ccc;
+}
+
+.historyDrag.light .divConfigCancel {
+    color: #333;
+}
+
+.historyDrag.light .divChartTtl {
+    background: linear-gradient(rgba(126, 134, 162, 0.79), rgba(199, 206, 218, 0.77));
+    background: -webkit-linear-gradient(rgba(126, 134, 162, 0.79), rgba(199, 206, 218, 0.77));
+    border-bottom: 1px solid rgba(200, 206, 218, 0.9);
+}
+
+.historyDrag.light .ctnTimeConfig {
+    background-color: rgba(157, 160, 171, 0.9);
+}
+
+
+/*transparent*/
+
+.historyDrag.transparent {
+    background-color: transparent;
+    border: 1px solid #CBCED6;
+}
+
+.historyDrag.transparent>div {
+    color: #fff;
+    text-shadow: 1px 1px 0px #333;
+}
+
+.historyDrag.transparent .divChartTtl {
+    background: linear-gradient(rgba(126, 134, 162, 0.29), rgba(199, 206, 218, 0.17));
+    background: -webkit-linear-gradient(rgba(126, 134, 162, 0.29), rgba(199, 206, 218, 0.17));
+    border-bottom: 1px solid rgba(200, 206, 218, 0.2);
+    color: #fff;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.historyDrag.transparent .ctnTimeConfig {
+    background-color: rgba(136, 139, 148, 0.7);
+}
+
+
+/* 历史拖拽面板 end */
+
+
+/*ModalMix  start*/
+
+.sliderDiv .springContent {
+    overflow-y: hidden;
+}
+
+.forMobile .carousel-indicators .active {
+    background-color: rgb(242, 199, 83);
+    border: none;
+    width: 12px;
+    height: 3px;
+    border-radius: 0;
+}
+
+.forMobile .carousel-indicators li {
+    background-color: rgba(228, 228, 228, 0.5);
+    border-width: 0;
+    width: 12px;
+    height: 3px;
+    margin: 1.5px!important;
+}
+
+
+/*ModalMix  end*/
+
+
+/* Monitor模块 start*/
+
+#modalMonitorConfig #ctnMonitor,
+#ModalAppButtonConfig #ctnMonitor {
+    position: relative;
+    height: 360px;
+    overflow: auto;
+    padding: 10px;
+}
+
+#modalMonitorConfig .btnMonitorAdd,
+#ModalAppButtonConfig .btnMonitorAdd {
+    font-size: 32px;
+    position: absolute;
+    right: 50px;
+    top: 10px;
+}
+
+#modalMonitorConfig,
+#ModalAppButtonConfig {
+    /*observer*/
+    position: absolute;
+}
+
+.tab-host #modalMonitorConfig,
+.tab-host #ModalAppButtonConfig,
+.tab-host .cfgModal {
+    /*factory*/
+    position: fixed;
+    right: 20%;
+}
+
+#modalMonitorConfig .modal-backdrop,
+#ModalAppButtonConfig .modal-backdrop {
+    position: absolute;
+}
+
+#modalMonitorConfig .divMonitor,
+#ModalAppButtonConfig .divMonitor {
+    width: calc(50% - 5px);
+    height: 50%;
+    float: left;
+    background-color: white;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    border-radius: 5px;
+    position: relative;
+    border: 1px dotted;
+    display: inline-block;
+}
+
+#modalMonitorConfig .divMonitor input,
+#modalMonitorConfig .divMonitor select,
+#ModalAppButtonConfig .divMonitor input {
+    padding: 0 3px;
+    display: inline-block;
+    height: 18px;
+    font-size: 12px;
+    width: calc(100% - 45px);
+}
+
+#modalMonitorConfig .divMonitor .divIcon,
+#ModalAppButtonConfig .divMonitor .divIcon {
+    font-size: 20px;
+    position: relative;
+    top: 50px;
+    left: 8%;
+    border-radius: 30px;
+    padding: 10px;
+    box-shadow: 0 0 5px #f6c700;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.divIcon svg,
+.divIcon img {
+    width: 100%;
+    height: 100%;
+}
+
+#modalMonitorConfig .divMonitor .divIcon img,
+#ModalAppButtonConfig .divMonitor .divIcon img {
+    margin-top: -8px;
+}
+
+#modalMonitorConfig .divMonitor .divMonitorInfo,
+#ModalAppButtonConfig .divMonitor .divMonitorInfo {
+    display: inline-block;
+    height: 100%;
+    width: 70%;
+    float: right;
+}
+
+#modalMonitorConfig .divMonitor .divMonitorInfo>div,
+#ModalAppButtonConfig .divMonitor .divMonitorInfo>div {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    width: 80%;
+    padding: 5px 0;
+}
+
+#modalMonitorConfig .divMonitor label,
+#ModalAppButtonConfig .divMonitor label {
+    margin-bottom: 0;
+    margin-right: 10px;
+    width: 30px;
+}
+
+#modalMonitorConfig .divMonitor .spName,
+#ModalAppButtonConfig .divMonitor .spName {
+    display: inline;
+    max-width: calc(100% - 40px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#ModalAppButtonConfig .linkList {
+    height: 26px;
+    padding: 2px 12px;
+}
+
+#modalMonitorConfig .divMonitor .divName {}
+
+#modalMonitorConfig .divMonitor .iptUnit {}
+
+#modalMonitorConfig .divMonitor .divValue {}
+
+#modalMonitorConfig .divMonitor .spValue {
+    display: inline;
+    max-width: calc(100% - 40px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#modalMonitorConfig .divMonitor .spValueTip {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 1px 10px;
+}
+
+#modalMonitorConfig .divMonitor .divUnit {}
+
+#modalMonitorConfig .divMonitor .iptUnit {}
+
+#modalMonitorConfig .divMonitor .divPoint label {
+    width: 40px;
+}
+
+#modalMonitorConfig .modal-footer input,
+#ModalAppButtonConfig .modal-footer input {
+    height: 35px;
+    float: left;
+    width: 13%;
+}
+
+#modalMonitorConfig .divMonitor .divMonitorDel,
+#ModalAppButtonConfig .divMonitor .divMonitorDel {
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.springContent .divMonitor {
+    float: left;
+    display: inline-block;
+    width: 100%;
+    height: 140px;
+    position: relative;
+    color: #444;
+    border-bottom: 3px solid #0a0031;
+    /*background:-webkit-gradient(radial, 184 -25, 161, 220 -257, 465, from(#fabd3e), to(#f4ae32));*/
+}
+
+.springContent .divMonitor:last-child {
+    border-bottom: none;
+}
+
+.springContent .divMonitor:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.springContent .divMonitor.semiCol {
+    width: 50%;
+    height: 33%;
+    box-shadow: 0 0 1px 0 #ccc inset;
+    background-color: #f7f7f7;
+    padding: 0 15px;
+    border: none;
+}
+
+.springContent .divMonitor.semiCol:nth-child(even) {}
+
+.springContent .divMonitor .divIcon {
+    width: 28%;
+    height: 100%;
+    top: 0;
+    vertical-align: top;
+    font-size: 50px;
+    display: inline-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+
+.springContent .divMonitor.semiCol .divIcon {
+    width: auto;
+    height: 100%;
+    font-size: 2rem;
+}
+
+.springContent .divMonitor.semiCol .divIcon .glyphicon {
+    padding: 0.5rem;
+    border-radius: 10rem;
+}
+
+.springContent .divMonitor.semiCol .divIcon .glyphicon:before {
+    position: relative;
+    left: 1px;
+    top: -1px;
+}
+
+.springContent .divAppButtonSix .divIcon img,
+.springContent .divAppButtonFive .divIcon img,
+.springContent .divAppButtonFour .divIcon img {
+    vertical-align: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+.springContent .divMonitor .divMonitorInfo {
+    height: 100%;
+    width: 70%;
+    vertical-align: text-bottom;
+    font-size: 22px;
+    padding: 0 5px;
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    align-content: center;
+    -webkit-align-content: center;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+    align-items: center;
+    -webkit-align-items: center;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
+
+.springContent .divMonitor.semiCol .divMonitorInfo {
+    left: 5%;
+    position: relative;
+}
+
+.springContent .divMonitor .divMonitorInfo>div {
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+.springContent .divMonitor label {
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+
+.springContent .divMonitor .spName {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #ccc;
+    text-align: left;
+}
+
+.springContent .divMonitor .spValue {
+    font-weight: bold;
+    font-size: 36px;
+    margin-right: 10px;
+}
+
+.springContent .divMonitor .spUnit {
+    position: relative;
+    top: 5px;
+}
+
+.forMobile .springContent .divMonitor .spUnit {
+    margin-left: 20px;
+}
+
+.springContent .divMonitor.semiCol .spUnit {
+    top: 0;
+}
+
+.springContent .divMonitor .spType {
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.springContent .divMonitor.semiCol .spName {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.7;
+    font-size: 1.2rem;
+}
+
+.springContent .divMonitor.semiCol .spValue {
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin-right: 10px;
+}
+
+.springContent .divMonitor.semiCol .spUnit {
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.forMobile .springContent .divMonitor.semiCol .spUnit {
+    margin-left: 0;
+}
+
+.springContent .divMonitor.semiCol .spType {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.springContent .divMonitor .divValue {
+    display: block;
+    position: absolute;
+    height: 30px;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+.springContent .divMonitor .divMonitorInfo.divMonitorInfoCover {
+    width: 100%;
+    padding: 0 10px 0 0;
+}
+
+.springContent .divMonitor.divMonitorCover {
+    width: 94%;
+    margin: 0px 3%;
+    /*   background:rgba(84, 77, 103,0.4); */
+    line-height: 3rem;
+    border-bottom: 1px solid rgba(200, 199, 204, 0.13);
+    /*     border-radius: 4px;
+    box-shadow: 0px 0px 10px #222; */
+}
+
+.springContent .divMonitor .spValue.spValueCover {
+    display: block;
+    float: right;
+    color: #f7b946;
+    font-weight: 200;
+    font-size: 1.6rem;
+    margin-right: 0px;
+}
+
+.forMobile .springContent .divMonitor .spValue.spValueCover {
+    float: none;
+}
+
+.springContent .divMonitor .spUnit.spUnitCover {
+    display: block;
+    margin-left: 0px;
+    float: right;
+    top: 0px;
+    font-size: 14px;
+    color: #d4a14d;
+}
+
+.forMobile .springContent .divMonitor .spUnit.spUnitCover {
+    float: none;
+}
+
+.springContent .divMonitor .spName.spNameCover {
+    float: left;
+    padding-left: 5px;
+    width: 60%;
+    height: 30px;
+    color: #d7d5db;
+    font-size: 1.4rem;
+    line-height: 2.4;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.forMobile .divIconCover {
+    color: #ada1b3;
+    padding: 0 0.1rem 0 0.5rem;
+    font-size: 1.4rem;
+    vertical-align: bottom;
+}
+
+
+/* Monitor模块 End*/
+
+
+/* dashboard end */
+
+
+/* appButton模块 start*/
+
+.springContent .divAppButton {
+    height: 50%;
+    padding-top: 1rem;
+    margin: 0 auto;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #e8e8e8;
+    border-top: none;
+    border-right: none;
+}
+
+.springContent .divAppButtonOne,
+.springContent .divAppButtonTwo,
+.springContent .divAppButtonThree {
+    height: 100%;
+}
+
+.springContent .divAppButtonFour,
+.springContent .divAppButtonFive,
+.springContent .divAppButtonSix {
+    height: 50%;
+}
+
+.springContent .divAppButtonOne {
+    margin-left: 25%;
+    border: none;
+}
+
+.springContent .divAppButtonOne .divIcon,
+.springContent .divAppButtonTwo .divIcon {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 10rem;
+    margin: 0 auto;
+    margin-top: calc(50% - 6rem);
+    font-size: 6rem;
+    line-height: 10rem;
+}
+
+.springContent .divAppButtonThree .divIcon,
+.springContent .divAppButtonFour .divIcon,
+.springContent .divAppButtonFive .divIcon,
+.springContent .divAppButtonSix .divIcon {
+    width: 5rem;
+    height: 5rem;
+    /*border-radius:5rem;*/
+    margin: 0 auto;
+    margin-top: 65%;
+    font-size: 3rem;
+    line-height: 5rem;
+}
+
+.springContent .divAppButtonThree .divIcon,
+.springContent .divAppButtonFour .divIcon,
+.springContent .divAppButtonFive .divIcon,
+.springContent .divAppButtonSix .divIcon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 5rem;
+    margin: 0 auto;
+    margin-top: 65%;
+    font-size: 3rem;
+    line-height: 3rem;
+}
+
+.springContent .divAppButtonThree .divIconLittle,
+.springContent .divAppButtonFour .divIconLittle,
+.springContent .divAppButtonFive .divIconLittle,
+.springContent .divAppButtonSix .divIconLittle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 5rem;
+    margin: 0 auto;
+    margin-top: 65%;
+    font-size: 2.5rem;
+    line-height: 3rem;
+}
+
+.springContent .divAppButtonFive:nth-child(4) {
+    margin-left: 16%;
+}
+
+.springContent .divAppButtonFour .divIcon,
+.springContent .divAppButtonFive .divIcon,
+.springContent .divAppButtonSix:nth-child(1) .divIcon,
+.springContent .divAppButtonSix:nth-child(2) .divIcon,
+.springContent .divAppButtonSix:nth-child(3) .divIcon {
+    margin-top: 5%;
+}
+
+.springContent .divAppButtonSix:nth-child(1),
+.springContent .divAppButtonSix:nth-child(4) {
+    border-left: 0;
+}
+
+.springContent .divAppButtonSix:nth-child(4),
+.springContent .divAppButtonSix:nth-child(5),
+.springContent .divAppButtonSix:nth-child(6) {
+    border-bottom: 0;
+}
+
+.springContent .divAppButtonSix .divIcon {
+    margin-top: 5%;
+}
+
+.springContent .divAppButtonFour:nth-child(3) .divIcon,
+.springContent .divAppButtonFour:nth-child(4) .divIcon,
+.springContent .divAppButtonFive:nth-child(4) .divIcon,
+.springContent .divAppButtonFive:nth-child(5) .divIcon {
+    margin-top: 5%;
+}
+
+.springContent .divAppButtonFive:nth-child(4),
+.springContent .divAppButtonFive:nth-child(5) {
+    border-bottom: 0;
+}
+
+.springContent .divAppButtonFive:nth-child(5) {
+    border-right: 1px solid #e8e8e8;
+}
+
+.springContent .divAppButtonOne .divMonitorInfo,
+.springContent .divAppButtonTwo .divMonitorInfo {
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+.springContent .divAppButtonThree .divMonitorInfo,
+.springContent .divAppButtonFour .divMonitorInfo,
+.springContent .divAppButtonFive .divMonitorInfo,
+.springContent .divAppButtonSix .divMonitorInfo {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    color: #828284;
+}
+
+.springContent.backOperate {
+    background: #fff;
+}
+
+.springContent .divAppButtonThree .divMonitorInfoLit,
+.springContent .divAppButtonFour .divMonitorInfoLit,
+.springContent .divAppButtonFive .divMonitorInfoLit,
+.springContent .divAppButtonSix .divMonitorInfoLit {
+    font-size: 1.2rem;
+}
+
+
+/* appButton模块 End*/
+
+
+/* appBHistoryQuery模块 start*/
+
+.middlePointers {
+    overflow-y: auto;
+    height: calc(100% - 270px);
+}
+
+.gray-scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.gray-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+.gray-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.listDataBox {
+    width: 100%;
+}
+
+.switchBtnCtn {
+    width: 100%;
+    height: 35px;
+    position: relative;
+}
+
+.switchBtnCtn .switch {
+    width: 40px;
+    height: 20px;
+    background: #5a96f9;
+    position: absolute;
+    border-radius: 50px;
+    top: 7.5px;
+    left: 10px;
+}
+
+.switchBtnCtn .switch .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    margin-left: 0;
+}
+
+.switchBtnCtn .configBtn {
+    position: absolute;
+    width: 16%;
+    background: transparent;
+    position: absolute;
+    right: 10px;
+    padding: 0;
+    height: 26px;
+    top: 4.5px;
+    color: #eeeeee !important;
+}
+
+.middlePointers .singleContent {
+    color: #b9b8bf;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+}
+
+.middlePointers .singleContent:nth-child(odd) {
+    background: #5d5369;
+}
+
+.middlePointers .singleContent i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #cccccc;
+}
+
+.middlePointers .singleContent.activeSingle i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #f7b946;
+}
+
+.middlePointers .singleContent>div {
+    padding: 10px;
+}
+
+#bottomSearchHistory .bottomTitle,
+#bottomSearchHistory .bottomContent {
+    padding: 0 2%;
+}
+
+#bottomSearchHistory .bottomTitle {
+    font-size: 18px;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.hisCommen {
+    background: none;
+    border: none;
+    height: 35px;
+    line-height: 35px;
+}
+
+.hisCommenBox {
+    background: rgb(237, 238, 240);
+    color: #646464;
+    box-shadow: none;
+    margin-top: 8px;
+}
+
+.btnQuery {
+    width: 50%;
+    height: 30px;
+    line-height: 30px;
+    margin: 20px auto 0;
+    background: none;
+    border: 1px solid #ededef;
+    border-radius: 5px;
+}
+
+.bottomBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+}
+
+#bottomAppHistory {
+    position: relative;
+    background: #ffffff;
+    width: 80%;
+    margin: 3rem auto 0 auto;
+    border-radius: 6px;
+}
+
+#bottomAppHistory>span {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.bottomAppHistoryTitle {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+.bottomAppHistoryContent {
+    padding-bottom: 1rem;
+}
+
+
+/* appBHistoryQuery模块 end*/
+
+
+/* AppDiagRanking模块 start*/
+
+table.diagRanking {
+    width: 100%;
+}
+
+table.diagRanking thead {
+    color: rgb(193, 193, 193);
+}
+
+table.diagRanking tbody {
+    color: #969696;
+}
+
+table.diagRanking tbody tr {
+    cursor: pointer;
+}
+
+table.diagRanking tbody tr:hover {
+    background-color: #38496a;
+}
+
+table.diagRanking th {
+    padding: 0.4rem;
+    text-align: center;
+    font-weight: 400;
+}
+
+table.diagRanking td {
+    padding: 0.6rem 1rem;
+    text-align: center;
+}
+
+.forMobile .diagnosisBg {
+    height: 100%;
+    width: calc(100% - 20px);
+    margin: 1rem 10px;
+    background: transparent;
+    border: 0.1rem solid #5e5a76;
+    overflow-y: auto;
+}
+
+.forMobile table thead.diagnosisThead {
+    color: #ececef;
+    height: 4rem;
+    font-size: 1.375rem;
+    background: #5d5369;
+}
+
+.forMobile table tr.diagnosisStyle {
+    font-size: 1.2rem;
+    height: 3.5rem;
+    color: #b9b8bf;
+    border-top: 0.1rem solid #5e5a76;
+}
+
+.forMobile table.diagRanking tbody tr:nth-child(even) {
+    background: #5d5369;
+}
+
+.blackBg .diagnosisBg,
+.whiteBg .diagnosisBg {
+    margin: 0;
+}
+
+.blackBg .diagnosisBg table tr,
+.whiteBg .diagnosisBg table tr {
+    border-bottom: none;
+}
+
+.blackBg .diagnosisBg {
+    border: none;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.whiteBg .diagnosisBg {
+    border: none;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.blackBg .diagnosisBg table thead.diagnosisThead,
+.whiteBg .diagnosisBg table thead.diagnosisThead {
+    background: none;
+}
+
+.blackBg .diagnosisBg table.diagRanking tbody tr:nth-child(even),
+.whiteBg .diagnosisBg table.diagRanking tbody tr:nth-child(even) {
+    background: none;
+}
+
+.whiteBg .diagnosisBg table tr.diagnosisStyle {
+    border: 1px solid #ccc;
+}
+
+.whiteBg .diagnosisBg table.diagRanking tbody tr:hover,
+.blackBg .diagnosisBg table.diagRanking tbody tr:hover {
+    background-color: transparent;
+}
+
+
+/* AppDiagRanking模块 end*/
+
+
+/* APP Month History模块 start*/
+
+#topMonthShow {
+    overflow: hidden;
+    background: rgba(47, 145, 232, 0);
+    color: #ffffff;
+}
+
+#chartContainer {
+    background: #ffffff;
+}
+
+#topMonthShow>div {
+    padding: 0.6rem;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+#topMonthShow>.month {
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+
+
+/* APP Month History模块 end*/
+
+
+/* APP 百叶窗模块 */
+
+.blindConTitle {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    background: #d9d9d9;
+    padding-left: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    font-weight: 600;
+}
+
+.hideSibling {
+    background: #fff;
+}
+
+.hideSibling+div.blindConContent {
+    display: none;
+}
+
+.blindConContent .springContainer>.panel {
+    top: 0px;
+    bottom: 0;
+    position: relative;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+#blindDivBox {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.forMobile .blindConTitleCover {
+    font-size: 1.5rem;
+    color: #e2e1e9;
+    background: rgba(255, 255, 255, 0);
+    border-bottom: 1px solid #6e6174;
+    font-weight: 200;
+}
+
+.rotArrow {
+    color: #a8a4a8;
+    transform: rotateZ(-90deg);
+}
+
+.rotArrowCur {
+    transform: rotateZ(0deg);
+}
+
+.forMobile .blindConContentCover {
+    border-bottom: 1px solid #6e6174;
+}
+
+#topMonthShow>.month.monthCover {
+    padding: 5px 0;
+    border-left: 1px solid rgba(177, 173, 173, 0.46);
+    border-right: 1px solid rgba(177, 173, 173, 0.46);
+}
+
+
+/* APP 百叶窗模块 end*/
+
+
+/* APP 饼图组合模块*/
+
+.appPieTotalBox {
+    width: 100%;
+    height: 100%;
+}
+
+.appPieTotalBox .appPieTotalBoxTitle {
+    text-align: center;
+    font-size: 1.6rem;
+    font-family: "微软雅黑", "Microsoft YaHei", Helvetica;
+    top: 3%;
+    width: 100%;
+    color: #e2dfe4;
+}
+
+.appPieTotalBox .appPieTotalBoxTitle span {
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 0.3rem;
+}
+
+.appPieTotalBox .leftAppChartLegend {
+    width: 60%;
+    bottom: 5%;
+    left: 5%;
+    font-size: 1rem;
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    color: #e2dfe4;
+}
+
+.appPieTotalBox .divAppChartTip {
+    position: absolute;
+    display: inline-block;
+}
+
+.appPieTotalBox .spAppChartLegend {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.appPieTotalBox .spIcon {
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.appPieTotalBox .divAppEnergyLabel {
+    height: 100%;
+    width: 40%;
+    position: absolute;
+    right: 3%;
+    top: 22.8%
+    /*top: 16.8%;24.8*/
+}
+
+@media screen and (max-width: 418px) {
+    .appPieTotalBox .divAppEnergyLabel {
+        top: 24.8%
+    }
+    .appPieTotalBox .divAppTotalEnergy {
+        top: -1.5%
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .appPieTotalBox .divAppEnergyLabel {
+        top: 23.8%
+    }
+    .appPieTotalBox .divAppTotalEnergy {
+        top: -2%
+    }
+}
+
+@media screen and (max-width: 323px) {
+    .appPieTotalBox .divAppEnergyLabel {
+        top: 22%
+    }
+    .appPieTotalBox .divAppTotalEnergy {
+        top: -5%
+    }
+}
+
+.divAppEnergyLabel .ctnRealVal {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: -10%;
+}
+
+.divAppEnergyLabel .divRealVal {
+    width: 100%;
+    font-size: 1rem;
+    height: 20%;
+    color: #e2dfe4;
+    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+}
+
+.divAppEnergyLabel .ctnPercentage {
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: -8%;
+    font-size: 1rem;
+}
+
+.divAppEnergyLabel .divPercentage {
+    height: 20%;
+    position: relative;
+    color: #fff;
+}
+
+.divAppEnergyLabel .spLabelName {}
+
+.divAppEnergyLabel .spRealVal {}
+
+.divAppEnergyLabel .spPercentVal {
+    border-bottom: 1px solid #ccc;
+}
+
+.divAppEnergyLabel .spPercentIcon {
+    display: inline-block;
+    height: 4px;
+    width: 4px;
+    position: absolute;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    left: -10%;
+    top: 1.25rem;
+    display: none;
+}
+
+.appPieTotalBox .spPercentVal {
+    border-bottom: 1px solid #ccc;
+}
+
+.appPieTotalBox .spPercentIcon {
+    display: inline-block;
+    height: 4px;
+    width: 4px;
+    position: absolute;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    left: -10%;
+    top: 1.25rem;
+    display: none;
+}
+
+.appPieTotalBox .divAppChart {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.appPieTotalBox .divAppChildChart {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+}
+
+.appPieTotalBox .divAppItemEnergy {
+    width: 60%;
+}
+
+.appPieTotalBox .divAppTotalEnergy {
+    width: 37%;
+}
+
+
+/* APP 饼图组合模块 end*/
+
+
+/* 轮播左右箭头 start */
+
+.carousel-control {
+    background-image: none !important;
+    color: rgba(128, 128, 128, 0.6);
+    width: 40px;
+    height: 30%;
+    top: 35%;
+    transform: scalex(0.8);
+    z-index: 100;
+}
+
+.carousel-control:hover {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.carousel-caption {
+    text-shadow: none;
+}
+
+/* 平台那边会向上偏移 做下兼容*/
+.isPlatform .carousel-control {
+    height: initial;
+    width: 35px;
+}
+/* 轮播左右箭头 end */
+
+
+/* 百叶窗模态框 start */
+
+#blindChartShow {
+    right: 20%;
+}
+
+#blindChartShow .modal-backdrop {
+    position: absolute;
+}
+
+
+/* 百叶窗模态框 end */
+
+
+/*kpi总览 modalKpiOverview*/
+
+.kpiOverviewCtn {
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+}
+
+.leftKpiOverview {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -100px;
+    margin: 0 10px;
+    float: left;
+}
+
+.leftKpiOverview .circleContainer {
+    position: relative;
+}
+
+.leftKpiOverview .percentageNum {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 30%;
+    text-align: center;
+}
+
+.leftKpiOverview .smallCircleContainer {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #63b15b;
+    border-radius: 50%;
+}
+
+.leftKpiOverview .smallWhite {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+.rightKpiOverview {
+    width: 75%;
+    height: 200px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -130px;
+    float: left;
+}
+
+.rightKpiOverview h3 {
+    margin-top: 0;
+}
+
+.rightKpiOverview .kpiInfoBox {
+    overflow: hidden;
+}
+
+.rightKpiOverview>div {
+    position: relative;
+    margin-bottom: 4%;
+}
+
+.rightKpiOverview .kpiInfo {
+    border-radius: 20px;
+    padding: 6px;
+    color: #ffffff;
+    width: 100%;
+    font-size: 12px;
+}
+
+.rightKpiOverview .kpiInfo>div span {
+    float: left;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.rightKpiOverview .kpiInfo>div span:hover {
+    cursor: pointer;
+}
+
+.rightKpiOverview .kpiInfo>div span:nth-child(1) {
+    width: 60%;
+}
+
+.rightKpiOverview .kpiInfo>div span:nth-child(2) {
+    width: 28%;
+}
+
+.rightKpiOverview .kpiInfo>div span:nth-child(3) {
+    width: 12%;
+}
+
+.rightKpiOverview .kpiInfo.passGreen:before,
+.rightKpiOverview .kpiInfo.noPassGreen:before {
+    background: #63b15b;
+    position: absolute;
+    content: " ";
+    display: block;
+    border: 1px solid #666666;
+    border-radius: 100%;
+    opacity: 0.9;
+    left: 0;
+    top: 0.8rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.rightKpiOverview .kpiInfo.noPassGreen {
+    color: #f1b23e;
+}
+
+.rightKpiOverview .kpiInfo.noPassGreen:before {
+    background: #f1b23e;
+}
+
+
+/*kpi总览 modalKpiOverview*/
+
+
+/* 数据监视列表  modalDataMonitorList start*/
+
+.monitorListLeft {
+    /*     width: 24%; */
+    height: 100%;
+    margin: 5px;
+    margin-right: 0px;
+    /* border: 1px solid #888; */
+    float: left;
+    background-color: #192234;
+    overflow: auto;
+}
+
+.monitorListLeft table td:nth-child(3n+1) {
+    width: 32%;
+}
+
+.monitorListLeft .table {
+    margin-bottom: 0px;
+    /* text-align: left; */
+}
+
+.monitorListLeft table td:nth-child(3n+2) {
+    width: 9%;
+    text-align: center;
+}
+
+.monitorListLeft table td:nth-child(3n) {
+    width: 18%;
+    text-align: center;
+}
+
+.monitorListLeft tr>td {
+    padding: 8px;
+}
+
+.alertErrorInfo {
+    width: 40%;
+    height: 31%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 999;
+    background: #eee;
+    color: #aaa;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+
+/* 数据监视列表  modalDataMonitorList end*/
+
+
+/* 插页 */
+
+.advPage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    white-space: nowrap;
+    z-index: 10000;
+}
+
+.advPage img {
+    position: relative;
+    display: inline;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s linear 0.1s;
+    -webkit-transition: -webkit-transform 0.5s linear 0.1s;
+}
+
+.advImgWrap {
+    width: 200%;
+    height: 100%;
+}
+
+.advBar {
+    position: fixed;
+    width: 30%;
+    height: 10px;
+    left: 50%;
+    bottom: 10%;
+    margin-left: -5%;
+    z-index: 10;
+}
+
+.advBar .advSpan {
+    display: block;
+    float: left;
+    width: 13%;
+    height: 3px;
+    margin-left: 5px;
+    background: rgba(234, 234, 234, 0.8);
+}
+
+.advBar .advSpan.cur {
+    background: rgba(255, 215, 0, 0.8);
+}
+
+.skipOver {
+    position: fixed;
+    top: 3%;
+    right: 5%;
+    padding: 2px;
+    font-size: 14px;
+    border-radius: 10px;
+    background: #ccc;
+    z-index: 10;
+}
+
+
+/*factory 可选模块的tooltip*/
+
+.dataStruct::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);*/
+    background-color: #313639;
+}
+
+.dataStruct::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+.dataStruct::-webkit-scrollbar-thumb {
+    /*background-color: rgba(0, 0, 0, 0.3);*/
+    background-color: #2A2B2D;
+}
+
+.dataStruct::-webkit-scrollbar-corner {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.toolDiv {
+    position: fixed;
+    display: flex;
+    padding: 5px;
+    font-size: 16px;
+    color: #efefef;
+   /* right: 225px;*/ 
+    transform: translateX(-100%);
+    background: rgba(4, 20, 33, 0.45);
+    border-radius: 10px;
+    z-Index: 160;
+}
+
+.toolDiv .dataDiv {
+    min-width: 200px;
+    height: 100%;
+    position: relative;
+}
+
+.toolDiv .dataDiv .btnCopy {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    opacity: 0.8;
+    padding: 1px 4px;
+}
+
+.dataDiv,
+.imgDiv {
+    float: left;
+}
+
+.toolDiv .imgDiv {
+    padding: 10px 0px;
+    height: 100%;
+}
+
+.dataStruct {
+    max-height: 400px;
+    max-width: 650px;
+    color: #cfcfcf;
+    padding-left: 10px;
+    font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: auto;
+    background: transparent;
+}
+
+.imgPCDiv,
+.imgMobDiv {
+    float: left;
+    margin: 0 auto;
+    width: 360px;
+    text-align: center;
+}
+
+.imgPCDiv img,
+.imgMobDiv img {
+    width: 95%;
+}
+
+
+/*设备完好率 start*/
+
+.equipmentIntactRate {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    cursor: default;
+    flex-wrap: wrap;
+    display: flex;
+    cursor: pointer;
+}
+
+.equipmentIntactRate .noData {
+    width: 100%;
+    height: 100%;
+    font-size: 1.6em;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 14px;
+}
+
+.equipmentIntactRate .divCtn {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    width: 130px;
+}
+
+.equipmentIntactRate .divCtn>div {
+    width: 50%;
+}
+
+.equipmentIntactRate .name span {
+    padding-left: 5px;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    font-size: 1.4em;
+}
+
+.equipmentIntactRate .circleCtn {
+    margin: 0 auto;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgb(255, 255, 255);
+    width: 60px;
+    height: 60px;
+}
+
+.equipmentIntactRate .circleBorder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(91, 95, 102, .8);
+}
+
+.equipmentIntactRate .circleBg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.equipmentIntactRate .circleCtn .perNum {
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6em;
+}
+
+.circleCtn .perNum:after {
+    content: '%';
+    font-size: .5em;
+    padding-bottom: 8px;
+}
+
+
+/*设备完好率 end*/
+
+
+/*工单统计 start*/
+
+.workOrderStatistics {
+    width: 100%;
+    height: 86%;
+    position: relative;
+    cursor: pointer;
+    color: #fff;
+    padding: 0 15px;
+    padding-top: 5%;
+}
+
+.workOrderStatistics>div {
+    height: 33.3333%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.workOrderStatistics .billInfo {
+    width: 7em;
+    float: left;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1.4em;
+}
+
+.workOrderStatistics .billInfo .showIcon {
+    font-size: 1.2em;
+}
+
+.workOrderStatistics .state {
+    float: right;
+    border-radius: 6px;
+    background: rgba(65, 122, 229, .9);
+    text-align: center;
+    padding: .4em;
+    color: #ffffff;
+    font-size: 1.2em;
+}
+
+.workOrderStatistics .percentageCtn {
+    width: 54%;
+    float: right;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 1.2em;
+}
+
+.workOrderStatistics .progressBar {
+    width: 100%;
+    float: left;
+    height: 16px;
+    position: relative;
+    background: rgb(87, 88, 90);
+    border-radius: 6px;
+    border: 3px solid rgb(87, 88, 90);
+}
+
+.workOrderStatistics .hwInfo>div {
+    height: 33.3333%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.workOrderStatistics .percentageBar {
+    width: 0;
+    height: 10px;
+    border-top-left-radius: .5em;
+    border-bottom-left-radius: .5em;
+    background: -webkit-linear-gradient(left, #78ca5f, #53aa56);
+    text-align: right;
+}
+
+.workOrderStatistics .percentageDetail {
+    line-height: 10px;
+    margin: 0 6px;
+    display: block;
+}
+
+
+/*工单统计 end*/
+
+
+/*优先处理故障列表 start*/
+
+.priorityHandlingFaultList {
+    width: 100%;
+    font-size: 1.2em;
+    height: 100%;
+}
+
+.priorityHandlingFaultList .faultList {
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+.priorityHandlingFaultList .bottomDiv {
+    height: 50px;
+    margin-top: 5px;
+}
+
+.priorityHandlingFaultList .bottomDiv button {
+    background: rgb(65, 122, 229);
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    padding: 6px;
+    font-size: .8em;
+}
+
+.priorityHandlingFaultList .rowList {
+    position: relative;
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.priorityHandlingFaultList .rowList span {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 4px;
+}
+
+.priorityHandlingFaultList .rowList:nth-child(odd) {
+    background: -webkit-linear-gradient(left, rgba(200, 214, 238, 0.3), rgb(200, 214, 238), rgba(200, 214, 238, 0.3));
+}
+
+.priorityHandlingFaultList .rowList:hover {
+    cursor: pointer;
+}
+
+
+/*.priorityHandlingFaultList .rowList .line{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:1px;
+  background: -webkit-linear-gradient(left, rgba(150, 180, 226, 0.3),rgb(150, 180, 226),rgba(150, 180, 226, 0.3));
+}*/
+
+
+/*优先处理故障列表 end*/
+
+
+/*过冷过热区域汇总 start*/
+
+.coldHotAreaSummary .iconfont {
+    font-size: 1.7em;
+    margin-right: 6px;
+}
+
+.coldHotAreaSummary {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+}
+
+.coldHotAreaSummary>div.col-xs-6 {
+    height: 100%;
+    padding: 0 10% 10px 10%;
+}
+
+.coldHotAreaSummary .line {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    bottom: 20%;
+    width: 1px;
+    height: 60%;
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.29), rgba(0, 0, 0, 0.03));
+}
+
+.coldHotAreaSummary .temperatureBg {
+    height: 60%;
+    position: relative;
+    text-align: center;
+    font-size: 2.4em;
+}
+
+.coldHotAreaSummary .static {
+    height: 20%;
+    font-size: 1.4em;
+    text-align: center;
+    padding-top: 8%;
+}
+
+.coldHotAreaSummary .temperatureBg.bgblue {
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(68, 123, 229, 0.29), rgb(68, 123, 229));
+}
+
+.coldHotAreaSummary .temperatureBg.bgyellow {
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(228, 175, 0, 0.29), rgb(228, 175, 0));
+}
+
+.coldHotAreaSummary .situation {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coldHotAreaSummary .realTp {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20%;
+    margin: 0 auto;
+}
+
+
+/*过冷过热区域汇总 end*/
+
+
+/*能耗趋势分析 start*/
+
+.energyAnalysis {
+    width: 100%;
+    height: 100%;
+}
+
+.noData {
+    width: 100%;
+    height: 100%;
+    font-size: 1.6em;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 14px;
+}
+
+.energyAnalysis .chartBox {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*能耗趋势分析 end*/
+
+
+/*设备完好率 + 历史数据 start*/
+
+.periodSwitch {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 26%;
+    margin-left: 74%;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid #3162df;
+    position: absolute;
+    right: 14px;
+    top: 10px;
+}
+
+.periodSwitch li {
+    float: left;
+    padding: 5px 0;
+    background: #0078dc;
+    width: 33.333%;
+    text-align: center;
+    border-right: 1px solid #ffffff;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.periodSwitch li:last-child {
+    border-right: none;
+}
+
+.periodSwitch li.selected {
+    background: #ffffff;
+    color: #000000;
+}
+
+.equipmentRatetHistoryData {
+    height: calc(100% - 30px);
+    margin-top: 30px;
+}
+
+.equipmentRatetHistoryData>div>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+}
+
+.equipmentRatetHistoryData>div .rate {
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+}
+
+.equipmentRatetHistoryData .ctn {
+    height: 60px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.equipmentRatetHistoryData .echartsBox {
+    height: calc(100% - 60px);
+    width: 100%;
+}
+
+
+/*设备完好率 + 历史数据 end*/
+
+
+/*交互趋势图 新 start*/
+
+.interactiveTrendChart {
+    width: 100%;
+    height: 100%;
+    background: #3b3b3b;
+}
+.interactiveTrendChart #tagTreeInfo #tagZtreeBox{
+    height: 100%;
+}
+.interactiveTrendChart .title {
+    font-size: 14px;
+    border-bottom: 1px solid #2A3E50;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 8px;
+}
+
+.interactiveTrendChart .leftTagTree {
+    width: 350px;
+    float: left;
+    height: 100%;
+    background: rgb(25, 34, 52);
+    border: 1px solid #2A3E50;
+    border-radius: 5px;
+}
+
+.interactiveTrendChart #tagTreeCtn {
+    width: 100%;
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.interactiveTrendChart #tagTreeCtn #tagTreeInfo {
+    background: rgb(25, 34, 52);
+}
+
+.interactiveTrendChart .rightChart {
+    width: calc(100% - 355px);
+    float: left;
+    margin-left: 5px;
+    background: rgb(25, 34, 52);
+    height: 100%;
+    border: 1px solid #2A3E50;
+    border-radius: 5px;
+}
+
+.interactiveTrendChart .configTime {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 8px;
+}
+
+.interactiveTrendChart .configTime .startTime,
+.interactiveTrendChart .configTime .endTime {
+    width: 270px;
+    float: left;
+    height: 30px;
+    border: 1px solid #3477be;
+    background: #144685;
+    padding: 0 10px;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+
+.interactiveTrendChart .configTime input {
+    background: transparent;
+    border: none;
+    display: inline-block;
+    box-shadow: none;
+    outline: none;
+    width: calc(100% - 90px);
+}
+
+.interactiveTrendChart .configTime label {
+    line-height: 30px;
+    display: inline-block;
+    width: 80px;
+}
+
+.interactiveTrendChart .configTime button {
+    height: 30px;
+    vertical-align: top;
+    line-height: 20px;
+    padding: 5px 15px;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.period select {
+    height: 30px;
+    border: 1px solid #3477be;
+    background: #144685;
+    padding: 0 10px;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+
+.interactiveTrendChart .chartCtn {
+    width: 100%;
+    height: calc(100% - 100px);
+}
+
+.interactiveTrendChart .dataSourceCtn {
+    height: 100px;
+    margin: 0 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px dashed #ffffff;
+    border-radius: 4px;
+}
+
+.prompt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 14px;
+}
+
+.interactiveTrendChart .echartsBox {
+    width: 100%;
+    height: calc(100% - 100px);
+}
+
+.interactiveTrendChart .singleDataSource {
+    width: 200px;
+    float: left;
+    padding: 4px;
+    border-radius: 4px;
+    margin-left: 6px;
+    position: relative;
+    margin-top: 4px;
+}
+
+.interactiveTrendChart .singleDataSource .dataSourceName {
+    display: block;
+    width: 180px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.interactiveTrendChart .singleDataSource span.glyphicon {
+    position: absolute;
+    top: 6px;
+    right: 4px;
+}
+
+
+/*交互趋势图 新 end*/
+
+
+/*故障优先列表 新 start*/
+
+ul.btnGroup {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow: hidden;
+    position: absolute;
+    right: 14px;
+    top: 10px;
+}
+
+ul.btnGroup li {
+    float: left;
+}
+
+ul.btnGroup li:first-child {
+    padding-right: 10px;
+}
+
+ul.btnGroup li button {
+    border: 1px solid rgb(138, 178, 231);
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.faultsCtn {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    cursor: default;
+    flex-wrap: wrap;
+    display: flex;
+    max-height: 260px;
+}
+
+.faultsCtn .consquenceSingle {
+    padding: 15px;
+    min-height: 240px;
+}
+.faultsCtn .consquenceSingle .faultList{
+    height: calc(100% - 22px);
+}
+.faultsCtn .consquenceSingle .consquenceName {
+    font-size: 16px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.faultsCtn .consquenceSingle .consquenceName span{
+    margin: 0 2px;
+}
+.faultsCtn .faultSingle {
+    height: 18%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 4px;
+}
+
+.faultsCtn .faultSingle .faultName {
+    width: calc(100% - 30px);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.faultsCtn .faultSingle .iconfont {
+    position: absolute;
+    right: 4px;
+}
+
+.faultsCtn .line {
+    width: 100%;
+    height: 1px;
+    background: -webkit-linear-gradient(left, rgba(150, 180, 226, 0.3), rgb(150, 180, 226), rgba(150, 180, 226, 0.3));
+}
+
+.faultsCtn .verticalLine {
+    width: 1px;
+    height: calc(100% - 40px);
+    position: absolute;
+    left: 0 ;
+    top: 40px;
+    background: -webkit-linear-gradient(top, rgba(209, 208, 210, 0.3), rgb(209, 208, 210), rgba(209, 208, 210, 0.3));
+}
+
+.faultsCtn .verticalLine:odd {
+    display: none;
+}
+
+
+/*故障优先列表 新 end*/
+
+
+/*设备完好率 start*/
+
+.mobilePage .diagnosisNav {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    margin: 0;
+}
+
+.mobilePage .diagnosisNav .titleCtn {
+    display: none;
+}
+
+.mobilePage .diagnosisNav #btnShowHist {
+    display: none;
+}
+
+.mobilePage .diagnosisNav .detailsCtn {
+    height: auto;
+    border: none;
+    padding-top: 0;
+}
+
+.mobilePage .diagnosisNav #equipmentBox {
+    width: auto;
+    height: auto;
+    margin: 0;
+    border-radius: 0;
+}
+.mobilePage .diagnosisNav #btnConfig{display:none;}
+.mobilePage .diagnosisNav #equipmentBox .proTreeList {
+    margin-right: 0;
+}
+
+.mobilePage .diagnosisNav #equipmentBox .groupTitle {
+    padding: 0 10px;
+}
+
+.mobilePage .diagnosisNav #equipmentBox .titleSecond {
+    padding: 0 20px;
+}
+
+.mobilePage .diagnosisNav .titleThird {
+    padding: 0 30px;
+}
+
+.mobilePage .diagnosisNav #equipmentBox .groupThird .groupList {
+    padding: 0 30px;
+}
+
+.mobilePage #disgnosisDetailInfoModal .modal-dialog {
+    width: 100%;
+    margin-top: 0;
+}
+
+.mobilePage .diagnosisNav #faultInfoBox {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    background: #182334;
+    position: relative;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+.mobilePage .diagnosisNav #faultInfoBox {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin: 0;
+    border-radius: 0;
+    float: none;
+    z-index: 0;
+}
+
+.mobilePage .timeSelectBox {
+    display: none;
+}
+
+.mobilePage #disgnosisDetailInfoModal {
+    position: absolute;
+    color: #c4d1e5;
+    padding-left: 0;
+}
+
+.mobilePage #disgnosisDetailInfoModal {
+    position: relative;
+    width: 100%;
+}
+
+.mobilePage #disgnosisDetailInfoModal .modal-dialog {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.mobilePage #disgnosisDetailInfoModal .form-control {
+    color: #333;
+    background-color: #fff;
+}
+
+.mobilePage #disgnosisDetailInfoModal .modal-dialog .modal-content {
+    height: 100%;
+    background-color: #182334;
+}
+
+.mobilePage #disgnosisDetailInfoModal .modal-dialog .modal-content {
+    padding: 0 30px;
+}
+
+.mobilePage #disgnosisDetailInfoModal .modal-header {
+    border-bottom: 0;
+    padding: 0 15px;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 16px;
+    color: #adbbd1;
+}
+
+.mobilePage #disgnosisDetailInfoModal .modal-header {
+    padding: 0;
+}
+
+.mobilePage #disgnosisDetailInfoModal .modal-header .modal-title {
+    line-height: 3rem;
+    font-size: 16px;
+}
+
+.mobilePage #disgnosisDetailInfoModal .modal-header .close {
+    display: none;
+}
+
+.mobilePage #disgnosisDetailInfoModal .modal-body {
+    height: calc(100% - 3.6rem);
+    padding: 15px;
+}
+
+.mobilePage #disgnosisDetailInfoModal .modal-body {
+    padding: 0;
+}
+
+.mobilePage #disgnosisDetailInfoModal .input-group-addon {
+    background: -webkit-linear-gradient(top, rgb(253, 253, 253), rgb(232, 232, 232));
+}
+
+.mobilePage #checkDiagnosis {
+    background-color: #428bca;
+    color: #fff;
+}
+
+.mobilePage #sendOrder,
+.mobilePage #btnROI {
+    background: -webkit-linear-gradient(top, rgb(253, 253, 253), rgb(232, 232, 232));
+    color: #333;
+}
+
+.mobilePage #checkDiagnosis,
+.mobilePage #sendOrder,
+.mobilePage #btnROI {
+    border: 1px solid #3b4355;
+}
+
+.mobilePage .diagnosisAllBox {
+    height: calc(100% - 45px);
+    border-radius: 6px;
+    border: 1px solid rgb(55, 70, 100);
+    color: #c4d1e5;
+}
+
+.mobilePage .diagnosisAllBox {
+    height: auto;
+    margin-top: 0;
+    border: none;
+    border-radius: 0;
+}
+
+.mobilePage .diagnosisTable td {
+    border-top: 1px solid #3b4355;
+    border-bottom: 1px solid #3b4355;
+}
+
+.mobilePage .diagnosisAllBox tbody tr {
+    background-color: rgb(35, 46, 74);
+}
+
+.mobilePage .diagnosisAllBox tbody tr:hover {
+    background-color: rgb(35, 46, 74);
+    color: rgb(236, 195, 8);
+}
+
+.mobilePage .diagnosisTable th {
+    color: #c4d1e5;
+}
+
+.mobilePage #disgnosisDetailInfoModal .modal-footer {
+    border-top: 1px solid #3b4355;
+    display: none;
+}
+
+.mobilePage #disgnosisDetailInfoModal .input-group {
+    width: 342px;
+}
+
+.mobilePage #disgnosisDetailInfoModal .timeSelectBox div:nth-child(2) {
+    position: absolute;
+    left: 370px;
+    width: 100px;
+}
+
+.mobilePage #disgnosisDetailInfoModal .timeSelectBox div:nth-child(3) {
+    position: absolute;
+    right: 9px;
+    width: 124px;
+}
+
+.mobilePage .diagnosisTable thead tr {
+    height: 3rem;
+    line-height: 3rem;
+    background-color: rgb(40, 53, 87);
+}
+
+.mobilePage .diagnosisTable td .spectrumDiv:nth-child(odd) {
+    background: -webkit-linear-gradient(top, rgb(176, 183, 198), rgb(160, 174, 200)) !important;
+}
+
+.mobilePage .diagnosisTable td .spectrumDiv:nth-child(even) {
+    background: -webkit-linear-gradient(top, rgb(204, 207, 220), rgb(191, 196, 208)) !important;
+}
+
+.mobilePage .zoneApart {
+    background: -webkit-linear-gradient(top, rgba(255, 74, 79, 0.7), rgba(255, 126, 130, 0.7));
+    box-shadow: 0px 0px 5px #ffa0a2;
+}
+
+.mobilePage #disgnosisDetailInfoModal .input-group input:first-of-type {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.mobilePage #disgnosisDetailInfoModal .input-group input:last-of-type {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.mobilePage #disgnosisDetailInfoModal .timeSelectBox div:nth-child(3) {
+    position: absolute;
+    /*left: 560px;*/
+    width: 124px;
+}
+
+.mobilePage .emptyContent {
+    width: 60%;
+    font-size: 48px;
+    color: #c4d1e5;
+    margin: 0 auto;
+    padding-top: 200px;
+    display: none;
+}
+
+.mobilePage #wrapSpectrum {
+    height: auto;
+    padding: 10px 30px;
+}
+
+.mobilePage #wrapSpectrum #btnClose {
+    display: none;
+}
+
+.mobilePage #wrapSpectrum .float {
+    width: 100%;
+    float: none;
+}
+
+.mobilePage #wrapSpectrum .leftCtn {
+    height: auto;
+}
+
+.mobilePage #wrapSpectrum .faultInfo {
+    vertical-align: top;
+}
+
+.mobilePage .diagnosisAllBox .diagnosisDetailTr:hover {
+    background-color: transparent;
+}
+
+.mobilePage .diagnosisTable td {
+    border: none;
+    width: 50%;
+    display: inline-block;
+    padding: 5px 0;
+    float: left;
+}
+
+.mobilePage .diagnosisTable thead {
+    display: block;
+}
+
+.mobilePage .diagnosisTable thead tr {
+    display: block;
+    height: auto;
+}
+
+.mobilePage .diagnosisTable thead th:nth-of-type(3) {
+    display: none;
+}
+
+.mobilePage .diagnosisTable tr:before {
+    display: table;
+    content: " ";
+}
+
+.mobilePage .diagnosisTable tr:after {
+    clear: both;
+    display: table;
+    content: " ";
+}
+
+.mobilePage .diagnosisTable .spectrumCommen .zoneApart {
+    top: 0 !important;
+}
+
+.mobilePage .diagnosisTable td,
+.mobilePage .diagnosisTable th {
+    width: 50%;
+    display: inline-block;
+    float: left;
+    height: auto;
+}
+
+.mobilePage .diagnosisTable th {
+    height: 26px;
+    line-height: 26px;
+}
+
+.mobilePage .diagnosisTable td.spectrumCommen {
+    width: 100%;
+    padding: 0;
+}
+
+.mobilePage .diagnosisTable tbody {
+    width: 100%;
+    display: block;
+}
+
+.mobilePage .diagnosisAllBox tbody tr {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.mobilePage .diagnosisAllBox .diagnosisDetailTr:hover,
+.mobilePage .diagnosisAllBox tbody tr:nth-child(odd) {
+    background-color: rgb(35, 46, 74);
+}
+
+.mobilePage .diagnosisTable td .spectrumDiv {
+    margin-top: 0;
+    float: left
+}
+
+.mobilePage #workflow-insert-container .modal-header {
+    padding: 5px 10px;
+}
+
+.mobilePage #workflow-insert-container .modal-header .close {
+    float: none;
+    font-size: 30px;
+    width: 40px;
+    text-align: left;
+}
+
+.mobilePage #workflow-insert-container .modal-title {
+    display: none;
+}
+
+.mobilePage #workflow-insert-container .modal-dialog {
+    margin: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.mobilePage #workflow-insert-container .modal-content {
+    height: 100%;
+    border: none;
+    border-radius: 0;
+}
+
+.mobilePage #workflow-insert-container .wf-detail-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.mobilePage #workflow-insert-container .wf-detail-table tbody {
+    display: block;
+}
+
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(2),
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(3),
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(6),
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(7),
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(8),
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(9) {
+    display: none;
+}
+
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(1) .wf-table-head-fault,
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(5) .wf-table-head-fault {
+    display: none;
+}
+
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(1),
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(4),
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(5) {
+    display: block;
+}
+
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(1) td,
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(5) td {
+    width: 100%;
+    display: block;
+}
+
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(1) input,
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(5) textarea {
+    width: 100%;
+    pointer-events: none;
+}
+
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(4) input {
+    display: none;
+}
+
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(4) {
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(4) td {
+    display: inline;
+    width: auto;
+}
+
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(10),
+.mobilePage #workflow-insert-container .wf-detail-table tr:nth-child(10) td {
+    display: block;
+}
+
+.mobilePage #workflow-insert-container #workflow-insert-curve {
+    width: 100%;
+    /*max-width: 300px;*/
+}
+
+.mobilePage #workflow-insert-container .modal-footer {
+    display: none;
+}
+
+
+/*设备完好率 end*/
+
+/*首页控件 新版皮肤 样式 start*/
+/*设备完好率 st art*/
+.equipmentIntactRate{
+    position: relative;
+}
+
+.equipmentIntactRate .line{
+    width: 1px;
+    height: 40%;
+    position: absolute;
+    left: 66%;
+    top: 30%;
+}
+.pieLegendCtn {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.pieLegendCtn table{
+    width: 100%;
+    min-height: 140px;
+}
+.pieLegendCtn table td{
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    width: 25%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.pieLegendCtn table tr .tdValue{
+    text-align: right;
+    padding-right: 40px;
+    color: #ffffff;
+}
+.pieLegendCtn table tr .tdRightBorder{
+    border-right: 1px solid rgba(233, 233, 233, 0.1);
+}
+.pieLegendCtn table .tdName{
+    padding-left: 40px;
+}
+.pieLegendCtn table td.tdName span{
+    width: calc(100% - 12px);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #829cbf;
+}
+.pieLegendCtn .legendColorCtn{
+    width: 12px;
+    height: 10px;
+    margin-right: 8px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.pieLegendCtn > div span.name{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: calc(100% - 18px);
+}
+/*设备完好率 end*/
+/*故障列表 start*/
+.faultsDeatilCtn{
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+}
+.faultsDeatilCtn .faultsInfo{
+    width: calc(100% - 200px);
+    height: 100%;
+    float: left;
+}
+.faultsDeatilCtn .barEchartsctn{
+    width: 200px;
+    height: 100%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.faultsDeatilCtn .barEcharts{
+    width: 100%;
+    height: 100%;
+}
+.faultsDeatilCtn .barEchartsctn .legendCtn{
+    position: absolute;
+}
+.faultsDeatilCtn .legendCtn > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+.faultsDeatilCtn .legendCtn > div > div{
+    width: 6px;
+    height: 6px;
+    margin-right: 8px;
+    border-radius: 50%;
+}
+.faultsDeatilCtn .faultsInfo .consquenceName{
+    height: 40px;
+    font-size: 18px;
+    padding: 8px 20px;
+    color: #829cbf;
+    /*border-bottom: 1px solid rgba(199, 199, 199, 0.2);*/
+    cursor: pointer;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.faultsDeatilCtn .faultsInfo .consquenceName .iconCtn{
+    display: none;
+}
+.faultsDeatilCtn .consquenceName .iconCtn span{
+    margin: 0 2px;
+    color: rgba(255, 255, 255, .75);
+}
+.faultsDeatilCtn .faultsInfo .consquenceName:hover .iconCtn {
+    display: block;
+}
+.faultsDeatilCtn .faultsInfo .consequenceFaults{
+    width: 100%;
+    height: calc(100% - 40px);
+    display: flex;
+    flex-wrap: wrap;
+}
+.faultsDeatilCtn .faultsInfo .consequenceFaults>div{
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+.faultsDeatilCtn .faultsInfo .consequenceFaults .faultName{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+/*故障列表 end*/
+/*实时值 历史图 start*/
+.realTimeHistoryCtn{
+    width: 100%;
+    height: 100%;
+}
+.textCtn{
+    height: 66px;
+    padding-left: 8px;
+    padding-top: 10px;
+}
+.realTimeHistoryCtn .topTitle{
+    color: rgba(255, 255, 255, .75);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.realTimeHistoryCtn .topTitle span{
+    color: #829cbf;
+}
+.realTimeHistoryCtn .topTitle .glyphicon{
+    display: none;
+}
+.realTimeHistoryCtn .topTitle:hover .glyphicon {
+    display: block;
+}
+.realTimeHistoryCtn .realTimeCtn{
+    cursor: pointer;
+    /*text-shadow: 1px 3px #111;*/
+    display: flex;
+    align-items: baseline;
+}
+.realTimeHistoryCtn .realTimeCtn .realTimeVal{
+    font-size: 22px;
+}
+.realTimeHistoryCtn .realTimeCtn .unit{
+    font-size: 14px;
+    width: 60%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-left: 4px;
+}
+.realTimeHistoryCtn .historyChart{
+    width: 100%;
+    height: calc(100% - 66px);
+    padding-bottom: 10px;
+}
+/*实时值 历史图 end*/
+
+
+/* app诊断 Start */
+.appDiagnosisContainer{
+    width: 100%;
+    height: 100%;
+}
+.appDiagnosisHeader{
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to right, #51abf1, #5182f1);
+    line-height: 50px;
+    height: 0; /* 暂时隐藏 */
+   
+}
+.appDiagnosisBack{
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+    text-align: left;
+    padding-left: 14px;
+    color: #fff;
+}
+.appDiagnosisBack .icon-fanhui3:before{
+    top: 1px;
+    position: relative;
+}
+.appDiagnosisHeaderTitle{
+    width: 60%;
+    height: 100%;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+}
+.appDiagnosisHeaderEdit{
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+    text-align: right;
+    padding-right: 14px;
+    color: #d6ecfb;
+}
+.appDiagnosisHeadBackSpan{
+    color: #d6ecfb;
+}
+.appDiagnosisHeaderEditBack{
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+    text-align: right;
+    padding-right: 14px;
+    color: #d6ecfb;
+}
+.appDiagnosisMain{
+    width: 100%;
+    height: calc(100% - 50px);
+    background-color: #f0f0f0;
+    position: relative;
+    height:100%;/* 暂时隐藏 */
+    
+}
+.appDiagnosisNav{
+    width: 100%;
+    height: 50px;
+    background: rgb(255,255,255)
+    
+}
+.appDiagnosisBody{
+    width: 100%;
+    height: calc(100% - 50px);
+    background: rgb(240,240,240);
+    overflow-y: auto;
+    border-top: 4px solid #f0f0f0;
+}
+.appDiagnosisBody.selectedTool{
+    height: calc(100% - 100px);
+}
+.appDiagnosisListContainer{
+    width: 100%;
+    height: 75px;
+    position: relative;
+    background: rgb(255,255,255);
+    cursor: pointer;
+}
+.appDiagnosisSelectBox{
+    width: 30px;
+    height: 100%;
+    display: inline-block;
+    display: none;
+    position: relative;
+}
+.appDiagnosisListMain{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    border-bottom: 1px #f0f0f0 solid;
+    position: absolute;
+    /* left: 90px; */
+}
+.appDiagnosisListLeft{
+    width: 90px;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+}
+.appDiagnosisListRight{
+    width: calc(100% - 90px);
+    height: auto;
+    display: inline-block;
+    position: absolute;
+    top: 22%;
+}
+.appDiagnosisListType{
+    background: #fdf4ed;
+    width: 60px;
+    height: 60px;
+    border-radius: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    vertical-align: middle;
+    color: #ed8334;
+    line-height: 60px;
+    font-size: 14px;
+}
+.appDiagnosisListType0{
+    color: #d7b51f;
+    background: #faf1ac;
+}
+.appDiagnosisListType1{
+    background: #fdf4ed;
+    color: #ed8334;
+}
+.appDiagnosisListType2{
+    color: #eb586b;
+    background: #fdeef0
+}
+.appDiagnosisListTopTime{
+    float: right;
+    position: absolute;
+    right: 26px;
+    height: 24px;
+    line-height: 12px;
+    color: rgba(56, 56, 56, 0.5);
+    top: 0;
+    
+}
+.appDiagnosisListTopName{
+    height: 24px;
+    line-height: 12px;
+    color: rgba(56, 56, 56, 0.8);
+}
+.appDiagnosisListTitle{
+    width: 100%;
+    height: 100%;
+    height: 20px;
+    line-height: 20px;
+    color: #383838;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+.appDiagnosisListTop{
+    position: relative;
+}
+.appDiagnosisListTop .icon-tiaozhuan-copy:before{
+    top: 1px;
+    position: absolute;
+}
+.appDiagnosisSelectDiv{
+    width: 22px;
+    height: 22px;
+    border: 1px solid #CECECE;
+    border-radius: 20px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 83%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+}
+.appDiagnosisSelectDiv.selectedApp{
+    border: none;
+    background: #5182f1;
+    font-size: 14px;
+}
+.appDiagnosisSelectDiv.selectedApp.icon-xuanzegou:before{
+    position: relative;
+    top: 2px;
+}
+.appDiagnosisListLeft.addSelectBox{
+    width: 75px;
+}
+.appDiagnosisListType.addSelectBox{
+    left: 0%;
+    transform: translate(-0%,-50%)
+}
+.appDiagnosisListMain.addSelectBox{
+    transition: all .3s;
+    left: 42px;
+}
+.appDiagnosisListTopTime.addSelectBox{
+    right:55px
+}
+.appDiagnosisSelectBox.addSelectBox{
+    transition: all .3s;
+    display:inline-block
+}
+.forMobile .springContent.addSelectBox{
+    overflow: hidden;
+}
+.appDiagnosisToolForSelect{
+    width: 100%;
+    height: 50px;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 2px 0 rgba(56, 56, 56, 0.6);
+    font-size: 16px;
+    line-height: 50px;
+}
+.appDiagnosisToolForCallBack{
+    width: auto;
+    height: 50px;
+    float: left;
+    color: rgba(56, 56, 56, 0.6);
+    padding: 0 14px
+    
+
+}
+.appDiagnosisToolForJoinTask{
+    width: auto;
+    height: 50px;
+    float: right;
+    color: rgba(56, 56, 56, 0.6);
+    padding: 0 14px
+}
+.appDiagnosisModal{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+}
+.appDiagnosisModalTop{
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to right, #51abf1, #5182f1);
+    line-height: 50px;
+}
+.appDiagnosisModalTitle{
+    width: 60%;
+    height: 100%;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    display: none;
+    /* 暂时隐藏 */
+}
+.appDiagnosisModalrEdit{
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+    text-align: right;
+    padding-right: 14px;
+    color: #d6ecfb;
+    display: none;
+    /* 暂时隐藏 */
+}
+.appDiagnosisModalMain{
+    width: 100%;
+    height: calc(100% - 50px);
+    background: white;
+    overflow:auto;
+}
+.appDiagnosisModalChart{
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to right, #51abf1, #5182f1);
+}
+.appDiagnosisModalConnent{
+    width: 100%;
+    height: 60%;
+}
+.appDiagnosisModalConnentTop{
+    width: 100%;
+    height: auto;
+    background: #f8f8f8;
+    display: flex;
+    flex-flow: row wrap;
+}
+.appDiagnosisModalConnentMiddle{
+    width: 100%;
+    height: auto;
+    background: #ffffff;
+    display: flex;
+    flex-flow: row wrap;
+}
+.appDiagnosisModalConnentBottom{
+    width: 100%;
+    height: auto;
+    background: #ffffff;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
+.appDiagnosisModalBack{
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+    text-align: left;
+    padding-left: 14px;
+    color: #fff;
+}
+.appDiagnosisModalBackSpan{
+    color: #d6ecfb;
+}
+.appDiagnosisModalBack .icon-fanhui3:before{
+    top: 1px;
+    position: relative;
+}
+.appDiagnosisModalConnentTopOne{
+    display: inline-block;
+    width: 50%;
+    height: 90px;
+    text-align: center;
+    color: rgba(56, 56, 56, 0.6);
+    position: relative;
+}
+.appDiagnosisModalConnentTopOne.threeForOneline{
+    width: 33.33%;
+}
+.appDiagnosisModalConnentTopOneNum{
+    color: #383838;
+    font-weight: bold;
+    font-size: 20px;
+    position: absolute;
+    top: 44%;
+    width: 100%;
+    text-align: left;
+    text-indent: 60px;
+}
+.appDiagnosisModalConnentTopOneTitle{
+    font-size: 14px;
+    position: absolute;
+    top: 18%;
+    width: 100%;
+    text-align: left;
+    text-indent: 16px;
+}
+.appDiagnosisModalConnentTopOneTitleLeft{
+    width: 16px;
+    height: 16px;
+    background-image: linear-gradient(to right, #f1dd5f, #87efe2);
+    display: inline-block;
+    border-radius: 15px;
+    margin-right: 10px;
+    position: relative;
+    vertical-align: bottom;
+}
+.appDiagnosisModalConnentTopOneTitleLeftSpan{
+    width: calc(100% - 42px);
+    display: inline-block;
+    height: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-indent: 0px;
+    line-height: 16px;
+    vertical-align: bottom;
+}
+.appDiagnosisModalConnentTopOneTitleLeft::after{
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 15px;
+    display: inline-block;
+    position: relative;
+    right: 14px;
+    background: #f8f8f8;
+    top: -1px;
+
+}
+.appDiagnosisModalConnentMiddleOne{
+    display: inline-block;
+    width: 33.33%;
+    height: 75px;
+    text-align: center;
+    color: rgba(56, 56, 56, 0.6);
+    position: relative;
+    border: 1px solid #f0f0f0;
+    border-left: none;
+}
+.appDiagnosisModalConnentMiddleOneTitle{
+    font-size: 12px;
+    position: absolute;
+    top: 18%;
+    width: 100%;
+}
+.appDiagnosisModalConnentMiddleOneNum{
+    color: #383838;
+    font-size: 14px;
+    position: absolute;
+    top: 44%;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 40px;
+}
+.appDiagnosisModalConnentMiddleOne:nth-child(3n+1){
+    border-top:none; 
+}
+.appDiagnosisModalConnentMiddleOne:nth-child(3n+2){
+    border-top:none; 
+}
+.appDiagnosisModalConnentMiddleOne:nth-child(3n+3){
+    border-top:none; 
+}
+.appDiagnosisModalConnentBottomTitle{
+    width:100%;
+    height: 24px;
+}
+.appDiagnosisModalConnentBottomSpan{
+    color: rgba(56, 56, 56, 0.6);
+    font-size: 12px;
+
+}
+.appDiagnosisModalConnentBottomSpan::before{
+    background: #383838;
+    width: 2px;
+    height: 15px;
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    right: 10px;
+
+}
+.appDiagnosisModalConnentBottomConnect{
+    color: #383838;
+    font-size: 14px;
+    display: inline-block;
+    width: 100%;
+    word-wrap: break-word;
+    margin-bottom: 20px;
+}
+.faultFilterWrap{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    color: rgba(56, 56, 56, 0.7);
+    font-size: 14px;
+    line-height: 50px;
+    color: #383838;
+}
+.faultFilterWrap .divFault{
+    flex:1;
+    text-align: center;
+    cursor: pointer;
+}
+.faultFilterWrap .divFault.active{
+    color:#5182f1;
+}
+.filterStructPlane,.faultNamePlane,.timeRangPlane{
+    width: 100%;
+    height: calc(100% - 50px);
+    background-color: rgba(0,0,0,0.6);
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    z-index: 10;
+}
+.filterStructPlane{
+    overflow-y: auto;
+}
+.timeRangPlane {
+    height: 90px;
+    line-height: 40px;
+    padding: 5px;
+    border-top: 1px solid #f0f0f0;
+    text-align: left;
+    background-color: #ffffff;
+}
+.timeRangPlane .timeColumn{
+    position: relative;
+    width: 100%;
+}
+.timeRangPlane .timeColumn span{
+    width: 40px;
+    display: inline-block;
+    padding-left: 5px;
+}
+.timeRangPlane .btnTimeSure,.timeRangPlane .btnTimeCancel{
+    position: absolute;
+    top: 2px;
+    right: 10px;
+}
+.timeRangPlane .timeButtom{
+    
+}
+.timeRangPlane .timeButtom button{
+    width: 25%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.timeRangPlane .timeStart,.timeRangPlane .timeEnd {
+    width: 220px;
+    display: inline-block;
+    text-align: left;
+}
+.faultFilterWrap .divFault.active .timeRangPlane,
+.faultFilterWrap .divFault.active .filterStructPlane,
+.faultFilterWrap .divFault.active .faultNamePlane{
+    display: block;
+}
+.stuctureItem .menu-arrow{
+    display: inline-block;    
+    font-size: 12px;
+    transform: rotate(270deg);
+}
+.filterStructBox{
+    display: flex;  
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+}
+
+.faultNameList{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 10; 
+    text-align: left;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+.faultNameList .stuctureItem{   
+    padding: 0 10px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.faultNameList .stuctureItem:hover{
+    background-color: #f0f0f0;
+} 
+.filterStructPlane .filterStruct1 ,.filterStructPlane .filterStruct2 ,.filterStructPlane .filterStruct3{
+    padding: 0;
+    width: 100%; 
+    text-align: left;
+    background-color: #f0f0f0;
+    overflow-y: auto;
+    cursor: pointer;
+}
+.filterStructPlane .structDropDown {
+    background-color: #ffffff;
+}
+.filterStructPlane .filterStruct3 {
+    background-color: #ffffff;
+}
+.appDiagnosisContainer ul{
+    padding:0;
+}
+.filterStructPlane ul .stuctureItem ,.faultNamePlane ul .stuctureItem {
+    /* height: 45px; */
+    line-height: 45px;
+    color: #383838;
+    cursor: pointer;    
+    clear: both;
+    border-top: 1px solid #f0f0f0;
+}
+.stuctureItem .dropDownIcon{
+    float: right;
+    width: 70px;
+    color: rgba(56, 56, 56, 0.6);
+}
+.stuctureItem.selected,.stuctureItem.selected .faultNum{
+    color: #5182f1!important;
+}
+.stuctureItem.active> .dropDownIcon>.menu-arrow{
+    transform: rotate(90deg);
+}
+.filterStructPlane ul .stuctureItem .faultNum{   
+    margin-right: 10px;
+    display: inline-block;
+    width: 30px;
+    text-align: right;
+}
+/* app诊断 end */

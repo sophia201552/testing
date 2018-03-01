@@ -1,0 +1,6 @@
+[2017-03-10 14:35:47]---funcName: clickEle error: Message: 
+
+[2017-03-16 10:30:50]---funcName: get_pic error: 'DriverMethods' object has no attribute 'get_screenshot_as_file'
+[2017-03-20 17:20:23]---funcName: get_pic error: 'DriverMethods' object has no attribute 'get_screenshot_as_file'
+[2017-03-20 17:20:51]---funcName: get_pic error: 'DriverMethods' object has no attribute 'get_screenshot_as_file'
+[2017-03-23 16:18:19]---funcName: get_pic error: 'DriverMethods' object has no attribute 'get_screenshot_as_file'

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <link rel="shortcut icon" type="image/ico" href="/static/images/favicon.ico">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>BEOP energy leader</title>
+
+    {% assets "css_index" %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+    {% endassets %}
+
+    <script>
+        var _hmt = _hmt || [];
+    </script>
+
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #indexMain {
+            padding: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .indexContent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-btn-a {
+            padding: 0 10px 0 10px !important;
+            line-height: 38px;
+        }
+
+        #divPages {
+            position: absolute;
+            left: 200px;
+            width: calc(100% - 550px);
+            height: 53px;
+        }
+
+        #divPages > span {
+            position: absolute;
+            font-size: 14px;
+            color: #3893c6;
+            top: 18px;
+            display: none;
+            cursor: pointer;
+        }
+
+        #divPages > span:first-child {
+            left: 0;
+        }
+
+        #divPages > span:last-child {
+            right: 0;
+        }
+
+        #scrollPages {
+            width: 797px;
+            position: absolute;
+            left: 25px;
+            overflow-x: hidden;
+        }
+
+        #ulPages {
+            position: relative;
+            left: 0;
+        }
+
+        #ulPages .active .nav-icon-svg-g {
+            fill: #eee;
+        }
+
+        .nav-icon-svg {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            border-radius: 4px;
+        }
+
+        .nav-icon-svg-g {
+            fill: #3893c6;
+        }
+
+        .nav-btn-text {
+            margin-left: 3px;
+        }
+
+        #txtProjectTitle {
+            margin-top: 20px;
+            margin-left: 20px;
+            float: left;
+            line-height: 18px;
+            font-weight: bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .vMiddle {
+            height: 19px;
+            line-height: 19px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        /* alarm bell part */
+        .alarm-bell > a {
+            position: relative;
+            z-index: 1;
+        }
+
+        #liProjectAlarm .badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #ed5565;
+            color: #fff;
+            border-radius: 4px;
+            z-index: 2;
+            padding: 2px 5px;
+        }
+
+        #paneWorkflow > .badge {
+            position: absolute;
+            top: 6px;
+            right: 16px;
+            background: #ed5565;
+            color: #fff;
+            border-radius: 4px;
+            z-index: 2;
+            padding: 2px 5px;
+        }
+
+        .alarm-bell > a > .badge, #iconList .badge:empty {
+            display: none !important;
+        }
+
+        .alarm-bell > a > .glyphicon-bell {
+            font-size: 18px;
+        }
+
+        #ulAlarmPanel {
+            padding: 10px 0 3px;
+            display: none;
+            position: absolute;
+            width: 340px;
+            height: calc(100% - 84px);
+            top: 80px;
+            background-color: #fff;
+            overflow: auto;
+            z-index: 1;
+            left: 4px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #ulAlarmPanel > .divider {
+            margin: 5px 0;
+        }
+
+        #ulAlarmPanel > li:last-child {
+            text-align: left;
+        }
+
+        .divAlarmInfo {
+            white-space: normal;
+            margin-bottom: 3px;
+        }
+
+        @keyframes downTip {
+            25%, 80% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+            0%, 50%, 100% {
+                -webkit-transform: translateY(-10px);
+                transform: translateY(-10px);
+            }
+        }
+
+        .totalDown {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            /*font-size:50px;*/
+            color: rgba(255, 255, 255, .6);
+            margin-left: -15px;
+            width: 30px;
+            z-index: 2;
+            animation: downTip 2s linear infinite;
+            display: none;
+            cursor: pointer;
+        }
+
+        .dividingLine {
+            background: -webkit-gradient(linear, left top, left bottom, from(rgba(41, 56, 76, 0.2)), color-stop(0.25, rgba(124, 156, 212, 0.8)), color-stop(0.75, rgba(41, 56, 76, 0.6)), to(rgba(41, 56, 76, 0.2)));
+            height: 1px;
+        }
+
+        #iconList .badge {
+            background-color: #ed5565;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            height: 20px;
+            border-radius: 5px;
+        }
+
+        #iconList .dropdown-menu {
+            width: 350px;
+            position: absolute;
+            right: -20px;
+            padding: 15px;
+            padding-bottom: 5px;
+            top: 53px;
+            max-width: 350px;
+        }
+
+        #iconList .dropdown-menu li {
+            float: left;
+            display: block;
+            text-align: center;
+        }
+
+        #iconList .dropdown-menu li.iconWrap {
+            margin-bottom: 10px;
+            padding-top: 12px;
+            margin-right: 1%;
+            margin-left: 1%;
+            width: 31%;
+            cursor: pointer;
+            position: relative;
+        }
+
+        #liProjectMenu ul {
+            display: -webkit-flex;
+            -webkit-flex-direction: row;
+            -webkit-flex-wrap: wrap;
+        }
+
+        #iconList .dropdown-menu li.iconWrap:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        #iconList .dropdown-menu li.iconWrap > a {
+            float: none;
+            padding: 0;
+            display: inline-block;
+            white-space: normal;
+        }
+
+        #iconList .dropdown-menu li.iconWrap > a:hover {
+            text-decoration: none;
+        }
+
+        #iconList .dropdown-menu li.iconWrap .glyphicon {
+            font-size: 30px;
+            height: 38px;
+            padding-top: 4px;
+            color: #3893c6;
+        }
+
+        #iconList .dropdown-menu li span {
+            display: inline-block;
+        }
+
+        #iconList .dropdown-menu li .dropdownNav {
+            margin-bottom: 5px;
+            opacity: 0.7;
+        }
+
+        #iconList .dropdown-menu li span:nth-of-type(2) {
+            margin-bottom: 10px;
+            opacity: 0.7;
+            color: #2a6496;
+            padding-right: 10px;
+            padding-left: 10px;
+            min-width: 62px;
+        }
+
+        #iconList .dropdown-menu #btnBenchmark {
+            display: none !important;
+        }
+
+        #btnAccountManage > a {
+            float: none;
+        }
+
+        #btnAccountManage > a:hover {
+            text-decoration: none;
+        }
+    </style>
+
+    <style type="text/css" media="print">
+        #indexMain {
+            position: static !important;
+        }
+    </style>
+</head>
+<body style="font-family: 'Microsoft YaHei','Helvetica'; overflow-x:hidden;">
+<nav id="navHeader" class="navbar navbar-default" role="navigation"
+     style="margin-bottom: 0; z-index: 3; display: none;">
+    <div class="container-fluid" id="navPane">
+        <div class="navbar-header" id="navHomeLogo" style="float: left;">
+            <a class="navbar-brand" style="padding: 10px 0 0 20px;" title="Home" href="#page=PaneProjectSelector">
+                <span style="width: 78px; height: 32px;"></span>
+            </a>
+            <a class="navbar-brand" id="navLogoTitle" style="padding:0; margin: -3px 0 0 -6px;"
+               href="#page=PaneProjectSelector">
+                <h5 i18n="admin.navIndex.LOGO" id="txtProjectTitle"></h5>
+            </a>
+        </div>
+
+        <div id="messageAll" style="width: 20px;text-align: right;vertical-align: middle;float: right;margin-top: 16px;" class="dn">
+            <a href="javascript:;" class="dropdown-toggle navbar-link" data-toggle="dropdown"
+               aria-expanded="false">
+                <span class="badge"></span>
+                <span class="glyphicon glyphicon-bell" style="font-size: 20px;"></span>
+            </a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right"
+            style="margin-right: 15px;margin-top: 1px;height:51px;line-height:51px;display:none;" id="right-nav">
+            <li class="dropdown" id="iconList" style="padding-top: 0.5px;">
+                <a href="#" class="dropdown-toggle navbar-link workflow-menu-button" data-toggle="dropdown">
+                    <img class="userPic small" src="" alt="user Picture"
+                         onerror="this.src='/static/images/avatar/default/7.png';">
+                    <span class="badge"
+                          style="background-color: red;width: 8px;height: 8px;border-radius: 4px;position: absolute;top: 3px;right: 3px;min-width: 5px;padding: 0px;"></span>
+                </a>
+                <a class="navbar-link dropdown-toggle navbar-link workflow-menu-button" data-toggle="dropdown">
+                    <span id="projectMenu" style="margin-left: 10px;margin-right: 10px;"></span>
+                </a>
+                <ul class="dropdown-menu popover bottom" role="menu" id="btnDropdownNavList">
+                    <div class="arrow" style="left: 306px;"></div>
+                    <li style="width: 100%;height: 70px;text-align: left;">
+                        <div id="btnAccountManage"
+                             style="display: inline-block;padding-left: 20px;width: 64%;cursor:pointer;">
+                            <a href="#page=UserManagerController&manager=AccountManager">
+                            <span style="width: 60px;display: inline-block;">
+                                <img class="userPic" onerror="this.src='/static/images/avatar/default/7.png';"/>
+                            </span>
+                                <span id="paneUser" style="text-align: left;display: inline-block;"></span>
+                            </a>
+                        </div>
+                            <span id="liProjectAlarm"
+                                  style="width: 70px;text-align: right;vertical-align: middle;display: none;position: relative;">
+                                <a href="javascript:;" class="dropdown-toggle navbar-link" data-toggle="dropdown"
+                                   aria-expanded="false">
+                                    <span class="badge">9</span>
+                                    <span class="glyphicon glyphicon-bell"></span>
+                                </a>
+                            </span>
+                        <ul id="ulAlarmPanel" class="gray-scrollbar"></ul>
+                        <b class="card-close" style="display: none;">×</b>
+                    </li>
+
+                    <li style="width: 100%;height: 2px; margin-bottom: 8px;">
+                        <div class="dividingLine"></div>
+                    </li>
+                    <li style="width: 100%;">
+                        <ul class="list-inline">
+                            <li class="iconWrap" id="btnDataAnalys" permission="DAnalysis">
+                                <a href="#page=AnalysisScreen">
+                                    <span class="glyphicon glyphicon-stats"></span>
+                                    <span class="dropdownNav" i18n="observer.menu.TITLE_ANALYSIS"></span>
+                                </a>
+                            </li>
+                            <li class="iconWrap" id="btnShareLog" permission="MShare">
+                                <a href="#page=shareLogging">
+                                    <span class="glyphicon glyphicon-share"></span>
+                                    <span class="dropdownNav" i18n="analysis.shareLog.TITLE_SHARE_LOG"></span>
+                                </a>
+                            </li>
+                            <li id="paneWorkflow" class="iconWrap" permission="WorkOrder">
+                                <a href="#page=workflow&type=transaction&subType=workingTask">
+                                    <span class="glyphicon glyphicon-list-alt"></span>
+                                    <span class="dropdownNav" i18n="admin.ddlUser.MENU_MY_WORKFLOW"></span>
+                                    <span class="badge"></span>
+                                </a>
+                            </li>
+                            <li id="btnMemberManage" class="iconWrap"
+                                permission="TeamSet;SOPermissions;MOAccount;">
+                                <a href="#page=UserManagerController&manager=MemberManager">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    <span class="dropdownNav" i18n="admin.panelManagement.STAFF_MANAGEMENT"></span>
+                                </a>
+                            </li>
+                            <li id="btnWikiManage" class="iconWrap"
+                                permission="RWikiOProject;WWikiOProject;BWikiRead;BWikiWrite">
+                                <a href="#page=ModalWiki">
+                                    <span class="glyphicon glyphicon-book"></span>
+                                    <span class="dropdownNav" i18n="admin.ddlUser.MENU_WIKI_MANAGER"></span>
+                                </a>
+                            </li>
+                            <li id="btnDebugTools" class="iconWrap"
+                                permission="RTDataMonitoring;FDataProcess;DataConnect;CPProcess;SetServer;ViewServer;CoreManagement;RWSonsite">
+                                <a href="/point_tool/editor">
+                                    <span class="glyphicon glyphicon-wrench"></span>
+                                    <span class="dropdownNav" i18n="observer.menu.TITLE_DEBUG_TOOLS"></span>
+                                </a>
+                            </li>
+                            <li id="btnBenchmark" class="iconWrap" permission="Benchmark">
+                                <span class="glyphicon glyphicon-flag"></span>
+                                <span class="dropdownNav"
+                                      i18n="observer.menu.TITLE_BENCHMARK_CONFIGURE">Benchmark</span>
+                            </li>
+                            <li id="btnFactory" class="iconWrap"
+                                permission="CPage;DPage;Epage;WFRManagement;RRublishProject;APProject;CreateProject;DeleteProject">
+                                <a href="/factory" target="_blank">
+                                    <span class="glyphicon glyphicon-modal-window"></span>
+                                    <span class="dropdownNav">Factory</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <br style="clear: both;">
+                    <li id="liProjectMenu" style="width: 100%;">
+                        <ul class="list-inline">
+                            <li class="" style="width: 100%;height: 2px; margin-bottom: 8px;">
+                                <div class="dividingLine"></div>
+                            </li>
+                            <li class="iconWrap" id="btnPointManager" permission="RTDataView">
+                                <span class="glyphicon glyphicon-hdd"></span>
+                                <span class="dropdownNav" i18n="admin.ddlUser.MENU_POINT_MANAGER"></span>
+                            </li>
+                            <li class="iconWrap" id="btnOperatingRecord">
+                                <a href="#page=OperatingRecord">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                    <span class="dropdownNav" i18n="admin.ddlUser.MENU_OPERATING_RECORD"></span>
+                                </a>
+                            </li>
+                            <li class="iconWrap" id="btnTemperatureSetting" style="display: none;">
+                                <span class="glyphicon glyphicon-text-width"></span>
+                                <span class="dropdownNav" i18n="observer.menu.TITLE_TEMPERATURE_CONFIGURE"></span>
+                            </li>
+                            <li class="iconWrap" id="btnMenuConfigure" style="display:none;">
+                                <span class="glyphicon glyphicon-edit"></span>
+                                <span class="dropdownNav" i18n="observer.menu.TITLE_MENU_CONFIGURE"></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li style="width: 100%;height: 2px; margin-bottom: 8px;">
+                        <div class="dividingLine"></div>
+                    </li>
+                    <li class="iconWrap" id="btnChangeProject">
+                        <a href="#page=PaneProjectSelector">
+                            <!-- <img src="/static/images/nav/nav_operateLog.png"/> -->
+                            <span class="glyphicon glyphicon-transfer"></span>
+                            <span class="dropdownNav" i18n="admin.ddlUser.MENU_CHANGE_PROJECT"></span>
+                        </a>
+                    </li>
+
+                    <li style="float: right; margin-top: 2px;margin-left: 20px;clear: both;">
+                        <span id="btnLogout"><a i18n="admin.ddlUser.MENU_LOGOUT"></a></span>
+                    </li>
+                    <li style="float: right; margin-top: 2px;">
+                        <label id="labelChangeSkin" for="btnChangeSkin" i18n="admin.ddlUser.MENU_CHANGE_SKIN"></label>
+                        <select id="btnChangeSkin" style="display: none;border-radius: 4px;color: #2a3e50;">
+                            <option value="dark" i18n="admin.ddlUser.MENU_CHANGE_SKIN_DARK"></option>
+                            <option value="default" i18n="admin.ddlUser.MENU_CHANGE_SKIN_DEFAULT"></option>
+                        </select>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div id="divPages">
+            <span class="glyphicon glyphicon-chevron-left" id="btnPageScrollRight" aria-hidden="true"></span>
+
+            <div id="scrollPages">
+                <ul id="ulPages" class="nav nav-pills navbar-left" role="tablist"
+                    style="padding-top: 7.5px;display: none"></ul>
+            </div>
+            <span class="glyphicon glyphicon-chevron-right" id="btnPageScrollLeft" aria-hidden="true"></span>
+        </div>
+
+        <ul id="ulTools" class="nav nav-pills navbar-right" role="tablist" style="padding-top: 17px;"></ul>
+    </div>
+</nav>
+
+
+<div id="indexMain">
+    {% block indexMain %}
+    {% endblock %}
+</div>
+
+<div class="modal fade" id="dialogModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" id="dialogContent"></div>
+</div>
+{% block Spinner %}
+{% endblock %}
+{% block script %}
+{% endblock %}
+
+{% assets "js_tool" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+{% assets "js_index" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+{% assets "js_screen" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+{% assets "web_factory_ob_report_js_bundle" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script> {% endassets %}
+</body>
+</html>

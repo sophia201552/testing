@@ -1,0 +1,263 @@
+{
+  "tag": {
+    "en": "Fan",
+    "zh": "风机"
+  },
+  "attrPoints": [
+    {
+      "tag": {
+        "en": "Fan,onoff",
+        "zh": "风机,启停"
+      },
+      "name": {
+        "en": "Fan onoff",
+        "zh": "风机启停"
+      },
+      "description": {
+        "en": "Fan onoff",
+        "zh": "风机启停"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "Fan,Status",
+        "zh": "风机,状态"
+      },
+      "name": {
+        "en": "Fan Status",
+        "zh": "风机状态"
+      },
+      "description": {
+        "en": "Fan Status",
+        "zh": "风机状态"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "Fan,Enable",
+        "zh": "风机,使能"
+      },
+      "name": {
+        "en": "Fan Enable",
+        "zh": "风机使能"
+      },
+      "description": {
+        "en": "Fan Enable",
+        "zh": "风机使能"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "Fan,Auto,Mode",
+        "zh": "风机,手自动,模式"
+      },
+      "name": {
+        "en": "Fan Automatic Mode",
+        "zh": "风机手自动模式"
+      },
+      "description": {
+        "en": "Fan Automatic Mode",
+        "zh": "风机手自动模式"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "Fan,Fault,Alarm",
+        "zh": "风机,故障,报警"
+      },
+      "name": {
+        "en": "Fan Fault Alarm",
+        "zh": "风机故障报警"
+      },
+      "description": {
+        "en": "Fan Fault Alarm",
+        "zh": "风机故障报警"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "Fan,Frequency",
+        "zh": "风机,频率"
+      },
+      "name": {
+        "en": "Fan Frequency",
+        "zh": "风机频率"
+      },
+      "description": {
+        "en": "Fan Frequency",
+        "zh": "风机频率"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "Fan,Frequency,Setting",
+        "zh": "风机,频率,设定"
+      },
+      "name": {
+        "en": "Fan Frequency Setting",
+        "zh": "风机频率设定"
+      },
+      "description": {
+        "en": "Fan Frequency Setting",
+        "zh": "风机频率设定"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "Fan,Min,Frequency,Setting",
+        "zh": "风机,最小,频率,设定"
+      },
+      "name": {
+        "en": "Fan Min Frequency Setting",
+        "zh": "风机最小频率设定"
+      },
+      "description": {
+        "en": "Fan Min Frequency Setting",
+        "zh": "风机最小频率设定"
+      },
+      "unit": ""
+    }
+  ],
+  "id": 0,
+  "name": {
+    "en": "Fan",
+    "zh": "风机"
+  },
+  "type": "equipment",
+  "attrInputs": [
+    {
+      "tag": {
+        "en": "Equipment,Number",
+        "zh": "设备,编号"
+      },
+      "name": {
+        "en": "Equipment Number",
+        "zh": "设备编号"
+      },
+      "description": {
+        "en": "Equipment Number",
+        "zh": "设备编号"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "brand",
+        "zh": "品牌"
+      },
+      "name": {
+        "en": "Brand",
+        "zh": "品牌"
+      },
+      "description": {
+        "en": "Brand",
+        "zh": "品牌"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "type",
+        "zh": "型号"
+      },
+      "name": {
+        "en": "Type",
+        "zh": "型号"
+      },
+      "description": {
+        "en": "Type",
+        "zh": "型号"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "Rated,Air,FlowRate",
+        "zh": "额定,风,流量"
+      },
+      "name": {
+        "en": "Rated Air Flow Rate",
+        "zh": "额定流量"
+      },
+      "description": {
+        "en": "Rated Air Flow Rate",
+        "zh": "额定流量"
+      },
+      "unit": [
+        "kg/s",
+        "l/s",
+        "m3/h"
+      ]
+    },
+    {
+      "tag": {
+        "en": "Total,Pressure",
+        "zh": "全,压力"
+      },
+      "name": {
+        "en": "Total Pressure",
+        "zh": "全压"
+      },
+      "description": {
+        "en": "Total Pressure",
+        "zh": "全压"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "Static,Pressure",
+        "zh": "静,压力"
+      },
+      "name": {
+        "en": "Static Pressure",
+        "zh": "静压"
+      },
+      "description": {
+        "en": "Static Pressure",
+        "zh": "静压"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "speed",
+        "zh": "转速"
+      },
+      "name": {
+        "en": "Speed",
+        "zh": "转速"
+      },
+      "description": {
+        "en": "Speed",
+        "zh": "转速"
+      },
+      "unit": ""
+    },
+    {
+      "tag": {
+        "en": "Power",
+        "zh": "功率"
+      },
+      "name": {
+        "en": "Power",
+        "zh": "功率"
+      },
+      "description": {
+        "en": "Power",
+        "zh": "功率"
+      },
+      "unit": [
+        "W",
+        "kW"
+      ]
+    }
+  ]
+}

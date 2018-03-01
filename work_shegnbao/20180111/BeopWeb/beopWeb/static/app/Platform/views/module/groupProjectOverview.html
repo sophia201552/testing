@@ -1,0 +1,925 @@
+<style>
+    .ctnEntity {
+        float: left;
+        /* border: 1px solid white; */
+    }
+
+    .rightContainer {
+        width: 100%;
+        height: 100%;
+    }
+
+    #ctnGroupProjectOverview {
+        width: 100%;
+        /* height: calc(100% - 50px); */
+        height: 100%;
+        padding: 10px 15px;
+        background: rgb(240, 242, 250);
+    }
+
+    .groupProjectTitle {
+        height: 50px;
+        width: 100%;
+        border-bottom: 1px solid rgb(204, 213, 229);
+        color: #111111;
+        font-size: 20px;
+        padding-top: 10px;
+        line-height: 40px;
+    }
+
+    .groupProjectTitleWrap {
+        height: 50px;
+        width: 100%;
+        padding: 0 15px;
+        background: rgb(240, 242, 250);
+        display: none;
+    }
+    /* .a{
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        background: radial-gradient(circle,#6fc2ff,#4c8ae3);
+    } */
+
+    .panelCtn {
+        width: 100%;
+        height: 100%;
+        padding-right: 10px;
+        /* background: rgb(253,253,254);  */
+    }
+
+    .panelContainer {
+        width: 100%;
+        height: 100%;
+        /* background: rgb(253, 253, 254);
+        box-shadow: 0px 0px 11px rgba(47, 89, 156, 0.3);
+        border-radius: 2px; */
+        border-radius: 6px;
+        background-color: #ffffff;
+        box-shadow: 0px 6px 13px 0 rgba(47, 89, 156, 0.16);
+    }
+
+    .panelContainerNoPadding {
+        padding-right: 0px;
+    }
+
+
+
+    .RankWrap {
+        width: 100%;
+        height: calc(100% - 40px);
+    }
+
+    .topCtn {
+        width: 100%;
+        height: 40px;
+        background: rgb(255, 255, 255);
+        border-bottom: 1px solid #ebeef7;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        position: relative;
+    }
+
+    .topCtnRank {
+        /* background: transparent; */
+        width: 100%;
+        height: 40px;
+        /* margin-top: 10px; */
+    }
+
+    .title {
+        width: 100%;
+        height: 100%;
+        color: #333;
+        font-size: 16px;
+        line-height: 40px;
+        position: relative;
+        padding-left: 10px;
+        font-weight: 600;
+    }
+
+    .titleRank {
+        font-weight: bold;
+    }
+    .showTitleLine{
+        padding-left: 10px;
+    }
+    .showTitleLine::before{
+        content: '';
+        display: inline-block;
+        width: 2px;
+        height: 16px;
+        background: #63a4ee;
+        position: relative;
+        left: -6px;
+        top: 3px;
+    }
+    .panelTabOne{
+        display: inline-block;
+        margin-right: 20px;
+        height:40px;
+        line-height: 46px;
+        font-size: 10px;
+        color: #999999;
+        border-bottom: 2px solid transparent;
+        margin-bottom: 1px;
+        cursor: pointer;
+        font-weight: lighter;
+    }
+    .panelTabOne.activedTab{
+        border-bottom: 2px solid #63a4ee;
+        color: #63a4ee;
+        transition: all 0.3s;
+    }
+    .panelContainerTabTool{
+        display: flex;
+        position: absolute;
+        right: 100px;
+        top: 0;
+        height: 100%;
+    }
+    .statisTime {
+        position: absolute;
+        right: 12px;
+        top: 0;
+        height: 100%;
+    }
+    .chartMainLeftOneIcon{
+        width: 28px;
+        height: 28px;
+        border-radius: 28px;
+        background: rgba(244,182,83,0.15);
+        margin: auto;
+    }
+    .chartMain{
+        width: 100%;
+        height: 100%;
+    }
+    .chartMainOne{
+        width: 50%;
+        height: 50%;
+        display: inline-block;
+        float: left;
+        position: relative;
+    }
+    .chartMainOne:nth-child(2n-1){
+        /* padding-left: 20px; */
+    }
+    .chartMainOne:nth-child(2n){
+        padding-right: 20px;
+    }
+    .chartMainOne:nth-child(3),.chartMainOne:nth-child(4){
+        background: rgba(235,238,247,0.25);
+    }
+    .chartMainOneAfter::after{
+        content: '';
+        height: 60%;
+        width: 1px;
+        background: #e3e3e3;
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        transform: translate(0%,-50%);
+        opacity: 0.4;
+    }
+    .chartMainleft{
+        width: 160px;
+        height: 100%;
+        display: inline-block;
+        float: left;
+        position: relative;
+    }
+    .chartMainRight{
+        width: calc(100% - 160px);
+        height: 100%;
+        display: inline-block;
+        float: left;
+        padding: 0 10px 0 0;
+    }
+    .chartMainRightLine{
+        width: calc(100% - 160px);
+        height: 100%;
+        display: inline-block;
+        float: right;
+        padding: 0 10px 0 0;
+        position: absolute;
+        right: 0;
+        pointer-events: none;
+    }
+    .chartMainLeftLineOne{
+        text-align: center;
+        color: #f4b653;
+    }
+    .chartMainLeftLineTwo{
+        text-align: center;
+        color: #23283f;
+        font-size: 20px;
+        margin-top: 7px;
+        margin-bottom: 7px;
+    }
+    .chartMainLeftLineThree{
+        text-align: center;
+        color: #666666;
+        font-size: 12px;
+    }
+    .chartMainLeftCenter{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 100%;
+    }
+    .iconTotal{
+        font-size: 20px;
+        text-align: center;
+        padding-top: 1px;
+        display: inline-block;
+    }
+    .chartMainLeftLineThreeNum{
+        font-size: 10px;
+        margin-left: 6px;
+        margin-right: 0;
+        color: #76df48;
+    }
+    .chartMainLeftLineThreeIcon{
+        font-size: 10px;
+        color: #76df48;
+    }
+    /* #ctnGroupProjectOverview .statisTime input {
+        width: 70px;
+        display: inline-block;
+        border: none;
+        padding: 3px;
+        border: none;
+        box-shadow: none;
+        position: relative;
+        top: 1px;
+        height: 100%;
+        background-color: transparent;
+    } */
+    #ctnGroupProjectOverview .statisTime input{
+        width: 60px;
+        display: inline-block;
+        padding: 3px;
+        box-shadow: none;
+        position: relative;
+        top: 1px;
+        height: 22px;
+        background-color: transparent;
+        color: #63a4ee;
+        border: 1px solid rgba(99,164,238,0.4);
+        font-size: 10px;
+        padding-left: 7px;
+        margin-top:11px;
+        font-weight: lighter;
+    }
+    #ctnGroupProjectOverview .topCtnRank .statisTime input {
+
+        background-color: transparent;
+    }
+
+    .chartCtn {
+        height: calc(100% - 40px);
+        width: 100%;
+        position: relative;
+        border-left: 1px solid #ebeef7;
+    }
+    .chartCtn P{
+        text-align: center;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+        height: 100%;
+    }
+    .anlysisTop.anlysisColor {
+        /* margin-top: 10px; */
+        /* margin-bottom: 0; */
+    }
+
+    .anlysisColor {
+        color: #747C89;
+        font-size: 14px;
+        height: 20px;
+        padding-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .echartMiddle {
+        width: 100%;
+        height: calc(100% - 60px);
+        padding: 0 20px;
+    }
+
+    .echartMain {
+        width: 100%;
+        /* height: calc(100% - 50px); */
+        height: 100%;
+    }
+
+    .echartOne,
+    .echartTwo,
+    .echartThree,
+    .echartFour,.echartMax {
+        width: 25%;
+        height: 100%;
+        display: inline-block;
+        float: left;
+        position: relative;
+    }
+
+    .middleText {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 0;
+        margin-top: -32%;
+        text-align: center;
+        z-index: 999;
+        cursor: context-menu;
+        color: #747C89;
+    }
+
+    .echartTop {
+        position: absolute;
+        width: 100%;
+        top: 22%;
+        left: 0;
+        margin-top: -25%;
+        text-align: center;
+        z-index: 999;
+        cursor: context-menu;
+        color: #444;
+    }
+
+    .echartBottom {
+        position: absolute;
+        width: 100%;
+        bottom: 10%;
+        left: 0;
+        margin-top: -25%;
+        text-align: center;
+        z-index: 999;
+        cursor: context-menu;
+        color: #444;
+    }
+
+    .rankPanel {
+        width: 33.33%;
+        height: 50%;
+        float: left;
+        display: inline-block;
+        /* padding: 0 15px 15px 0px; */
+        /* padding-bottom: 15px; */
+    }
+
+    .rankPanel:nth-child(2n) .rankPanelBox {
+        /* padding-left: 10px; */
+    }
+
+    .rankPanel:nth-child(3n) {
+        /* padding-left: 10px; */
+    }
+
+    .rankPanel:nth-child(4) {
+        padding-left: 0px;
+    }
+
+    .rankPanel:nth-child(5) {
+        /* padding-left: 10px; */
+    }
+    #ctnGroupProjectOverview .title input{
+        cursor: pointer;
+    }
+    .rankPanelBox {
+        width: 100%;
+        height: 100%;
+        background: rgb(253, 253, 254);
+        /* box-shadow: 0px 0px 11px rgba(47, 89, 156, 0.3); */
+        border-radius: 2px;
+        padding-top: 28px;
+        padding-left: 20px;
+        padding-right: 20px;
+        position: relative;
+    }
+
+    .rankTopLeft {
+        height: 50px;
+        width: 50px;
+        display: inline-block;
+        float: left;
+        border-radius: 50px;
+    }
+
+    .rankTopRight {
+        width: 100%;
+        height: 50px;
+        display: inline-block;
+    }
+
+    .rankTopRightTitle {
+        width: 100%;
+        height: 25px;
+        color: #333;
+        font-size: 15px;
+        /* text-indent: 10px; */
+        font-weight: bold;
+        position: relative;
+    }
+
+    .rankTopRightContent {
+        width: 100%;
+        height: 25px;
+        color: #999;
+        font-size: 12px;
+        /* text-indent: 10px; */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-top: 3px;
+    }
+
+    .rankPanelBoxTop {
+        width: 100%;
+        height: 50px;
+    }
+
+    .iconRank {
+        height: 50px;
+        font-size: 30px;
+        text-align: center;
+        padding-top: 3px;
+    }
+
+    .iconRankColor {
+        background: radial-gradient(circle, #6fc2ff, #4c8ae3);
+    }
+
+    .rankNav {
+        font-size: 14px;
+        color: #555;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .rankPanelBottomNav .rankNav.rankActive {
+        color: rgb(125, 168, 234)
+    }
+
+    .rankPanelBottom {
+        width: 100%;
+        height: calc(100% - 50px);
+        /* padding-left: 60px; */
+        overflow: hidden;
+        padding-left:2.5%;
+    }
+
+    .rankPanelBottomNav {
+        width: 100%;
+        height: 25px;
+        font-size: 14px;
+    }
+
+    .rankLine {
+        width: 100%;
+        height: 45px;
+    }
+
+    .rankLineTitle {
+        width: 100%;
+        height: 20px;
+        line-height:20px;
+        /* float: left; */
+        color: #747C89;
+        /* display: inline-block; */
+        font-size: 12px;
+        /* white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; */
+    }
+
+    .rankLineBox {
+        width: 100%;
+        height: 10px;
+        /* float: left; */
+        /* display: inline-block; */
+        /* padding-top: 6px;
+        padding-left: 5px;
+        padding-right: 5px; */
+    }
+
+    .rankTitle{
+        color:#666;
+    }
+
+    .rankLineNum {
+        /* width: 40px; */
+        height: 20px;
+        float: right;
+        display: inline-block;
+        color: #747C89;
+        font-size: 12px;
+        padding-right: 18px;
+    }
+
+    .progress1 {
+        width:95%;
+        height: 7px;
+        background: #ebeef7;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        border-radius: 50px;
+    }
+
+    .progress1>span {
+        display: block;
+        position: relative;
+        margin: 0 -1px;
+        height: 7px;
+        line-height: 9px;
+        text-align: right;
+        border-radius: 50px;
+    }
+
+    .linear-color-2 {
+        background-image: linear-gradient(to left, #f16c5a, #f4c065);
+        box-shadow: 0 0 4px 0 rgba(252, 177, 146, 0.7);
+    }
+
+    .linear-color-0 {
+        background-image: linear-gradient(to left, #75b4fd, #65f2fb);
+        box-shadow: 0 0 4px 0 rgba(117, 180, 253, 0.7);
+    }
+
+    .icon-jiankang {
+        padding-top: 0px !important;
+    }
+
+    .icon-kongtiaolengyuanCOP {
+        padding-top: 5px !important;
+    }
+
+    .icon-taiyang {
+        padding-top: 5px !important;
+    }
+
+    .echartTopColor1 {
+        color: #666;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .echartTopColor2 {
+        color: #999;
+        font-size: 12px;
+    }
+
+    .rankIconLeft {
+        width: 60px;
+        height: 30px;
+        position: absolute;
+        z-index: 1000;
+        font-size: 14px;
+        top: 73px;
+        left: 36px;
+        color: rgb(125, 168, 234);
+    }
+    .rankTopQuestion{
+        font-size: 14px;
+        color: #63a4ee;
+    }
+    .rankIconLeft1 {
+        /* width: 47px; */
+        height: 30px;
+        position: absolute;
+        z-index: 1000;
+        font-size: 14px;
+        top: -4px;
+        right: 17px;
+        color: #63A6ED/*#9DACC5*/;
+    }
+
+    .rankIconLeft1>span {
+        font-weight: normal;
+        font-size: 17px;
+    }
+
+    .rankIconLeft1>span:hover {
+        color: rgb(125, 168, 234);
+    }
+
+    .chartMainOne:nth-child(2n-1){
+        /* padding-left: 20px; */
+    }
+    .chartMainOne:nth-child(2n){
+        padding-right: 20px;
+    }
+    .chartMainOne:nth-child(3),.chartMainOne:nth-child(4){
+        background: rgba(235,238,247,0.25);
+    }
+	.panelContainerMap{
+        padding-top:10px;
+    }
+    .panelContainerMap .panelContainer,.rankBoxShadow{
+        box-shadow: 0px 6px 13px 0 rgba(47, 89, 156, 0.16);
+    }
+    .panelContainerMap .topCtn::before{
+        content: '';
+        display: inline-block;
+        position: absolute;
+        width: 40px;
+        height: 39px;
+        background: white;
+        left: -20px;
+
+    }
+    .rankBoxShadow{
+        height: calc(100% - 10px);
+        margin-top: 10px;   
+    }
+    .rankPanel.rankPanelNoPadding{
+        padding-bottom:0;
+    }
+    .rankPanelNoPadding1 .rankPanelBox{
+        border:1px solid rgba(220, 226, 237,0.3);
+        border-top:none;
+    }
+    .rankPanelNoPadding3 .rankPanelBox,.rankPanelNoPadding5 .rankPanelBox{
+        border-top:1px solid rgba(220, 226, 237,0.3);
+    }
+    .rankPanelNoPadding4 .rankPanelBox{
+        border-left:1px solid rgba(220, 226, 237,0.3);
+        border-right:1px solid rgba(220, 226, 237,0.3);
+    }
+    .energyUnit{
+        font-size:16px;
+    }
+
+    @media (max-width: 1367px) {
+        .iconRank {
+            font-size: 26px;
+            padding-top: 7px!important;
+        }
+        .icon-jiankang {
+            padding-top: 4px!important;
+        }
+        .icon-kongtiaolengyuanCOP {
+            font-size: 26px;
+            padding-top: 7px !important;
+        }
+        .icon-PM {
+            font-size: 26px;
+            padding-top: 7px!important;
+        }
+        .rankIconLeft1 {
+            display: block;
+            right:0;
+        }
+
+        .rankIconLeft1>span{
+            font-size:14px;
+        }
+
+        .anlysisTop {
+            /* margin-top: 10px; */
+            /*margin-bottom: 5px;*/
+        }
+        .echartTopColor1 {
+            font-size: 14px;
+        }
+        .middleText {
+            margin-top: -33%;
+            font-size: 10px;
+        }
+        .nameColor{
+            transform: scale(0.7);
+        }
+        .rankTopRightTitle {
+            font-size: 14px;
+            height: 20px;
+        }
+        .rankPanelBottomNav {
+            display: none;
+        }
+        .rankPanelBottom{
+            padding-left:0;
+        }
+        .echartBottom {
+            bottom: 2%;
+        }
+        .echartTop {
+            top: 17%;
+        }
+        .rankLineBox{
+            height:6px;
+        }
+        .rankLine{
+            height:28px;
+        }
+        .rankPanelBox{
+            padding-top: 15px;
+        }
+        .rankPanel{
+            /* padding-bottom: 10px; */
+        }
+        /* .rankPanelNoPadding0 .rankPanelBox,.rankPanelNoPadding1 .rankPanelBox,.rankPanelNoPadding2 .rankPanelBox{
+            padding-top:18px;
+        } */
+        .rankBoxShadow{
+            height:calc(100% - 10px);
+        }
+        .progress1{
+            height:4px;
+            width:100%;
+        }
+        .progress1>span{
+            height:4px;
+        }
+        .rankLineNum{
+            padding-right: 3px;
+        }
+        .chartMainLeftLineTwo{
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+        .rankPanelBoxTop{
+            height: 40px;
+        }
+    }
+
+    @media (min-width: 1600px) {
+        .rankPanelBottom {
+            /* padding-top: 5px; */
+            padding-top:15px;
+        }
+        .rankPanelBottomNav {
+            margin-bottom: 20px;
+        }
+    }
+
+    .amap-info-outer,
+    .amap-menu-outer {
+        box-shadow: 0 3px 14px rgba(0, 0, 100, .6);
+        background: #fff;
+        border-radius: 2px;
+        padding: 1px;
+        text-align: left;
+        border: 1px solid silver;
+    }
+
+    .yijia {
+        width: 16px;
+        height: 16px;
+        border: 1px solid #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 2px 0 rgba(103, 128, 163, 0.50);
+        /* background-image: radial-gradient( #89F7FE , #83E9FF , #66A6FF ); */
+        background-image: radial-gradient(50% 75%, #F7CE68 50%, #EE905C 100%);
+    }
+
+    .amap-info-content {
+        background: #fff;
+        border: 1px solid #ccc;
+        padding: 10px 18px 10px 10px;
+        line-height: 1.4;
+        overflow: auto;
+        border-color: rgba(47, 55, 71, .78) !important;
+    }
+
+    .projectNameWindow {
+        padding: 0 0 0 4px;
+    }
+
+    .amap-info-close {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        color: #C3C3C3;
+        text-decoration: none;
+        font: 700 16px/14px Tahoma, Verdana, sans-serif;
+        width: 14px;
+        height: 14px;
+    }
+
+    .amap-info-sharp {
+        width: 0px;
+        height: 0px !important;
+        border-left-width: 3px;
+        border-left-style: solid;
+        border-left-color: transparent;
+        border-right-width: 20px;
+        border-right-style: solid;
+        border-right-color: transparent;
+        border-top-width: 32px;
+        border-top-style: solid;
+        border-top-color: rgba(47, 55, 71, .78) !important;
+        position: relative;
+        top: 0;
+        left: -6px;
+        background-image: none;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .projectNameWindow .media {
+        color: #eac124!important;
+        cursor: pointer;
+        /* width: max-content; */
+    }
+
+
+    .mapTitleTag {
+        display: inline-block;
+        width: 80px;
+        height: 28px;
+        background-color: rgb(240, 240, 240);
+        text-align: center;
+        border-radius: 24px;
+        color: rgb(93, 149, 229);
+        line-height: 28px;
+        border: 1px solid rgb(224, 224, 224);
+    }
+
+    .mapTitleLine {
+        display: inline-block;
+        width: 83%;
+        height: 1px;
+        background-color: rgb(224, 224, 224);
+        vertical-align: super;
+        position: relative;
+        left: -3px;
+    }
+    .mapImg{
+        /* height: 200px; */
+    }
+    .mapBody{
+        padding-left: 150px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        min-height: 250px;
+    }
+    .mapRowLeft{
+        width: 75px;
+        display: inline-block;
+        vertical-align: top;
+        color: #777;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .mapRow{
+        width:calc(100% - 25px);
+        height: auto;
+    }
+    .mapRowRight{
+        width:calc(100% - 95px);
+        display: inline-block;
+        vertical-align: top;
+        color: #222;
+    }
+    .mapEquipment{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .mapRowWarn{
+        /* color: #111;
+        font-weight: 600; */
+    }
+    #mapModal .modal-header .close{
+        margin-top: -10px;
+    }
+    #mapModal .modal-header{
+        border-bottom: none;
+    }
+    #mapModal .modal-body{
+        padding-top: 5px;
+    }
+    .rankLineListBox{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .mapRefreshBtn{
+        top:auto!important;
+        bottom: 10px!important;
+    }
+</style>
+<div class="rightContainer">
+    <div class="groupProjectTitleWrap">
+        <div class="groupProjectTitle" i18n="">Overview</div>
+
+    </div>
+    <div id="ctnGroupProjectOverview"></div>
+    <div class="modal fade bs-example-modal-lg" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="z-index:10000000">
+        <div class="modal-dialog " role="document" style="width:550px;margin-top: 50px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body" id="modal_map">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

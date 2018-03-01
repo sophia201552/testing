@@ -1,0 +1,125 @@
+<style>
+    #bechForecast{
+        width:100%;
+        height:100%;
+    }
+    #bechForecast .configBox{
+        width:100%;
+        height:100px;
+        padding:20px;
+    }
+    #bechForecast .input-group-btn .dropdown-menu{
+        min-width:inherit;
+        width:100%;
+    }
+    #bechForecast .input-group-btn .dropdown-menu a{
+        text-align: center;
+    }
+    #bechForecast .configBtnBox{
+        text-align:right;
+    }
+    #bechForecast .timeSelsect{
+        border:none;
+        background: transparent;
+    }
+    #configForestModal{
+        margin-top:80px;
+    }
+    #configForestModal .configTopTime{
+        width:100%;
+        height:60px;
+    }
+    #configForestModal .timeBox{
+        width:55%;
+        display: inline-block;
+        /*padding-left: 5%;
+        margin:0 auto;*/
+    }
+    #configForestModal .importData{
+        display:inline-block;
+        float:left;
+        margin-right:10px;
+        /*padding:6px 12px;*/
+    }
+    #configForestModal .excelTemplate{
+        display:inline-block;
+        float:left;
+        margin-right:10px;
+    }
+    #configForestModal .checkAll{
+        display:inline-block;
+    }
+    #configForestModal .timeBox .form-control{
+        width:43%;
+        display:inline-block;
+    }
+    #configForestModal .tabalCell,#configForestModal .tabalCellH,#configForestModal .tabalCellT{
+        height:30px;
+        line-height:30px;
+        text-align: center;
+        border:1px solid #ddd;
+        float:left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    #configForestModal .tabalCell{
+        cursor:pointer;
+    }
+    #configForestModal .paramsEnter{
+        display:none;
+        width:90%;
+        height:100%;
+        margin:0 auto;
+    }
+    #bechForecast .forecastEchartsBox{
+        padding:20px;
+        width:100%;
+        height:calc(100% - 120px)
+    }
+    #paramsListBox{
+        max-height:400px;
+        overflow-y: auto;
+    }
+    .modalListBox{
+    }
+    .startForestBox{
+        display: inline-block;
+        padding:6px 12px;
+    }
+    .modalSelect{
+        height:34px;
+        line-height:34px;
+        border-radius: 5px;
+        color: #333;
+        padding:0 15px;
+    }
+</style>
+<div id = "bechForecast">
+    <div class="configBox clearfix">
+        <div class="col-xs-5">
+            <div class="input-group">
+              <input type="text" class="form-control" id = "startTimeCog">
+              <span class="input-group-addon">To</span>
+              <input type="text" class="form-control" id = "endTimeCog">
+              <span class="input-group-addon" i18n = "benchmark.energyForecast.PERIOD">周期</span>
+              <div class="form-control">
+                <select class="timeSelsect">
+                    <option value="h1" i18n = "benchmark.energyForecast.HOUR">时</option>
+                    <option value="d1" i18n = "benchmark.energyOverView.DAY">日</option>
+                    <option value="M1" selected i18n = "benchmark.energyOverView.MONTH">月</option>
+                    <!--<option value="M12">年</option>-->
+                </select>
+              </div>
+            </div>
+        </div>
+        <div class="modalListBox col-xs-3"><select class="modalSelect"></select></div>
+        <!--<div class="col-xs-2" class="startForestBox">
+            <button type="button" class="btn btn-primary" id="startForest">开始预测</button>
+        </div>-->
+        <div class="col-xs-2 configBtnBox">
+            <button type="button" class="btn btn-primary" id="forestConfig" i18n = "benchmark.energyForecast.CONFIG">配置</button>
+        </div>
+    </div>
+    <div class="forecastEchartsBox" i18n = "benchmark.energyForecast.CONFIG_LINE">请先配置预测曲线</div>
+</div>

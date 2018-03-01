@@ -1,0 +1,282 @@
+/**
+ * 测试评估右侧
+ */
+import React from 'react';
+import PropTypes from 'prop-types';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import {
+  DetailsList,
+  DetailsListLayoutMode,
+  Selection
+} from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  Pivot,
+  PivotItem,
+  PivotLinkFormat
+} from 'office-ui-fabric-react/lib/Pivot';
+
+import { dataTypes } from 'StrategyV2-Engine/src/enum';
+
+import UnknownTooltip from '../../../components/UnknownTooltip';
+
+import s from './EvaluateDetails.css';
+
+const columnStyles = {
+  lineHeight: '40px',
+  padding: '0 3px'
+};
+
+class Table extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    const { items, columns, content } = this.props;
+    return (
+      <div>
+        <table className={s['operation']}>
+          <thead className={s['operation-header']}>
+            <tr className={s['thead-row']}>
+              {columns.map((item, index) => (
+                <th key={index}>
+                  {item}{' '}
+                  {content[item] !== undefined && (
+                    <UnknownTooltip content={content[item]} />
+                  )}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className={s['operation-body']}>
+            {items.map((item, index) => (
+              <tr key={index} className={s['operation-row']}>
+                {Object.values(item).map((value, i) => (
+                  <td key={i}>{value}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+}
+
+class EvaluateDetails extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: new Date(),
+      items: [],
+      rows: []
+    };
+    // 控制列数
+    this._columns = [
+      {
+        key: 1,
+        name: props.i18n.FAULT_NAME,
+        fieldName: 'name',
+        minWidth: 130,
+        onRender: item => <div style={columnStyles}>{item['name']}</div>
+      },
+      {
+        key: 2,
+        name: props.i18n.GRADE,
+        fieldName: 'grade',
+        maxWidth: 80,
+        maxWidth: 80,
+        onRender: item => <div style={columnStyles}>{item['grade']}</div>
+      },
+      {
+        key: 3,
+        name: props.i18n.DESCRIPTION,
+        fieldName: 'description',
+        maxWidth: 200,
+        minWidth: 100,
+        onRender: item => <div style={columnStyles}>{item['description']}</div>
+      },
+      {
+        key: 4,
+        name: props.i18n.CLASSIFY,
+        fieldName: 'type',
+        maxWidth: 80,
+        minWidth: 80,
+        onRender: item => <div style={columnStyles}>{item['type']}</div>
+      },
+      {
+        key: 5,
+        name: props.i18n.IS_OCCUR,
+        fieldName: 'isHappend',
+        minWidth: 100,
+        maxWidth: 100,
+        onRender: item => <div style={columnStyles}>{item['isHappend']}</div>
+      }
+    ];
+  }
+  render() {
+    let { items1, items2, rows, items } = this.state;
+    const { moduleInputData, moduleOutputData, i18n } = this.props;
+    let dnAnlsOpt = moduleInputData.find(
+        v => v.dataType == dataTypes['DN_ANLS_OPT']
+      ) || { data: false },
+      dnOutputOpt = moduleInputData.find(
+        v => v.dataType == dataTypes['DN_OUTPUT_OPT']
+      ) || { data: false },
+      dnInputOpt = moduleInputData.find(
+        v => v.dataType == dataTypes['DN_INPUT_OPT']
+      ) || { data: false },
+      dsOpt = moduleInputData.find(v => v.dataType == dataTypes['DS_OPT']) || {
+        data: false
+      },
+      dnTestScoreOutput = moduleOutputData.find(
+        v => v.dataType == dataTypes['DN_TEST_SCORE_OUTPUT']
+      ) || { data: false };
+    let ruleBlock = (dnAnlsOpt.data && dnAnlsOpt.data.ruleBlock) || [
+      { items: [], results: [] }
+    ];
+    let resultsItems = [];
+    (dnOutputOpt.data &&
+      dnOutputOpt.data.forEach((v, i) => {
+        let target = (dnTestScoreOutput.data &&
+          dnTestScoreOutput.data.find(d => d.FaultName == v.name)) || {
+          Status: 0
+        };
+        let type = i18n.UNKNOWN;
+        switch (v.targetGroup) {
+          case '0':
+            type = i18n.DIAGNOSIS;
+            break;
+          case '1':
+            type = 'BA';
+            break;
+        }
+        resultsItems.push({
+          key: '' + i,
+          name: v.faultName,
+          grade: i18n.EMERGENCY,
+          description: v.description,
+          type: type,
+          isHappend:
+            target.Status == 1
+              ? i18n.HAS_OCCURRED
+              : i18n.NOT_OCCURR
+        });
+      })) ||
+      [];
+    return (
+      <div className={s['details-container']}>
+        <div className={s['details-navbar']}>
+          <Pivot>
+            <PivotItem
+              linkText={i18n.OPERATING_INDEX}
+              className={s['link-text']}
+            >
+              <div className={s['operation-table']}>
+                <Table
+                  items={[]}
+                  columns={[
+                    i18n.METHOD,
+                    'AUC',
+                    'F1',
+                    'CA',
+                    'Precision',
+                    'Recall'
+                  ]}
+                  content={{
+                    [i18n.METHOD]: undefined,
+                    AUC: i18n.ANNOTATION_AUC,
+                    F1: i18n.ANNOTATION_F1,
+                    Precision: i18n.ANNOTATION_PRECISION,
+                    Recall: i18n.ANNOTATION_RECALL
+                  }}
+                />
+                <Table
+                  items={[]}
+                  columns={[
+                    i18n.METHOD,
+                    i18n.RESULT_HIT,
+                    i18n.CONSUMING_TIME
+                  ]}
+                  content={{
+                    [i18n.METHOD]: undefined,
+                    [i18n.RESULT_HIT]: i18n.ANNOTATION_RESULT_HIT,
+                    [i18n.CONSUMING_TIME]: undefined
+                  }}
+                />
+              </div>
+            </PivotItem>
+            <PivotItem
+              linkText={i18n.OPERATION_PROCESS}
+              className={s['link-text']}
+            >
+              <div className={s['process']}>
+                <div>
+                  <ul>
+                    {ruleBlock.map((row, index) => (
+                      <div key={index} className={s['process-row']}>
+                        <li key={`items_${index}`} className={s['item']}>
+                          {row.items.map((v, i) => (
+                            <span key={`span_items_${i}`}>
+                              <span>{v.continuity}</span>
+                              <span className={s['item-value']}>
+                                {` ${v.name} ` || ' '}
+                              </span>
+                              <span>{v.judge}</span>
+                              <span className={s['item-value']}>
+                                {` ${v.term} ` || ' '}
+                              </span>
+                            </span>
+                          ))}
+                          {row.results.map((v, i) => (
+                            <span key={`span_results_${i}`}>
+                              <span>{v.continuity}</span>
+                              <span className={s['item-value']}>
+                                {` ${v.name} ` || ' '}
+                              </span>
+                              <span>{v.judge}</span>
+                              <span className={s['item-value']}>
+                                {` ${v.term} ` || ' '}
+                              </span>
+                            </span>
+                          ))}
+                        </li>
+                      </div>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </PivotItem>
+            <PivotItem
+              linkText={i18n.COMPUTATIONAL_RESULTS}
+              className={s['link-text']}
+            >
+              <div className={s['result']}>
+                <div>
+                  <DetailsList
+                    className="strategyList"
+                    headerClassName="headers"
+                    items={resultsItems}
+                    columns={this._columns}
+                    groupProps={{
+                      showEmptyGroups: true
+                    }}
+                    setKey="set"
+                    layoutMode={DetailsListLayoutMode.justified}
+                    selection={this._selection}
+                    onItemInvoked={this._onItemInvoked}
+                    compact={true}
+                    selectionPreservedOnEmptyClick={false}
+                  />
+                </div>
+              </div>
+            </PivotItem>
+          </Pivot>
+        </div>
+      </div>
+    );
+  }
+}
+EvaluateDetails.propTypes = {};
+
+export default EvaluateDetails;

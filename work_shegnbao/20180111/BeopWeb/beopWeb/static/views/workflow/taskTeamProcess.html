@@ -1,0 +1,245 @@
+<div id="taskTeamProcessContainer"></div>
+<!--流程窗口开始-->
+<!--@formatter:off-->
+
+<script type="text/html" id="wf_task_process">
+    <ul id="wf_team_process_ul" class="wf_team_process_ul">
+        <li class="wf_add_process_wrapper">
+            <div class="fl w150"></div>
+            <div class="fr">
+                <span id="wf_add_process" class="btn btn-primary" i18n="workflow.team.ADD_PROCESS"></span>
+            </div>
+        </li>
+        <!process.forEach(function(item){!>
+            <li>
+                <div class="fl wf_team_process_title"><!= item.type === beop.constants.fieldType.DEFAULT ? I18n.resource.workflow.process.DEFAULT_PROCESS : item.name!></div>
+            </li>
+            <li data-process-id="<!=item._id!>" data-template-id="<!=item.template_id!>" style="padding-left:50px;" class="wf_team_process">
+                <! item.nodes.forEach(function(node){ !>
+                    <div class="wf_add_process_people fl" data-behaviour="<!=node.behaviour!>" data-process-arch-id="<!=node.arch_id!>" data-node-id="<!=node._id!>">
+                        <div class="disabled wf-manager-people" style="padding: 0;">
+                            <div class="item-peoples-box">
+                                <!if(node.archType === beop.constants.archType.ALL_MEMBERS){!>
+                                    <div class="oh teamPeople">
+                                        <img src="/static/images/avatar/user/default_group.png"/>
+                                        <div class="people-name ellipsis" title="<!=I18n.resource.workflow.process.ALL_MEMBERS!>">
+                                             <!=I18n.resource.workflow.process.ALL_MEMBERS!>
+                                        </div>
+                                    </div>
+                                    <span class="glyphicon glyphicon-play ionPosition process-people-show cp"></span>
+                                <!}else{!>
+                                    <!if(node.members){!>
+                                        <!if(node.members.length == 1){!>
+                                            <div class="oh teamPeople">
+                                                <img src="<!=node.members[0].userpic!>"/>
+                                                <div class="people-name ellipsis" title="<!=node.members[0].userfullname!>">
+                                                     <!=node.members[0].userfullname!>
+                                                </div>
+                                            </div>
+                                        <!}else{!>
+                                            <div class="oh teamPeople">
+                                                <img src="/static/images/avatar/user/default_group.png"/>
+                                                <div class="people-name ellipsis" title="<!=node.archName!>">
+                                                     <!=node.archName!>
+                                                </div>
+                                            </div>
+                                            <span class="glyphicon glyphicon-play ionPosition process-people-show cp"></span>
+                                        <!}!>
+                                    <!} else{!>
+                                        <div class="oh teamPeople">
+                                            <img src="/static/images/avatar/user/default_group.png"/>
+                                            <div class="people-name ellipsis" title="<!=node.archName!>">
+                                                <!=node.archName!>
+                                            </div>
+                                        </div>
+                                        <span class="glyphicon glyphicon-play ionPosition process-people-show cp"></span>
+                                    <!}!>
+                                <!}!>
+
+                                <div style="margin-top: 10px;">
+                                    <span class="chevron-content peopleName"><!=I18n.resource.workflow.team['ADD_PROCESS_BEHAVIOR_TYPE_'+node.behaviour]!></span>
+                                </div>
+                                <span class="fuLineBox" style="z-index: 100;">
+                                    <span class="fuLine"></span>
+                                </span>
+                             </div>
+                        </div>
+                    </div>
+                <! });!>
+                <!if(item.type !== 1){!>
+                    <div class="fl wf_team_process_control">
+                        <i class="glyphicon glyphicon-pencil wf_team_process_edit" title="edit"></i>
+                        <i class="glyphicon glyphicon-remove wf_team_process_remove" title="remove"></i>
+                    </div>
+                <!}!>
+            </li>
+        <!});!>
+    </ul>
+</script>
+<!--流程窗口结束-->
+
+<!--添加流程窗口开始-->
+<article id="wf_add_process_win" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close closeProcessModal" aria-label="Close">x<span
+                        aria-hidden="true"></span></button>
+                <h4 class="modal-title" i18n="admin.panelManagement.PROMPT"></h4>
+            </div>
+            <div class="modal-body gray-scrollbar">
+                <div id="wf_process_box" class="wf_process_box">
+                    <div class="oh p10 ml10">
+                        <label class="fl mt5" for="wf_process_name">
+                            <span i18n="workflow.team.ADD_PROCESS_NAME"></span>
+                            <span>：</span>
+                        </label>
+                        <input type="text" value="" id="wf_process_name" class="form-control fl w200 ml10"
+                               i18n="title=workflow.team.ADD_PROCESS_ENTER_PROCESS_NAME;placeholder=workflow.team.ADD_PROCESS_ENTER_PROCESS_NAME"
+                               autocomplete="off"
+                               name="process_name"/>
+                    </div>
+                    <div id="wf_process_nodes" class="diamond">
+                        <div class="tc">
+                            <span class="btn btn-success w100 ml10" disabled="disabled"
+                                  i18n="workflow.team.ADD_PROCESS_ITEM_INITIATE"></span>
+                            <span class="glyphicon glyphicon-plus-sign cp wf-add-process-item ml5"></span>
+                        </div>
+                        <div class="tc">
+                            <span class="glyphicon glyphicon-arrow-down"></span>
+                        </div>
+                        <div class="tc oh">
+                            <div class="wf-arrow-group ma">
+                                <span class="glyphicon glyphicon-arrow-down fl pr wf-arrow-left-down"></span>
+
+                                <div class="wf-line fl"></div>
+                                <span class="glyphicon glyphicon-arrow-down fl pr wf-arrow-right-down"></span>
+                            </div>
+                        </div>
+                        <div id="wf_process_item_box" class="wf_process_item_box"></div>
+                        <div class="tc">
+                            <span class="btn btn-success w100" id="wf_process_create_finish"
+                                  i18n="workflow.team.ADD_PROCESS_ITEM_COMPLETE"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<!--添加流程窗口结束-->
+<script type="text/html" id="tpl_wf_team_process_nodes">
+    <!nodes.forEach(function(item){!>
+        <div class="wf_process_item" data-process-item-id="<!=item._id!>" data-process-arch-id="<!=item.arch_id!>">
+            <div class="oh">
+                <select class="form-control w150" data-type="archType" style="display: inline-block">
+                    <option disabled="disabled"><!=I18n.resource.workflow.team.SELECT_USER_TYPE!></option>
+                    <!processUserGroup.forEach(function(role, index, array){!>
+                        <!if(role.id === item.arch_id){!>
+                            <option value="<!=role.id!>" data-type="<!=role.type!>" selected>
+                        <!}else{!>
+                            <option value="<!=role.id!>" data-type="<!=role.type!>">
+                        <!}!>
+                        <!if(role.type === beop.constants.archType.ALL_MEMBERS){!>
+                            <!=I18n.resource.workflow.process.ALL_MEMBERS!>
+                        <!}else{!>
+                            <!=role.name!>
+                        <!}!>
+                        </option>
+                    <!});!>
+                </select>
+                <span class="glyphicon glyphicon-arrow-right"></span>
+                <select class="form-control w150" data-type="behaviour" style="display: inline-block">
+                    <option disabled="disabled"><!=I18n.resource.workflow.team.SELECT_USER_BEHAVIOR!></option>
+                    <!if(item.behaviour == beop.constants.behaviourType.VERIFY){!>
+                        <option value="<!=beop.constants.behaviourType.VERIFY!>"><!=I18n.resource.workflow.team.ADD_PROCESS_BEHAVIOR_TYPE_1!></option>
+                    <!}else{!>
+                        <option value="<!=beop.constants.behaviourType.VERIFY!>" selected><!=I18n.resource.workflow.team.ADD_PROCESS_BEHAVIOR_TYPE_1!></option>
+                    <!}!>
+                    <!if(item.behaviour == beop.constants.behaviourType.EXECUTE){!>
+                        <option value="<!=beop.constants.behaviourType.EXECUTE!>" selected><!=I18n.resource.workflow.team.ADD_PROCESS_BEHAVIOR_TYPE_2!></option>
+                    <!}else{!>
+                        <option value="<!=beop.constants.behaviourType.EXECUTE!>"><!=I18n.resource.workflow.team.ADD_PROCESS_BEHAVIOR_TYPE_2!></option>
+                    <!}!>
+                </select>
+                <span class="glyphicon glyphicon glyphicon-remove-circle fr mt10 cp wf-delete-process-item" style="position: absolute;margin-left: 10px;"></span>
+            </div>
+            <!if(item.archType != beop.constants.archType.ALL_MEMBERS){!>
+                <span class="mr30 ml10 fl wf-add-user-wrapper"><!=I18n.resource.workflow.team.ASSIGNED_TO_PEOPLE!></span>
+                <div class="oh mt5 wf-add-user-wrapper add-person-to-process-box wf-manager-people clearfix" style="background: transparent;">
+                    <div class="wf-added-user-list add-person-to-process wf-manager-people clearfix" style="background: transparent">
+                        <!item.members.forEach(function(member){!>
+                            <div class="people" title="<!=member.userfullname!>" data-user-id="<!=member.id!>"><img
+                                    src="<!=member.userpic!>">
+                                <div class="people-name ellipsis"><!=member.userfullname!></div>
+                            </div>
+                        <!});!>
+                    </div>
+                </div>
+                <span class="glyphicon glyphicon-edit cp add-people-to-process wf-add-user-wrapper"></span>
+            <!}else{!>
+                <span class="dn mr30 ml10 fl wf-add-user-wrapper"></span>
+                <div class="dn oh mt5 wf-add-user-wrapper add-person-to-process-box wf-manager-people clearfix" style="background: transparent;">
+                    <div class="wf-added-user-list add-person-to-process wf-manager-people clearfix" style="background: transparent">
+                    </div>
+                </div>
+                <span class="glyphicon glyphicon-edit dn cp add-people-to-process wf-add-user-wrapper"></span>
+            <!}!>
+        </div>
+    <!});!>
+</script>
+<!--选择人员模板结束-->
+    <script type="text/html" id="tpl_wf_added_team_process_member">
+        <!for(var m=0; m < members.length; m++){!>
+            <!var member = members[m];!>
+            <div class="people" title="<!=member.userfullname!>" data-user-id="<!=member.id!>">
+                <img src="<!=member.userpic!>">
+                <div class="people-name ellipsis"><!=member.userfullname!></div>
+                <input type="hidden" name="addedUsers[]" value="<!=member.id!>">
+            </div>
+        <!}!>
+    </script>
+<!--流程窗口添加某项流程开始-->
+<script type="text/html" id="tpl_wf_add_process_one">
+    <div class="wf_process_item" data-process-item-id="<!=nodeId!>">
+        <div class="oh">
+            <select class="form-control w150" data-type="archType" style="display: inline-block">
+                <option value="0" disabled="disabled"><!=I18n.resource.workflow.team.SELECT_USER_TYPE!></option>
+                <!processUserGroup.forEach(function(item, index, array){!>
+                    <!if(item.type === beop.constants.archType.ALL_MEMBERS){!>
+                        <option value="<!=item.id!>" data-type="<!=item.type!>" selected>
+                            <!=I18n.resource.workflow.process.ALL_MEMBERS!>
+                        </option>
+                    <!}else{!>
+                        <option value="<!=item.id!>" data-type="<!=item.type!>">
+                            <!=item.name!>
+                        </option>
+                    <!}!>
+                <!});!>
+            </select>
+            <span class="glyphicon glyphicon-arrow-right"></span>
+            <select class="form-control w150" data-type="behaviour" style="display: inline-block">
+                <option value="0" disabled="disabled" selected>
+                    <!=I18n.resource.workflow.team.SELECT_USER_BEHAVIOR!>
+                </option>
+                <!behaviors.forEach(function(item, index, array){!>
+                    <!if(item == beop.constants.behaviourType.EXECUTE){!>
+                        <option value="<!=item!>" selected>
+                    <!}else{!>
+                        <option value="<!=item!>">
+                    <!}!>
+                        <!=I18n.resource.workflow.team['ADD_PROCESS_BEHAVIOR_TYPE_'+item]!>
+                    </option>
+                <!});!>
+            </select>
+            <span class="glyphicon glyphicon-remove-circle fr mt10 cp wf-delete-process-item" style="position: absolute;margin-left: 10px;"></span>
+        </div>
+        <span class="mr30 ml10 fl dn wf-add-user-wrapper"><!=I18n.resource.workflow.team.ASSIGNED_TO_PEOPLE!></span>
+        <div class="oh mt5 wf-add-user-wrapper add-person-to-process-box wf-manager-people clearfix dn" style="min-height: 20px;background: transparent;">
+            <div class="wf-added-user-list add-person-to-process wf-manager-people clearfix" style="background: transparent"></div>
+        </div>
+        <span class="glyphicon glyphicon-edit cp dn add-people-to-process wf-add-user-wrapper"></span>
+    </div>
+</script>
+<!--流程窗口添加某项流程结束-->
+<!--@formatter:on-->

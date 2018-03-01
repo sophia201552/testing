@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="patrolPath">
+        <div id="patrolPathOpera">
+            <button type="button" class="btn btn-default btn-sm" id="addPath">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新建
+            </button>
+            <button type="button" class="btn btn-default btn-sm" disabled id="changePath">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 编辑
+            </button>
+            <button type="button" class="btn btn-default btn-sm" id="deletePath" disabled>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除
+            </button>
+            <button type="button" class="btn btn-default btn-sm" id="btnSort" data-sort="0">
+                <span class="glyphicon glyphicon-sort" aria-hidden="true"></span><span class="sortText">升序排序</span>
+            </button>
+            <div id="wrongInfo" class="btn"></div>
+        </div>
+        <div class="gray-scrollbar" id="patroPathList">
+            <div class="pathHeader clearfix">
+                <div class="col-sm-2 pathInfo">路线名称</div>
+                <div class="col-sm-2 pathInfo">巡更点</div>
+                <div class="col-sm-2 pathInfo">巡更时间范围(分钟)</div>
+                <div class="col-sm-4 pathInfo">巡更路线</div>
+                <div class="col-sm-2 pathInfo">计划用时</div>
+            </div>
+        </div>
+        <div class="modal fade" id="addpointModal" style="display:none;z-index:1051;" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">新增巡更点</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">名称</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control pointName" placeholder="地址或设备" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">类型</label>
+                            <div class="col-sm-9">
+                                <select class="form-control pointType">
+                                    <option value="0">设备</option>
+                                    <option value="1">地点</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">要求</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pointCancel" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="btnSave">添加</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

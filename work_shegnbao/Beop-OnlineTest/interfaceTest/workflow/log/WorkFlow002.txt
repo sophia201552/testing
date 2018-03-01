@@ -1,0 +1,11 @@
+[2016-08-24 13:44:04]---发送数据: {"user_id": 2265} ,访问 http://beop.rnbtech.com.hk/workflow/transaction/6390接口失败.
+[2016-08-24 13:49:22]---'WorkFlow002' object has no attribute 'url_new'
+[2016-08-24 14:04:19]---getDataExcept() got an unexpected keyword argument 'data'
+[2016-08-24 14:23:07]---postDataExcept() missing 1 required positional argument: 'data'
+[2016-08-25 17:38:23]---name 'get_data' is not defined
+[2016-08-25 17:39:06]---not enough arguments for format string
+[2016-08-25 17:48:45]---'records'
+[2016-08-25 17:49:44]---'creatotId'
+[2016-08-25 17:50:12]---'creatorId'
+[2016-08-25 17:51:20]---'created'
+[2016-08-26 11:04:03]---division by zero

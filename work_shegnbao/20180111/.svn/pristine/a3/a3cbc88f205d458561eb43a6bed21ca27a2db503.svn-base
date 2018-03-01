@@ -1,0 +1,15 @@
+export default {
+  MODULE_NAME: '相关性分析',
+  SORT: '排序',
+  RELEVANT_PARAMETER: '关联参数',
+  R: 'R²',
+  WEIGHT: '权重',
+  DATA_SOURCE: '数据来源',
+  FITTING_OBJECT: '拟合对象',
+  MODEL_DESCRIPTION: '模型描述',
+  DATA_RANGE: '数据区间',
+  SELECTED_DATA: '所选数据',
+  TIME: '时间',
+  METHOD: '方法',
+  PARAMETER: '参数',
+};

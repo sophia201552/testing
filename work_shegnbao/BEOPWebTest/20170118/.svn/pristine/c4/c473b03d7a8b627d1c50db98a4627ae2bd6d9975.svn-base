@@ -1,0 +1,268 @@
+#all_messages_box {
+    margin: 0 auto;
+    color: #333;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#all_messages_box ul {
+    list-style: none;
+    padding: 0;
+}
+
+#all_messages_box .nav-bar {
+    left: 0;
+    background: #eaedf1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transition: 0.3s all 0s ease;
+}
+
+#all_messages_box .nav-bar .nav-bar-title {
+    height: 70px;
+    background: #d9dee4;
+    line-height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+    text-indent: 20px;
+}
+
+#all_messages_box .nav-bar .nav-bar-list li {
+    line-height: 40px;
+    height: 40px;
+    user-select: none;
+}
+
+#all_messages_box .nav-bar .nav-bar-list a {
+    color: #666;
+    cursor: pointer;
+    width: 180px;
+    height: 40px;
+    display: block;
+    user-select: none;
+}
+
+#all_messages_box .nav-bar .nav-bar-list a:hover {
+    background: #f4f6f8;
+}
+
+#all_messages_box .nav-bar .nav-bar-list a.active {
+    background: #fff;
+}
+
+#all_messages_box .nav-bar .nav-bar-list a .nav-title {
+    padding-left: 20px;
+    display: block;
+    width: 100px;
+    float: left;
+}
+
+#all_messages_box .nav-bar .nav-bar-list a .nav-extend {
+    display: block;
+    height: 40px;
+    margin-left: 20px;
+    width: 40px;
+    float: right;
+}
+
+#all_messages_box .nav-bar .nav-bar-list a .nav-extend .unread-messages-count {
+    display: block;
+    padding: 0 8px;
+    line-height: 24px;
+    color: #fff;
+    margin: 8px 8px 0 0;
+    background: #09c;
+    border-radius: 2px;
+}
+
+#all_messages_box.message-navBar-hidden .nav-bar {
+    left: -180px;
+}
+
+.allMessage-navBar-transform {
+    width: 12px;
+    height: 40px;
+    cursor: pointer;
+    line-height: 40px;
+    position: absolute;
+    left: 168px;
+    z-index: 1;
+    top: 48%;
+    background-color: #f7f7f7;
+    color: #546478;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    transition: 0.3s all 0s ease;
+}
+
+.message-navBar-hidden .allMessage-navBar-transform {
+    left: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.allMessage-body {
+    position: absolute;
+    left: 180px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    transition: left 0.3s 0s;
+    padding: 10px;
+}
+
+.allMessage-body .body-content {
+    padding: 8px;
+    position: relative;
+}
+
+.allMessage-body .body-content #message-kind {
+    padding-top: 20px;
+    width: inherit;
+}
+
+.allMessage-body .body-content #message-kind ul {
+    padding-left: 0px;
+    list-style: none;
+}
+
+.allMessage-body .body-content #message-kind ul li {
+    float: left;
+    width: 115px;
+    position: relative;
+    display: block;
+    user-select: none;
+}
+
+.allMessage-body .body-content #message-kind ul a {
+    border: 1px solid #d9dee4;
+    background-color: #d9dee4;
+    height: 32px;
+    margin-left: 2px;
+    text-decoration: none;
+    color: #444;
+    display: inline-block;
+    padding: 5px 10px;
+    cursor: pointer;
+    user-select: none;
+    width: 93%;
+    text-align: center;
+}
+
+.allMessage-body .body-content #message-kind ul a.active {
+    border: 1px solid #546478;
+    background-color: #546478;
+    color: #fff;
+}
+
+.allMessage-body .body-content #message-list-container {
+    height: 67vh;
+    width: inherit;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.allMessage-body .body-content #message-list-container .message-footer {
+    position: fixed;
+    left: 178px;
+    margin-left: 20px;
+    bottom: 20px;
+    transition: left 0.3s 0s;
+    width: calc(100% - 233px);
+}
+
+.allMessage-body .body-content #message-list-container table {
+    width: 100%;
+}
+
+.allMessage-body .body-content #message-list-container .pagination-container {
+    float: right;
+}
+
+.allMessage-body .body-content #message-list-container .pagination-container .pagination {
+    float: right;
+    margin-top: 5px;
+    margin-right: 0;
+}
+
+.allMessage-body .body-content #message-list-container .pagination-container .pagination a {
+    color: #337ab7 !important;
+    border: 1px solid #ddd !important;
+}
+
+.allMessage-body .body-content #message-list-container .pagination-container .pagination .active a {
+    color: #eac124 !important;
+}
+
+.allMessage-body .body-content #message-list-container .state-column {
+    width: 30px;
+    padding-left: 15px;
+}
+
+.allMessage-body .body-content #message-list-container .content-column {
+    width: calc(50% - 60px);
+    padding-left: 15px;
+    min-height: 38px;
+}
+
+.allMessage-body .body-content #message-list-container .message-row {
+    line-height: 38px;
+    color: #999;
+    padding: 0;
+    border: 1px solid #e1e6eb;
+}
+
+.message_table_headers {
+    background-color: #f5f6fa;
+}
+
+.allMessage-body .body-content #message-list-container .message_table_headers th {
+    font-weight: normal;
+    height: inherit;
+    float: left;
+    padding-top: 11px;
+    line-height: 11px;
+}
+
+.allMessage-body .body-content #message-list-container .message-row > td {
+    height: inherit;
+    float: left;
+}
+
+.allMessage-body .body-content #message-list-container .message-row .msg-read-state {
+    font-size: 50px;
+    color: #428bca;
+}
+
+.allMessage-body .body-content #message-list-container .message-row .msg-read-state.isRead {
+    color: #fff;
+}
+
+.allMessage-body .body-content #message-list-container tfoot tr {
+    height: 45px;
+    line-height: 45px;
+}
+
+.allMessage-body .body-content #message-list-container tfoot tr .msg-user-face-control a {
+    display: inline-block;
+    background: #eaedf1;
+    border-radius: 0;
+    height: 30px;
+    margin-right: 5px;
+    padding-top: 5px;
+}
+
+.message-navBar-hidden .allMessage-body {
+    left: 0;
+    width: 100%;
+}
+
+.message-navBar-hidden .allMessage-body #message-list-container .message-footer {
+    left: 0;
+    width: calc(100% - 30px);
+}

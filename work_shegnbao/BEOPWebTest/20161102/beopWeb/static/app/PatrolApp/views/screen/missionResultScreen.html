@@ -1,0 +1,109 @@
+<style>
+    #ctnMissionResult{
+        padding: 1rem;
+    }
+    .divPoint{
+        padding: 0.5rem 0;
+        font-size: 2rem;
+    }
+    .spPtName{
+        display: inline-block;
+        width: 70%;
+    }
+    .spPtStatus{
+        right: 1rem;
+        color: white;
+        font-size: 1.6rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: darkorange;
+    }
+    .spPtStatus.statusOk{
+        background-color: rgb(83, 155, 218);
+    }
+    .spPtStatus.statusSkip{
+        background-color: #ccc;
+    }
+    .spGuideLine{
+        height: 2rem;
+        width: 1px;
+        display: inline-block;
+        background: #aaa;
+        margin-left: 0.5rem;
+    }
+    #btnToggleBack {
+        display: none;
+    }
+    #btnHomePage {
+        display: none;
+    }
+    /*#btnPtList {
+        display: none;
+        top: -1px;
+        right: 60px;
+        padding-left: 20px;
+    }*/
+    #btnToggleBack>span {
+        height: 24px;
+        width: 24px;
+        display: inline-block;
+    }
+
+    #ctnJump {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+    .backdrop {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(100,100,100,0.3);
+    }
+    #divJump {
+        z-index: 1;
+        position: absolute;
+        top: 30%;
+        width: 80%;
+        padding: 1rem 10%;
+        margin-left: 10%;
+        text-align: center;
+        background: white;
+        border: 1px solid #aaa;
+    }
+    #divJumpTip {
+        font-size: 2.2rem;
+    }
+    #divJumpGrp {
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .btnJumpSel {
+        font-size: 1.8rem;
+        padding: 0.2rem 1rem;
+        border: none;
+        border-radius: 0.4rem;
+    }
+
+    #btnJump {
+        background-color: #337AB7;
+        color: white;
+        margin-right: 2rem;
+    }
+</style>
+<div id="ctnMissionResult">
+
+</div>
+<div id="ctnJump">
+    <div class="backdrop"></div>
+    <div id="divJump">
+        <div id="divJumpTip">一旦退出到主菜单当前巡更数据会清空，是否退出？</div>
+        <div id="divJumpGrp">
+            <button id="btnJump" class="btnJumpSel">退出</button>
+            <button id="btnCancel" class="btnJumpSel">取消</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style type="text/css">
+        body {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin: 0 !important;
+            width: 100% !important;
+            -webkit-text-size-adjust: 100% !important;
+            -ms-text-size-adjust: 100% !important;
+            -webkit-font-smoothing: antialiased !important;
+            font-family: "Microsoft YaHei", "微软雅黑", "arial", "sans-serif";
+            background-color: #aaa;
+            overflow-x: scroll;
+        }
+
+        .tableContent img {
+            border: 0 !important;
+            display: block !important;
+            outline: none !important;
+        }
+
+        a {
+            color: #382F2E;
+        }
+
+        p, h1 {
+            color: #382F2E;
+            margin: 0;
+        }
+
+        p {
+            text-align: left;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 19px;
+        }
+
+        h2 {
+            font-weight: bold;
+        }
+
+        h3 {
+            font-weight: normal;
+        }
+
+        div, p, ul, h1 {
+            margin: 0;
+        }
+
+        .bgBody {
+            background-color: #aaa;
+        }
+
+        .bgItem {
+            background: #ffffff;
+            margin: 0 auto;
+        }
+
+        .logo {
+            margin-top: 30px;
+            max-width: 200px;
+            position: relative;
+        }
+
+        pre {
+            font-family: inherit;
+        }
+
+        table {
+            background-color: transparent;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        .table-striped tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .table-bordered thead tr th, .table-bordered tbody tr th, .table-bordered tfoot tr th, .table-bordered thead tr td, .table-bordered tbody tr td, .table-bordered tfoot tr td {
+            border: 1px solid #ddd;
+        }
+
+        .table thead tr th, .table tbody tr th, .table tfoot tr th, .table thead tr td, .table tbody tr td, .table tfoot tr td {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+
+        .logo-text {
+            font-size: 14px;
+            color: #FFFFFF;
+        }
+
+        .logo-header {
+            padding: 0 25px;
+            background: lightgray;
+            color: #FFF;
+            height: 105px;
+        }
+
+        .copyright {
+            text-align: center;
+            background: lightgray;
+            padding: 10px 0;
+        }
+
+        .dataAlarmUser {
+            padding: 8px 0 0 0;
+        }
+
+        .movableContent {
+            padding: 20px;
+        }
+
+        .movableContent table > tr {
+            margin-bottom: 10px;
+        }
+
+        .dataAlarTdRighte {
+            padding-left: 20px;
+            color: #131313;
+            min-width: 280px;
+        }
+
+        .dataAlarTdLeft {
+            text-align: right;
+            color: #7c7c7c;
+            min-width: 68px;
+            padding: 5px 0;
+        }
+
+        .dataAlarmUser {
+            color: #006ce6;
+            font-size: 16px;
+        }
+
+        #dataAlarmContent {
+            width: 640px;
+            padding: 40px 20px 20px;
+        }
+
+        #dataAlarmContent tbody tr {
+            border-top: 1px solid #c0c0c0;
+            font-size: 16px;
+        }
+
+        #dataAlarmContent tbody tr:last-child {
+            border-bottom: 1px solid #c0c0c0;
+        }
+
+        .dataAlarTypeValue {
+            display: inline-block;
+            width: 48px;
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body paddingwidth="0" paddingheight="0"
+      style="padding-top: 0; padding-bottom: 0; background-repeat: repeat; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-font-smoothing: antialiased;"
+      offset="0" toppadding="0" leftpadding="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableContent bgBody" align="center">
+
+    <tr>
+        <td>
+            <table width="900" border="0" cellspacing="0" cellpadding="0" align="center" class='bgItem'>
+                <tr>
+                    <td width='900'>
+                        <table width="900" border="0" cellspacing="0" cellpadding="0" align="center">
+
+                            <!-- =============================== Body ====================================== -->
+                            <tr>
+                                <td class='movableContentContainer' valign='top'>
+                                    <div class='logo-header'>
+                                        <table width="900" border="0" cellspacing="0" cellpadding="0" align="left">
+                                            <tr>
+                                                <td valign="top" align="left">
+                                                    <div class="contentEditableContainer contentImageEditable">
+                                                        <div class="contentEditable" style="position: relative;">
+                                                            <img src="http://images.rnbtech.com.hk/static/images/{{ alarm.countryConfig.logoFileName }}.png"
+                                                                 class="logo" alt="" data-default="placeholder"
+                                                                 data-max-width="560">
+                                                        </div>
+                                                        <div class="logo-text">专注于楼宇自控优化、诊断、数据服务的专业平台</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 20px 30px;">
+                                    {% if alarm.email|length == 1 %}
+                                        <div class="dataAlarmUser">尊敬的用户 {{ alarm.email[0] }} ， 您好：</div>
+                                    {% else %}
+                                        <div class="dataAlarmUser">尊敬的用户， 您好：</div>
+                                    {% endif %}
+                                    <div class='movableContent'>
+                                        <div style="margin-left:-20px;color: #eb9500;font-size: 16px;">
+                                            您的报警规则于 {{ alarm.alarmTime|string }}
+                                            发生了告警。
+                                            {% if alarm.duration %}
+                                                <span> 持续时间 {{ alarm.duration }} 。</span>
+                                            {% endif %}
+                                        </div>
+                                        <div id="dataAlarmContent">
+                                            <table>
+                                                {% if alarm.get('project') != None %}
+                                                    <tr>
+                                                        <td class="dataAlarTdLeft">
+                                                            项目名称:
+                                                        </td>
+                                                        <td class="dataAlarTdRighte">
+                                                            {{ alarm.project }}
+                                                        </td>
+                                                    </tr>
+                                                {% endif %}
+
+                                                {% if alarm.get('remark') != None %}
+                                                    <tr>
+                                                        <td class="dataAlarTdLeft">
+                                                            点名释义:
+                                                        </td>
+                                                        <td class="dataAlarTdRighte">
+                                                            {{ alarm.remark }}
+                                                        </td>
+                                                    </tr>
+                                                {% endif %}
+
+                                                <tr>
+                                                    <td class="dataAlarTdLeft">
+                                                        报警点名:
+                                                    </td>
+                                                    <td class="dataAlarTdRighte">
+                                                        {{ alarm.pointName }}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="dataAlarTdLeft">
+                                                        报警类别:
+                                                    </td>
+                                                    <td class="dataAlarTdRighte">
+                                                        {% if alarm.type == 1 %}
+                                                            布尔量报警
+                                                        {% endif %}
+                                                        {% if alarm.type == 2 %}
+                                                            高低限报警
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                                {% if alarm.type == 2 %}
+                                                    <tr style="height: 100px;">
+                                                        <td class="dataAlarTdLeft"
+                                                            style="position: relative; color: #7c7c7c;">
+                                                            <span style="position: absolute; left: 18px; top: 0px; width: 50px;"> 限值:</span>
+                                                        </td>
+                                                        <td class="dataAlarTdRighte">
+                                                            <div>
+                                                                <span class="dataAlarTypeValue">高高报</span>
+                                                                <span>
+                                                                    {% if alarm.get('highhigh') != None %}
+                                                                        {{ alarm.highhigh }}
+                                                                    {% else %}
+                                                                        无
+                                                                    {% endif %}
+                                                                </span>
+                                                            </div>
+                                                            <div>
+                                                                <span class="dataAlarTypeValue">高报</span>
+                                                                <span>
+                                                                    {% if alarm.get('high') != None %}
+                                                                        {{ alarm.high }}
+                                                                    {% else %}
+                                                                        无
+                                                                    {% endif %}
+                                                                </span>
+                                                            </div>
+                                                            <div>
+                                                                <span class="dataAlarTypeValue">低报</span>
+                                                                <span>
+                                                                    {% if alarm.get('low') != None %}
+                                                                        {{ alarm.low }}
+                                                                    {% else %}
+                                                                        无
+                                                                    {% endif %}
+                                                                </span>
+                                                            </div>
+                                                            <div>
+                                                                <span class="dataAlarTypeValue">低低报</span>
+                                                                <span>
+                                                                    {% if alarm.get('lowlow') != None %}
+                                                                        {{ alarm.lowlow }}
+                                                                    {% else %}
+                                                                        无
+                                                                    {% endif %}
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                {% endif %}
+                                                <tr>
+                                                    <td class="dataAlarTdLeft">
+                                                        当前值:
+                                                    </td>
+                                                    <td class="dataAlarTdRighte" style="color: #eb9500;">
+                                                        {% if alarm.get('value') != None %}
+                                                            {{ alarm.value }}
+                                                        {% else %}
+                                                            无
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="dataAlarTdLeft">
+                                                        报警级别:
+                                                    </td>
+                                                    <td class="dataAlarTdRighte">
+                                                        {% if alarm.get('alarmGrade') != None %}
+                                                            {{ alarm.alarmGrade }}
+                                                        {% else %}
+                                                            无
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="dataAlarTdLeft">
+                                                        报警信息:
+                                                    </td>
+                                                    <td class="dataAlarTdRighte">
+                                                        {% if alarm.get('alarmMsg') != None %}
+                                                            {{ alarm.alarmMsg }}
+                                                        {% else %}
+                                                            无
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="dataAlarTdLeft">
+                                                        处理建议:
+                                                    </td>
+                                                    <td class="dataAlarTdRighte">
+                                                        {% if  alarm.get('alarmAdvice') != None %}
+                                                            {{ alarm.alarmAdvice }}
+                                                        {% else %}
+                                                            无
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td width='900'>
+                        <div style="margin:0 0 20px 20px;">{{ alarm.countryConfig.tradeMark }}数据监控</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width='900' class="copyright">
+                        <div class="contentEditableContainer contentTextEditable">
+                            <div class="contentEditable">
+                                <div>Copyright&copy;by RNB Tech. All Rights Reserved.</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+

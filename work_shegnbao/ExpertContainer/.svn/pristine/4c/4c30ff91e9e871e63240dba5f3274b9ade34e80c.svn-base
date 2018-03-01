@@ -1,0 +1,30 @@
+#coding=utf-8
+__author__ = 'angelia'
+
+import pytest
+from ExpertContainer.api.views import *
+from ExpertContainer.dbAccess.RedisManager import RedisManager
+
+
+@pytest.mark.p0
+@pytest.mark.parametrize(('force', 'strforce', 'expected'),[
+    (0,'true', {"msg": "ok", "success": True}),
+])
+def test_data_Manage_exportData_task_stop(force, strforce,expected):
+    data = do_put_export_data_into_mq(2,'Day_Load' ,72, 456, 'm5', '2017-11-20 10:00:00', '2017-11-21 10:00:00',str(ObjectId()), {"error": True, "msg": '', "data": ''})
+    taskId = data.get('msg')
+    rt1 = json.loads(do_stop_export_task(force, taskId, strforce))
+    if rt1:
+        assert rt1 == expected, 'actual result is %s, which differs from expected %s' %(rt1, expected)
+        step1_rt = RedisManager.hash_get(taskId)
+        assert step1_rt.get('stop') == 1, 'actual task stop status is %s,which differs from 1' %(step1_rt.get('stop'))
+        rt2 = do_stop_export_task(force, taskId, strforce)
+        if rt2:
+            step2_rt = RedisManager.hash_get(taskId)
+            assert not step2_rt, 'already delete task but failed'
+        else:
+            assert False, 'stop export task failed'
+    else:
+        assert False, 'stop export task failed'
+
+

@@ -1,0 +1,43 @@
+.modal-container {
+  width: 260px;
+  padding: 15px;
+}
+.modal-container .modal-title {
+  line-height: 30px;
+  font-size: 16px;
+}
+.modal-body > div {
+  margin-top: 10px;
+}
+.modal-container .modal-body > div {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.modal-container .modal-body label {
+  width: 50px;
+  display: inline-block;
+}
+.modal-container .modal-body input {
+  width: calc(100% - 50px);
+  display: inline-block;
+  border: 1px solid #a6a6a6;
+  outline: medium;
+  padding: 0 6px;
+  line-height: 30px;
+}
+.modal-container .modal-body .tagsDropdown > div {
+  width: calc(100% - 50px);
+  display: inline-block;
+  height: 32px;
+}
+.modal-container .modal-footer {
+  height: 60px;
+}
+.modal-container .modal-footer > div {
+  float: right;
+  margin-top: 14px;
+}
+.modal-container .modal-footer > div button {
+  margin-left: 10px;
+}

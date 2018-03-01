@@ -1,0 +1,1 @@
+[2016-09-20 10:16:48] --- levelname:INFO filename: _internal.py funcName:_log outputNumber: [87]  thread: MainThread output msg:  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)

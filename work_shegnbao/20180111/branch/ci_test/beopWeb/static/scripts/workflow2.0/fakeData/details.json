@@ -1,0 +1,31 @@
+{
+  "code": "1",
+  "data": {
+    "assignTime": "Mon, 31 Aug 2015 17:48:26 GMT",
+    "chartEndTime": null,
+    "chartPointList": null,
+    "chartQueryCircle": null,
+    "chartStartTime": null,
+    "createTime": "2015-08-31 17:48:26",
+    "creatorID": 1,
+    "critical": 1,
+    "dbName": null,
+    "detail": "fdsfsf",
+    "dueDate": "2015-09-04",
+    "executor": {
+      "id": 1,
+      "userfullname": "admin",
+      "username": "admin",
+      "userpic": "/static/images/avatar/user/16307108.Jpg"
+    },
+    "executorID": 1,
+    "groupName": "wf-test",
+    "groupid": 214,
+    "id": 2534,
+    "priority": 5,
+    "statusId": 4,
+    "title": "fdsfs"
+  },
+  "msg": "",
+  "success": true
+}

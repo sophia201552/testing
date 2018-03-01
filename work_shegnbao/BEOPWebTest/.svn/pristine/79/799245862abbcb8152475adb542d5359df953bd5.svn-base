@@ -1,0 +1,656 @@
+﻿<script src="/static/scripts/lib/fullcalendar/moment.min.js"></script>
+<script src="/static/scripts/lib/fullcalendar/fullcalendar.min.js"></script>
+<link rel="stylesheet" href="/static/content/fullcalendar.min.css">
+<style>
+    .wf-bounceleft {
+        -webkit-animation: bounceInLeft .5s .1s ease-in-out both;
+        -moz-animation: bounceInLeft .5s .1s ease-in-out both;
+    }
+
+    i {
+        font-style: normal;
+    }
+
+    @-webkit-keyframes bounceInLeft {
+        0% {
+            opacity: 0;
+            -webkit-transform: translateX(-50px)
+        }
+        60% {
+            opacity: 1;
+            -webkit-transform: translateX(20px)
+        }
+        80% {
+            -webkit-transform: translateX(-10px)
+        }
+        100% {
+            -webkit-transform: translateX(-10px)
+        }
+    }
+
+    @-moz-keyframes bounceInLeft {
+        0% {
+            opacity: 0;
+            -moz-transform: translateX(-100px)
+        }
+        60% {
+            opacity: 1;
+            -moz-transform: translateX(30px)
+        }
+        80% {
+            -moz-transform: translateX(-10px)
+        }
+        100% {
+            -moz-transform: translateX(0)
+        }
+    }
+
+    #taskPoolInfoTxt {
+        color: #ccc;
+    }
+
+    .wf-bounceright {
+        -webkit-animation: bounceInRight .5s .1s ease-in-out both;
+        -moz-animation: bounceInRight .5s .1s ease-in-out both;
+    }
+
+    @-webkit-keyframes bounceInRight {
+        0% {
+            opacity: 0;
+            -webkit-transform: translateX(100px)
+        }
+        60% {
+            opacity: 1;
+            -webkit-transform: translateX(-30px)
+        }
+        80% {
+            -webkit-transform: translateX(10px)
+        }
+        100% {
+            -webkit-transform: translateX(0)
+        }
+    }
+
+    @-moz-keyframes bounceInRight {
+        0% {
+            opacity: 0;
+            -moz-transform: translateX(100px)
+        }
+        60% {
+            opacity: 1;
+            -moz-transform: translateX(-30px)
+        }
+        80% {
+            -moz-transform: translateX(10px)
+        }
+        100% {
+            -moz-transform: translateX(0);
+            display: none
+        }
+    }
+
+    #wrap {
+        background: #fff;
+    }
+
+    .added-calendar {
+        margin-right: 10px;
+        float: right;
+        display: block;
+        margin-top: -35px;
+    }
+
+    #events {
+        float: right;
+        width: 315px;
+        padding: 5px 10px;
+        background: #f9f9f9;
+        margin-top: 1%;
+    }
+
+    #events .dropdown .btn {
+        width: 95px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    #events .dropdown a {
+        text-transform: capitalize;
+    }
+
+    #events div.active {
+        box-shadow: 0px 0px 8px 3px #CBC7C7;
+    }
+
+    #events label {
+        display: block;
+    }
+
+    #events .dropdown {
+        display: inline-block;
+    }
+
+    #events h4 {
+        font-size: 16px;
+        margin-top: 10px;
+        text-align: center;
+        color: #333;
+    }
+
+    #events .fc-event {
+        color: #333;
+        margin: 6px 0;
+        padding: 5px;
+        cursor: pointer;
+        opacity: 1;
+        transition: 0.3s transform linear 0s;
+        border-color: transparent;
+        background: transparent;
+        -webkit-user-select: none;
+    }
+
+    .itemTime {
+        margin: 3px 0;
+        display: block;
+    }
+
+    #events .fc-event:hover {
+        border-left-width: 5px;
+    }
+
+    #events, .fc-view-container {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        background-color: #FFF;
+    }
+
+    #events p {
+        margin: 1.5em 0;
+        font-size: 11px;
+        color: #666;
+    }
+
+    #events p input {
+        margin: 0;
+        vertical-align: middle;
+    }
+
+    #events .wf-events-dq {
+        background: #CCCCCC;
+    }
+
+    #calendar {
+        float: right;
+        margin-top: 1%;;
+        width: calc(96% - 510px);
+        font: 14px/1 "Microsoft Yahei", normal;
+        -webkit-user-select: none;
+        position: relative;
+    }
+
+    #calendar th {
+        height: 35px;
+        line-height: 35px;
+    }
+
+    #calendar .fc-day-grid-event {
+        padding: 5px;
+    }
+
+    #edit {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100px;
+        height: 50px;
+        background: #cccccc;
+        border: 1px solid #000;
+        display: none;
+        z-index: 1000;
+        color: #fff;
+    }
+
+    #calendar .fc-content .fc-time {
+        display: none;
+    }
+
+    .event-container {
+        height: 500px;
+        margin-top: 10px;
+        overflow-y: auto;
+        font: 14px/1 "Microsoft Yahei", normal;
+        position: relative;
+        z-index: 1;
+    }
+
+    #workflowInfoWin .modal-dialog, #workflowInfo .modal-dialog {
+        width: 520px;
+        margin: 0;
+    }
+
+    #workflowInfo {
+        position: absolute;
+        z-index: 666;
+    }
+
+    #workflowInfo .modal-body {
+        overflow: hidden;
+    }
+
+    #workflowInfo h4 {
+        height: 20px;
+        line-height: 20px;
+    }
+
+    #workflowInfo [contenteditable="true"] {
+        border: 1px solid #87cefa;
+        box-shadow: 0 0 2px #87cefa;
+    }
+
+    .lineCon {
+        line-height: 24px;
+        overflow: hidden;
+    }
+
+    .itemColor {
+        position: relative;
+        top: 4px;
+        width: 14px;
+        height: 14px;
+        float: left;
+        margin-right: 7px;
+        cursor: pointer;
+        display: none;
+    }
+
+    .longContent {
+        display: block;
+        width: 330px;
+        float: left;
+    }
+
+    .showEllipsis {
+        display: block;
+        float: left;
+        /*width: 155px;*/
+    }
+
+    .colorWrapper {
+        margin-top: 5px;
+    }
+
+    #errorInfo {
+        color: #a94442;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    #taskPoolInfo {
+        position: absolute;
+        z-index: 999;
+        border-radius: 10px;
+        width: 450px;
+        overflow: auto;
+        display: none;
+        opacity: 1;
+    }
+
+    #taskPoolInfo .panel-body p {
+        border-bottom: 1px solid #DCDCDC;
+        margin-bottom: 5px;
+        padding: 5px 0;
+        font-size: 13px;
+    }
+
+    #taskPoolInfo .panel-heading {
+        padding-bottom: 0;
+    }
+
+    #taskPoolTime {
+        margin: 5px 0;
+    }
+
+    .itemContent {
+        float: left;
+        color: #333;
+    }
+
+    #itemContent .FaultGrade0 {
+        border-left: 4px solid #3a87ad;
+    }
+
+    #itemContent .FaultGrade1 {
+        border-left: 4px solid #fdbb4a;
+    }
+
+    #itemContent .FaultGrade2 {
+        border-left: 4px solid #ed7a3a;
+    }
+
+    .itemTitle {
+        display: block;
+        width: 140px;
+        float: left;
+        text-align: right;
+        margin-right: 5px;
+    }
+
+    #calendarDateStart, #calendarDateEnd {
+        border: none;
+    }
+
+    #calendarDateStart[disabled='disabled'], #calendarDateStart[disabled='true'], #calendarDateEnd[disabled='disabled'], #calendarDateEnd[disabled='true'] {
+        background: transparent;
+    }
+
+    .datetimepicker-container {
+        position: fixed;
+        margin: 1%;
+        left: 0;
+        background: #fff;
+        -webkit-user-select: none;
+    }
+
+    #wf-Emergency-degree li {
+        margin: 3px 0;
+    }
+
+    #wf-Emergency-degree li:nth-of-type(2) {
+        border-left: 4px solid #3a87ad;
+    }
+
+    #wf-Emergency-degree li:nth-of-type(3) {
+        border-left: 4px solid #fdbb4a;
+    }
+
+    #wf-Emergency-degree li:nth-of-type(4) {
+        border-left: 4px solid #ed7a3a;
+    }
+
+    .day:after {
+        position: absolute;
+        content: attr(data-eventstotal);
+        color: goldenrod;
+        top: -4px;
+        right: 0px;
+        transform: scale(0.875);
+        font-size: 14px;
+    }
+
+    .day {
+        position: relative;
+    }
+
+    .zoneInfo {
+        display: block;
+        color: #333;
+    }
+
+    #taskPoolPoints {
+        word-break: break-all;
+    }
+
+    .colorWrapper .active {
+        border: 1px solid #000;
+    }
+
+    .ui-draggable-dragging {
+        color: #fff;
+        background: RGB(164, 189, 252);
+        border-color: RGB(164, 189, 252);
+    }
+
+    .itemTitle > i {
+        display: inline-block;
+        float: right;
+    }
+
+    .itemTitle .ellipsis {
+        width: 124px;
+        float: left;
+    }
+
+    #wf-calender-selectorInfo {
+        display: none;
+    }
+
+    #wf-calender-selectorInfo section {
+        display: inline-block;
+        width: 95px;
+        height: 30px;
+        text-align: left;
+        font-size: 13px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: normal;
+        padding: 0;
+    }
+
+    .taskPoolInfoEcharts {
+        position: relative;
+        width: 100%;
+        min-height: 200px;
+        border: 1px solid #ccc;
+    }
+
+    .tooltip .taskPoolInfoEcharts {
+        display: none;
+    }
+
+    #taskPoolDetail {
+        word-break: keep-all;
+    }
+</style>
+
+
+<article id="workflowInfo" class="dn">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="itemClose" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="lineCon">
+                    <div class="itemContent">
+                        <span class="itemTitle"><span i18n="workflow.calendar.TITLE;title=workflow.calendar.TITLE"
+                                                      class="ellipsis"></span><i>：</i></span>
+                        <span id="wf-name" class="ellipsis showEllipsis" title=""></span>
+                    </div>
+                </div>
+                <div class="lineCon">
+                    <div class="itemContent">
+                        <span class="itemTitle "><span i18n="workflow.calendar.OWNER;title=workflow.calendar.OWNER"
+                                                       class="ellipsis"></span><i>：</i></span>
+                        <span id="owner"></span>
+                    </div>
+                </div>
+                <div class="oh lineCon">
+                    <div class="itemContent">
+                        <span class="itemTitle"><span
+                                i18n="workflow.calendar.TIME_START;title=workflow.calendar.TIME_START"
+                                class="ellipsis"></span><i>：</i></span>
+                        <input type="text" id="calendarDateStart" class="calendarDateStart" readonly="true"/>
+                    </div>
+                </div>
+                <div class="oh lineCon">
+                    <div class="itemContent">
+                        <span class="itemTitle"><span i18n="workflow.calendar.TIME_END;title=workflow.calendar.TIME_END"
+                                                      class="ellipsis"></span><i>：</i></span>
+                        <input type="text" id="calendarDateEnd" class="calendarDateEnd" readonly="true"/>
+                    </div>
+                </div>
+                <div class="lineCon">
+                    <div class="itemContent">
+                        <span class="itemTitle"><span
+                                i18n="workflow.calendar.URGENCY_LEVEL;title=workflow.calendar.URGENCY_LEVEL"
+                                class="ellipsis"></span><i>：</i></span>
+                        <span id="wf-critical"></span>
+                    </div>
+                    <!--<div class="itemContent">-->
+                    <!--<span class="itemTitle"><span i18n="workflow.calendar.REMIND;title=workflow.calendar.REMIND" class="ellipsis"></span><i>：</i></span>-->
+                    <!--<span id="wf-remind"></span>-->
+                    <!--</div>-->
+                </div>
+                <div class="lineCon" style="color:#333;">
+                    <div class="itemContent">
+                        <span class="itemTitle"><span
+                                i18n="workflow.calendar.EQUIPMENT_NAME;title=workflow.calendar.EQUIPMENT_NAME"
+                                class="ellipsis"></span><i>：</i></span>
+                        <span id="wf-equipmentName" class="ellipsis showEllipsis" title=""></span>
+                    </div>
+                </div>
+                <div class="lineCon" style="color:#333;">
+                    <div class="itemContent">
+                        <span class="itemTitle"><span
+                                i18n="workflow.calendar.PROJECT_NAME;title=workflow.calendar.PROJECT_NAME"
+                                class="ellipsis"></span><i>：</i></span>
+                        <span id="wf-projectName"></span>
+                    </div>
+                    <div class="itemContent">
+                        <span class="itemTitle"></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="lineCon" style="color:#333;">
+                    <span class="itemTitle"><span
+                            i18n="workflow.calendar.DESCRIPTION;title=workflow.calendar.DESCRIPTION"
+                            class="ellipsis"></span><i>：</i></span>
+                    <span id="wf-detail" class="longContent"></span>
+                </div>
+                <!--<div class="lineCon">-->
+                <!--<span class="itemTitle"><span i18n="workflow.calendar.POINT_VALUE;title=workflow.calendar.POINT_VALUE" class="ellipsis"></span><i>：</i></span>-->
+                <!--<span id="wf-points" class="longContent ellipsis"></span>-->
+                <!--</div>-->
+                <div class="lineCon" style="color:#333;">
+                    <span class="itemTitle"><span i18n="workflow.calendar.AREA;title=workflow.calendar.AREA"
+                                                  class="ellipsis"></span><i>：</i></span>
+                    <span id="wf-zones" class=""></span>
+                </div>
+                <div class="lineCon calendarInfoColor" style="color:#333;">
+                    <span class="itemTitle"><span i18n="workflow.calendar.COLOR;title=workflow.calendar.COLOR"
+                                                  class="ellipsis"></span><i>：</i></span>
+                    <span class="colorWrapper">
+                        <em data-color="#3a87ad" class="itemColor" style="background: #3a87ad"></em>
+                        <em data-color="#a4bdfc" class="itemColor" style="background: #a4bdfc"></em>
+                        <em data-color="#46d6db" class="itemColor" style="background: #46d6db"></em>
+                        <em data-color="#7ae7bf" class="itemColor" style="background: #7ae7bf"></em>
+                        <em data-color="#51b749" class="itemColor" style="background: #51b749"></em>
+                        <em data-color="#fdbb4a" class="itemColor" style="background: #fdbb4a"></em>
+                        <em data-color="#ed7a3a" class="itemColor" style="background: #ed7a3a"></em>
+                        <em data-color="#ff887c" class="itemColor" style="background: #ff887c"></em>
+                        <em data-color="#dc2127" class="itemColor" style="background: #dc2127"></em>
+                        <em data-color="#dbadff" class="itemColor" style="background: #dbadff"></em>
+                    </span>
+                </div>
+                <div class="lineCon" style="color:#333;">
+                    <span id="errorInfo" class="mr10 infoPrompt dn"></span>
+                </div>
+                <div class="taskPoolInfoEcharts"></div>            </div>
+            <div class="modal-footer">
+                <a id="itemDel" class="fl cp" i18n="workflow.calendar.DELETE;title=workflow.calendar.DELETE"></a>
+                <a id="itemEdit" class="fr cp" i18n="workflow.calendar.EDIT;title=workflow.calendar.EDIT"></a>
+                <a id="itemSave" class="fr cp" i18n="workflow.calendar.SAVE;title=workflow.calendar.SAVE"></a>
+                <a id="createWF" class="fr cp mr20"
+                   i18n="workflow.calendar.CREATE_WORKFLOW;title=workflow.calendar.CREATE_WORKFLOW"></a>
+            </div>
+        </div>
+    </div>
+</article>
+<div class="datetimepicker-container"></div>
+<div id='wrap' style="position: relative;">
+    <div class="tooltip left" id="taskPoolInfo" role="tooltip">
+        <div class="tooltipTitle tooltip-inner"><span id="taskPoolTitle"></span></div>
+        <div class="tooltipContent"><p class="customName" style="word-break:break-all;"><span
+                style="font-weight:bold"></span></p>
+
+
+            <p class="pointName" style="word-break:break-all;"><span style="font-weight:bold"></span><span
+                    id="taskPoolTime"></span></p>
+
+            <p class="pointDesc" style="word-break:break-all;"><span style="font-weight:bold"></span><span
+                    id="taskPoolDetail"></span></p>
+
+            <div class="taskPoolInfoEcharts">
+            </div>
+        </div>
+        <div class="tooltip-arrow" style="top: 10%;"></div>
+    </div>
+    <div id='events'>
+        <div class="event-selector">
+            <label for="project-selector">
+                <select name="project-selector" class="form form-control project-selector"></select>
+            </label>
+            <h4><span i18n="workflow.calendar.TASK_POOL"></span></h4>
+
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true"
+                        i18n="workflow.calendar.OVERDUE_TIME;value=workflow.calendar.OVERDUE_TIME;title=workflow.calendar.OVERDUE_TIME">
+                    <span class="caret"></span>
+                </button>
+                <ul id="wf-Time-overdue" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="javascript:void (0)" i18n="workflow.calendar.All;value=workflow.calendar.All"></a></li>
+                    <li><a href="javascript:void (0)"
+                           i18n="workflow.calendar.ONE_MONTH;value=workflow.calendar.ONE_MONTH"></a></li>
+                    <li><a href="javascript:void (0)"
+                           i18n="workflow.calendar.TWO_MONTH;value=workflow.calendar.TWO_MONTH"></a></li>
+                    <li><a href="javascript:void (0)"
+                           i18n="workflow.calendar.THREE_MONTH;value=workflow.calendar.THREE_MONTH"></a></li>
+                    <li><a href="javascript:void (0)"
+                           i18n="workflow.calendar.HALF_YEAR;value=workflow.calendar.HALF_YEAR"></a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true"
+                        i18n="workflow.calendar.URGENCY_LEVEL;value=workflow.calendar.URGENCY_LEVEL;title=workflow.calendar.URGENCY_LEVEL">
+                    <span class="caret"></span>
+                </button>
+                <ul id="wf-Emergency-degree" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="javascript:void (0)" i18n="workflow.calendar.All;value=workflow.calendar.All"></a></li>
+                    <li><a href="javascript:void (0)"
+                           i18n="workflow.calendar.GENERAL;value=workflow.calendar.GENERAL"></a></li>
+                    <li><a href="javascript:void (0)"
+                           i18n="workflow.calendar.EMERGENCY;value=workflow.calendar.EMERGENCY"></a></li>
+                    <li><a href="javascript:void (0)"
+                           i18n="workflow.calendar.SERIOUS;value=workflow.calendar.SERIOUS"></a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true"
+                        i18n="workflow.calendar.FAULT_TIME;value=workflow.calendar.FAULT_TIME;title=workflow.calendar.FAULT_TIME">
+                    <span class="caret"></span>
+                </button>
+                <ul id="wf-fault-time" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li class="active"><a href="javascript:void (0)"
+                                          i18n="workflow.calendar.All;value=workflow.calendar.All"></a></li>
+                    <li><a href="javascript:void (0)" i18n="workflow.calendar.TODAY;value=workflow.calendar.TODAY"></a>
+                    </li>
+                    <li><a href="javascript:void (0)"
+                           i18n="workflow.calendar.YESTERDAY;value=workflow.calendar.YESTERDAY"></a></li>
+                    <li><a href="javascript:void (0)"
+                           i18n="workflow.calendar.THIS_WEEK;value=workflow.calendar.THIS_WEEK"></a></li>
+                    <li><a href="javascript:void (0)"
+                           i18n="workflow.calendar.THIS_MONTH;value=workflow.calendar.THIS_MONTH"></a></li>
+                    <li><a href="javascript:void (0)"
+                           i18n="workflow.calendar.THIS_SEASON;value=workflow.calendar.THIS_SEASON"></a></li>
+                    <li><a href="javascript:void (0)"
+                           18n="workflow.calendar.THIS_YEAR;value=workflow.calendar.THIS_YEAR"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="wf-calender-selectorInfo">
+            <section><span></span></section>
+            <section><span></span></section>
+            <section><span></span></section>
+        </div>
+        <div id="taskPoolContent" class="event-container scrollbar"></div>
+    </div>
+    <div id='calendar'></div>
+    <div style='clear:both'></div>
+</div>

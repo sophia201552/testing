@@ -1,0 +1,641 @@
+﻿<link rel="stylesheet" type="text/css" href="/static/scripts/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/content/index.css">
+<link rel="stylesheet" type="text/css" href="/static/content/index-black.css">
+<link rel="stylesheet" type="text/css" href="/static/content/index-black.css">
+<link rel="stylesheet" type="text/css" href="/static/app/Benz/env.css">
+<script src="/static/scripts/lib/jquery-2.1.4.min.js"></script>
+<script src="/static/scripts/lib/bootstrap/js/bootstrap.min.js"></script>
+
+
+<body>
+
+<style>
+    .xungeng {
+        margin: 10px auto;
+    }
+
+    .xungengok {
+        color: green;
+    }
+
+    .xugengbad {
+        color: red;
+    }
+
+    table {
+        margin-bottom: 0 !important;
+    }
+
+    table td, table th {
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .dropdown-toggle {
+        height: 34px;
+    }
+
+    table tbody td span {
+        cursor: pointer;
+    }
+
+    .btn-toolbar .btn {
+        height: 34px;
+        margin-right: 15px;
+    }
+
+    .pagination a.active {
+        color: #fff !important;
+    }
+
+    .breadcrumb {
+        margin: 10px 0 !important;
+    }
+
+    .breadcrumb a {
+        color: #333 !important;
+    }
+
+    .breadcrumb > li + li:before {
+        content: '->';
+    }
+
+    button {
+        outline: none;
+    }
+</style>
+
+<div class="xungeng">
+
+    <div class="btn-group" id="control">
+        <button type="button" class="btn btn-primary active" id="task-report">任务报表</button>
+        <button type="button" class="btn btn-primary" id="person-report">人员报表</button>
+        <button type="button" class="btn btn-primary">排序</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">完成状态</a></li>
+            <li><a href="#">重要级别</a></li>
+            <li><a href="#">人员</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">巡更周期</a></li>
+        </ul>
+
+    </div>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary" id="year-value">2016年</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">2015年</a></li>
+            <li><a href="#">2014年</a></li>
+            <li><a href="#">2013年</a></li>
+            <li><a href="#">2012年</a></li>
+            <li><a href="#">2011年</a></li>
+            <li><a href="#">2010年</a></li>
+        </ul>
+
+    </div>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary" id="month-value">1月</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">1月</a></li>
+            <li><a href="#">2月</a></li>
+            <li><a href="#">3月</a></li>
+            <li><a href="#">4月</a></li>
+            <li><a href="#">5月</a></li>
+            <li><a href="#">6月</a></li>
+            <li><a href="#">7月</a></li>
+            <li><a href="#">8月</a></li>
+            <li><a href="#">9月</a></li>
+            <li><a href="#">10月</a></li>
+            <li><a href="#">11月</a></li>
+            <li><a href="#">12月</a></li>
+        </ul>
+        <div class="btn-toolbar" style="margin-left: 100px;">
+            <button type="button" id="prev-month" class="btn btn-default btn-sm"><span
+                    class="glyphicon glyphicon-arrow-left"
+                    aria-hidden="true"></span> 上一月
+            </button>
+            <button type="button" id="next-month" class="btn btn-default btn-sm">
+                下一月
+                <span
+                        class="glyphicon glyphicon-arrow-right"
+                        aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="table-responsive scrollbar" id="xbbb-table-container"></div>
+    <nav>
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a class="active">1</a></li>
+            <li><a>2</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="modal fade" id="modal-task-bad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">巡更任务查看</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">巡更任务没有完成</h3>
+                    </div>
+                    <div class="panel-body">
+                        李小成
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="taskName"></span>
+                            <button type="button" class="pull-right btn btn-default btn-xs watchPatrolRouter">查看
+                            </button>
+                            <ol class="breadcrumb" style="display: none;">
+                                <li class="active"><a href="javascript:void(0)" class="label label-success">3#冷冻水泵</a>
+                                </li>
+                                <li><a href="javascript:void(0)" class="label label-danger">1#冷却塔</a></li>
+                                <li><a href="javascript:void(0)" class="label label-success">1#冷水机组</a></li>
+                                <li><a href="javascript:void(0)" class="label label-danger">3#冷却塔</a></li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-task-ok" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">巡更任务查看</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">巡更任务完成</h3>
+                    </div>
+                    <div class="panel-body">
+                        李小成
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="taskName"></span>
+                            <button type="button" class="pull-right btn btn-default btn-xs watchPatrolRouter">查看
+                            </button>
+                            <ol class="breadcrumb" style="display: none;">
+                                <li class="active"><a href="javascript:void(0)" class="label label-success">3#冷冻水泵</a>
+                                </li>
+                                <li><a href="javascript:void(0)" class="label label-success">1#冷却塔</a></li>
+                                <li><a href="javascript:void(0)" class="label label-success">1#冷水机组</a></li>
+                                <li><a href="javascript:void(0)" class="label label-success">3#冷却塔</a></li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-person-ok" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">巡更人任务查看-完成</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">巡更任务完成</h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="personName"></span>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            B1层污水泵房
+                            <button type="button" class="pull-right btn btn-default btn-xs watchPatrolRouter">查看
+                            </button>
+                            <ol class="breadcrumb" style="display: none;">
+                                <li class="active"><a href="javascript:void(0)" class="label label-success">3#冷冻水泵</a>
+                                </li>
+                                <li><a href="javascript:void(0)" class="label label-success">1#冷却塔</a></li>
+                                <li><a href="javascript:void(0)" class="label label-success">1#冷水机组</a></li>
+                                <li><a href="javascript:void(0)" class="label label-success">3#冷却塔</a></li>
+                            </ol>
+                        </li>
+                        <li class="list-group-item">
+                            B3层污水泵房
+                            <button type="button" class="pull-right btn btn-default btn-xs watchPatrolRouter">查看
+                            </button>
+                            <ol class="breadcrumb" style="display: none;">
+                                <li class="active"><a href="javascript:void(0)" class="label label-success">3#冷冻水泵</a>
+                                </li>
+                                <li><a href="javascript:void(0)" class="label label-success">1#冷却塔</a></li>
+                                <li><a href="javascript:void(0)" class="label label-success">1#冷水机组</a></li>
+                                <li><a href="javascript:void(0)" class="label label-success">3#冷却塔</a></li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-person-bad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">巡更人任务查看</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">巡更任务没有完成</h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="personName"></span>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            B1层污水泵房
+                            <button type="button" class="pull-right btn btn-default btn-xs watchPatrolRouter">查看
+                            </button>
+                            <ol class="breadcrumb" style="display: none;">
+                                <li class="active"><a href="javascript:void(0)" class="label label-success">3#冷冻水泵</a>
+                                </li>
+                                <li><a href="javascript:void(0)" class="label label-success">1#冷却塔</a></li>
+                                <li><a href="javascript:void(0)" class="label label-success">1#冷水机组</a></li>
+                                <li><a href="javascript:void(0)" class="label label-danger">3#冷却塔</a></li>
+                            </ol>
+                        </li>
+                        <li class="list-group-item">
+                            B2层污水泵房
+                            <button type="button" class="pull-right btn btn-default btn-xs watchPatrolRouter">查看
+                            </button>
+                            <ol class="breadcrumb" style="display: none;">
+                                <li class="active"><a href="javascript:void(0)" class="label label-success">3#冷冻水泵</a>
+                                </li>
+                                <li><a href="javascript:void(0)" class="label label-danger">1#冷却塔</a></li>
+                                <li><a href="javascript:void(0)" class="label label-success">1#冷水机组</a></li>
+                                <li><a href="javascript:void(0)" class="label label-danger">3#冷却塔</a></li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">巡更任务已完成</h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="personName"></span>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            14-18F巡逻
+                            <button type="button" class="pull-right btn btn-default btn-xs watchPatrolRouter">查看
+                            </button>
+                            <ol class="breadcrumb" style="display: none;">
+                                <li class="active"><a href="javascript:void(0)" class="label label-success">3#冷冻水泵</a>
+                                </li>
+                                <li><a href="javascript:void(0)" class="label label-success">1#冷却塔</a></li>
+                                <li><a href="javascript:void(0)" class="label label-success">1#冷水机组</a></li>
+                                <li><a href="javascript:void(0)" class="label label-success">3#冷却塔</a></li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="temp_xbbb_table_task">
+    <table class="table  table-hover">
+        <caption></caption>
+        <thead>
+        <tr>
+            <th>任务编号</th>
+            <th>巡更任务</th>
+            <!for(var i=1;i< days+1 ;i++){!>
+            <th><!=i !></th>
+            <!}!>
+        </tr>
+        </thead>
+        <tbody>
+        <!data.forEach(function(item){!>
+        <tr>
+            <td><!=item.任务编号!></td>
+            <td><!=item.任务名称!></td>
+            <!item.point.forEach(function(point){!>
+            <!if(point === 1){!>
+            <td><span class="xungengok glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+            <!}else if(point === 0){!>
+            <td><span class="xugengbad glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+            <!}!>
+            <!});!>
+        </tr>
+        <!});!>
+        </tbody>
+    </table>
+</script>
+<script type="text/html" id="temp_xbbb_table_person">
+    <table class="table  table-hover person">
+        <caption></caption>
+        <thead>
+        <tr>
+            <th>任务成员</th>
+            <!for(var i=1;i< days+1 ;i++){!>
+            <th><!=i !></th>
+            <!}!>
+        </tr>
+        </thead>
+        <tbody>
+        <!data.forEach(function(item){!>
+        <tr>
+            <td><!=item.taskPerson!></td>
+            <!item.point.forEach(function(point){!>
+            <!if(point === 1){!>
+            <td><span class="xungengok glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+            <!}else if(point === 0){!>
+            <td><span class="xugengbad glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+            <!}else if (point === 3){!>
+            <td><span></span></td>
+            <!};!>
+            <!});!>
+        </tr>
+        <!});!>
+        </tbody>
+    </table>
+</script>
+</body>
+<script>
+    (function (window) {
+        if (!window.beopTmpl) {
+            window.beopTmpl = function tmpl(str, data) {
+                var fn = !/\W/.test(str) ?
+
+                        tmpl(document.getElementById(str).innerHTML) :
+
+                        new Function("obj",
+                                "var p=[],print=function(){p.push.apply(p,arguments);};" +
+
+                                "with(obj){p.push('" +
+
+                                str
+                                        .replace(/[\r\t\n]/g, " ")
+                                        .split(/<!/).join("\t")
+                                        .replace(/((^|!>)[^\t]*)'/g, "$1\r")
+                                        .replace(/\t=(.*?)!>/g, "',$1,'")
+                                        .split("\t").join("');")
+                                        .split(/!>/).join("p.push('")
+                                        .split("\r").join("\\'")
+                                + "');}return p.join('');");
+
+                return data ? fn(data) : fn;
+            }
+        }
+    })(window);
+    $(function () {
+        var $table = $('#xbbb-table-container');
+        var defaultMonth = 1, defaultYear = 2016;
+        var taskReportData;
+        var page = 1, num = 10;
+        var $month = $('#month-value'), $year = $('#year-value');
+        var $personReportBtn = $('#person-report'), $taskReportBtn = $('#task-report'), $controlBtnList = $('#control').find('button[type="button"]');
+        var pageType = 1; // 1 TaskReport   2 // PersonReport
+        changeMonth();
+
+        $personReportBtn.off().click(function () {
+            if ($(this).hasClass('active')) {
+                return;
+            }
+            $taskReportBtn.toggleClass('active');
+            $(this).toggleClass('active');
+            pageType = 2;
+            $controlBtnList.prop('disabled', 'disabled');
+            changeMonth(function () {
+                $controlBtnList.prop('disabled', '');
+            });
+        });
+        $taskReportBtn.off().click(function () {
+            if ($(this).hasClass('active')) {
+                return;
+            }
+            $personReportBtn.toggleClass('active');
+            $(this).toggleClass('active');
+            pageType = 1;
+            $controlBtnList.prop('disabled', 'disabled');
+            changeMonth(function () {
+                $controlBtnList.prop('disabled', '');
+            });
+        });
+
+        var personData = [
+            {"id": "1", "number": "TU-1-01", "name": "张丽云", "code": "liyun", "sex": "男", "apartment": "保安"}
+            , {"id": "1", "number": "TU-1-01", "name": "程潼", "code": "liyun", "sex": "男", "apartment": "保安"}
+            , {
+                "id": "1",
+                "number": "TU-1-01",
+                "name": "徐广远",
+                "code": "liyun",
+                "sex": "男",
+                "apartment": "保安"
+            }
+            , {
+                "id": "1",
+                "number": "TU-1-01",
+                "name": "张旗",
+                "code": "liyun",
+                "sex": "男",
+                "apartment": "保安"
+            }, {
+                "id": "1",
+                "number": "TU-1-01",
+                "name": "陈乾坤",
+                "code": "liyun",
+                "sex": "男",
+                "apartment": "保洁"
+            }, {"id": "1", "number": "TU-1-01", "name": "钱志沛", "code": "liyun", "sex": "女", "apartment": "保洁"}
+            , {"id": "1", "number": "TU-1-01", "name": "袁振轩", "code": "liyun", "sex": "女", "apartment": "保洁"}
+            , {"id": "1", "number": "TU-1-01", "name": "曹宽", "code": "liyun", "sex": "女", "apartment": "保洁"}
+            , {"id": "1", "number": "TU-1-01", "name": "刘贤宇", "code": "liyun", "sex": "女", "apartment": "保洁"}
+        ];
+
+
+        function getPoint(days) {
+            var data = [], i = 0;
+            if (pageType == 1) {
+                for (i = 0; i < days; i++) {
+                    (Math.random() * 100) > 90 ? data.push(0) : data.push(1);
+                }
+            } else if (pageType == 2) {
+                for (i = 0; i < days; i++) {
+                    var num = Math.random() * 100;
+                    if (num > 95) {
+                        //没有任务
+                        data.push(3);
+                    } else if (num > 80) {
+                        //没完成
+                        data.push(0);
+                    } else {
+                        //完成
+                        data.push(1);
+                    }
+                }
+            }
+            return data;
+        }
+
+        $('.modal').on('hide.bs.modal', function () {
+            $('.modal').find('.watchPatrolRouter').removeClass('active').text('查看').next().hide();
+        });
+        function changeMonth(cb) {
+            $.getJSON('xglx.json').done(function (result) {
+                var days = new Date(defaultYear, defaultMonth, 0).getDate();
+                if (pageType == 1) {
+                    result.forEach(function (item) {
+                        item["point"] = getPoint(days);
+                    });
+                    taskReportData = result;
+                    $table.empty().html($(beopTmpl('temp_xbbb_table_task', {
+                        data: result.slice((page - 1) * num, (page ) * num),
+                        days: days
+                    })).fadeIn(300, function () {
+                        cb && cb();
+                    }));
+                    $table.off().on('click.show', 'td span.xungengok', function (ev) {
+                        $('#modal-task-ok').modal('show').find('.taskName').text($(ev.target).closest('tr').find('td').eq(1).text());
+                    }).on('click.showPersonBAD', 'td span.xugengbad', function (ev) {
+                        $('#modal-task-bad').modal('show').find('.taskName').text($(ev.target).closest('tr').find('td').eq(1).text());
+                    });
+                    $('.pagination').fadeIn();
+                } else if (pageType == 2) {
+                    var data = [];
+                    personData.forEach(function (item) {
+                        data.push({
+                            point: getPoint(days),
+                            taskPerson: item.name
+                        });
+                    });
+                    $table.empty().html($(beopTmpl('temp_xbbb_table_person', {
+                        data: data,
+                        days: days
+                    })).fadeIn(300, function () {
+                        cb && cb();
+                    }));
+                    $table.off().on('click.showPersonOK', 'td span.xungengok', function (ev) {
+                        $('#modal-person-ok').modal('show').find('.personName').text($(ev.target).closest('tr').find('td').eq(0).text());
+                    }).on('click.showPersonBAD', 'td span.xugengbad', function (ev) {
+                        $('#modal-person-bad').modal('show').find('.personName').text($(ev.target).closest('tr').find('td').eq(0).text());
+                    });
+                    $('.pagination').fadeOut();
+                } else {
+                    throw new Error('unknown pageType is ' + pageType);
+                }
+            });
+        }
+
+        $('#next-month').off().click(function () {
+            var $this = $(this);
+            $this.prop('disabled', 'disabled');
+            changeMonth(function () {
+                $this.prop('disabled', '');
+            });
+            defaultMonth++;
+            if (defaultMonth > 12) {
+                defaultMonth = 1;
+                defaultYear++;
+            }
+            $month.text(defaultMonth + '月');
+            $year.text(defaultYear + '年');
+        });
+        $('#prev-month').off().click(function () {
+            var $this = $(this);
+            $this.prop('disabled', 'disabled');
+            changeMonth(function () {
+                $this.prop('disabled', '');
+            });
+            defaultMonth--;
+            if (defaultMonth <= 0) {
+                defaultMonth = 12;
+                defaultYear--;
+            }
+            $month.text(defaultMonth + '月');
+            $year.text(defaultYear + '年');
+        });
+        $('.pagination').find('a[href!="#"]').off().click(function () {
+            if (pageType == 1) {
+                var $paginationA = $('.pagination').find('a');
+                $paginationA.removeClass('active');
+                $(this).addClass('active');
+                $('#search').val('');
+                $paginationA.prop('disabled', 'disabled');
+                page = $paginationA.index(this);
+                $table.empty().html($(beopTmpl('temp_xbbb_table_task', {
+                    data: taskReportData.slice((page - 1) * num, (page ) * num),
+                    days: new Date(defaultYear, defaultMonth, 0).getDate()
+                })).fadeIn(300, function () {
+
+                }));
+            }
+        });
+        $('.modal').find('.watchPatrolRouter').click(function () {
+            var $this = $(this), $ul = $this.next();
+            if ($this.hasClass('active')) {
+                $ul.slideUp();
+                $this.text('查看');
+            } else {
+                $ul.slideDown();
+                $this.text('收起');
+            }
+            $this.toggleClass('active');
+        });
+    });
+
+</script>

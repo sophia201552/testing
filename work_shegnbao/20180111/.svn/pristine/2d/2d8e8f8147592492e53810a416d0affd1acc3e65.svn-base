@@ -1,0 +1,230 @@
+.details-container {
+  width: calc(100% - 200px);
+  height: 100%;
+  float: left;
+  position: relative;
+  padding-top: 24px;
+}
+.details-container > div,
+.details-container > div > div,
+.details-container > div > div > div:last-child,
+.link-text {
+  height: 100%;
+}
+.details-navbar > ul {
+  height: 27px;
+}
+.details-navbar li.item {
+  float: left;
+  overflow: hidden;
+  list-style: none;
+}
+.details-navbar li.item > button {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid transparent;
+  color: #666;
+  padding: 0 12px 12px;
+}
+.details-navbar li.item:global(.selected) > button {
+  border-color: #0078d7;
+}
+.details-container
+  > div
+  > div
+  > div:first-child
+  > ul
+  > button:global(.ms-Pivot-link) {
+  color: #666;
+  padding: 0 12px;
+  margin-right: 0;
+}
+.link-text {
+  background-color: #fff;
+}
+.details-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* 运行指标 */
+.operation-table {
+  height: 100%;
+  padding: 24px;
+  background-color: #fbfcfc;
+}
+.operation-table > div {
+  background-color: #fff;
+  overflow-y: auto;
+}
+.operation-table > div:first-child {
+  height: 40%;
+}
+.operation-table > div:last-child {
+  height: calc(60% - 72px);
+  margin-top: 24px;
+}
+table.operation {
+  padding-bottom: 46px;
+  background-color: #fff;
+}
+.operation-table table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+.operation-header {
+  height: 48px;
+  line-height: 48px;
+  border-bottom: 1px solid #eceff4;
+}
+.operation-header th {
+  font-weight: 400;
+  color: #5b8af7;
+}
+.operation-row {
+  height: 40px;
+  line-height: 40px;
+}
+.operation-row:hover {
+  background-color: #f4f7fc;
+}
+
+/* 运行过程 */
+.process {
+  height: 100%;
+  padding: 24px;
+  background-color: #f4f4f4;
+}
+.process > div {
+  height: calc(100% - 40px);
+  background-color: #fff;
+  overflow-y: auto;
+}
+.process-row:hover {
+  background-color: #f4f7fc;
+}
+.process-row .item {
+  padding-left: 30px;
+  line-height: 38px;
+  font-size: 12px;
+  position: relative;
+  color: #59647c;
+}
+.item-value {
+  color: #2aad3e;
+}
+.process-row .item::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  top: 16px;
+  left: 10px;
+  border-radius: 50%;
+  background-color: #5b8af7;
+}
+
+.result {
+  padding: 24px 24px 0;
+  height: 100%;
+  background-color: #f4f4f4;
+}
+
+.result > div {
+  height: calc(100% - 24px);
+  background-color: #fff;
+  overflow-y: auto;
+}
+
+.details-container :global(.ms-DetailsList) {
+  overflow-x: hidden;
+}
+.details-container > div > div > div div:global(.ms-DetailsHeader) {
+  height: 48px;
+  line-height: 48px;
+  background-color: #fff;
+  border-bottom-color: #fff;
+  border-bottom: 1px solid #eceff4;
+}
+.details-container
+  > div
+  > div
+  > div
+  div:global(.ms-DetailsHeader)
+  div:global(.ms-DetailsHeader-cell):active,
+.details-container
+  > div
+  > div
+  > div
+  div:global(.ms-DetailsHeader)
+  div:global(.ms-DetailsHeader-cell):hover {
+  background-color: #fff !important;
+}
+
+.details-container :global(.ms-DetailsHeader) {
+  height: 48px;
+  line-height: 48px;
+  background-color: #fff;
+  border: none;
+}
+.details-container :global(.ms-DetailsHeader) > div {
+  height: 48px;
+  color: #333e5e;
+}
+
+.details-container :global(.ms-DetailsHeader) > div:active {
+  background-color: #fff !important;
+}
+.details-container :global(.ms-List-page) > div > div,
+.details-container :global(.ms-List-page) > div > div:before {
+  background-color: #fff;
+  border: none;
+}
+.details-container :global(.ms-List-page) > div > div:before {
+  display: none;
+}
+
+.details-container :global(.ms-List-page) > div > div:global(.is-selected),
+.details-container :global(.ms-List-page) > div:hover > div {
+  background-color: #f4f7fc;
+}
+.details-container :global(.ms-List-page) > div > div > div > div {
+  padding: 0 5px;
+  line-height: 40px;
+  height: 40px;
+}
+.details-container :global(.ms-DetailsList) i {
+  color: #f4f7fc;
+}
+
+.details-container :global(.ms-DetailsList) i:global(.ms-Check-circle) {
+  opacity: 0;
+}
+.details-container :global(.ms-DetailsList) div:global(.ms-Check::before) {
+  border-radius: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: solid 1px rgba(130, 144, 179, 0.4);
+}
+.details-container
+  :global(.ms-DetailsList)
+  div:global(.ms-Check.is-checked::before) {
+  background-color: #4c84ff;
+}
+.details-container :global(.ms-DetailsList) i:global(.ms-Check-check) {
+  left: -0.8px;
+  font-size: 18px;
+  line-height: 14px;
+}
+.details-container button:global(.ms-DetailsRow-check) {
+  opacity: 0.5;
+}

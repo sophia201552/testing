@@ -1,0 +1,103 @@
+{% extends "./layout/index_layout.html" %}
+{% block Spinner %}
+    <div id="after-loading" style="position: fixed;width: 100%;height: 100%;top: 0;z-index: 1000;">
+        <div style="position: absolute;left: 50%;top: 50%;"></div>
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+        void (function (login_result, window) {
+            var loading = document.querySelector('#after-loading');
+            window.addEventListener('DOMContentLoaded', function () {
+                loading.parentNode.removeChild(loading);
+            }, false);
+            var appendImg = function (src) {
+                var img = document.createElement('img');
+                img.src = src;
+                loading.querySelector('div').appendChild(img);
+            };
+            var systemSkin = localStorage.getItem('systemSkin_' + login_result.id);
+            var link = document.createElement('link');
+            if (systemSkin == 'dark' || !systemSkin) {
+                systemSkin = 'black';
+                link.href = '/static/content/index-' + systemSkin + '.css?=' + new Date().getTime();
+                link.id = "darkSkin";
+                window.localStorage.setItem('systemSkin_' + login_result.id, 'dark');
+                appendImg("http://images.rnbtech.com.hk/static/images/loading-dark.gif");
+            } else {
+                link.href = '/static/content/index.css?=' + new Date().getTime();
+                window.localStorage.setItem('systemSkin_' + login_result.id, 'default');
+                appendImg("http://images.rnbtech.com.hk/static/images/loading-white.gif");
+            }
+            link.rel = "stylesheet";
+            document.querySelector('head').appendChild(link);
+            var beop = {};
+            beop.data = {};
+            var AppConfig = {};
+            AppConfig.userProfile = {};
+            AppConfig.userId = +login_result.id;
+            AppConfig.userProfile.userfullname = login_result.userinfo.fullname;
+            AppConfig.account = login_result.userinfo.fullname;
+            AppConfig.projectList = login_result.projects;
+            AppConfig.userProfile = login_result.userProfile;
+            AppConfig.userOfRole = login_result.userProfile.userOfRole;
+            AppConfig.debugTool = login_result.debugTool;
+            AppConfig.afterLogin = true;
+            AppConfig.isFactory = 0;
+            AppConfig.permission = login_result.permission;
+
+            if (!login_result.userProfile.isManager) {
+                document.querySelector('#btnMemberManage').remove();
+            }
+
+            if (login_result.versionNotification) {
+                var data = login_result.versionNotification;
+                var versionHistoryKey = 'versionHistory';
+                var extend = function (data, extend) {
+                    var key;
+                    for (key in extend) {
+                        if (extend.hasOwnProperty(key)) {
+                            data[key] = extend[key]
+                        }
+                    }
+                    return data;
+                };
+                var currentVersion = window.localStorage.getItem(versionHistoryKey), result;
+                try {
+                    if (!!currentVersion && currentVersion !== 'undefined') {
+                        currentVersion = JSON.parse(currentVersion);
+                        //当前版本
+                        if (currentVersion.version == data.version) {
+                            if (currentVersion.readUsers) {
+                                if (currentVersion.readUsers.indexOf(AppConfig.userId) == -1) {
+                                    result = extend(data, {readUsers: currentVersion.readUsers, newest: false});
+                                } else {
+                                    result = extend(data, {readUsers: currentVersion.readUsers, newest: true});
+                                }
+                            } else {
+                                result = extend(data, {readUsers: [], newest: false});
+                            }
+                            window.localStorage.setItem(versionHistoryKey, JSON.stringify(result));
+                        } else {
+                            //不是当前版本
+                            result = extend(data, {readUsers: [], newest: false});
+                            window.localStorage.setItem(versionHistoryKey, JSON.stringify(result));
+                        }
+                    } else {
+                        result = extend(data, {readUsers: [], newest: false});
+                        window.localStorage.setItem(versionHistoryKey, JSON.stringify(result));
+                    }
+                } catch (ex) {
+                    result = extend(data, {readUsers: [], newest: false});
+                    window.localStorage.setItem(versionHistoryKey, JSON.stringify(result));
+                }
+                beop.data.versionHistory = result;
+            }
+
+            beop.data.versionHistory = login_result.version;
+
+            window.AppConfig = AppConfig;
+            window.beop = beop;
+        })({{ AppConfig | safe }}, window);
+    </script>
+{% endblock %}

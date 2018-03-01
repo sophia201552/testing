@@ -1,0 +1,265 @@
+.btnStyle2 {
+    padding: 0;
+    border-radius: 12px;
+    border: none;
+    background-color: #e0e0e0;
+    border-color: #dbdbdb;
+    box-shadow: inset 0 3px 5px #999;
+}
+
+/** html layer start */
+.html-layer {
+    transform-origin: 0 0;
+    -webkit-transform-origin-x: 0;
+    -webkit-transform-origin-y: 0;
+    color: #333;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.html-group {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.konvajs-content { 
+    overflow: hidden;
+    /* 不指定 z-index 会导致 error tip 被盖住 */
+    z-index: 1;
+}
+.html-widget {
+    overflow: hidden;
+    transform-origin: 0 0;
+}
+.html-widget>.ps-w-html-contaienr {
+    height:100%;
+}
+
+/* widget preset style start */
+#btnTxtStyle .btn{
+    width: 84px;
+    text-align: center;
+}
+.html-btn{
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+}
+.html-btn.default{
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.html-btn.default:hover{
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.html-btn.primary{
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.html-btn.primary:hover{
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
+.html-btn.success{
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.html-btn.success:hover{
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+.html-btn.info{
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+.html-btn.info:hover{
+    color: #fff;
+    background-color: #31b0d5;
+    border-color: #269abc;
+}
+.html-btn.warning{
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+.html-btn.warning:hover{
+    color: #fff;
+    background-color: #ec971f;
+    border-color: #d58512;
+}
+.html-btn.danger{
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+.html-btn.danger:hover{
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+.html-btn.link{
+    font-weight: 400;
+    color: #337ab7;
+    background-color: transparent;
+}
+.html-btn.link:hover{
+    color: #23527c;
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+.html-btn.pink {
+    background: #f997b0;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#f997b0), to(#f56778));
+    background: -moz-linear-gradient(#f997b0, #f56778);
+    background: linear-gradient(#f997b0, #f56778);
+    border: solid 1px #ee8090;
+    border-bottom: solid 3px #cb5462;
+    box-shadow: inset 0 0 0 1px #fbc1d0;
+    color: #913944;
+    text-shadow: 0 1px 0 #f9a0ad; }
+    
+.html-btn.pink:hover {
+    background: #f57184;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#f57184), to(#f78297));
+    background: -moz-linear-gradient(#f57184, #f78297);
+    background: linear-gradient(#f57184, #f78297);
+    border: solid 1px #e26272;
+    border-bottom: solid 3px #cb5462;
+    box-shadow: inset 0 0 0 1px #f9aab5; }
+    
+/**
+ * Blue
+ */
+.html-btn.blue {
+    background: #abe4f8;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#abe4f8), to(#74d0f4));
+    background: -moz-linear-gradient(#abe4f8, #74d0f4);
+    background: linear-gradient(#abe4f8, #74d0f4);
+    border: solid 1px #8cc5d9;
+    border-bottom: solid 3px #589cb6;
+    box-shadow: inset 0 0 0 1px #cdeffb;
+    color: #42788e;
+    text-shadow: 0 1px 0 #b6e6f9; }
+    
+.html-btn.blue:hover {
+    background: #80d4f5;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#80d4f5), to(#92dbf6));
+    background: -moz-linear-gradient(#80d4f5, #92dbf6);
+    background: linear-gradient(#80d4f5, #92dbf6);
+    border: solid 1px #79acbe;
+    border-bottom: solid 3px #589cb6;
+    box-shadow: inset 0 0 0 1px #b2e6f8; }
+    
+/**
+ * Green
+ */
+.html-btn.green {
+    background: #cae285;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#cae285), to(#a3cd5a));
+    background: -moz-linear-gradient(#cae285, #a3cd5a);
+    background: linear-gradient(#cae285, #a3cd5a);
+    border: solid 1px #aad063;
+    border-bottom: solid 3px #799545;
+    box-shadow: inset 0 0 0 1px #e0eeb6;
+    color: #5d7731;
+    text-shadow: 0 1px 0 #d0e5a4; }
+    
+.html-btn.green:hover {
+    background: #abd164;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#abd164), to(#b9d972));
+    background: -moz-linear-gradient(#abd164, #b9d972);
+    background: linear-gradient(#abd164, #b9d972);
+    border: solid 1px #98b85b;
+    border-bottom: solid 3px #799545;
+    box-shadow: inset 0 0 0 1px #cce3a1; }
+    
+/* widget preset style end */
+
+.html-text {
+}
+
+.html-text.txtStyle1 {/*正文1*/
+    font-size: 12px;
+}
+.html-text.txtStyle8 {/*正文2*/
+    font-size: 14px;
+}
+.html-text.txtStyle2 {/*标题1*/
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.html-text.txtStyle3 {/*标题2*/
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.html-text.txtStyle4 {/*标题3*/
+    font-size: 24px;
+    font-weight: 600;
+}
+.html-text.txtStyle5 {/*标题4*/
+    font-size: 20px;
+    font-weight: 500;
+}
+.html-text.txtStyle6 {/*标题5*/
+    font-size: 16px;
+    font-weight: 400;
+}
+.html-text.txtStyle7 {/*副标题*/
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.html-screen {
+    border:1px dashed #aaa;
+}
+
+/*警报闪烁*/
+.level-normal {
+    color: #fff;
+    background-color: #5bc0de;
+}
+.level-warn {
+    color: #fff;
+    cursor: pointer;
+    animation: alarmflash .8s infinite ease-in-out alternate; 
+}
+.level-danger {
+    color: #fff;
+    cursor: pointer;
+    animation: dangerflash .8s infinite ease-in-out alternate;
+}
+
+@keyframes alarmflash{  
+    0%{
+        background-color: rgba(240, 173, 78, .4);
+     }
+    100%{
+        background-color: rgba(240, 173, 78, 0.8);
+    }
+}
+
+@keyframes dangerflash{  
+    0%{
+        background-color: rgba(217, 83, 79, .4);
+     }
+    100%{
+        background-color: rgba(217, 83, 79, 0.8);
+    }
+}
+/*警报闪烁 end*/

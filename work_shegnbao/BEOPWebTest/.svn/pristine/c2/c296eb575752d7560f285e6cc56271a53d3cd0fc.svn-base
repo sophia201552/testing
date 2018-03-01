@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta  charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="css/animate.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="js/i18n/i18n.js"></script>
+        <title>RNB Web - Smart Devices </title>
+    </head>
+<body class="commenFont">
+    <!-- navigation -->
+    <div class="reg-hd sticky">
+        <div class="hd-wrap">
+            <div class="container clearfix">
+                <div class="hd-logo">
+                    <a href="index.html" class="hd-logo-link">
+                        <img src="img/img/rnb-logo-alt.png" title="RNB Logo" alt="LOGO"></img>
+                    </a>
+                </div>
+                <nav>
+                    <ul class="hd-bar no-style inline">
+                        <li class="hd-section text-center">
+                            <a href="platform.html" class="hd-btn" i18n="index.banner.PLATFORM"></a>
+                        </li>
+                        <li class="hd-section text-center">
+                            <a href="service.html" class="hd-btn" i18n="index.banner.SERVICES"></a>
+                        </li>
+                        <li class="hd-section text-center">
+                            <a href="smart-devices.html" class="hd-btn" i18n="index.banner.SMART_DEVICES"></a>
+                        </li>
+                        <li class="hd-section text-center">
+                            <a href="industry.html" class="hd-btn" i18n="index.banner.INDUSTRY"></a>
+                        </li>
+                        <li class="hd-section text-center">
+                            <a href="aboutUs.html" class="hd-btn" i18n="index.banner.ABOUT_US"><span></span></a>
+                        </li>
+                        <li class="hd-section text-center">
+                            <a href="news.html" class="hd-btn" i18n="index.banner.NEWS"><span></span></a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="mobile-nav-toggle">
+                    <a class="btn menu-trigger" href="#">Menu</a>
+                    <ul>
+                        <li>
+                            <a></a>
+                            <a href="platform.html">Platform</a>
+                        </li>
+                        <li>
+                            <a></a>
+                            <a href="service.html">Services</a>
+                        </li>
+                        <li style="border:none;padding:0">
+                            <a class="glyphicon glyphicon-menu-right"></a>
+                            <a href="smart-devices.html">Smart Devices</a>
+                        </li>
+                        <li>
+                            <a></a>
+                            <a href="industry.html">Industry</a>
+                        </li>
+                        <li>
+                            <a></a>
+                            <a href="aboutUs.html"><span>About Us</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="divLanguage" class="divLanguage" style="display: block;">
+                    <a>
+                        <span i18n="index.language.LIN_LANGUAGE"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" id="selectLanguage">
+                        <li><a value="zh"><img src="img/img/zn.png" width="20px"><span class="vMiddle">中文</span></a></li>
+                        <li><a value="en"><img src="img/img/en.png" width="20px"><span class="vMiddle">English</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- navigation end-->
+    <div class="main-wrap">
+        <div class="banner-wrap ft-banner only-banner">
+            <div class="container-fluid" style="background:url('img/img/ft-banner.png') no-repeat 90% 0">
+                <div class="container flex-container">
+                    <div class="col-md-6">
+                        <h2 class="tt gap-tt" i18n="smartDevices.ONE_PART_TITLE"></h2>
+                        <p class="ht-col-con" i18n="smartDevices.ONE_PART_CON">
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <!-- <img src="img/img/ft-banner.png" title"smart devices" alt="smart devices"></img> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="banner-wrap sd-banner" style="background-color:#f5f5f5">
+            <div class="container-fluid" style="margin-top:0;">
+                <div class="container flex-container" style="padding:50px 0;height:100%">
+                    <div class="col-md-6 text-center">
+                        <img src="img/img/sd-banner.png" title"smart devices" alt="smart devices"></img>
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="tt gap-sd text-center" i18n="smartDevices.TWO_PART_TITLE"></h2>
+                        <h2 class="tt gap-sd mb" i18n="smartDevices.TWO_PART_TITLE_TWO"></h2>
+                        <ul class="ht-col-con sd-con"> 
+                            <li i18n="smartDevices.TWO_PART_CON_ONE"></li>
+                            <li i18n="smartDevices.TWO_PART_CON_TWO"></li>
+                            <li i18n="smartDevices.TWO_PART_CON_THREE"></li>
+                            <li i18n="smartDevices.TWO_PART_CON_FOUR"></li>
+                            <li i18n="smartDevices.TWO_PART_CON_FIVE"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="banner-wrap fr-banner">
+            <div class="container-fluid" style="padding:40px 0 60px;margin:0">
+                <div class="container">
+                    <div class="col-xs-6 left">
+                        <div id="beop-sld" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#beop-sld" data-slide-to="0" class="active"></li>
+                                <li data-target="#beop-sld" data-slide-to="1"></li>
+                                <li data-target="#beop-sld" data-slide-to="2"></li>
+                            </ol>
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img src="img/img/energy-efficient.png"></img>
+                                    <p class="p-black" i18n="smartDevices.THREE_PART_SWIP_ONE_CON">
+
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <img src="img/img/comfort.png"></img>
+                                    <p i18n="smartDevices.THREE_PART_SWIP_TWO_CON">
+
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <img src="img/img/lady-first.png"></img>
+                                    <p i18n="smartDevices.THREE_PART_SWIP_THREE_CON">
+
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#beop-sld" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left icon icon-banner-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#beop-sld" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right icon icon-banner-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 right">
+                        <div class="container" style="width:100%">
+                            <ul>
+                                <li i18n="smartDevices.THREE_PART_CON_ONE"></li>
+                                <li i18n="smartDevices.THREE_PART_CON_TWO"></li>
+                                <li i18n="smartDevices.THREE_PART_CON_THREE"></li>
+                                <li i18n="smartDevices.THREE_PART_CON_FOUR"></li>
+                                <li i18n="smartDevices.THREE_PART_CON_FIVE"></li>
+                                <li i18n="smartDevices.THREE_PART_CON_SIX"></li>
+                            </ul>
+                            <div class="col-xs-4 sm-btns">
+                                <a class="btn btn-default different-style" role="button" i18n="smartDevices.THREE_PART_SWIP_ONE_TITLE"></a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="btn btn-default" role="button" i18n="smartDevices.THREE_PART_SWIP_TWO_TITLE"></a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="btn btn-default" role="button" i18n="smartDevices.THREE_PART_SWIP_THREE_TITLE"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container fr-bottom-pt">
+                    <div class="col-md-3 fr-svg-box">
+                        <div class=" fr-svg text-center">
+                            <i class="icon iconfont-temperature"></i>
+                        </div>
+                        <div class="fr-svg-hide text-center hide-text-center"><div class="fr-svg-hide-one" i18n="smartDevices.TEMPERATURE"></div></div>
+                    </div>
+                    <div class="col-md-3 fr-svg-box">
+                        <div class=" fr-svg text-center">
+                            <i class="icon iconfont-iconfonthumidity"></i>
+                        </div>
+                        <div class="fr-svg-hide text-center hide-text-center" i18n="smartDevices.HUMIDITY"></div>
+                    </div>
+                    <div class="col-md-3 fr-svg-box">
+                        <div class=" fr-svg text-center">
+                            <i class="icon iconfont-speed-three"></i>
+                        </div>
+                        <div class="fr-svg-hide text-center hide-text-center" i18n="smartDevices.AIR_SPEED"></div>
+                    </div>
+                    <div class="col-md-3 fr-svg-box">
+                        <div class=" fr-svg text-center">
+                            <i class="icon iconfont-pm"></i>
+                        </div>
+                        <div class="fr-svg-hide text-center hide-text-center">PM 2.5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main wrap end -->
+    <!-- footer -->
+    <footer>
+        <div class="footer-list clearfix">
+            <div class="col-sm-9">
+                <div class="col-sm-2">
+                    <div class="footer-one-title"><a href="index.html" i18n="index.bottomBanner.HOME"></a></div>
+                    <div class="footer-two-title"><a href="index.html#indexFeature" i18n="index.bottomBanner.FEATURES"></a></div>
+                    <div class="footer-two-title"><a href="index.html#beopTm">BeOP™</a></div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="footer-one-title"><a href="service.html" i18n="index.banner.SERVICES"></a></div>
+                    <div class="footer-two-title"><a href="service.html" i18n="index.bottomBanner.END_USER"></a></div>
+                    <div class="footer-two-title"><a href="service.html#platformUser" i18n="index.bottomBanner.PLATFORM_USER"></a></div>
+                </div>
+                <div class="col-sm-2" >
+                    <div class="footer-one-title" style="margin:0 -16px"><a href="smart-devices.html" i18n="index.banner.SMART_DEVICES"></a></div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="footer-one-title"><a href="industry.html" i18n="index.banner.INDUSTRY"></a></div>
+                    <div class="footer-two-title" style="margin-right: -12px;"><a href="industry.html" i18n="index.bottomBanner.SMART_BUILDINGS"></a></div>
+                    <div class="footer-two-title" style="margin-right: -9px;"><a href="industry.html#cloudService" i18n="index.bottomBanner.ClOUD_SERVICE"></a></div>
+                    <div class="footer-two-title"><a href="industry.html#industryRFID" i18n="index.bottomBanner.RFID"></a></div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="footer-one-title"><a href="aboutUs.html" i18n="index.banner.ABOUT_US"></a></div>
+                    <div class="footer-two-title"><a href="aboutUs.html" i18n="index.bottomBanner.COMPANY"></a></div>
+                    <div class="footer-two-title"><a href="aboutUs.html#ourTeam" i18n="index.bottomBanner.OUR_TEAM"></a></div>
+                    <div class="footer-two-title"><a href="contact.html" i18n="index.bottomBanner.CONTACT"></a></div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="footer-one-title"><a i18n="index.banner.LOCATION"></a></div>
+                    <div class="footer-two-title"><a class="hover-color-turn address" data-toggle="tooltip" data-placement="right"  i18n="title=company.THREE_PART_ONE_CON;index.bottomBanner.ADDRESS_ONE"></a></div>
+                    <div class="footer-two-title"><a class="hover-color-turn" data-toggle="tooltip" data-placement="right" title="" i18n="title=company.THREE_PART_TWO_CON;index.bottomBanner.ADDRESS_TWO"></a></div>
+                    <div class="footer-two-title"><a class="hover-color-turn" data-toggle="tooltip" data-placement="right" title="" i18n="title=company.THREE_PART_THREE_CON;index.bottomBanner.ADDRESS_THREE"></a></div>
+                </div>
+            </div>
+            <div class="col-sm-3 footerRight">
+                <a href="http://beop.rnbtech.com.hk/observer" title="BeOP"><img src="img/icon/beop.svg" /></a>
+                <a href="http://beop.rnbtech.com.hk/factory" title="WebFactory"><img src="img/icon/factory.svg" /></a>
+                <!-- <a href="#" title="Smart Devices"><img src="img/icon/wenkong.svg" /></a>
+                <a href="#" title="CX Tool"><img src="img/icon/tiaoshigongju.svg" /></a> -->
+            </div>
+        </div>
+        <div class="footer-recod-numer">Copyright 2016 R&B Technology CO., Ltd. All rights reserved. Privacy Policy</div>
+    </footer>
+    <!-- footer end -->
+
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <script type="text/javascript" src="js/general.js"></script>
+</body>
+
+
+    
+</html>

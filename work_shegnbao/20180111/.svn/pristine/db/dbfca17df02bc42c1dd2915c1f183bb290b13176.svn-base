@@ -1,0 +1,13 @@
+export default {
+  MODULE_NAME: 'PCA',
+  METHOD: 'Method',
+  DIMENSIONALITY: 'Dimension',
+  VARIANCE_INTERPRETATION_RATE: 'Variance Interpretation Rate',
+  NOT_GREATER_INCOMING_DATA:
+    'Must not be greater than the number of incoming data points',
+  ALLOWING_TEO_DECIMAL: '0-1 decimal, allowing two decimal places',
+  DATA_SET: 'Data Set',
+  ANNOTATION_PCA: '主成分分析',
+  ANNOTATION_DIMENSIONALITY: 'PCA 处理后剩下的数据维度(数据点个数)',
+  ANNOTATION_VARIANCE_INTERPRETATION_RATE: 'PCA 后的每个数据维度代表了原始数据的信息的比例'
+};

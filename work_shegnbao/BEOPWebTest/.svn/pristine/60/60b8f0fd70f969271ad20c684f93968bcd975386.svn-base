@@ -1,0 +1,347 @@
+﻿<style>
+    /*configure modal start*/
+    .divResize {
+        position: absolute;
+        margin-left: 10px;
+    }
+    .divResize label {
+        width: 20px;
+    }
+    .divHeightResize {
+        top: 0px;
+    }
+    .divWidthResize {
+        top: 17px;
+    }
+    input[type=range].inputResize {
+        -webkit-appearance: none;
+        /*-webkit-box-shadow: 0 -1px 1px 0px #428bca,
+            0 -1px 1px #428bca inset,
+            0 -1px 1px #428bca inset,
+            0 -1px 1px #428bca inset,
+            0 -1px 1px #428bca inset;*/
+        margin-top: 2px;
+        background-color: #428bca;
+        border-radius: 50px;
+        width: 100px;
+        display: inline-block;
+        margin-left: 5px;
+    }
+    .inputResize::-webkit-slider-thumb{
+        -webkit-appearance: none;
+        cursor: default;
+        top: 1px;
+        height: 9px;
+        width: 20px;
+        background: none repeat scroll 0 0 #428bca;
+        border-radius: 50px;
+        -webkit-box-shadow: 0 -1px 1px #428bca inset;
+    }
+    .inputResize::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        border-radius: 35px;
+        background: #f0f3f9;
+    }
+    .rangeVal{
+        display: inline-block;
+        color: black;
+        margin: 0 0 0 5px;
+    }
+    .rangeVal :hover{
+        cursor: pointer;
+    }
+    .rangeChange{
+        display: none;
+        position: absolute;
+        top: 0;
+        width: 52px;
+        height: 18px;
+        left: 125px;
+        font-size: 12px;
+    }
+    .chartTitleShow {
+        position: absolute;
+        top: 48px;
+        left: 15px;
+        min-width: 30%;
+        min-height: 14px;
+    }
+    .chartTitle{
+        position: absolute;
+        top: 45px;
+        left: 9px;
+        padding-left: 5px;
+        width: 60%;
+        font-size: 14px;
+        height: 24px;
+    }
+    .chartType {
+        position: absolute;
+        top: 68px;
+        left: 15px;
+    }
+    #resizeAlert{
+        position: fixed;
+        top: 40px;
+        left: 30%;
+        z-index: 12;
+        width: 400px;
+    }
+    .resizeOnRight {
+        cursor:e-resize;
+        position: absolute;
+        height: calc(100% - 30px);
+        right: 0;
+        width: 30px;
+    }
+    .resizeOnBottom {
+        cursor:n-resize;
+        position: absolute;
+        bottom: 0;
+        height: 30px;
+        width: calc(100% - 30px);
+    }
+    .resizeOnCorner {
+        cursor:nw-resize;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 30px;
+        width: 30px;
+    }
+    /*#energyModal{
+        position: absolute;
+    }
+    #energyModal .modal-backdrop{
+        width: 58.3%;
+    }
+    #energyModal .modal-content{
+        top: 120px;
+    }*/
+    #timePeriodValue {
+        width: 50%;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+    }
+
+    #timePeriodUnit {
+        width: 50%;
+    }
+    .rowPara {
+        background-color: cornsilk;
+        margin: 0;
+        border-radius: 4px;
+    }
+    .rowPara h5 {
+        padding-top: 3px;
+        padding-bottom: 3px
+    }
+    .anlysAlert {
+        position: absolute;
+        bottom: -15px;
+        width: calc(90% - 120px);
+        text-align: center;
+    }
+    .springContainer .springHead{ cursor: move;}
+    .dragTarget{
+        border: 2px solid #87cefa;
+    }
+    .dropTarget{
+        border: 2px solid #6495ed;
+    }
+    /*configure modal end*/
+    .indexContent > div {
+      padding-left: 5px;
+      padding-right: 5px;
+      padding: 0px;
+    }
+
+    .indexContent .col-sm-2 > .panel, .indexContent .col-sm-3 > .panel{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    .springContainer .panel {
+      overflow: hidden;
+    }
+    .springContainer .panel-heading
+    /*toolbox start*/
+    #toolBox .panel-body{
+        padding: 10px 3px;
+    }
+    #toolBox .rows{
+        background-color: #fafafa;
+    }
+    #toolBox .icon-white{
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    /*toolbox end*/
+
+    /*tree struct start*/
+    .wsTools{
+        font-size: 20px;
+        color: #777;
+    }
+    .panel-footer .btn-group .btn{
+        width: 32%;
+        padding: 3px 5px 1px;
+    }
+    /*tree struct end*/
+
+/*datasource start*/
+.dsItem {
+    position: relative;
+    float: left;
+    width: 33%;
+    height: 34px;
+    cursor: pointer;
+    border-radius: 3px;
+    border-bottom: 1px solid #ddd;
+    user-select: none;
+}
+    .dsItem:hover {
+        background-color: #60aedb;
+    }
+        .dsItem:hover .dsValue {
+            color: #eee !important;
+        }
+
+.dsSelected {
+    background-color: #337ab7;
+}
+    .dsSelected .dsValue {
+        color: #eee;
+    }
+
+    .dsSelected .dsBtnRemove {
+        display: inline;
+        padding: 4px;
+    }
+        .dsSelected .dsBtnRemove:hover {
+            color: #ff942e;
+        }
+
+.dsSelected .dsBtnRename {
+    display: inline;
+    padding: 4px;
+}
+
+.dsSelected .dsBtnRename:hover {
+    color: #ff942e;
+}
+
+.dsBtnRemove {
+    display: none;
+    position: absolute;
+    top: 3px;
+    right: 4px;
+    color: #ffab5b;
+    background-color: transparent;
+    font-size: 18px;
+}
+
+.dsBtnRename {
+    display: none;
+    position: absolute;
+    top: 3px;
+    right: 25px;
+    color: #ffab5b;
+    background-color: transparent;
+    font-size: 18px;
+}
+
+.dsDivChange {
+    padding-top: 10px;
+    display: none;
+}
+
+.dsDivChange .show{
+    display: inline;
+}
+
+.dsMark {
+    float: left;
+    width: 3px;
+    height: 22px;
+    margin-top: 0px;
+}
+
+.dsValue {
+    float: left;
+    color: #666;
+    width: calc(100% - 3px);
+    height: 100%;
+    font-size: 16px;
+    padding: 8px 6px 0 8px;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+/*datasource end*/
+
+.read-mode>.divHover {
+    display: none;
+}
+
+.read-mode>.divPaneChart {
+    height: 100%!important;
+}
+
+/* warn and pre-warn animations */
+@-webkit-keyframes shineOrange {
+    from { box-shadow: 0 0 5px #bbb; }
+    50% { box-shadow: 0 0 20px orange; }
+    to { box-shadow: 0 0 5px #bbb; }
+}
+@-webkit-keyframes shineRed {
+    from { box-shadow: 0 0 5px #bbb; }
+    50% { box-shadow: 0 0 20px #ff4500; }
+    to { box-shadow: 0 0 5px #bbb; }
+}
+.warn-anim {
+    border: 2px solid #ff4500;
+    -webkit-animation-name: shineRed; 
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite; 
+}
+.pre-warn-anim {
+    border: 2px solid orange;
+    -webkit-animation-name: shineOrange; 
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite; 
+}
+
+/* custom anchor "show history data" */
+.lk-show-history {position: absolute; right: 10px; top: 42px; z-index: 1; font-size: 20px;}
+/* custom anchor "show history data" */
+.lk-update-time {position: absolute; left: 11px; top: 44px; z-index: 1; font-size: 18px; line-height: 25px; color: #428bca; cursor:default;}
+.lk-update-time>span:last-child {font-size: 14px; padding: 0 5px; vertical-align: text-bottom;}
+</style>
+
+<div class="col-sm-2 st-menu st-effect-7" id="toolBox" style="height: 100%;">
+    <div class="panel panel-default"style="height: 100%">
+        <div class="panel-heading" style="height: 41px;">
+            <span i18n="toolBox.TITLE"></span>
+            <span id="btnModalAdd" class="glyphicon glyphicon-plus-sign grow panel-heading-btn" title="Add"></span>
+        </div>
+    </div>
+    <div class="panel panel-default" id="dragTempArea" style="height: 32%"></div>
+</div>
+<div class="col-sm-12 st-content" id="paneContent" style="overflow: visible;">
+    <div id="leftCt" data-effect="st-effect-7" class="sideTrans leftCtClose" style="display: none"></div>
+    <div id="rightCt" data-effect="st-effect-1" class="sideTrans rightCtClose" style="display: none"></div>
+    <div id="energyModal"></div>
+    <div id="paneCenter" style="width: 100%; height: 100%; overflow-y: auto;"><div id="resizeAlert"></div></div>
+</div>
+<div class="col-sm-3 st-menu st-effect-1" id="divEnergyAnlsPane" style="height: 100%;position: relative;">
+    <div class="panel panel-default">
+        <div class="panel-heading" style="height: 41px;">
+            <span i18n="dataSource.TITLE"></span>
+        </div>
+        <div class="panel-body indexContent" style="padding: 0;height: calc(95% - 34px);" id="dataSrcContain">
+        </div>
+        <div id="showErr"></div>
+    </div>
+</div>

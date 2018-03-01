@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css" media=print>
+        #printCode .row div{width: 10cm;height: 10cm;}
+    </style>
+</head>
+<body>
+    <script type="text/html" id="temp_print_data">
+        <! data.forEach(function(item){!>
+            <div class="ewm-container">
+                <div class="qrcodes"></div>
+                <p class="ewm-p"><!=item.PatrolAddressOrDevice!></p>
+                <p class="ewm-t"></p>
+            </div>
+        <!});!>
+    </script>
+<div id="divPatrolPoint">
+    <div id="divbtnGroup">
+        <button type="button" class="btn btn-default" id="btnAddpoint"><span class="glyphicon glyphicon-plus"></span>新建</button>
+        <button type="button" class="btn btn-default" id="btnEditpoint"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>编辑</button>
+        <button type="button" class="btn btn-default" id="btnRemove"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除</button>
+        <button type="button" class="btn btn-default" id="btnafresh" title="可按Ctrl键多选进行批量处理"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>重新生成</button>
+        <button type="button" class="btn btn-default" id="btnBatch" title="可按Ctrl键多选进行批量处理"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>批量打印二维码</button>
+        <button type="button" class="btn btn-default" id="btnSort"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span><span class="sortText">升序排序</span></button>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="请输入关键字" id="iptSearch">
+            <span class="glyphicon glyphicon-search" id="spanSearch"></span>
+            <span class="glyphicon glyphicon-remove" id="spanRemove" style="display: none;"></span>
+        </div>
+    </div>
+    <div class="table-responsive gray-scrollbar">
+        <table class="table table-hover" id="tablePoints">
+            <thead>
+                <tr>
+                    <th>巡更类型</th>
+                    <th>目标</th>
+                    <th>巡更要求</th>
+                    <th>相关路线</th>
+                    <th>二维码</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="addpointModal" style="display:none;" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">新增巡更点</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control pointName" placeholder="地址或设备" required="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">类型</label>
+                        <div class="col-sm-9">
+                            <select class="form-control pointType">
+                                <option value="0">设备</option>
+                                <option value="1">地点</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">要求</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="btnSave">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="codeModal" style="display:none;" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">二维码查看</h4>
+                </div>
+                <div class="modal-body" id="printCode">
+                    <div class="divCode" style="background: #fff;text-align: center;padding: 20px 5px;margin:0 auto;">
+                        <div id="qrcodeCanvas"></div>
+
+                        <p class="ewm-p"></p>
+                        <p class="ewm-t"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btnPrint">打印</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="batchModal" style="display:none;" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">二维码查看</h4>
+                </div>
+                <div class="modal-body gray-scrollbar" id="divBatchPrint">
+                    <div id="divRow"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btnBatchPrint">打印</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="infoModal" style="display:none;" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">巡更点任务查看</h4>
+                </div>
+                <div class="modal-body gray-scrollbar">
+                    <div class="panel panel-white">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body">
+                            <ul class="list-group"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

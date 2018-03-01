@@ -1,0 +1,277 @@
+﻿<link rel="stylesheet" type="text/css" href="/static/scripts/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/content/index.css">
+<link rel="stylesheet" type="text/css" href="/static/content/index-black.css">
+<link rel="stylesheet" type="text/css" href="/static/content/index-black.css">
+<link rel="stylesheet" type="text/css" href="/static/app/Benz/env.css">
+<script src="/static/scripts/lib/jquery-2.1.4.min.js"></script>
+<script src="/static/scripts/lib/bootstrap/js/bootstrap.min.js"></script>
+
+<body>
+
+    <style>
+        .xungeng {
+            margin: 10px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .divRow {
+            width: 100%;
+            height: 50px;
+            padding: 5px 20px 5px 20px;
+            text-align: center;
+        }
+
+            .divRow .value, .divRow .key {
+                width: calc(50% - 20px);
+                float: left;
+                margin: 0 10px 0 10px;
+            }
+
+            .divRow:after {
+                font-family: 'Glyphicons Halflings';
+                content: "\e114";
+            }
+
+            .divRow:last-child {
+                margin-top: 10px;
+            }
+
+                .divRow:last-child:after {
+                    content: '';
+                }
+
+        .flowFlag {
+            margin-bottom: 10px;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            vertical-align: middle;
+            padding: 0;
+        }
+
+            .flowFlag .label {
+                display: block;
+                width: 100px;
+                margin: 0 auto 0 auto;
+                font-size: 14px;
+                font-weight: bold;
+                padding: 8px 20px 8px 20px;
+            }
+
+        #tbodyWf span{
+            padding: 5px 15px 5px 15px;
+        }
+    </style>
+
+    <div class="xungeng container">
+
+        <div class="btn-toolbar" role="toolbar">
+            <button id="btnAddWf" type="button" data-toggle="modal" data-target="#dialogModalJclcsz" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增</button>
+            <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 修改</button>
+            <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button>
+        </div>
+
+        <div style=" height: calc(100% - 100px); overflow-x: hidden; overflow-y: auto;">
+
+            <div class="table-responsive">
+                <table class="table  table-hover">
+                    <caption></caption>
+                    <thead>
+                        <tr>
+                            <th>工作流名称</th>
+                            <th>工作流图</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyWf">
+                        <tr class="">
+                            <td>设备报废流程</td>
+                            <td>
+                                <span class="label label-success">发 起</span>
+                                <span>-></span>
+                                <span class="badge">工程部经理: 审核</span>
+                                <span>-></span>
+                                <span class="badge">项目经理: 审核</span>
+                                <span>-></span>
+                                <span class="badge">财务: 审核</span>
+                                <span>-></span>
+                                <span class="badge">财务总监: 审核</span>
+                                <span>-></span>
+                                <span class="badge">副总经理: 审核</span>
+                                <span>-></span>
+                                <span class="label label-success">完 成</span>
+                            </td>
+                        </tr>
+
+                        <tr class="">
+                            <td>PM工单流程</td>
+                            <td>
+                                <span class="label label-success">发 起</span>
+                                <span>-></span>
+                                <span class="badge">工程部经理: 审核</span>
+                                <span>-></span>
+                                <span class="badge">工程师: 处理</span>
+                                <span>-></span>
+                                <span class="badge">工程部经理: 验收</span>
+                                <span>-></span>
+                                <span class="badge">项目经理: 验收</span>
+                                <span>-></span>
+                                <span class="label label-success">完 成</span>
+                            </td>
+                        </tr>
+
+                        <tr class="">
+                            <td>CM工单流程</td>
+                            <td>
+                                <span class="label label-success">发 起</span>
+                                <span>-></span>
+                                <span class="badge">工程部经理: 审核</span>
+                                <span>-></span>
+                                <span class="badge">工程师: 处理</span>
+                                <span>-></span>
+                                <span class="badge">工程部经理: 验收</span>
+                                <span>-></span>
+                                <span class="badge">项目经理: 验收</span>
+                                <span>-></span>
+                                <span class="label label-success">完 成</span>
+                            </td>
+                        </tr>
+
+                        <tr class="">
+                            <td>普通材料审批流程</td>
+                            <td>
+                                <span class="label label-success">发 起</span>
+                                <span>-></span>
+                                <span class="badge">工程部经理: 审核</span>
+                                <span>-></span>
+                                <span class="badge">工程师: 处理</span>
+                                <span>-></span>
+                                <span class="badge">工程部经理: 验收</span>
+                                <span>-></span>
+                                <span class="badge">项目经理: 验收</span>
+                                <span>-></span>
+                                <span class="label label-success">完 成</span>
+                            </td>
+                        </tr>
+
+                        <tr class="">
+                            <td>贵重材料审批流程</td>
+                            <td>
+                                <span class="label label-success">发 起</span>
+                                <span>-></span>
+                                <span class="badge">工程部经理: 审核</span>
+                                <span>-></span>
+                                <span class="badge">工程师: 处理</span>
+                                <span>-></span>
+                                <span class="badge">工程部总监: 验收</span>
+                                <span>-></span>
+                                <span class="badge">总经理: 验收</span>
+                                <span>-></span>
+                                <span class="label label-success">完 成</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <nav>
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a>1</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" id="dialogModalJclcsz" tabindex="-1" role="dialog" aria-labelledby="dialogModalJclcsz" style="top: 50px;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">新增工作流</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="assetName">名称</label>
+                        <input type="text" class="form-control divValue" id="assetName" placeholder="请输入名称...">
+                    </div>
+
+                    <label>工作流</label>
+                    <div>
+                        <div class="divRow flowFlag" style="position: relative;">
+                            <div class="label label-success">开始</div>
+                            <div id="btnAddItem" class="glyphicon glyphicon-plus-sign grow" style="position: absolute; font-size: 22px; right: 32px; top: 4px; color: #337ab7; cursor: pointer;"></div>
+                        </div>
+                        <div class="divRow pairKeyValue">
+                            <select class="form-control key">
+                                <option value="none">请选择人员类型...</option>
+                                <option value="工程部经理">工程部经理</option>
+                                <option value="工程师">工程师</option>
+                                <option value="项目经理">项目经理</option>
+                            </select>
+                            <select class="form-control value">
+                                <option value="none">请选择人员行为...</option>
+                                <option value=": 处理">处理</option>
+                                <option value=": 审核">审核</option>
+                            </select>
+                        </div>
+                        <div id="divFlagComplate" class="divRow flowFlag"><div class="label label-success">完 成</div></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button id="btnSave" type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#btnAddItem').off().on('click', function () {
+            var html = '\
+                    <div class="divRow pairKeyValue">\
+                        <select class="form-control key">\
+                            <option value="none">请选择人员类型...</option>\
+                            <option value="工程部经理">工程部经理</option>\
+                            <option value="工程师">工程师</option>\
+                            <option value="项目经理">项目经理</option>\
+                        </select>\
+                        <select class="form-control value">\
+                            <option value="none">请选择人员行为...</option>\
+                            <option value=": 处理">处理</option>\
+                            <option value=": 审核">审核</option>\
+                        </select>\
+                    </div>';
+
+            $('#divFlagComplate').before(html);
+        });
+
+        $('#btnSave').off().on('click', function () {
+            var str = '<tr class=""><td>' + $('#assetName').val() + '</td><td><span class="label label-success">发 起</span><span>-></span>';
+
+            $('.pairKeyValue').each(function (item) {
+                var strKey = $(this).find('.key').val();
+                var strValue = $(this).find('.value').val();
+                if (strKey != 'none' && strValue != 'none') {
+                    str += '<span class="badge">' + strKey + ': ' + strValue + '</span><span>-></span>'
+                }
+            });
+
+            str += '<span class="label label-success">完 成</span></td></tr>';
+
+            $('#tbodyWf').append(str);
+
+            $('#dialogModalJclcsz').modal('hide');
+        });
+    </script>
+</body>

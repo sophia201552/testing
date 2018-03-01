@@ -1,0 +1,494 @@
+<!--任务-->
+<style type="text/css">
+    /*更改任务组*/
+    .wf-manager-change-work-group {
+        background: #fff;
+        outline: 0;
+        padding: 20px;
+    }
+
+    .wf-manager-people .people {
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin: 0 5px 5px 5px;
+        position: relative;
+    }
+
+    .wf-manager-people .wf-people-add {
+        border-radius: 50%;
+        font-size: 25px;
+        padding: 5px;
+        margin-left: 5px;
+        position: relative;
+        left: 0;
+        color: #aaa;
+    }
+
+    .wf-manager-people .wf-people-add {
+        font-size: 45px;
+    }
+
+    .wf-manager-people .wf-people-add:hover {
+        color: #666;
+    }
+
+    .wf-manager-people .people img {
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    .wf-manager-people .people-name {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        color: #fff;
+        font-size: 13px;
+    }
+
+    .wf-manager-change-work-group .glyphicon {
+        cursor: pointer;
+    }
+
+    .wf-search-box-select li {
+        width: auto;
+        margin-right: 25px;
+        cursor: pointer;
+        padding: 5px 0;
+        vertical-align: middle;
+    }
+
+    .wf-search-box-select .active {
+        color: #3071a9;
+        border-bottom: 1px solid #3071a9;
+    }
+
+    .wf-search-result-container {
+        min-height: 430px;
+        padding: 10px;
+        padding-bottom: 0;
+    }
+
+    .wf-search-all {
+
+    }
+
+    .wf-search-all ul {
+        border: none;
+    }
+
+    .wf-search-all ul .active {
+        color: #1543fa;
+    }
+
+    .wf-search-all li {
+        display: inline-block;
+        padding: 0 5px;
+        text-transform: capitalize;
+        font-size: 12px;
+        cursor: pointer;
+        transition: .2s all linear 0s;
+    }
+
+    .wf-search-result-title ul li:hover {
+        color: #fff;
+        background: #000;
+        border-radius: 5px;
+    }
+
+    .wf-search-result {
+        position: relative;
+        padding: 10px 38px;
+        height: 434px;
+        border: 1px solid #cccccc;
+        -webkit-user-select: none;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .wf-search-result > div {
+        margin: 5px 0;
+    }
+
+    .wf-search-result .wf-member-selected {
+        background: #F1EDED;
+    }
+
+    .wf-search-result .wf-member {
+        border-radius: 5px;
+        transition: .3s background 0s linear;
+        border: 1px solid #ccd;
+        position: relative;
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        padding: 0;
+        margin: 10px 15px;
+        float: left;
+    }
+
+    .wf-search-result .wf-member:hover {
+        background: #F1EDED;
+    }
+
+    .wf-groupList-pre {
+        margin-top: 7px;
+    }
+
+    .wf-search-result-title {
+        margin: 5px 0;
+    }
+
+    .wf-search-result-title .nav-tabs li.active {
+        background: #000000;
+        color: #fff;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    .wf-member-avatar {
+        text-align: center;
+        /*padding: 5px ;*/
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .wf-member-avatar .avatar-icon {
+        width: 100%;
+        height: 100%;
+        transition: .3s opacity 0s linear;
+        border-radius: 5px;
+    }
+
+    .wf-member .wf-member-content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        text-align: center;
+        border-radius: 5px;
+        bottom: 0;
+    }
+
+    .wf-member-selected .wf-member-check {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        z-index: 11;
+        text-align: right;
+        font-size: 12px;
+        border-color: #A1CF64;
+        color: #fff;
+        display: none;
+    }
+
+    .wf-member-selected .wf-member-check {
+        display: block;
+    }
+
+    .wf-member-selected .wf-member-check:after {
+        position: absolute;
+        content: "";
+        right: 0;
+        top: 0;
+        z-index: -1;
+        width: 0;
+        height: 0;
+        border-top: 0 solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 25px solid transparent;
+        border-left: 0 solid transparent;
+        border-right-color: inherit;
+        -webkit-transition: border-color .2s ease;
+        -moz-transition: border-color .2s ease;
+        transition: border-color .2s ease;
+    }
+
+    .wf-check-result-container {
+        padding: 5px 10px;
+        min-height: 60px;
+    }
+
+    .wf-check-result-container > span {
+        display: inline-block;
+        height: 35px;
+        width: auto;
+        line-height: 35px;
+        text-align: center;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+    .wf-check-result {
+        list-style: none;
+        padding: 5px 0 0 80px;
+    }
+
+    .wf-check-result li {
+        width: 76px;
+        height: 25px;
+        max-width: 80px;
+        background: #A1CF64;
+        padding: 5px;
+        border-radius: 13%;
+        font-size: 12px;
+        float: left;
+        text-align: center;
+        text-transform: none;
+        margin: 5px;
+        -webkit-user-select: none;
+        cursor: default;
+        speak: none;
+        transition: .3s opacity 0s linear;
+
+    }
+
+    .wf-check-result li:hover {
+        opacity: .8;
+    }
+
+    .wf-check-result li span {
+        display: inline-block;
+        width: 50px;
+    }
+
+    .wf-check-result li .glyphicon {
+        vertical-align: top;
+        line-height: 16px;
+        cursor: pointer;
+        color: #fff;
+        transform: scale(.87);
+    }
+
+    .wf-search-by-name ul .active {
+        color: #fff;
+        background: #000;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    .wf-search-by-name ul li:hover {
+        color: #fff;
+        background: #000;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        transform: scale(1.1, 1.1);
+    }
+
+    .wf-search-by-name ul {
+        border: none;
+    }
+
+    .wf-search-by-name ul li {
+        display: inline-block;
+        margin: 0 5px;
+        text-transform: capitalize;
+        font-size: 12px;
+        cursor: pointer;
+        padding: 0 5px;
+        transition: .1s all 0s linear;
+    }
+
+    .wf-member .highlight {
+        color: #f00;
+        font-weight: bold;
+    }
+</style>
+<article class="wf-manager-change-work-group">
+    <i class="pull-right glyphicon glyphicon-remove wf-close-edit-work-group dn" title="close"></i>
+    <h4><span i18n="workflow.task.EDIT_TASK_GROUP" id="wf-group-addOrEdit"></span>:</h4>
+
+    <form class="form-horizontal" style="padding: 10px" id="wf-add-group-form" action="javascript:void(0);"
+          method="post">
+
+    </form>
+</article>
+<script type="text/html" id="tpl_wf_group_add">
+    <div class="form-group">
+        <label for="wf-group-name" class="col-sm-2 control-label"><span i18n="workflow.task.TASK_GROUP"></span>:</label>
+
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="wf-group-name"
+                   i18n="workflow.task.TASK_GROUP_NAME;placeholder=workflow.task.TASK_GROUP_NAME" name="name" required
+                   maxlength="50">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="wf-group-des" class="col-sm-2 control-label"><span
+                i18n="workflow.main.ALARM_CONTENT"></span>:</label>
+
+        <div class="col-sm-10">
+            <textarea class="form-control" id="wf-group-des"
+                      i18n="placeholder=workflow.task.DESCRIPTION_OF_TASK_GROUP;" name="description"
+                      required
+                      maxlength="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><span i18n="workflow.task.CREATED_PERSON"></span>:</label>
+
+        <div class="col-sm-10 pull-right wf-manager-people" id="wf-workflow-creator">
+            <div class="people">
+                <img src="<!='http://images.rnbtech.com.hk'+AppConfig.userProfile.picture!>"
+                     title="<!=AppConfig.userProfile.fullname!>"/>
+
+                <div class="people-name ellipsis"><!=AppConfig.userProfile.fullname!></div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><span i18n="workflow.task.MEMBERS"></span>:</label>
+
+        <div class="col-sm-10 pull-right wf-manager-people">
+            <div class="wf-added-user-list" id="wf-workflow-memberList"></div>
+            <span class="glyphicon glyphicon-edit wf-people-add" data-toggle="modal"
+                  data-target="#wf-add-person"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10 pull-right wf-manager-people" style="text-align: right">
+            <a class="btn btn-default wf-close-edit-work-group dn" i18n="workflow.main.CANCEL"></a>
+            <button type="submit" class="btn btn-success wf-btn-add-group"
+                    i18n="workflow.main.SAVE;value=workflow.main.SAVE;title=workflow.main.SAVE"></button>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="tpl_wf_group_edit">
+    <div class="form-group">
+        <label for="wf-group-name" class="col-sm-2 control-label"><span i18n="workflow.task.TASK_GROUP"></span>:</label>
+
+        <div class="col-sm-10">
+            <!if(enableEdit == true){!>
+            <input type="text" class="form-control" id="wf-group-name"
+                   i18n="workflow.task.TASK_GROUP_NAME;placeholder=workflow.task.TASK_GROUP_NAME" name="name"
+                   required
+                   maxlength="50" value="<!=data.name!>">
+            <!}else{!>
+            <p class="wf-groupList-pre" id="wf-group-name"><!=data.name!></p>
+            <!}!>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="wf-group-des" class="col-sm-2 control-label"><span
+                i18n="workflow.main.ALARM_CONTENT"></span>:</label>
+
+        <div class="col-sm-10">
+            <!if(enableEdit == true){!>
+            <textarea class="form-control" id="wf-group-des" i18n="placeholder=workflow.task.DESCRIPTION_OF_TASK_GROUP"
+                      name="description" maxlength="100"><!=data.description!></textarea>
+            <!}else{!>
+            <p class="wf-groupList-pre" id="wf-group-des"><!=data.description!></p>
+            <!}!>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="wf-group-des" class="col-sm-2 control-label"><span i18n="workflow.task.CREATE_TIME"></span>:</label>
+
+        <div class="col-sm-10">
+            <!if(data.createtime){!>
+            <p class="wf-groupList-pre" id="wf-group-createTime"><!=new Date(data.createtime+'+0800').format('yyyy-MM-dd
+                HH:mm:ss')!></p>
+            <!}else{!>
+            <p class="wf-groupList-pre" id="wf-group-createTime" i18n=""></p>
+            <!}!>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><span i18n="workflow.task.CREATED_PERSON"></span>:</label>
+
+        <div class="col-sm-10 pull-right wf-manager-people" id="wf-workflow-creator">
+            <div class="people">
+                <img src="<!='http://images.rnbtech.com.hk'+AppConfig.userProfile.picture!>"
+                     title="<!=AppConfig.userProfile.fullname!>"/>
+
+                <div class="people-name ellipsis"><!=AppConfig.userProfile.fullname!></div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><span i18n="workflow.task.MEMBERS"></span>:</label>
+
+        <div class="col-sm-10 pull-right wf-manager-people">
+            <div class="wf-added-user-list" id="wf-workflow-memberList"></div>
+            <!if(enableEdit == true){!>
+            <span class="glyphicon glyphicon-edit wf-people-add" data-toggle="modal"
+                  data-target="#wf-add-person"></span>
+            <!}!>
+        </div>
+    </div>
+    <!if(enableEdit == true){!>
+    <div class="form-group">
+        <div class="col-sm-10 pull-right wf-manager-people" style="text-align: right">
+            <a class="btn btn-default wf-close-edit-work-group dn" i18n="workflow.main.CANCEL"></a>
+            <button type="submit" class="btn btn-success wf-btn-add-group"
+                    i18n="workflow.main.SAVE;value=workflow.main.SAVE;title=workflow.main.SAVE"></button>
+        </div>
+    </div>
+    <!}!>
+</script>
+<script type="text/html" id="tpl_wf_member">
+    <!for(var m=0; m < members.length; m++){!>
+    <!var member = members[m];!>
+    <!if(addUserMap[''+member.id]){!>
+    <div class="wf-member wf-member-selected" data-user-id="<!=member.id!>" title="<!=member.userfullname!>">
+        <div class="wf-member-avatar">
+            <img class="avatar-icon" src="<!=member.userpic!>">
+        </div>
+        <div class="wf-member-content">
+            <p class=" wf-team-avatar-name ellipsis"><!=member.userfullname!></p>
+        </div>
+        <div class="wf-member-check">
+            <span class="glyphicon glyphicon-ok"></span>
+        </div>
+    </div>
+    <!}else{!>
+    <div class="wf-member" data-user-id="<!=member.id!>" title="<!=member.userfullname!>">
+        <div class="wf-member-avatar">
+            <img class="avatar-icon" src="<!=member.userpic!>">
+        </div>
+        <div class="wf-member-content">
+            <p class=" wf-team-avatar-name ellipsis"><!=member.userfullname!></p>
+        </div>
+        <div class="wf-member-check">
+            <span class="glyphicon glyphicon-ok"></span>
+        </div>
+    </div>
+    <!}!>
+    <!}!>
+</script>
+
+<script type="text/html" id="tpl_wf_added_member">
+    <!for(var m=0; m < members.length; m++){!>
+    <!var member = members[m];!>
+    <div class="people" title="<!=member.userfullname!>" data-user-id="<!=member.id!>">
+        <img src="<!=member.userpic!>">
+
+        <div class="people-name ellipsis"><!=member.userfullname!></div>
+        <input type="hidden" name="addedUsers[]" value="<!=member.id!>">
+    </div>
+    <!}!>
+</script>
+
+<script type="text/html" id=".wf-member .wf-team-avatar-name">
+    <!for(var m=0; m < members.length; m++){!>
+    <!var member = members[m];!>
+    <li>
+        <span class="ellipsis" title="<!=member.userfullname!>"><!=member.userfullname!></span>
+        <i class="glyphicon glyphicon-remove" i18n="title=workflow.main.DELETE" data-user-id="<!=member.id!>"></i>
+    </li>
+    <!}!>
+</script>

@@ -1,0 +1,300 @@
+{
+  "id": 0,
+  "type": "Equipment",
+  "attrInputs": [
+    {
+      "unit": "",
+      "name": {
+        "zh": "设备编号",
+        "en": "Equipment Number"
+      },
+      "tag": {
+        "zh": "设备,编号",
+        "en": "Equipment,Number"
+      },
+      "description": {
+        "zh": "设备编号",
+        "en": "Equipment Number"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "设计温度",
+        "en": "Design Temperature"
+      },
+      "tag": {
+        "zh": "设计,温度",
+        "en": "Design,Temperature"
+      },
+      "description": {
+        "zh": "设计温度",
+        "en": "Design Temperature"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "设计压力",
+        "en": "Design Pressure"
+      },
+      "tag": {
+        "zh": "设计,压力",
+        "en": "Design,Pressure"
+      },
+      "description": {
+        "zh": "设计压力",
+        "en": "Design Pressure"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "实验压力",
+        "en": "Experimental Pressure"
+      },
+      "tag": {
+        "zh": "实验,压力",
+        "en": "Experimental,Pressure"
+      },
+      "description": {
+        "zh": "实验压力",
+        "en": "Experimental Pressure"
+      }
+    }
+  ],
+  "name": {
+    "zh": "板式换热器",
+    "en": "Heat Exchanger"
+  },
+  "tag": {
+    "zh": "板换",
+    "en": "HX"
+  },
+  "attrPoints": [
+    {
+      "unit": "",
+      "name": {
+        "zh": "一次侧供水温度设定",
+        "en": "Heat Exchanger Primary Supply Temperature Set"
+      },
+      "tag": {
+        "zh": "板换,一次侧,供水,温度,设定",
+        "en": "HX,primay,Supply,Temperature,Set"
+      },
+      "description": {
+        "zh": "一次侧供水温度设定",
+        "en": "Heat Exchanger Primary Supply Temperature Set"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "一次侧供水温度",
+        "en": "Heat Exchanger Primary Supply Temperature"
+      },
+      "tag": {
+        "zh": "板换,一次侧,供水,温度",
+        "en": "HX,primay,Supply,Temperature"
+      },
+      "description": {
+        "zh": "一次侧供水温度",
+        "en": "Heat Exchanger Primary Supply Temperature"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "一次侧回水温度",
+        "en": "Heat Exchanger Primary Return Temperature"
+      },
+      "tag": {
+        "zh": "板换,一次侧,回水,温度",
+        "en": "HX,primay,Return,Temperature"
+      },
+      "description": {
+        "zh": "一次侧回水温度",
+        "en": "Heat Exchanger Primary Return Temperature"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "一次侧温差",
+        "en": "Heat Exchanger Primary Temperature Difference"
+      },
+      "tag": {
+        "zh": "板换,一次侧,温度,差别",
+        "en": "HX,primay,Temperature,Difference"
+      },
+      "description": {
+        "zh": "一次侧温差",
+        "en": "Heat Exchanger Primary Temperature Difference"
+      }
+    },
+    {
+      "unit": [
+        "kg/s",
+        "l/s",
+        "m3/h"
+      ],
+      "name": {
+        "zh": "一次侧流量",
+        "en": "Heat Exchanger Primary Water Flow"
+      },
+      "tag": {
+        "zh": "板换,一次侧,水,流量",
+        "en": "HX,primay,Water,Flow"
+      },
+      "description": {
+        "zh": "一次侧流量",
+        "en": "Heat Exchanger Primary Water Flow"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "二次侧供水温度设定",
+        "en": "Heat Exchanger Secondary Supply Temperature Set"
+      },
+      "tag": {
+        "zh": "板换,二次侧,供水,温度,设定",
+        "en": "HX,Secondary,Supply,Temperature,Set"
+      },
+      "description": {
+        "zh": "二次侧供水温度设定",
+        "en": "Heat Exchanger Secondary Supply Temperature Set"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "二次侧供水温度",
+        "en": "Heat Exchanger Secondary Supply Temperature"
+      },
+      "tag": {
+        "zh": "板换,二次侧,供水,温度",
+        "en": "HX,Secondary,Supply,Temperature"
+      },
+      "description": {
+        "zh": "二次侧供水温度",
+        "en": "Heat Exchanger Secondary Supply Temperature"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "二次侧回水温度",
+        "en": "Heat Exchanger Secondary Return Temperature"
+      },
+      "tag": {
+        "zh": "板换,二次侧,回水,温度",
+        "en": "HX,Secondary,Return,Temperature"
+      },
+      "description": {
+        "zh": "二次侧回水温度",
+        "en": "Heat Exchanger Secondary Return Temperature"
+      }
+    },
+    {
+      "unit": [
+        "℃",
+        "℉"
+      ],
+      "name": {
+        "zh": "二次侧温差",
+        "en": "Heat Exchanger Secondary Temperature Difference"
+      },
+      "tag": {
+        "zh": "板换,二次侧,温度,差别",
+        "en": "HX,Secondary,Temperature,Difference"
+      },
+      "description": {
+        "zh": "二次侧温差",
+        "en": "Heat Exchanger Secondary Temperature Difference"
+      }
+    },
+    {
+      "unit": [
+        "kg/s",
+        "l/s",
+        "m3/h"
+      ],
+      "name": {
+        "zh": "二次侧流量",
+        "en": "Heat Exchanger Secondary Water Flow"
+      },
+      "tag": {
+        "zh": "板换,二次侧,水,流量",
+        "en": "HX,Secondary,Water,Flow"
+      },
+      "description": {
+        "zh": "二次侧流量",
+        "en": "Heat Exchanger Secondary Water Flow"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "换热能力",
+        "en": "Heat Transfer Capacity"
+      },
+      "tag": {
+        "zh": "热量，交换，能力",
+        "en": "Heat,Transfer,Capacity"
+      },
+      "description": {
+        "zh": "换热能力",
+        "en": "Heat Transfer Capacity"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "设计压力",
+        "en": "Design Pressure"
+      },
+      "tag": {
+        "zh": "设计,压力",
+        "en": "design,Pressure"
+      },
+      "description": {
+        "zh": "设计压力",
+        "en": "design Pressure"
+      }
+    },
+    {
+      "unit": "",
+      "name": {
+        "zh": "高差",
+        "en": "Height Difference"
+      },
+      "tag": {
+        "zh": "高度，差别",
+        "en": "Height,Difference"
+      },
+      "description": {
+        "zh": "高差",
+        "en": "Height Difference"
+      }
+    }
+  ]
+}

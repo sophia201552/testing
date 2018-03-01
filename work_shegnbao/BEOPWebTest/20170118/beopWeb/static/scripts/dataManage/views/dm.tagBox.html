@@ -1,0 +1,231 @@
+<style>
+    #tagSearchBox {
+        padding: 9px 10px 8px;
+        width: 100%;
+        border-bottom: 1px solid #eae8ea;
+    }
+
+    #tagSearchBox .iconPosition {
+        position: absolute;
+        top: 14px;
+        right: 26px;
+    }
+
+    #tagSearchBox .tagTitle {
+        display: inline-block;
+        float: left;
+        padding-top: 8px;
+        color: black;
+        font-weight: bold;
+    }
+
+    #tagSearchBox input {
+        display: inline-block;
+        float: left;
+        margin-left: 10px;
+        width: calc(100% - 50px);
+        height: 28px;
+    }
+
+    #tagGroup button {
+        width: 125px;
+        background: #efefef;
+        outline: none;
+    }
+
+    #tagGroup button.active {
+        color: #ff9600;
+        background: #fff;
+    }
+
+    #tagContent {
+        width: 100%;
+        max-height: 80vh;
+        overflow-y: auto;
+        user-select: none;
+    }
+
+    #tagContent ul {
+        list-style: none;
+        padding-left: 16px;
+        overflow: hidden;
+    }
+
+    #tagContent ul li.selectedColor {
+        color: #ff9600;
+    }
+
+    #tagContent ul li {
+        float: left;
+        width: 64px;
+        height: 26px;
+        display: block;
+        background: #dedfe0;
+        margin: 6px;
+        text-align: center;
+        line-height: 26px;
+        border-radius: 3px;
+        color: #333333;
+    }
+
+    #tagContent .tag-item-name {
+        display: inline-block;
+        width: 61px;
+        margin: 0 auto;
+    }
+
+    #tagGroup {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #eae8ea;
+    }
+
+    #tagContent .common {
+        padding: 10px;
+    }
+
+    #tagContent .tagType {
+        padding: 10px;
+        border-bottom: 1px solid #eae8ea;
+    }
+
+    #tagContent .tagType span:nth-child(1) {
+        display: inline-block;
+        float: left;
+        position: relative;
+        left: 12px;
+    }
+
+    #tagContent .tagType .tagOpen {
+        float: right;
+        width: 13px;
+        height: 13px;
+        border-right: 2px solid #666;
+        border-bottom: 2px solid #666;
+        transform: rotate(-45deg);
+        position: relative;
+        top: 3px;
+        right: 12px;
+    }
+
+    #tagContent .tagTypeBox.active .tagType .tagOpen {
+        transform: rotate(45deg);
+
+    }
+
+    #tagContent .tagTypeBox .tagTypeContent {
+        display: none;
+    }
+
+    #tagContent .tagTypeBox.active .tagTypeContent {
+        display: block;
+    }
+
+    #tagContent .tagTypeContent {
+        border-bottom: 1px solid #eae8ea;
+    }
+
+    #tagContent .tag-item {
+        cursor: pointer;
+    }
+
+    #tagContent .tag-item i {
+        margin-right: 5px;
+    }
+
+    #tagContent .tagCommon {
+        padding: 10px;
+    }
+
+    @media (max-width: 1366px) {
+        #tagGroup button {
+            width: 85px;
+        }
+
+        #tagContent {
+            max-height: 74vh;
+        }
+
+        #tagContent ul li {
+            width: 70px;
+        }
+    }
+
+</style>
+<div id="tagContainer">
+    <div id="tagSearchBox" class="clearfix">
+        <span class="tagTitle">TAG</span>
+        <span class="icon iconfont iconPosition cp">&#xe713;</span>
+        <input type="text" class="form-control" id="tagSearchValue" placeholder=""/>
+    </div>
+    <div id="tagGroup">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default active" id="tagByType">分类</button>
+            <button type="button" class="btn btn-default" id="tagByCommon">常用</button>
+        </div>
+    </div>
+    <div id="tagContent" class="clearfix gray-scrollbar">
+
+    </div>
+</div>
+<!--@formatter:off-->
+<script type="text/html" id="tpl_show_Tag_by_type">
+    <!for(var i = 0,iLen = list.length;i < iLen;i++){!>
+        <!var groupTag = list[i];!>
+        <div class="tagTypeBox" type="<!=groupTag.groupNm!>">
+            <div class="tagType clearfix">
+                <!var groupNm = I18n.resource.tag.TAG_TYPE[groupTag.groupNm.toUpperCase()] ? I18n.resource.tag.TAG_TYPE[groupTag.groupNm.toUpperCase()] : groupTag.groupNm;!>
+                <span class="tag-text"><!=groupNm!></span>
+                <div class="tagOpen"></div>
+            </div>
+            <div class="tagTypeContent clearfix">
+                <ul class="clearfix">
+                    <!for(var j = 0,jLen = groupTag.tags.length;j < jLen;j++){!>
+                        <li class="tag-item" tag="<!=groupTag.tags[j].name!>" title="<!=groupTag.tags[j].name!>">
+                            <span class="ellipsis tag-item-name">
+                                <!if(groupTag.tags[j].icon){!>
+                                    <i class="icon iconfont <!=groupTag.tags[j].icon!>"></i>
+                                <!}!>
+                                <!=groupTag.tags[j].name!>
+                            </span>
+                        </li>
+                    <!}!>
+                </ul>
+            </div>
+        </div>
+    <!}!>
+</script>
+<script type="text/html" id="tpl_show_Tag_by_Common">
+    <div class="tagCommon">
+        <span>系统常用Tag</span>
+    </div>
+    <ul>
+        <!var dict = beop.tag.panel.getTagMap();!>
+
+        <!for(var i = 0,iLen = list.length;i < iLen;i++){!>
+            <!
+                if(!list[i] || !list[i].name){
+                    continue;
+                }
+                var displayNm = '';
+                var tag = '';
+                var tagItem = list[i].name.trim().toUpperCase();
+                if(list[i].name && dict[tagItem]){
+                    displayNm = dict[tagItem].name;
+                    tag = dict[tagItem].name;
+                }else{
+                    tag = displayNm = list[i].name;
+                }
+            !>
+            <li class="tag-item" tag="<!=tag!>" title="<!=tag!>">
+                <span class="ellipsis tag-item-name">
+                    <!if(list[i].icon){!>
+                        <i class="icon iconfont <!=list[i].icon!>"></i>
+                    <!}!>
+                    <!=displayNm!>
+                </span>
+            </li>
+        <!}!>
+    </ul>
+</script>
+<!--@formatter:on-->

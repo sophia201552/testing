@@ -1,0 +1,20 @@
+<div class="modal fade" id="modalFrmMain">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalFrmHead">Warning</h4>
+            </div>
+            <div class="modal-body" id="modalFrmBody">
+                <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancel" style="width:70px">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnSure" style="width:70px">Sure</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->

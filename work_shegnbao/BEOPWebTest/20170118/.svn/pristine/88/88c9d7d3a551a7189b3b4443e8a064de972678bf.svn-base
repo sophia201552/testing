@@ -1,0 +1,181 @@
+AB ,AB ,AB ,Brand
+Absorption,Absorption,吸收,Physical Process
+Active ,active ,有效,Condition
+Address,Address,地址,Condition
+Adjustment,Adjustment,适应,Adjective
+AHU,AHU,空气调节箱,Equipment
+Air,air,空气,Media
+Alarm,Alarm,报警,Statistics
+AmpRatio ,ampRatio ,电流百分比,Physical Quantity
+Approach ,approach ,趋近,Relationship
+Automatic ,automatic ,自动,Code
+Available,Available,可用,Adjective
+Average ,average ,平均,Statistics
+Basin,Basin,集水盘,Component
+BMS,BMS,楼宇系统,Relationship
+Boiler,Boiler,锅炉,Equipment
+Bypass,Bypass,旁通,Component
+Capacity,Capacity,容量,Physical Quantity
+CAV,CAV,定风量末端,Equipment
+CC,CC,冷盘管,Component
+Chilled,Chilled,冷冻的,Adjective
+Chiller,chiller,冷机,Equipment
+CHWP,CHWP,冷冻水泵,Equipment
+cleaner,cleaner,净化器,Equipment
+close,close,关闭,Statistics
+CO2,CO2,二氧化碳,Media
+Code ,code ,代码,Code
+Coil ,coil ,盘管,Component
+commissioning,commissioning,试运行,Adjective
+Common,Common,正常,Adjective
+Compressor ,compressor ,压缩机,Component
+Condenser,Condenser,冷凝器,Component
+Control,Control,控制,Condition
+Cooling,Cooling,制冷,Condition
+COP,COP,COP,Efficiency
+CT,CT,冷却塔,Equipment
+Current ,current ,电流,Physical Quantity
+CWP,CWP,冷水泵,Equipment
+Cycling,Cycling,循环,Code
+Damper,Damper,风阀,Component
+Day,Day,白天，天,Adjective
+Delay ,delay ,延迟,Code
+delta,delta,差值,Compare
+Design,Design,设计,Condition
+Diagnose,Diagnose,诊断,Adjective
+Diesel,Diesel,柴油机,Equipment
+Difference ,difference ,差别,Compare
+Drive,Drive,驱动,Code
+Economy,Economy,节能型,Adjective
+Effective,Effective,有效的,Statistics
+Electric,Electric,电,Physical Quantity
+Emergency ,emergency ,紧急,Adjective
+Enable ,enable ,使能,Code
+Energy,Energy,用电量,Physical Quantity
+EnergyTransfer,EnergyTransfer,能量转换,Physical Quantity
+Enter,,进,Direction
+Error ,error ,错误,Code
+Evap,evap,蒸发,Physical Process
+Evaporator,Evaporator,蒸发器,Component
+Exhaust,Exhaust,排,Direction
+Factor ,factor ,因子,Physical Quantity
+Fan,Fan,风机,Equipment
+Fault ,fault ,故障,Code
+FCU,FCU,风机盘管,Equipment
+Feedback ,feedback ,反馈,Code
+Filter ,filter ,过滤,Physical Process
+Fire,Fire,火,Media
+First,First,初次,Adjective
+Flow,Flow,流量,Physical Quantity
+Fluid,Fluid,流体,Media
+Frequent,Frequent,频率,Physical Quantity
+Fuel,fuel,燃料,Energy Sources
+FuelOil,FuelOil,燃料油,Energy Sources
+Gas,Gas,气,Energy Sources
+Gasoline,Gasoline,汽油,Energy Sources
+Gear ,gear ,齿轮,Component
+Generator,Generator,发生器,Component
+Group,Group,组，群,Relationship
+Heat,Heat,热,Condition
+Heater,Heater,加热器,Component
+HeatRecovery,HeatRecovery,热回收,Physical Process
+HeatRejection,HeatRejection,散热,Physical Process
+Hot,Hot,热,Adjective
+Hour ,hour ,小时,Statistics
+Humidity,Humidity,湿度,Physical Quantity
+Ice,Ice,冰,Media
+Indirect,Indirect,间接,Relationship
+Inlet,Inlet,进,Direction
+Latest ,latest ,最近,Relationship
+Leave ,leave ,离开,Direction
+Limit,Limit,限定,Compare
+line ,line ,线,Relationship
+liquidErr,,液位报警,Code
+Load,Load,负荷,Physical Quantity
+Lock,Lock,锁定,Adjective
+Lower,Lower,较低,Compare
+Lube,Lube,润滑油,Media
+Mass,Mass,质量,Physical Quantity
+MAU,MAU,新风空调箱,Equipment
+Maximum,Maximum,最大,Compare
+Minimum,Minimum,最小,Compare
+Mode,Month,模式,Code
+Month,Month,月,Statistics
+Motor ,motor ,发动机,Component
+Name,Name,名称,Adjective
+Night,Night,晚上,Statistics
+Nominal,Nominal,名义,Adjective
+Number,Number,数量,Statistics
+OAU,OAU,外气空调机,Equipment
+Off ,off ,关,Code
+Oil ,oil ,油,Media
+Onoff ,onoff ,开关,Code
+open,open,开,Code
+Optimum,Optimum,最佳,Compare
+OtherFuel,OtherFuel,其他燃料,Media
+Outlet,Outlet,出,Direction
+Override,Override,过载,Adjective
+PAU,PA,新风处理器,Equipment
+Part,Part,部分,Relationship
+Percent ,percent ,百分比,Statistics
+Performance ,performance ,性能,Efficiency
+Plant,Plant,机房,Equipment
+Point,Point,点位,Information
+Position ,position ,开度,Physical Quantity
+Power,Power,功率,Physical Quantity
+Pressure ,pressure ,压力,Physical Quantity
+Propane,Propane,丙烷,Media
+Protection,Protection,保护,Adjective
+Pump ,pump ,水泵,Equipment
+Rate,Rate,率,Statistics
+Ratio,Ratio,比,Statistics
+Reactive ,reactive ,无功,Physical Quantity
+Recovered,Recovered,恢复,Adjective
+Recovery,Recovery,恢复,Code
+Refrigerant ,refrigerant ,制冷剂,Media
+Remote ,remote ,远程,Code
+Reset,Reset,重置,Code
+return,return,回,Direction
+Riser ,riser ,立管,Component
+Run ,run ,运行,Code
+Saturation ,saturation ,饱和,Physical Process
+Second,Second,第二,Adjective
+Select,Select,选择,Information
+Service,Service,服务,Code
+Set ,set ,设定,Code
+Setpoint ,setpoint ,设定点,Code
+Shaft,Shaft,轴,Component
+Somke,Somke,烟雾,Media
+Source,Source,源,Energy Sources
+Speed,Speed,速度,Physical Quantity
+Spool ,spool ,阀芯,Component
+Static,Static,禁止,Information
+Status,Status,状态,Information
+Steam,Steam,蒸汽,Media
+Stop ,stop ,停,Code
+Suction ,suction ,抽吸,Physical Process
+Supercooling ,supercooling ,过冷,Compare
+Superheat ,superheat ,过热,Compare
+Supply ,supply ,供,Direction
+switch,switch,开关,Component
+System,System,系统,Relationship
+Tank ,tank ,水箱,Component
+Temperature,Temperature,温度,Physical Quantity
+Temperature,Temperature,温度,Physical Quantity
+Third,Third,第三,Adjective
+Time ,time ,时间,Physical Quantity
+Total,Total,总的,Statistics
+Transfer,Transfer,转换,Physical Process
+Type,Type,类型,Adjective
+Use ,use ,使用,Consumption
+Valve ,valve ,水阀,Component
+VAV,VAV,变风量系统,Equipment
+Voltage ,voltage ,电压,Physical Quantity
+Volume,Volume,体积,Physical Quantity
+VSD,VSD,变频,Physical Quantity
+Warning ,warning ,报警,Information
+Water,Water,水,Media
+Week,Week,周,Statistics
+Zone,Zone,区域,Relationship
+RAF,RAF,回风机,Equipment
+EAF,EAF,排风机,Equipment

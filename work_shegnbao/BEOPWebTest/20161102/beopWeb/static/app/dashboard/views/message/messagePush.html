@@ -1,0 +1,54 @@
+<meta charset="UTF-8">
+<style type="text/css">
+	body,#messagePushList,li,h3,p,a{
+		list-style-type: none;
+		padding:0;
+		margin: 0;
+		text-decoration: none;
+	}
+	#containerMessagePush{
+		background:#eee;
+	}
+	#messagePushList li{
+		padding: 15px 20px;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+	}
+    #messagePushList li:nth-child(odd){
+        background-color: #eee;
+    }
+	#messagePushList li a{
+		display: block;
+		padding:10px;
+	    background: #fff;
+    	box-shadow: 0 0 20px rgba(0,0,0,0.6);
+	}
+    #messagePushList li.isNew {
+        background-color: rgba(100, 170, 215, 0.4);
+    }
+	#messagePushList li a h3{
+		font-size: 1.6rem;
+		color:#333333;
+        width: 85%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+	}
+	#messagePushList li a .time{
+		font-size: 0.8rem;
+		color:#666666;
+	}
+	#messagePushList li a .content{
+		font-size: 1rem;
+		color:#909090;
+	}
+    #messagePushList li .btnRemove {
+        position: absolute;
+        padding: 1rem;
+        right: 1rem;
+        top: 1rem;
+    }
+</style>
+<div class="containerMessagePush">
+	
+</div>

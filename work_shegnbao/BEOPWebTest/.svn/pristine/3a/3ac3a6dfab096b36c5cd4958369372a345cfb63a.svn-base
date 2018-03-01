@@ -1,0 +1,89 @@
+<style>
+    *{
+        font-family: "Microsoft YaHei";
+    }
+    #wkAddInfo {
+        background-color: white;
+        height: 90%;
+        padding: 1rem;
+        font-family: "Microsoft Yahei";
+    }
+    .form-group {
+        margin-bottom: 0;
+        padding: 0.5rem 0;
+    }
+    .form-group:not(:last-child){
+        border-bottom: 1px solid #ccc;
+    }
+    .form-control{
+        display: inline-block;
+        width: inherit;
+    }
+    #inputWkImg {
+        display: none;
+    }
+    #workflowAddBtn {
+        width: 100%;
+        text-align: center;
+        background-color: #ccc;
+        padding: 5%;
+        position: absolute;
+        bottom: 0;
+    }
+    .form-group label{
+        font-weight: 600;
+        width: 60px;
+        text-align: right;
+        margin-right: .5rem;
+    }
+    #btnAddWk{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+</style>
+<div id="wkAddInfo">
+    <div id="wkTitle" class="form-group">
+        <label for="inputWkTitle">标题</label>
+        <input type="text" class="form-control" id="inputWkTitle" placeholder="">
+    </div>
+    <div id="wkDetail" class="form-group">
+        <label for="inputWkDetail">详情</label>
+        <textarea class="form-control" id="inputWkDetail" placeholder=""></textarea>
+    </div>
+    <div id="wkDeadline" class="form-group">
+        <label for="inputWkDeadline">截止时间</label>
+        <input type="text" class="form-control" id="inputWkDeadline" placeholder="">
+    </div>
+    <div id="wkImportance" class="form-group">
+        <label for="inputWkImportance">紧急程度</label>
+        <select class="form-control" id="inputWkImportance">
+            <option>紧急</option>
+            <option>严重</option>
+            <option>一般</option>
+        </select>
+    </div>
+    <div id="wkImg" class="form-group">
+        <label for="inputWkImg">故障图片</label>
+        <input type="file" class="form-control" id="inputWkImg" placeholder="">
+        <span id="spanWkImg" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </div>
+    <div id="wkTransactor" class="form-group">
+        <label for="inputWkTransactor">执行人</label>
+        <select class="form-control" id="inputWkTransactor">
+            <option>员工1</option>
+            <option>员工2</option>
+            <option>员工3</option>
+        </select>
+    </div>
+    <div id="wkTeam" class="form-group">
+        <label for="inputWkTeam">项目团队</label>
+        <select class="form-control" id="inputWkTeam">
+            <option>团队1</option>
+            <option>团队2</option>
+            <option>团队3</option>
+        </select>
+    </div>
+</div>
+<div id="workflowAddBtn">
+    <button id="btnAddWk" type="button" class="btn btn-primary">创建</button>
+</div>

@@ -1,0 +1,45 @@
+{
+  "tag": {
+    "en": "escalator",
+    "zh": "自动扶梯"
+  },
+  "name": {
+    "en": "escalator",
+    "zh": "自动扶梯"
+  },
+  "type": "equipment",
+  "attrPoints": [],
+  "id": 0,
+  "attrInputs": [
+    {
+      "description": {
+        "en": "Number",
+        "zh": "编号"
+      },
+      "unit": "",
+      "name": {
+        "en": "Number",
+        "zh": "编号"
+      },
+      "tag": {
+        "en": "Number",
+        "zh": "编号"
+      }
+    },
+    {
+      "description": {
+        "en": "Power",
+        "zh": "功率"
+      },
+      "unit": "",
+      "name": {
+        "en": "Power",
+        "zh": "功率"
+      },
+      "tag": {
+        "en": "Power",
+        "zh": "功率"
+      }
+    }
+  ]
+}

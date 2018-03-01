@@ -1,0 +1,54 @@
+[2017-03-14 11:49:08] --- levelname:ERROR filename: app.py funcName:log_exception outputNumber: [1423]  thread: MainThread output msg: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/BeOP-AutoTest2016/runserver.py", line 59, in hello
+    return render_template("E:\BeOP-AutoTest2016\TestReport\自动化测试报告2017-03-10 17.48.10.html")
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\jinja2\environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\jinja2\environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\jinja2\environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\templating.py", line 64, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: E:\BeOP-AutoTest2016\TestReport\自动化测试报告2017-03-10 17.48.10.html
+[2017-03-14 11:49:58] --- levelname:ERROR filename: app.py funcName:log_exception outputNumber: [1423]  thread: MainThread output msg: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/BeOP-AutoTest2016/runserver.py", line 59, in hello
+    return render_template("E:\BeOP-AutoTest2016\Templates\template.html")
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\jinja2\environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\jinja2\environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\jinja2\environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\templating.py", line 64, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: E:\BeOP-AutoTest2016\Templates	emplate.html
