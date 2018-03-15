@@ -1,3 +1,0 @@
-import DataSetComponentV2 from './DataSetComponentV2';
-
-export default DataSetComponentV2;

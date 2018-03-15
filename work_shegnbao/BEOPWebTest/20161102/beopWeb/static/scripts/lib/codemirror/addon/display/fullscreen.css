@@ -1,9 +1,0 @@
-.CodeMirror-fullscreen {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: auto;
-    z-index: 100000;
-    top: 56px;
-}

@@ -1,6 +1,0 @@
-export default {
-  PROGRAM: 'Project',
-  PLIVATE: 'Plivate',
-  UNSAVED_CONTENT_CONFIRM_EXIT: 'There is unsaved content, confirm exit?',
-  TOOLTIP: 'Tooltip'
-};

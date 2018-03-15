@@ -1,9 +1,0 @@
-{
-  "name": "@beopcloud/logger",
-  "version": "0.1.1",
-  "description": "日志工具类，可设置级别",
-  "main": "index.js",
-  "author": "Peter",
-  "license": "MIT",
-  "private": false
-}

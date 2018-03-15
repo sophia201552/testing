@@ -1,5 +1,0 @@
-export default {
-  MODULE_NAME: '逻辑分析',
-  CONDITIONS: '条件',
-  RESULT: '结果'
-};

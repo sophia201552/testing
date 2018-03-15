@@ -1,2 +1,0 @@
-RETRACT_SIZE = 4
-INPUTS_RESULT_VAR_NAME = '_inputs'

@@ -1,8 +1,0 @@
-export default {
-  CATALOG: '目录',
-  ATTRIBUTE: '属性',
-  TEMPLATE: '模板',
-  ELEMENT: '元素',
-  DATA: '数据',
-  CONFIG: '配置'
-};

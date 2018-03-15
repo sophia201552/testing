@@ -1,9 +1,0 @@
-{
-  "name": "@beopcloud/diff",
-  "version": "0.2.3",
-  "description": "匹配两个数据结构的不同，并给出结果",
-  "main": "index.js",
-  "author": "Peter",
-  "license": "MIT",
-  "private": false
-}

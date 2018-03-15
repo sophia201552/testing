@@ -1,4 +1,0 @@
-export default {
-    DATA: '数据',
-    TIME: '时间',
-}

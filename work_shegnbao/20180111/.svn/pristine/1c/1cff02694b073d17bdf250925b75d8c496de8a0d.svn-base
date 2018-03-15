@@ -1,5 +1,0 @@
-export default {
-  MODULE_NAME: 'Logic Analysis',
-  CONDITIONS: 'Conditions',
-  RESULT: 'Result'
-};

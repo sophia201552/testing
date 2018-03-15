@@ -1,6 +1,0 @@
-export default {
-    NEXT_PAGE: 'Next Pagation',
-    PREVIOUS_PAGE: 'Previous Pagation',
-    DISPLAY_DATA_PER_PAGE: 'Display {num} data per page'
-
-}

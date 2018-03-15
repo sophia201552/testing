@@ -1,6 +1,0 @@
-export default {
-  PROGRAM: '项目',
-  PRIVATE: '私人',
-  UNSAVED_CONTENT_CONFIRM_EXIT: '存在未保存的内容，确认退出？',
-  TOOLTIP: '提示'
-};

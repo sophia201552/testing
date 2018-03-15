@@ -1,8 +1,0 @@
-export default {
-  MODULE_NAME: 'Data Normalization',
-  ANNOTATION_MIN_MAX: 'Scaling data to lie between 0 and 1 ',
-  ANNOTATION_0_1:
-    'Scaling data to zero mean and unit variance',
-  DATA_SET: 'Data Set',
-  METHOD: 'Method'
-};

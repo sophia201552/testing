@@ -1,4 +1,0 @@
-export default {
-  MODULE_NAME:'Sort',
-  EXPORT_EXCEL:'Export Excel'
-};

@@ -1,6 +1,0 @@
-export default {
-  INPUT_MODULE_WAEM_INFO:
-    ' The module did not get the data passed by the previous module correctly!',
-  OUTPUT_MODULE_WAEM_INFO:
-    ' The data for the module output is incorrect, please check your module configuration!'
-};

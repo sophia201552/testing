@@ -1,4 +1,0 @@
-export default {
-  MODULE_NAME:'数据导出',
-  EXPORT_EXCEL:'导出Excel'
-};

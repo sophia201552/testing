@@ -1,5 +1,0 @@
-export default {
-  NEXT_PAGE: '下一页',
-  PREVIOUS_PAGE: '上一页',
-  DISPLAY_DATA_PER_PAGE: '每页显示{num}条数据'
-};

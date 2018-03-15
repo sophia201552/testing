@@ -1,5 +1,0 @@
-export default {
-  MODULE_NAME: 'AND-OR Logic',
-  CONDITIONS: 'Conditions',
-  RESULT: 'Result'
-};

@@ -1,7 +1,0 @@
-export default {
-  PROGRAM: 'Project',
-  PRIVATE: 'Mine',
-  UNSAVED_CONTENT_CONFIRM_EXIT:
-    'You did not save changes. Do you want to leave without saving them?',
-  TOOLTIP: 'Tooltip'
-};

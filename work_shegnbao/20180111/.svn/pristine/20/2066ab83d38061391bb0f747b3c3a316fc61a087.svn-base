@@ -1,1 +1,0 @@
-from tests.utils import TestCommonimport pytest#added by sophia 2017/10/20@pytest.mark.p0def test_correct():    rt = TestCommon.ProjectClusterMapUpdate.run()    expected = True    TestCommon.ProjectClusterMapUpdate.assert_result(expected, rt)

@@ -1,1 +1,0 @@
-from tests.utils import TestCommonimport pytest#added by sophia 2017/10/19@pytest.mark.p0def test():    rt = TestCommon.ProjectClusterMapGet.run()    TestCommon.ProjectClusterMapGet.assert_result(rt)

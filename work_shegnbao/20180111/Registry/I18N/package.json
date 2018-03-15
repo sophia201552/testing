@@ -1,9 +1,0 @@
-{
-  "name": "@beopcloud/I18N",
-  "version": "0.1.0",
-  "description": "根据传递的语言组件显示相应的语言, 或设置语言, 目前支持中文和英文",
-  "main": "index.js",
-  "author": "Peter",
-  "license": "MIT",
-  "private": false
-}
