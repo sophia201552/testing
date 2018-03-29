@@ -36,3 +36,4 @@
 [2018-03-19 13:35:07]---funcName: get_pic error: 'DriverMethods' object has no attribute 'get_screenshot_as_file'
 [2018-03-19 13:55:34]---funcName: get_pic error: 'DriverMethods' object has no attribute 'get_screenshot_as_file'
 [2018-03-19 13:59:53]---funcName: get_pic error: 'DriverMethods' object has no attribute 'get_screenshot_as_file'
+[2018-03-22 13:55:56]---funcName: get_pic error: 'DriverMethods' object has no attribute 'get_screenshot_as_file'
